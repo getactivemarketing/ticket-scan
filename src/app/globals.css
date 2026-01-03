@@ -24,3 +24,12 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+/* Form inputs - ensure dark text */
+input, select, textarea {
+  color: #1f2937 !important;
+}
+
+input::placeholder {
+  color: #9ca3af !important;
+}
