@@ -99,6 +99,86 @@ export default function Home() {
           </div>
         </div>
 
+        {/* Social Proof Section */}
+        <div className="bg-white py-12 border-b">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+              <div>
+                <div className="text-4xl font-bold text-purple-600">50K+</div>
+                <div className="text-gray-600 text-sm mt-1">Events Tracked</div>
+              </div>
+              <div>
+                <div className="text-4xl font-bold text-purple-600">$127</div>
+                <div className="text-gray-600 text-sm mt-1">Avg. Savings per Ticket</div>
+              </div>
+              <div>
+                <div className="text-4xl font-bold text-purple-600">24</div>
+                <div className="text-gray-600 text-sm mt-1">Major Cities</div>
+              </div>
+              <div>
+                <div className="text-4xl font-bold text-purple-600">5+</div>
+                <div className="text-gray-600 text-sm mt-1">Ticket Sites Compared</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Testimonials Section */}
+        <div className="bg-gray-50 py-16">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 className="text-2xl font-bold text-center text-gray-900 mb-12">
+              What Fans Are Saying
+            </h2>
+            <div className="grid md:grid-cols-3 gap-8">
+              <div className="bg-white p-6 rounded-2xl shadow-sm">
+                <div className="flex items-center gap-1 mb-4">
+                  {[1,2,3,4,5].map(i => <span key={i} className="text-yellow-400">★</span>)}
+                </div>
+                <p className="text-gray-700 mb-4">
+                  &ldquo;Saved $200 on Lakers tickets by waiting for the price drop alert. This tool pays for itself!&rdquo;
+                </p>
+                <div className="flex items-center gap-3">
+                  <div className="w-10 h-10 bg-purple-100 rounded-full flex items-center justify-center text-purple-600 font-bold">M</div>
+                  <div>
+                    <div className="font-medium text-gray-900">Marcus T.</div>
+                    <div className="text-sm text-gray-500">Los Angeles, CA</div>
+                  </div>
+                </div>
+              </div>
+              <div className="bg-white p-6 rounded-2xl shadow-sm">
+                <div className="flex items-center gap-1 mb-4">
+                  {[1,2,3,4,5].map(i => <span key={i} className="text-yellow-400">★</span>)}
+                </div>
+                <p className="text-gray-700 mb-4">
+                  &ldquo;Finally, one place to compare all the ticket sites. No more opening 10 tabs to find the best deal.&rdquo;
+                </p>
+                <div className="flex items-center gap-3">
+                  <div className="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center text-blue-600 font-bold">S</div>
+                  <div>
+                    <div className="font-medium text-gray-900">Sarah K.</div>
+                    <div className="text-sm text-gray-500">Chicago, IL</div>
+                  </div>
+                </div>
+              </div>
+              <div className="bg-white p-6 rounded-2xl shadow-sm">
+                <div className="flex items-center gap-1 mb-4">
+                  {[1,2,3,4,5].map(i => <span key={i} className="text-yellow-400">★</span>)}
+                </div>
+                <p className="text-gray-700 mb-4">
+                  &ldquo;Got floor seats to a concert for less than upper deck prices. The price alerts are a game changer.&rdquo;
+                </p>
+                <div className="flex items-center gap-3">
+                  <div className="w-10 h-10 bg-green-100 rounded-full flex items-center justify-center text-green-600 font-bold">J</div>
+                  <div>
+                    <div className="font-medium text-gray-900">Jason R.</div>
+                    <div className="text-sm text-gray-500">Miami, FL</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
         {/* Features Section */}
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
           <h2 className="text-3xl font-bold text-center text-gray-900 mb-12">

@@ -1488,6 +1488,400 @@ Long-term strategy for concert fans:
 Track your favorite artists on Ticket Scan to know the moment tickets go on sale.
     `,
   },
+  {
+    slug: 'lakers-tickets-guide',
+    title: 'LA Lakers Tickets: Complete Guide to Crypto.com Arena',
+    excerpt: 'Everything you need to know about buying Lakers tickets. Best sections, when to buy, and insider tips for Crypto.com Arena.',
+    category: 'guides',
+    tags: ['Lakers tickets', 'NBA tickets', 'Crypto.com Arena', 'Los Angeles'],
+    author: 'Ticket Scan Team',
+    publishedAt: '2025-11-05',
+    readTime: 8,
+    content: `
+## The Complete Guide to Lakers Tickets
+
+The Los Angeles Lakers are one of the most iconic franchises in sports. Getting tickets to see LeBron and the squad at Crypto.com Arena requires strategy. Here's everything you need to know.
+
+### Understanding Lakers Ticket Pricing
+
+Lakers tickets are among the most expensive in the NBA due to:
+
+- **Market size** - LA is the second-largest market
+- **Celebrity factor** - Courtside is a who's who of Hollywood
+- **Historic franchise** - 17 championships create lasting demand
+- **Star power** - LeBron, AD, and company draw crowds
+
+### Average Price Ranges
+
+| Section | Regular Game | Premium Matchup |
+|---------|-------------|-----------------|
+| Courtside | $1,500-5,000+ | $3,000-15,000+ |
+| Lower Bowl | $200-500 | $350-800 |
+| Premier/Club | $150-350 | $250-600 |
+| Upper Bowl | $50-150 | $100-250 |
+
+### Best Value Sections
+
+**Section 300s (Upper Bowl)**
+These sections offer the best value. Rows 1-5 in sections 301-306 and 316-321 provide excellent sightlines at a fraction of lower bowl prices.
+
+**Section 200s (Premier)**
+Good middle ground between price and proximity. Sections 205-210 and 215-219 are center court with good angles.
+
+### Best Games for Deals
+
+**Cheaper Games:**
+- Tuesday/Wednesday games
+- Early season (October-November)
+- Non-marquee opponents
+- Post-trade deadline if out of playoffs
+
+**Expensive Games:**
+- Warriors, Celtics matchups
+- Christmas Day
+- Saturday nights
+- Playoff race implications
+
+### When to Buy Lakers Tickets
+
+**2-3 Weeks Before:** Best balance of price and selection
+
+**48 Hours Before:** Prices often drop as sellers get nervous
+
+**Game Day:** Risk/reward - can find deals but limited selection
+
+### Crypto.com Arena Tips
+
+**Parking:** Stadium parking is $40-60. Consider using the Metro (Pico Station is steps away) or rideshare.
+
+**Entry:** Mobile tickets only. Download to your wallet before arriving.
+
+**Arrive Early:** Gates open 90 minutes before tip-off. Watch warmups and beat the crowds.
+
+### Alternatives to Consider
+
+**Preseason Games:** Same arena, same players warming up, 70% cheaper.
+
+**Away Games:** Catching the Lakers in Sacramento, Phoenix, or Portland is often 50% cheaper than home games.
+
+Track Lakers games on Ticket Scan to find the best deals all season.
+    `,
+  },
+  {
+    slug: 'msg-tickets-guide',
+    title: 'Madison Square Garden Tickets: Ultimate Venue Guide',
+    excerpt: 'The world\'s most famous arena deserves a complete guide. Tips for Knicks, Rangers, concerts, and every MSG event.',
+    category: 'guides',
+    tags: ['MSG tickets', 'Madison Square Garden', 'Knicks tickets', 'Rangers tickets', 'NYC'],
+    author: 'Ticket Scan Team',
+    publishedAt: '2025-10-30',
+    readTime: 9,
+    content: `
+## Madison Square Garden: The Complete Ticket Guide
+
+Madison Square Garden isn't just a venue - it's "The Mecca of Basketball" and one of the world's most legendary arenas. Here's everything you need to know about getting tickets.
+
+### Why MSG Tickets Are Expensive
+
+- **Location** - Midtown Manhattan, accessible from anywhere
+- **History** - Opened in 1968, hosted countless legendary moments
+- **Capacity** - Only ~20,000 seats means limited supply
+- **No bad seats** - Steep bowl design provides good sightlines everywhere
+
+### Seating Overview
+
+**Floor/Courtside ($800-$5,000+)**
+Celebrity row. You'll be close enough to hear players talk.
+
+**100 Level ($200-600)**
+Lower bowl. Sections 101-120 wrap around. Center court (105-108, 117-120) commands premium.
+
+**200 Level - The Bridge ($150-400)**
+Unique to MSG - suspended sections with club access. Great views and amenities.
+
+**Chase Bridges ($100-300)**
+Behind the baskets, elevated perspective. Popular with real basketball fans.
+
+**400 Level ($50-200)**
+Upper bowl. Don't be scared - the steep incline means you still have great sightlines.
+
+### Knicks vs Rangers: What's Different?
+
+**Knicks Games:**
+- Generally more expensive due to NBA season length
+- Tuesday/Wednesday games are cheapest
+- Weekend games against big-market teams are most expensive
+
+**Rangers Games:**
+- Smaller capacity (hockey configuration)
+- Weekend games slightly cheaper than weeknight
+- Playoff atmosphere even in regular season
+
+### When to Buy
+
+| Timing | Typical Savings |
+|--------|-----------------|
+| 3+ weeks out | Face value or slight markup |
+| 1-2 weeks out | 10-15% below peak |
+| Day before | 15-25% possible |
+| Game day | 20-30% if not sold out |
+
+### Getting There
+
+**Subway:** 1/2/3, A/C/E, B/D/F/M, N/Q/R/W to 34th Street. MSG is literally above Penn Station.
+
+**No Parking:** Street parking is impossible. Use public transit or rideshare.
+
+**Entry Tips:** Security is thorough. Small bags only. Arrive 45+ minutes early for big events.
+
+### Concert Considerations
+
+Concerts at MSG are bucket list events, but seating differs:
+
+- **GA Floor** - Standing room, arrive early for rail
+- **Seated Floor** - Premium pricing, best for artists you want to watch closely
+- **Sections 1-20** - Side stage views (fine for concerts, check configuration)
+- **400s** - Can feel far for intimate acoustic shows
+
+### Insider Tips
+
+1. **Check Ticketmaster resale first** - Often competitive with secondary markets
+2. **Wednesday games** - Consistently the cheapest night
+3. **SeatGeek Deal Score** - Useful for MSG given price variation
+4. **Rangers weekday** - Great value if you're flexible
+
+Use Ticket Scan to compare MSG ticket prices across all platforms.
+    `,
+  },
+  {
+    slug: 'taylor-swift-eras-tour-tickets',
+    title: 'How to Get Taylor Swift Eras Tour Tickets: Complete Strategy',
+    excerpt: 'The hardest ticket in music. Learn every strategy for getting Taylor Swift concert tickets at any price point.',
+    category: 'tips',
+    tags: ['Taylor Swift tickets', 'Eras Tour', 'concert tickets', 'Verified Fan'],
+    author: 'Ticket Scan Team',
+    publishedAt: '2025-10-25',
+    readTime: 10,
+    featured: true,
+    content: `
+## Getting Taylor Swift Tickets: The Ultimate Guide
+
+Taylor Swift's Eras Tour broke every record in concert history. Whether for a future tour or stadium shows, here's how to actually get tickets.
+
+### Why Taylor Swift Tickets Are So Hard to Get
+
+- **Unprecedented demand** - Millions trying for thousands of seats
+- **Loyal fanbase** - Swifties plan months in advance
+- **Stadium shows** - Even 70,000 seats sell out instantly
+- **Bot competition** - Despite Verified Fan, demand exceeds supply
+
+### The Verified Fan Strategy
+
+**How It Works:**
+1. Register when announced (usually 2 weeks before sale)
+2. Boost your status with engagement (Spotify streams, merch purchases, presale history)
+3. Receive presale code via email/text
+4. Join queue at sale time
+
+**Maximizing Your Chances:**
+- Register multiple people in your group
+- Use the official app AND website
+- Have payment saved in advance
+- Be flexible on dates/cities
+- Don't refresh - trust the queue
+
+### Presale Hierarchy
+
+| Sale Type | When | Chance of Success |
+|-----------|------|-------------------|
+| Capital One Cardholder | First | Moderate (if selected) |
+| Verified Fan | Second | Low-Medium |
+| General Onsale | Third | Very Low |
+
+### Secondary Market Reality
+
+If you miss presale, here's what to expect:
+
+**Immediately After Onsale:**
+- Prices spike 300-500% above face
+- Scammers flood marketplace
+- Don't panic buy
+
+**2-4 Weeks Before Show:**
+- Prices often stabilize or drop
+- Genuine sellers need to sell
+- Best time for resale purchases
+
+**Day of Show:**
+- Can find deals from desperate sellers
+- Higher risk, higher reward
+- Only works if you're local
+
+### Price Ranges to Expect
+
+| Section | Face Value | Resale Range |
+|---------|-----------|--------------|
+| Floor/Pit | $200-500 | $800-2,500 |
+| Lower Bowl | $150-350 | $400-1,200 |
+| Upper Level | $50-150 | $200-600 |
+
+### Where to Buy Resale Safely
+
+**Safest Options:**
+- Ticketmaster Verified Resale (official exchange)
+- SeatGeek (buyer guarantee)
+- StubHub (buyer protection)
+
+**Avoid:**
+- Social media sellers
+- Cash transactions
+- Wire transfers
+- Suspicious deals
+
+### Last Resort Strategies
+
+**Check for Added Shows:**
+- Artists often add dates when demand is clear
+- Sign up for venue newsletters
+- Follow Taylor's official accounts
+
+**Consider Travel:**
+- International shows may be cheaper
+- Smaller market US cities less competitive
+- Factor in flight + hotel costs
+
+**Day-of at Venue:**
+- Some fans sell extras outside
+- Only buy from Ticketmaster-transferred tickets
+- Risky but can work
+
+### Key Takeaways
+
+1. **Register for Verified Fan immediately when announced**
+2. **Have multiple people in your group register**
+3. **Be flexible on dates and locations**
+4. **Don't panic buy at peak resale prices**
+5. **Use only verified resale platforms**
+6. **Check prices 2-3 weeks before - they often drop**
+
+Track concert announcements on Ticket Scan to never miss a sale.
+    `,
+  },
+  {
+    slug: 'super-bowl-tickets-guide',
+    title: 'Super Bowl Tickets: How Much Do They Cost and How to Buy',
+    excerpt: 'The biggest sporting event in America. Learn what Super Bowl tickets really cost and strategies for getting them.',
+    category: 'guides',
+    tags: ['Super Bowl tickets', 'NFL tickets', 'football tickets', 'championship'],
+    author: 'Ticket Scan Team',
+    publishedAt: '2025-10-20',
+    readTime: 8,
+    content: `
+## Super Bowl Tickets: The Complete Guide
+
+The Super Bowl is the most-watched sporting event in America, and tickets are priced accordingly. Here's what you need to know.
+
+### How Much Do Super Bowl Tickets Cost?
+
+**Face Value (Lottery/Team Allocation):**
+- Cheapest seats: $1,000-1,500
+- Midlevel: $2,500-5,000
+- Premium: $5,000-12,000
+
+**Resale Market Reality:**
+- Upper level: $4,000-7,000
+- Lower bowl: $8,000-15,000
+- Club level: $12,000-25,000
+- Field level: $20,000-50,000+
+- Suites: $500,000+
+
+### Who Gets Face Value Tickets?
+
+Only a small percentage of tickets sell at face value:
+
+- **NFL Teams (35%)** - Divided among all 32 teams
+- **Participating Teams (17.5% each)** - For the two playing teams
+- **Host Committee (10%)** - Local organizing group
+- **NFL Partners/Sponsors (15%)** - Corporate packages
+- **Fan Lottery (5%)** - Public lottery through NFL
+
+### The NFL On Location Experience
+
+The NFL sells official hospitality packages through NFL On Location:
+
+**What's Included:**
+- Guaranteed tickets
+- Pre-game parties
+- Open bars and food
+- Premium locations
+- Merchandise
+
+**Pricing:** $7,000-$50,000+ per person
+
+### Secondary Market Strategies
+
+**When Prices Are Highest:**
+- Immediately after tickets go on sale
+- After both teams are determined
+- Week of the game
+
+**When Prices Drop:**
+- 2-3 weeks before (some)
+- Day before/day of (risky but possible)
+- If weather concerns arise
+
+### Best Time to Buy
+
+| Timing | Price Level | Risk |
+|--------|-------------|------|
+| October (speculative) | Lower but risky | No guaranteed matchup |
+| After Conference Championship | Peak | Certain teams |
+| 2-3 weeks before | Moderate | Good balance |
+| 48 hours before | Variable | Limited selection |
+| Day of | Lowest possible | Very limited |
+
+### Avoiding Scams
+
+Super Bowl attracts the most sophisticated scammers:
+
+**Red Flags:**
+- Prices significantly below market
+- Sellers asking for wire transfers
+- No buyer protection offered
+- PDF tickets (easily duplicated)
+- Pressure to buy immediately
+
+**Safe Buying:**
+- Use verified platforms only (StubHub, SeatGeek, Ticketmaster)
+- Pay with credit card for chargeback protection
+- Verify tickets are mobile transfer capable
+- Check seller ratings and history
+
+### Alternatives to Attending
+
+**Fan Experience Events:**
+Many cities host official watch parties with:
+- Giant screens
+- Food and drinks
+- Player appearances
+- Fraction of the cost
+
+**Nearby Bars/Restaurants:**
+Book early - restaurants near the stadium host viewing parties.
+
+### Planning Your Trip
+
+Beyond tickets, budget for:
+- Flights: $500-2,000 (prices spike)
+- Hotels: $300-800/night minimum
+- Food/Entertainment: $200+/day
+- Car rental or rideshare
+
+**Total realistic budget: $8,000-25,000 per person** including travel.
+
+Compare Super Bowl ticket prices on Ticket Scan across all platforms.
+    `,
+  },
 ];
 
 export function getBlogPostBySlug(slug: string): BlogPost | null {
