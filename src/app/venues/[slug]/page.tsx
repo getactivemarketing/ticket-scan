@@ -55,7 +55,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 // Fetch events from public API
 async function getVenueEvents(slug: string): Promise<Event[]> {
   try {
-    const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'https://tickethawk-production.up.railway.app';
+    const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'https://tickethawk-api-production.up.railway.app';
     const response = await fetch(`${apiUrl}/api/public/events?venue=${slug}&limit=10`, {
       next: { revalidate: 3600 } // Revalidate every hour
     });
@@ -282,6 +282,30 @@ export default async function VenuePage({ params }: PageProps) {
                 >
                   All {venue.city} Events &rarr;
                 </Link>
+              </div>
+
+              {/* Blog Tips */}
+              <div className="mt-6 bg-white rounded-xl shadow-md p-6">
+                <h3 className="text-lg font-bold text-gray-900 mb-4">
+                  Ticket Buying Tips
+                </h3>
+                <ul className="space-y-2 text-sm">
+                  <li>
+                    <Link href="/blog/best-time-to-buy-concert-tickets" className="text-purple-600 hover:text-purple-700">
+                      Best Time to Buy Tickets
+                    </Link>
+                  </li>
+                  <li>
+                    <Link href="/blog/ticket-buying-mistakes-to-avoid" className="text-purple-600 hover:text-purple-700">
+                      7 Mistakes to Avoid
+                    </Link>
+                  </li>
+                  <li>
+                    <Link href="/blog" className="text-purple-600 hover:text-purple-700 font-medium">
+                      View All Tips &rarr;
+                    </Link>
+                  </li>
+                </ul>
               </div>
             </div>
           </div>

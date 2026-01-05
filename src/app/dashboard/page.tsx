@@ -175,11 +175,37 @@ export default function DashboardPage() {
         )}
 
         {!searched && (
-          <div className="bg-white rounded-2xl shadow-md p-12 text-center">
-            <span className="text-4xl mb-4 block">🎫</span>
-            <h3 className="text-xl font-medium text-gray-900 mb-2">Find your next event</h3>
-            <p className="text-gray-600">Search for concerts, sports, theater, and more</p>
-          </div>
+          <>
+            <div className="bg-white rounded-2xl shadow-md p-12 text-center mb-8">
+              <span className="text-4xl mb-4 block">🎫</span>
+              <h3 className="text-xl font-medium text-gray-900 mb-2">Find your next event</h3>
+              <p className="text-gray-600">Search for concerts, sports, theater, and more</p>
+            </div>
+
+            {/* Tips Section */}
+            <div className="bg-gradient-to-br from-purple-50 to-indigo-50 rounded-2xl p-6">
+              <div className="flex items-center justify-between mb-4">
+                <h3 className="text-lg font-bold text-gray-900">Ticket Buying Tips</h3>
+                <Link href="/blog" className="text-purple-600 hover:text-purple-700 text-sm font-medium">
+                  View All &rarr;
+                </Link>
+              </div>
+              <div className="grid md:grid-cols-3 gap-4">
+                <Link href="/blog/best-time-to-buy-concert-tickets" className="bg-white rounded-xl p-4 hover:shadow-md transition-shadow">
+                  <h4 className="font-semibold text-gray-900 mb-1">Best Time to Buy</h4>
+                  <p className="text-gray-600 text-sm">Learn when ticket prices drop</p>
+                </Link>
+                <Link href="/blog/how-to-find-cheap-nba-tickets" className="bg-white rounded-xl p-4 hover:shadow-md transition-shadow">
+                  <h4 className="font-semibold text-gray-900 mb-1">Cheap NBA Tickets</h4>
+                  <p className="text-gray-600 text-sm">10 strategies that work</p>
+                </Link>
+                <Link href="/blog/ticket-buying-mistakes-to-avoid" className="bg-white rounded-xl p-4 hover:shadow-md transition-shadow">
+                  <h4 className="font-semibold text-gray-900 mb-1">Avoid These Mistakes</h4>
+                  <p className="text-gray-600 text-sm">Save money on every purchase</p>
+                </Link>
+              </div>
+            </div>
+          </>
         )}
       </div>
     </div>

@@ -1,9 +1,11 @@
 import Link from 'next/link';
 import { Metadata } from 'next';
 import HomeHeroButtons from '@/components/HomeHeroButtons';
+import NewsletterSignup from '@/components/NewsletterSignup';
 import { getAllVenues } from '@/data/venues';
 import { getAllCities } from '@/data/cities';
 import { getAllCategories } from '@/data/categories';
+import { getFeaturedPosts } from '@/data/blog';
 
 export const metadata: Metadata = {
   title: 'Ticket Scan - Compare Ticket Prices Across Multiple Sites',
@@ -21,6 +23,7 @@ export default function Home() {
   const venues = getAllVenues();
   const cities = getAllCities();
   const categories = getAllCategories();
+  const featuredPosts = getFeaturedPosts().slice(0, 3);
 
   // JSON-LD structured data
   const jsonLd = {
@@ -198,8 +201,41 @@ export default function Home() {
           </div>
         </div>
 
-        {/* FAQ Section */}
+        {/* Blog Section */}
         <div className="bg-gray-50 py-16">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="flex justify-between items-center mb-8">
+              <h2 className="text-2xl font-bold text-gray-900">
+                Ticket Buying Tips & Guides
+              </h2>
+              <Link href="/blog" className="text-purple-600 hover:text-purple-700 font-medium">
+                View All &rarr;
+              </Link>
+            </div>
+            <div className="grid md:grid-cols-3 gap-6">
+              {featuredPosts.map((post) => (
+                <Link
+                  key={post.slug}
+                  href={`/blog/${post.slug}`}
+                  className="bg-white rounded-xl shadow-sm p-6 hover:shadow-md transition-shadow group"
+                >
+                  <span className="text-xs bg-purple-100 text-purple-700 px-2 py-1 rounded-full font-medium">
+                    {post.readTime} min read
+                  </span>
+                  <h3 className="font-bold text-gray-900 mt-3 mb-2 group-hover:text-purple-600 transition-colors">
+                    {post.title}
+                  </h3>
+                  <p className="text-gray-600 text-sm line-clamp-2">
+                    {post.excerpt}
+                  </p>
+                </Link>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        {/* FAQ Section */}
+        <div className="bg-white py-16">
           <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
             <h2 className="text-2xl font-bold text-gray-900 mb-8 text-center">
               Frequently Asked Questions
@@ -233,6 +269,13 @@ export default function Home() {
           </div>
         </div>
 
+        {/* Newsletter Section */}
+        <div className="bg-white py-16">
+          <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+            <NewsletterSignup source="homepage" />
+          </div>
+        </div>
+
         {/* CTA Section */}
         <div className="bg-gray-900 text-white py-16">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
@@ -252,21 +295,25 @@ export default function Home() {
         </div>
 
         {/* Footer */}
-        <footer className="bg-gray-100 py-12">
+        <footer className="bg-gray-900 text-gray-400 py-12">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="grid md:grid-cols-4 gap-8 mb-8">
-              <div>
-                <h3 className="font-bold text-gray-900 mb-4">Ticket Scan</h3>
-                <p className="text-gray-600 text-sm">
-                  Compare ticket prices across multiple platforms and find the best deals.
+            <div className="grid md:grid-cols-5 gap-8 mb-8">
+              <div className="md:col-span-2">
+                <div className="flex items-center space-x-2 mb-4">
+                  <span className="text-2xl">🎫</span>
+                  <span className="text-white font-bold text-xl">Ticket Scan</span>
+                </div>
+                <p className="text-sm mb-6">
+                  Compare ticket prices across multiple platforms and find the best deals on concerts, sports, and events.
                 </p>
+                <NewsletterSignup source="footer" variant="footer" />
               </div>
               <div>
-                <h3 className="font-bold text-gray-900 mb-4">Popular Venues</h3>
+                <h3 className="font-semibold text-white mb-4">Popular Venues</h3>
                 <ul className="space-y-2 text-sm">
-                  {venues.slice(0, 4).map((venue) => (
+                  {venues.slice(0, 5).map((venue) => (
                     <li key={venue.id}>
-                      <Link href={`/venues/${venue.id}`} className="text-gray-600 hover:text-purple-600">
+                      <Link href={`/venues/${venue.id}`} className="hover:text-purple-400 transition-colors">
                         {venue.name}
                       </Link>
                     </li>
@@ -274,32 +321,36 @@ export default function Home() {
                 </ul>
               </div>
               <div>
-                <h3 className="font-bold text-gray-900 mb-4">Cities</h3>
+                <h3 className="font-semibold text-white mb-4">Cities</h3>
                 <ul className="space-y-2 text-sm">
-                  {cities.slice(0, 4).map((city) => (
+                  {cities.slice(0, 5).map((city) => (
                     <li key={city.slug}>
-                      <Link href={`/tickets/${city.slug}`} className="text-gray-600 hover:text-purple-600">
-                        {city.name} Events
+                      <Link href={`/tickets/${city.slug}`} className="hover:text-purple-400 transition-colors">
+                        {city.name}
                       </Link>
                     </li>
                   ))}
                 </ul>
               </div>
               <div>
-                <h3 className="font-bold text-gray-900 mb-4">Categories</h3>
+                <h3 className="font-semibold text-white mb-4">Categories</h3>
                 <ul className="space-y-2 text-sm">
-                  {categories.slice(0, 4).map((category) => (
+                  {categories.map((category) => (
                     <li key={category.slug}>
-                      <Link href={`/tickets/${category.slug}`} className="text-gray-600 hover:text-purple-600">
-                        {category.name}
+                      <Link href={`/tickets/${category.slug}`} className="hover:text-purple-400 transition-colors">
+                        {category.icon} {category.name}
                       </Link>
                     </li>
                   ))}
                 </ul>
               </div>
             </div>
-            <div className="border-t border-gray-200 pt-8 text-center text-gray-600 text-sm">
-              <p>&copy; 2026 Ticket Scan. All rights reserved.</p>
+            <div className="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
+              <p className="text-sm">&copy; 2026 Ticket Scan. All rights reserved.</p>
+              <div className="flex gap-6 text-sm">
+                <Link href="/privacy" className="hover:text-purple-400 transition-colors">Privacy Policy</Link>
+                <Link href="/terms" className="hover:text-purple-400 transition-colors">Terms of Service</Link>
+              </div>
             </div>
           </div>
         </footer>

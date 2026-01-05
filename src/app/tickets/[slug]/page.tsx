@@ -88,7 +88,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 // Fetch events from public API
 async function getEvents(slug: string, type: 'city' | 'category'): Promise<Event[]> {
   try {
-    const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'https://tickethawk-production.up.railway.app';
+    const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'https://tickethawk-api-production.up.railway.app';
     const queryParam = type === 'city' ? `city=${slug}` : `category=${slug}`;
     const response = await fetch(`${apiUrl}/api/public/events?${queryParam}&limit=12`, {
       next: { revalidate: 3600 } // Revalidate every hour
@@ -347,6 +347,35 @@ export default async function TicketsPage({ params }: PageProps) {
                     </Link>
                   ))}
                 </div>
+              </div>
+
+              {/* Blog Tips */}
+              <div className="bg-white rounded-xl shadow-md p-6 mt-6">
+                <h3 className="text-lg font-bold text-gray-900 mb-4">
+                  Buying Guides
+                </h3>
+                <ul className="space-y-2 text-sm">
+                  <li>
+                    <Link href="/blog/best-time-to-buy-concert-tickets" className="text-purple-600 hover:text-purple-700">
+                      Best Time to Buy Tickets
+                    </Link>
+                  </li>
+                  <li>
+                    <Link href="/blog/last-minute-ticket-deals-guide" className="text-purple-600 hover:text-purple-700">
+                      Last Minute Deals Guide
+                    </Link>
+                  </li>
+                  <li>
+                    <Link href="/blog/ticketmaster-vs-seatgeek-comparison" className="text-purple-600 hover:text-purple-700">
+                      Ticketmaster vs SeatGeek
+                    </Link>
+                  </li>
+                  <li>
+                    <Link href="/blog" className="text-purple-600 hover:text-purple-700 font-medium">
+                      All Guides &rarr;
+                    </Link>
+                  </li>
+                </ul>
               </div>
             </div>
           </div>

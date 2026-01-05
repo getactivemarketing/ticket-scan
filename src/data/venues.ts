@@ -301,6 +301,193 @@ export const venues: Record<string, Venue> = {
       { name: '101', tier: 'lower' }, { name: '102', tier: 'lower' },
       { name: '201', tier: 'upper' }, { name: '202', tier: 'upper' },
     ]
+  },
+  // Brooklyn
+  'barclays-center': {
+    id: 'barclays-center',
+    name: 'Barclays Center',
+    city: 'Brooklyn',
+    state: 'NY',
+    capacity: 17732,
+    type: 'arena',
+    homeTeams: ['Brooklyn Nets', 'New York Liberty'],
+    description: 'Compare ticket prices at Barclays Center in Brooklyn. Home of the Nets and Liberty, hosting NBA, WNBA, concerts, and boxing.',
+    keywords: ['Barclays Center tickets', 'Brooklyn Nets tickets', 'Barclays concerts', 'Brooklyn arena tickets'],
+    sections: [
+      { name: 'Floor', tier: 'floor' },
+      { name: '1', tier: 'lower' }, { name: '2', tier: 'lower' }, { name: '3', tier: 'lower' },
+      { name: '201', tier: 'upper' }, { name: '202', tier: 'upper' }, { name: '203', tier: 'upper' },
+    ]
+  },
+  // Washington DC
+  'capital-one-arena': {
+    id: 'capital-one-arena',
+    name: 'Capital One Arena',
+    city: 'Washington',
+    state: 'DC',
+    capacity: 20356,
+    type: 'arena',
+    homeTeams: ['Washington Wizards', 'Washington Capitals'],
+    description: 'Find tickets at Capital One Arena in Washington DC. Home of the Wizards and Capitals, featuring NBA, NHL, and concerts.',
+    keywords: ['Capital One Arena tickets', 'Wizards tickets', 'Capitals tickets', 'DC arena tickets', 'Washington DC concerts'],
+    sections: [
+      { name: 'Floor', tier: 'floor' },
+      { name: '100', tier: 'lower' }, { name: '101', tier: 'lower' }, { name: '102', tier: 'lower' },
+      { name: '400', tier: 'upper' }, { name: '401', tier: 'upper' }, { name: '402', tier: 'upper' },
+    ]
+  },
+  // Detroit
+  'little-caesars-arena': {
+    id: 'little-caesars-arena',
+    name: 'Little Caesars Arena',
+    city: 'Detroit',
+    state: 'MI',
+    capacity: 20332,
+    type: 'arena',
+    homeTeams: ['Detroit Pistons', 'Detroit Red Wings'],
+    description: 'Compare prices at Little Caesars Arena in Detroit. Home of the Pistons and Red Wings, hosting NBA, NHL, and major concerts.',
+    keywords: ['Little Caesars Arena tickets', 'Pistons tickets', 'Red Wings tickets', 'Detroit arena tickets'],
+    sections: [
+      { name: 'Floor', tier: 'floor' },
+      { name: '101', tier: 'lower' }, { name: '102', tier: 'lower' }, { name: '103', tier: 'lower' },
+      { name: '201', tier: 'upper' }, { name: '202', tier: 'upper' }, { name: '203', tier: 'upper' },
+    ]
+  },
+  // Milwaukee
+  'fiserv-forum': {
+    id: 'fiserv-forum',
+    name: 'Fiserv Forum',
+    city: 'Milwaukee',
+    state: 'WI',
+    capacity: 17341,
+    type: 'arena',
+    homeTeams: ['Milwaukee Bucks'],
+    description: 'Get tickets at Fiserv Forum in Milwaukee. Home of the NBA champion Bucks, featuring basketball and world-class entertainment.',
+    keywords: ['Fiserv Forum tickets', 'Bucks tickets', 'Milwaukee arena tickets', 'Milwaukee concerts'],
+    sections: [
+      { name: 'Floor', tier: 'floor' },
+      { name: '101', tier: 'lower' }, { name: '102', tier: 'lower' },
+      { name: '201', tier: 'upper' }, { name: '202', tier: 'upper' },
+    ]
+  },
+  // Minneapolis
+  'target-center': {
+    id: 'target-center',
+    name: 'Target Center',
+    city: 'Minneapolis',
+    state: 'MN',
+    capacity: 18798,
+    type: 'arena',
+    homeTeams: ['Minnesota Timberwolves', 'Minnesota Lynx'],
+    description: 'Find cheap tickets at Target Center in Minneapolis. Home of the Timberwolves and Lynx, hosting NBA, WNBA, and concerts.',
+    keywords: ['Target Center tickets', 'Timberwolves tickets', 'Minneapolis arena tickets', 'Minnesota basketball tickets'],
+    sections: [
+      { name: 'Floor', tier: 'floor' },
+      { name: '101', tier: 'lower' }, { name: '102', tier: 'lower' },
+      { name: '201', tier: 'upper' }, { name: '202', tier: 'upper' },
+    ]
+  },
+  // New Orleans
+  'smoothie-king-center': {
+    id: 'smoothie-king-center',
+    name: 'Smoothie King Center',
+    city: 'New Orleans',
+    state: 'LA',
+    capacity: 16867,
+    type: 'arena',
+    homeTeams: ['New Orleans Pelicans'],
+    description: 'Compare ticket prices at Smoothie King Center in New Orleans. Home of the Pelicans, featuring NBA games and major events.',
+    keywords: ['Smoothie King Center tickets', 'Pelicans tickets', 'New Orleans arena tickets', 'NOLA concerts'],
+    sections: [
+      { name: 'Floor', tier: 'floor' },
+      { name: '101', tier: 'lower' }, { name: '102', tier: 'lower' },
+      { name: '301', tier: 'upper' }, { name: '302', tier: 'upper' },
+    ]
+  },
+  // Toronto
+  'scotiabank-arena': {
+    id: 'scotiabank-arena',
+    name: 'Scotiabank Arena',
+    city: 'Toronto',
+    state: 'ON',
+    capacity: 19800,
+    type: 'arena',
+    homeTeams: ['Toronto Raptors', 'Toronto Maple Leafs'],
+    description: 'Find tickets at Scotiabank Arena in Toronto. Home of the Raptors and Maple Leafs, hosting NBA, NHL, and major concerts.',
+    keywords: ['Scotiabank Arena tickets', 'Raptors tickets', 'Maple Leafs tickets', 'Toronto arena tickets'],
+    sections: [
+      { name: 'Floor', tier: 'floor' },
+      { name: '101', tier: 'lower' }, { name: '102', tier: 'lower' }, { name: '103', tier: 'lower' },
+      { name: '301', tier: 'upper' }, { name: '302', tier: 'upper' }, { name: '303', tier: 'upper' },
+    ]
+  },
+  // Las Vegas
+  't-mobile-arena': {
+    id: 't-mobile-arena',
+    name: 'T-Mobile Arena',
+    city: 'Las Vegas',
+    state: 'NV',
+    capacity: 20000,
+    type: 'arena',
+    homeTeams: ['Vegas Golden Knights'],
+    description: 'Compare prices at T-Mobile Arena in Las Vegas. Home of the Golden Knights, featuring NHL, UFC, boxing, and superstar concerts.',
+    keywords: ['T-Mobile Arena tickets', 'Golden Knights tickets', 'Las Vegas arena tickets', 'Vegas concerts', 'UFC tickets'],
+    sections: [
+      { name: 'Floor', tier: 'floor' },
+      { name: '1', tier: 'lower' }, { name: '2', tier: 'lower' }, { name: '3', tier: 'lower' },
+      { name: '201', tier: 'upper' }, { name: '202', tier: 'upper' }, { name: '203', tier: 'upper' },
+    ]
+  },
+  // Seattle
+  'climate-pledge-arena': {
+    id: 'climate-pledge-arena',
+    name: 'Climate Pledge Arena',
+    city: 'Seattle',
+    state: 'WA',
+    capacity: 17100,
+    type: 'arena',
+    homeTeams: ['Seattle Kraken', 'Seattle Storm'],
+    description: 'Get tickets at Climate Pledge Arena in Seattle. Home of the Kraken and Storm, featuring NHL, WNBA, and world tours.',
+    keywords: ['Climate Pledge Arena tickets', 'Kraken tickets', 'Seattle arena tickets', 'Seattle concerts'],
+    sections: [
+      { name: 'Floor', tier: 'floor' },
+      { name: '101', tier: 'lower' }, { name: '102', tier: 'lower' },
+      { name: '201', tier: 'upper' }, { name: '202', tier: 'upper' },
+    ]
+  },
+  // Newark/New Jersey
+  'prudential-center': {
+    id: 'prudential-center',
+    name: 'Prudential Center',
+    city: 'Newark',
+    state: 'NJ',
+    capacity: 16514,
+    type: 'arena',
+    homeTeams: ['New Jersey Devils'],
+    description: 'Find cheap tickets at Prudential Center in Newark. Home of the Devils, hosting NHL games, concerts, and major events.',
+    keywords: ['Prudential Center tickets', 'Devils tickets', 'Newark arena tickets', 'New Jersey concerts'],
+    sections: [
+      { name: 'Floor', tier: 'floor' },
+      { name: '1', tier: 'lower' }, { name: '2', tier: 'lower' }, { name: '3', tier: 'lower' },
+      { name: '101', tier: 'upper' }, { name: '102', tier: 'upper' }, { name: '103', tier: 'upper' },
+    ]
+  },
+  // Sacramento
+  'golden-1-center': {
+    id: 'golden-1-center',
+    name: 'Golden 1 Center',
+    city: 'Sacramento',
+    state: 'CA',
+    capacity: 17608,
+    type: 'arena',
+    homeTeams: ['Sacramento Kings'],
+    description: 'Compare prices at Golden 1 Center in Sacramento. Home of the Kings, featuring NBA games and major concert tours.',
+    keywords: ['Golden 1 Center tickets', 'Kings tickets', 'Sacramento arena tickets', 'Sacramento concerts'],
+    sections: [
+      { name: 'Floor', tier: 'floor' },
+      { name: '101', tier: 'lower' }, { name: '102', tier: 'lower' },
+      { name: '201', tier: 'upper' }, { name: '202', tier: 'upper' },
+    ]
   }
 };
 

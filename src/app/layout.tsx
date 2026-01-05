@@ -1,8 +1,12 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+import Script from "next/script";
 import "./globals.css";
 import { AuthProvider } from "@/context/AuthContext";
 import Navbar from "@/components/Navbar";
+
+// Google Analytics ID - replace with your actual ID
+const GA_ID = process.env.NEXT_PUBLIC_GA_ID || "G-XXXXXXXXXX";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -14,6 +18,13 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
+export const viewport: Viewport = {
+  themeColor: "#7c3aed",
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 5,
+};
+
 export const metadata: Metadata = {
   title: {
     default: "Ticket Scan - Compare Ticket Prices",
@@ -24,6 +35,12 @@ export const metadata: Metadata = {
   authors: [{ name: "Ticket Scan" }],
   creator: "Ticket Scan",
   metadataBase: new URL("https://ticketscan.io"),
+  manifest: "/manifest.json",
+  appleWebApp: {
+    capable: true,
+    statusBarStyle: "default",
+    title: "Ticket Scan",
+  },
   openGraph: {
     type: "website",
     locale: "en_US",
@@ -66,6 +83,24 @@ export default function RootLayout({
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationJsonLd) }}
         />
+        <link rel="apple-touch-icon" href="/icon-192.png" />
+        {/* Google Analytics */}
+        {GA_ID !== "G-XXXXXXXXXX" && (
+          <>
+            <Script
+              src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`}
+              strategy="afterInteractive"
+            />
+            <Script id="google-analytics" strategy="afterInteractive">
+              {`
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){dataLayer.push(arguments);}
+                gtag('js', new Date());
+                gtag('config', '${GA_ID}');
+              `}
+            </Script>
+          </>
+        )}
       </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased bg-gray-50`}
