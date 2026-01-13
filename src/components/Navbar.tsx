@@ -64,6 +64,12 @@ export default function Navbar() {
                 >
                   Tips
                 </Link>
+                <Link
+                  href="/world-cup-2026"
+                  className="bg-green-500 hover:bg-green-400 text-white px-3 py-1.5 rounded-lg font-medium transition-colors text-sm"
+                >
+                  World Cup 2026
+                </Link>
                 <span className="text-purple-200 text-sm hidden lg:inline">{user.email}</span>
                 <button
                   onClick={handleLogout}
@@ -85,6 +91,12 @@ export default function Navbar() {
                   className="text-white hover:text-purple-200 transition-colors"
                 >
                   Blog
+                </Link>
+                <Link
+                  href="/world-cup-2026"
+                  className="bg-green-500 hover:bg-green-400 text-white px-3 py-1.5 rounded-lg font-medium transition-colors text-sm"
+                >
+                  World Cup 2026
                 </Link>
                 <Link
                   href="/login"
@@ -167,6 +179,13 @@ export default function Navbar() {
                 >
                   📝 Tips & Guides
                 </Link>
+                <Link
+                  href="/world-cup-2026"
+                  className="block bg-green-500 text-white py-2 px-3 rounded-lg font-medium transition-colors text-center mt-2"
+                  onClick={closeMenu}
+                >
+                  ⚽ World Cup 2026
+                </Link>
                 <button
                   onClick={handleLogout}
                   className="w-full mt-2 bg-white/20 hover:bg-white/30 text-white py-3 rounded-lg transition-colors text-center"
@@ -189,6 +208,13 @@ export default function Navbar() {
                   onClick={closeMenu}
                 >
                   📝 Blog & Tips
+                </Link>
+                <Link
+                  href="/world-cup-2026"
+                  className="block bg-green-500 text-white py-2 px-3 rounded-lg font-medium transition-colors text-center"
+                  onClick={closeMenu}
+                >
+                  ⚽ World Cup 2026
                 </Link>
                 <Link
                   href="/login"

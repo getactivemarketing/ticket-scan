@@ -1882,6 +1882,248 @@ Beyond tickets, budget for:
 Compare Super Bowl ticket prices on Ticket Scan across all platforms.
     `,
   },
+  {
+    slug: 'world-cup-2026-ticket-guide',
+    title: '2026 FIFA World Cup Tickets: Complete Buying Guide',
+    excerpt: 'Everything you need to know about buying tickets for the 2026 World Cup in USA, Canada, and Mexico. Official sales, resale tips, and venue guides.',
+    category: 'guides',
+    tags: ['World Cup 2026', 'FIFA tickets', 'soccer tickets', 'World Cup USA'],
+    author: 'Ticket Scan Team',
+    publishedAt: '2026-01-05',
+    readTime: 12,
+    featured: true,
+    content: `
+## 2026 FIFA World Cup Ticket Guide
+
+The 2026 FIFA World Cup will be the biggest sporting event in North American history. With 48 teams, 104 matches across 16 stadiums in the USA, Canada, and Mexico, getting tickets requires strategy and preparation.
+
+### Key Dates
+
+- **Tournament Dates**: June 11 - July 19, 2026
+- **Official Ticket Sales**: Expected to begin late 2025
+- **Host Countries**: USA (11 cities), Canada (2 cities), Mexico (3 cities)
+
+### How to Buy Official FIFA Tickets
+
+1. **Register on FIFA.com** - Create an account now to be ready for the ticket lottery
+2. **Watch for announcements** - FIFA will announce ticket phases in 2025
+3. **Apply in the lottery** - Most tickets are allocated via random selection
+4. **Check results** - Selected applicants can purchase their tickets
+
+### Ticket Categories
+
+FIFA typically offers several ticket categories:
+
+| Category | Description | Expected Price Range |
+|----------|-------------|---------------------|
+| Category 1 | Premium sideline seats | $400-1,500 |
+| Category 2 | Good views, lower level | $200-600 |
+| Category 3 | Upper level, corners | $80-250 |
+| Category 4 | Residents only, limited | $50-150 |
+
+### Understanding the Resale Market
+
+Once official tickets sell out (they will), the resale market becomes your next option:
+
+**Pros of Resale:**
+- Tickets available after sellout
+- Choose specific seats
+- Last-minute availability
+
+**Cons of Resale:**
+- Higher prices (often 2-5x face value)
+- Risk of fraud if using unofficial platforms
+- Must verify ticket authenticity
+
+### Where to Buy Resale Tickets Safely
+
+Only use verified platforms with buyer protection:
+- **StubHub** - Official FIFA resale partner
+- **Ticketmaster** - Verified resale marketplace
+- **SeatGeek** - Buyer guarantee program
+- **Vivid Seats** - 100% buyer guarantee
+
+**Use Ticket Scan to compare prices across all these platforms and find the best deal.**
+
+### Stadium-Specific Tips
+
+**MetLife Stadium (New York)**: Largest US venue, expect highest demand. Lower bowl sidelines are best for soccer.
+
+**SoFi Stadium (Los Angeles)**: Potential Final venue. Book accommodations early - LA hotels will be expensive.
+
+**Estadio Azteca (Mexico City)**: Historic venue, incredible atmosphere. Altitude of 7,200 feet affects players.
+
+### Budget Planning
+
+Here's a realistic budget for attending a World Cup match:
+
+| Expense | Group Stage | Knockout Round |
+|---------|-------------|----------------|
+| Ticket (resale) | $300-800 | $600-2,000+ |
+| Flights | $200-800 | $200-800 |
+| Hotel (2 nights) | $400-800 | $400-800 |
+| Food/Transport | $150-300 | $150-300 |
+| **Total** | **$1,050-2,700** | **$1,350-3,900+** |
+
+### Pro Tips for 2026 World Cup Tickets
+
+1. **Register with FIFA early** - Don't miss the lottery window
+2. **Consider group stage matches** - Much cheaper than knockout rounds
+3. **Be flexible on location** - Smaller cities have better availability
+4. **Set price alerts** - Use Ticket Scan to track resale prices
+5. **Book travel separately** - Don't commit until you have tickets
+6. **Join supporter groups** - Some allocations go to official fan clubs
+
+### What to Avoid
+
+- **Unofficial ticket sites** - High fraud risk
+- **Social media sellers** - No buyer protection
+- **Buying before allocation** - Prices will change significantly
+- **Last-minute final tickets** - Expect extreme prices
+
+### Track World Cup Ticket Prices
+
+Start monitoring ticket prices now on Ticket Scan. Set alerts for specific venues or matches and we'll notify you when prices drop to your budget.
+
+[Search World Cup Tickets →](/world-cup-2026)
+    `,
+  },
+  {
+    slug: 'best-world-cup-2026-stadiums',
+    title: 'Ranking the 16 World Cup 2026 Stadiums: Where to Watch',
+    excerpt: 'A complete guide to all 16 FIFA World Cup 2026 host stadiums across USA, Canada, and Mexico. Find the best venue for your World Cup experience.',
+    category: 'guides',
+    tags: ['World Cup 2026', 'World Cup stadiums', 'MetLife Stadium', 'SoFi Stadium', 'Estadio Azteca'],
+    author: 'Ticket Scan Team',
+    publishedAt: '2026-01-05',
+    readTime: 15,
+    featured: false,
+    content: `
+## The 16 Host Stadiums of World Cup 2026
+
+The 2026 FIFA World Cup will be played across 16 world-class stadiums in three countries. Here's your complete guide to each venue.
+
+### USA Stadiums (11)
+
+#### 1. MetLife Stadium - New York/New Jersey
+- **Capacity**: 82,500
+- **Home Teams**: Giants, Jets
+- **Best For**: East Coast fans, iconic NYC experience
+- **Ticket Tip**: Lower bowl sidelines offer best soccer views
+
+#### 2. SoFi Stadium - Los Angeles
+- **Capacity**: 70,240
+- **Home Teams**: Rams, Chargers
+- **Best For**: Potential Final venue, Hollywood glamour
+- **Ticket Tip**: Most expensive venue - book early
+
+#### 3. AT&T Stadium - Dallas
+- **Capacity**: 80,000
+- **Home Teams**: Cowboys
+- **Best For**: Incredible video board, retractable roof
+- **Ticket Tip**: Avoid seats directly under the massive screen
+
+#### 4. Hard Rock Stadium - Miami
+- **Capacity**: 65,326
+- **Home Teams**: Dolphins
+- **Best For**: Latin American atmosphere, beach proximity
+- **Ticket Tip**: Evening matches escape Florida heat
+
+#### 5. Mercedes-Benz Stadium - Atlanta
+- **Capacity**: 71,000
+- **Home Teams**: Falcons, Atlanta United
+- **Best For**: Best soccer atmosphere in USA (Atlanta United fans)
+- **Ticket Tip**: Affordable concessions compared to other venues
+
+#### 6. NRG Stadium - Houston
+- **Capacity**: 72,220
+- **Home Teams**: Texans
+- **Best For**: Climate-controlled comfort, central location
+- **Ticket Tip**: Good value compared to coastal cities
+
+#### 7. Lincoln Financial Field - Philadelphia
+- **Capacity**: 69,796
+- **Home Teams**: Eagles
+- **Best For**: Passionate fans, walkable from downtown
+- **Ticket Tip**: Philly fans bring incredible atmosphere
+
+#### 8. Lumen Field - Seattle
+- **Capacity**: 69,000
+- **Home Teams**: Seahawks, Sounders
+- **Best For**: Proven soccer venue, passionate supporters
+- **Ticket Tip**: Bring rain gear - Seattle weather unpredictable
+
+#### 9. Gillette Stadium - Boston
+- **Capacity**: 65,878
+- **Home Teams**: Patriots, Revolution
+- **Best For**: New England fans, proven international venue
+- **Ticket Tip**: 30 miles from Boston - plan transportation
+
+#### 10. Levi's Stadium - San Francisco
+- **Capacity**: 68,500
+- **Home Teams**: 49ers
+- **Best For**: Bay Area tech scene, good weather
+- **Ticket Tip**: West side gets afternoon sun - east has shade
+
+#### 11. Arrowhead Stadium - Kansas City
+- **Capacity**: 76,416
+- **Home Teams**: Chiefs
+- **Best For**: Legendary atmosphere, BBQ culture
+- **Ticket Tip**: Best value of US venues
+
+### Canada Stadiums (2)
+
+#### 12. BMO Field - Toronto
+- **Capacity**: 45,500
+- **Home Teams**: Toronto FC
+- **Best For**: Purpose-built for soccer, excellent sightlines
+- **Ticket Tip**: Smallest venue - tickets will be scarce
+
+#### 13. BC Place - Vancouver
+- **Capacity**: 54,500
+- **Home Teams**: Whitecaps
+- **Best For**: Retractable roof, mountain views
+- **Ticket Tip**: Strong local soccer culture
+
+### Mexico Stadiums (3)
+
+#### 14. Estadio Azteca - Mexico City
+- **Capacity**: 87,523
+- **Home Teams**: Club América, Cruz Azul, Mexico NT
+- **Best For**: Historic venue (hosted 2 Finals), legendary atmosphere
+- **Ticket Tip**: Altitude of 7,200 feet - prepare accordingly
+
+#### 15. Estadio Akron - Guadalajara
+- **Capacity**: 49,850
+- **Home Teams**: Chivas
+- **Best For**: Modern design, passionate Chivas fans
+- **Ticket Tip**: Great alternative to Mexico City
+
+#### 16. Estadio BBVA - Monterrey
+- **Capacity**: 53,500
+- **Home Teams**: Tigres
+- **Best For**: Stunning mountain backdrop, modern amenities
+- **Ticket Tip**: Monterrey summers are hot
+
+### Which Stadium Should You Choose?
+
+**For First-Time World Cup Fans**: Mercedes-Benz Stadium (Atlanta) - best soccer atmosphere
+
+**For Historic Experience**: Estadio Azteca - the only stadium with 2 World Cup Finals
+
+**For Potential Final**: SoFi Stadium or MetLife Stadium - likely final venues
+
+**For Budget Travelers**: Arrowhead Stadium or Guadalajara - lower costs all around
+
+**For Best Weather**: Miami or LA in June-July
+
+### Compare Ticket Prices
+
+Use Ticket Scan to compare ticket prices across all World Cup venues and find the best deals for your budget.
+
+[View All World Cup Venues →](/world-cup-2026)
+    `,
+  },
 ];
 
 export function getBlogPostBySlug(slug: string): BlogPost | null {

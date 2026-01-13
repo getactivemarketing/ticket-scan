@@ -3,6 +3,7 @@ import { venues } from '@/data/venues';
 import { cities } from '@/data/cities';
 import { categories } from '@/data/categories';
 import { getAllBlogPosts } from '@/data/blog';
+import { worldCupVenues } from '@/data/worldcup';
 
 const BASE_URL = 'https://ticketscan.io';
 
@@ -106,5 +107,22 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.7,
   }));
 
-  return [...staticPages, ...blogPages, ...venuePages, ...cityPages, ...categoryPages];
+  // World Cup 2026 pages
+  const worldCupMainPage: MetadataRoute.Sitemap = [
+    {
+      url: `${BASE_URL}/world-cup-2026`,
+      lastModified,
+      changeFrequency: 'weekly' as const,
+      priority: 0.9,
+    },
+  ];
+
+  const worldCupVenuePages: MetadataRoute.Sitemap = Object.keys(worldCupVenues).map((slug) => ({
+    url: `${BASE_URL}/world-cup-2026/${slug}`,
+    lastModified,
+    changeFrequency: 'weekly' as const,
+    priority: 0.8,
+  }));
+
+  return [...staticPages, ...blogPages, ...venuePages, ...cityPages, ...categoryPages, ...worldCupMainPage, ...worldCupVenuePages];
 }
