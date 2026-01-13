@@ -5,8 +5,8 @@ import "./globals.css";
 import { AuthProvider } from "@/context/AuthContext";
 import Navbar from "@/components/Navbar";
 
-// Google Analytics ID - replace with your actual ID
-const GA_ID = process.env.NEXT_PUBLIC_GA_ID || "G-XXXXXXXXXX";
+// Google Analytics ID
+const GA_ID = process.env.NEXT_PUBLIC_GA_ID || "G-WZX1SGZK3W";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
