@@ -17,6 +17,9 @@ export const metadata: Metadata = {
     type: 'website',
     url: 'https://ticketscan.io',
   },
+  other: {
+    'impact-site-verification': '4977494d-2fb2-44eb-9de7-7cb8f0c91857',
+  },
 };
 
 export default function Home() {
