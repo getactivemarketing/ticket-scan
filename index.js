@@ -7,6 +7,24 @@ const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const cron = require('node-cron');
 const nodemailer = require('nodemailer');
+const rateLimit = require('express-rate-limit');
+
+// Rate limiters for security
+const authLimiter = rateLimit({
+  windowMs: 15 * 60 * 1000, // 15 minutes
+  max: 5, // 5 attempts per window
+  message: { success: false, error: 'Too many attempts, please try again in 15 minutes' },
+  standardHeaders: true,
+  legacyHeaders: false,
+});
+
+const generalLimiter = rateLimit({
+  windowMs: 60 * 1000, // 1 minute
+  max: 100, // 100 requests per minute
+  message: { success: false, error: 'Too many requests, please slow down' },
+  standardHeaders: true,
+  legacyHeaders: false,
+});
 
 // Email transporter setup
 const emailTransporter = nodemailer.createTransport({
@@ -560,6 +578,9 @@ app.use(cors({
 }));
 app.use(express.json());
 
+// Apply general rate limiting to all API routes
+app.use('/api/', generalLimiter);
+
 // Database connection
 const pool = new Pool({
   connectionString: process.env.DATABASE_URL,
@@ -581,7 +602,11 @@ const SEATGEEK_CLIENT_ID = process.env.SEATGEEK_CLIENT_ID || '';
 const VIVIDSEATS_API_KEY = process.env.VIVIDSEATS_API_KEY || '';
 const STUBHUB_APP_KEY = process.env.STUBHUB_APP_KEY || '';
 const STUBHUB_API_KEY = process.env.STUBHUB_API_KEY || '';
-const JWT_SECRET = process.env.JWT_SECRET || 'tickethawk-secret-key-change-in-production';
+const JWT_SECRET = process.env.JWT_SECRET;
+if (!JWT_SECRET) {
+  console.error('FATAL: JWT_SECRET environment variable is required');
+  process.exit(1);
+}
 
 // StubHub OAuth Token Cache
 let stubhubAccessToken = null;
@@ -675,8 +700,8 @@ app.get('/', (req, res) => {
 
 // ========== AUTH ROUTES ==========
 
-// Register new user
-app.post('/api/auth/register', async (req, res) => {
+// Register new user (rate limited: 5 attempts per 15 minutes)
+app.post('/api/auth/register', authLimiter, async (req, res) => {
   try {
     const { email, password } = req.body;
 
@@ -687,10 +712,10 @@ app.post('/api/auth/register', async (req, res) => {
       });
     }
 
-    if (password.length < 6) {
+    if (password.length < 8) {
       return res.status(400).json({
         success: false,
-        error: 'Password must be at least 6 characters'
+        error: 'Password must be at least 8 characters'
       });
     }
 
@@ -751,8 +776,8 @@ app.post('/api/auth/register', async (req, res) => {
   }
 });
 
-// Login
-app.post('/api/auth/login', async (req, res) => {
+// Login (rate limited: 5 attempts per 15 minutes)
+app.post('/api/auth/login', authLimiter, async (req, res) => {
   try {
     const { email, password } = req.body;
 
@@ -1616,7 +1641,11 @@ app.get('/api/newsletter/unsubscribe', async (req, res) => {
 // ========== ADMIN API ==========
 
 // Admin authentication middleware
-const ADMIN_SECRET = process.env.ADMIN_SECRET || 'ticketscan-admin-2026';
+const ADMIN_SECRET = process.env.ADMIN_SECRET;
+if (!ADMIN_SECRET) {
+  console.error('FATAL: ADMIN_SECRET environment variable is required');
+  process.exit(1);
+}
 
 const authenticateAdmin = (req, res, next) => {
   const adminKey = req.headers['x-admin-key'];
