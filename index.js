@@ -27,10 +27,11 @@ const generalLimiter = rateLimit({
 });
 
 // Email transporter setup
+const smtpPort = parseInt(process.env.SMTP_PORT || '587');
 const emailTransporter = nodemailer.createTransport({
-  host: process.env.SMTP_HOST || 'smtp.gmail.com',
-  port: parseInt(process.env.SMTP_PORT || '587'),
-  secure: false,
+  host: process.env.SMTP_HOST,
+  port: smtpPort,
+  secure: smtpPort === 465, // true for SSL (465), false for TLS (587)
   auth: {
     user: process.env.SMTP_USER,
     pass: process.env.SMTP_PASS,
