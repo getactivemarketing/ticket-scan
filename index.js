@@ -1246,6 +1246,10 @@ app.get('/api/events/search', async (req, res) => {
       });
     }
 
+    // Default to today's date to filter out past events
+    const today = new Date().toISOString().split('T')[0];
+    const effectiveStartDate = startDate || today;
+
     // Build Ticketmaster params
     const tmParams = {
       apikey: TICKETMASTER_API_KEY,
@@ -1255,10 +1259,8 @@ app.get('/api/events/search', async (req, res) => {
       sort: 'date,asc'
     };
 
-    // Add date filtering for Ticketmaster
-    if (startDate) {
-      tmParams.startDateTime = `${startDate}T00:00:00Z`;
-    }
+    // Add date filtering for Ticketmaster (always filter from today if no startDate)
+    tmParams.startDateTime = `${effectiveStartDate}T00:00:00Z`;
     if (endDate) {
       tmParams.endDateTime = `${endDate}T23:59:59Z`;
     }
@@ -1309,6 +1311,10 @@ app.get('/api/events/compare', async (req, res) => {
   try {
     const { city = 'Orlando', keyword = '', startDate, endDate } = req.query;
 
+    // Default to today's date to filter out past events
+    const today = new Date().toISOString().split('T')[0];
+    const effectiveStartDate = startDate || today;
+
     // Build params for each API
     const tmParams = {
       apikey: TICKETMASTER_API_KEY,
@@ -1318,7 +1324,7 @@ app.get('/api/events/compare', async (req, res) => {
       sort: 'date,asc'
     };
 
-    if (startDate) tmParams.startDateTime = `${startDate}T00:00:00Z`;
+    tmParams.startDateTime = `${effectiveStartDate}T00:00:00Z`;
     if (endDate) tmParams.endDateTime = `${endDate}T23:59:59Z`;
 
     // Fetch from all sources in parallel
@@ -2043,17 +2049,21 @@ app.get('/api/test/ticketmaster', async (req, res) => {
       });
     }
     
+    // Default to today to filter out past events
+    const today = new Date().toISOString().split('T')[0];
+
     const response = await axios.get('https://app.ticketmaster.com/discovery/v2/events.json', {
       params: {
         apikey: TICKETMASTER_API_KEY,
         city: city,
         keyword: keyword,
-        size: parseInt(size)
+        size: parseInt(size),
+        startDateTime: `${today}T00:00:00Z`
       }
     });
 
     const events = response.data._embedded?.events || [];
-    
+
     res.json({
       success: true,
       source: 'Ticketmaster',
