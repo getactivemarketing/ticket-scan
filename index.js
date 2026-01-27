@@ -2755,6 +2755,12 @@ app.post('/api/prices/track', authenticateToken, async (req, res) => {
   res.json({ success: true, message: 'Price tracking started' });
 });
 
+// Admin endpoint to trigger price tracking
+app.post('/api/admin/price-track', authenticateAdmin, async (req, res) => {
+  trackWatchlistPrices();
+  res.json({ success: true, message: 'Price tracking started. Check logs for progress.' });
+});
+
 // ========== PRICE HISTORY ENDPOINTS ==========
 
 // Get price history for an event
