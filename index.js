@@ -2034,6 +2034,47 @@ app.post('/api/admin/email-blast/world-cup', authenticateAdmin, async (req, res)
   }
 });
 
+// Admin: Clean up old database records (past events)
+app.post('/api/admin/cleanup', authenticateAdmin, async (req, res) => {
+  try {
+    const today = new Date().toISOString().split('T')[0];
+
+    // Delete watchlist items for past events
+    const watchlistResult = await pool.query(`
+      DELETE FROM watchlist
+      WHERE event_date < $1
+      RETURNING id
+    `, [today]);
+
+    // Delete price history for past events (keep last 7 days for analytics)
+    const priceHistoryResult = await pool.query(`
+      DELETE FROM price_history
+      WHERE checked_at < NOW() - INTERVAL '7 days'
+      RETURNING id
+    `);
+
+    // Delete old price alerts for past events
+    const alertsResult = await pool.query(`
+      DELETE FROM price_alerts
+      WHERE sent_at < NOW() - INTERVAL '30 days'
+      RETURNING id
+    `);
+
+    res.json({
+      success: true,
+      message: 'Database cleanup complete',
+      deleted: {
+        watchlistItems: watchlistResult.rowCount,
+        priceHistoryRecords: priceHistoryResult.rowCount,
+        oldAlerts: alertsResult.rowCount
+      }
+    });
+  } catch (error) {
+    console.error('Database cleanup error:', error.message);
+    res.status(500).json({ success: false, error: error.message });
+  }
+});
+
 // ========== LEGACY EVENT ROUTES ==========
 
 // Test Ticketmaster API
