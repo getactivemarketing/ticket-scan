@@ -2761,6 +2761,40 @@ app.post('/api/admin/price-track', authenticateAdmin, async (req, res) => {
   res.json({ success: true, message: 'Price tracking started. Check logs for progress.' });
 });
 
+// Admin endpoint to view price history data
+app.get('/api/admin/price-history', authenticateAdmin, async (req, res) => {
+  try {
+    const { eventId, limit = 50 } = req.query;
+
+    let query = `
+      SELECT ph.*, w.event_name, w.venue
+      FROM price_history ph
+      LEFT JOIN watchlist w ON w.event_id = ph.event_id
+      ORDER BY ph.checked_at DESC
+      LIMIT $1
+    `;
+    let params = [parseInt(limit)];
+
+    if (eventId) {
+      query = `
+        SELECT ph.*, w.event_name, w.venue
+        FROM price_history ph
+        LEFT JOIN watchlist w ON w.event_id = ph.event_id
+        WHERE ph.event_id = $2
+        ORDER BY ph.checked_at DESC
+        LIMIT $1
+      `;
+      params = [parseInt(limit), eventId];
+    }
+
+    const result = await pool.query(query, params);
+    res.json({ success: true, priceHistory: result.rows, total: result.rowCount });
+  } catch (error) {
+    console.error('Admin price history error:', error.message);
+    res.status(500).json({ success: false, error: error.message });
+  }
+});
+
 // ========== PRICE HISTORY ENDPOINTS ==========
 
 // Get price history for an event
