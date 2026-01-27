@@ -84,7 +84,7 @@ export default function RootLayout({
         <meta
           name="impact-site-verification"
           // @ts-ignore - Impact requires non-standard 'value' attribute
-          value="d0937c4a-eade-42ef-af32-7c80fc391412"
+          value="d9cb8a0f-4d31-4b67-8062-a2af6f138e3d"
         />
         <script
           type="application/ld+json"
