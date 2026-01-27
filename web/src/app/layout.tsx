@@ -97,6 +97,8 @@ export default function RootLayout({
         <meta name="apple-mobile-web-app-title" content="Ticket Scan" />
         {/* Impact Affiliate Verification */}
         <meta name="impact-site-verification" content="4977494d-2fb2-44eb-9de7-7cb8f0c91857" />
+        {/* Fanatics Verification */}
+        <meta name="fo-verify" content="33d3aa89-9ae2-4eb7-89ab-acf9c05cc526" />
         {/* Google Analytics */}
         {GA_ID !== "G-XXXXXXXXXX" && (
           <>
