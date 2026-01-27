@@ -2695,9 +2695,11 @@ async function trackWatchlistPrices() {
 
     for (const event of events) {
       let lowestPrice = null;
+      console.log(`\n📍 Tracking: ${event.event_name} (${event.event_id})`);
 
       // Fetch from Ticketmaster
       const tmPrice = await fetchTicketmasterEventPrice(event.event_id);
+      console.log(`  TM result:`, tmPrice ? `$${tmPrice.minPrice}-$${tmPrice.maxPrice}` : 'no prices');
       if (tmPrice && tmPrice.minPrice) {
         await pool.query(`
           INSERT INTO price_history (event_id, source, min_price, avg_price, max_price)
@@ -2710,6 +2712,7 @@ async function trackWatchlistPrices() {
       // Fetch from SeatGeek
       const eventDate = event.event_date ? new Date(event.event_date).toISOString().split('T')[0] : null;
       const sgPrice = await fetchSeatGeekEventPrice(event.event_name, event.venue, eventDate);
+      console.log(`  SG result:`, sgPrice ? `$${sgPrice.minPrice}-$${sgPrice.maxPrice}` : 'no prices');
       if (sgPrice && sgPrice.minPrice) {
         await pool.query(`
           INSERT INTO price_history (event_id, source, min_price, avg_price, max_price)
@@ -2755,10 +2758,63 @@ app.post('/api/prices/track', authenticateToken, async (req, res) => {
   res.json({ success: true, message: 'Price tracking started' });
 });
 
-// Admin endpoint to trigger price tracking
+// Admin endpoint to trigger price tracking (with detailed results)
 app.post('/api/admin/price-track', authenticateAdmin, async (req, res) => {
-  trackWatchlistPrices();
-  res.json({ success: true, message: 'Price tracking started. Check logs for progress.' });
+  try {
+    console.log('📊 Admin triggered price tracking...');
+
+    // Get unique events from watchlist
+    const watchlistResult = await pool.query(`
+      SELECT DISTINCT ON (event_id)
+        event_id, event_name, venue, event_date
+      FROM watchlist
+      WHERE event_date > NOW()
+      ORDER BY event_id
+    `);
+
+    const events = watchlistResult.rows;
+    const results = [];
+    let tracked = 0;
+
+    for (const event of events) {
+      const eventResult = { event_id: event.event_id, event_name: event.event_name, prices: {} };
+
+      // Fetch from Ticketmaster
+      const tmPrice = await fetchTicketmasterEventPrice(event.event_id);
+      eventResult.prices.ticketmaster = tmPrice;
+      if (tmPrice && tmPrice.minPrice) {
+        await pool.query(`
+          INSERT INTO price_history (event_id, source, min_price, avg_price, max_price)
+          VALUES ($1, $2, $3, $4, $5)
+        `, [event.event_id, tmPrice.source, tmPrice.minPrice, tmPrice.avgPrice, tmPrice.maxPrice]);
+        tracked++;
+      }
+
+      // Fetch from SeatGeek
+      const eventDate = event.event_date ? new Date(event.event_date).toISOString().split('T')[0] : null;
+      const sgPrice = await fetchSeatGeekEventPrice(event.event_name, event.venue, eventDate);
+      eventResult.prices.seatgeek = sgPrice;
+      if (sgPrice && sgPrice.minPrice) {
+        await pool.query(`
+          INSERT INTO price_history (event_id, source, min_price, avg_price, max_price)
+          VALUES ($1, $2, $3, $4, $5)
+        `, [event.event_id, sgPrice.source, sgPrice.minPrice, sgPrice.avgPrice, sgPrice.maxPrice]);
+        tracked++;
+      }
+
+      results.push(eventResult);
+      await new Promise(resolve => setTimeout(resolve, 200));
+    }
+
+    res.json({
+      success: true,
+      message: `Tracked ${tracked} price points for ${events.length} events`,
+      results
+    });
+  } catch (error) {
+    console.error('Admin price tracking error:', error.message);
+    res.status(500).json({ success: false, error: error.message });
+  }
 });
 
 // Admin endpoint to view price history data
