@@ -58,11 +58,7 @@ export const metadata: Metadata = {
     index: true,
     follow: true,
   },
-  verification: {
-    other: {
-      "impact-site-verification": ["b28232b9-6199-4183-ac8b-84e11d474837"],
-    },
-  },
+  // Note: Impact verification is in head with non-standard 'value' attribute
 };
 
 // Organization structured data
