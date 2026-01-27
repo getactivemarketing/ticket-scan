@@ -2485,43 +2485,55 @@ async function fetchTicketmasterEventPrice(eventId) {
     const event = response.data;
     const priceRanges = event.priceRanges?.[0];
 
+    // Log the event data for debugging
+    console.log(`  TM raw data for ${eventId}: priceRanges=${JSON.stringify(event.priceRanges || 'none')}`);
+
     return {
       source: 'ticketmaster',
       minPrice: priceRanges?.min || null,
       maxPrice: priceRanges?.max || null,
-      avgPrice: priceRanges ? (priceRanges.min + priceRanges.max) / 2 : null
+      avgPrice: priceRanges ? (priceRanges.min + priceRanges.max) / 2 : null,
+      eventName: event.name,
+      hasPricing: !!priceRanges
     };
   } catch (error) {
     console.error(`Error fetching Ticketmaster price for ${eventId}:`, error.message);
-    return null;
+    return { source: 'ticketmaster', error: error.message, minPrice: null, maxPrice: null, avgPrice: null };
   }
 }
 
 // Fetch prices for an event from SeatGeek (by matching event details)
 async function fetchSeatGeekEventPrice(eventName, venue, eventDate) {
-  if (!SEATGEEK_CLIENT_ID) return null;
+  if (!SEATGEEK_CLIENT_ID) {
+    console.log('  SeatGeek: No client ID configured');
+    return null;
+  }
 
   try {
     // Extract a simpler search term (team names or artist)
     const searchTerm = eventName.split(' vs')[0].split(' at ')[0].trim();
+    console.log(`  SG search: "${searchTerm}" at "${venue}" on ${eventDate}`);
 
-    const response = await axios.get('https://api.seatgeek.com/2/events', {
+    // First try with venue filter
+    let response = await axios.get('https://api.seatgeek.com/2/events', {
       params: {
         client_id: SEATGEEK_CLIENT_ID,
         q: searchTerm,
-        'venue.name': venue,
-        per_page: 5
+        per_page: 10
       }
     });
 
     // Find matching event by date
     const events = response.data.events || [];
+    console.log(`  SG found ${events.length} events for "${searchTerm}"`);
+
     const matchingEvent = events.find(e => {
       const sgDate = e.datetime_local?.split('T')[0];
       return sgDate === eventDate;
     });
 
     if (matchingEvent?.stats) {
+      console.log(`  SG matched: ${matchingEvent.title}, lowest=$${matchingEvent.stats.lowest_price}`);
       return {
         source: 'seatgeek',
         minPrice: matchingEvent.stats.lowest_price || null,
@@ -2530,10 +2542,17 @@ async function fetchSeatGeekEventPrice(eventName, venue, eventDate) {
         listingCount: matchingEvent.stats.listing_count || 0
       };
     }
-    return null;
+
+    // Log available dates for debugging
+    if (events.length > 0) {
+      const availableDates = events.slice(0, 3).map(e => `${e.datetime_local?.split('T')[0]} (${e.title})`);
+      console.log(`  SG no date match for ${eventDate}. Found: ${availableDates.join(', ')}`);
+    }
+
+    return { source: 'seatgeek', minPrice: null, maxPrice: null, avgPrice: null, listingCount: 0, noMatch: true };
   } catch (error) {
     console.error(`Error fetching SeatGeek price for ${eventName}:`, error.message);
-    return null;
+    return { source: 'seatgeek', error: error.message, minPrice: null, maxPrice: null, avgPrice: null, listingCount: 0 };
   }
 }
 
