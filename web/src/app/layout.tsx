@@ -60,7 +60,7 @@ export const metadata: Metadata = {
   },
   verification: {
     other: {
-      "impact-site-verification": ["4977494d-2fb2-44eb-9de7-7cb8f0c91857"],
+      "impact-site-verification": ["b28232b9-6199-4183-ac8b-84e11d474837"],
     },
   },
 };
@@ -96,7 +96,7 @@ export default function RootLayout({
         <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
         <meta name="apple-mobile-web-app-title" content="Ticket Scan" />
         {/* Impact Affiliate Verification */}
-        <meta name="impact-site-verification" content="4977494d-2fb2-44eb-9de7-7cb8f0c91857" />
+        <meta name="impact-site-verification" content="b28232b9-6199-4183-ac8b-84e11d474837" />
         {/* Fanatics Verification */}
         <meta name="fo-verify" content="33d3aa89-9ae2-4eb7-89ab-acf9c05cc526" />
         {/* Google Analytics */}
