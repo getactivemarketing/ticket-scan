@@ -17,9 +17,6 @@ export const metadata: Metadata = {
     type: 'website',
     url: 'https://ticketscan.io',
   },
-  other: {
-    'impact-site-verification': '4977494d-2fb2-44eb-9de7-7cb8f0c91857',
-  },
 };
 
 export default function Home() {
@@ -86,7 +83,6 @@ export default function Home() {
       />
 
       <div className="min-h-screen">
-        <div dangerouslySetInnerHTML={{ __html: '<!-- Impact-Site-Verification: 4977494d-2fb2-44eb-9de7-7cb8f0c91857 -->' }} />
         {/* Hero Section */}
         <div className="bg-gradient-to-br from-purple-600 via-indigo-600 to-blue-700 text-white">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
