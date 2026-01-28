@@ -1,6 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
-import { GoogleAnalytics } from "@next/third-parties/google";
+import Script from "next/script";
 import "./globals.css";
 import { AuthProvider } from "@/context/AuthContext";
 import Navbar from "@/components/Navbar";
@@ -100,7 +100,21 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased bg-gray-50`}
       >
-        <GoogleAnalytics gaId="G-WZX1SGZK3W" />
+        {/* Google Analytics - direct implementation */}
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=G-WZX1SGZK3W"
+          strategy="afterInteractive"
+        />
+        <Script id="ga-init" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-WZX1SGZK3W', {
+              send_page_view: true
+            });
+          `}
+        </Script>
         <AuthProvider>
           <Navbar />
           <main>{children}</main>
