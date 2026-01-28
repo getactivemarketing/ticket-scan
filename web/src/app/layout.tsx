@@ -1,6 +1,5 @@
 import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
-import Script from "next/script";
 import "./globals.css";
 import { AuthProvider } from "@/context/AuthContext";
 import Navbar from "@/components/Navbar";
@@ -96,25 +95,25 @@ export default function RootLayout({
         <meta name="apple-mobile-web-app-title" content="Ticket Scan" />
         {/* Fanatics Verification */}
         <meta name="fo-verify" content="33d3aa89-9ae2-4eb7-89ab-acf9c05cc526" />
+        {/* Google Analytics - synchronous in head for reliability */}
+        <script
+          async
+          src="https://www.googletagmanager.com/gtag/js?id=G-WZX1SGZK3W"
+        />
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+              gtag('config', 'G-WZX1SGZK3W');
+            `,
+          }}
+        />
       </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased bg-gray-50`}
       >
-        {/* Google Analytics - direct implementation */}
-        <Script
-          src="https://www.googletagmanager.com/gtag/js?id=G-WZX1SGZK3W"
-          strategy="afterInteractive"
-        />
-        <Script id="ga-init" strategy="afterInteractive">
-          {`
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-            gtag('config', 'G-WZX1SGZK3W', {
-              send_page_view: true
-            });
-          `}
-        </Script>
         <AuthProvider>
           <Navbar />
           <main>{children}</main>
