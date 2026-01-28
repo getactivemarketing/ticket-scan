@@ -3,6 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { AuthProvider } from "@/context/AuthContext";
 import Navbar from "@/components/Navbar";
+import GoogleAnalytics from "@/components/GoogleAnalytics";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -95,22 +96,11 @@ export default function RootLayout({
         <meta name="apple-mobile-web-app-title" content="Ticket Scan" />
         {/* Fanatics Verification */}
         <meta name="fo-verify" content="33d3aa89-9ae2-4eb7-89ab-acf9c05cc526" />
-        {/* Google Analytics */}
-        <script async src="https://www.googletagmanager.com/gtag/js?id=G-WZX1SGZK3W" />
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `
-              window.dataLayer = window.dataLayer || [];
-              function gtag(){dataLayer.push(arguments);}
-              gtag('js', new Date());
-              gtag('config', 'G-WZX1SGZK3W');
-            `,
-          }}
-        />
       </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased bg-gray-50`}
       >
+        <GoogleAnalytics />
         <AuthProvider>
           <Navbar />
           <main>{children}</main>
