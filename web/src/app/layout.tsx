@@ -3,6 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { AuthProvider } from "@/context/AuthContext";
 import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -47,6 +48,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
+    site: "@ticketscan_io",
+    creator: "@ticketscan_io",
     title: "Ticket Scan - Compare Ticket Prices",
     description: "Compare ticket prices from Ticketmaster, SeatGeek, and more.",
   },
@@ -65,7 +68,11 @@ const organizationJsonLd = {
   url: "https://ticketscan.io",
   logo: "https://ticketscan.io/logo.png",
   description: "Compare ticket prices across multiple platforms. Find the best deals on concerts, sports, and theater events.",
-  sameAs: [],
+  sameAs: [
+    "https://x.com/ticketscan_io",
+    "https://instagram.com/ticketscan_io",
+    "https://tiktok.com/@ticketscan_io",
+  ],
 };
 
 export default function RootLayout({
@@ -120,7 +127,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         </noscript>
         <AuthProvider>
           <Navbar />
-          <main>{children}</main>
+          <main className="min-h-screen">{children}</main>
+          <Footer />
         </AuthProvider>
       </body>
     </html>
