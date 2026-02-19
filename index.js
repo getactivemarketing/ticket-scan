@@ -8,6 +8,7 @@ const jwt = require('jsonwebtoken');
 const cron = require('node-cron');
 const nodemailer = require('nodemailer');
 const rateLimit = require('express-rate-limit');
+const { TwitterApi } = require('twitter-api-v2');
 
 // Rate limiters for security
 const authLimiter = rateLimit({
@@ -37,6 +38,71 @@ const emailTransporter = nodemailer.createTransport({
     pass: process.env.SMTP_PASS,
   },
 });
+
+// Twitter/X API setup
+const twitterClient = process.env.TWITTER_API_KEY ? new TwitterApi({
+  appKey: process.env.TWITTER_API_KEY,
+  appSecret: process.env.TWITTER_API_SECRET,
+  accessToken: process.env.TWITTER_ACCESS_TOKEN,
+  accessSecret: process.env.TWITTER_ACCESS_SECRET,
+}) : null;
+
+const twitter = twitterClient?.readWrite;
+
+// Post to Twitter/X
+async function postToTwitter(text) {
+  if (!twitter) {
+    console.log('🐦 Twitter not configured, skipping post:', text.substring(0, 50) + '...');
+    return null;
+  }
+
+  try {
+    const tweet = await twitter.v2.tweet(text);
+    console.log('🐦 Posted to Twitter:', tweet.data.id);
+    return tweet.data;
+  } catch (error) {
+    console.error('🐦 Twitter post error:', error.message);
+    return null;
+  }
+}
+
+// Ticket tips for daily posts
+const ticketTips = [
+  "💡 Pro tip: Ticket prices often drop 2-3 weeks before an event. Set a price alert and wait for the sweet spot!\n\n#tickets #concerts #sports",
+  "🎫 Did you know? Tuesday and Wednesday are usually the cheapest days to buy tickets. Avoid buying on weekends!\n\n#tickettips #savemoney",
+  "⚡ Last-minute deals are real! If you're flexible, prices can drop 24-48 hours before an event as sellers try to offload inventory.\n\n#tickets #deals",
+  "🔍 Always compare prices across multiple sites. The same seat can vary by $50+ between Ticketmaster, SeatGeek, and StubHub.\n\nCompare free at ticketscan.io",
+  "📉 Watching a sold-out show? Don't panic buy! Resale prices usually drop as the event gets closer.\n\n#tickets #concerts",
+  "🏟️ Sitting in the back isn't always bad - many venues have great acoustics throughout. Save money on cheaper seats!\n\n#concerttips",
+  "⚽ World Cup 2026 is coming to the US, Mexico & Canada! Start tracking ticket prices now.\n\nticket scan.io/world-cup-2026",
+  "🎵 Festival tip: Single-day passes often give better value than full weekend passes if you only want to see a few artists.\n\n#festivals",
+  "💰 Avoid fees! Some ticket sites have lower service fees than others. Always check the final price before buying.\n\n#tickettips",
+  "📱 Enable price alerts for events you're watching. We'll notify you the moment prices drop below your target.\n\nticket scan.io",
+  "🏀 NBA playoff tickets? Prices are highest right after the matchup is announced. Wait a few days for them to settle.\n\n#NBA #playoffs",
+  "🎭 Broadway tip: Lottery and rush tickets can save you 50-70% on popular shows. Check the theater's website!\n\n#Broadway #NYC",
+  "⏰ Best time to buy concert tickets: 2-4 weeks before the show. Too early = premium prices. Too late = panic buying.\n\n#concerts",
+  "🔔 Set it and forget it: Add events to your watchlist and let us track prices for you 24/7.\n\nticket scan.io",
+];
+
+// Post daily tip to Twitter
+async function postDailyTip() {
+  const tipIndex = new Date().getDate() % ticketTips.length;
+  const tip = ticketTips[tipIndex];
+  await postToTwitter(tip);
+}
+
+// Post price drop alert to Twitter
+async function postPriceDropToTwitter(eventName, venue, oldPrice, newPrice, percentDrop) {
+  const text = `🚨 Price Drop Alert!\n\n${eventName}\n📍 ${venue}\n\n💰 Was: $${oldPrice} → Now: $${newPrice} (${percentDrop}% off)\n\nCompare all prices: ticketscan.io\n\n#tickets #deals #concerts`;
+
+  if (text.length <= 280) {
+    await postToTwitter(text);
+  } else {
+    // Shorter version if too long
+    const shortText = `🚨 ${eventName} tickets dropped ${percentDrop}%!\n\n$${oldPrice} → $${newPrice}\n\nCompare prices: ticketscan.io`;
+    await postToTwitter(shortText);
+  }
+}
 
 // Send welcome email to new users
 async function sendWelcomeEmail(userEmail) {
@@ -569,6 +635,9 @@ async function processDripCampaign(pool) {
 
 const app = express();
 const PORT = process.env.PORT || 3000;
+
+// Trust proxy for Railway/cloud deployments (required for rate limiting to work per-user, not globally)
+app.set('trust proxy', 1);
 
 // Middleware
 app.use(cors({
@@ -2770,6 +2839,12 @@ cron.schedule('0 10 * * *', () => {
   processDripCampaign(pool);
 });
 
+// Schedule daily Twitter tip at 9 AM EST (2 PM UTC)
+cron.schedule('0 14 * * *', () => {
+  console.log('🐦 Posting daily Twitter tip...');
+  postDailyTip();
+});
+
 // Also expose an endpoint to manually trigger price tracking
 app.post('/api/prices/track', authenticateToken, async (req, res) => {
   // Only allow manual trigger in development or for testing
@@ -3165,6 +3240,49 @@ app.use((req, res) => {
   });
 });
 
+// Admin endpoint to post to Twitter
+app.post('/api/admin/twitter/post', authenticateAdmin, async (req, res) => {
+  try {
+    const { text } = req.body;
+    if (!text) {
+      return res.status(400).json({ success: false, error: 'Text is required' });
+    }
+    if (text.length > 280) {
+      return res.status(400).json({ success: false, error: 'Text exceeds 280 characters' });
+    }
+
+    const result = await postToTwitter(text);
+    if (result) {
+      res.json({ success: true, tweet: result });
+    } else {
+      res.status(500).json({ success: false, error: 'Failed to post tweet' });
+    }
+  } catch (error) {
+    console.error('Twitter post error:', error.message);
+    res.status(500).json({ success: false, error: error.message });
+  }
+});
+
+// Admin endpoint to post daily tip
+app.post('/api/admin/twitter/daily-tip', authenticateAdmin, async (req, res) => {
+  try {
+    await postDailyTip();
+    res.json({ success: true, message: 'Daily tip posted to Twitter' });
+  } catch (error) {
+    console.error('Twitter daily tip error:', error.message);
+    res.status(500).json({ success: false, error: error.message });
+  }
+});
+
+// Admin endpoint to get available tips
+app.get('/api/admin/twitter/tips', authenticateAdmin, async (req, res) => {
+  res.json({
+    success: true,
+    tips: ticketTips,
+    todaysTipIndex: new Date().getDate() % ticketTips.length
+  });
+});
+
 // Start server
 app.listen(PORT, () => {
   console.log(`\n🚀 TicketHawk API Server Started`);
@@ -3173,6 +3291,7 @@ app.listen(PORT, () => {
   console.log(`🔑 Ticketmaster API: ${TICKETMASTER_API_KEY ? '✅ Configured' : '❌ Missing'}`);
   console.log(`🔑 SeatGeek API: ${SEATGEEK_CLIENT_ID ? '✅ Configured' : '❌ Missing'}`);
   console.log(`🔑 StubHub API: ${STUBHUB_APP_KEY && STUBHUB_API_KEY ? '✅ Configured' : '❌ Missing'}`);
+  console.log(`🐦 Twitter API: ${process.env.TWITTER_API_KEY ? '✅ Configured' : '❌ Missing'}`);
   console.log(`\n📖 API Documentation:`);
   console.log(`   Health Check: http://localhost:${PORT}/`);
   console.log(`   Test APIs: See http://localhost:${PORT}/ for endpoints\n`);

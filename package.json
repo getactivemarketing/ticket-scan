@@ -27,7 +27,8 @@
     "jsonwebtoken": "^9.0.3",
     "node-cron": "^3.0.3",
     "nodemailer": "^7.0.12",
-    "pg": "^8.11.3"
+    "pg": "^8.11.3",
+    "twitter-api-v2": "^1.29.0"
   },
   "devDependencies": {
     "nodemon": "^3.0.1"
