@@ -171,7 +171,7 @@ export default function ComparePage() {
   if (authLoading) {
     return (
       <div className="min-h-screen flex items-center justify-center">
-        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-purple-600"></div>
+        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-brand"></div>
       </div>
     );
   }
@@ -186,7 +186,7 @@ export default function ComparePage() {
           <div className="flex items-center gap-3 mb-2">
             <span className="text-3xl">⚖️</span>
             <div>
-              <h1 className="text-2xl font-bold text-gray-900">Compare Ticket Prices</h1>
+              <h1 className="text-2xl font-bold font-heading text-gray-900">Compare Ticket Prices</h1>
               <p className="text-gray-600">Find the best deals across multiple ticket sites</p>
             </div>
           </div>
@@ -202,7 +202,7 @@ export default function ComparePage() {
                   type="text"
                   value={city}
                   onChange={(e) => setCity(e.target.value)}
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent outline-none text-gray-900"
+                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-brand focus:border-transparent outline-none text-gray-900"
                   placeholder="e.g., Orlando, Miami"
                 />
               </div>
@@ -215,7 +215,7 @@ export default function ComparePage() {
                   type="text"
                   value={keyword}
                   onChange={(e) => setKeyword(e.target.value)}
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent outline-none text-gray-900"
+                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-brand focus:border-transparent outline-none text-gray-900"
                   placeholder="e.g., Magic, Taylor Swift"
                 />
               </div>
@@ -229,7 +229,7 @@ export default function ComparePage() {
                   value={startDate}
                   min={today}
                   onChange={(e) => setStartDate(e.target.value)}
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent outline-none text-gray-900"
+                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-brand focus:border-transparent outline-none text-gray-900"
                 />
               </div>
               <div>
@@ -242,7 +242,7 @@ export default function ComparePage() {
                   value={endDate}
                   min={startDate || today}
                   onChange={(e) => setEndDate(e.target.value)}
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent outline-none text-gray-900"
+                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-brand focus:border-transparent outline-none text-gray-900"
                 />
               </div>
             </div>
@@ -250,7 +250,7 @@ export default function ComparePage() {
               <button
                 type="submit"
                 disabled={loading}
-                className="bg-purple-600 hover:bg-purple-700 text-white py-3 px-8 rounded-lg font-medium transition-colors disabled:opacity-50"
+                className="bg-brand hover:bg-brand-dark text-white py-3 px-8 rounded-lg font-medium transition-colors disabled:opacity-50"
               >
                 {loading ? 'Searching...' : 'Compare Prices'}
               </button>
@@ -271,7 +271,7 @@ export default function ComparePage() {
             {/* Summary Stats */}
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-6">
               <div className="bg-white rounded-xl p-4 shadow-sm text-center">
-                <p className="text-3xl font-bold text-purple-600">{totalEvents}</p>
+                <p className="text-3xl font-bold text-brand">{totalEvents}</p>
                 <p className="text-sm text-gray-600">Events Found</p>
               </div>
               <div className="bg-white rounded-xl p-4 shadow-sm text-center">
@@ -294,7 +294,7 @@ export default function ComparePage() {
                 onClick={() => setViewMode('matched')}
                 className={`px-4 py-2 rounded-lg font-medium transition-colors ${
                   viewMode === 'matched'
-                    ? 'bg-purple-600 text-white'
+                    ? 'bg-brand text-white'
                     : 'bg-white text-gray-700 hover:bg-gray-100'
                 }`}
               >
@@ -304,7 +304,7 @@ export default function ComparePage() {
                 onClick={() => setViewMode('all')}
                 className={`px-4 py-2 rounded-lg font-medium transition-colors ${
                   viewMode === 'all'
-                    ? 'bg-purple-600 text-white'
+                    ? 'bg-brand text-white'
                     : 'bg-white text-gray-700 hover:bg-gray-100'
                 }`}
               >
@@ -329,11 +329,11 @@ export default function ComparePage() {
                     return (
                       <div key={idx} className="bg-white rounded-xl shadow-md overflow-hidden">
                         {/* Event Header */}
-                        <div className="bg-gradient-to-r from-purple-600 to-indigo-600 text-white p-4">
+                        <div className="bg-gradient-to-r from-brand to-navy-light text-white p-4">
                           <div className="flex justify-between items-start">
                             <div>
                               <h3 className="font-bold text-lg">{event.name}</h3>
-                              <div className="flex items-center gap-3 text-purple-100 text-sm mt-1">
+                              <div className="flex items-center gap-3 text-blue-100 text-sm mt-1">
                                 <span>📅 {formatDate(event.date)}</span>
                                 <span>📍 {event.venue}</span>
                                 {event.city && <span>🏙️ {event.city}</span>}
@@ -441,7 +441,7 @@ export default function ComparePage() {
                 {/* Ticketmaster Column */}
                 <div className="bg-white rounded-2xl shadow-md overflow-hidden">
                   <div className="bg-blue-600 text-white p-4">
-                    <h2 className="text-xl font-bold flex items-center gap-2">
+                    <h2 className="text-xl font-bold font-heading flex items-center gap-2">
                       <span>🎫</span> Ticketmaster
                     </h2>
                     <p className="text-blue-100 text-sm">{unmatchedTM.length + matchedEvents.filter(e => e.ticketmaster).length} events</p>
@@ -451,7 +451,7 @@ export default function ComparePage() {
                       <div key={`tm-matched-${idx}`} className="p-4 hover:bg-gray-50 bg-green-50/50">
                         <div className="flex items-center gap-2 mb-1">
                           <h3 className="font-semibold text-gray-900 line-clamp-1">{event.name}</h3>
-                          <span className="text-xs bg-purple-100 text-purple-700 px-2 py-0.5 rounded">Matched</span>
+                          <span className="text-xs bg-brand/10 text-brand-dark px-2 py-0.5 rounded">Matched</span>
                         </div>
                         <div className="text-sm text-gray-600 mb-2">
                           {formatDate(event.date)} • {event.venue}
@@ -480,7 +480,7 @@ export default function ComparePage() {
                 {/* SeatGeek Column */}
                 <div className="bg-white rounded-2xl shadow-md overflow-hidden">
                   <div className="bg-green-600 text-white p-4">
-                    <h2 className="text-xl font-bold flex items-center gap-2">
+                    <h2 className="text-xl font-bold font-heading flex items-center gap-2">
                       <span>🎟️</span> SeatGeek
                     </h2>
                     <p className="text-green-100 text-sm">{unmatchedSG.length + matchedEvents.filter(e => e.seatgeek).length} events</p>
@@ -496,7 +496,7 @@ export default function ComparePage() {
                       <div key={`sg-matched-${idx}`} className="p-4 hover:bg-gray-50 bg-green-50/50">
                         <div className="flex items-center gap-2 mb-1">
                           <h3 className="font-semibold text-gray-900 line-clamp-1">{event.seatgeek?.name}</h3>
-                          <span className="text-xs bg-purple-100 text-purple-700 px-2 py-0.5 rounded">Matched</span>
+                          <span className="text-xs bg-brand/10 text-brand-dark px-2 py-0.5 rounded">Matched</span>
                         </div>
                         <div className="text-sm text-gray-600 mb-2">
                           {formatDate(event.date)} • {event.venue}
@@ -530,7 +530,7 @@ export default function ComparePage() {
         {!searched && (
           <div className="bg-white rounded-2xl shadow-md p-12 text-center">
             <span className="text-6xl mb-4 block">🔍</span>
-            <h3 className="text-xl font-medium text-gray-900 mb-2">Find the Best Ticket Prices</h3>
+            <h3 className="text-xl font-medium font-heading text-gray-900 mb-2">Find the Best Ticket Prices</h3>
             <p className="text-gray-600 mb-6 max-w-md mx-auto">
               Compare prices from Ticketmaster and SeatGeek (which aggregates 60+ resale sites including StubHub & Vivid Seats)
             </p>

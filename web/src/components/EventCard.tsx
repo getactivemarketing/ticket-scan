@@ -88,7 +88,7 @@ export default function EventCard({ event, isLoggedIn = true, onAddedToWatchlist
             <div className="space-y-2">
               <Link
                 href="/register"
-                className="block w-full bg-purple-600 hover:bg-purple-700 text-white py-2 px-4 rounded-lg font-medium transition-colors"
+                className="block w-full bg-brand hover:bg-brand-dark text-white py-2 px-4 rounded-lg font-medium transition-colors"
               >
                 Sign Up Free
               </Link>
@@ -115,7 +115,7 @@ export default function EventCard({ event, isLoggedIn = true, onAddedToWatchlist
       <div className="p-5">
         <div className="flex items-start justify-between">
           <div className="flex-1">
-            <span className="inline-block px-2 py-1 text-xs font-medium bg-purple-100 text-purple-700 rounded-full mb-2">
+            <span className="inline-block px-2 py-1 text-xs font-medium bg-brand/10 text-brand-dark rounded-full mb-2">
               {event.type || 'Event'}
             </span>
             <h3 className="font-bold text-lg text-gray-900 mb-2 line-clamp-2">
@@ -152,7 +152,7 @@ export default function EventCard({ event, isLoggedIn = true, onAddedToWatchlist
             href={event.url}
             target="_blank"
             rel="noopener noreferrer"
-            className="flex-1 text-center bg-purple-600 hover:bg-purple-700 text-white py-2 px-4 rounded-lg font-medium transition-colors"
+            className="flex-1 text-center bg-brand hover:bg-brand-dark text-white py-2 px-4 rounded-lg font-medium transition-colors"
           >
             Buy Tickets
           </a>

@@ -41,7 +41,7 @@ export default function WorldCup2026Page() {
             <div className="inline-block bg-white/20 backdrop-blur-sm px-4 py-2 rounded-full text-sm font-medium mb-6">
               June 11 - July 19, 2026
             </div>
-            <h1 className="text-4xl md:text-6xl font-bold mb-6">
+            <h1 className="font-heading text-4xl md:text-6xl font-bold mb-6">
               2026 FIFA World Cup Tickets
             </h1>
             <p className="text-xl text-green-100 max-w-3xl mx-auto mb-8">
@@ -88,27 +88,27 @@ export default function WorldCup2026Page() {
       {/* Why Compare Prices */}
       <div className="py-16 bg-white">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl font-bold text-gray-900 text-center mb-12">
+          <h2 className="font-heading text-3xl font-bold text-gray-900 text-center mb-12">
             Why Compare World Cup Ticket Prices?
           </h2>
           <div className="grid md:grid-cols-3 gap-8">
             <div className="text-center p-6">
               <div className="text-4xl mb-4">💰</div>
-              <h3 className="font-bold text-gray-900 mb-2">Save Hundreds</h3>
+              <h3 className="font-heading font-bold text-gray-900 mb-2">Save Hundreds</h3>
               <p className="text-gray-600">
                 The same World Cup ticket can vary by 30%+ between platforms. We show you all options so you get the best deal.
               </p>
             </div>
             <div className="text-center p-6">
               <div className="text-4xl mb-4">🔔</div>
-              <h3 className="font-bold text-gray-900 mb-2">Price Alerts</h3>
+              <h3 className="font-heading font-bold text-gray-900 mb-2">Price Alerts</h3>
               <p className="text-gray-600">
                 Set your target price and we&apos;ll notify you when tickets drop. Never miss a deal on your bucket-list match.
               </p>
             </div>
             <div className="text-center p-6">
               <div className="text-4xl mb-4">✅</div>
-              <h3 className="font-bold text-gray-900 mb-2">Trusted Platforms</h3>
+              <h3 className="font-heading font-bold text-gray-900 mb-2">Trusted Platforms</h3>
               <p className="text-gray-600">
                 We only compare prices from verified resellers with buyer protection. Buy with confidence.
               </p>
@@ -120,7 +120,7 @@ export default function WorldCup2026Page() {
       {/* Featured Teams */}
       <div className="py-16 bg-gray-50">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl font-bold text-gray-900 text-center mb-8">
+          <h2 className="font-heading text-3xl font-bold text-gray-900 text-center mb-8">
             Featured Teams
           </h2>
           <div className="flex flex-wrap justify-center gap-4">
@@ -143,7 +143,7 @@ export default function WorldCup2026Page() {
       {/* Match Schedule */}
       <div id="schedule" className="py-16 bg-white">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl font-bold text-gray-900 text-center mb-4">
+          <h2 className="font-heading text-3xl font-bold text-gray-900 text-center mb-4">
             Match Schedule
           </h2>
           <p className="text-gray-600 text-center mb-8">
@@ -238,7 +238,7 @@ export default function WorldCup2026Page() {
                       <div className="flex items-center gap-2 mb-1">
                         <span className={`text-xs px-2 py-1 rounded-full font-medium ${
                           match.round === 'Final' ? 'bg-yellow-100 text-yellow-800' :
-                          match.round === 'Semi-Final' ? 'bg-purple-100 text-purple-800' :
+                          match.round === 'Semi-Final' ? 'bg-brand/10 text-brand-dark' :
                           match.round === 'Quarter-Final' ? 'bg-blue-100 text-blue-800' :
                           match.round === 'Group Stage' ? 'bg-gray-100 text-gray-800' :
                           'bg-green-100 text-green-800'
@@ -290,7 +290,7 @@ export default function WorldCup2026Page() {
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center gap-3 mb-8">
             <span className="text-4xl">🇺🇸</span>
-            <h2 className="text-3xl font-bold text-gray-900">USA Host Cities</h2>
+            <h2 className="font-heading text-3xl font-bold text-gray-900">USA Host Cities</h2>
           </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {worldCupCities.usa.map(({ city, venue, state }) => {
@@ -301,7 +301,7 @@ export default function WorldCup2026Page() {
                   href={`/world-cup-2026/${venue}`}
                   className="bg-gray-50 rounded-xl p-6 hover:shadow-lg transition-shadow group"
                 >
-                  <h3 className="font-bold text-xl text-gray-900 group-hover:text-green-600 mb-2">
+                  <h3 className="font-heading font-bold text-xl text-gray-900 group-hover:text-green-600 mb-2">
                     {city}, {state}
                   </h3>
                   <p className="text-gray-600 mb-3">{venueData.name}</p>
@@ -321,7 +321,7 @@ export default function WorldCup2026Page() {
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center gap-3 mb-8">
             <span className="text-4xl">🇨🇦</span>
-            <h2 className="text-3xl font-bold text-gray-900">Canada Host Cities</h2>
+            <h2 className="font-heading text-3xl font-bold text-gray-900">Canada Host Cities</h2>
           </div>
           <div className="grid md:grid-cols-2 gap-6">
             {worldCupCities.canada.map(({ city, venue, state }) => {
@@ -332,7 +332,7 @@ export default function WorldCup2026Page() {
                   href={`/world-cup-2026/${venue}`}
                   className="bg-white rounded-xl p-6 hover:shadow-lg transition-shadow group"
                 >
-                  <h3 className="font-bold text-xl text-gray-900 group-hover:text-green-600 mb-2">
+                  <h3 className="font-heading font-bold text-xl text-gray-900 group-hover:text-green-600 mb-2">
                     {city}, {state}
                   </h3>
                   <p className="text-gray-600 mb-3">{venueData.name}</p>
@@ -352,7 +352,7 @@ export default function WorldCup2026Page() {
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center gap-3 mb-8">
             <span className="text-4xl">🇲🇽</span>
-            <h2 className="text-3xl font-bold text-gray-900">Mexico Host Cities</h2>
+            <h2 className="font-heading text-3xl font-bold text-gray-900">Mexico Host Cities</h2>
           </div>
           <div className="grid md:grid-cols-3 gap-6">
             {worldCupCities.mexico.map(({ city, venue, state }) => {
@@ -363,7 +363,7 @@ export default function WorldCup2026Page() {
                   href={`/world-cup-2026/${venue}`}
                   className="bg-gray-50 rounded-xl p-6 hover:shadow-lg transition-shadow group"
                 >
-                  <h3 className="font-bold text-xl text-gray-900 group-hover:text-green-600 mb-2">
+                  <h3 className="font-heading font-bold text-xl text-gray-900 group-hover:text-green-600 mb-2">
                     {city}
                   </h3>
                   <p className="text-gray-600 mb-3">{venueData.name}</p>
@@ -381,7 +381,7 @@ export default function WorldCup2026Page() {
       {/* Key Dates */}
       <div className="py-16 bg-green-50">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl font-bold text-gray-900 text-center mb-12">
+          <h2 className="font-heading text-3xl font-bold text-gray-900 text-center mb-12">
             Key Tournament Dates
           </h2>
           <div className="space-y-4">
@@ -420,35 +420,35 @@ export default function WorldCup2026Page() {
       {/* Ticket Tips */}
       <div className="py-16 bg-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl font-bold text-gray-900 text-center mb-12">
+          <h2 className="font-heading text-3xl font-bold text-gray-900 text-center mb-12">
             World Cup Ticket Tips
           </h2>
           <div className="space-y-6">
             <div className="flex gap-4">
               <div className="bg-green-100 text-green-600 w-10 h-10 rounded-full flex items-center justify-center font-bold flex-shrink-0">1</div>
               <div>
-                <h3 className="font-bold text-gray-900 mb-1">Register Early with FIFA</h3>
+                <h3 className="font-heading font-bold text-gray-900 mb-1">Register Early with FIFA</h3>
                 <p className="text-gray-600">Official FIFA ticket sales will begin in late 2025. Register on FIFA.com to get priority access to the ticket portal.</p>
               </div>
             </div>
             <div className="flex gap-4">
               <div className="bg-green-100 text-green-600 w-10 h-10 rounded-full flex items-center justify-center font-bold flex-shrink-0">2</div>
               <div>
-                <h3 className="font-bold text-gray-900 mb-1">Compare Resale Prices</h3>
+                <h3 className="font-heading font-bold text-gray-900 mb-1">Compare Resale Prices</h3>
                 <p className="text-gray-600">Once tickets hit the resale market, prices vary wildly. Use Ticket Scan to compare StubHub, SeatGeek, and Ticketmaster prices.</p>
               </div>
             </div>
             <div className="flex gap-4">
               <div className="bg-green-100 text-green-600 w-10 h-10 rounded-full flex items-center justify-center font-bold flex-shrink-0">3</div>
               <div>
-                <h3 className="font-bold text-gray-900 mb-1">Set Price Alerts</h3>
+                <h3 className="font-heading font-bold text-gray-900 mb-1">Set Price Alerts</h3>
                 <p className="text-gray-600">Don&apos;t constantly check prices. Set your target price on Ticket Scan and we&apos;ll email you when tickets drop to your budget.</p>
               </div>
             </div>
             <div className="flex gap-4">
               <div className="bg-green-100 text-green-600 w-10 h-10 rounded-full flex items-center justify-center font-bold flex-shrink-0">4</div>
               <div>
-                <h3 className="font-bold text-gray-900 mb-1">Consider Group Stage Matches</h3>
+                <h3 className="font-heading font-bold text-gray-900 mb-1">Consider Group Stage Matches</h3>
                 <p className="text-gray-600">Knockout round tickets will be expensive. Group stage matches offer great value and an authentic World Cup experience.</p>
               </div>
             </div>
@@ -459,7 +459,7 @@ export default function WorldCup2026Page() {
       {/* CTA Section */}
       <div className="bg-gradient-to-br from-green-600 to-emerald-700 py-20">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-white">
-          <h2 className="text-3xl font-bold mb-4">
+          <h2 className="font-heading text-3xl font-bold mb-4">
             Don&apos;t Miss the Biggest World Cup Ever
           </h2>
           <p className="text-green-100 mb-8 text-lg">

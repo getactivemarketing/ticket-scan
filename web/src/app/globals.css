@@ -2,13 +2,28 @@
 
 :root {
   --background: #ffffff;
-  --foreground: #171717;
+  --foreground: #2B2F38;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
+
+  /* Brand Colors */
+  --color-brand: #1E63FF;
+  --color-brand-dark: #1854D9;
+  --color-brand-light: #4A82FF;
+  --color-navy: #0D1B3D;
+  --color-navy-light: #162D5A;
+  --color-teal: #22C1C3;
+  --color-teal-light: #4DD4D6;
+  --color-success: #16C784;
+  --color-gray-light: #E6ECF2;
+  --color-charcoal: #2B2F38;
+
+  /* Fonts */
+  --font-sans: var(--font-inter);
+  --font-heading: var(--font-poppins);
   --font-mono: var(--font-geist-mono);
 }
 
@@ -22,12 +37,12 @@
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-inter), Inter, sans-serif;
 }
 
 /* Form inputs - ensure dark text */
 input, select, textarea {
-  color: #1f2937 !important;
+  color: #2B2F38 !important;
 }
 
 input::placeholder {

@@ -110,7 +110,7 @@ export default async function VenuePage({ params }: PageProps) {
 
   // Seating tier info
   const tiers = [
-    { key: 'floor', ...tierPricing.floor, color: 'bg-purple-500', light: 'bg-purple-100', text: 'text-purple-700' },
+    { key: 'floor', ...tierPricing.floor, color: 'bg-brand', light: 'bg-brand/10', text: 'text-brand-dark' },
     { key: 'club', ...tierPricing.club, color: 'bg-amber-500', light: 'bg-amber-100', text: 'text-amber-700' },
     { key: 'lower', ...tierPricing.lower, color: 'bg-blue-500', light: 'bg-blue-100', text: 'text-blue-700' },
     { key: 'upper', ...tierPricing.upper, color: 'bg-green-500', light: 'bg-green-100', text: 'text-green-700' },
@@ -125,22 +125,22 @@ export default async function VenuePage({ params }: PageProps) {
 
       <div className="min-h-screen bg-gray-50">
         {/* Hero Section */}
-        <div className="bg-gradient-to-br from-purple-600 via-indigo-600 to-blue-700 text-white py-16">
+        <div className="bg-gradient-to-br from-navy via-brand to-teal text-white py-16">
           <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
             <nav className="text-sm mb-4">
-              <Link href="/" className="text-purple-200 hover:text-white">Home</Link>
-              <span className="mx-2 text-purple-300">/</span>
-              <Link href={`/tickets/${venue.city.toLowerCase().replace(' ', '-')}`} className="text-purple-200 hover:text-white">
+              <Link href="/" className="text-blue-200 hover:text-white">Home</Link>
+              <span className="mx-2 text-blue-300">/</span>
+              <Link href={`/tickets/${venue.city.toLowerCase().replace(' ', '-')}`} className="text-blue-200 hover:text-white">
                 {venue.city}
               </Link>
-              <span className="mx-2 text-purple-300">/</span>
+              <span className="mx-2 text-blue-300">/</span>
               <span>{venue.name}</span>
             </nav>
 
-            <h1 className="text-4xl md:text-5xl font-bold mb-4">
+            <h1 className="text-4xl md:text-5xl font-bold font-heading mb-4">
               {venue.name} Tickets
             </h1>
-            <p className="text-xl text-purple-100 mb-6">
+            <p className="text-xl text-blue-100 mb-6">
               {venue.city}, {venue.state} - Capacity: {venue.capacity.toLocaleString()}
             </p>
 
@@ -160,7 +160,7 @@ export default async function VenuePage({ params }: PageProps) {
           <div className="grid lg:grid-cols-3 gap-8">
             {/* Main Content - Events */}
             <div className="lg:col-span-2">
-              <h2 className="text-2xl font-bold text-gray-900 mb-6">
+              <h2 className="text-2xl font-bold font-heading text-gray-900 mb-6">
                 Upcoming Events at {venue.name}
               </h2>
 
@@ -173,13 +173,13 @@ export default async function VenuePage({ params }: PageProps) {
                     >
                       <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
                         <div className="flex-1">
-                          <h3 className="font-bold text-lg text-gray-900 mb-2">
+                          <h3 className="font-bold font-heading text-lg text-gray-900 mb-2">
                             {event.name}
                           </h3>
                           <div className="flex flex-wrap gap-4 text-sm text-gray-600">
                             <span>{formatDate(event.date)}</span>
                             <span>{event.time}</span>
-                            <span className="text-purple-600 font-medium">{event.type}</span>
+                            <span className="text-brand font-medium">{event.type}</span>
                           </div>
                         </div>
                         <div className="flex items-center gap-4">
@@ -195,7 +195,7 @@ export default async function VenuePage({ params }: PageProps) {
                           )}
                           <Link
                             href="/register"
-                            className="bg-purple-600 hover:bg-purple-700 text-white px-4 py-2 rounded-lg font-medium transition-colors"
+                            className="bg-brand hover:bg-brand-dark text-white px-4 py-2 rounded-lg font-medium transition-colors"
                           >
                             Track Price
                           </Link>
@@ -209,7 +209,7 @@ export default async function VenuePage({ params }: PageProps) {
                   <p className="text-gray-600 mb-4">No upcoming events found.</p>
                   <Link
                     href="/register"
-                    className="text-purple-600 hover:text-purple-700 font-medium"
+                    className="text-brand hover:text-brand-dark font-medium"
                   >
                     Sign up to get notified when events are announced
                   </Link>
@@ -218,7 +218,7 @@ export default async function VenuePage({ params }: PageProps) {
 
               {/* SEO Content */}
               <div className="mt-12 bg-white rounded-xl shadow-md p-8">
-                <h2 className="text-xl font-bold text-gray-900 mb-4">
+                <h2 className="text-xl font-bold font-heading text-gray-900 mb-4">
                   About {venue.name}
                 </h2>
                 <p className="text-gray-600 leading-relaxed">
@@ -231,7 +231,7 @@ export default async function VenuePage({ params }: PageProps) {
             <div className="lg:col-span-1">
               {/* Seating Guide */}
               <div className="bg-white rounded-xl shadow-md p-6 mb-6">
-                <h3 className="text-lg font-bold text-gray-900 mb-4">
+                <h3 className="text-lg font-bold font-heading text-gray-900 mb-4">
                   Seating Sections
                 </h3>
                 <div className="space-y-3">
@@ -256,16 +256,16 @@ export default async function VenuePage({ params }: PageProps) {
               </div>
 
               {/* CTA Box */}
-              <div className="bg-gradient-to-br from-purple-600 to-indigo-700 rounded-xl shadow-md p-6 text-white">
-                <h3 className="text-lg font-bold mb-2">
+              <div className="bg-gradient-to-br from-brand to-navy rounded-xl shadow-md p-6 text-white">
+                <h3 className="text-lg font-bold font-heading mb-2">
                   Track Ticket Prices
                 </h3>
-                <p className="text-purple-100 text-sm mb-4">
+                <p className="text-blue-100 text-sm mb-4">
                   Get alerts when prices drop and find the best time to buy.
                 </p>
                 <Link
                   href="/register"
-                  className="block bg-white text-purple-600 text-center py-3 rounded-lg font-bold hover:bg-purple-50 transition-colors"
+                  className="block bg-white text-brand text-center py-3 rounded-lg font-bold hover:bg-blue-50 transition-colors"
                 >
                   Start Free
                 </Link>
@@ -273,12 +273,12 @@ export default async function VenuePage({ params }: PageProps) {
 
               {/* Related Links */}
               <div className="mt-6 bg-white rounded-xl shadow-md p-6">
-                <h3 className="text-lg font-bold text-gray-900 mb-4">
+                <h3 className="text-lg font-bold font-heading text-gray-900 mb-4">
                   More in {venue.city}
                 </h3>
                 <Link
                   href={`/tickets/${venue.city.toLowerCase().replace(' ', '-')}`}
-                  className="block text-purple-600 hover:text-purple-700 font-medium"
+                  className="block text-brand hover:text-brand-dark font-medium"
                 >
                   All {venue.city} Events &rarr;
                 </Link>
@@ -286,22 +286,22 @@ export default async function VenuePage({ params }: PageProps) {
 
               {/* Blog Tips */}
               <div className="mt-6 bg-white rounded-xl shadow-md p-6">
-                <h3 className="text-lg font-bold text-gray-900 mb-4">
+                <h3 className="text-lg font-bold font-heading text-gray-900 mb-4">
                   Ticket Buying Tips
                 </h3>
                 <ul className="space-y-2 text-sm">
                   <li>
-                    <Link href="/blog/best-time-to-buy-concert-tickets" className="text-purple-600 hover:text-purple-700">
+                    <Link href="/blog/best-time-to-buy-concert-tickets" className="text-brand hover:text-brand-dark">
                       Best Time to Buy Tickets
                     </Link>
                   </li>
                   <li>
-                    <Link href="/blog/ticket-buying-mistakes-to-avoid" className="text-purple-600 hover:text-purple-700">
+                    <Link href="/blog/ticket-buying-mistakes-to-avoid" className="text-brand hover:text-brand-dark">
                       7 Mistakes to Avoid
                     </Link>
                   </li>
                   <li>
-                    <Link href="/blog" className="text-purple-600 hover:text-purple-700 font-medium">
+                    <Link href="/blog" className="text-brand hover:text-brand-dark font-medium">
                       View All Tips &rarr;
                     </Link>
                   </li>

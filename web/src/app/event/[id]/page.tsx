@@ -133,7 +133,7 @@ export default function EventDetailPage() {
     return (
       <div className="min-h-screen flex items-center justify-center bg-gray-50">
         <div className="text-center">
-          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-purple-600 mx-auto mb-4"></div>
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-brand mx-auto mb-4"></div>
           <p className="text-gray-600">Loading price data...</p>
         </div>
       </div>
@@ -146,7 +146,7 @@ export default function EventDetailPage() {
         {/* Back link */}
         <Link
           href="/watchlist"
-          className="inline-flex items-center text-purple-600 hover:text-purple-700 mb-6"
+          className="inline-flex items-center text-brand hover:text-brand-dark mb-6"
         >
           <svg className="w-4 h-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
@@ -162,7 +162,7 @@ export default function EventDetailPage() {
 
         {/* Header */}
         <div className="bg-white rounded-xl shadow-md p-6 mb-6">
-          <h1 className="text-2xl font-bold text-gray-900 mb-2">
+          <h1 className="text-2xl font-bold font-heading text-gray-900 mb-2">
             {eventName || 'Event Details'}
           </h1>
 
@@ -203,7 +203,7 @@ export default function EventDetailPage() {
         {/* Price History Table */}
         {priceHistory.length > 0 && (
           <div className="bg-white rounded-xl shadow-md p-6">
-            <h3 className="text-lg font-bold text-gray-900 mb-4">Recent Price Checks</h3>
+            <h3 className="text-lg font-bold font-heading text-gray-900 mb-4">Recent Price Checks</h3>
             <div className="overflow-x-auto">
               <table className="w-full">
                 <thead>
@@ -258,7 +258,7 @@ export default function EventDetailPage() {
             <svg className="w-16 h-16 mx-auto mb-4 text-gray-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
             </svg>
-            <h3 className="text-xl font-medium text-gray-900 mb-2">
+            <h3 className="text-xl font-medium font-heading text-gray-900 mb-2">
               Price tracking just started
             </h3>
             <p className="text-gray-600 mb-4">

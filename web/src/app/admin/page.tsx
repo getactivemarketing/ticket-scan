@@ -183,7 +183,7 @@ export default function AdminDashboard() {
     return (
       <div className="min-h-screen bg-gray-900 flex items-center justify-center p-4">
         <div className="bg-gray-800 rounded-xl p-8 w-full max-w-md">
-          <h1 className="text-2xl font-bold text-white mb-6 text-center">Admin Dashboard</h1>
+          <h1 className="font-heading text-2xl font-bold text-white mb-6 text-center">Admin Dashboard</h1>
           <form onSubmit={handleLogin}>
             <div className="mb-4">
               <label className="block text-gray-400 text-sm mb-2">Admin Key</label>
@@ -191,7 +191,7 @@ export default function AdminDashboard() {
                 type="password"
                 value={adminKey}
                 onChange={(e) => setAdminKey(e.target.value)}
-                className="w-full bg-gray-700 text-white rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-purple-500"
+                className="w-full bg-gray-700 text-white rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-brand"
                 placeholder="Enter admin key..."
               />
             </div>
@@ -201,7 +201,7 @@ export default function AdminDashboard() {
             <button
               type="submit"
               disabled={isLoading || !adminKey}
-              className="w-full bg-purple-600 text-white py-3 rounded-lg font-medium hover:bg-purple-700 disabled:opacity-50 disabled:cursor-not-allowed"
+              className="w-full bg-brand text-white py-3 rounded-lg font-medium hover:bg-brand-dark disabled:opacity-50 disabled:cursor-not-allowed"
             >
               {isLoading ? 'Authenticating...' : 'Login'}
             </button>
@@ -216,7 +216,7 @@ export default function AdminDashboard() {
       {/* Header */}
       <header className="bg-gray-800 border-b border-gray-700">
         <div className="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
-          <h1 className="text-xl font-bold text-white">Ticket Scan Admin</h1>
+          <h1 className="font-heading text-xl font-bold text-white">Ticket Scan Admin</h1>
           <button
             onClick={handleLogout}
             className="text-gray-400 hover:text-white text-sm"
@@ -238,7 +238,7 @@ export default function AdminDashboard() {
             <div className="bg-gray-800 rounded-xl p-6">
               <p className="text-gray-400 text-sm">Watchlist Items</p>
               <p className="text-3xl font-bold text-white">{stats.totalWatchlistItems}</p>
-              <p className="text-purple-400 text-sm mt-1">{stats.activeAlerts} alerts set</p>
+              <p className="text-brand-light text-sm mt-1">{stats.activeAlerts} alerts set</p>
             </div>
             <div className="bg-gray-800 rounded-xl p-6">
               <p className="text-gray-400 text-sm">Triggered Alerts</p>
@@ -261,7 +261,7 @@ export default function AdminDashboard() {
               onClick={() => setActiveTab(tab)}
               className={`px-4 py-2 rounded-lg text-sm font-medium whitespace-nowrap ${
                 activeTab === tab
-                  ? 'bg-purple-600 text-white'
+                  ? 'bg-brand text-white'
                   : 'bg-gray-800 text-gray-400 hover:text-white'
               }`}
             >
@@ -274,7 +274,7 @@ export default function AdminDashboard() {
         <div className="bg-gray-800 rounded-xl overflow-hidden">
           {activeTab === 'overview' && (
             <div className="p-6">
-              <h2 className="text-lg font-bold text-white mb-4">Popular Events</h2>
+              <h2 className="font-heading text-lg font-bold text-white mb-4">Popular Events</h2>
               {popularEvents.length === 0 ? (
                 <p className="text-gray-400">No watchlist data yet</p>
               ) : (
@@ -286,7 +286,7 @@ export default function AdminDashboard() {
                         <p className="text-gray-400 text-sm">{event.venue_name}</p>
                       </div>
                       <div className="text-right">
-                        <p className="text-purple-400 font-bold">{event.watch_count} watching</p>
+                        <p className="text-brand-light font-bold">{event.watch_count} watching</p>
                         <p className="text-gray-500 text-sm">{formatDate(event.event_date)}</p>
                       </div>
                     </div>
@@ -312,7 +312,7 @@ export default function AdminDashboard() {
                     <tr key={user.id} className="hover:bg-gray-700/30">
                       <td className="px-6 py-4 text-white">{user.email}</td>
                       <td className="px-6 py-4 text-gray-400">{formatDate(user.created_at)}</td>
-                      <td className="px-6 py-4 text-purple-400">{user.watchlist_count}</td>
+                      <td className="px-6 py-4 text-brand-light">{user.watchlist_count}</td>
                       <td className="px-6 py-4 text-blue-400">{user.alerts_count}</td>
                     </tr>
                   ))}
@@ -393,7 +393,7 @@ export default function AdminDashboard() {
                   <div key={idx} className="flex items-start gap-4 p-4 bg-gray-700/30 rounded-lg">
                     <div className={`w-10 h-10 rounded-full flex items-center justify-center text-lg ${
                       item.type === 'signup' ? 'bg-green-600/20 text-green-400' :
-                      item.type === 'watchlist' ? 'bg-purple-600/20 text-purple-400' :
+                      item.type === 'watchlist' ? 'bg-brand/20 text-brand-light' :
                       item.type === 'alert' ? 'bg-blue-600/20 text-blue-400' :
                       'bg-gray-600/20 text-gray-400'
                     }`}>
@@ -419,7 +419,7 @@ export default function AdminDashboard() {
             <div className="p-6">
               {/* Run Campaign Button */}
               <div className="flex justify-between items-center mb-6">
-                <h2 className="text-lg font-bold text-white">Email Drip Campaign</h2>
+                <h2 className="font-heading text-lg font-bold text-white">Email Drip Campaign</h2>
                 <button
                   onClick={async () => {
                     setIsRunningDrip(true);
@@ -438,7 +438,7 @@ export default function AdminDashboard() {
                     }
                   }}
                   disabled={isRunningDrip}
-                  className="bg-purple-600 text-white px-4 py-2 rounded-lg text-sm font-medium hover:bg-purple-700 disabled:opacity-50"
+                  className="bg-brand text-white px-4 py-2 rounded-lg text-sm font-medium hover:bg-brand-dark disabled:opacity-50"
                 >
                   {isRunningDrip ? 'Running...' : 'Run Campaign Now'}
                 </button>
@@ -446,13 +446,13 @@ export default function AdminDashboard() {
 
               {/* Schedule */}
               <div className="mb-8">
-                <h3 className="text-white font-medium mb-3">Email Schedule</h3>
+                <h3 className="font-heading text-white font-medium mb-3">Email Schedule</h3>
                 <div className="grid grid-cols-5 gap-2">
                   {dripSchedule.map((item) => {
                     const stat = dripStats.find(s => s.email_number === item.emailNumber);
                     return (
                       <div key={item.emailNumber} className="bg-gray-700/50 rounded-lg p-3 text-center">
-                        <p className="text-purple-400 font-bold">Email {item.emailNumber}</p>
+                        <p className="text-brand-light font-bold">Email {item.emailNumber}</p>
                         <p className="text-gray-400 text-sm">Day {item.daysAfter}</p>
                         <p className="text-green-400 text-xs mt-1">
                           {stat ? `${stat.sent_count} sent` : '0 sent'}
@@ -466,7 +466,7 @@ export default function AdminDashboard() {
               {/* Email Stats */}
               {dripStats.length > 0 && (
                 <div className="mb-8">
-                  <h3 className="text-white font-medium mb-3">Emails Sent</h3>
+                  <h3 className="font-heading text-white font-medium mb-3">Emails Sent</h3>
                   <div className="overflow-x-auto">
                     <table className="w-full">
                       <thead className="bg-gray-700/50">
@@ -492,7 +492,7 @@ export default function AdminDashboard() {
 
               {/* Pending Users */}
               <div>
-                <h3 className="text-white font-medium mb-3">Users Pending Emails</h3>
+                <h3 className="font-heading text-white font-medium mb-3">Users Pending Emails</h3>
                 {dripPendingUsers.length === 0 ? (
                   <p className="text-gray-400">All users have completed the drip sequence</p>
                 ) : (
@@ -514,7 +514,7 @@ export default function AdminDashboard() {
                             <tr key={user.id}>
                               <td className="px-4 py-3 text-white">{user.email}</td>
                               <td className="px-4 py-3 text-gray-400">{user.days_since_signup} days</td>
-                              <td className="px-4 py-3 text-purple-400">
+                              <td className="px-4 py-3 text-brand-light">
                                 {user.last_email_sent === 0 ? 'None' : `Email ${user.last_email_sent}`}
                               </td>
                               <td className="px-4 py-3 text-blue-400">

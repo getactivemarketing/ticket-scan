@@ -4,6 +4,7 @@ import { useState } from 'react';
 import Link from 'next/link';
 import { useAuth } from '@/context/AuthContext';
 import { useRouter } from 'next/navigation';
+import Logo from '@/components/Logo';
 
 export default function Navbar() {
   const { user, logout } = useAuth();
@@ -19,14 +20,14 @@ export default function Navbar() {
   const closeMenu = () => setIsMenuOpen(false);
 
   return (
-    <nav className="bg-gradient-to-r from-purple-600 to-indigo-600 shadow-lg relative z-50">
+    <nav className="bg-gradient-to-r from-brand to-navy-light shadow-lg relative z-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between h-16">
           {/* Logo */}
           <div className="flex items-center">
             <Link href="/" className="flex items-center space-x-2" onClick={closeMenu}>
-              <span className="text-2xl">🎫</span>
-              <span className="text-white font-bold text-xl">Ticket Scan</span>
+              <Logo size={28} className="text-white" />
+              <span className="text-white font-heading font-bold text-xl">TicketScan</span>
             </Link>
           </div>
 
@@ -36,31 +37,31 @@ export default function Navbar() {
               <>
                 <Link
                   href="/dashboard"
-                  className="text-white hover:text-purple-200 transition-colors"
+                  className="text-white hover:text-blue-200 transition-colors"
                 >
                   Search
                 </Link>
                 <Link
                   href="/compare"
-                  className="text-white hover:text-purple-200 transition-colors"
+                  className="text-white hover:text-blue-200 transition-colors"
                 >
                   Compare
                 </Link>
                 <Link
                   href="/watchlist"
-                  className="text-white hover:text-purple-200 transition-colors"
+                  className="text-white hover:text-blue-200 transition-colors"
                 >
                   Watchlist
                 </Link>
                 <Link
                   href="/favorites"
-                  className="text-white hover:text-purple-200 transition-colors"
+                  className="text-white hover:text-blue-200 transition-colors"
                 >
                   Favorites
                 </Link>
                 <Link
                   href="/blog"
-                  className="text-white hover:text-purple-200 transition-colors"
+                  className="text-white hover:text-blue-200 transition-colors"
                 >
                   Tips
                 </Link>
@@ -70,7 +71,7 @@ export default function Navbar() {
                 >
                   World Cup 2026
                 </Link>
-                <span className="text-purple-200 text-sm hidden lg:inline">{user.email}</span>
+                <span className="text-blue-200 text-sm hidden lg:inline">{user.email}</span>
                 <button
                   onClick={handleLogout}
                   className="bg-white/20 hover:bg-white/30 text-white px-4 py-2 rounded-lg transition-colors"
@@ -82,13 +83,13 @@ export default function Navbar() {
               <>
                 <Link
                   href="/dashboard"
-                  className="text-white hover:text-purple-200 transition-colors"
+                  className="text-white hover:text-blue-200 transition-colors"
                 >
                   Search
                 </Link>
                 <Link
                   href="/blog"
-                  className="text-white hover:text-purple-200 transition-colors"
+                  className="text-white hover:text-blue-200 transition-colors"
                 >
                   Blog
                 </Link>
@@ -100,13 +101,13 @@ export default function Navbar() {
                 </Link>
                 <Link
                   href="/login"
-                  className="text-white hover:text-purple-200 transition-colors"
+                  className="text-white hover:text-blue-200 transition-colors"
                 >
                   Login
                 </Link>
                 <Link
                   href="/register"
-                  className="bg-white text-purple-600 hover:bg-purple-100 px-4 py-2 rounded-lg font-medium transition-colors"
+                  className="bg-white text-brand hover:bg-blue-100 px-4 py-2 rounded-lg font-medium transition-colors"
                 >
                   Sign Up
                 </Link>
@@ -137,54 +138,54 @@ export default function Navbar() {
 
       {/* Mobile Menu */}
       {isMenuOpen && (
-        <div className="md:hidden absolute top-16 left-0 right-0 bg-purple-700 shadow-lg border-t border-purple-500">
+        <div className="md:hidden absolute top-16 left-0 right-0 bg-navy shadow-lg border-t border-brand/30">
           <div className="px-4 py-4 space-y-3">
             {user ? (
               <>
-                <div className="text-purple-200 text-sm pb-2 border-b border-purple-500">
+                <div className="text-blue-200 text-sm pb-2 border-b border-brand/30">
                   {user.email}
                 </div>
                 <Link
                   href="/dashboard"
-                  className="block text-white hover:text-purple-200 py-2 transition-colors"
+                  className="block text-white hover:text-blue-200 py-2 transition-colors"
                   onClick={closeMenu}
                 >
-                  🔍 Search Events
+                  Search Events
                 </Link>
                 <Link
                   href="/compare"
-                  className="block text-white hover:text-purple-200 py-2 transition-colors"
+                  className="block text-white hover:text-blue-200 py-2 transition-colors"
                   onClick={closeMenu}
                 >
-                  ⚖️ Compare Prices
+                  Compare Prices
                 </Link>
                 <Link
                   href="/watchlist"
-                  className="block text-white hover:text-purple-200 py-2 transition-colors"
+                  className="block text-white hover:text-blue-200 py-2 transition-colors"
                   onClick={closeMenu}
                 >
-                  👁️ My Watchlist
+                  My Watchlist
                 </Link>
                 <Link
                   href="/favorites"
-                  className="block text-white hover:text-purple-200 py-2 transition-colors"
+                  className="block text-white hover:text-blue-200 py-2 transition-colors"
                   onClick={closeMenu}
                 >
-                  ⭐ Favorites
+                  Favorites
                 </Link>
                 <Link
                   href="/blog"
-                  className="block text-white hover:text-purple-200 py-2 transition-colors"
+                  className="block text-white hover:text-blue-200 py-2 transition-colors"
                   onClick={closeMenu}
                 >
-                  📝 Tips & Guides
+                  Tips & Guides
                 </Link>
                 <Link
                   href="/world-cup-2026"
                   className="block bg-green-500 text-white py-2 px-3 rounded-lg font-medium transition-colors text-center mt-2"
                   onClick={closeMenu}
                 >
-                  ⚽ World Cup 2026
+                  World Cup 2026
                 </Link>
                 <button
                   onClick={handleLogout}
@@ -197,35 +198,35 @@ export default function Navbar() {
               <>
                 <Link
                   href="/dashboard"
-                  className="block text-white hover:text-purple-200 py-2 transition-colors"
+                  className="block text-white hover:text-blue-200 py-2 transition-colors"
                   onClick={closeMenu}
                 >
-                  🔍 Search Events
+                  Search Events
                 </Link>
                 <Link
                   href="/blog"
-                  className="block text-white hover:text-purple-200 py-2 transition-colors"
+                  className="block text-white hover:text-blue-200 py-2 transition-colors"
                   onClick={closeMenu}
                 >
-                  📝 Blog & Tips
+                  Blog & Tips
                 </Link>
                 <Link
                   href="/world-cup-2026"
                   className="block bg-green-500 text-white py-2 px-3 rounded-lg font-medium transition-colors text-center"
                   onClick={closeMenu}
                 >
-                  ⚽ World Cup 2026
+                  World Cup 2026
                 </Link>
                 <Link
                   href="/login"
-                  className="block text-white hover:text-purple-200 py-2 transition-colors"
+                  className="block text-white hover:text-blue-200 py-2 transition-colors"
                   onClick={closeMenu}
                 >
                   Login
                 </Link>
                 <Link
                   href="/register"
-                  className="block bg-white text-purple-600 hover:bg-purple-100 py-3 rounded-lg font-medium transition-colors text-center mt-2"
+                  className="block bg-white text-brand hover:bg-blue-100 py-3 rounded-lg font-medium transition-colors text-center mt-2"
                   onClick={closeMenu}
                 >
                   Sign Up Free

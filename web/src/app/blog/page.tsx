@@ -25,7 +25,7 @@ function formatDate(dateStr: string) {
 const categoryColors = {
   guides: 'bg-blue-100 text-blue-700',
   tips: 'bg-green-100 text-green-700',
-  news: 'bg-purple-100 text-purple-700',
+  news: 'bg-brand/10 text-brand-dark',
   comparisons: 'bg-amber-100 text-amber-700',
 };
 
@@ -63,17 +63,17 @@ export default function BlogPage() {
 
       <div className="min-h-screen bg-gray-50">
         {/* Hero */}
-        <div className="bg-gradient-to-br from-purple-600 via-indigo-600 to-blue-700 text-white py-16">
+        <div className="bg-gradient-to-br from-navy via-brand to-teal text-white py-16">
           <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
             <nav className="text-sm mb-4">
-              <Link href="/" className="text-purple-200 hover:text-white">Home</Link>
-              <span className="mx-2 text-purple-300">/</span>
+              <Link href="/" className="text-blue-200 hover:text-white">Home</Link>
+              <span className="mx-2 text-blue-300">/</span>
               <span>Blog</span>
             </nav>
-            <h1 className="text-4xl md:text-5xl font-bold mb-4">
+            <h1 className="text-4xl md:text-5xl font-bold font-heading mb-4">
               Ticket Buying Tips & Guides
             </h1>
-            <p className="text-xl text-purple-100 max-w-2xl">
+            <p className="text-xl text-blue-100 max-w-2xl">
               Expert advice on finding the best ticket deals. Learn when to buy,
               how to compare prices, and strategies to save money.
             </p>
@@ -84,7 +84,7 @@ export default function BlogPage() {
           {/* Featured Posts */}
           {featuredPosts.length > 0 && (
             <section className="mb-16">
-              <h2 className="text-2xl font-bold text-gray-900 mb-8">Featured Articles</h2>
+              <h2 className="text-2xl font-bold font-heading text-gray-900 mb-8">Featured Articles</h2>
               <div className="grid md:grid-cols-3 gap-6">
                 {featuredPosts.map((post) => (
                   <Link
@@ -92,7 +92,7 @@ export default function BlogPage() {
                     href={`/blog/${post.slug}`}
                     className="bg-white rounded-2xl shadow-md overflow-hidden hover:shadow-lg transition-shadow group"
                   >
-                    <div className="h-3 bg-gradient-to-r from-purple-500 to-indigo-500"></div>
+                    <div className="h-3 bg-gradient-to-r from-brand to-navy-light"></div>
                     <div className="p-6">
                       <div className="flex items-center gap-2 mb-3">
                         <span className={`text-xs px-2 py-1 rounded-full font-medium ${categoryColors[post.category]}`}>
@@ -100,7 +100,7 @@ export default function BlogPage() {
                         </span>
                         <span className="text-xs text-gray-500">{post.readTime} min read</span>
                       </div>
-                      <h3 className="text-lg font-bold text-gray-900 mb-2 group-hover:text-purple-600 transition-colors">
+                      <h3 className="text-lg font-bold font-heading text-gray-900 mb-2 group-hover:text-brand transition-colors">
                         {post.title}
                       </h3>
                       <p className="text-gray-600 text-sm mb-4 line-clamp-2">
@@ -118,7 +118,7 @@ export default function BlogPage() {
 
           {/* All Posts */}
           <section>
-            <h2 className="text-2xl font-bold text-gray-900 mb-8">All Articles</h2>
+            <h2 className="text-2xl font-bold font-heading text-gray-900 mb-8">All Articles</h2>
             <div className="space-y-6">
               {regularPosts.map((post) => (
                 <Link
@@ -134,7 +134,7 @@ export default function BlogPage() {
                         </span>
                         <span className="text-xs text-gray-500">{post.readTime} min read</span>
                       </div>
-                      <h3 className="text-xl font-bold text-gray-900 mb-2 group-hover:text-purple-600 transition-colors">
+                      <h3 className="text-xl font-bold font-heading text-gray-900 mb-2 group-hover:text-brand transition-colors">
                         {post.title}
                       </h3>
                       <p className="text-gray-600 mb-2">
@@ -146,7 +146,7 @@ export default function BlogPage() {
                       </div>
                     </div>
                     <div className="md:text-right">
-                      <span className="inline-flex items-center text-purple-600 font-medium group-hover:text-purple-700">
+                      <span className="inline-flex items-center text-brand font-medium group-hover:text-brand-dark">
                         Read More
                         <svg className="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
@@ -160,15 +160,15 @@ export default function BlogPage() {
           </section>
 
           {/* Newsletter CTA */}
-          <section className="mt-16 bg-gradient-to-br from-purple-600 to-indigo-700 rounded-2xl p-8 text-white text-center">
-            <h2 className="text-2xl font-bold mb-2">Get Ticket Tips in Your Inbox</h2>
-            <p className="text-purple-100 mb-6 max-w-xl mx-auto">
+          <section className="mt-16 bg-gradient-to-br from-brand to-navy rounded-2xl p-8 text-white text-center">
+            <h2 className="text-2xl font-bold font-heading mb-2">Get Ticket Tips in Your Inbox</h2>
+            <p className="text-blue-100 mb-6 max-w-xl mx-auto">
               Subscribe to our newsletter for the latest strategies, deals, and tips
               to save money on concerts, sports, and events.
             </p>
             <Link
               href="/"
-              className="inline-block bg-white text-purple-600 px-6 py-3 rounded-lg font-bold hover:bg-purple-50 transition-colors"
+              className="inline-block bg-white text-brand px-6 py-3 rounded-lg font-bold hover:bg-blue-50 transition-colors"
             >
               Subscribe Now
             </Link>

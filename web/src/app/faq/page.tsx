@@ -121,12 +121,12 @@ export default function FAQPage() {
 
       <div className="min-h-screen bg-gray-50">
         {/* Hero */}
-        <div className="bg-gradient-to-br from-purple-600 via-indigo-600 to-blue-700 text-white py-16">
+        <div className="bg-gradient-to-br from-navy via-brand to-teal text-white py-16">
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <h1 className="text-4xl md:text-5xl font-bold mb-4">
+            <h1 className="font-heading text-4xl md:text-5xl font-bold mb-4">
               Frequently Asked Questions
             </h1>
-            <p className="text-xl text-purple-100">
+            <p className="text-xl text-blue-100">
               Everything you need to know about finding the best ticket deals
             </p>
           </div>
@@ -136,13 +136,13 @@ export default function FAQPage() {
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
           {/* Quick Links */}
           <div className="bg-white rounded-xl shadow-sm p-6 mb-8">
-            <h2 className="font-bold text-gray-900 mb-4">Jump to Section</h2>
+            <h2 className="font-heading font-bold text-gray-900 mb-4">Jump to Section</h2>
             <div className="flex flex-wrap gap-2">
               {faqs.map((category) => (
                 <a
                   key={category.category}
                   href={`#${category.category.toLowerCase().replace(/\s+/g, '-')}`}
-                  className="bg-purple-50 text-purple-700 px-3 py-1 rounded-full text-sm hover:bg-purple-100 transition-colors"
+                  className="bg-blue-50 text-brand-dark px-3 py-1 rounded-full text-sm hover:bg-blue-100 transition-colors"
                 >
                   {category.category}
                 </a>
@@ -157,7 +157,7 @@ export default function FAQPage() {
               id={category.category.toLowerCase().replace(/\s+/g, '-')}
               className="mb-12"
             >
-              <h2 className="text-2xl font-bold text-gray-900 mb-6">
+              <h2 className="font-heading text-2xl font-bold text-gray-900 mb-6">
                 {category.category}
               </h2>
               <div className="space-y-4">
@@ -166,7 +166,7 @@ export default function FAQPage() {
                     key={idx}
                     className="bg-white rounded-xl shadow-sm p-6"
                   >
-                    <h3 className="font-bold text-gray-900 mb-3">
+                    <h3 className="font-heading font-bold text-gray-900 mb-3">
                       {item.q}
                     </h3>
                     <p className="text-gray-600 leading-relaxed">
@@ -179,21 +179,21 @@ export default function FAQPage() {
           ))}
 
           {/* Still Have Questions */}
-          <div className="bg-gradient-to-br from-purple-600 to-indigo-700 rounded-xl p-8 text-white text-center">
-            <h2 className="text-2xl font-bold mb-4">Still Have Questions?</h2>
-            <p className="text-purple-100 mb-6">
+          <div className="bg-gradient-to-br from-brand to-navy rounded-xl p-8 text-white text-center">
+            <h2 className="font-heading text-2xl font-bold mb-4">Still Have Questions?</h2>
+            <p className="text-blue-100 mb-6">
               Check out our blog for detailed guides and ticket-buying tips.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link
                 href="/blog"
-                className="bg-white text-purple-600 px-6 py-3 rounded-lg font-bold hover:bg-purple-50 transition-colors"
+                className="bg-white text-brand px-6 py-3 rounded-lg font-bold hover:bg-blue-50 transition-colors"
               >
                 Read Our Guides
               </Link>
               <Link
                 href="/how-it-works"
-                className="bg-purple-500 text-white px-6 py-3 rounded-lg font-bold hover:bg-purple-400 transition-colors"
+                className="bg-brand-light text-white px-6 py-3 rounded-lg font-bold hover:bg-brand transition-colors"
               >
                 How It Works
               </Link>

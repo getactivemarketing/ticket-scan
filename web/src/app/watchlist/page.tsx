@@ -110,7 +110,7 @@ export default function WatchlistPage() {
   if (authLoading || loading) {
     return (
       <div className="min-h-screen flex items-center justify-center">
-        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-purple-600"></div>
+        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-brand"></div>
       </div>
     );
   }
@@ -120,12 +120,12 @@ export default function WatchlistPage() {
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center mb-8">
           <div>
-            <h1 className="text-3xl font-bold text-gray-900">My Watchlist</h1>
+            <h1 className="text-3xl font-bold font-heading text-gray-900">My Watchlist</h1>
             <p className="text-gray-600 mt-1">Track prices and get recommendations</p>
           </div>
           <Link
             href="/dashboard"
-            className="bg-purple-600 hover:bg-purple-700 text-white py-2 px-4 rounded-lg font-medium transition-colors"
+            className="bg-brand hover:bg-brand-dark text-white py-2 px-4 rounded-lg font-medium transition-colors"
           >
             + Add Events
           </Link>
@@ -140,7 +140,7 @@ export default function WatchlistPage() {
         {watchlist.length === 0 ? (
           <div className="bg-white rounded-2xl shadow-md p-12 text-center">
             <span className="text-4xl mb-4 block">👁️</span>
-            <h3 className="text-xl font-medium text-gray-900 mb-2">
+            <h3 className="text-xl font-medium font-heading text-gray-900 mb-2">
               Your watchlist is empty
             </h3>
             <p className="text-gray-600 mb-6">
@@ -148,7 +148,7 @@ export default function WatchlistPage() {
             </p>
             <Link
               href="/dashboard"
-              className="inline-block bg-purple-600 hover:bg-purple-700 text-white py-3 px-6 rounded-lg font-medium transition-colors"
+              className="inline-block bg-brand hover:bg-brand-dark text-white py-3 px-6 rounded-lg font-medium transition-colors"
             >
               Search Events
             </Link>
@@ -235,7 +235,7 @@ export default function WatchlistPage() {
                   <div className="flex items-center gap-2">
                     <Link
                       href={`/event/${item.event_id}`}
-                      className="bg-purple-100 hover:bg-purple-200 text-purple-700 py-2 px-4 rounded-lg font-medium transition-colors text-sm"
+                      className="bg-brand/10 hover:bg-blue-100 text-brand-dark py-2 px-4 rounded-lg font-medium transition-colors text-sm"
                     >
                       View Details
                     </Link>

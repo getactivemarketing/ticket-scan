@@ -19,8 +19,8 @@ export default function PriceTrendIndicator({
 
   const config = {
     up: {
-      bg: 'bg-red-100',
-      text: 'text-red-700',
+      bg: 'bg-amber-100',
+      text: 'text-amber-700',
       icon: (
         <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 15l7-7 7 7" />

@@ -149,7 +149,7 @@ export default function FavoritesPage() {
   if (authLoading || loading) {
     return (
       <div className="min-h-screen flex items-center justify-center">
-        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-purple-600"></div>
+        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-brand"></div>
       </div>
     );
   }
@@ -158,7 +158,7 @@ export default function FavoritesPage() {
     <div className="min-h-screen bg-gray-50 py-8">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="mb-8">
-          <h1 className="text-3xl font-bold text-gray-900">My Favorites</h1>
+          <h1 className="text-3xl font-bold font-heading text-gray-900">My Favorites</h1>
           <p className="text-gray-600 mt-1">
             Save your favorite teams, artists, and venues to get personalized event recommendations
           </p>
@@ -180,12 +180,12 @@ export default function FavoritesPage() {
 
         {/* Add Favorite Form */}
         <div className="bg-white rounded-2xl shadow-md p-6 mb-8">
-          <h2 className="text-lg font-semibold text-gray-900 mb-4">Add a Favorite</h2>
+          <h2 className="text-lg font-semibold font-heading text-gray-900 mb-4">Add a Favorite</h2>
           <form onSubmit={handleAddFavorite} className="flex flex-col sm:flex-row gap-4">
             <select
               value={newType}
               onChange={(e) => setNewType(e.target.value as 'team' | 'artist' | 'venue')}
-              className="px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500"
+              className="px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-brand"
             >
               {FAVORITE_TYPES.map((type) => (
                 <option key={type.value} value={type.value}>
@@ -198,12 +198,12 @@ export default function FavoritesPage() {
               value={newName}
               onChange={(e) => setNewName(e.target.value)}
               placeholder={FAVORITE_TYPES.find((t) => t.value === newType)?.placeholder}
-              className="flex-1 px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500"
+              className="flex-1 px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-brand"
             />
             <button
               type="submit"
               disabled={adding || !newName.trim()}
-              className="bg-purple-600 hover:bg-purple-700 disabled:bg-purple-400 text-white px-6 py-3 rounded-lg font-medium transition-colors"
+              className="bg-brand hover:bg-brand-dark disabled:bg-brand/40 text-white px-6 py-3 rounded-lg font-medium transition-colors"
             >
               {adding ? 'Adding...' : 'Add'}
             </button>
@@ -214,7 +214,7 @@ export default function FavoritesPage() {
         <div className="grid gap-6 mb-8">
           {groupedFavorites.map((group) => (
             <div key={group.value} className="bg-white rounded-2xl shadow-md p-6">
-              <h3 className="text-lg font-semibold text-gray-900 mb-4 flex items-center gap-2">
+              <h3 className="text-lg font-semibold font-heading text-gray-900 mb-4 flex items-center gap-2">
                 <span>{group.icon}</span>
                 {group.label}s
                 <span className="text-sm font-normal text-gray-500">({group.items.length})</span>
@@ -227,12 +227,12 @@ export default function FavoritesPage() {
                   {group.items.map((favorite) => (
                     <div
                       key={favorite.id}
-                      className="flex items-center gap-2 bg-purple-50 text-purple-700 px-4 py-2 rounded-full"
+                      className="flex items-center gap-2 bg-blue-50 text-brand-dark px-4 py-2 rounded-full"
                     >
                       <span className="font-medium">{favorite.favorite_name}</span>
                       <button
                         onClick={() => handleRemove(favorite.id, favorite.favorite_name)}
-                        className="text-purple-400 hover:text-purple-700 font-bold"
+                        className="text-brand-light hover:text-brand-dark font-bold"
                         title="Remove"
                       >
                         ×
@@ -249,9 +249,9 @@ export default function FavoritesPage() {
         {favorites.length > 0 && (
           <div className="bg-white rounded-2xl shadow-md p-6">
             <div className="flex justify-between items-center mb-4">
-              <h2 className="text-lg font-semibold text-gray-900">Upcoming Events For You</h2>
+              <h2 className="text-lg font-semibold font-heading text-gray-900">Upcoming Events For You</h2>
               {eventsLoading && (
-                <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-purple-600"></div>
+                <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-brand"></div>
               )}
             </div>
 
@@ -273,7 +273,7 @@ export default function FavoritesPage() {
                   >
                     <div className="flex-1">
                       <div className="flex items-center gap-2 mb-1">
-                        <span className="text-xs bg-purple-100 text-purple-600 px-2 py-0.5 rounded-full">
+                        <span className="text-xs bg-brand/10 text-brand px-2 py-0.5 rounded-full">
                           {event.matchedFavorite}
                         </span>
                       </div>
@@ -292,7 +292,7 @@ export default function FavoritesPage() {
                       )}
                       <Link
                         href={`/dashboard?keyword=${encodeURIComponent(event.matchedFavorite)}`}
-                        className="bg-purple-600 hover:bg-purple-700 text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors"
+                        className="bg-brand hover:bg-brand-dark text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors"
                       >
                         Find Tickets
                       </Link>
@@ -314,7 +314,7 @@ export default function FavoritesPage() {
         {favorites.length === 0 && (
           <div className="bg-white rounded-2xl shadow-md p-12 text-center">
             <span className="text-4xl mb-4 block">⭐</span>
-            <h3 className="text-xl font-medium text-gray-900 mb-2">
+            <h3 className="text-xl font-medium font-heading text-gray-900 mb-2">
               Start building your favorites
             </h3>
             <p className="text-gray-600 mb-6">

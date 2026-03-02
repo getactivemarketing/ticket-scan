@@ -58,13 +58,13 @@ export default function NewsletterSignup({ source = 'website', variant = 'card' 
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               placeholder="Enter your email"
-              className="flex-1 px-4 py-2 rounded-lg bg-gray-800 border border-gray-700 text-white placeholder-gray-500 focus:outline-none focus:border-purple-500 text-sm"
+              className="flex-1 px-4 py-2 rounded-lg bg-gray-800 border border-gray-700 text-white placeholder-gray-500 focus:outline-none focus:border-brand text-sm"
               required
             />
             <button
               type="submit"
               disabled={status === 'loading'}
-              className="bg-purple-600 hover:bg-purple-700 disabled:bg-purple-800 text-white px-4 py-2 rounded-lg font-medium transition-colors text-sm whitespace-nowrap"
+              className="bg-brand hover:bg-brand-dark disabled:bg-navy text-white px-4 py-2 rounded-lg font-medium transition-colors text-sm whitespace-nowrap"
             >
               {status === 'loading' ? '...' : 'Subscribe'}
             </button>
@@ -91,13 +91,13 @@ export default function NewsletterSignup({ source = 'website', variant = 'card' 
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               placeholder="Enter your email for deals"
-              className="flex-1 px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-purple-500"
+              className="flex-1 px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-brand"
               required
             />
             <button
               type="submit"
               disabled={status === 'loading'}
-              className="bg-purple-600 hover:bg-purple-700 disabled:bg-purple-400 text-white px-6 py-3 rounded-lg font-bold transition-colors whitespace-nowrap"
+              className="bg-brand hover:bg-brand-dark disabled:bg-brand-light text-white px-6 py-3 rounded-lg font-bold transition-colors whitespace-nowrap"
             >
               {status === 'loading' ? 'Subscribing...' : 'Get Deals'}
             </button>
@@ -112,11 +112,11 @@ export default function NewsletterSignup({ source = 'website', variant = 'card' 
 
   // Card variant (default)
   return (
-    <div className="bg-gradient-to-br from-purple-600 to-indigo-700 rounded-2xl p-8 text-white">
+    <div className="bg-gradient-to-br from-brand to-navy rounded-2xl p-8 text-white">
       <div className="max-w-xl mx-auto text-center">
         <span className="text-4xl mb-4 block">📬</span>
         <h3 className="text-2xl font-bold mb-2">Never Miss a Deal</h3>
-        <p className="text-purple-100 mb-6">
+        <p className="text-blue-100 mb-6">
           Get exclusive ticket deals, price drop alerts, and tips on finding cheap tickets delivered to your inbox.
         </p>
 
@@ -137,7 +137,7 @@ export default function NewsletterSignup({ source = 'website', variant = 'card' 
             <button
               type="submit"
               disabled={status === 'loading'}
-              className="bg-white text-purple-600 hover:bg-purple-50 disabled:bg-gray-200 px-6 py-3 rounded-lg font-bold transition-colors whitespace-nowrap"
+              className="bg-white text-brand hover:bg-blue-50 disabled:bg-gray-200 px-6 py-3 rounded-lg font-bold transition-colors whitespace-nowrap"
             >
               {status === 'loading' ? 'Subscribing...' : 'Subscribe'}
             </button>
@@ -147,7 +147,7 @@ export default function NewsletterSignup({ source = 'website', variant = 'card' 
           <p className="text-red-200 text-sm mt-3">{message}</p>
         )}
 
-        <p className="text-purple-200 text-xs mt-4">
+        <p className="text-blue-200 text-xs mt-4">
           No spam, unsubscribe anytime.
         </p>
       </div>

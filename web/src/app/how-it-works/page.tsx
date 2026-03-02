@@ -70,12 +70,12 @@ export default function HowItWorksPage() {
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Hero */}
-      <div className="bg-gradient-to-br from-purple-600 via-indigo-600 to-blue-700 text-white py-20">
+      <div className="bg-gradient-to-br from-navy via-brand to-teal text-white py-20">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h1 className="text-4xl md:text-5xl font-bold mb-6">
+          <h1 className="font-heading text-4xl md:text-5xl font-bold mb-6">
             How Ticket Scan Works
           </h1>
-          <p className="text-xl text-purple-100 max-w-2xl mx-auto">
+          <p className="text-xl text-blue-100 max-w-2xl mx-auto">
             Find the best ticket deals in 3 simple steps. Compare prices, track events, and never overpay again.
           </p>
         </div>
@@ -92,12 +92,12 @@ export default function HowItWorksPage() {
               {/* Content */}
               <div className="flex-1">
                 <div className="flex items-center gap-4 mb-4">
-                  <div className="w-12 h-12 bg-purple-600 text-white rounded-full flex items-center justify-center text-xl font-bold">
+                  <div className="w-12 h-12 bg-brand text-white rounded-full flex items-center justify-center text-xl font-bold">
                     {step.number}
                   </div>
                   <span className="text-4xl">{step.icon}</span>
                 </div>
-                <h2 className="text-3xl font-bold text-gray-900 mb-4">
+                <h2 className="font-heading text-3xl font-bold text-gray-900 mb-4">
                   {step.title}
                 </h2>
                 <p className="text-lg text-gray-600 mb-6">
@@ -123,9 +123,9 @@ export default function HowItWorksPage() {
                         <span className="text-gray-500">Search events, artists, teams...</span>
                       </div>
                       <div className="grid grid-cols-3 gap-2">
-                        <div className="bg-purple-50 text-purple-700 p-2 rounded text-center text-sm">NBA</div>
-                        <div className="bg-purple-50 text-purple-700 p-2 rounded text-center text-sm">Concerts</div>
-                        <div className="bg-purple-50 text-purple-700 p-2 rounded text-center text-sm">NHL</div>
+                        <div className="bg-blue-50 text-brand-dark p-2 rounded text-center text-sm">NBA</div>
+                        <div className="bg-blue-50 text-brand-dark p-2 rounded text-center text-sm">Concerts</div>
+                        <div className="bg-blue-50 text-brand-dark p-2 rounded text-center text-sm">NHL</div>
                       </div>
                       <div className="border-t pt-4 space-y-2">
                         <div className="h-4 bg-gray-100 rounded w-3/4"></div>
@@ -161,13 +161,13 @@ export default function HowItWorksPage() {
                         <span className="text-green-500">●</span>
                         Tracking enabled
                       </div>
-                      <div className="bg-purple-50 p-4 rounded-lg">
+                      <div className="bg-blue-50 p-4 rounded-lg">
                         <div className="font-medium text-gray-900">Lakers vs Celtics</div>
                         <div className="text-sm text-gray-500">Jan 15, 2026</div>
                       </div>
                       <div className="flex items-center justify-between">
                         <span className="text-gray-600">Target Price:</span>
-                        <span className="font-bold text-purple-600">$150</span>
+                        <span className="font-bold text-brand">$150</span>
                       </div>
                       <div className="bg-green-100 text-green-700 p-3 rounded-lg text-center font-medium">
                         📧 Alert set! We&apos;ll email you.
@@ -184,7 +184,7 @@ export default function HowItWorksPage() {
       {/* Features Grid */}
       <div className="bg-white py-20">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl font-bold text-center text-gray-900 mb-12">
+          <h2 className="font-heading text-3xl font-bold text-center text-gray-900 mb-12">
             Why Fans Love Ticket Scan
           </h2>
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
@@ -194,7 +194,7 @@ export default function HowItWorksPage() {
                 className="text-center p-6"
               >
                 <div className="text-4xl mb-4">{feature.icon}</div>
-                <h3 className="font-bold text-gray-900 mb-2">{feature.title}</h3>
+                <h3 className="font-heading font-bold text-gray-900 mb-2">{feature.title}</h3>
                 <p className="text-gray-600 text-sm">{feature.description}</p>
               </div>
             ))}
@@ -205,7 +205,7 @@ export default function HowItWorksPage() {
       {/* Platforms We Compare */}
       <div className="bg-gray-50 py-16">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-2xl font-bold text-gray-900 mb-8">
+          <h2 className="font-heading text-2xl font-bold text-gray-900 mb-8">
             We Compare All Major Ticket Platforms
           </h2>
           <div className="flex flex-wrap justify-center gap-6 text-gray-600">
@@ -219,24 +219,24 @@ export default function HowItWorksPage() {
       </div>
 
       {/* CTA Section */}
-      <div className="bg-gradient-to-br from-purple-600 to-indigo-700 py-20">
+      <div className="bg-gradient-to-br from-brand to-navy py-20">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-white">
-          <h2 className="text-3xl font-bold mb-4">
+          <h2 className="font-heading text-3xl font-bold mb-4">
             Ready to Find Your Best Deal?
           </h2>
-          <p className="text-purple-100 mb-8 text-lg">
+          <p className="text-blue-100 mb-8 text-lg">
             Join thousands of fans who never overpay for tickets.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
               href="/dashboard"
-              className="bg-white text-purple-600 px-8 py-4 rounded-lg font-bold text-lg hover:bg-purple-50 transition-colors"
+              className="bg-white text-brand px-8 py-4 rounded-lg font-bold text-lg hover:bg-blue-50 transition-colors"
             >
               Start Searching
             </Link>
             <Link
               href="/register"
-              className="bg-purple-500 text-white px-8 py-4 rounded-lg font-bold text-lg hover:bg-purple-400 transition-colors"
+              className="bg-brand-light text-white px-8 py-4 rounded-lg font-bold text-lg hover:bg-brand transition-colors"
             >
               Create Free Account
             </Link>

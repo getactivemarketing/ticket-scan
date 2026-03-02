@@ -21,7 +21,7 @@ export default function HomeHeroButtons() {
       <div className="flex justify-center gap-4">
         <Link
           href="/dashboard"
-          className="bg-white text-purple-600 hover:bg-purple-100 px-8 py-4 rounded-xl font-bold text-lg transition-colors"
+          className="bg-white text-brand hover:bg-blue-100 px-8 py-4 rounded-xl font-bold text-lg transition-colors"
         >
           Search Events
         </Link>
@@ -33,7 +33,7 @@ export default function HomeHeroButtons() {
     <div className="flex justify-center gap-4">
       <Link
         href="/dashboard"
-        className="bg-white text-purple-600 hover:bg-purple-100 px-8 py-4 rounded-xl font-bold text-lg transition-colors"
+        className="bg-white text-brand hover:bg-blue-100 px-8 py-4 rounded-xl font-bold text-lg transition-colors"
       >
         Find Tickets
       </Link>

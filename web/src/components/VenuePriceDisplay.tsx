@@ -31,7 +31,7 @@ export default function VenuePriceDisplay({ venue, basePrice, source }: VenuePri
   const prices = estimatePrices();
 
   const tiers = [
-    { key: 'floor', label: 'Floor/Courtside', color: 'bg-purple-500', textColor: 'text-purple-700', bgLight: 'bg-purple-50' },
+    { key: 'floor', label: 'Floor/Courtside', color: 'bg-brand', textColor: 'text-brand-dark', bgLight: 'bg-blue-50' },
     { key: 'club', label: 'Club Level', color: 'bg-amber-500', textColor: 'text-amber-700', bgLight: 'bg-amber-50' },
     { key: 'lower', label: 'Lower Bowl', color: 'bg-blue-500', textColor: 'text-blue-700', bgLight: 'bg-blue-50' },
     { key: 'upper', label: 'Upper Bowl', color: 'bg-green-500', textColor: 'text-green-700', bgLight: 'bg-green-50' }
@@ -61,7 +61,7 @@ export default function VenuePriceDisplay({ venue, basePrice, source }: VenuePri
           </div>
 
           {/* Floor seats */}
-          <div className="w-48 h-8 bg-purple-200 rounded flex items-center justify-center text-purple-800 text-xs font-medium border-2 border-purple-400">
+          <div className="w-48 h-8 bg-blue-200 rounded flex items-center justify-center text-blue-800 text-xs font-medium border-2 border-blue-400">
             Floor ${prices.floor || '---'}
           </div>
 

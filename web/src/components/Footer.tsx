@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Logo from '@/components/Logo';
 
 export default function Footer() {
   return (
@@ -8,8 +9,8 @@ export default function Footer() {
           {/* Brand */}
           <div className="col-span-1 md:col-span-2">
             <Link href="/" className="flex items-center space-x-2 mb-4">
-              <span className="text-2xl">🎫</span>
-              <span className="text-white font-bold text-xl">Ticket Scan</span>
+              <Logo size={28} className="text-white" />
+              <span className="text-white font-heading font-bold text-xl">TicketScan</span>
             </Link>
             <p className="text-gray-400 text-sm max-w-md">
               Compare ticket prices across Ticketmaster, SeatGeek, StubHub, and more.
@@ -105,9 +106,9 @@ export default function Footer() {
 
         {/* Bottom Bar */}
         <div className="border-t border-gray-800 mt-8 pt-8 text-sm text-gray-400 text-center">
-          <p>&copy; {new Date().getFullYear()} Ticket Scan. All rights reserved.</p>
+          <p>&copy; {new Date().getFullYear()} TicketScan. All rights reserved.</p>
           <p className="mt-2 text-xs">
-            Ticket Scan is not a ticket seller. We compare prices from third-party sites.
+            TicketScan is not a ticket seller. We compare prices from third-party sites.
           </p>
         </div>
       </div>

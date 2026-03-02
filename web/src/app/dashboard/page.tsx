@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import { useAuth } from '@/context/AuthContext';
 import api from '@/lib/api';
+import Logo from '@/components/Logo';
 import EventCard from '@/components/EventCard';
 import Link from 'next/link';
 
@@ -57,15 +58,15 @@ export default function DashboardPage() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Sign up banner for non-logged in users */}
         {!authLoading && !user && (
-          <div className="bg-gradient-to-r from-purple-600 to-indigo-600 rounded-xl p-4 mb-6 text-white">
+          <div className="bg-gradient-to-r from-brand to-navy-light rounded-xl p-4 mb-6 text-white">
             <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
               <div>
                 <p className="font-medium">Track prices and get alerts when they drop!</p>
-                <p className="text-purple-200 text-sm">Create a free account to save events to your watchlist.</p>
+                <p className="text-blue-200 text-sm">Create a free account to save events to your watchlist.</p>
               </div>
               <Link
                 href="/register"
-                className="bg-white text-purple-600 px-6 py-2 rounded-lg font-medium hover:bg-purple-50 transition-colors whitespace-nowrap"
+                className="bg-white text-brand px-6 py-2 rounded-lg font-medium hover:bg-blue-50 transition-colors whitespace-nowrap"
               >
                 Sign Up Free
               </Link>
@@ -75,7 +76,7 @@ export default function DashboardPage() {
 
         {/* Search Header */}
         <div className="bg-white rounded-2xl shadow-md p-6 mb-8">
-          <h1 className="text-2xl font-bold text-gray-900 mb-6">Search Events</h1>
+          <h1 className="text-2xl font-bold font-heading text-gray-900 mb-6">Search Events</h1>
 
           <form onSubmit={handleSearch} className="space-y-4">
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
@@ -88,7 +89,7 @@ export default function DashboardPage() {
                   type="text"
                   value={city}
                   onChange={(e) => setCity(e.target.value)}
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent outline-none text-gray-900"
+                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-brand focus:border-transparent outline-none text-gray-900"
                   placeholder="e.g., Orlando, Miami"
                 />
               </div>
@@ -101,7 +102,7 @@ export default function DashboardPage() {
                   type="text"
                   value={keyword}
                   onChange={(e) => setKeyword(e.target.value)}
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent outline-none text-gray-900"
+                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-brand focus:border-transparent outline-none text-gray-900"
                   placeholder="e.g., Taylor Swift"
                 />
               </div>
@@ -115,7 +116,7 @@ export default function DashboardPage() {
                   value={startDate}
                   min={today}
                   onChange={(e) => setStartDate(e.target.value)}
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent outline-none text-gray-900"
+                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-brand focus:border-transparent outline-none text-gray-900"
                 />
               </div>
               <div>
@@ -128,7 +129,7 @@ export default function DashboardPage() {
                   value={endDate}
                   min={startDate || today}
                   onChange={(e) => setEndDate(e.target.value)}
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent outline-none text-gray-900"
+                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-brand focus:border-transparent outline-none text-gray-900"
                 />
               </div>
             </div>
@@ -136,7 +137,7 @@ export default function DashboardPage() {
               <button
                 type="submit"
                 disabled={loading}
-                className="bg-purple-600 hover:bg-purple-700 text-white py-3 px-8 rounded-lg font-medium transition-colors disabled:opacity-50"
+                className="bg-brand hover:bg-brand-dark text-white py-3 px-8 rounded-lg font-medium transition-colors disabled:opacity-50"
               >
                 {loading ? 'Searching...' : 'Search Events'}
               </button>
@@ -154,7 +155,7 @@ export default function DashboardPage() {
         {searched && !loading && events.length === 0 && !error && (
           <div className="bg-white rounded-2xl shadow-md p-12 text-center">
             <span className="text-4xl mb-4 block">🔍</span>
-            <h3 className="text-xl font-medium text-gray-900 mb-2">No events found</h3>
+            <h3 className="text-xl font-medium font-heading text-gray-900 mb-2">No events found</h3>
             <p className="text-gray-600">Try a different city, keyword, or date range</p>
           </div>
         )}
@@ -162,7 +163,7 @@ export default function DashboardPage() {
         {events.length > 0 && (
           <>
             <div className="flex justify-between items-center mb-6">
-              <h2 className="text-xl font-bold text-gray-900">
+              <h2 className="text-xl font-bold font-heading text-gray-900">
                 {events.length} events found
               </h2>
             </div>
@@ -177,16 +178,16 @@ export default function DashboardPage() {
         {!searched && (
           <>
             <div className="bg-white rounded-2xl shadow-md p-12 text-center mb-8">
-              <span className="text-4xl mb-4 block">🎫</span>
-              <h3 className="text-xl font-medium text-gray-900 mb-2">Find your next event</h3>
+              <span className="mb-4 block text-brand"><Logo size={48} /></span>
+              <h3 className="text-xl font-medium font-heading text-gray-900 mb-2">Find your next event</h3>
               <p className="text-gray-600">Search for concerts, sports, theater, and more</p>
             </div>
 
             {/* Tips Section */}
-            <div className="bg-gradient-to-br from-purple-50 to-indigo-50 rounded-2xl p-6">
+            <div className="bg-gradient-to-br from-blue-50 to-gray-light rounded-2xl p-6">
               <div className="flex items-center justify-between mb-4">
-                <h3 className="text-lg font-bold text-gray-900">Ticket Buying Tips</h3>
-                <Link href="/blog" className="text-purple-600 hover:text-purple-700 text-sm font-medium">
+                <h3 className="text-lg font-bold font-heading text-gray-900">Ticket Buying Tips</h3>
+                <Link href="/blog" className="text-brand hover:text-brand-dark text-sm font-medium">
                   View All &rarr;
                 </Link>
               </div>

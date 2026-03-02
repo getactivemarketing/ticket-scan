@@ -55,7 +55,7 @@ function formatDate(dateStr: string) {
 const categoryColors = {
   guides: 'bg-blue-100 text-blue-700',
   tips: 'bg-green-100 text-green-700',
-  news: 'bg-purple-100 text-purple-700',
+  news: 'bg-brand/10 text-brand-dark',
   comparisons: 'bg-amber-100 text-amber-700',
 };
 
@@ -126,13 +126,13 @@ export default async function BlogPostPage({ params }: PageProps) {
 
       <div className="min-h-screen bg-gray-50">
         {/* Header */}
-        <div className="bg-gradient-to-br from-purple-600 via-indigo-600 to-blue-700 text-white py-12">
+        <div className="bg-gradient-to-br from-navy via-brand to-teal text-white py-12">
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
             <nav className="text-sm mb-6">
-              <Link href="/" className="text-purple-200 hover:text-white">Home</Link>
-              <span className="mx-2 text-purple-300">/</span>
-              <Link href="/blog" className="text-purple-200 hover:text-white">Blog</Link>
-              <span className="mx-2 text-purple-300">/</span>
+              <Link href="/" className="text-blue-200 hover:text-white">Home</Link>
+              <span className="mx-2 text-blue-300">/</span>
+              <Link href="/blog" className="text-blue-200 hover:text-white">Blog</Link>
+              <span className="mx-2 text-blue-300">/</span>
               <span className="text-white">{post.title.slice(0, 30)}...</span>
             </nav>
 
@@ -140,14 +140,14 @@ export default async function BlogPostPage({ params }: PageProps) {
               <span className={`text-xs px-3 py-1 rounded-full font-medium ${categoryColors[post.category]}`}>
                 {categoryLabels[post.category]}
               </span>
-              <span className="text-purple-200 text-sm">{post.readTime} min read</span>
+              <span className="text-blue-200 text-sm">{post.readTime} min read</span>
             </div>
 
-            <h1 className="text-3xl md:text-4xl font-bold mb-4">
+            <h1 className="text-3xl md:text-4xl font-bold font-heading mb-4">
               {post.title}
             </h1>
 
-            <div className="flex items-center gap-4 text-purple-100">
+            <div className="flex items-center gap-4 text-blue-100">
               <span>By {post.author}</span>
               <span>|</span>
               <span>{formatDate(post.publishedAt)}</span>
@@ -176,7 +176,7 @@ export default async function BlogPostPage({ params }: PageProps) {
                     prose-ul:my-4 prose-li:text-gray-800 prose-li:my-1
                     prose-strong:text-gray-900 prose-strong:font-semibold
                     prose-table:my-6 prose-th:bg-gray-100 prose-th:p-3 prose-th:text-gray-900 prose-td:p-3 prose-td:border prose-td:text-gray-800
-                    prose-a:text-purple-600 prose-a:no-underline hover:prose-a:underline"
+                    prose-a:text-brand prose-a:no-underline hover:prose-a:underline"
                   dangerouslySetInnerHTML={{ __html: formatContent(post.content) }}
                 />
 
@@ -196,8 +196,8 @@ export default async function BlogPostPage({ params }: PageProps) {
                 </div>
 
                 {/* CTA */}
-                <div className="mt-10 bg-gradient-to-br from-purple-50 to-indigo-50 rounded-xl p-6 text-center">
-                  <h3 className="text-xl font-bold text-gray-900 mb-2">
+                <div className="mt-10 bg-gradient-to-br from-blue-50 to-blue-100 rounded-xl p-6 text-center">
+                  <h3 className="text-xl font-bold font-heading text-gray-900 mb-2">
                     Ready to Find Cheap Tickets?
                   </h3>
                   <p className="text-gray-600 mb-4">
@@ -205,7 +205,7 @@ export default async function BlogPostPage({ params }: PageProps) {
                   </p>
                   <Link
                     href="/register"
-                    className="inline-block bg-purple-600 text-white px-6 py-3 rounded-lg font-bold hover:bg-purple-700 transition-colors"
+                    className="inline-block bg-brand text-white px-6 py-3 rounded-lg font-bold hover:bg-brand-dark transition-colors"
                   >
                     Create Free Account
                   </Link>
@@ -218,7 +218,7 @@ export default async function BlogPostPage({ params }: PageProps) {
               {/* Related Posts */}
               {relatedPosts.length > 0 && (
                 <div className="bg-white rounded-2xl shadow-md p-6 mb-6">
-                  <h3 className="font-bold text-gray-900 mb-4">Related Articles</h3>
+                  <h3 className="font-bold font-heading text-gray-900 mb-4">Related Articles</h3>
                   <div className="space-y-4">
                     {relatedPosts.map((related) => (
                       <Link
@@ -226,7 +226,7 @@ export default async function BlogPostPage({ params }: PageProps) {
                         href={`/blog/${related.slug}`}
                         className="block group"
                       >
-                        <h4 className="font-medium text-gray-900 group-hover:text-purple-600 transition-colors mb-1">
+                        <h4 className="font-medium text-gray-900 group-hover:text-brand transition-colors mb-1">
                           {related.title}
                         </h4>
                         <p className="text-sm text-gray-500">{related.readTime} min read</p>
@@ -238,20 +238,20 @@ export default async function BlogPostPage({ params }: PageProps) {
 
               {/* Quick Links */}
               <div className="bg-white rounded-2xl shadow-md p-6 mb-6">
-                <h3 className="font-bold text-gray-900 mb-4">Quick Links</h3>
+                <h3 className="font-bold font-heading text-gray-900 mb-4">Quick Links</h3>
                 <ul className="space-y-2">
                   <li>
-                    <Link href="/dashboard" className="text-purple-600 hover:text-purple-700">
+                    <Link href="/dashboard" className="text-brand hover:text-brand-dark">
                       Search Events
                     </Link>
                   </li>
                   <li>
-                    <Link href="/compare" className="text-purple-600 hover:text-purple-700">
+                    <Link href="/compare" className="text-brand hover:text-brand-dark">
                       Compare Prices
                     </Link>
                   </li>
                   <li>
-                    <Link href="/register" className="text-purple-600 hover:text-purple-700">
+                    <Link href="/register" className="text-brand hover:text-brand-dark">
                       Create Account
                     </Link>
                   </li>
@@ -259,14 +259,14 @@ export default async function BlogPostPage({ params }: PageProps) {
               </div>
 
               {/* Newsletter */}
-              <div className="bg-gradient-to-br from-purple-600 to-indigo-700 rounded-2xl p-6 text-white">
-                <h3 className="font-bold mb-2">Get More Tips</h3>
-                <p className="text-purple-100 text-sm mb-4">
+              <div className="bg-gradient-to-br from-brand to-navy rounded-2xl p-6 text-white">
+                <h3 className="font-bold font-heading mb-2">Get More Tips</h3>
+                <p className="text-blue-100 text-sm mb-4">
                   Subscribe for ticket buying tips and exclusive deals.
                 </p>
                 <Link
                   href="/"
-                  className="block bg-white text-purple-600 text-center py-2 rounded-lg font-bold hover:bg-purple-50 transition-colors"
+                  className="block bg-white text-brand text-center py-2 rounded-lg font-bold hover:bg-blue-50 transition-colors"
                 >
                   Subscribe
                 </Link>
@@ -278,7 +278,7 @@ export default async function BlogPostPage({ params }: PageProps) {
           <div className="mt-12 text-center">
             <Link
               href="/blog"
-              className="inline-flex items-center text-purple-600 font-medium hover:text-purple-700"
+              className="inline-flex items-center text-brand font-medium hover:text-brand-dark"
             >
               <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
