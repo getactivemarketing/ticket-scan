@@ -91,6 +91,248 @@ async function postDailyTip() {
   await postToTwitter(tip);
 }
 
+// Instagram Graph API setup
+// Token is loaded from DB on startup if available (auto-refreshed monthly),
+// falling back to env var. Use `let` so the cron job can update it in-memory.
+let INSTAGRAM_ACCESS_TOKEN = process.env.INSTAGRAM_ACCESS_TOKEN;
+const INSTAGRAM_ACCOUNT_ID = process.env.INSTAGRAM_ACCOUNT_ID;
+
+// Load Instagram token from DB on startup (overrides env var if present)
+async function loadInstagramTokenFromDB() {
+  try {
+    await pool.query(`
+      CREATE TABLE IF NOT EXISTS app_settings (
+        key VARCHAR(100) PRIMARY KEY,
+        value TEXT NOT NULL,
+        updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+      )
+    `);
+    const result = await pool.query(
+      `SELECT value, updated_at FROM app_settings WHERE key = 'instagram_access_token'`
+    );
+    if (result.rows.length > 0) {
+      INSTAGRAM_ACCESS_TOKEN = result.rows[0].value;
+      const ageDays = Math.floor((Date.now() - new Date(result.rows[0].updated_at).getTime()) / 86400000);
+      console.log(`📸 Loaded Instagram token from DB (refreshed ${ageDays} days ago)`);
+    }
+  } catch (error) {
+    console.error('📸 Failed to load Instagram token from DB:', error.message);
+  }
+}
+
+// Refresh the Instagram long-lived token (extends by 60 days)
+async function refreshInstagramToken() {
+  if (!INSTAGRAM_ACCESS_TOKEN) {
+    console.log('📸 No Instagram token to refresh');
+    return null;
+  }
+  try {
+    const res = await axios.get('https://graph.instagram.com/refresh_access_token', {
+      params: {
+        grant_type: 'ig_refresh_token',
+        access_token: INSTAGRAM_ACCESS_TOKEN,
+      },
+    });
+    const newToken = res.data.access_token;
+    const expiresInDays = Math.floor(res.data.expires_in / 86400);
+
+    // Update in-memory token
+    INSTAGRAM_ACCESS_TOKEN = newToken;
+
+    // Persist to DB so it survives restarts
+    await pool.query(
+      `INSERT INTO app_settings (key, value, updated_at)
+       VALUES ('instagram_access_token', $1, CURRENT_TIMESTAMP)
+       ON CONFLICT (key) DO UPDATE SET value = $1, updated_at = CURRENT_TIMESTAMP`,
+      [newToken]
+    );
+
+    console.log(`📸 ✅ Instagram token refreshed. Valid for ${expiresInDays} days.`);
+    return { token: newToken, expiresInDays };
+  } catch (error) {
+    console.error('📸 ❌ Instagram token refresh failed:', error.response?.data?.error?.message || error.message);
+    return null;
+  }
+}
+
+// Post image to Instagram
+async function postToInstagram(caption, imageUrl) {
+  if (!INSTAGRAM_ACCESS_TOKEN || !INSTAGRAM_ACCOUNT_ID) {
+    console.log('📸 Instagram not configured, skipping post:', caption.substring(0, 50) + '...');
+    return null;
+  }
+
+  try {
+    // Step 1: Create media container
+    const createRes = await axios.post(
+      `https://graph.instagram.com/v21.0/${INSTAGRAM_ACCOUNT_ID}/media`,
+      {
+        image_url: imageUrl,
+        caption: caption,
+        access_token: INSTAGRAM_ACCESS_TOKEN,
+      }
+    );
+    const creationId = createRes.data.id;
+    console.log('📸 Instagram media container created:', creationId);
+
+    // Step 2: Publish the container
+    const publishRes = await axios.post(
+      `https://graph.instagram.com/v21.0/${INSTAGRAM_ACCOUNT_ID}/media_publish`,
+      {
+        creation_id: creationId,
+        access_token: INSTAGRAM_ACCESS_TOKEN,
+      }
+    );
+    console.log('📸 Published to Instagram:', publishRes.data.id);
+    return publishRes.data;
+  } catch (error) {
+    console.error('📸 Instagram post error:', error.response?.data?.error?.message || error.message);
+    return null;
+  }
+}
+
+// Post carousel to Instagram (multiple images)
+async function postInstagramCarousel(caption, imageUrls) {
+  if (!INSTAGRAM_ACCESS_TOKEN || !INSTAGRAM_ACCOUNT_ID) {
+    console.log('📸 Instagram not configured, skipping carousel');
+    return null;
+  }
+
+  try {
+    // Step 1: Create individual media containers for each image
+    const childIds = [];
+    for (const url of imageUrls) {
+      const res = await axios.post(
+        `https://graph.instagram.com/v21.0/${INSTAGRAM_ACCOUNT_ID}/media`,
+        {
+          image_url: url,
+          is_carousel_item: true,
+          access_token: INSTAGRAM_ACCESS_TOKEN,
+        }
+      );
+      childIds.push(res.data.id);
+    }
+
+    // Step 2: Create carousel container
+    const carouselRes = await axios.post(
+      `https://graph.instagram.com/v21.0/${INSTAGRAM_ACCOUNT_ID}/media`,
+      {
+        media_type: 'CAROUSEL',
+        children: childIds.join(','),
+        caption: caption,
+        access_token: INSTAGRAM_ACCESS_TOKEN,
+      }
+    );
+    const carouselId = carouselRes.data.id;
+
+    // Step 3: Publish
+    const publishRes = await axios.post(
+      `https://graph.instagram.com/v21.0/${INSTAGRAM_ACCOUNT_ID}/media_publish`,
+      {
+        creation_id: carouselId,
+        access_token: INSTAGRAM_ACCESS_TOKEN,
+      }
+    );
+    console.log('📸 Published Instagram carousel:', publishRes.data.id);
+    return publishRes.data;
+  } catch (error) {
+    console.error('📸 Instagram carousel error:', error.response?.data?.error?.message || error.message);
+    return null;
+  }
+}
+
+// Post reel to Instagram (video)
+async function postInstagramReel(caption, videoUrl, coverUrl = null) {
+  if (!INSTAGRAM_ACCESS_TOKEN || !INSTAGRAM_ACCOUNT_ID) {
+    console.log('📸 Instagram not configured, skipping reel');
+    return null;
+  }
+
+  try {
+    // Step 1: Create reel container
+    const params = {
+      media_type: 'REELS',
+      video_url: videoUrl,
+      caption: caption,
+      access_token: INSTAGRAM_ACCESS_TOKEN,
+    };
+    if (coverUrl) params.cover_url = coverUrl;
+
+    const createRes = await axios.post(
+      `https://graph.instagram.com/v21.0/${INSTAGRAM_ACCOUNT_ID}/media`,
+      params
+    );
+    const creationId = createRes.data.id;
+    console.log('📸 Instagram reel container created:', creationId);
+
+    // Step 2: Wait for video processing (poll status)
+    let status = 'IN_PROGRESS';
+    let attempts = 0;
+    while (status === 'IN_PROGRESS' && attempts < 30) {
+      await new Promise(resolve => setTimeout(resolve, 5000)); // wait 5 sec
+      const statusRes = await axios.get(
+        `https://graph.instagram.com/v21.0/${creationId}`,
+        { params: { fields: 'status_code', access_token: INSTAGRAM_ACCESS_TOKEN } }
+      );
+      status = statusRes.data.status_code;
+      attempts++;
+    }
+
+    if (status !== 'FINISHED') {
+      console.error('📸 Reel processing failed, status:', status);
+      return null;
+    }
+
+    // Step 3: Publish
+    const publishRes = await axios.post(
+      `https://graph.instagram.com/v21.0/${INSTAGRAM_ACCOUNT_ID}/media_publish`,
+      {
+        creation_id: creationId,
+        access_token: INSTAGRAM_ACCESS_TOKEN,
+      }
+    );
+    console.log('📸 Published Instagram reel:', publishRes.data.id);
+    return publishRes.data;
+  } catch (error) {
+    console.error('📸 Instagram reel error:', error.response?.data?.error?.message || error.message);
+    return null;
+  }
+}
+
+// Instagram-formatted tips (longer captions with hashtags)
+const instagramTips = [
+  "💡 Ticket prices often drop 2-3 weeks before an event.\n\nSet a price alert on TicketScan and we'll notify you the moment prices hit your target.\n\nStop overpaying. Start comparing.\n\n🔗 Link in bio\n\n#ticketscan #tickettips #concerttickets #savemoney #smartbuyer #livemusic #eventtickets #pricecomparison",
+  "🎫 Did you know? The same seat can cost $50+ more on one site vs another.\n\nTicketScan compares Ticketmaster, SeatGeek & StubHub side by side — so you never overpay.\n\n🔗 Link in bio\n\n#ticketscan #compareprices #ticketmaster #seatgeek #stubhub #ticketdeals #concerts #sports",
+  "📉 Watching a sold-out show? Don't panic buy!\n\nResale prices almost always drop as the event gets closer. The panic sellers who bought to flip need to offload.\n\nTrack the trend on TicketScan.\n\n🔗 Link in bio\n\n#ticketscan #soldout #concerts #tickettips #resaletickets #smartshopper",
+  "⚽ World Cup 2026 is coming to the US, Mexico & Canada!\n\n16 stadiums. 104 matches. Millions of fans.\n\nStart tracking ticket prices now on TicketScan before they skyrocket.\n\n🔗 Link in bio\n\n#worldcup2026 #fifaworldcup #ticketscan #worldcuptickets #soccer #football #usa2026",
+  "⏰ When's the best time to buy concert tickets?\n\n✅ 2-4 weeks before: Sweet spot\n❌ Day of announcement: Premium prices\n❌ Day before: Panic buying\n\nLet the data guide you. Compare prices on TicketScan.\n\n🔗 Link in bio\n\n#ticketscan #concerttips #tickettips #livemusic #concerts #savemoney",
+  "🏀 Sports tip: Ticket prices are highest right after matchups are announced.\n\nWait 48-72 hours for the hype to settle, then compare prices across all platforms on TicketScan.\n\nPatience pays.\n\n🔗 Link in bio\n\n#ticketscan #sportsfan #nba #nfl #mlb #tickets #gameday #pricetracker",
+  "🔔 Set it and forget it.\n\nAdd any event to your TicketScan watchlist, set your target price, and we'll track prices 24/7 across Ticketmaster, SeatGeek & StubHub.\n\nWhen prices drop — you'll know first.\n\n🔗 Link in bio\n\n#ticketscan #pricealert #ticketdeals #concerts #sports #smartshopping",
+];
+
+// Post daily Instagram tip
+async function postDailyInstagramTip(imageUrl) {
+  const tipIndex = new Date().getDate() % instagramTips.length;
+  const tip = instagramTips[tipIndex];
+
+  if (imageUrl) {
+    return await postToInstagram(tip, imageUrl);
+  }
+  console.log('📸 Instagram daily tip ready (needs image URL to publish):', tip.substring(0, 50) + '...');
+  return null;
+}
+
+// Post price drop to Instagram
+async function postPriceDropToInstagram(eventName, venue, oldPrice, newPrice, percentDrop, imageUrl) {
+  const caption = `🚨 PRICE DROP ALERT\n\n${eventName}\n📍 ${venue}\n\n💰 Was: $${oldPrice}\n✅ Now: $${newPrice} (${percentDrop}% off!)\n\nCompare all ticket prices on TicketScan — Ticketmaster, SeatGeek & StubHub in one place.\n\n🔗 Link in bio\n\n#ticketscan #pricedrop #ticketdeals #concerts #sports #tickets #savemoney #${eventName.replace(/[^a-zA-Z0-9]/g, '').toLowerCase()}`;
+
+  if (imageUrl) {
+    return await postToInstagram(caption, imageUrl);
+  }
+  console.log('📸 Instagram price drop ready (needs image URL):', caption.substring(0, 80) + '...');
+  return null;
+}
+
 // Post price drop alert to Twitter
 async function postPriceDropToTwitter(eventName, venue, oldPrice, newPrice, percentDrop) {
   const text = `🚨 Price Drop Alert!\n\n${eventName}\n📍 ${venue}\n\n💰 Was: $${oldPrice} → Now: $${newPrice} (${percentDrop}% off)\n\nCompare all prices: ticketscan.io\n\n#tickets #deals #concerts`;
@@ -2845,6 +3087,20 @@ cron.schedule('0 14 * * *', () => {
   postDailyTip();
 });
 
+// Schedule daily Instagram tip at 12 PM EST (5 PM UTC)
+cron.schedule('0 17 * * *', () => {
+  console.log('📸 Posting daily Instagram tip...');
+  // Note: Requires image URL — the marketing agent provides this via the admin endpoint
+  postDailyInstagramTip();
+});
+
+// Refresh Instagram long-lived token monthly (1st of each month at 3 AM UTC)
+// Token lasts 60 days, so refreshing every 30 days keeps it alive forever
+cron.schedule('0 3 1 * *', () => {
+  console.log('📸 Running monthly Instagram token refresh...');
+  refreshInstagramToken();
+});
+
 // Also expose an endpoint to manually trigger price tracking
 app.post('/api/prices/track', authenticateToken, async (req, res) => {
   // Only allow manual trigger in development or for testing
@@ -3283,8 +3539,130 @@ app.get('/api/admin/twitter/tips', authenticateAdmin, async (req, res) => {
   });
 });
 
+// ==========================================
+// Instagram Admin Endpoints
+// ==========================================
+
+// Post image to Instagram
+app.post('/api/admin/instagram/post', authenticateAdmin, async (req, res) => {
+  try {
+    const { caption, image_url } = req.body;
+    if (!caption) {
+      return res.status(400).json({ success: false, error: 'Caption is required' });
+    }
+    if (!image_url) {
+      return res.status(400).json({ success: false, error: 'image_url is required (publicly accessible URL)' });
+    }
+
+    const result = await postToInstagram(caption, image_url);
+    if (result) {
+      res.json({ success: true, post: result });
+    } else {
+      res.status(500).json({ success: false, error: 'Failed to post to Instagram. Check that INSTAGRAM_ACCESS_TOKEN and INSTAGRAM_ACCOUNT_ID are configured.' });
+    }
+  } catch (error) {
+    console.error('Instagram post error:', error.message);
+    res.status(500).json({ success: false, error: error.message });
+  }
+});
+
+// Post carousel to Instagram (multiple images)
+app.post('/api/admin/instagram/carousel', authenticateAdmin, async (req, res) => {
+  try {
+    const { caption, image_urls } = req.body;
+    if (!caption) {
+      return res.status(400).json({ success: false, error: 'Caption is required' });
+    }
+    if (!image_urls || !Array.isArray(image_urls) || image_urls.length < 2) {
+      return res.status(400).json({ success: false, error: 'image_urls must be an array of 2-10 publicly accessible URLs' });
+    }
+    if (image_urls.length > 10) {
+      return res.status(400).json({ success: false, error: 'Maximum 10 images per carousel' });
+    }
+
+    const result = await postInstagramCarousel(caption, image_urls);
+    if (result) {
+      res.json({ success: true, post: result });
+    } else {
+      res.status(500).json({ success: false, error: 'Failed to post carousel to Instagram' });
+    }
+  } catch (error) {
+    console.error('Instagram carousel error:', error.message);
+    res.status(500).json({ success: false, error: error.message });
+  }
+});
+
+// Post reel to Instagram (video)
+app.post('/api/admin/instagram/reel', authenticateAdmin, async (req, res) => {
+  try {
+    const { caption, video_url, cover_url } = req.body;
+    if (!caption) {
+      return res.status(400).json({ success: false, error: 'Caption is required' });
+    }
+    if (!video_url) {
+      return res.status(400).json({ success: false, error: 'video_url is required (publicly accessible URL, MP4, max 15 min)' });
+    }
+
+    const result = await postInstagramReel(caption, video_url, cover_url);
+    if (result) {
+      res.json({ success: true, post: result });
+    } else {
+      res.status(500).json({ success: false, error: 'Failed to post reel to Instagram. Video may still be processing or failed.' });
+    }
+  } catch (error) {
+    console.error('Instagram reel error:', error.message);
+    res.status(500).json({ success: false, error: error.message });
+  }
+});
+
+// Post daily Instagram tip
+app.post('/api/admin/instagram/daily-tip', authenticateAdmin, async (req, res) => {
+  try {
+    const { image_url } = req.body;
+    if (!image_url) {
+      return res.status(400).json({ success: false, error: 'image_url is required for Instagram tips' });
+    }
+
+    const result = await postDailyInstagramTip(image_url);
+    if (result) {
+      res.json({ success: true, post: result, message: 'Daily tip posted to Instagram' });
+    } else {
+      res.status(500).json({ success: false, error: 'Failed to post daily tip to Instagram' });
+    }
+  } catch (error) {
+    console.error('Instagram daily tip error:', error.message);
+    res.status(500).json({ success: false, error: error.message });
+  }
+});
+
+// Manually refresh the Instagram long-lived token
+app.post('/api/admin/instagram/refresh-token', authenticateAdmin, async (req, res) => {
+  try {
+    const result = await refreshInstagramToken();
+    if (result) {
+      res.json({ success: true, expiresInDays: result.expiresInDays, message: 'Instagram token refreshed and persisted to DB' });
+    } else {
+      res.status(500).json({ success: false, error: 'Failed to refresh Instagram token' });
+    }
+  } catch (error) {
+    res.status(500).json({ success: false, error: error.message });
+  }
+});
+
+// Get Instagram tips list
+app.get('/api/admin/instagram/tips', authenticateAdmin, async (req, res) => {
+  res.json({
+    success: true,
+    tips: instagramTips,
+    todaysTipIndex: new Date().getDate() % instagramTips.length
+  });
+});
+
 // Start server
-app.listen(PORT, () => {
+app.listen(PORT, async () => {
+  // Load Instagram token from DB if previously refreshed (overrides env var)
+  await loadInstagramTokenFromDB();
+
   console.log(`\n🚀 TicketHawk API Server Started`);
   console.log(`📍 Port: ${PORT}`);
   console.log(`🌍 Environment: ${process.env.NODE_ENV || 'development'}`);
@@ -3292,6 +3670,7 @@ app.listen(PORT, () => {
   console.log(`🔑 SeatGeek API: ${SEATGEEK_CLIENT_ID ? '✅ Configured' : '❌ Missing'}`);
   console.log(`🔑 StubHub API: ${STUBHUB_APP_KEY && STUBHUB_API_KEY ? '✅ Configured' : '❌ Missing'}`);
   console.log(`🐦 Twitter API: ${process.env.TWITTER_API_KEY ? '✅ Configured' : '❌ Missing'}`);
+  console.log(`📸 Instagram API: ${INSTAGRAM_ACCESS_TOKEN && INSTAGRAM_ACCOUNT_ID ? '✅ Configured' : '❌ Missing'}`);
   console.log(`\n📖 API Documentation:`);
   console.log(`   Health Check: http://localhost:${PORT}/`);
   console.log(`   Test APIs: See http://localhost:${PORT}/ for endpoints\n`);
