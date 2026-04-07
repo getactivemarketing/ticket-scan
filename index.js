@@ -3482,20 +3482,6 @@ app.get('/api/watchlist/with-prices', authenticateToken, async (req, res) => {
   }
 });
 
-// 404 handler
-app.use((req, res) => {
-  res.status(404).json({
-    error: 'Endpoint not found',
-    availableEndpoints: {
-      health: 'GET /',
-      ticketmaster: 'GET /api/test/ticketmaster',
-      seatgeek: 'GET /api/test/seatgeek',
-      search: 'GET /api/search',
-      setupDb: 'GET /api/setup/database'
-    }
-  });
-});
-
 // Admin endpoint to post to Twitter
 app.post('/api/admin/twitter/post', authenticateAdmin, async (req, res) => {
   try {
@@ -3655,6 +3641,20 @@ app.get('/api/admin/instagram/tips', authenticateAdmin, async (req, res) => {
     success: true,
     tips: instagramTips,
     todaysTipIndex: new Date().getDate() % instagramTips.length
+  });
+});
+
+// 404 handler — MUST be last, after all routes
+app.use((req, res) => {
+  res.status(404).json({
+    error: 'Endpoint not found',
+    availableEndpoints: {
+      health: 'GET /',
+      ticketmaster: 'GET /api/test/ticketmaster',
+      seatgeek: 'GET /api/test/seatgeek',
+      search: 'GET /api/search',
+      setupDb: 'GET /api/setup/database'
+    }
   });
 });
 
