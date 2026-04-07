@@ -37,7 +37,22 @@ const emailTransporter = nodemailer.createTransport({
     user: process.env.SMTP_USER,
     pass: process.env.SMTP_PASS,
   },
+  // Timeouts to prevent hanging when SMTP misbehaves
+  connectionTimeout: 15000, // 15 sec
+  greetingTimeout: 15000,
+  socketTimeout: 20000,
 });
+
+// Verify SMTP on startup so we know immediately if it's broken
+if (process.env.SMTP_HOST && process.env.SMTP_USER) {
+  emailTransporter.verify((error) => {
+    if (error) {
+      console.error('📧 ❌ SMTP verification failed:', error.message);
+    } else {
+      console.log('📧 ✅ SMTP server ready');
+    }
+  });
+}
 
 // Twitter/X API setup
 const twitterClient = process.env.TWITTER_API_KEY ? new TwitterApi({
@@ -898,16 +913,21 @@ async function sendDripEmail(userEmail, emailNumber) {
   }
 
   try {
-    await emailTransporter.sendMail({
+    const info = await emailTransporter.sendMail({
       from: `"Ticket Scan" <${process.env.SMTP_USER}>`,
       to: userEmail,
       subject: emailTemplate.subject,
       html: emailTemplate.getHtml(),
     });
-    console.log(`📧 Drip email #${emailNumber} sent to ${userEmail}`);
+    console.log(`📧 Drip email #${emailNumber} sent to ${userEmail} — messageId: ${info.messageId}`);
     return true;
   } catch (error) {
-    console.error(`❌ Failed to send drip email #${emailNumber} to ${userEmail}:`, error.message);
+    // Log full error details — code, response, responseCode, command
+    console.error(`❌ Failed to send drip email #${emailNumber} to ${userEmail}:`);
+    console.error(`   message: ${error.message}`);
+    console.error(`   code: ${error.code || 'none'}`);
+    console.error(`   response: ${error.response || 'none'}`);
+    console.error(`   responseCode: ${error.responseCode || 'none'}`);
     return false;
   }
 }
@@ -3751,6 +3771,70 @@ app.post('/api/admin/typefully/daily-tip', authenticateAdmin, async (req, res) =
       res.json({ success: true, post: result, tip });
     } else {
       res.status(500).json({ success: false, error: 'Failed to post daily tip via Typefully' });
+    }
+  } catch (error) {
+    res.status(500).json({ success: false, error: error.message });
+  }
+});
+
+// Diagnostic: send a test email to verify SMTP
+app.post('/api/admin/email/test', authenticateAdmin, async (req, res) => {
+  try {
+    const { to } = req.body;
+    const recipient = to || process.env.SMTP_USER;
+    if (!recipient) {
+      return res.status(400).json({ success: false, error: 'Provide "to" in body or set SMTP_USER' });
+    }
+
+    console.log(`📧 Test email requested for: ${recipient}`);
+
+    // First verify the connection
+    let verifyResult;
+    try {
+      await new Promise((resolve, reject) => {
+        emailTransporter.verify((err) => (err ? reject(err) : resolve()));
+      });
+      verifyResult = 'ok';
+    } catch (err) {
+      return res.status(500).json({
+        success: false,
+        step: 'verify',
+        error: err.message,
+        code: err.code,
+        response: err.response,
+        responseCode: err.responseCode,
+        smtpHost: process.env.SMTP_HOST,
+        smtpPort: process.env.SMTP_PORT,
+        smtpUser: process.env.SMTP_USER,
+      });
+    }
+
+    // Try sending
+    try {
+      const info = await emailTransporter.sendMail({
+        from: `"Ticket Scan" <${process.env.SMTP_USER}>`,
+        to: recipient,
+        subject: 'TicketScan SMTP Test',
+        text: 'This is a test email from the TicketScan diagnostic endpoint. If you received this, SMTP is working.',
+        html: '<p>This is a test email from the TicketScan diagnostic endpoint. If you received this, SMTP is working.</p>',
+      });
+      res.json({
+        success: true,
+        verify: verifyResult,
+        messageId: info.messageId,
+        response: info.response,
+        accepted: info.accepted,
+        rejected: info.rejected,
+      });
+    } catch (err) {
+      res.status(500).json({
+        success: false,
+        step: 'sendMail',
+        error: err.message,
+        code: err.code,
+        response: err.response,
+        responseCode: err.responseCode,
+      });
     }
   } catch (error) {
     res.status(500).json({ success: false, error: error.message });
