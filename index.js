@@ -7,6 +7,7 @@ const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const cron = require('node-cron');
 const nodemailer = require('nodemailer');
+const { Resend } = require('resend');
 const rateLimit = require('express-rate-limit');
 const { TwitterApi } = require('twitter-api-v2');
 
@@ -52,6 +53,58 @@ if (process.env.SMTP_HOST && process.env.SMTP_USER) {
       console.log('📧 ✅ SMTP server ready');
     }
   });
+}
+
+// Resend HTTP API client (preferred — works around Railway's SMTP egress block)
+const resend = process.env.RESEND_API_KEY ? new Resend(process.env.RESEND_API_KEY) : null;
+const RESEND_FROM = process.env.RESEND_FROM || 'TicketScan <noreply@ticketscan.io>';
+
+/**
+ * Universal email sender — uses Resend HTTP API if configured (preferred),
+ * falls back to nodemailer SMTP otherwise. Returns { success, messageId, error }.
+ */
+async function sendEmail({ to, subject, html, text }) {
+  // Prefer Resend (Railway can reach it; SMTP egress is blocked)
+  if (resend) {
+    try {
+      const result = await resend.emails.send({
+        from: RESEND_FROM,
+        to,
+        subject,
+        html,
+        text,
+      });
+      if (result.error) {
+        console.error(`📧 ❌ Resend error sending to ${to}:`, result.error);
+        return { success: false, error: result.error.message || JSON.stringify(result.error) };
+      }
+      console.log(`📧 ✅ Resend sent to ${to} — id: ${result.data?.id}`);
+      return { success: true, messageId: result.data?.id };
+    } catch (error) {
+      console.error(`📧 ❌ Resend exception sending to ${to}:`, error.message);
+      return { success: false, error: error.message };
+    }
+  }
+
+  // Fallback: nodemailer SMTP
+  if (!process.env.SMTP_USER) {
+    return { success: false, error: 'No email provider configured (set RESEND_API_KEY or SMTP_*)' };
+  }
+
+  try {
+    const info = await emailTransporter.sendMail({
+      from: `"Ticket Scan" <${process.env.SMTP_USER}>`,
+      to,
+      subject,
+      html,
+      text,
+    });
+    console.log(`📧 ✅ SMTP sent to ${to} — messageId: ${info.messageId}`);
+    return { success: true, messageId: info.messageId };
+  } catch (error) {
+    console.error(`📧 ❌ SMTP error sending to ${to}:`, error.message);
+    return { success: false, error: error.message, code: error.code };
+  }
 }
 
 // Twitter/X API setup
@@ -899,35 +952,25 @@ async function sendWorldCupEmail(userEmail) {
   }
 }
 
-// Send a single drip email
+// Send a single drip email (uses sendEmail wrapper — Resend with SMTP fallback)
 async function sendDripEmail(userEmail, emailNumber) {
-  if (!process.env.SMTP_USER) {
-    console.log(`📧 Email not configured, skipping drip email #${emailNumber} for:`, userEmail);
-    return false;
-  }
-
   const emailTemplate = DRIP_EMAILS[emailNumber];
   if (!emailTemplate) {
     console.error(`❌ No template found for drip email #${emailNumber}`);
     return false;
   }
 
-  try {
-    const info = await emailTransporter.sendMail({
-      from: `"Ticket Scan" <${process.env.SMTP_USER}>`,
-      to: userEmail,
-      subject: emailTemplate.subject,
-      html: emailTemplate.getHtml(),
-    });
-    console.log(`📧 Drip email #${emailNumber} sent to ${userEmail} — messageId: ${info.messageId}`);
+  const result = await sendEmail({
+    to: userEmail,
+    subject: emailTemplate.subject,
+    html: emailTemplate.getHtml(),
+  });
+
+  if (result.success) {
+    console.log(`📧 Drip email #${emailNumber} sent to ${userEmail}`);
     return true;
-  } catch (error) {
-    // Log full error details — code, response, responseCode, command
-    console.error(`❌ Failed to send drip email #${emailNumber} to ${userEmail}:`);
-    console.error(`   message: ${error.message}`);
-    console.error(`   code: ${error.code || 'none'}`);
-    console.error(`   response: ${error.response || 'none'}`);
-    console.error(`   responseCode: ${error.responseCode || 'none'}`);
+  } else {
+    console.error(`❌ Drip email #${emailNumber} failed for ${userEmail}: ${result.error}`);
     return false;
   }
 }
@@ -3777,63 +3820,37 @@ app.post('/api/admin/typefully/daily-tip', authenticateAdmin, async (req, res) =
   }
 });
 
-// Diagnostic: send a test email to verify SMTP
+// Diagnostic: send a test email (uses sendEmail wrapper — tries Resend first, then SMTP)
 app.post('/api/admin/email/test', authenticateAdmin, async (req, res) => {
   try {
     const { to } = req.body;
     const recipient = to || process.env.SMTP_USER;
     if (!recipient) {
-      return res.status(400).json({ success: false, error: 'Provide "to" in body or set SMTP_USER' });
+      return res.status(400).json({ success: false, error: 'Provide "to" in body' });
     }
 
     console.log(`📧 Test email requested for: ${recipient}`);
 
-    // First verify the connection
-    let verifyResult;
-    try {
-      await new Promise((resolve, reject) => {
-        emailTransporter.verify((err) => (err ? reject(err) : resolve()));
-      });
-      verifyResult = 'ok';
-    } catch (err) {
-      return res.status(500).json({
-        success: false,
-        step: 'verify',
-        error: err.message,
-        code: err.code,
-        response: err.response,
-        responseCode: err.responseCode,
-        smtpHost: process.env.SMTP_HOST,
-        smtpPort: process.env.SMTP_PORT,
-        smtpUser: process.env.SMTP_USER,
-      });
-    }
+    const result = await sendEmail({
+      to: recipient,
+      subject: 'TicketScan Email Test',
+      text: 'This is a test email from the TicketScan diagnostic endpoint. If you received this, email is working.',
+      html: '<p>This is a test email from the TicketScan diagnostic endpoint. If you received this, email is working.</p>',
+    });
 
-    // Try sending
-    try {
-      const info = await emailTransporter.sendMail({
-        from: `"Ticket Scan" <${process.env.SMTP_USER}>`,
-        to: recipient,
-        subject: 'TicketScan SMTP Test',
-        text: 'This is a test email from the TicketScan diagnostic endpoint. If you received this, SMTP is working.',
-        html: '<p>This is a test email from the TicketScan diagnostic endpoint. If you received this, SMTP is working.</p>',
-      });
+    if (result.success) {
       res.json({
         success: true,
-        verify: verifyResult,
-        messageId: info.messageId,
-        response: info.response,
-        accepted: info.accepted,
-        rejected: info.rejected,
+        provider: resend ? 'resend' : 'smtp',
+        messageId: result.messageId,
+        to: recipient,
       });
-    } catch (err) {
+    } else {
       res.status(500).json({
         success: false,
-        step: 'sendMail',
-        error: err.message,
-        code: err.code,
-        response: err.response,
-        responseCode: err.responseCode,
+        provider: resend ? 'resend' : 'smtp',
+        error: result.error,
+        code: result.code,
       });
     }
   } catch (error) {
@@ -3892,6 +3909,7 @@ app.listen(PORT, async () => {
   console.log(`🐦 Twitter API: ${process.env.TWITTER_API_KEY ? '✅ Configured (read-only)' : '❌ Missing'}`);
   console.log(`📝 Typefully API: ${TYPEFULLY_API_KEY ? '✅ Configured' : '❌ Missing'}`);
   console.log(`📸 Instagram API: ${INSTAGRAM_ACCESS_TOKEN && INSTAGRAM_ACCOUNT_ID ? '✅ Configured' : '❌ Missing'}`);
+  console.log(`📨 Resend API: ${process.env.RESEND_API_KEY ? '✅ Configured' : '❌ Missing'}`);
   console.log(`\n📖 API Documentation:`);
   console.log(`   Health Check: http://localhost:${PORT}/`);
   console.log(`   Test APIs: See http://localhost:${PORT}/ for endpoints\n`);
