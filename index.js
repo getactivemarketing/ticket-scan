@@ -163,13 +163,16 @@ async function postToInstagram(caption, imageUrl) {
   }
 
   try {
-    // Step 1: Create media container
+    // Step 1: Create media container (token as query param to avoid encoding issues)
     const createRes = await axios.post(
       `https://graph.instagram.com/v21.0/${INSTAGRAM_ACCOUNT_ID}/media`,
+      null,
       {
-        image_url: imageUrl,
-        caption: caption,
-        access_token: INSTAGRAM_ACCESS_TOKEN,
+        params: {
+          image_url: imageUrl,
+          caption: caption,
+          access_token: INSTAGRAM_ACCESS_TOKEN,
+        },
       }
     );
     const creationId = createRes.data.id;
@@ -178,9 +181,12 @@ async function postToInstagram(caption, imageUrl) {
     // Step 2: Publish the container
     const publishRes = await axios.post(
       `https://graph.instagram.com/v21.0/${INSTAGRAM_ACCOUNT_ID}/media_publish`,
+      null,
       {
-        creation_id: creationId,
-        access_token: INSTAGRAM_ACCESS_TOKEN,
+        params: {
+          creation_id: creationId,
+          access_token: INSTAGRAM_ACCESS_TOKEN,
+        },
       }
     );
     console.log('📸 Published to Instagram:', publishRes.data.id);
@@ -204,10 +210,13 @@ async function postInstagramCarousel(caption, imageUrls) {
     for (const url of imageUrls) {
       const res = await axios.post(
         `https://graph.instagram.com/v21.0/${INSTAGRAM_ACCOUNT_ID}/media`,
+        null,
         {
-          image_url: url,
-          is_carousel_item: true,
-          access_token: INSTAGRAM_ACCESS_TOKEN,
+          params: {
+            image_url: url,
+            is_carousel_item: true,
+            access_token: INSTAGRAM_ACCESS_TOKEN,
+          },
         }
       );
       childIds.push(res.data.id);
@@ -216,11 +225,14 @@ async function postInstagramCarousel(caption, imageUrls) {
     // Step 2: Create carousel container
     const carouselRes = await axios.post(
       `https://graph.instagram.com/v21.0/${INSTAGRAM_ACCOUNT_ID}/media`,
+      null,
       {
-        media_type: 'CAROUSEL',
-        children: childIds.join(','),
-        caption: caption,
-        access_token: INSTAGRAM_ACCESS_TOKEN,
+        params: {
+          media_type: 'CAROUSEL',
+          children: childIds.join(','),
+          caption: caption,
+          access_token: INSTAGRAM_ACCESS_TOKEN,
+        },
       }
     );
     const carouselId = carouselRes.data.id;
@@ -228,9 +240,12 @@ async function postInstagramCarousel(caption, imageUrls) {
     // Step 3: Publish
     const publishRes = await axios.post(
       `https://graph.instagram.com/v21.0/${INSTAGRAM_ACCOUNT_ID}/media_publish`,
+      null,
       {
-        creation_id: carouselId,
-        access_token: INSTAGRAM_ACCESS_TOKEN,
+        params: {
+          creation_id: carouselId,
+          access_token: INSTAGRAM_ACCESS_TOKEN,
+        },
       }
     );
     console.log('📸 Published Instagram carousel:', publishRes.data.id);
@@ -249,7 +264,7 @@ async function postInstagramReel(caption, videoUrl, coverUrl = null) {
   }
 
   try {
-    // Step 1: Create reel container
+    // Step 1: Create reel container (token as query param to avoid encoding issues)
     const params = {
       media_type: 'REELS',
       video_url: videoUrl,
@@ -260,7 +275,8 @@ async function postInstagramReel(caption, videoUrl, coverUrl = null) {
 
     const createRes = await axios.post(
       `https://graph.instagram.com/v21.0/${INSTAGRAM_ACCOUNT_ID}/media`,
-      params
+      null,
+      { params }
     );
     const creationId = createRes.data.id;
     console.log('📸 Instagram reel container created:', creationId);
@@ -286,9 +302,12 @@ async function postInstagramReel(caption, videoUrl, coverUrl = null) {
     // Step 3: Publish
     const publishRes = await axios.post(
       `https://graph.instagram.com/v21.0/${INSTAGRAM_ACCOUNT_ID}/media_publish`,
+      null,
       {
-        creation_id: creationId,
-        access_token: INSTAGRAM_ACCESS_TOKEN,
+        params: {
+          creation_id: creationId,
+          access_token: INSTAGRAM_ACCESS_TOKEN,
+        },
       }
     );
     console.log('📸 Published Instagram reel:', publishRes.data.id);
