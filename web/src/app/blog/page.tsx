@@ -63,17 +63,17 @@ export default function BlogPage() {
 
       <div className="min-h-screen bg-gray-50">
         {/* Hero */}
-        <div className="bg-gradient-to-br from-navy via-brand to-teal text-white py-16">
+        <div className="bg-navy text-white py-16 pt-24">
           <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
             <nav className="text-sm mb-4">
-              <Link href="/" className="text-blue-200 hover:text-white">Home</Link>
-              <span className="mx-2 text-blue-300">/</span>
+              <Link href="/" className="text-gray-400 hover:text-white">Home</Link>
+              <span className="mx-2 text-gray-500">/</span>
               <span>Blog</span>
             </nav>
             <h1 className="text-4xl md:text-5xl font-bold font-heading mb-4">
               Ticket Buying Tips & Guides
             </h1>
-            <p className="text-xl text-blue-100 max-w-2xl">
+            <p className="text-xl text-white/50 max-w-2xl">
               Expert advice on finding the best ticket deals. Learn when to buy,
               how to compare prices, and strategies to save money.
             </p>
@@ -84,13 +84,13 @@ export default function BlogPage() {
           {/* Featured Posts */}
           {featuredPosts.length > 0 && (
             <section className="mb-16">
-              <h2 className="text-2xl font-bold font-heading text-gray-900 mb-8">Featured Articles</h2>
+              <h2 className="text-2xl font-bold font-heading text-navy mb-8">Featured Articles</h2>
               <div className="grid md:grid-cols-3 gap-6">
                 {featuredPosts.map((post) => (
                   <Link
                     key={post.slug}
                     href={`/blog/${post.slug}`}
-                    className="bg-white rounded-2xl shadow-md overflow-hidden hover:shadow-lg transition-shadow group"
+                    className="bg-white rounded-2xl border border-gray-200 overflow-hidden hover:border-brand/30 transition-colors group"
                   >
                     <div className="h-3 bg-gradient-to-r from-brand to-navy-light"></div>
                     <div className="p-6">
@@ -118,13 +118,13 @@ export default function BlogPage() {
 
           {/* All Posts */}
           <section>
-            <h2 className="text-2xl font-bold font-heading text-gray-900 mb-8">All Articles</h2>
+            <h2 className="text-2xl font-bold font-heading text-navy mb-8">All Articles</h2>
             <div className="space-y-6">
               {regularPosts.map((post) => (
                 <Link
                   key={post.slug}
                   href={`/blog/${post.slug}`}
-                  className="block bg-white rounded-xl shadow-md p-6 hover:shadow-lg transition-shadow group"
+                  className="block bg-white rounded-xl border border-gray-200 p-6 hover:border-brand/30 transition-colors group"
                 >
                   <div className="flex flex-col md:flex-row md:items-center gap-4">
                     <div className="flex-1">
@@ -162,7 +162,7 @@ export default function BlogPage() {
           {/* Newsletter CTA */}
           <section className="mt-16 bg-gradient-to-br from-brand to-navy rounded-2xl p-8 text-white text-center">
             <h2 className="text-2xl font-bold font-heading mb-2">Get Ticket Tips in Your Inbox</h2>
-            <p className="text-blue-100 mb-6 max-w-xl mx-auto">
+            <p className="text-white/50 mb-6 max-w-xl mx-auto">
               Subscribe to our newsletter for the latest strategies, deals, and tips
               to save money on concerts, sports, and events.
             </p>
