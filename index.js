@@ -9,7 +9,7 @@ const cron = require('node-cron');
 const nodemailer = require('nodemailer');
 const { Resend } = require('resend');
 const rateLimit = require('express-rate-limit');
-const { TwitterApi } = require('twitter-api-v2');
+
 
 // Rate limiters for security
 const authLimiter = rateLimit({
@@ -107,33 +107,6 @@ async function sendEmail({ to, subject, html, text }) {
   }
 }
 
-// Twitter/X API setup
-const twitterClient = process.env.TWITTER_API_KEY ? new TwitterApi({
-  appKey: process.env.TWITTER_API_KEY,
-  appSecret: process.env.TWITTER_API_SECRET,
-  accessToken: process.env.TWITTER_ACCESS_TOKEN,
-  accessSecret: process.env.TWITTER_ACCESS_SECRET,
-}) : null;
-
-const twitter = twitterClient?.readWrite;
-
-// Post to Twitter/X
-async function postToTwitter(text) {
-  if (!twitter) {
-    console.log('🐦 Twitter not configured, skipping post:', text.substring(0, 50) + '...');
-    return null;
-  }
-
-  try {
-    const tweet = await twitter.v2.tweet(text);
-    console.log('🐦 Posted to Twitter:', tweet.data.id);
-    return tweet.data;
-  } catch (error) {
-    console.error('🐦 Twitter post error:', error.message);
-    return null;
-  }
-}
-
 // Ticket tips for daily posts
 const ticketTips = [
   "💡 Pro tip: Ticket prices often drop 2-3 weeks before an event. Set a price alert and wait for the sweet spot!\n\n#tickets #concerts #sports",
@@ -151,80 +124,6 @@ const ticketTips = [
   "⏰ Best time to buy concert tickets: 2-4 weeks before the show. Too early = premium prices. Too late = panic buying.\n\n#concerts",
   "🔔 Set it and forget it: Add events to your watchlist and let us track prices for you 24/7.\n\nticket scan.io",
 ];
-
-// Post daily tip to Twitter
-async function postDailyTip() {
-  const tipIndex = new Date().getDate() % ticketTips.length;
-  const tip = ticketTips[tipIndex];
-  await postToTwitter(tip);
-}
-
-// Typefully API setup (replaces direct Twitter API since Twitter Free tier no longer supports posting)
-const TYPEFULLY_API_KEY = process.env.TYPEFULLY_API_KEY;
-let TYPEFULLY_SOCIAL_SET_ID = process.env.TYPEFULLY_SOCIAL_SET_ID; // optional — auto-fetched if not set
-
-// Auto-fetch the first available social set ID if not configured
-async function getTypefullySocialSetId() {
-  if (TYPEFULLY_SOCIAL_SET_ID) return TYPEFULLY_SOCIAL_SET_ID;
-  if (!TYPEFULLY_API_KEY) return null;
-
-  try {
-    const res = await axios.get('https://api.typefully.com/v2/social-sets', {
-      headers: { Authorization: `Bearer ${TYPEFULLY_API_KEY}` },
-    });
-    const sets = res.data.results || res.data;
-    if (sets && sets.length > 0) {
-      TYPEFULLY_SOCIAL_SET_ID = sets[0].id;
-      console.log('📝 Typefully social set auto-detected:', TYPEFULLY_SOCIAL_SET_ID);
-      return TYPEFULLY_SOCIAL_SET_ID;
-    }
-  } catch (error) {
-    console.error('📝 Failed to fetch Typefully social sets:', error.response?.data || error.message);
-  }
-  return null;
-}
-
-// Post to Twitter via Typefully (publishes immediately by default)
-async function postViaTypefully(text, options = {}) {
-  if (!TYPEFULLY_API_KEY) {
-    console.log('📝 Typefully not configured, skipping post:', text.substring(0, 50) + '...');
-    return null;
-  }
-
-  try {
-    const socialSetId = await getTypefullySocialSetId();
-    if (!socialSetId) {
-      console.error('📝 No Typefully social set available');
-      return null;
-    }
-
-    const body = {
-      platforms: {
-        x: {
-          enabled: true,
-          posts: [{ text: text }],
-        },
-      },
-    };
-
-    // Default: publish immediately (1 minute from now to ensure it goes through)
-    if (!options.draftOnly) {
-      body.publish_at = new Date(Date.now() + 60000).toISOString();
-    }
-
-    const res = await axios.post(
-      `https://api.typefully.com/v2/social-sets/${socialSetId}/drafts`,
-      body,
-      { headers: { Authorization: `Bearer ${TYPEFULLY_API_KEY}` } }
-    );
-
-    console.log('📝 Posted via Typefully:', res.data.id || 'created');
-    return res.data;
-  } catch (error) {
-    console.error('📝 Typefully post error:', error.response?.data || error.message);
-    return null;
-  }
-}
 
 // Instagram Graph API setup
 // Token is loaded from DB on startup if available (auto-refreshed monthly),
@@ -485,19 +384,6 @@ async function postPriceDropToInstagram(eventName, venue, oldPrice, newPrice, pe
   }
   console.log('📸 Instagram price drop ready (needs image URL):', caption.substring(0, 80) + '...');
   return null;
-}
-
-// Post price drop alert to Twitter
-async function postPriceDropToTwitter(eventName, venue, oldPrice, newPrice, percentDrop) {
-  const text = `🚨 Price Drop Alert!\n\n${eventName}\n📍 ${venue}\n\n💰 Was: $${oldPrice} → Now: $${newPrice} (${percentDrop}% off)\n\nCompare all prices: ticketscan.io\n\n#tickets #deals #concerts`;
-
-  if (text.length <= 280) {
-    await postToTwitter(text);
-  } else {
-    // Shorter version if too long
-    const shortText = `🚨 ${eventName} tickets dropped ${percentDrop}%!\n\n$${oldPrice} → $${newPrice}\n\nCompare prices: ticketscan.io`;
-    await postToTwitter(shortText);
-  }
 }
 
 // Send welcome email to new users
@@ -3230,19 +3116,6 @@ cron.schedule('0 10 * * *', () => {
   processDripCampaign(pool);
 });
 
-// Schedule daily tweet via Typefully at 9 AM EST (2 PM UTC)
-// (Direct Twitter API posting disabled — Free tier no longer supports writes)
-cron.schedule('0 14 * * *', async () => {
-  if (!TYPEFULLY_API_KEY) {
-    console.log('🐦 Skipping daily tweet — Typefully not configured');
-    return;
-  }
-  const tipIndex = new Date().getDate() % ticketTips.length;
-  const tip = ticketTips[tipIndex];
-  console.log('📝 Posting daily tweet via Typefully...');
-  await postViaTypefully(tip);
-});
-
 // Schedule daily Instagram tip at 12 PM EST (5 PM UTC)
 cron.schedule('0 17 * * *', () => {
   console.log('📸 Posting daily Instagram tip...');
@@ -3638,75 +3511,9 @@ app.get('/api/watchlist/with-prices', authenticateToken, async (req, res) => {
   }
 });
 
-// Admin endpoint to post to Twitter
-app.post('/api/admin/twitter/post', authenticateAdmin, async (req, res) => {
-  try {
-    const { text } = req.body;
-    if (!text) {
-      return res.status(400).json({ success: false, error: 'Text is required' });
-    }
-    if (text.length > 280) {
-      return res.status(400).json({ success: false, error: 'Text exceeds 280 characters' });
-    }
-
-    const result = await postToTwitter(text);
-    if (result) {
-      res.json({ success: true, tweet: result });
-    } else {
-      res.status(500).json({ success: false, error: 'Failed to post tweet' });
-    }
-  } catch (error) {
-    console.error('Twitter post error:', error.message);
-    res.status(500).json({ success: false, error: error.message });
-  }
-});
-
-// Admin endpoint to post daily tip
-app.post('/api/admin/twitter/daily-tip', authenticateAdmin, async (req, res) => {
-  try {
-    await postDailyTip();
-    res.json({ success: true, message: 'Daily tip posted to Twitter' });
-  } catch (error) {
-    console.error('Twitter daily tip error:', error.message);
-    res.status(500).json({ success: false, error: error.message });
-  }
-});
-
-// Admin endpoint to get available tips
-app.get('/api/admin/twitter/tips', authenticateAdmin, async (req, res) => {
-  res.json({
-    success: true,
-    tips: ticketTips,
-    todaysTipIndex: new Date().getDate() % ticketTips.length
-  });
-});
-
 // ==========================================
 // Instagram Admin Endpoints
 // ==========================================
-
-// Post image to Instagram
-app.post('/api/admin/instagram/post', authenticateAdmin, async (req, res) => {
-  try {
-    const { caption, image_url } = req.body;
-    if (!caption) {
-      return res.status(400).json({ success: false, error: 'Caption is required' });
-    }
-    if (!image_url) {
-      return res.status(400).json({ success: false, error: 'image_url is required (publicly accessible URL)' });
-    }
-
-    const result = await postToInstagram(caption, image_url);
-    if (result) {
-      res.json({ success: true, post: result });
-    } else {
-      res.status(500).json({ success: false, error: 'Failed to post to Instagram. Check that INSTAGRAM_ACCESS_TOKEN and INSTAGRAM_ACCOUNT_ID are configured.' });
-    }
-  } catch (error) {
-    console.error('Instagram post error:', error.message);
-    res.status(500).json({ success: false, error: error.message });
-  }
-});
 
 // Post carousel to Instagram (multiple images)
 app.post('/api/admin/instagram/carousel', authenticateAdmin, async (req, res) => {
@@ -3773,49 +3580,6 @@ app.post('/api/admin/instagram/daily-tip', authenticateAdmin, async (req, res) =
     }
   } catch (error) {
     console.error('Instagram daily tip error:', error.message);
-    res.status(500).json({ success: false, error: error.message });
-  }
-});
-
-// ==========================================
-// Typefully Admin Endpoints (Twitter via Typefully)
-// ==========================================
-
-// Post a tweet via Typefully (publishes immediately)
-app.post('/api/admin/typefully/post', authenticateAdmin, async (req, res) => {
-  try {
-    const { text, draft_only } = req.body;
-    if (!text) {
-      return res.status(400).json({ success: false, error: 'Text is required' });
-    }
-    if (text.length > 280) {
-      return res.status(400).json({ success: false, error: 'Text exceeds 280 characters' });
-    }
-
-    const result = await postViaTypefully(text, { draftOnly: draft_only });
-    if (result) {
-      res.json({ success: true, post: result });
-    } else {
-      res.status(500).json({ success: false, error: 'Failed to post via Typefully. Check that TYPEFULLY_API_KEY is configured.' });
-    }
-  } catch (error) {
-    console.error('Typefully post error:', error.message);
-    res.status(500).json({ success: false, error: error.message });
-  }
-});
-
-// Trigger today's daily tip via Typefully
-app.post('/api/admin/typefully/daily-tip', authenticateAdmin, async (req, res) => {
-  try {
-    const tipIndex = new Date().getDate() % ticketTips.length;
-    const tip = ticketTips[tipIndex];
-    const result = await postViaTypefully(tip);
-    if (result) {
-      res.json({ success: true, post: result, tip });
-    } else {
-      res.status(500).json({ success: false, error: 'Failed to post daily tip via Typefully' });
-    }
-  } catch (error) {
     res.status(500).json({ success: false, error: error.message });
   }
 });
@@ -3906,8 +3670,6 @@ app.listen(PORT, async () => {
   console.log(`🔑 Ticketmaster API: ${TICKETMASTER_API_KEY ? '✅ Configured' : '❌ Missing'}`);
   console.log(`🔑 SeatGeek API: ${SEATGEEK_CLIENT_ID ? '✅ Configured' : '❌ Missing'}`);
   console.log(`🔑 StubHub API: ${STUBHUB_APP_KEY && STUBHUB_API_KEY ? '✅ Configured' : '❌ Missing'}`);
-  console.log(`🐦 Twitter API: ${process.env.TWITTER_API_KEY ? '✅ Configured (read-only)' : '❌ Missing'}`);
-  console.log(`📝 Typefully API: ${TYPEFULLY_API_KEY ? '✅ Configured' : '❌ Missing'}`);
   console.log(`📸 Instagram API: ${INSTAGRAM_ACCESS_TOKEN && INSTAGRAM_ACCOUNT_ID ? '✅ Configured' : '❌ Missing'}`);
   console.log(`📨 Resend API: ${process.env.RESEND_API_KEY ? '✅ Configured' : '❌ Missing'}`);
   console.log(`\n📖 API Documentation:`);
