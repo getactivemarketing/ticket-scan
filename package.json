@@ -6,7 +6,10 @@
   "scripts": {
     "start": "node index.js",
     "dev": "nodemon index.js",
-    "test": "node test-apis.js"
+    "test": "node test-apis.js",
+    "fetch-accounts": "node marketing-agents/scripts/fetch-blotato-accounts.js",
+    "schedule": "node marketing-agents/scripts/schedule-blotato-posts.js",
+    "schedule:dry": "node marketing-agents/scripts/schedule-blotato-posts.js --dry-run"
   },
   "keywords": [
     "tickets",
