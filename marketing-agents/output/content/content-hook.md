@@ -1,13 +1,22 @@
-## Today's Content Hook — 2026-04-08
+## Today's Content Hook — 2026-04-10
 
-**Topic:** NBA and NHL playoffs tip off this week — first-round tickets are live across all major marketplaces, with NBA seats starting around $85-$150 on secondary markets and NHL playoff tickets going on sale as early as April 10 in some markets (e.g., San Jose Sharks). Prices spike fast once series matchups are set and games begin.
+### Hook 1: StubHub FTC Settlement + World Cup Price Gouging
+**Topic:** StubHub hit with $10M FTC fine for deceptive pricing (hidden fees added late in checkout), happening the same week FIFA's "variable pricing" pushed World Cup Final tickets to $10,990 face value. Two stories, one theme: opaque ticket pricing hurts fans.
+**Angle:** "StubHub Just Got Fined $10M for Hiding Fees. FIFA Is Charging $10,990 Face Value. Here's How to See the Real Price Before You Buy." Position TicketScan as the transparent alternative — we show all-in prices across Ticketmaster, SeatGeek, and StubHub side by side so you never get surprised at checkout.
+**Target keyword:** "StubHub hidden fees" / "ticket price comparison" / "StubHub FTC fine"
+**Content type:** Blog post (timely news angle) — strong candidate for next week's Wednesday news slot
+**Priority:** High
 
-**Angle:** TicketScan as the playoff ticket command center. First-round playoff tickets are the sweet spot where comparison shopping saves the most money — prices vary wildly across Ticketmaster, SeatGeek, and StubHub depending on the matchup, venue, and how quickly a series is expected to go. Push the "set a price alert and wait for the panic sellers" strategy. Tie into our existing NBA and NHL ticket guides.
+### Hook 2: Bruno Mars "The Romantic Tour" Opens Tonight
+**Topic:** Bruno Mars kicks off his Romantic Tour tonight at Allegiant Stadium in Las Vegas. Resale prices range from $85 to $7,000+ depending on seat and city. Most primary dates sold out instantly.
+**Angle:** "Bruno Mars Tour Starts Tonight — Here's What Tickets Actually Cost Across Every Platform." Real-time price comparison across Ticketmaster resale, StubHub, SeatGeek. Show the price spread and where the deals are as the tour moves city to city.
+**Target keyword:** "Bruno Mars tour tickets" / "Bruno Mars ticket prices 2026"
+**Content type:** Blog post (timely how-to) — good for next week's Tuesday tactical slot
+**Priority:** Medium
 
-**Target keyword:** "NBA playoff tickets 2026" / "NHL playoff tickets 2026" / "cheap playoff tickets"
-
-**Content type:** Blog post (primary, news/timely) + social snippets for game-day matchups
-
-**Priority:** High — playoff ticket searches spike 300%+ in the first week of postseason. We have existing NBA and NHL guides to interlink. Time-sensitive: games start this week.
-
-**Secondary hook (Medium):** Daniel Caesar's 30-date "Son of Spergy Tour" went on sale April 3 — his first headlining arena run. Floor vs. upper-bowl pricing spread is significant, making it a strong comparison-shopping use case. Good for a future Tuesday tactical post.
+### Hook 3: NBA/NHL Playoff Picture Tightening
+**Topic:** April is crunch time. NBA and NHL regular seasons wrapping up, playoff seeding battles driving ticket demand for teams on the bubble. Celtics, Bruins, Nuggets, Avalanche all in the mix.
+**Angle:** Internal — use this to justify refreshing venue pages for playoff-contending teams (TD Garden, Ball Arena). Externally, could fuel a "Playoff Ticket Prices: When to Buy Before the Bracket Locks" piece.
+**Target keyword:** "NBA playoff tickets 2026" / "NHL playoff tickets"
+**Content type:** Venue page refresh (today) + potential blog post next week
+**Priority:** Medium
