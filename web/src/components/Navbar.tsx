@@ -1,15 +1,34 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { useAuth } from '@/context/AuthContext';
-import { useRouter } from 'next/navigation';
+import { useRouter, usePathname } from 'next/navigation';
 import Logo from '@/components/Logo';
 
 export default function Navbar() {
   const { user, logout } = useAuth();
   const router = useRouter();
+  const pathname = usePathname();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+
+  // Only use transparent navbar on homepage
+  const isHomepage = pathname === '/';
+
+  useEffect(() => {
+    if (!isHomepage) {
+      setScrolled(true);
+      return;
+    }
+
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 50);
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, [isHomepage]);
 
   const handleLogout = () => {
     logout();
@@ -19,95 +38,69 @@ export default function Navbar() {
 
   const closeMenu = () => setIsMenuOpen(false);
 
+  const navClass = isHomepage && !scrolled ? 'navbar-transparent' : 'navbar-solid';
+
   return (
-    <nav className="bg-gradient-to-r from-brand to-navy-light shadow-lg relative z-50">
+    <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${navClass}`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between h-16">
           {/* Logo */}
           <div className="flex items-center">
             <Link href="/" className="flex items-center space-x-2" onClick={closeMenu}>
               <Logo size={28} className="text-white" />
-              <span className="text-white font-heading font-bold text-xl">TicketScan</span>
+              <span className="text-white font-heading font-bold text-xl tracking-tight">TicketScan</span>
             </Link>
           </div>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-4">
+          <div className="hidden md:flex items-center space-x-5">
             {user ? (
               <>
-                <Link
-                  href="/dashboard"
-                  className="text-white hover:text-blue-200 transition-colors"
-                >
+                <Link href="/dashboard" className="text-white/80 hover:text-white transition-colors text-sm">
                   Search
                 </Link>
-                <Link
-                  href="/compare"
-                  className="text-white hover:text-blue-200 transition-colors"
-                >
+                <Link href="/compare" className="text-white/80 hover:text-white transition-colors text-sm">
                   Compare
                 </Link>
-                <Link
-                  href="/watchlist"
-                  className="text-white hover:text-blue-200 transition-colors"
-                >
+                <Link href="/watchlist" className="text-white/80 hover:text-white transition-colors text-sm">
                   Watchlist
                 </Link>
-                <Link
-                  href="/favorites"
-                  className="text-white hover:text-blue-200 transition-colors"
-                >
+                <Link href="/favorites" className="text-white/80 hover:text-white transition-colors text-sm">
                   Favorites
                 </Link>
-                <Link
-                  href="/blog"
-                  className="text-white hover:text-blue-200 transition-colors"
-                >
+                <Link href="/blog" className="text-white/80 hover:text-white transition-colors text-sm">
                   Tips
                 </Link>
-                <Link
-                  href="/world-cup-2026"
-                  className="bg-green-500 hover:bg-green-400 text-white px-3 py-1.5 rounded-lg font-medium transition-colors text-sm"
-                >
+                <Link href="/world-cup-2026" className="text-white/80 hover:text-white transition-colors text-sm flex items-center gap-1.5">
+                  <span className="w-2 h-2 bg-green-400 rounded-full inline-block"></span>
                   World Cup 2026
                 </Link>
-                <span className="text-blue-200 text-sm hidden lg:inline">{user.email}</span>
+                <span className="text-white/50 text-xs hidden lg:inline">{user.email}</span>
                 <button
                   onClick={handleLogout}
-                  className="bg-white/20 hover:bg-white/30 text-white px-4 py-2 rounded-lg transition-colors"
+                  className="bg-white/10 hover:bg-white/20 text-white px-4 py-1.5 rounded-lg transition-colors text-sm"
                 >
                   Logout
                 </button>
               </>
             ) : (
               <>
-                <Link
-                  href="/dashboard"
-                  className="text-white hover:text-blue-200 transition-colors"
-                >
+                <Link href="/dashboard" className="text-white/80 hover:text-white transition-colors text-sm">
                   Search
                 </Link>
-                <Link
-                  href="/blog"
-                  className="text-white hover:text-blue-200 transition-colors"
-                >
+                <Link href="/blog" className="text-white/80 hover:text-white transition-colors text-sm">
                   Blog
                 </Link>
-                <Link
-                  href="/world-cup-2026"
-                  className="bg-green-500 hover:bg-green-400 text-white px-3 py-1.5 rounded-lg font-medium transition-colors text-sm"
-                >
+                <Link href="/world-cup-2026" className="text-white/80 hover:text-white transition-colors text-sm flex items-center gap-1.5">
+                  <span className="w-2 h-2 bg-green-400 rounded-full inline-block"></span>
                   World Cup 2026
                 </Link>
-                <Link
-                  href="/login"
-                  className="text-white hover:text-blue-200 transition-colors"
-                >
+                <Link href="/login" className="text-white/80 hover:text-white transition-colors text-sm">
                   Login
                 </Link>
                 <Link
                   href="/register"
-                  className="bg-white text-brand hover:bg-blue-100 px-4 py-2 rounded-lg font-medium transition-colors"
+                  className="bg-white text-navy hover:bg-gray-100 px-4 py-1.5 rounded-lg font-medium transition-colors text-sm"
                 >
                   Sign Up
                 </Link>
@@ -138,95 +131,57 @@ export default function Navbar() {
 
       {/* Mobile Menu */}
       {isMenuOpen && (
-        <div className="md:hidden absolute top-16 left-0 right-0 bg-navy shadow-lg border-t border-brand/30">
+        <div className="md:hidden absolute top-16 left-0 right-0 bg-navy shadow-lg border-t border-white/10">
           <div className="px-4 py-4 space-y-3">
             {user ? (
               <>
-                <div className="text-blue-200 text-sm pb-2 border-b border-brand/30">
+                <div className="text-white/50 text-sm pb-2 border-b border-white/10">
                   {user.email}
                 </div>
-                <Link
-                  href="/dashboard"
-                  className="block text-white hover:text-blue-200 py-2 transition-colors"
-                  onClick={closeMenu}
-                >
+                <Link href="/dashboard" className="block text-white hover:text-white/80 py-2 transition-colors" onClick={closeMenu}>
                   Search Events
                 </Link>
-                <Link
-                  href="/compare"
-                  className="block text-white hover:text-blue-200 py-2 transition-colors"
-                  onClick={closeMenu}
-                >
+                <Link href="/compare" className="block text-white hover:text-white/80 py-2 transition-colors" onClick={closeMenu}>
                   Compare Prices
                 </Link>
-                <Link
-                  href="/watchlist"
-                  className="block text-white hover:text-blue-200 py-2 transition-colors"
-                  onClick={closeMenu}
-                >
+                <Link href="/watchlist" className="block text-white hover:text-white/80 py-2 transition-colors" onClick={closeMenu}>
                   My Watchlist
                 </Link>
-                <Link
-                  href="/favorites"
-                  className="block text-white hover:text-blue-200 py-2 transition-colors"
-                  onClick={closeMenu}
-                >
+                <Link href="/favorites" className="block text-white hover:text-white/80 py-2 transition-colors" onClick={closeMenu}>
                   Favorites
                 </Link>
-                <Link
-                  href="/blog"
-                  className="block text-white hover:text-blue-200 py-2 transition-colors"
-                  onClick={closeMenu}
-                >
+                <Link href="/blog" className="block text-white hover:text-white/80 py-2 transition-colors" onClick={closeMenu}>
                   Tips & Guides
                 </Link>
-                <Link
-                  href="/world-cup-2026"
-                  className="block bg-green-500 text-white py-2 px-3 rounded-lg font-medium transition-colors text-center mt-2"
-                  onClick={closeMenu}
-                >
+                <Link href="/world-cup-2026" className="block text-white hover:text-white/80 py-2 transition-colors flex items-center gap-1.5" onClick={closeMenu}>
+                  <span className="w-2 h-2 bg-green-400 rounded-full inline-block"></span>
                   World Cup 2026
                 </Link>
                 <button
                   onClick={handleLogout}
-                  className="w-full mt-2 bg-white/20 hover:bg-white/30 text-white py-3 rounded-lg transition-colors text-center"
+                  className="w-full mt-2 bg-white/10 hover:bg-white/20 text-white py-3 rounded-lg transition-colors text-center"
                 >
                   Logout
                 </button>
               </>
             ) : (
               <>
-                <Link
-                  href="/dashboard"
-                  className="block text-white hover:text-blue-200 py-2 transition-colors"
-                  onClick={closeMenu}
-                >
+                <Link href="/dashboard" className="block text-white hover:text-white/80 py-2 transition-colors" onClick={closeMenu}>
                   Search Events
                 </Link>
-                <Link
-                  href="/blog"
-                  className="block text-white hover:text-blue-200 py-2 transition-colors"
-                  onClick={closeMenu}
-                >
+                <Link href="/blog" className="block text-white hover:text-white/80 py-2 transition-colors" onClick={closeMenu}>
                   Blog & Tips
                 </Link>
-                <Link
-                  href="/world-cup-2026"
-                  className="block bg-green-500 text-white py-2 px-3 rounded-lg font-medium transition-colors text-center"
-                  onClick={closeMenu}
-                >
+                <Link href="/world-cup-2026" className="block text-white hover:text-white/80 py-2 transition-colors flex items-center gap-1.5" onClick={closeMenu}>
+                  <span className="w-2 h-2 bg-green-400 rounded-full inline-block"></span>
                   World Cup 2026
                 </Link>
-                <Link
-                  href="/login"
-                  className="block text-white hover:text-blue-200 py-2 transition-colors"
-                  onClick={closeMenu}
-                >
+                <Link href="/login" className="block text-white hover:text-white/80 py-2 transition-colors" onClick={closeMenu}>
                   Login
                 </Link>
                 <Link
                   href="/register"
-                  className="block bg-white text-brand hover:bg-blue-100 py-3 rounded-lg font-medium transition-colors text-center mt-2"
+                  className="block bg-white text-navy hover:bg-gray-100 py-3 rounded-lg font-medium transition-colors text-center mt-2"
                   onClick={closeMenu}
                 >
                   Sign Up Free

@@ -48,3 +48,13 @@ input, select, textarea {
 input::placeholder {
   color: #9ca3af !important;
 }
+
+/* Navbar scroll behavior */
+.navbar-transparent {
+  background: transparent !important;
+}
+
+.navbar-solid {
+  background: #0D1B3D !important;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+}
