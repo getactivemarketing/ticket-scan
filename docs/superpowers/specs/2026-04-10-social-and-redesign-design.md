@@ -243,6 +243,51 @@ prose-ul:my-6                    (was my-4)
 
 ---
 
+## Part 4: Social Media Profile Assets & Bios
+
+### Profile Images
+
+The 1024x1024 profile image (`logos/ticketscan_profile_1024_v2.png`) is the source. Generate platform-specific crops:
+
+| Platform | Asset | Dimensions | Source |
+|----------|-------|-----------|--------|
+| Twitter/X | Profile pic | 400x400 | Crop from `ticketscan_profile_1024_v2.png` |
+| Twitter/X | Banner | 1500x500 | Already exists: `ticketscan_twitter_1500x500.png` |
+| TikTok | Profile pic | 200x200 | Crop from `ticketscan_profile_1024_v2.png` |
+| Instagram | Profile pic | 320x320 | Crop from `ticketscan_profile_1024_v2.png` |
+| Threads | Profile pic | N/A | Inherits from Instagram |
+| LinkedIn | Banner | 1584x396 | Already exists: `ticketscan_linkedin_1584x396.png` |
+
+Generate the cropped images using `sharp` (add to root `package.json` devDependencies) via a `marketing-agents/scripts/generate-profile-images.js` script. Output to `logos/social/`.
+
+### Bios
+
+**Twitter/X (160 chars):**
+> Compare ticket prices across Ticketmaster, SeatGeek & StubHub. Track trends. Get price drop alerts. Never overpay again. ticketscan.io
+
+**TikTok (80 chars):**
+> Stop overpaying for tickets. We find the best deals. Link below.
+
+**Instagram (150 chars):**
+> Compare prices across ticket sites
+> Track trends & get price drop alerts
+> Concerts | Sports | World Cup 2026
+> ticketscan.io
+
+**Threads (150 chars):**
+> We compare ticket prices so you don't have to open 10 tabs. Concerts, sports, World Cup 2026. Free at ticketscan.io
+
+### Setup Checklist (Manual Steps)
+
+1. Create TikTok account — set profile pic + bio
+2. Create Instagram account — set profile pic + bio
+3. Threads account auto-created from Instagram — set bio
+4. Update Twitter/X bio if different from current
+5. Connect all 4 accounts to Blotato
+6. Run `npm run fetch-accounts` to populate `blotato-accounts.json`
+
+---
+
 ## Out of Scope
 
 - Interior app pages (dashboard, compare, watchlist, event detail, venues)
