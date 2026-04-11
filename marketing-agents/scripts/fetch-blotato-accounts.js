@@ -49,7 +49,8 @@ async function fetchAccounts() {
     process.exit(1);
   }
 
-  const accounts = await res.json();
+  const data = await res.json();
+  const accounts = Array.isArray(data) ? data : data.items || [];
   console.log(`Found ${accounts.length} total accounts`);
 
   const PLATFORM_MAP = {

@@ -1,3 +1,15 @@
 {
-  "_note": "Run `npm run fetch-accounts` to populate"
+  "_note": "Auto-refreshed 2026-04-11T13:13:11.023Z",
+  "instagram": {
+    "accountId": "40131",
+    "username": "ticketscanapp"
+  },
+  "threads": {
+    "accountId": "5827",
+    "username": "ticketscanapp"
+  },
+  "twitter": {
+    "accountId": "15887",
+    "username": "ticketscan_io"
+  }
 }
