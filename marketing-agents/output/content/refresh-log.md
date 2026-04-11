@@ -1,5 +1,32 @@
 # Content Refresh Log
 
+## 2026-04-11 — Wells Fargo Center (venues.ts)
+
+**Page refreshed:** `wells-fargo-center` in `web/src/data/venues.ts`
+
+**What changed:**
+1. **Sections expanded** from 5 (1 floor, 2 lower, 2 upper) to 61 sections with accurate Wells Fargo Center layout:
+   - 1 Floor section
+   - 24 Lower Bowl sections (101-124) — full wrap-around lower level
+   - 12 Club sections (Club 1-12) — added entirely new mezzanine club tier
+   - 24 Upper Bowl sections (201-224) — full upper level
+2. **Description** upgraded from 1 generic sentence to a rich description covering: event volume (250+ per year), location context (South Philly Sports Complex alongside Citizens Bank Park and Lincoln Financial Field), club level perks (padded seating, in-seat service), upper-level value angle, and TicketScan CTA
+3. **Keywords** expanded from 4 to 9, adding: "Wells Fargo Center seating chart", "Philadelphia concert tickets", "76ers playoff tickets", "Flyers playoff tickets", "Wells Fargo Center events"
+
+**Why this venue:**
+- Most sparse venue data remaining after TD Garden refresh (was only 5 sections vs 30+ for comparable arenas)
+- Both home teams (76ers, Flyers) are in the 2025-26 playoff picture, driving high search volume
+- "76ers playoff tickets" and "Flyers playoff tickets" are high-intent seasonal keywords we were missing
+- South Philly Sports Complex context adds internal linking potential to Lincoln Financial Field (World Cup 2026 venue)
+
+**SEO impact expected:**
+- Full section data populates the seating guide sidebar on the venue page
+- Richer description gives Google more content to index
+- Playoff-related keywords capture April/May seasonal search spikes
+- Sports complex mention creates natural association with World Cup 2026 venue page
+
+---
+
 ## 2026-04-10 — TD Garden (venues.ts)
 
 **Page refreshed:** `td-garden` in `web/src/data/venues.ts`

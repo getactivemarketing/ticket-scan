@@ -1,22 +1,22 @@
-## Today's Content Hook — 2026-04-10
+## Today's Content Hook — 2026-04-11
 
-### Hook 1: StubHub FTC Settlement + World Cup Price Gouging
-**Topic:** StubHub hit with $10M FTC fine for deceptive pricing (hidden fees added late in checkout), happening the same week FIFA's "variable pricing" pushed World Cup Final tickets to $10,990 face value. Two stories, one theme: opaque ticket pricing hurts fans.
-**Angle:** "StubHub Just Got Fined $10M for Hiding Fees. FIFA Is Charging $10,990 Face Value. Here's How to See the Real Price Before You Buy." Position TicketScan as the transparent alternative — we show all-in prices across Ticketmaster, SeatGeek, and StubHub side by side so you never get surprised at checkout.
-**Target keyword:** "StubHub hidden fees" / "ticket price comparison" / "StubHub FTC fine"
-**Content type:** Blog post (timely news angle) — strong candidate for next week's Wednesday news slot
+### Hook 1: World Cup 2026 Draw Countdown — 61 Days Out
+**Topic:** With 61 days until the World Cup 2026 opener on June 11, ticket resale prices are climbing as the group stage draw settles in and fans finalize travel plans. Secondary market prices for opening matches at Estadio Azteca and MetLife Stadium are trending 30-40% above face value on StubHub, while SeatGeek still has inventory closer to face for select group-stage matches at smaller venues like BC Place and BMO Field.
+**Angle:** "World Cup 2026 Tickets: Where Prices Are Still Reasonable (61 Days Out)." Position TicketScan as the tool to compare across platforms before panic-buying. Highlight the price gap between marquee venues (MetLife, SoFi) and value venues (BC Place, Lumen Field).
+**Target keyword:** "World Cup 2026 tickets prices" / "cheapest World Cup tickets 2026"
+**Content type:** Blog post — strong candidate for next week's Wednesday news slot
 **Priority:** High
 
-### Hook 2: Bruno Mars "The Romantic Tour" Opens Tonight
-**Topic:** Bruno Mars kicks off his Romantic Tour tonight at Allegiant Stadium in Las Vegas. Resale prices range from $85 to $7,000+ depending on seat and city. Most primary dates sold out instantly.
-**Angle:** "Bruno Mars Tour Starts Tonight — Here's What Tickets Actually Cost Across Every Platform." Real-time price comparison across Ticketmaster resale, StubHub, SeatGeek. Show the price spread and where the deals are as the tour moves city to city.
-**Target keyword:** "Bruno Mars tour tickets" / "Bruno Mars ticket prices 2026"
-**Content type:** Blog post (timely how-to) — good for next week's Tuesday tactical slot
-**Priority:** Medium
+### Hook 2: NBA Play-In Tournament Tips Off Next Week
+**Topic:** The NBA regular season ends this weekend. Play-in tournament games start Tuesday April 14. Teams on the 7-10 bubble are in must-win mode, and ticket prices for potential elimination games are spiking. This is a perfect window for TicketScan — fans don't know where their team will play until seeding locks, then rush to buy.
+**Angle:** "NBA Play-In Tickets 2026: How to Get Seats Before Prices Spike." Guide fans through comparing prices the moment matchups are announced. Tie into refreshed venue pages (Wells Fargo Center, TD Garden).
+**Target keyword:** "NBA play-in tournament tickets 2026" / "NBA playoff tickets"
+**Content type:** Blog post — good for next week's Tuesday tactical slot
+**Priority:** High
 
-### Hook 3: NBA/NHL Playoff Picture Tightening
-**Topic:** April is crunch time. NBA and NHL regular seasons wrapping up, playoff seeding battles driving ticket demand for teams on the bubble. Celtics, Bruins, Nuggets, Avalanche all in the mix.
-**Angle:** Internal — use this to justify refreshing venue pages for playoff-contending teams (TD Garden, Ball Arena). Externally, could fuel a "Playoff Ticket Prices: When to Buy Before the Bracket Locks" piece.
-**Target keyword:** "NBA playoff tickets 2026" / "NHL playoff tickets"
+### Hook 3: NHL Playoff First Round Matchups Setting
+**Topic:** NHL regular season wrapping up this week. First-round playoff matchups are nearly locked. Flyers, Bruins, and other contenders are driving ticket demand. Home-ice advantage games will see price surges on all platforms.
+**Angle:** Internal — validates today's Wells Fargo Center venue refresh (Flyers playoff push). Externally, supports a "NHL Playoff Tickets: Compare Prices Before Round 1" piece.
+**Target keyword:** "NHL playoff tickets 2026" / "Flyers playoff tickets"
 **Content type:** Venue page refresh (today) + potential blog post next week
 **Priority:** Medium
