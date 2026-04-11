@@ -94,24 +94,57 @@ async function schedulePost(entry) {
     return { id: entry.id, status: 'skipped', reason: 'no account' };
   }
 
-  const payload = {
-    accountId: account.accountId,
-    content: {
-      text: entry.text,
-      mediaUrls: entry.mediaUrls || [],
-    },
-    scheduledTime: entry.scheduledTime,
+  const content = {
+    text: entry.text,
+    mediaUrls: entry.mediaUrls || [],
+    platform: entry.platform,
   };
 
-  // Platform-specific fields
-  if (entry.platform === 'twitter' && entry.additionalPosts) {
-    payload.content.additionalPosts = entry.additionalPosts;
+  // Twitter threads
+  if (entry.platform === 'twitter' && Array.isArray(entry.additionalPosts) && entry.additionalPosts.length) {
+    content.additionalPosts = entry.additionalPosts.map((text) => ({ text, mediaUrls: [] }));
   }
-  if (entry.platform === 'tiktok' && entry.target) {
-    payload.target = entry.target;
-  }
+
+  // YouTube Shorts title
   if (entry.platform === 'youtube' && entry.title) {
-    payload.content.title = entry.title;
+    content.title = entry.title;
+  }
+
+  // Platform-specific target fields
+  const target = { targetType: entry.platform };
+
+  if (entry.platform === 'tiktok') {
+    Object.assign(target, {
+      privacyLevel: 'PUBLIC_TO_EVERYONE',
+      disabledComments: false,
+      disabledDuet: false,
+      disabledStitch: false,
+      isBrandedContent: false,
+      isYourBrand: true,
+      isAiGenerated: false,
+      ...(entry.target || {}),
+    });
+  }
+
+  if (entry.platform === 'youtube') {
+    Object.assign(target, {
+      title: entry.title || entry.text?.slice(0, 100) || 'TicketScan',
+      privacyStatus: 'public',
+      shouldNotifySubscribers: true,
+      isMadeForKids: false,
+    });
+  }
+
+  const payload = {
+    post: {
+      accountId: account.accountId,
+      content,
+      target,
+    },
+  };
+
+  if (entry.scheduledTime) {
+    payload.scheduledTime = entry.scheduledTime;
   }
 
   if (dryRun) {

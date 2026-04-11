@@ -1,1 +1,30 @@
-[]
+[
+  {
+    "id": "2026-04-12-twitter-worldcup-countdown",
+    "platform": "twitter",
+    "scheduledTime": "2026-04-12T13:00:00.000Z",
+    "text": "60 days until World Cup 2026 kicks off. 🏆\n\nUSA vs Mexico at MetLife is already trending — current range across the major sites: $145-$220.\n\nWe'll track every match, every venue, every price drop. https://ticketscan.io/world-cup-2026",
+    "mediaUrls": []
+  },
+  {
+    "id": "2026-04-12-threads-hottake",
+    "platform": "threads",
+    "scheduledTime": "2026-04-12T13:30:00.000Z",
+    "text": "hot take: opening 10 tabs to find the cheapest ticket is the most 2010s thing you can do in 2026\n\nbuilt ticketscan so you only need one. free, tracks every major site, alerts you when prices drop. https://ticketscan.io",
+    "mediaUrls": []
+  },
+  {
+    "id": "2026-04-12-instagram-worldcup",
+    "platform": "instagram",
+    "scheduledTime": "2026-04-12T15:00:00.000Z",
+    "text": "T-minus 60 days until the FIFA World Cup 2026 ⚽\n\n16 stadiums. 104 matches. 3 countries.\n\nWe're tracking prices across every venue — from MetLife to Estadio Azteca. Link in bio to never miss a price drop.\n\n#WorldCup2026 #FIFAWorldCup #Tickets",
+    "mediaUrls": []
+  },
+  {
+    "id": "2026-04-12-twitter-tips-concerts",
+    "platform": "twitter",
+    "scheduledTime": "2026-04-12T17:00:00.000Z",
+    "text": "The best day to buy concert tickets is NOT the day they go on sale.\n\nPrices typically drop 24-48 hours before the event as resellers panic. Our data shows avg savings of $127 per ticket by waiting.\n\nticketscan.io",
+    "mediaUrls": []
+  }
+]
