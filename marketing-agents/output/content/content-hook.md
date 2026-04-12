@@ -1,22 +1,22 @@
-## Today's Content Hook — 2026-04-11
+## Today's Content Hook — 2026-04-12
 
-### Hook 1: World Cup 2026 Draw Countdown — 61 Days Out
-**Topic:** With 61 days until the World Cup 2026 opener on June 11, ticket resale prices are climbing as the group stage draw settles in and fans finalize travel plans. Secondary market prices for opening matches at Estadio Azteca and MetLife Stadium are trending 30-40% above face value on StubHub, while SeatGeek still has inventory closer to face for select group-stage matches at smaller venues like BC Place and BMO Field.
-**Angle:** "World Cup 2026 Tickets: Where Prices Are Still Reasonable (61 Days Out)." Position TicketScan as the tool to compare across platforms before panic-buying. Highlight the price gap between marquee venues (MetLife, SoFi) and value venues (BC Place, Lumen Field).
-**Target keyword:** "World Cup 2026 tickets prices" / "cheapest World Cup tickets 2026"
-**Content type:** Blog post — strong candidate for next week's Wednesday news slot
+### Hook 1: FIFA Last-Minute Sales Phase — 11 Days In, Prices Still Climbing
+**Topic:** FIFA's Last-Minute Sales Phase launched April 1. Eleven days in, the first-come-first-served dynamic pricing model continues to push Category 1 tickets higher. Meanwhile, the official FIFA resale marketplace (reopened April 2) is creating a two-track market: some group-stage matches are cheaper on resale than through FIFA direct, especially at non-marquee venues. MBTA just announced $80 round-trip train tickets for Boston Stadium (Gillette) matches — transit logistics are becoming a story.
+**Angle:** "World Cup 2026 Tickets: 11 Days Into Last-Minute Sales, Here's What We're Seeing." Compare FIFA direct vs. resale vs. StubHub/SeatGeek for the same matches. Highlight that the "official" channel isn't always cheapest — reinforces TicketScan's core value prop.
+**Target keyword:** "World Cup 2026 tickets last minute" / "FIFA World Cup ticket prices April 2026"
+**Content type:** Blog post — strong candidate for Wednesday's news slot next week
 **Priority:** High
 
-### Hook 2: NBA Play-In Tournament Tips Off Next Week
-**Topic:** The NBA regular season ends this weekend. Play-in tournament games start Tuesday April 14. Teams on the 7-10 bubble are in must-win mode, and ticket prices for potential elimination games are spiking. This is a perfect window for TicketScan — fans don't know where their team will play until seeding locks, then rush to buy.
-**Angle:** "NBA Play-In Tickets 2026: How to Get Seats Before Prices Spike." Guide fans through comparing prices the moment matchups are announced. Tie into refreshed venue pages (Wells Fargo Center, TD Garden).
-**Target keyword:** "NBA play-in tournament tickets 2026" / "NBA playoff tickets"
-**Content type:** Blog post — good for next week's Tuesday tactical slot
-**Priority:** High
+### Hook 2: NHL and NBA Playoffs — Round 1 Matchups Locking In This Weekend
+**Topic:** NHL regular season ending, first-round matchups locking. San Jose Sharks put playoff tickets on sale April 10 (face value still available — rare). NBA regular season wrapping up with Play-In starting Tuesday April 14. Capitals vs. Penguins Game 1 tickets starting at $232 on secondary. This is the highest-volume ticket shopping weekend of the spring.
+**Angle:** "Playoff Ticket Prices Are All Over the Map — Literally." Show the price variance across platforms for the same first-round games. Tie back to the queued blog draft (2026-04-08 playoff buying guide) — this is the perfect moment to publish it.
+**Target keyword:** "NHL playoff tickets 2026 prices" / "NBA playoff tickets compare"
+**Content type:** Publish existing blog draft NOW + social amplification
+**Priority:** High — time-sensitive, playoff games start this week
 
-### Hook 3: NHL Playoff First Round Matchups Setting
-**Topic:** NHL regular season wrapping up this week. First-round playoff matchups are nearly locked. Flyers, Bruins, and other contenders are driving ticket demand. Home-ice advantage games will see price surges on all platforms.
-**Angle:** Internal — validates today's Wells Fargo Center venue refresh (Flyers playoff push). Externally, supports a "NHL Playoff Tickets: Compare Prices Before Round 1" piece.
-**Target keyword:** "NHL playoff tickets 2026" / "Flyers playoff tickets"
-**Content type:** Venue page refresh (today) + potential blog post next week
+### Hook 3: BTS 2026 World Tour Announcement
+**Topic:** BTS confirmed shows across Asia, North America, Europe, and South America for 2026. K-pop ticket demand historically overwhelms all platforms — massive price variance between Ticketmaster drops and resale within hours. This audience is extremely comparison-shopping savvy.
+**Angle:** Internal opportunity — K-pop/BTS audience is large, digitally native, and already trained to compare prices. Consider a future "K-Pop Concert Tickets: How to Compare Prices" guide targeting this demographic.
+**Target keyword:** "BTS 2026 tour tickets" / "BTS concert tickets cheap"
+**Content type:** Future blog post candidate (not immediate — wait for NA dates announced)
 **Priority:** Medium
