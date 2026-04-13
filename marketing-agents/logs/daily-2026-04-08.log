@@ -1,0 +1,207 @@
+===========================================
+TicketScan Marketing Team — Daily Run
+Started: Wed Apr  8 06:00:01 EDT 2026
+===========================================
+
+>>> Agent 7: Analytics & Intelligence — 06:00:01
+-------------------------------------------
+Dashboard written to `marketing-agents/output/analytics/analytics-daily-2026-04-08.md`.
+
+## Key Findings
+
+**Platform totals:** 48 users, 64 watchlist items, 3 newsletter subscribers (2 test), 0 price history records.
+
+**3 critical issues (all carry over from yesterday, unresolved):**
+
+1. **Price history table is EMPTY** — the price tracking cron has never written data. This means price trends, buy recommendations, and price drop alerts are all non-functional. This is the #1 issue to investigate.
+
+2. **Drip campaign dead** — 20+ eligible users, zero emails sent. Users signing up and getting zero onboarding.
+
+3. **`/api/admin/alerts` endpoint broken** — returning error.
+
+**Other flags:**
+- 5-day signup drought (no new users since Apr 3)
+- 0% target price adoption — no user has ever set a target price, so alerts can never trigger
+- Newsletter form effectively dead (1 real subscriber in 3+ months)
+- RAYE show is **tonight** in Minneapolis — timely social hook for the Social agent
+- Cardi B Charlotte is **4 days out** — another time-sensitive content opportunity
+
+>>> Agent 2: SEO Specialist — 06:15:15
+-------------------------------------------
+Here's the updated summary with findings from the live site check:
+
+---
+
+## Additional Findings from Live Site Validation
+
+Three new issues surfaced by fetching the actual rendered pages:
+
+1. **Duplicate "| Ticket Scan | Ticket Scan" in title tags** — affects **56 pages** (venues, city, category). The `generateMetadata` titles already include "| Ticket Scan" but the layout template `%s | Ticket Scan` appends it again. Quick fix: strip the suffix from the three `generateMetadata` functions.
+
+2. **No canonical tags rendered** — despite `metadataBase` being set, no `<link rel="canonical">` appears in the live HTML. Needs investigation; may need explicit `alternates.canonical` in metadata.
+
+3. **No og:image on any page** — social shares lack preview images across the entire site.
+
+All three are now logged in the updated `seo-daily-2026-04-08.md` with the P0 duplicate title bug at the top of the priority list. The venue JSON-LD URL fix from earlier is the only code change applied today — the title fix and other items are flagged for follow-up.
+
+>>> Agent 1: Content Strategist — 06:19:29
+-------------------------------------------
+Wednesday deliverables complete:
+
+**Content Hook** (`content-hook.md`) — NBA/NHL playoffs kicking off this week, first-round tickets live with $100+ price spreads across platforms. High priority, ties into existing NBA and NHL guides.
+
+**Blog Draft** (`2026-04-08-nba-nhl-playoff-tickets-2026-buying-guide.md`) — ~1,000 words, news/timely category. Covers:
+- Why playoff tickets have the widest cross-platform price gaps
+- Series uncertainty, marketplace arbitrage, and fee differences
+- A buying playbook: when prices dip, how to set alerts, which games to target
+- NHL-specific wrinkles (Sharks face-value on-sale April 10)
+- CTAs to watchlist and compare tools
+
+Both files are in `marketing-agents/output/content/`. Blog draft has proper YAML frontmatter and is ready for review/publish via `./marketing-agents/scripts/publish-draft.sh`.
+
+**Handoff notes:**
+- SEO Agent: keyword opportunities for "NBA playoff tickets 2026" and "NHL playoff tickets 2026" — high search volume this week
+- Social Agent: game-day matchup snippets are ripe for Twitter/Instagram tips
+- Secondary hook (Daniel Caesar tour) flagged for next Tuesday's tactical post
+
+>>> Agent 3: Social Media Manager — 06:21:51
+-------------------------------------------
+Done. Here's the summary:
+
+### Published (Twitter/X via Typefully)
+1. **Price Alert Post** — "$127 price difference" hook with CTA to compare on TicketScan (ID: 8654982)
+2. **Educational Post** — Playoff pricing dynamics: sweep panic = price drops, upset = price spikes (ID: 8654983)
+3. **Daily Tip** — Auto-generated fee awareness tip (ID: 8654980)
+
+### Failed
+4. **Instagram** — Server returned `INSTAGRAM_ACCESS_TOKEN` not configured. Caption saved in output file for manual posting.
+
+### Queued (Manual)
+5. **LinkedIn** — Longer-form version of the playoff pricing analysis saved to output file.
+
+### Action Items
+- **Instagram API needs credentials** configured in Railway env vars (`INSTAGRAM_ACCESS_TOKEN`, `INSTAGRAM_ACCOUNT_ID`) for automated posting to work.
+- **Boost candidate:** Post 1 (the $127 spread stat) — strong hook for paid amplification.
+
+Output saved to `marketing-agents/output/social-daily-2026-04-08.md`.
+
+>>> Agent 4: Paid Ads Manager — 06:23:08
+-------------------------------------------
+Done. Here's what was generated:
+
+**1. Campaign Health Report** (`ads-daily-2026-04-08.md`)
+- No active ad campaigns found — Google Ads and Meta Ads are not yet connected
+- Identified **3 launch blockers** that must be resolved before spending:
+  1. **Conversion tracking unverified** — GTM/GA4 events not confirmed firing
+  2. **Price history table empty** — core value prop pages show no data
+  3. **Landing pages unaudited** for paid traffic readiness
+
+**2. Pre-Launch Keyword Strategy**
+- 8 high-intent keywords mapped with estimated CPCs ($0.70–$4.00)
+- 10 negative keywords ready to add at launch
+
+**3. Ad Creative** (`creative-2026-04-08-playoff-search.md`) — 3 variations:
+- **Variation A:** Price difference hook ("Same Seat, $127 Price Gap") → `/compare`
+- **Variation B:** Price drop alerts ("Get Notified When Prices Drop") → `/dashboard`
+- **Variation C:** World Cup 2026 awareness → `/world-cup-2026`
+- Each has Google Search + Meta formats with A/B testing plan
+
+**Key recommendation:** Don't launch paid ads until the price tracking cron and conversion tracking are fixed. Spending before that risks high bounce rates and unmeasurable results. Once resolved, start with Google Search at $15-25/day targeting comparison-intent keywords.
+
+>>> Agent 5: Email Marketing — 06:35:05
+-------------------------------------------
+Report written. Here's the summary:
+
+## Email Daily — 2026-04-08
+
+### Critical Issues
+
+**P0 — Drip Campaign Outage (Day 2):** Zero drip emails have ever been sent. 20 users are overdue — the oldest (41 days) should have received all 5 emails. The `/api/admin/drip-stats` endpoint returns empty stats. This was flagged yesterday with no resolution.
+
+**P0 — Price Alerts Never Triggered:** Despite 64 watchlist items, zero price alerts have ever fired. Either users haven't set target prices, or the price-check cron isn't matching targets.
+
+### Metrics
+| Metric | Value |
+|--------|-------|
+| Drip emails sent (24h) | 0 |
+| Price alerts (24h) | 0 |
+| New subscribers (24h) | 0 |
+| Total active subscribers | 3 (1 real, 2 test) |
+| Total users | 48 (+2 this week) |
+| Watchlist items | 64 |
+| Days since last organic subscriber | 66 |
+
+### Recommended Next Steps
+1. **Manually trigger `POST /api/admin/drip-run`** and inspect SMTP logs to diagnose why sends aren't happening
+2. Investigate the price alert cron — 64 watchlist items with 0 alerts ever is abnormal
+3. Watchlist digest is blocked on a missing backend endpoint (`/api/admin/watchlist-digest`)
+4. Newsletter growth has stalled for 66 days — needs CTA placement audit
+
+Output saved to `marketing-agents/output/email-daily-2026-04-08.md`.
+
+>>> Agent 6: CRO Specialist — 06:36:20
+-------------------------------------------
+CRO daily report written to `marketing-agents/output/cro-daily-2026-04-08.md`.
+
+**Today's focus: `/dashboard` page + Registration form**
+
+### Top findings:
+
+**P0 — Critical**
+1. **Sign-up upsell vanishes after search results** — the logged-out banner only shows above the form. Once users scroll through results (peak intent), there's no registration nudge. Fix: inline CTA card after the 3rd EventCard.
+2. **No target price input on watchlist add** — `EventCard.tsx` adds events without a `target_price`, so the entire alert system silently does nothing for most users. The core product loop is broken.
+3. **City hardcoded to "Orlando"** (carryover from 04-07, now confirmed on both `/dashboard` and `/compare`).
+
+**P1 — Registration form**
+4. **Bare registration page** — no value reinforcement, no benefit bullets, no social proof. Users lose momentum between the value-rich landing page and the empty form.
+5. **No inline validation or password toggle** — all validation on submit, no visibility control.
+6. **"Already registered" error** shows as a red error instead of offering a "Sign in instead" link.
+
+**Proposed A/B test #2:** Inline signup CTA in search results vs top-banner-only (25%+ registration lift hypothesis).
+
+**Carryover blockers:** Analytics integration (PostHog/GA4) remains P0 — without event tracking, all CRO metrics are blind.
+
+>>> Agent 8: Growth & Retention — 06:40:22
+-------------------------------------------
+Growth & Retention daily report is written. Here's the summary:
+
+**Key findings:**
+
+1. **Drip campaign is completely broken** -- 0 emails sent to any of the 48 users, ever. This is the biggest retention failure. Every user who signed up heard nothing from us.
+
+2. **Zero target prices set** -- All 64 watchlist items have `target_price: null`. The entire price alert system (our core retention loop) has never fired because no user was prompted to set a target.
+
+3. **87.5% churn rate** -- 42 of 48 users haven't engaged in 14+ days. Only 2 users are "new" (last 7 days), and both activated (added watchlist items).
+
+4. **Two power users churned** -- `tosophiameyer` (11 watchlist items) and `brigitte.theisen` (10 items) showed strong intent but disappeared, likely because they never got alerts or drip emails.
+
+**Highest-leverage fix:** Add a target price prompt with completion meter after watchlist add. This single UX change would activate the entire alert system and is more impactful than any email campaign.
+
+**Churn emails drafted for:**
+- `billstromkel@gmail.com` -- RAYE show is TODAY
+- `lvasub6@gmail.com` -- Flyleaf tour in 100 days
+- `tosophiameyer@gmail.com` -- power user win-back
+- `brigitte.theisen@gmail.com` -- power user win-back
+
+**Psychology optimization:** Commitment/consistency completion meter (3/4 steps done, just set a target price) with loss aversion framing and social proof anchor.
+
+Output saved to `marketing-agents/output/growth-daily-2026-04-08.md`.
+
+>>> Committing outputs — 06:42:41
+[main aeda35b] Daily marketing agent output — 2026-04-08
+ 10 files changed, 1070 insertions(+), 13 deletions(-)
+ create mode 100644 marketing-agents/output/ads/ads-daily-2026-04-08.md
+ create mode 100644 marketing-agents/output/ads/creative-2026-04-08-playoff-search.md
+ create mode 100644 marketing-agents/output/analytics/analytics-daily-2026-04-08.md
+ create mode 100644 marketing-agents/output/content/2026-04-08-nba-nhl-playoff-tickets-2026-buying-guide.md
+ create mode 100644 marketing-agents/output/cro-daily-2026-04-08.md
+ create mode 100644 marketing-agents/output/email-daily-2026-04-08.md
+ create mode 100644 marketing-agents/output/growth-daily-2026-04-08.md
+ create mode 100644 marketing-agents/output/seo-daily-2026-04-08.md
+ create mode 100644 marketing-agents/output/social-daily-2026-04-08.md
+To https://github.com/getactivemarketing/ticket-scan.git
+   e8621a5..aeda35b  main -> main
+
+===========================================
+Finished: Wed Apr  8 06:42:42 EDT 2026
+===========================================

@@ -1,0 +1,188 @@
+===========================================
+TicketScan Marketing Team — Daily Run
+Started: Sat Apr 11 06:00:02 EDT 2026
+===========================================
+
+>>> Agent 7: Analytics & Intelligence — 06:00:02
+-------------------------------------------
+Dashboard written. Here's the summary:
+
+**Best day since late February.** 2 signups + 7 watchlist adds on Apr 10. Both new users activated within minutes — 100% activation rate continues.
+
+**Key highlights:**
+- **Total users:** 51 (+2), **watchlist items:** 72 (+7)
+- **World Cup demand confirmed** — pete.uzelac77 watchlisted 4 World Cup matches at Lincoln Financial Field (Philadelphia). First multi-match WC user.
+- **Cardi B Charlotte is TOMORROW** (Apr 12) — urgent content/social hook
+- Signup velocity recovering: 3 in 7 days, up from 1
+
+**Critical issues (all persist, day 4+):**
+1. Price history table still empty — cron never wrote data
+2. Drip campaign non-functional — 20+ eligible users at 0 emails sent
+3. `/api/admin/alerts` endpoint still broken
+4. Zero target prices set across all 72 watchlist items
+5. Newsletter has 1 real subscriber
+
+The dashboard is ready at `marketing-agents/output/analytics/analytics-daily-2026-04-11.md` for all other agents to consume.
+
+>>> Agent 2: SEO Specialist — 06:01:53
+-------------------------------------------
+SEO daily run complete. Here's the summary:
+
+**Critical finding:** Only ~2 of 97 pages are indexed in Google. Zero organic visibility on commercial keywords. Branded search works.
+
+**Fix applied:** Added `StadiumOrArena` + `SportsEvent` JSON-LD structured data and OpenGraph/Twitter Card tags to all 16 World Cup stadium pages (`web/src/app/world-cup-2026/[stadium]/page.tsx`). These pages previously had no schema markup or social tags.
+
+**Schema validation** (3 pages checked today):
+- `/venues/msg` — StadiumOrArena schema valid; duplicate "Ticket Scan" in title
+- `/faq` — FAQPage schema valid with 15 Q&As; OG tags using generic values
+- `/world-cup-2026/metlife-stadium` — Fixed (was missing everything)
+
+**Deliverables:**
+- `marketing-agents/output/seo-daily-2026-04-11.md` — Full daily report
+- `marketing-agents/output/seo-requests/2026-04-11-content-requests.md` — 2 blog post requests for Content Agent
+- Code fix in `web/src/app/world-cup-2026/[stadium]/page.tsx`
+
+**Top priority:** Submit sitemap to Google Search Console and manually request indexing for high-value pages. The indexing gap is the #1 blocker for organic growth.
+
+>>> Agent 1: Content Strategist — 06:05:58
+-------------------------------------------
+Everything looks clean. Here's the Saturday summary:
+
+## Content Strategist — Saturday April 11, 2026
+
+### Page Refresh: Wells Fargo Center
+**File:** `web/src/data/venues.ts` (lines 211-248)
+
+| Metric | Before | After |
+|--------|--------|-------|
+| Sections | 5 (floor + 2 lower + 2 upper) | 61 (floor + 24 lower + 12 club + 24 upper) |
+| Description | 1 generic sentence | Rich 5-sentence description with location context, tier details, and CTA |
+| Keywords | 4 | 9 (added seating chart, concert, playoff terms for both 76ers and Flyers) |
+
+Key additions: full 100-level bowl (101-124), new club/mezzanine tier (Club 1-12), full 200-level upper bowl (201-224), South Philly Sports Complex context linking to Lincoln Financial Field (World Cup 2026 venue).
+
+### Content Hooks (3 identified)
+1. **World Cup 61 days out** — resale prices climbing, value venues still available (High)
+2. **NBA Play-In tips off next week** — price comparison window as matchups lock (High)
+3. **NHL first-round matchups setting** — validates today's WFC refresh (Medium)
+
+### Files produced
+- `marketing-agents/output/content/content-hook.md` — updated with today's hooks
+- `marketing-agents/output/content/refresh-log.md` — updated with WFC refresh details
+- `web/src/data/venues.ts` — Wells Fargo Center expanded
+
+### Handoff notes
+- **Next refresh candidate:** American Airlines Center (Dallas) or Chase Center (SF) — both still at 5 sections
+- **SEO Agent:** New keywords "76ers playoff tickets" and "Flyers playoff tickets" are now targetable
+- **Social Agent:** WFC refresh + NBA play-in countdown are good social hooks this weekend
+
+>>> Agent 3: Social Media Manager — 06:08:46
+-------------------------------------------
+Done. Today's social output:
+
+**6 posts created** across 4 platforms, saved to `content-calendar.json`:
+- **Twitter/X (3)**: World Cup 61-day countdown (1 PM), NBA Play-In alert (5 PM), NHL playoff price gaps (9 PM)
+- **Instagram (1)**: World Cup value venues deep dive (6 PM)
+- **Threads (1)**: NBA Play-In buying window (5:30 PM)
+- **TikTok (1)**: World Cup venue value hack (7 PM)
+
+**Pillars covered**: World Cup 2026, Deal Alerts, Tips & Education. Tomorrow should hit Savings Wins.
+
+**Note**: The admin posting endpoints (`/api/admin/typefully/*`, `/api/admin/instagram/*`) returned 404 — they aren't deployed yet. Content needs to be published manually via Blotato or native platform schedulers.
+
+Daily log written to `marketing-agents/output/social/social-daily-2026-04-11.md`.
+
+>>> Agent 4: Paid Ads Manager — 06:10:33
+-------------------------------------------
+Paid Ads Manager daily run complete. Two files written to `marketing-agents/output/ads/`:
+
+**`ads-daily-2026-04-11.md`** — Campaign health report:
+- Ad platforms still not connected (Day 4). All blockers unresolved.
+- Strong organic signals: 2 signups yesterday, 7 watchlist adds (best day in weeks)
+- World Cup demand validated by real user (pete — 4 Philly WC matches)
+- Updated keyword strategy: Cardi B tomorrow, NBA Play-In Tuesday, WC Philly
+- Budget recommendation: $35/day across Google + Meta when ready
+- Missed revenue estimate: ~10-20 signups/week if campaigns were live
+
+**`creative-2026-04-11-playoff-urgency.md`** — 3 new ad variations:
+1. **Cardi B Charlotte TOMORROW** — last-minute seller panic angle, Charlotte geo-target, 24hr shelf life
+2. **NBA Play-In buying window** — "prices spike within 4 hours of matchup announcement" urgency
+3. **World Cup Philly** — Lincoln Financial Field, validated by real user watchlist behavior
+
+Key escalation: conversion tracking and price history remain the top blockers. Every day without them = missed time-sensitive opportunities (Cardi B today, NBA Play-In Tuesday).
+
+>>> Agent 5: Email Marketing — 06:13:11
+-------------------------------------------
+Email daily report written. Here's the summary:
+
+**Day 5 of SMTP outage** — `POST /api/admin/drip-run` still times out. Zero drip emails have ever been sent to any user.
+
+**Key metrics:**
+- **51 users** (+2 today), **72 watchlist items** (+7), **3 newsletter subscribers** (69-day stall)
+- **20 users** in drip backlog, all with `last_email_sent = 0`
+- **0 price alerts** ever triggered (0/72 items have target prices set)
+
+**Critical miss:** bhaygood728@gmail.com is tracking **Cardi B tomorrow** in Charlotte and has never received a single email from TicketScan. If SMTP can't be fixed today, manual outreach should be considered.
+
+**Top priorities:**
+1. **P0:** Fix SMTP — verify Resend API (commit `e8621a5`) is configured as active provider
+2. **P0:** Manual outreach to bhaygood728 for tomorrow's Cardi B show
+3. **P1:** Target price UX — 0/72 items have targets, blocking all alert functionality
+4. **P2:** Newsletter growth — needs signup CTAs on blog/venue/World Cup pages
+
+Output: `marketing-agents/output/email-daily-2026-04-11.md`
+
+>>> Agent 6: CRO Specialist — 06:15:00
+-------------------------------------------
+CRO daily report written to `marketing-agents/output/cro-daily-2026-04-11.md`.
+
+**Summary of findings (Saturday — World Cup page focus):**
+
+**4 critical issues identified:**
+1. **Zero email capture** on any World Cup page — the `NewsletterSignup` component exists but isn't used on the highest-intent pages
+2. **Mobile CTAs buried** on stadium pages — sidebar widgets fall below 800+ words of content on mobile
+3. **No social proof** — homepage has stats bar + testimonials, World Cup pages have none
+4. **Stadium bottom CTA is navigation, not conversion** — "View All Venues" wastes peak-intent placement
+
+**Key proposal:** Build a 2-field inline price alert micro-form (email + target price) for World Cup pages. Converts the current 4-step registration-gated flow into a single low-friction action. CTA: "Alert Me When Prices Drop."
+
+**Escalation:** Day 5 without analytics (PostHog/GA4). No A/B tests can launch, no funnel data exists. All recommendations remain hypothesis-based. Recommend a dedicated dev sprint to clear the P0 backlog.
+
+>>> Agent 8: Growth & Retention — 06:19:14
+-------------------------------------------
+Growth Daily report for April 11 is complete. Here's the summary:
+
+**Key findings:**
+- **Best acquisition day yet** --- 2 new users, 7 new watchlist items (+11% jump)
+- **Pete is a power user candidate** --- 6 items in 12 minutes (World Cup + Darts), strongest activation signal since tosophiameyer
+- **100% activation rate** for new signups this week --- users who find us immediately add events
+
+**Urgent actions:**
+1. **bhaygood728's Cardi B event is TOMORROW** --- "your event is tomorrow" email prepared, needs immediate send
+2. **tate.sheppard** has Florence + The Machine in 20 days --- time-sensitive win-back opportunity
+3. **Drip campaign: Day 5 of being broken.** 51 users, 0 emails ever sent
+
+**Today's psychology optimization:** Scarcity-based target price prompts on the watchlist page --- dynamic urgency messages based on event proximity. This directly attacks the 0% target price completion rate that's keeping the entire alert system inert.
+
+**The hard truth:** Growth is masking structural problems. 72 watchlist items, 0 target prices, 0 drip emails, 0 price alerts. Every new user is on the same churn trajectory unless the email system and target price UX get fixed this week.
+
+Report written to `marketing-agents/output/growth-daily-2026-04-11.md`.
+
+>>> Committing outputs — 06:22:00
+[main 89f1ef2] Daily marketing agent output — 2026-04-11
+ 11 files changed, 1249 insertions(+), 16 deletions(-)
+ create mode 100644 marketing-agents/output/ads/ads-daily-2026-04-11.md
+ create mode 100644 marketing-agents/output/ads/creative-2026-04-11-playoff-urgency.md
+ create mode 100644 marketing-agents/output/analytics/analytics-daily-2026-04-11.md
+ create mode 100644 marketing-agents/output/cro-daily-2026-04-11.md
+ create mode 100644 marketing-agents/output/email-daily-2026-04-11.md
+ create mode 100644 marketing-agents/output/growth-daily-2026-04-11.md
+ create mode 100644 marketing-agents/output/seo-daily-2026-04-11.md
+ create mode 100644 marketing-agents/output/seo-requests/2026-04-11-content-requests.md
+ create mode 100644 marketing-agents/output/social/social-daily-2026-04-11.md
+To https://github.com/getactivemarketing/ticket-scan.git
+   117b0f0..89f1ef2  main -> main
+
+===========================================
+Finished: Sat Apr 11 06:22:01 EDT 2026
+===========================================

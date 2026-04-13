@@ -1,0 +1,232 @@
+===========================================
+TicketScan Marketing Team — Daily Run
+Started: Sun Apr 12 06:00:03 EDT 2026
+===========================================
+
+>>> Agent 7: Analytics & Intelligence — 06:00:03
+-------------------------------------------
+Dashboard written. Here's the summary:
+
+## TicketScan Daily Dashboard — Apr 12, 2026
+
+**Quiet day.** Second consecutive zero-activity day after a strong Apr 10 (2 signups, 7 watchlist adds). Weekend lull is the most likely explanation but worth monitoring Monday.
+
+### Platform Totals
+- **51 users** | **72 watchlist items** | **3 newsletter subscribers** | **0 price history records**
+
+### Today's Highlight
+- **Cardi B — Charlotte is TODAY** — first time a watchlisted event is actually occurring. Potential for real-time content.
+- **World Cup: 60 days out** — organic demand confirmed by pete's 4 Philly WC watchlist items. SEO window narrowing.
+
+### Critical Issues (Day 5+, all unresolved)
+1. **Price history empty** — cron has never written data. Core value prop broken.
+2. **Drip campaign dead** — 20+ eligible users have received zero onboarding emails. blubberboi hits Day 3 today and should get Email 1 but won't.
+3. **`/api/admin/alerts` endpoint broken** — returns error.
+
+### Positive Signals
+- 100% activation rate continues (every recent signup adds watchlist items within minutes)
+- World Cup demand is real and growing — Philly/Lincoln Financial Field specifically
+- Third power user emerging (pete, 6 items)
+
+Dashboard saved to `marketing-agents/output/analytics/analytics-daily-2026-04-12.md` and ready for all other agents to consume.
+
+>>> Agent 2: SEO Specialist — 06:02:05
+-------------------------------------------
+No TypeScript errors. Here's a summary of the SEO daily run:
+
+---
+
+## SEO Daily Report — 2026-04-12
+
+### Index & Coverage
+- **~109 pages in sitemap** (78 SEO pages + blog + static)
+- Sitemap and robots.txt properly configured
+- No noindex issues found
+- Venue links verified correct (`venue.id` matches slug)
+
+### Schema Validation (World Cup + Venue Pages)
+| Page Type | Schema | Issues |
+|-----------|--------|--------|
+| WC Stadium | StadiumOrArena + SportsEvent | AggregateOffer missing `lowPrice` — **fixed** |
+| WC Main | Inherits from layout | No page-level JSON-LD (backlog) |
+| Venue | StadiumOrArena | Missing `image` property (no images in data) |
+
+### Technical Fix Applied
+**Added `lowPrice` to World Cup stadium AggregateOffer schema** in `web/src/app/world-cup-2026/[stadium]/page.tsx`. Extracts the lowest price from venue section price ranges (e.g., `$150` from "Upper Level: $150-$500"). This enables Google's price-related rich results for World Cup ticket searches.
+
+### Backlog Items
+1. Add `BreadcrumbList` schema to venue + WC pages (medium priority)
+2. Add page-level JSON-LD to WC main page (medium)  
+3. Add `image` properties to schemas when image URLs available (low)
+4. Connect Google Search Console for live ranking data (low)
+
+Full report: `marketing-agents/output/seo-daily-2026-04-12.md`
+
+>>> Agent 1: Content Strategist — 06:05:18
+-------------------------------------------
+All Sunday deliverables are complete. Here's the summary:
+
+---
+
+## Content Strategist — Sunday April 12, 2026
+
+### Files produced
+| File | Description |
+|------|-------------|
+| `content-hook.md` | 3 hooks: FIFA Last-Minute Sales Phase (11 days in), NHL/NBA playoff matchups locking, BTS 2026 tour |
+| `next-week-plan.md` | Full week audit + next week's 4 blog topics + 2 refresh targets |
+
+### Copy review verdicts
+- **Playoff buying guide (Apr 8 draft):** Approved. Ready to publish. Only suggestion: change `category: news` → `category: guides`.
+- **Social posts (Apr 11):** Approved. One minor tweak: drop `#SoccerTickets` from the Instagram post.
+
+### This week's audit highlights
+- **Shipped:** 1 published blog post (World Cup $10,990), 2 venue refreshes (TD Garden, Wells Fargo Center), 1 drafted blog post (playoff guide)
+- **Gaps:** Wednesday and Thursday blog drafts were missed. Saturday refresh was skipped. Playoff draft is still unpublished despite being time-sensitive.
+
+### Urgent action items
+1. **Publish the playoff buying guide NOW** — playoffs start this week and the draft has been sitting for 4 days
+2. Only 2/97 pages indexed by Google — content production is outpacing indexation
+
+### Next week's plan
+| Day | Topic | Keyword Target |
+|-----|-------|---------------|
+| Mon | When to Buy World Cup 2026 Tickets (60 days out) | "when to buy World Cup 2026 tickets" |
+| Tue | NBA Play-In Tickets: Compare Prices Before Tip-Off | "NBA play-in tournament tickets 2026" |
+| Wed | FIFA Resale vs. StubHub vs. SeatGeek Comparison | "FIFA resale marketplace" |
+| Thu | Best Ticket Comparison Sites 2026 | "best ticket comparison sites" |
+| Fri | Chase Center or LA concerts page refresh | — |
+| Sat | United Center or NYC concerts page refresh | — |
+
+>>> Agent 3: Social Media Manager — 06:08:54
+-------------------------------------------
+Done. Here's today's social media output:
+
+**6 posts queued** to `content-calendar.json`:
+
+| # | Platform | Time (ET) | Angle |
+|---|----------|-----------|-------|
+| 1 | Twitter | 9:00 AM | FIFA Last-Minute Sales Phase — official ≠ cheapest |
+| 2 | Twitter | 1:00 PM | Cardi B Charlotte event day — panic seller drops |
+| 3 | Twitter | 5:00 PM | NHL/NBA playoffs — $47 price gap across platforms |
+| 4 | Instagram | 11:00 AM | World Cup 60-day countdown + FIFA resale vs direct |
+| 5 | Threads | 1:30 PM | Event day economics — last-minute buyer playbook |
+| 6 | TikTok | 7:00 PM | POV playoff ticket price hack |
+
+**Pillars covered**: World Cup 2026, Deal Alerts, Price Intelligence, Tips & Education. "Savings Wins" deferred to tomorrow — if we can pull real Cardi B before/after pricing tonight, that's a strong data-backed post.
+
+**Publishing**: API endpoints returned 404 (not deployed). Content needs manual scheduling via Blotato.
+
+**Summary log**: `marketing-agents/output/social/social-daily-2026-04-12.md`
+
+>>> Agent 4: Paid Ads Manager — 06:10:56
+-------------------------------------------
+Paid Ads Manager daily run complete. Here's the summary:
+
+## Paid Ads Daily — April 12 Deliverables
+
+**1. Campaign Health Report** → `ads-daily-2026-04-12.md`
+- Day 5 with no active ad platforms — all launch blockers persist (GTM/GA4, price history, drip campaign, landing page audit)
+- Two consecutive zero-signup days (Apr 11-12) after Apr 10 spike — organic momentum stalled
+- Estimated 12-25 signups missed this week if campaigns had been live
+
+**2. Search Term Strategy Updated**
+- **New keywords:** "Cardi B Charlotte tickets today" (event day), "NHL playoff tickets 2026" (matchups locking in), "FIFA resale vs direct tickets" (new angle), "BTS 2026 tour tickets" (parked for later)
+- **New negatives:** NHL playoff schedule, Cardi B setlist, FIFA ticket lottery, MBTA World Cup shuttle
+- Priority shift: NHL playoffs and FIFA resale angle elevated; Cardi B is peak today then expires
+
+**3. Three New Ad Creatives** → `creative-2026-04-12-event-day-playoffs.md`
+- **Var A:** Cardi B Charlotte EVENT DAY — panic-seller pricing, 12-hour shelf life
+- **Var B:** NHL Playoffs — "$47 gap, same seat, wrong site" concrete stat
+- **Var C:** World Cup FIFA resale — "official ≠ cheapest" counterintuitive hook (fresh angle from today's content hooks)
+
+**4. Budget Recommendation:** $37/day (+$2 from yesterday, justified by playoff weekend)
+
+**5. Key Cross-Agent Requests:**
+- Lead Architect: Day 5+ on critical blockers (price tracking, drip, alerts, GTM)
+- CRO Agent: Target price adoption still 0%, landing page audits needed
+- Social Agent: FIFA resale post + $47 playoff gap post flagged as Meta boost candidates
+
+>>> Agent 5: Email Marketing — 06:14:27
+-------------------------------------------
+Email Daily report for 2026-04-12 written to `marketing-agents/output/email-daily-2026-04-12.md`.
+
+**Key findings:**
+
+**SMTP Outage — Day 6:** The `drip-run` endpoint timed out again (exit code 28). Zero drip emails have ever been sent. 20 users in the backlog, 9 of whom should have received all 5 drip emails by now.
+
+**Critical miss today:** bhaygood728@gmail.com has **Cardi B tonight** at Spectrum Center (tracked since Apr 3) and has never received a single email from TicketScan. This is an unrecoverable missed opportunity.
+
+**Other urgency events:**
+- TWICE in Austin (5-6 days) — yuehsu@gmail.com, tracking for 68 days with zero contact
+- Viva El Jaripeo (13 days) — 2510soccerboy@gmail.com
+
+**Persistent issues:**
+- 0/72 watchlist items have target prices set (blocks all price alerts)
+- 3 newsletter subscribers total, 70-day stall since last organic signup
+- 22 of 72 watchlist items (31%) are for past events — need cleanup
+
+**P0 recommendation:** Fix the SMTP pipeline. This is day 6 of a complete email outage. The entire email channel — drip, alerts, digests — is non-functional.
+
+>>> Agent 6: CRO Specialist — 06:16:54
+-------------------------------------------
+CRO Daily report written to `marketing-agents/output/cro-daily-2026-04-12.md`.
+
+**Key findings today:**
+
+**2 Critical Bugs Found (P0):**
+- Blog page "Subscribe Now" button routes to `/` (homepage) instead of the newsletter signup — completely broken funnel
+- Blog post sidebar "Subscribe" button has the same broken routing — all in-article newsletter conversion is dead
+
+**Live Metrics (from admin API):**
+- 51 total users, 0 signups today, 3 newsletter subscribers, 0 triggered alerts ever
+- The zero triggered alerts confirms no users have set target prices — validates the need for an inline price alert form
+
+**Registration Form Issues:**
+- Unnecessary "Confirm Password" field adds friction (+10-15% abandonment per Baymard)
+- Generic "Create Account" CTA instead of benefit-oriented copy
+- No social proof, no inline validation, no password visibility toggle
+- No `?source=` or `?email=` param handling for upstream funnel integration
+
+**Escalation:** Day 6 without analytics. 10 P0 items open. The 2 blog routing bugs are trivially fixable (2 lines of code each) and are actively losing newsletter conversions.
+
+>>> Agent 8: Growth & Retention — 06:20:11
+-------------------------------------------
+Growth & Retention daily report for 2026-04-12 is written to `marketing-agents/output/growth-daily-2026-04-12.md`.
+
+**Key findings today:**
+
+- **Flat day** --- 0 new signups, 0 new watchlist items, 0 engagement signals
+- **bhaygood728's Cardi B event is TODAY** with no notification sent (Day 6 of flagging event-proximity emails)
+- **lvasub6 crossing to churned** today (14d inactive, has Flyleaf shows in July)
+- **tate.sheppard** still needs win-back --- Florence + The Machine is now 19 days out
+- **Drip campaign still at 0** emails ever sent (Day 6)
+- **Target prices still at 0** across all 72 watchlist items
+
+**Psychology optimization today:** Loss Aversion framing for price alert emails --- rewriting the template to show "you'd pay $X more per ticket by waiting" instead of neutral "price dropped" messaging. Stacks with yesterday's scarcity-based target price prompts to create a full funnel.
+
+**5 intervention emails drafted:**
+1. tate.sheppard (Florence + Machine, 19 days out)
+2. lvasub6 (Flyleaf, crossing to churned)
+3. tosophiameyer (power user, 11 Harry Styles shows)
+4. brigitte.theisen (power user, 10 BSB Sphere shows)
+5. pete.uzelac77 (Day 2 nurture, set target prices for World Cup)
+
+>>> Committing outputs — 06:22:47
+[main 7218f78] Daily marketing agent output — 2026-04-12
+ 10 files changed, 1366 insertions(+), 17 deletions(-)
+ create mode 100644 marketing-agents/output/ads/ads-daily-2026-04-12.md
+ create mode 100644 marketing-agents/output/ads/creative-2026-04-12-event-day-playoffs.md
+ create mode 100644 marketing-agents/output/analytics/analytics-daily-2026-04-12.md
+ create mode 100644 marketing-agents/output/content/next-week-plan.md
+ create mode 100644 marketing-agents/output/cro-daily-2026-04-12.md
+ create mode 100644 marketing-agents/output/email-daily-2026-04-12.md
+ create mode 100644 marketing-agents/output/growth-daily-2026-04-12.md
+ create mode 100644 marketing-agents/output/seo-daily-2026-04-12.md
+ create mode 100644 marketing-agents/output/social/social-daily-2026-04-12.md
+To https://github.com/getactivemarketing/ticket-scan.git
+   faab27d..7218f78  main -> main
+
+===========================================
+Finished: Sun Apr 12 06:22:48 EDT 2026
+===========================================

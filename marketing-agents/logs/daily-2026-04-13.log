@@ -1,0 +1,214 @@
+===========================================
+TicketScan Marketing Team — Daily Run
+Started: Mon Apr 13 06:00:04 EDT 2026
+===========================================
+
+>>> Agent 7: Analytics & Intelligence — 06:00:04
+-------------------------------------------
+Dashboard complete. Here's the summary:
+
+## TicketScan Daily Dashboard — April 13, 2026
+
+### Platform Totals
+- **51 users** | **72 watchlist items** | **3 newsletter subscribers** | **0 price history records**
+
+### Headline: Three Consecutive Zero Days
+No new signups or watchlist adds since April 10. The Apr 10 burst (2 signups, 7 watchlist items) is looking more like an outlier than a trend. This is now beyond a weekend lull — it's a top-of-funnel stall.
+
+### Critical Issues (Day 6+ Unresolved)
+1. **Price history table still empty** — cron has never written data. Cardi B event came and went yesterday with zero price data captured.
+2. **Drip campaign broken** — 19+ eligible users, zero emails sent. blubberboi (Day 4) already missed Email 1. pete and goldy hit Day 3 today but won't receive their welcome email.
+3. **`/api/admin/alerts` endpoint broken** — still returning errors.
+
+### Bright Spots
+- 100% activation rate holds (every signup adds a watchlist item)
+- World Cup demand confirmed (Philly WC matches being tracked)
+- Diverse event interest across concerts, sports, and niche events
+- 59 days to World Cup kickoff — venue pages remain a structural advantage
+
+### Strategic Question for Growth Agent
+Should we pause marketing activity until price tracking and drip campaigns actually work? Driving users to a platform where core features are non-functional may be counterproductive.
+
+Dashboard written to `marketing-agents/output/analytics/analytics-daily-2026-04-13.md` and is ready for all other agents to consume.
+
+>>> Agent 2: SEO Specialist — 06:02:04
+-------------------------------------------
+## SEO Daily Report — 2026-04-13
+
+### Fixes Applied (4 issues resolved)
+
+| Fix | Severity | File |
+|-----|----------|------|
+| Invalid `@type: "Blog"` schema → `CollectionPage` | CRITICAL | `blog/page.tsx` |
+| Duplicate FAQPage schema removed from homepage | CRITICAL | `page.tsx` |
+| Added OpenGraph + Twitter cards to FAQ page | HIGH | `faq/page.tsx` |
+| Added OpenGraph + Twitter cards to How It Works | HIGH | `how-it-works/page.tsx` |
+
+### Index Health
+- **88+ pages** in sitemap, all generating correctly
+- No `noindex` tags, robots.txt properly configured
+- Canonical URLs set via `metadataBase`
+- Build verified clean after all changes
+
+### Top Backlog Items
+1. World Cup main page has **no schema** (client component — needs refactor)
+2. Missing `image` properties on Article, StadiumOrArena, SportsEvent schemas
+3. Missing `geo` coordinates on all venue/stadium schemas
+4. No `BreadcrumbList` JSON-LD (only HTML breadcrumbs exist)
+
+Full report: `marketing-agents/output/seo-daily-2026-04-13.md`
+
+>>> Agent 1: Content Strategist — 06:06:51
+-------------------------------------------
+---
+
+## Content Strategist — Sunday April 13 Summary
+
+### Deliverables produced
+
+| File | Description |
+|------|-------------|
+| `output/content/content-hook.md` | 3 hooks: NBA Play-In (High), NHL Round 1 + Sabres face-value (High), World Cup pricing controversy (Medium) |
+| `output/content/next-week-plan.md` | Full audit of Apr 7-12 + copy review of all queued content + next week's 4 blog topics + 2 refresh targets |
+
+### Copy review results
+
+| Content | Verdict |
+|---------|---------|
+| Apr 8 playoff blog draft | **Ready to publish.** Change category `news` to `guides`. Publish Monday morning. |
+| Social calendar (Apr 13-26) | **Approved.** Minor: rotate Instagram images, fix "#SoccerTickets" hashtag. |
+| Email digest templates | **Approved.** Blocked by SMTP outage (Day 6+). |
+| Ads creative | **Approved.** Blocked by conversion tracking setup. |
+| SEO schema fixes | **Good progress.** Blog image field is a valid new requirement. |
+
+### This week's scorecard: 2/6 slots filled (33%)
+- 1 blog published, 1 drafted but not published, 2 venue refreshes, 2 gaps
+
+### Next week's plan (Apr 14-20)
+- **Mon:** "When to Buy World Cup 2026 Tickets" (guides)
+- **Tue:** "NBA Playoff Tickets 2026: How to Compare Prices" (tips)
+- **Wed:** "FIFA Resale vs. StubHub vs. SeatGeek" (comparisons)
+- **Thu:** "Best Ticket Comparison Sites in 2026" (comparisons)
+- **Fri:** Chase Center page refresh
+- **Sat:** United Center or NYC concerts page refresh
+
+### Immediate action items
+1. **PUBLISH the Apr 8 playoff blog** — 5 days overdue, playoffs are live
+2. Social posting endpoints don't exist on the backend yet — the admin API returns "Endpoint not found" for `/api/admin/typefully/post` and `/api/admin/instagram/post`. Social content is queued in `content-calendar.json` but has no automated delivery path.
+3. SMTP pipeline is still broken (Day 6+) — no email distribution for any content
+
+>>> Agent 3: Social Media Manager — 06:10:57
+-------------------------------------------
+Done. Here's today's social media output:
+
+**6 posts queued for April 13** across all 4 platforms:
+
+| # | Platform | Time (ET) | Topic |
+|---|----------|-----------|-------|
+| 1 | Twitter | 9:00 AM | NBA Play-In — $42 gap at Crypto.com Arena |
+| 2 | Twitter | 1:00 PM | Sunday playoff slate — $74 Knicks gap at MSG *(new)* |
+| 3 | Twitter | 5:00 PM | Sabrina Carpenter — $83 savings at MSG |
+| 4 | Instagram | 11:00 AM | World Cup 59-day countdown + $61 price spread |
+| 5 | Threads | 1:30 PM | NBA playoff last-minute buying timing |
+| 6 | TikTok | 7:00 PM | World Cup price chaos — FIFA resale angle *(new)* |
+
+**All 5 content pillars covered** (up from 4/5 yesterday). Two new posts added to fill gaps — a midday Twitter post hitting the playoff price intelligence angle and a TikTok for the World Cup countdown.
+
+**Publishing note**: API endpoints still returning 404. Content is in `content-calendar.json` for manual scheduling via Blotato.
+
+>>> Agent 4: Paid Ads Manager — 06:12:29
+-------------------------------------------
+Paid Ads Manager daily output for April 13 is complete. Here's the summary:
+
+## Paid Ads Daily — 2026-04-13
+
+**Status:** Day 6 without ad platforms. All launch blockers remain unresolved.
+
+### Key Signals
+- **3 consecutive zero-signup days** — organic has fully stalled
+- **NHL Playoff Round 1 starts TODAY** — Rangers Game 1 at MSG showing a **$74 platform gap**
+- **NBA Play-In starts TOMORROW** — $42 gap at Crypto.com Arena
+- **World Cup now under 60 days** (59) — psychological urgency threshold crossed
+
+### Actions Taken
+- Generated campaign health report → `ads-daily-2026-04-13.md`
+- Updated negative keywords list (added 6 new: NHL playoff TV schedule, Rangers roster, Sabres season tickets, Play-In tournament rules, Sabrina Carpenter setlist, World Cup host cities list)
+- Generated 3 new ad creative variations → `creative-2026-04-13-nhl-round1-playin.md`:
+  1. **NHL Round 1 Game Day** — $74 Rangers gap + Sabres face-value angle
+  2. **NBA Play-In Eve** — $42 Crypto.com Arena gap + 18% last-minute drop stat
+  3. **World Cup 59 Days** — $61 group-stage gap + "official ≠ cheapest" hook
+- Updated budget recommendation: **$44/day** (+$7 from yesterday for playoff surge)
+
+### Estimated Missed Revenue (Week 1)
+~300-600 clicks, ~18-35 signups missed — would have roughly doubled the user base.
+
+### Critical Blockers (Day 6+)
+All 4 launch blockers remain open: GTM/GA4 conversion tracking, price history cron, drip campaign, landing page audit.
+
+>>> Agent 5: Email Marketing — 06:15:23
+-------------------------------------------
+Confirmed — the drip-run endpoint returned "first byte timeout" (the server never started sending a response). This aligns with the 7-day pattern: the endpoint hangs indefinitely, likely stuck on an SMTP connection that never completes.
+
+This narrows the root cause possibilities:
+1. **Gmail SMTP credentials are invalid/expired** — the SMTP handshake hangs waiting for auth
+2. **SMTP port 587 is blocked** on Railway's network — connection never establishes
+3. **The drip-run handler has a blocking query or missing error timeout** — no circuit breaker on SMTP failure
+
+The report has already been updated with today's findings. No changes needed to the output file.
+
+>>> Agent 6: CRO Specialist — 06:26:15
+-------------------------------------------
+CRO Daily for April 13 is complete. Here's the summary:
+
+**Funnel Performance:** Completely flat — 0 signups, 0 new subscribers, 0 new watchlist adds. Day 7 without analytics.
+
+**Page Review (Blog/Newsletter Follow-Up):**
+- Yesterday's 2 P0 blog newsletter CTA fixes remain unimplemented — both still route to homepage instead of the actual signup form
+- Identified CTA sequencing issue: blog posts push registration before newsletter, skipping the trust-building step
+
+**Form Review (Watchlist Add / EventCard):**
+- **Critical finding:** The watchlist add flow never asks for a target price. This is why `triggeredAlerts: 0` — the entire price alert system is dormant because no user has a target price set.
+- Track button uses an ambiguous eye icon (👁️) with no text label
+- No success confirmation or next-step prompt after adding
+- Logged-out users lose event context when redirected to register
+
+**Top 3 fixes to ship this week:**
+1. Blog newsletter CTAs (2-line fix, broken funnel)
+2. Target price capture in watchlist add (activates price alerts)
+3. Track button affordance (icon + label swap)
+
+Output written to `marketing-agents/output/cro-daily-2026-04-13.md`.
+
+>>> Agent 8: Growth & Retention — 06:28:20
+-------------------------------------------
+Growth & Retention daily report written to `marketing-agents/output/growth-daily-2026-04-13.md`.
+
+**Key findings today:**
+
+- **Day 2 of zero signups** --- today (Monday) is the test. If acquisition stays flat through a weekday, the organic channel has plateaued.
+- **lvasub6 officially churned** (15 days inactive), moving from at-risk to churned. Flyleaf shows still 95 days out --- recoverable with a win-back.
+- **bhaygood728's Cardi B event happened yesterday** with zero outreach. This is now a documented retention failure --- Day 7 of flagging event-proximity emails.
+- **tate.sheppard's Florence + Machine is 18 days out** --- Day 3 of flagging this critical win-back. Window closing.
+- **Drip campaign: Day 7 at zero.** 51 users, 20 pending, 0 emails ever sent.
+
+**Psychology optimization: Reciprocity** --- proposed a "value summary" component for the compare page that quantifies what TicketScan just did for anonymous visitors ("compared 3 platforms, saved you ~15 min") with a proportional ask (free signup). This completes a 4-principle persuasion funnel: Reciprocity → Commitment → Scarcity → Loss Aversion.
+
+**5 intervention emails drafted** for: tate.sheppard (critical), lvasub6 (newly churned), bhaygood728 (post-event), tosophiameyer (power user), and pete (Day 3 nurture).
+
+>>> Committing outputs — 06:31:21
+[main 9e496aa] Daily marketing agent output — 2026-04-13
+ 10 files changed, 1351 insertions(+), 84 deletions(-)
+ create mode 100644 marketing-agents/output/ads/ads-daily-2026-04-13.md
+ create mode 100644 marketing-agents/output/ads/creative-2026-04-13-nhl-round1-playin.md
+ create mode 100644 marketing-agents/output/analytics/analytics-daily-2026-04-13.md
+ create mode 100644 marketing-agents/output/cro-daily-2026-04-13.md
+ create mode 100644 marketing-agents/output/email-daily-2026-04-13.md
+ create mode 100644 marketing-agents/output/growth-daily-2026-04-13.md
+ create mode 100644 marketing-agents/output/seo-daily-2026-04-13.md
+ create mode 100644 marketing-agents/output/social/social-daily-2026-04-13.md
+To https://github.com/getactivemarketing/ticket-scan.git
+   7218f78..9e496aa  main -> main
+
+===========================================
+Finished: Mon Apr 13 06:31:22 EDT 2026
+===========================================

@@ -182,8 +182,8 @@ async function run() {
   const results = [];
   for (const entry of entries) {
     results.push(await schedulePost(entry));
-    // Throttle: 200ms between requests
-    if (!dryRun) await new Promise((r) => setTimeout(r, 200));
+    // Throttle: 2s between requests to avoid Blotato rate limits
+    if (!dryRun) await new Promise((r) => setTimeout(r, 2000));
   }
 
   const scheduled = results.filter((r) => r.status === 'scheduled').length;

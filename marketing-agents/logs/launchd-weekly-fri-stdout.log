@@ -1,0 +1,96 @@
+===========================================
+TicketScan Weekly Analysis — Friday
+Started: Fri Apr 10 07:00:03 EDT 2026
+===========================================
+
+>>> Email Marketing — Weekly — 07:00:03
+-------------------------------------------
+Weekly report written to `marketing-agents/output/email-weekly-2026-04-10.md`.
+
+## Summary of Deliverables
+
+### 1. Drip Sequence Analysis
+No performance data exists — **zero drip emails have ever been sent** (4-day pipeline outage, but the system has never successfully delivered). Audited all 5 emails on copy quality. **Email 5 (Day 30)** identified as weakest — generic "We Miss You" hook, no personalization, passive CTA. Rewrote with dynamic watchlist snapshot, specific price movement subject line, and target-price-setting pro tip. Three subject line variants provided.
+
+### 2. Weekly Newsletter
+Full newsletter designed around this week's biggest story: FIFA's $10,990 World Cup final ticket price. Features Cardi B (Sunday), TWICE (next week), Ed Sheeran (just announced), Florence + The Machine. Includes Tuesday/Wednesday pricing tip and WC countdown (62 days). **On hold** — only 3 subscribers and pipeline is down.
+
+### 3. New Sequence: Post-Signup Activation
+3-email sequence targeting the 26 registered users with 0 watchlist items (53% non-activation rate):
+- **A1 (Day 1):** "Do the one thing that actually saves money" — drives first watchlist add
+- **A2 (Day 3):** "Set a price alert in 30 seconds" — drives target price setting
+- **A3 (Day 7):** "47 price drops happened. You tracked zero." — final activation push with clean exit
+
+Includes implementation logic using email_numbers 101-103 in the existing `drip_emails_sent` table.
+
+### 4. List Health
+- 49 users, 23 with watchlists, 0 with target prices, 3 newsletter subscribers (1 real)
+- **53% non-activation rate** is the biggest conversion gap
+- Email engagement segmentation impossible — no emails ever sent
+- Recommended: fix pipeline first, then activation sequence, then growth
+
+### Critical Blockers
+- **P0:** Email pipeline still down. Resend HTTP API (commit `e8621a5`) needs verification as active provider.
+- **P1:** 0/50 target prices set. Price alerts can never fire. This is a UX/product issue requiring CRO intervention.
+- **P2:** 68-day newsletter subscriber growth stall. Need lead magnet and improved CTAs.
+
+>>> Analytics & Intelligence — Weekly — 07:05:04
+-------------------------------------------
+The weekly analytics report has been generated at `marketing-agents/output/analytics-weekly-2026-04-10.md`.
+
+**Key findings from the data:**
+
+**Growth:** Signups dropped 80% WoW (1 vs 5). Only 3 signups so far in April vs 13 in all of March. The platform has 49 total users and 65 watchlist items.
+
+**Critical blockers (unchanged since Apr 7):**
+- Price history table is completely empty — the core price tracking cron has never written data
+- Drip campaign has never sent a single email — 20 users eligible, 0 served
+- `/api/admin/alerts` endpoint is broken
+- No GA4 API integration means ~60% of the report has no data
+
+**Positive signals:**
+- 100% signup-to-watchlist conversion — every user who signs up immediately engages
+- 2-minute activation time for newest user
+- Summer 2026 concert corridor (Harry Styles MSG, BSB Sphere, Ed Sheeran SoFi) driving watchlist interest
+
+**The report includes:**
+1. Full weekly performance metrics with WoW/MoM comparisons
+2. Customer behavior analysis with 4 user segments
+3. StubHub competitor deep-dive (Week 2 rotation)
+4. Tracking audit with 5 new recommended GTM events
+5. Specific recommendations for all 8 agents
+6. Comparison page spec for `/compare/ticketscan-vs-stubhub`
+7. Unresolved issues tracker (8 items, 3 critical)
+
+**Bottom line:** The product works when users arrive, but it can't deliver on its promises (price tracking, alerts, onboarding). Fix infrastructure before investing in acquisition.
+
+>>> Growth & Retention — Weekly — 07:10:12
+-------------------------------------------
+Weekly Growth & Retention report generated at `marketing-agents/output/growth-weekly-2026-04-10.md`.
+
+### Key findings:
+
+**Churn is critical** --- 89.8% of users (44/49) are churned. Three broken systems cause this:
+1. Drip campaign has sent 0 emails to any user (Day 3+ of flagging)
+2. 0/65 watchlist items have a target price, so price alerts have never fired
+3. No login tracking exists, so engagement data is guesswork
+
+**Deliverables in the report:**
+
+| Section | Summary |
+|---------|---------|
+| **Churn Deep-Dive** | 5 patterns identified, 5 prevention actions with owners |
+| **Referral Program** | Full V1 design (DB schema, API, rewards, viral mechanics) --- but **deferred until churn < 50%** because referring users into a leaky funnel wastes social capital |
+| **Pricing Strategy** | Recommends **Freemium ($4.99/mo) + Affiliate revenue** as dual path. Advertising deferred. World Cup premium tier ($9.99/mo) for Jun-Jul 2026 |
+| **Feature Launch Plan** | Web push notifications as next launch (May 11 target), full pre/during/post-launch playbook |
+| **Paywall/Upgrade Flow** | 5 upgrade touchpoints designed with copy, psychology, and frequency rules |
+
+**Cross-agent handoffs:** P0 items sent to Email (fix drip), CRO (target price prompt), and Analytics (login tracking) agents.
+[main 55a3f7d] Weekly analysis agent output — Friday 2026-04-10
+ 3 files changed, 1488 insertions(+)
+ create mode 100644 marketing-agents/output/analytics-weekly-2026-04-10.md
+ create mode 100644 marketing-agents/output/email-weekly-2026-04-10.md
+ create mode 100644 marketing-agents/output/growth-weekly-2026-04-10.md
+To https://github.com/getactivemarketing/ticket-scan.git
+   cfe90cd..55a3f7d  main -> main
+Finished: Fri Apr 10 07:14:45 EDT 2026

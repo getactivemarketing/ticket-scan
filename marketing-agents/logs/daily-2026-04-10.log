@@ -1,0 +1,223 @@
+===========================================
+TicketScan Marketing Team — Daily Run
+Started: Fri Apr 10 06:00:05 EDT 2026
+===========================================
+
+>>> Agent 7: Analytics & Intelligence — 06:00:05
+-------------------------------------------
+Dashboard written. Here's the summary:
+
+---
+
+**TicketScan Daily Dashboard — 2026-04-10**
+
+**What changed since last dashboard:**
+- **+1 user** (49 total) — `blubberboi@yahoo.com` signed up Apr 9, added Ed Sheeran: LOOP Tour to watchlist within 2 minutes (strong activation)
+- **+1 watchlist item** (65 total)
+- Signup drought broken after 6 days, but velocity remains weak (1 signup in 7 days, down from 3 prior week)
+
+**Critical issues persisting (3+ days unresolved):**
+1. **Price history table is EMPTY** — price tracking cron has never written data. Core value prop is non-functional.
+2. **Drip campaign not sending** — 20 eligible users with 0 emails delivered, some 30+ days post-signup.
+3. **`/api/admin/alerts` endpoint broken** — returns error.
+
+**High-priority concerns:**
+- Zero target prices set across all 65 watchlist items (price alerts can never fire)
+- Newsletter has 1 real subscriber
+- No GA/GTM API integration for traffic data
+
+**Upcoming events to track:**
+- Cardi B in Charlotte — **Saturday (2 days out)**
+- TWICE in Austin — next week
+
+**Positive signal:** New user's 2-minute signup-to-watchlist activation proves the core flow works. Problem is top-of-funnel volume, not activation.
+
+Dashboard saved to `marketing-agents/output/analytics/analytics-daily-2026-04-10.md` and is ready for all other agents to consume.
+
+>>> Agent 2: SEO Specialist — 06:01:47
+-------------------------------------------
+## SEO Daily Run Complete — 2026-04-10
+
+### Deliverables
+
+| Output | Path |
+|--------|------|
+| Daily report | `marketing-agents/output/seo-daily-2026-04-10.md` |
+| Content request | `marketing-agents/output/seo-requests/2026-04-10-wc-schema-content.md` |
+
+### Code Fixes Applied (2)
+
+**1. Removed fake FAQ schema from blog posts** (`web/src/app/blog/[slug]/page.tsx`)
+- Every blog post was emitting auto-generated FAQPage schema with thin one-liner answers derived from tags — a Google manual action risk. Removed entirely.
+
+**2. Fixed venue country code** (`web/src/app/venues/[slug]/page.tsx`)
+- `addressCountry` was hardcoded to `"US"` for all 24 venues, including Scotiabank Arena in Toronto. Now correctly returns `"CA"` for Canadian provinces.
+
+### Key Findings
+
+- **115 URLs** in sitemap, all crawlable
+- **CRITICAL gap:** World Cup 2026 pages (17 total) have zero JSON-LD schema — the biggest SEO miss on the site, especially with the tournament 62 days out
+- **11 category pages** emit empty `ItemList` schema with no event data
+- **Blog Article schema** missing `image` field (required for Google rich results eligibility)
+- Sent 3 content requests to Agent 1: World Cup FAQ entries, legitimate FAQ blog post, and "when to buy world cup tickets" keyword opportunity
+
+>>> Agent 1: Content Strategist — 06:06:38
+-------------------------------------------
+Here's a summary of today's Content Strategist output:
+
+---
+
+**Friday, April 10, 2026 — Content Strategist Daily Run Complete**
+
+### Deliverable 1: Content Hook (`content-hook.md`)
+Three hooks identified:
+1. **StubHub FTC $10M fine + FIFA $10,990 tickets** (High) — two opaque-pricing stories in one week. Strong "TicketScan shows the real price" angle. Queued for next Wednesday's news blog slot.
+2. **Bruno Mars Romantic Tour opens tonight** (Medium) — massive price spread ($85-$7K), perfect comparison-shopping use case. Queued for next Tuesday's tactical slot.
+3. **NBA/NHL playoff crunch** (Medium) — used to justify today's venue refresh below.
+
+### Deliverable 2: Page Refresh — TD Garden (`venues.ts`)
+Refreshed the **most under-built venue page** in the dataset:
+- **Sections:** 6 → 63 (added Loge 1-22, Club 101-110, BAL 301-330 matching TD Garden's actual layout)
+- **Description:** Generic 1-liner → rich paragraph covering 200+ annual events, North Station transit access, club amenities, and CTA
+- **Keywords:** 4 → 9 (added "seating chart", "concert tickets", "Celtics playoff tickets", "Bruins playoff tickets", "events")
+
+### Deliverable 3: Handoffs
+- **SEO Agent:** Filed keyword research request for StubHub FTC settlement terms (`seo-requests/2026-04-10-stubhub-ftc-keywords.md`)
+- **Refresh log** written to `content/refresh-log.md`
+
+>>> Agent 3: Social Media Manager — 06:10:14
+-------------------------------------------
+Done. Here's the summary:
+
+### Published (3 Twitter/X posts via Typefully)
+
+| # | Type | Typefully ID | Status |
+|---|------|-------------|--------|
+| 1 | World Cup price alert | 8680375 | Scheduled |
+| 2 | Educational ($43 price gap) | 8680380 | Scheduled |
+| 3 | Daily tip (NBA playoff timing) | 8680377 | Scheduled |
+
+### Failed
+- **Instagram** — API credentials still not configured (same issue since April 8). Caption drafted in output file for manual posting.
+
+### Queued for Manual Posting
+- **LinkedIn** — World Cup educational post saved in output file.
+
+### Notes
+- Post 2 initial draft hit the 280-char limit; shortened version published successfully
+- **Boost candidate for Paid Ads (Agent 4):** Post 1 — World Cup countdown with strong CTA
+- **Recurring issue:** Instagram Graph API needs `INSTAGRAM_ACCESS_TOKEN` and `INSTAGRAM_ACCOUNT_ID` configured in Railway env vars
+
+Output saved to `marketing-agents/output/social-daily-2026-04-10.md`.
+
+>>> Agent 4: Paid Ads Manager — 06:12:02
+-------------------------------------------
+Done. Here's what was generated:
+
+## Paid Ads Daily — April 10, 2026
+
+### Deliverables
+
+1. **`ads-daily-2026-04-10.md`** — Campaign health report
+   - All 4 launch blockers persist (Day 3+): no conversion tracking, empty price history, broken drip campaign, no landing page audit
+   - Updated signals: 49 users (+1), only 1 signup in 7 days — organic declining
+   - Positive: blubberboi's 2-minute activation proves the funnel works when users arrive
+
+2. **`creative-2026-04-10-worldcup-countdown.md`** — 3 new ad variations
+   - **Variation A:** World Cup 62-day countdown — StubHub 40% premium hook
+   - **Variation B:** Ed Sheeran LOOP Tour at SoFi — real user demand signal
+   - **Variation C:** Cardi B Charlotte this Saturday — 2-day urgency play
+
+3. **Negative keyword additions** — 4 new terms added to the list (ticket resale business, ticket broker, ticket lawsuit, world cup volunteer)
+
+4. **Budget recommendation** — $30/day split across 5 campaigns when ready to launch
+
+5. **Landing page notes** — /compare, /dashboard, /world-cup-2026 flagged for CRO Agent audit
+
+### Critical Path
+Paid ads remain **blocked**. The #1 priority is getting conversion tracking (GTM/GA4) wired up — without it, every dollar spent is blind. Price history fix is #2 so landing pages deliver on the "track prices" promise.
+
+>>> Agent 5: Email Marketing — 06:14:16
+-------------------------------------------
+Same result — `first byte timeout` on the second attempt too. Both drip-run attempts timed out before the server could return a single byte, confirming the SMTP transport is completely stalled.
+
+The daily report already captures this. The fix path is clear: the drip-run handler in `index.js` needs to use the Resend HTTP email provider (already added in commit `e8621a5`) instead of the hanging SMTP/Nodemailer transport.
+
+>>> Agent 6: CRO Specialist — 06:25:35
+-------------------------------------------
+CRO Daily report for 2026-04-10 is written. Here's the summary:
+
+## CRO Daily — 2026-04-10 (Friday)
+
+**Focus page:** Venue pages (`/venues/[slug]`) — the #1 SEO entry point
+**Form reviewed:** Newsletter signup (footer variant)
+
+### Top Findings
+
+**Venue pages have the weakest conversion architecture on the site despite being the primary organic landing page:**
+
+1. **No newsletter/alert signup anywhere** — homepage has 2 placements, venue pages have zero. Cold organic traffic has no low-commitment conversion path.
+2. **"Track Price" drops all context** when routing to `/register` — user loses the event name, price, and venue that motivated the click.
+3. **No social proof** — testimonials and stats exist on the homepage but are completely absent from venue pages.
+4. **Generic CTA copy** — "Start Free" tells users nothing. Should be "Get Price Alerts for [Venue Name]".
+5. **Mobile sidebar CTAs buried** below 15+ event rows with no sticky alternative.
+
+**Newsletter form gaps:**
+- Footer loading state shows `'...'` instead of clear feedback
+- No post-subscribe upsell to account registration (warmest lead, zero follow-up)
+- Only placed on homepage — absent from 90% of pages
+
+### Escalation
+
+4 P0 items have been open 3–4 days with no movement, most critically **PostHog/GA4 event wiring** — Day 4 without any conversion analytics. All CRO work remains code-review-based rather than data-driven. Recommended: dedicated sprint to clear P0 backlog.
+
+**Proposed A/B Test #3:** Venue-specific CTA copy vs generic "Start Free" — expected 30%+ lift in click-through.
+
+>>> Agent 8: Growth & Retention — 06:29:25
+-------------------------------------------
+Growth & Retention daily report written to `marketing-agents/output/growth-daily-2026-04-10.md`.
+
+**Key findings:**
+
+**User Health:**
+- 49 total users (+1 since Apr 8), but net health is declining
+- 34 activated (69.4%), 44 churned (89.8%, +2)
+- New user blubberboi activated within 2 minutes of signup --- strong signal
+
+**3 Critical Blockers (unchanged from Apr 8 --- Day 3 of flagging):**
+1. **Drip campaign still broken** --- 0 emails sent to any of 49 users, ever
+2. **0 target prices set** across all 65 watchlist items --- price alert system is completely inert
+3. **No login tracking** --- can't measure real engagement
+
+**Churn Interventions Prepared:**
+- 4 emails drafted (2 Tier 1 nudges, 2 Tier 3 win-backs for power users tosophiameyer with 11 items and brigitte.theisen with 10)
+- billstromkel lost to churn --- RAYE event passed on Apr 8, intervention email was never sent
+
+**Today's Psychology Optimization: Social Proof**
+- Add "X people watching" badges to search results and event cards
+- Use fire icon at 5+ watchers to signal high demand
+- Single DB query, lightweight frontend component
+- Expected +15-25% lift on watchlist add rate
+
+**Escalation:** Email Agent handoff upgraded to CRITICAL. Three consecutive daily reports have flagged the dead drip campaign with no fix applied.
+
+>>> Committing outputs — 06:31:48
+[main cfe90cd] Daily marketing agent output — 2026-04-10
+ 12 files changed, 1186 insertions(+), 10 deletions(-)
+ create mode 100644 marketing-agents/output/ads/ads-daily-2026-04-10.md
+ create mode 100644 marketing-agents/output/ads/creative-2026-04-10-worldcup-countdown.md
+ create mode 100644 marketing-agents/output/analytics/analytics-daily-2026-04-10.md
+ create mode 100644 marketing-agents/output/content/refresh-log.md
+ create mode 100644 marketing-agents/output/cro-daily-2026-04-10.md
+ create mode 100644 marketing-agents/output/email-daily-2026-04-10.md
+ create mode 100644 marketing-agents/output/growth-daily-2026-04-10.md
+ create mode 100644 marketing-agents/output/seo-daily-2026-04-10.md
+ create mode 100644 marketing-agents/output/seo-requests/2026-04-10-stubhub-ftc-keywords.md
+ create mode 100644 marketing-agents/output/seo-requests/2026-04-10-wc-schema-content.md
+ create mode 100644 marketing-agents/output/social-daily-2026-04-10.md
+To https://github.com/getactivemarketing/ticket-scan.git
+   aeda35b..cfe90cd  main -> main
+
+===========================================
+Finished: Fri Apr 10 06:31:49 EDT 2026
+===========================================

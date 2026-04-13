@@ -1,0 +1,117 @@
+{
+  "team": "TicketScan AI Marketing Team",
+  "product": {
+    "name": "TicketScan",
+    "url": "https://www.ticketscan.io",
+    "api": "https://tickethawk-api-production.up.railway.app",
+    "description": "Ticket price comparison platform — compares Ticketmaster, SeatGeek, StubHub prices with history tracking, alerts, and buy recommendations",
+    "key_features": [
+      "Multi-source price comparison",
+      "Price history graphs and trend analysis",
+      "Price drop email alerts",
+      "Watchlist and favorites",
+      "Buy/wait/hold recommendations",
+      "World Cup 2026 ticket discovery",
+      "78 SEO pages (24 venues, 37 cities, 17 World Cup)"
+    ],
+    "target_audience": [
+      "Concert-goers looking for the best ticket deals",
+      "Sports fans tracking season ticket prices",
+      "World Cup 2026 attendees planning travel and tickets",
+      "Deal hunters who want price drop alerts",
+      "Event planners comparing group ticket options"
+    ],
+    "competitors": ["SeatGeek", "StubHub", "Ticketmaster", "Vivid Seats", "Gametime"],
+    "differentiator": "Only platform that compares ALL sources side-by-side with price history and smart buy timing"
+  },
+  "agents": [
+    {
+      "id": "content-strategist",
+      "name": "Agent 1: Content Strategist",
+      "skills": ["content-strategy", "copywriting", "copy-editing", "lead-magnets"],
+      "schedule": {
+        "daily": "0 8 * * *",
+        "weekly": "0 9 * * 1"
+      },
+      "depends_on": ["seo-specialist", "analytics-intelligence"],
+      "hands_off_to": ["social-media", "email-marketing", "cro-specialist"]
+    },
+    {
+      "id": "seo-specialist",
+      "name": "Agent 2: SEO Specialist",
+      "skills": ["seo-audit", "ai-seo", "programmatic-seo", "schema-markup", "site-architecture"],
+      "schedule": {
+        "daily": "0 7 * * *",
+        "weekly": "0 8 * * 2"
+      },
+      "depends_on": ["analytics-intelligence"],
+      "hands_off_to": ["content-strategist", "cro-specialist"]
+    },
+    {
+      "id": "social-media",
+      "name": "Agent 3: Social Media Manager",
+      "skills": ["social-content"],
+      "schedule": {
+        "daily": "0 9 * * *",
+        "weekly": "0 10 * * 1"
+      },
+      "depends_on": ["content-strategist", "analytics-intelligence"],
+      "hands_off_to": ["paid-ads", "email-marketing"]
+    },
+    {
+      "id": "paid-ads",
+      "name": "Agent 4: Paid Ads Manager",
+      "skills": ["paid-ads", "ad-creative"],
+      "schedule": {
+        "daily": "0 10 * * *",
+        "weekly": "0 11 * * 3"
+      },
+      "depends_on": ["cro-specialist", "analytics-intelligence", "social-media"],
+      "hands_off_to": ["cro-specialist", "analytics-intelligence"]
+    },
+    {
+      "id": "email-marketing",
+      "name": "Agent 5: Email Marketing Specialist",
+      "skills": ["email-sequence", "cold-email"],
+      "schedule": {
+        "daily": "0 10 * * *",
+        "weekly": "0 9 * * 4"
+      },
+      "depends_on": ["content-strategist", "cro-specialist", "growth-retention"],
+      "hands_off_to": ["cro-specialist", "analytics-intelligence"]
+    },
+    {
+      "id": "cro-specialist",
+      "name": "Agent 6: CRO Specialist",
+      "skills": ["page-cro", "form-cro", "signup-flow-cro", "ab-test-setup", "popup-cro", "onboarding-cro"],
+      "schedule": {
+        "daily": "0 11 * * *",
+        "weekly": "0 10 * * 3"
+      },
+      "depends_on": ["analytics-intelligence", "paid-ads", "seo-specialist", "content-strategist"],
+      "hands_off_to": ["content-strategist", "growth-retention", "analytics-intelligence"]
+    },
+    {
+      "id": "analytics-intelligence",
+      "name": "Agent 7: Analytics & Intelligence",
+      "skills": ["analytics-tracking", "customer-research", "competitor-alternatives"],
+      "schedule": {
+        "daily": "0 6 * * *",
+        "weekly": "0 7 * * 5"
+      },
+      "depends_on": [],
+      "hands_off_to": ["content-strategist", "seo-specialist", "social-media", "paid-ads", "email-marketing", "cro-specialist", "growth-retention"]
+    },
+    {
+      "id": "growth-retention",
+      "name": "Agent 8: Growth & Retention",
+      "skills": ["churn-prevention", "referral-program", "pricing-strategy", "launch-strategy", "paywall-upgrade-cro", "marketing-psychology"],
+      "schedule": {
+        "daily": "0 11 * * *",
+        "weekly": "0 10 * * 5"
+      },
+      "depends_on": ["analytics-intelligence", "email-marketing", "cro-specialist"],
+      "hands_off_to": ["email-marketing", "cro-specialist", "content-strategist"]
+    }
+  ]
+}

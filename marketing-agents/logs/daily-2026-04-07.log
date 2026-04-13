@@ -1,0 +1,144 @@
+===========================================
+TicketScan Marketing Team — Daily Run
+Started: Tue Apr  7 11:40:08 EDT 2026
+===========================================
+
+>>> Agent 7: Analytics & Intelligence — 11:40:08
+-------------------------------------------
+Daily dashboard written to `marketing-agents/output/analytics/analytics-daily-2026-04-07.md`.
+
+**Headline numbers:** 48 users (+2/7d), 64 watchlist items, 3 newsletter subs, 0 lifetime alerts triggered.
+
+**🚨 Critical anomalies flagged for other agents:**
+1. **Signup drought** — 0 signups in last 4 days (Growth/Paid Ads)
+2. **Drip campaign broken** — 33+ pending users with `last_email_sent: 0`, including users 21+ days old (Email agent)
+3. **`/api/admin/alerts` endpoint returning error** — needs Lead Architect fix
+4. **0% target_price set rate** on watchlist items — likely UX issue (CRO)
+5. **Newsletter form likely broken** — only 3 subs, 2 are tests
+6. **Analytics blind spot** — no programmatic GA/GTM access, so traffic source / top pages sections are empty. Recommend adding a `/api/admin/ga-summary` proxy.
+
+>>> Agent 2: SEO Specialist — 11:41:24
+-------------------------------------------
+Daily SEO run complete.
+
+**Key finding & fix:** Venue pages (`/venues/[slug]`) were emitting `@type: "EventVenue"` — not a valid schema.org type. All 24 venue pages had effectively zero rich-result eligibility. Fixed in `web/src/app/venues/[slug]/page.tsx:97-112` → now uses `StadiumOrArena`/`PerformingArtsTheater` based on `venue.type`, plus adds `description` and canonical `url`.
+
+**Major gap logged:** All 17 World Cup 2026 pages emit zero JSON-LD. Filed as high-priority request to Content Agent at `marketing-agents/output/seo-requests/2026-04-07-worldcup-schema.md` (tournament is ~9 weeks out — peak SERP window).
+
+**OK:** FAQ page schema validates clean.
+
+**Deliverables:**
+- `marketing-agents/output/seo-daily-2026-04-07.md`
+- `marketing-agents/output/seo-requests/2026-04-07-worldcup-schema.md`
+- Code fix in `web/src/app/venues/[slug]/page.tsx` (uncommitted)
+
+**Tomorrow's rotation:** `/event/[id]`, `/blog/[slug]`, `/tickets/[slug]` — competitors emit Event+Offer schema on event detail pages, so confirming parity there is the next biggest win.
+
+Note: Index health / ranking checks are stubbed — there's no GSC or rank-tracker integration accessible from this environment. Worth wiring up a GSC export pipeline so this section becomes real instead of manual.
+
+>>> Agent 1: Content Strategist — 11:43:37
+-------------------------------------------
+Daily content tasks complete.
+
+**Hook (High priority):** FIFA pushed World Cup 2026 final Cat-1 tickets to **$10,990** (+38%) when the Last-Minute Sales Phase opened April 1. Perfect consumer-advocate angle for TicketScan.
+
+**Deliverables written:**
+- `output/content/content-hook.md` — today's hook + secondary Bruno Mars angle
+- `output/content/2026-04-07-world-cup-final-10990-dynamic-pricing.md` — ~950-word blog draft, ready for `blog.ts`, with watchlist + compare CTAs
+- `output/seo-requests/2026-04-07-wc-dynamic-pricing.md` — keyword cluster, FAQ schema asks, internal-linking plan, plus a flagged lead-magnet idea for Agent 5 ("Match-by-Match Price Tracker" PDF)
+
+**Review queue:** Checked `output/social/`, `output/email/`, `output/ads/` — no items currently queued for copy-editing. Will monitor on next run.
+
+**Handoff:** Blog draft is ready for Agent 3 (social) to promote and Agent 5 (email) to slice into a subscriber blast targeting World Cup watchlist users.
+
+Sources:
+- [FIFA: Last-Minute Sales Phase starts 1 April](https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/articles/last-minute-tickets-sales-phase-to-start-on-1-april)
+- [2026 World Cup final ticket costs reach record highs](https://footballgroundguide.com/news/2026-world-cup-final-ticket-costs-reach-record-highs-as-fifa-raise-prices.html)
+- [ESPN: FIFA details final phase of WC ticket sales](https://www.espn.com/soccer/story/_/id/48305423/fifa-2026-world-cup-ticket-sales-final-phase)
+
+>>> Agent 3: Social Media Manager — 11:45:35
+-------------------------------------------
+Published 2 posts to X via Typefully and logged the day:
+
+- **Post 1** (id 8645923) — World Cup 2026 price alert angle
+- **Post 2** (id 8645924) — Tuesday afternoon buying tip
+- **Post 3 + LinkedIn long-form** queued in `marketing-agents/output/social/social-daily-2026-04-07.md` for manual publish
+- **Boost candidate** flagged for Agent 4: Post 1 (WC audience)
+
+Note: requested `social-content` skill is not installed in this environment; proceeded with the brief directly.
+
+>>> Agent 4: Paid Ads Manager — 11:46:24
+-------------------------------------------
+I don't have access to Google Ads or Meta Ads APIs in this environment — there's no MCP server, credentials, or data source configured for either platform. Without that, I can't pull real spend, CPA, ROAS, CTR, or search term data, and fabricating a "daily report" would be worse than useless.
+
+Two options:
+
+1. **Wire up access first** — tell me which platform(s) are live and how you'd like me to read data (MCP server, exported CSV dropped into `marketing-agents/output/ads/`, manual paste, or a backend endpoint that proxies the APIs). Once I can read real numbers, the daily health check + triage becomes meaningful.
+
+2. **Creative-only run today** — I skip the health check / search term review (no data) and just execute task #3: generate 3 fresh ad variations (Google Search + Meta) using the brand voice and the angles in the brief. Output goes to `marketing-agents/output/ads/`. This is safe to do blind.
+
+Which do you want? If you don't reply, I'll default to option 2 since it's the only part of the brief that doesn't require live ad platform data.
+
+>>> Agent 5: Email Marketing — 11:46:40
+-------------------------------------------
+Daily email report written to `marketing-agents/output/email-daily-2026-04-07.md`.
+
+**Critical finding 🚨:** Drip campaign is broken — 20 users pending (oldest 40 days), zero emails ever sent (`drip_emails_sent` empty, `stats[]` empty). Needs investigation of cron + manual `drip-run` to clear backlog.
+
+**Other notes:**
+- Newsletter flat at 3 active subs (1 real), zero net growth in 65 days
+- No admin visibility into price-alert sends or per-user watchlist digests — flagged backend asks
+- Two A/B subject line variants queued for E1 and E2 once drip is restored
+
+>>> Agent 6: CRO Specialist — 11:47:31
+-------------------------------------------
+CRO daily report written to `marketing-agents/output/cro-daily-2026-04-07.md`.
+
+**Top findings (Tue focus = `/compare`):**
+
+1. **P0 — No analytics feed.** Funnel metrics are unavailable; every "vs yesterday" claim is fiction until PostHog/GA4 events are wired (`search_submitted`, `compare_viewed`, `signup_completed`, `watchlist_added`). This is the blocking dependency for all future CRO work.
+
+2. **P0 — `/compare` hard auth wall** (`web/src/app/compare/page.tsx:52-56`). Anonymous visitors are bounced to `/login` before seeing any value. Recommend allowing anonymous search and gating only "Set Price Alert" / watchlist actions. Likely the single biggest leak on the page.
+
+3. **P1 — Empty state lacks a quantified savings claim** and the city defaults to hardcoded "Orlando" (line 40) — geo-IP or remember-last-search instead.
+
+4. **A/B Test #1 proposed:** Remove auth wall (control vs. anonymous-allowed), measure signups attributed to `/compare`.
+
+5. **Form CRO:** Could not locate a `NewsletterPopup` component — flagging as a possible gap. Spec included if it needs to be built (1 field, exit-intent, "Get Price Drop Alerts" CTA).
+
+Handoffs filed to Dev backlog (analytics + auth wall + geo-IP), Content Agent (savings stat), and Design (popup decision). No skill `page-cro`/`form-cro` was available in the registry — proceeded with the standard CRO heuristics; flag if you'd like those skills installed.
+
+>>> Agent 8: Growth & Retention — 11:48:55
+-------------------------------------------
+Growth daily report written to `marketing-agents/output/growth/growth-daily-2026-04-07.md`.
+
+**Top findings:**
+1. **Critical blocker:** 0 alerts have ever triggered across 64 watchlist items — the core retention loop is broken. Bigger than any copy optimization.
+2. **Drip pipeline broken:** All recent signups have `last_email_sent = 0`. Day-3 email isn't firing. → Email Agent.
+3. **Activation is fine** (~100% of new cohort adds a watchlist item); the leak is *post-activation* because users never set `target_price`.
+
+**Deliverables:**
+- User health dashboard (48 users, 3 new this week, 7 dormant 14d+)
+- Tier 3 win-back email (queued for 7 dormant users, 2 subject-line variants)
+- Psychology rec: Commitment/Consistency micro-commitment in the watchlist-add flow — prefilled target-price input at 15% below current low, framed as "1 step from your first alert." Expected to take target-set rate from ~0% → 40–60% and finally close the retention loop.
+- Handoffs to Engineering (alert root cause), Email Agent (drip + win-back), and CRO Agent (watchlist UX spec).
+
+>>> Committing outputs — 11:50:15
+[main b840fba] Daily marketing agent output — 2026-04-07
+ 10 files changed, 555 insertions(+)
+ create mode 100644 marketing-agents/output/analytics/analytics-daily-2026-04-07.md
+ create mode 100644 marketing-agents/output/content/2026-04-07-world-cup-final-10990-dynamic-pricing.md
+ create mode 100644 marketing-agents/output/content/content-hook.md
+ create mode 100644 marketing-agents/output/cro-daily-2026-04-07.md
+ create mode 100644 marketing-agents/output/email-daily-2026-04-07.md
+ create mode 100644 marketing-agents/output/growth/growth-daily-2026-04-07.md
+ create mode 100644 marketing-agents/output/seo-daily-2026-04-07.md
+ create mode 100644 marketing-agents/output/seo-requests/2026-04-07-wc-dynamic-pricing.md
+ create mode 100644 marketing-agents/output/seo-requests/2026-04-07-worldcup-schema.md
+ create mode 100644 marketing-agents/output/social/social-daily-2026-04-07.md
+To https://github.com/getactivemarketing/ticket-scan.git
+   849fcf8..b840fba  main -> main
+
+===========================================
+Finished: Tue Apr  7 11:50:16 EDT 2026
+===========================================
