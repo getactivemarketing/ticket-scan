@@ -66,6 +66,28 @@ run_agent "Agent 7: Analytics & Intelligence" "$PROMPTS_DIR/07-analytics-intelli
 run_agent "Agent 2: SEO Specialist"            "$PROMPTS_DIR/02-seo-specialist-daily.md"
 run_agent "Agent 1: Content Strategist"        "$PROMPTS_DIR/01-content-strategist-daily.md"
 run_agent "Agent 3: Social Media Manager"      "$PROMPTS_DIR/03-social-media-daily.md"
+
+# Deploy generated social images to Vercel and schedule posts
+echo "" | tee -a "$LOG_FILE"
+echo ">>> Deploying social images + scheduling posts — $(date +%H:%M:%S)" | tee -a "$LOG_FILE"
+echo "-------------------------------------------" | tee -a "$LOG_FILE"
+
+# Commit generated images if any exist
+if [ -n "$(git status --porcelain web/public/social/generated/)" ]; then
+    git add web/public/social/generated/
+    git commit -m "Add generated social images — $DATE" 2>&1 | tee -a "$LOG_FILE"
+fi
+
+# Deploy to Vercel so image URLs are live
+cd "$PROJECT_DIR/web"
+npx vercel --prod --yes 2>&1 | tee -a "$LOG_FILE" || echo "Vercel deploy failed" | tee -a "$LOG_FILE"
+cd "$PROJECT_DIR"
+
+# Schedule posts via Blotato
+cd "$PROJECT_DIR/marketing-agents"
+node scripts/schedule-blotato-posts.js 2>&1 | tee -a "$LOG_FILE" || echo "Blotato scheduling failed" | tee -a "$LOG_FILE"
+cd "$PROJECT_DIR"
+
 run_agent "Agent 4: Paid Ads Manager"          "$PROMPTS_DIR/04-paid-ads-daily.md"
 run_agent "Agent 5: Email Marketing"           "$PROMPTS_DIR/05-email-marketing-daily.md"
 run_agent "Agent 6: CRO Specialist"            "$PROMPTS_DIR/06-cro-specialist-daily.md"
