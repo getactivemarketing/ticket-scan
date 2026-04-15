@@ -1,22 +1,22 @@
-## Today's Content Hook — 2026-04-14
+## Today's Content Hook -- 2026-04-15
 
-### Hook 1: NBA Play-In Tournament Starts TODAY — Ticket Prices Are All Over the Map
-**Topic:** The NBA Play-In Tournament tips off tonight. Early pricing shows significant cross-platform gaps: Celtics-76ers/Magic Round 1 tickets at TD Garden start at $140 on StubHub, but SeatGeek listings for the same sections are running $85-95. Average playoff ticket price across the league is ~$200, but that average hides a huge spread depending on where you buy. Play-In games are historically underpriced compared to Round 1 because casual fans undervalue them.
-**Angle:** "How to compare NBA playoff ticket prices across platforms — a step-by-step walkthrough using today's Play-In games as the example." Turn the real-time pricing chaos into a tactical how-to.
-**Target keyword:** "NBA playoff tickets 2026" / "NBA play-in tournament tickets" / "compare NBA ticket prices"
-**Content type:** Blog post — today's tactical/how-to draft
-**Priority:** High — games are tonight, peak search intent
+### Hook 1: FIFA Seat Assignment Bait-and-Switch -- Lawsuit Investigation Opens
+**Topic:** Thousands of fans who paid $2,735+ for Category 1 World Cup tickets are discovering their seats are in corners, behind goals, and in upper levels. FIFA retroactively created a new "Front Category 1" tier and is selling those premium sideline seats at even higher prices. Law firm Migliaccio & Rathod has opened a formal class action investigation.
+**Angle:** Consumer advocacy piece. FIFA sold Category 1 as premium seating, delivered corner seats, then invented a new tier to resell the good seats at higher prices. This is the exact kind of pricing opacity TicketScan exists to fight. Compare what fans paid on FIFA vs. what the same sections cost on StubHub/SeatGeek resale right now.
+**Target keyword:** "World Cup 2026 seat assignments" / "FIFA ticket downgrade" / "World Cup tickets category 1"
+**Content type:** Blog post -- today's news/timely draft
+**Priority:** High -- active lawsuit investigation, peak fan outrage, trending on sports Twitter
 
-### Hook 2: BTS World Tour Announcement — 80+ Shows, 34 Cities
-**Topic:** BTS kicked off their 2026-2027 world tour in Goyang, South Korea this month, with 80+ shows planned across 34 cities spanning every continent. North American dates are coming, and the secondary market is already moving. BTS consistently generates some of the highest resale premiums in live music — Eras Tour-level demand with tighter venue capacities.
-**Angle:** "BTS fans, start comparing now." Position TicketScan as the tool for fans who got burned on K-pop resale markups before. When NA dates drop, price gaps between Ticketmaster, SeatGeek, and StubHub will be massive.
-**Target keyword:** "BTS world tour 2026 tickets" / "BTS concert tickets cheap"
-**Content type:** Social snippet now, full blog post when NA dates are announced
-**Priority:** Medium — NA dates not yet confirmed, but brand awareness play
+### Hook 2: NHL Playoff Tickets Going on Sale This Week -- Wild Price Swings
+**Topic:** Flyers, Ducks, Senators, and Bruins playoff tickets all went on sale in the past 48 hours. Stars vs. Wild Game 1 starts at $93 in Dallas, but Game 3 in Minnesota jumps to $171. Game 6 is $224. Huge variance across platforms and matchups.
+**Angle:** "NHL playoff ticket prices are all over the place. Here's where the deals are." Quick comparison across Ticketmaster, SeatGeek, StubHub for first-round matchups.
+**Target keyword:** "NHL playoff tickets 2026" / "Stanley Cup tickets cheap"
+**Content type:** Social snippet + SEO request for Agent 2
+**Priority:** Medium -- games start this week, but NHL audience is smaller than World Cup
 
-### Hook 3: World Cup Last-Minute Sales Phase — 13 Days of Data
-**Topic:** FIFA's Last-Minute Sales Phase launched April 1 (first-come, first-served). The official resale marketplace reopened April 2. We now have nearly two weeks of pricing data from both channels, plus secondary market comparisons on Ticketmaster resale, StubHub, and SeatGeek. Some group-stage matches at BC Place and Lumen Field are showing up cheaper on FIFA resale than the original direct sale price.
-**Angle:** Feed this data into Wednesday's planned comparison piece (FIFA resale vs. StubHub vs. SeatGeek). Today's hook is social amplification: "Two weeks into FIFA's resale marketplace, and group stage tickets are already cheaper than face value at some venues."
-**Target keyword:** "World Cup 2026 tickets resale" / "FIFA ticket marketplace"
-**Content type:** Social amplification today, full comparison blog Wednesday
-**Priority:** Medium — building toward Wednesday's piece
+### Hook 3: The Strokes and Jack White Announce Major Tours
+**Topic:** The Strokes announced a world tour (April 13), Jack White announced North American dates (April 9). Both will drive secondary market activity. Concert ticket comparison is TicketScan's bread and butter.
+**Angle:** "New tours just announced -- set a price alert before the resale markup kicks in." Position as early-bird savings play.
+**Target keyword:** "The Strokes tour 2026 tickets" / "Jack White tour tickets"
+**Content type:** Social snippet
+**Priority:** Low -- announcement phase, no tickets on sale yet for most dates
