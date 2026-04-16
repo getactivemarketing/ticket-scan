@@ -4,7 +4,6 @@ import { useState } from 'react';
 import { useAuth } from '@/context/AuthContext';
 import { useRouter } from 'next/navigation';
 import api from '@/lib/api';
-import { findVenue, tierPricing } from '@/data/venues';
 
 interface CompareEvent {
   id: string;
@@ -21,6 +20,7 @@ interface CompareEvent {
   maxPriceWithFees?: number | null;
   avgPriceWithFees?: number | null;
   priceRangeWithFees?: string;
+  tierEstimates?: { upper?: number; lower?: number; club?: number; floor?: number; suite?: number } | null;
   listingCount?: number;
   url: string;
   image?: string;
@@ -36,6 +36,36 @@ interface MatchedEvent {
   seatgeek?: CompareEvent;
   bestSource?: 'ticketmaster' | 'seatgeek';
   savings?: number;
+}
+
+const TIER_LABELS: Record<string, string> = {
+  upper: 'Upper bowl',
+  lower: 'Lower bowl',
+  club: 'Club',
+  floor: 'Floor',
+  suite: 'Suite',
+};
+
+function TierBreakdown({ tiers }: { tiers: { upper?: number; lower?: number; club?: number; floor?: number; suite?: number } | null | undefined }) {
+  if (!tiers) return null;
+  const ordered = ['upper', 'lower', 'club', 'floor', 'suite'].filter(t => tiers[t as keyof typeof tiers] != null);
+  if (ordered.length === 0) return null;
+
+  return (
+    <div className="mt-2 pt-2 border-t border-gray-200">
+      <div className="text-xs text-gray-500 mb-1" title="Estimates inferred from this venue's typical pricing pattern — not live per-section data.">
+        Estimated by section ⓘ
+      </div>
+      <div className="grid grid-cols-2 gap-x-3 gap-y-0.5 text-xs">
+        {ordered.map(t => (
+          <div key={t} className="flex justify-between">
+            <span className="text-gray-600">{TIER_LABELS[t]}</span>
+            <span className="font-medium">~${tiers[t as keyof typeof tiers]}</span>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
 }
 
 export default function ComparePage() {
@@ -359,12 +389,6 @@ export default function ComparePage() {
                   </div>
                 ) : (
                   matchedEvents.map((event, idx) => {
-                    const venue = findVenue(event.venue);
-                    const tmPrice = event.ticketmaster
-                      ? (event.ticketmaster.minPriceWithFees ?? parseMinPrice(event.ticketmaster.priceRangeWithFees ?? event.ticketmaster.priceRange))
-                      : null;
-                    const sgPrice = event.seatgeek?.minPriceWithFees ?? event.seatgeek?.minPrice ?? null;
-
                     return (
                       <div key={idx} className="bg-white rounded-xl shadow-md overflow-hidden">
                         {/* Event Header */}
@@ -411,14 +435,8 @@ export default function ComparePage() {
                                       Base: {event.ticketmaster.priceRange} · ~27% fees
                                     </p>
                                   )}
+                                  <TierBreakdown tiers={event.ticketmaster.tierEstimates} />
                                 </div>
-                                {venue && tmPrice && (
-                                  <div className="text-xs text-gray-500 space-y-1 mb-3">
-                                    <p>Est. Upper: ${tmPrice}</p>
-                                    <p>Est. Lower: ${Math.round(tmPrice * tierPricing.lower.multiplier)}</p>
-                                    <p>Est. Floor: ${Math.round(tmPrice * tierPricing.floor.multiplier)}</p>
-                                  </div>
-                                )}
                                 <a
                                   href={event.ticketmaster.url}
                                   target="_blank"
@@ -461,6 +479,7 @@ export default function ComparePage() {
                                       Base: {formatPrice(event.seatgeek.minPrice)} · ~20% fees
                                     </p>
                                   )}
+                                  <TierBreakdown tiers={event.seatgeek.tierEstimates} />
                                 </div>
                                 {event.seatgeek.listingCount && (
                                   <p className="text-sm text-gray-500 mb-3">
@@ -633,8 +652,9 @@ export default function ComparePage() {
               <h4 className="font-semibold text-amber-900">Pro Tip</h4>
               <p className="text-sm text-amber-700">
                 Prices include estimated platform fees: Ticketmaster ~27%, StubHub ~24%, SeatGeek ~20%.
-                SeatGeek aggregates prices from 60+ resale sites. Final fees vary slightly at checkout
-                based on event, seat, and delivery.
+                Section estimates (upper/lower/club/floor) are inferred from each venue's typical pricing
+                pattern — not live per-section data. Final fees vary slightly at checkout based on event,
+                seat, and delivery.
               </p>
             </div>
           </div>
