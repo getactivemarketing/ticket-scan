@@ -3289,11 +3289,18 @@ app.get('/api/prices/history/:eventId', authenticateToken, async (req, res) => {
       ORDER BY checked_at ASC
     `, [eventId, parseInt(days)]);
 
+    const priceHistory = result.rows.map(row => ({
+      ...row,
+      min_price_with_fees: withFees(row.min_price, row.source),
+      avg_price_with_fees: withFees(row.avg_price, row.source),
+      max_price_with_fees: withFees(row.max_price, row.source),
+    }));
+
     res.json({
       success: true,
       eventId,
-      count: result.rows.length,
-      priceHistory: result.rows
+      count: priceHistory.length,
+      priceHistory
     });
   } catch (error) {
     console.error('Price history error:', error.message);
