@@ -65,6 +65,10 @@ const faqs = [
         a: 'Yes — we show the estimated all-in price including each platform\'s service fees. Estimates: Ticketmaster ~27%, StubHub ~24%, SeatGeek ~20%. Base prices are shown as a smaller line beneath. Actual fees vary at checkout based on event, seat, and delivery method, but our estimates are based on each platform\'s published fee structure.',
       },
       {
+        q: 'How do you estimate prices by section?',
+        a: 'Public ticket APIs don\'t expose per-section pricing, so we estimate it from each venue\'s typical pricing pattern (upper/lower/club/floor). Estimates are most accurate at the 24 major venues we have detailed data for (MSG, Crypto.com Arena, Chase Center, etc.). For other venues, we show the aggregate price range without section estimates. Live concerts with general admission floors may price differently than the standard pattern — always verify section pricing on the platform before purchase.',
+      },
+      {
         q: 'Why are prices different on each platform?',
         a: 'Each ticket platform sets its own prices based on seller inventory, demand, and their fee structures. This is exactly why comparing prices is so important - the same seat can vary by 20% or more between platforms.',
       },
