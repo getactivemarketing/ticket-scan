@@ -3089,6 +3089,20 @@ async function trackWatchlistPrices() {
         }
       }
 
+      // Fetch from StubHub
+      const shPrice = await fetchStubHubEventPrice(event.event_name, event.venue, eventDate);
+      console.log(`  SH result:`, shPrice ? `$${shPrice.minPrice}-$${shPrice.maxPrice}` : 'no prices');
+      if (shPrice && shPrice.minPrice) {
+        await pool.query(`
+          INSERT INTO price_history (event_id, source, min_price, avg_price, max_price)
+          VALUES ($1, $2, $3, $4, $5)
+        `, [event.event_id, shPrice.source, shPrice.minPrice, shPrice.avgPrice, shPrice.maxPrice]);
+        tracked++;
+        if (!lowestPrice || shPrice.minPrice < lowestPrice) {
+          lowestPrice = shPrice.minPrice;
+        }
+      }
+
       // Check for price alerts if we have a price
       if (lowestPrice) {
         await checkPriceAlerts(event.event_id, lowestPrice);
@@ -3178,6 +3192,17 @@ app.post('/api/admin/price-track', authenticateAdmin, async (req, res) => {
           INSERT INTO price_history (event_id, source, min_price, avg_price, max_price)
           VALUES ($1, $2, $3, $4, $5)
         `, [event.event_id, sgPrice.source, sgPrice.minPrice, sgPrice.avgPrice, sgPrice.maxPrice]);
+        tracked++;
+      }
+
+      // Fetch from StubHub
+      const shPrice = await fetchStubHubEventPrice(event.event_name, event.venue, eventDate);
+      eventResult.prices.stubhub = shPrice;
+      if (shPrice && shPrice.minPrice) {
+        await pool.query(`
+          INSERT INTO price_history (event_id, source, min_price, avg_price, max_price)
+          VALUES ($1, $2, $3, $4, $5)
+        `, [event.event_id, shPrice.source, shPrice.minPrice, shPrice.avgPrice, shPrice.maxPrice]);
         tracked++;
       }
 
