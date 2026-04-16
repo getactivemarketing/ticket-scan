@@ -971,6 +971,84 @@ function withFees(basePrice, source) {
   return Math.round(parseFloat(basePrice) * (1 + fee) * 100) / 100;
 }
 
+// Per-venue tier multipliers (loaded from tierProportionsByVenue.js)
+const TIER_PROPORTIONS_BY_VENUE = require('./tierProportionsByVenue');
+
+// Map of API-returned venue names to our internal slugs.
+// Add entries as we identify new venues being tracked. Aliases (e.g. rebrandings
+// like Staples → Crypto.com Arena) should both point to the same slug.
+const VENUE_NAME_TO_SLUG = {
+  'kia center': 'kia-center',
+  'amway center': 'kia-center',
+  'kaseya center': 'kaseya-center',
+  'ftx arena': 'kaseya-center',
+  'miami-dade arena': 'kaseya-center',
+  'madison square garden': 'msg',
+  'msg': 'msg',
+  'crypto.com arena': 'crypto-arena',
+  'staples center': 'crypto-arena',
+  'united center': 'united-center',
+  'td garden': 'td-garden',
+  'wells fargo center': 'wells-fargo-center',
+  'american airlines center': 'american-airlines-center',
+  'toyota center': 'toyota-center',
+  'footprint center': 'footprint-center',
+  'talking stick resort arena': 'footprint-center',
+  'chase center': 'chase-center',
+  'ball arena': 'ball-arena',
+  'pepsi center': 'ball-arena',
+  'state farm arena': 'state-farm-arena',
+  'philips arena': 'state-farm-arena',
+  'barclays center': 'barclays-center',
+  'capital one arena': 'capital-one-arena',
+  'verizon center': 'capital-one-arena',
+  'little caesars arena': 'little-caesars-arena',
+  'fiserv forum': 'fiserv-forum',
+  'target center': 'target-center',
+  'smoothie king center': 'smoothie-king-center',
+  'scotiabank arena': 'scotiabank-arena',
+  'air canada centre': 'scotiabank-arena',
+  't-mobile arena': 't-mobile-arena',
+  'climate pledge arena': 'climate-pledge-arena',
+  'keyarena': 'climate-pledge-arena',
+  'prudential center': 'prudential-center',
+  'golden 1 center': 'golden-1-center',
+  'golden1 center': 'golden-1-center',
+};
+
+function resolveVenueSlug(venueName) {
+  if (!venueName) return null;
+  const key = venueName.toLowerCase().trim();
+  return VENUE_NAME_TO_SLUG[key] || null;
+}
+
+// Estimate per-tier prices from a platform's aggregate min/max.
+// Anchors min→cheapest tier, max→most expensive tier, interpolates the rest
+// using the venue's known tier multipliers.
+// Returns null for unknown venues or missing data — graceful fallback.
+function estimateTierPrices(minPrice, maxPrice, venueSlug) {
+  if (!minPrice || !maxPrice || !venueSlug) return null;
+  const proportions = TIER_PROPORTIONS_BY_VENUE[venueSlug];
+  if (!proportions) return null;
+
+  const tiers = Object.keys(proportions).sort((a, b) => proportions[a] - proportions[b]);
+  if (tiers.length < 2) return null;
+
+  const minMult = proportions[tiers[0]];
+  const maxMult = proportions[tiers[tiers.length - 1]];
+  const span = maxMult - minMult;
+  if (span === 0) return null;
+
+  const min = parseFloat(minPrice);
+  const max = parseFloat(maxPrice);
+
+  return tiers.reduce((acc, tier) => {
+    const t = (proportions[tier] - minMult) / span;
+    acc[tier] = Math.round(min + t * (max - min));
+    return acc;
+  }, {});
+}
+
 const JWT_SECRET = process.env.JWT_SECRET;
 if (!JWT_SECRET) {
   console.error('FATAL: JWT_SECRET environment variable is required');
