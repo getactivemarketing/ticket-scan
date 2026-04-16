@@ -949,6 +949,24 @@ const SEATGEEK_CLIENT_ID = process.env.SEATGEEK_CLIENT_ID || '';
 const VIVIDSEATS_API_KEY = process.env.VIVIDSEATS_API_KEY || '';
 const STUBHUB_APP_KEY = process.env.STUBHUB_APP_KEY || '';
 const STUBHUB_API_KEY = process.env.STUBHUB_API_KEY || '';
+
+// Estimated all-in service fees by platform.
+// Sources: TicketScan blog "Ticketmaster vs SeatGeek" (Apr 2026), public published fee structures.
+// Conservative midpoints — actual fees vary by event and state.
+// Update once or twice a year as platforms adjust.
+const PLATFORM_FEES = {
+  ticketmaster: 0.27,  // 15-25% service fee + facility charge
+  stubhub: 0.24,       // ~24% all-in service fee
+  seatgeek: 0.20,      // 10-20% service fee
+};
+
+function withFees(basePrice, source) {
+  if (basePrice == null) return null;
+  const key = String(source || '').toLowerCase();
+  const fee = PLATFORM_FEES[key] ?? 0;
+  return Math.round(parseFloat(basePrice) * (1 + fee) * 100) / 100;
+}
+
 const JWT_SECRET = process.env.JWT_SECRET;
 if (!JWT_SECRET) {
   console.error('FATAL: JWT_SECRET environment variable is required');
