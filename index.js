@@ -3381,12 +3381,17 @@ app.get('/api/admin/price-history', authenticateAdmin, async (req, res) => {
     }
 
     const result = await pool.query(query, params);
-    const priceHistory = result.rows.map(row => ({
-      ...row,
-      min_price_with_fees: withFees(row.min_price, row.source),
-      avg_price_with_fees: withFees(row.avg_price, row.source),
-      max_price_with_fees: withFees(row.max_price, row.source),
-    }));
+    const priceHistory = result.rows.map(row => {
+      const minWithFees = withFees(row.min_price, row.source);
+      const maxWithFees = withFees(row.max_price, row.source);
+      return {
+        ...row,
+        min_price_with_fees: minWithFees,
+        avg_price_with_fees: withFees(row.avg_price, row.source),
+        max_price_with_fees: maxWithFees,
+        tier_estimates: estimateTierPrices(minWithFees, maxWithFees, resolveVenueSlug(row.venue)),
+      };
+    });
     res.json({ success: true, priceHistory, total: result.rowCount });
   } catch (error) {
     console.error('Admin price history error:', error.message);
@@ -3402,6 +3407,13 @@ app.get('/api/prices/history/:eventId', authenticateToken, async (req, res) => {
     const { eventId } = req.params;
     const { days = 30 } = req.query;
 
+    // Look up venue once for tier estimation
+    const venueResult = await pool.query(
+      'SELECT venue FROM watchlist WHERE event_id = $1 LIMIT 1',
+      [eventId]
+    );
+    const venueSlug = resolveVenueSlug(venueResult.rows[0]?.venue);
+
     const result = await pool.query(`
       SELECT source, min_price, avg_price, max_price, checked_at
       FROM price_history
@@ -3410,12 +3422,17 @@ app.get('/api/prices/history/:eventId', authenticateToken, async (req, res) => {
       ORDER BY checked_at ASC
     `, [eventId, parseInt(days)]);
 
-    const priceHistory = result.rows.map(row => ({
-      ...row,
-      min_price_with_fees: withFees(row.min_price, row.source),
-      avg_price_with_fees: withFees(row.avg_price, row.source),
-      max_price_with_fees: withFees(row.max_price, row.source),
-    }));
+    const priceHistory = result.rows.map(row => {
+      const minWithFees = withFees(row.min_price, row.source);
+      const maxWithFees = withFees(row.max_price, row.source);
+      return {
+        ...row,
+        min_price_with_fees: minWithFees,
+        avg_price_with_fees: withFees(row.avg_price, row.source),
+        max_price_with_fees: maxWithFees,
+        tier_estimates: estimateTierPrices(minWithFees, maxWithFees, venueSlug),
+      };
+    });
 
     res.json({
       success: true,
