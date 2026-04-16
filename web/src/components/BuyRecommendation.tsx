@@ -9,6 +9,10 @@ interface BuyRecommendationProps {
     lowestRecorded: number;
     highestRecorded: number;
     averagePrice: number;
+    currentPriceBase?: number;
+    lowestRecordedBase?: number;
+    highestRecordedBase?: number;
+    averagePriceBase?: number;
     daysUntilEvent: number | null;
     targetPrice: number | null;
   } | null;
@@ -84,16 +88,25 @@ export default function BuyRecommendation({
           {stats && (
             <div className="mt-4 grid grid-cols-2 sm:grid-cols-4 gap-4">
               <div className="bg-white/60 rounded-lg p-3">
-                <span className="text-xs text-gray-500 block">Current</span>
+                <span className="text-xs text-gray-500 block">Current (with fees)</span>
                 <p className="font-bold text-gray-900">${stats.currentPrice.toFixed(0)}</p>
+                {stats.currentPriceBase !== undefined && (
+                  <p className="text-xs text-gray-500">base ${stats.currentPriceBase.toFixed(0)}</p>
+                )}
               </div>
               <div className="bg-white/60 rounded-lg p-3">
-                <span className="text-xs text-gray-500 block">Lowest</span>
+                <span className="text-xs text-gray-500 block">Lowest (with fees)</span>
                 <p className="font-bold text-green-600">${stats.lowestRecorded.toFixed(0)}</p>
+                {stats.lowestRecordedBase !== undefined && (
+                  <p className="text-xs text-gray-500">base ${stats.lowestRecordedBase.toFixed(0)}</p>
+                )}
               </div>
               <div className="bg-white/60 rounded-lg p-3">
-                <span className="text-xs text-gray-500 block">Highest</span>
+                <span className="text-xs text-gray-500 block">Highest (with fees)</span>
                 <p className="font-bold text-red-600">${stats.highestRecorded.toFixed(0)}</p>
+                {stats.highestRecordedBase !== undefined && (
+                  <p className="text-xs text-gray-500">base ${stats.highestRecordedBase.toFixed(0)}</p>
+                )}
               </div>
               {stats.daysUntilEvent !== null && (
                 <div className="bg-white/60 rounded-lg p-3">

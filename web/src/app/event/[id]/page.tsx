@@ -15,6 +15,9 @@ interface PriceHistoryItem {
   avg_price: string;
   max_price: string;
   checked_at: string;
+  min_price_with_fees?: number | null;
+  avg_price_with_fees?: number | null;
+  max_price_with_fees?: number | null;
 }
 
 interface ChartDataPoint {
@@ -32,6 +35,10 @@ interface Recommendation {
     lowestRecorded: number;
     highestRecorded: number;
     averagePrice: number;
+    currentPriceBase?: number;
+    lowestRecordedBase?: number;
+    highestRecordedBase?: number;
+    averagePriceBase?: number;
     daysUntilEvent: number | null;
     targetPrice: number | null;
   } | null;
@@ -115,7 +122,7 @@ export default function EventDetailPage() {
         groupedByTime[dateKey] = { ticketmaster: null, seatgeek: null };
       }
 
-      const price = parseFloat(item.min_price);
+      const price = item.min_price_with_fees ?? parseFloat(item.min_price);
       if (item.source === 'ticketmaster') {
         groupedByTime[dateKey].ticketmaster = price;
       } else if (item.source === 'seatgeek') {
@@ -198,6 +205,9 @@ export default function EventDetailPage() {
         {/* Price Chart */}
         <div className="mb-6">
           <PriceChart data={chartData} height={350} />
+          <p className="text-xs text-gray-500 mt-2 text-center">
+            Prices include estimated platform fees.
+          </p>
         </div>
 
         {/* Price History Table */}
@@ -236,13 +246,26 @@ export default function EventDetailPage() {
                         </span>
                       </td>
                       <td className="py-3 px-2 text-right text-sm font-medium text-gray-900">
-                        ${parseFloat(item.min_price).toFixed(0)}
+                        <div className="flex flex-col items-end">
+                          <span className="font-medium">${(item.min_price_with_fees ?? parseFloat(item.min_price)).toFixed(0)}</span>
+                          <span className="text-xs text-gray-500">base ${parseFloat(item.min_price).toFixed(0)}</span>
+                        </div>
                       </td>
                       <td className="py-3 px-2 text-right text-sm text-gray-600">
-                        {item.avg_price ? `$${parseFloat(item.avg_price).toFixed(0)}` : '-'}
+                        {item.avg_price ? (
+                          <div className="flex flex-col items-end">
+                            <span>${(item.avg_price_with_fees ?? parseFloat(item.avg_price)).toFixed(0)}</span>
+                            <span className="text-xs text-gray-500">base ${parseFloat(item.avg_price).toFixed(0)}</span>
+                          </div>
+                        ) : '-'}
                       </td>
                       <td className="py-3 px-2 text-right text-sm text-gray-600">
-                        {item.max_price ? `$${parseFloat(item.max_price).toFixed(0)}` : '-'}
+                        {item.max_price ? (
+                          <div className="flex flex-col items-end">
+                            <span>${(item.max_price_with_fees ?? parseFloat(item.max_price)).toFixed(0)}</span>
+                            <span className="text-xs text-gray-500">base ${parseFloat(item.max_price).toFixed(0)}</span>
+                          </div>
+                        ) : '-'}
                       </td>
                     </tr>
                   ))}
