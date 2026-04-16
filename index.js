@@ -3278,7 +3278,13 @@ app.get('/api/admin/price-history', authenticateAdmin, async (req, res) => {
     }
 
     const result = await pool.query(query, params);
-    res.json({ success: true, priceHistory: result.rows, total: result.rowCount });
+    const priceHistory = result.rows.map(row => ({
+      ...row,
+      min_price_with_fees: withFees(row.min_price, row.source),
+      avg_price_with_fees: withFees(row.avg_price, row.source),
+      max_price_with_fees: withFees(row.max_price, row.source),
+    }));
+    res.json({ success: true, priceHistory, total: result.rowCount });
   } catch (error) {
     console.error('Admin price history error:', error.message);
     res.status(500).json({ success: false, error: error.message });
