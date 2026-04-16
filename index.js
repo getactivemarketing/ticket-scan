@@ -3567,11 +3567,16 @@ app.get('/api/watchlist/with-prices', authenticateToken, async (req, res) => {
 
       const current = priceChange.rows[0]?.current_price;
       const previous = priceChange.rows[0]?.previous_price;
+      const latestSource = latestPrice.rows[0]?.source || null;
+
+      // Use with-fees prices for percent_change so it matches UI display
+      const currentWithFees = withFees(current, latestSource);
+      const previousWithFees = withFees(previous, latestSource);
 
       let percentChange = null;
       let direction = 'stable';
-      if (current && previous) {
-        percentChange = Math.round(((current - previous) / previous * 100) * 10) / 10;
+      if (currentWithFees && previousWithFees) {
+        percentChange = Math.round(((currentWithFees - previousWithFees) / previousWithFees * 100) * 10) / 10;
         direction = percentChange > 1 ? 'up' : percentChange < -1 ? 'down' : 'stable';
       }
 
@@ -3579,7 +3584,9 @@ app.get('/api/watchlist/with-prices', authenticateToken, async (req, res) => {
         ...item,
         current_min_price: latestPrice.rows[0]?.min_price || null,
         current_max_price: latestPrice.rows[0]?.max_price || null,
-        source: latestPrice.rows[0]?.source || null,
+        current_min_price_with_fees: withFees(latestPrice.rows[0]?.min_price, latestSource),
+        current_max_price_with_fees: withFees(latestPrice.rows[0]?.max_price, latestSource),
+        source: latestSource,
         last_checked: latestPrice.rows[0]?.checked_at || null,
         percent_change: percentChange,
         trend_direction: direction
