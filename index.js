@@ -458,7 +458,10 @@ async function sendWelcomeEmail(userEmail) {
 }
 
 // Send price drop alert email
-async function sendPriceDropEmail(userEmail, eventName, currentPrice, targetPrice, eventDate) {
+async function sendPriceDropEmail(userEmail, eventName, currentPrice, targetPrice, eventDate, basePrice = null, source = null) {
+  const feeNote = (basePrice && source)
+    ? `<p style="font-size: 12px; color: #6b7280; margin: 8px 0 0 0;">All-in price including estimated ${source} fees. Base ticket price: $${basePrice}.</p>`
+    : '';
   if (!process.env.SMTP_USER) {
     console.log('📧 Email not configured, skipping alert for:', eventName);
     return false;
@@ -487,6 +490,7 @@ async function sendPriceDropEmail(userEmail, eventName, currentPrice, targetPric
                 </span>
                 <span style="color: #6b7280; margin-left: 10px;">Your target: $${targetPrice}</span>
               </div>
+              ${feeNote}
             </div>
 
             <a href="https://ticketscan.io/watchlist" style="display: inline-block; background: #7c3aed; color: white; padding: 12px 30px; border-radius: 8px; text-decoration: none; font-weight: bold; margin-top: 10px;">
@@ -3023,9 +3027,13 @@ async function searchStubHubEvents(query, city, limit = 20) {
 }
 
 // Check and send price drop alerts
-async function checkPriceAlerts(eventId, currentMinPrice) {
+async function checkPriceAlerts(eventId, currentMinPrice, source) {
   try {
-    // Get all users watching this event with a target price
+    // Compare with-fees price against the user's target.
+    // The user's target is treated as the all-in price they're willing to pay.
+    const currentMinWithFees = withFees(currentMinPrice, source);
+    if (currentMinWithFees == null) return;
+
     const watchlistResult = await pool.query(`
       SELECT w.id as watchlist_id, w.user_id, w.event_name, w.event_date, w.target_price, u.email
       FROM watchlist w
@@ -3034,32 +3042,34 @@ async function checkPriceAlerts(eventId, currentMinPrice) {
         AND w.target_price IS NOT NULL
         AND w.target_price >= $2
         AND w.event_date > NOW()
-    `, [eventId, currentMinPrice]);
+    `, [eventId, currentMinWithFees]);
 
     for (const item of watchlistResult.rows) {
-      // Check if we already sent an alert for this price point
+      // Check if we already sent an alert for this with-fees price point
       const existingAlert = await pool.query(`
         SELECT id FROM price_alerts
         WHERE watchlist_id = $1 AND triggered_price <= $2
         AND sent_at > NOW() - INTERVAL '24 hours'
-      `, [item.watchlist_id, currentMinPrice]);
+      `, [item.watchlist_id, currentMinWithFees]);
 
       if (existingAlert.rows.length === 0) {
-        // Send email alert
+        // Send email alert with both base and with-fees prices for transparency
         const sent = await sendPriceDropEmail(
           item.email,
           item.event_name,
-          currentMinPrice,
+          currentMinWithFees,
           item.target_price,
-          item.event_date
+          item.event_date,
+          currentMinPrice,
+          source
         );
 
         if (sent) {
-          // Record the alert
+          // Record the alert using the with-fees price (matches what the user saw)
           await pool.query(`
             INSERT INTO price_alerts (user_id, watchlist_id, event_id, triggered_price)
             VALUES ($1, $2, $3, $4)
-          `, [item.user_id, item.watchlist_id, eventId, currentMinPrice]);
+          `, [item.user_id, item.watchlist_id, eventId, currentMinWithFees]);
         }
       }
     }
@@ -3090,6 +3100,7 @@ async function trackWatchlistPrices() {
 
     for (const event of events) {
       let lowestPrice = null;
+      let lowestSource = null;
       console.log(`\n📍 Tracking: ${event.event_name} (${event.event_id})`);
 
       // Fetch from Ticketmaster
@@ -3102,6 +3113,7 @@ async function trackWatchlistPrices() {
         `, [event.event_id, tmPrice.source, tmPrice.minPrice, tmPrice.avgPrice, tmPrice.maxPrice]);
         tracked++;
         lowestPrice = tmPrice.minPrice;
+        lowestSource = tmPrice.source;
       }
 
       // Fetch from SeatGeek
@@ -3116,6 +3128,7 @@ async function trackWatchlistPrices() {
         tracked++;
         if (!lowestPrice || sgPrice.minPrice < lowestPrice) {
           lowestPrice = sgPrice.minPrice;
+          lowestSource = sgPrice.source;
         }
       }
 
@@ -3130,12 +3143,13 @@ async function trackWatchlistPrices() {
         tracked++;
         if (!lowestPrice || shPrice.minPrice < lowestPrice) {
           lowestPrice = shPrice.minPrice;
+          lowestSource = shPrice.source;
         }
       }
 
       // Check for price alerts if we have a price
       if (lowestPrice) {
-        await checkPriceAlerts(event.event_id, lowestPrice);
+        await checkPriceAlerts(event.event_id, lowestPrice, lowestSource);
         alertsChecked++;
       }
 
