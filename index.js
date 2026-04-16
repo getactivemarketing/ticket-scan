@@ -3387,33 +3387,26 @@ app.get('/api/prices/recommendation/:eventId', authenticateToken, async (req, re
   try {
     const { eventId } = req.params;
 
-    // Get event info and price statistics
+    // Get event info
     const eventInfo = await pool.query(
       'SELECT event_name, event_date, target_price FROM watchlist WHERE event_id = $1 LIMIT 1',
       [eventId]
     );
 
-    const stats = await pool.query(`
-      SELECT
-        MIN(min_price) as lowest_ever,
-        MAX(min_price) as highest_ever,
-        AVG(min_price) as average_price
+    // Pull all price history rows with source so we can apply fees per row.
+    // Aggregating before fees would be wrong because each platform has a
+    // different fee multiplier.
+    const allRows = await pool.query(`
+      SELECT min_price, source, checked_at
       FROM price_history
       WHERE event_id = $1
-    `, [eventId]);
-
-    const currentPrice = await pool.query(`
-      SELECT min_price FROM price_history
-      WHERE event_id = $1
       ORDER BY checked_at DESC
-      LIMIT 1
     `, [eventId]);
 
     const event = eventInfo.rows[0];
-    const priceStats = stats.rows[0];
-    const current = currentPrice.rows[0]?.min_price;
+    const rows = allRows.rows;
 
-    if (!current || !priceStats.lowest_ever) {
+    if (rows.length === 0) {
       return res.json({
         success: true,
         eventId,
@@ -3426,10 +3419,36 @@ app.get('/api/prices/recommendation/:eventId', authenticateToken, async (req, re
       });
     }
 
-    const lowestEver = parseFloat(priceStats.lowest_ever);
-    const highestEver = parseFloat(priceStats.highest_ever);
-    const avgPrice = parseFloat(priceStats.average_price);
-    const currentMin = parseFloat(current);
+    // Compute with-fees price for every row, then aggregate
+    const withFeesPrices = rows
+      .map(r => withFees(r.min_price, r.source))
+      .filter(p => p != null);
+
+    if (withFeesPrices.length === 0) {
+      return res.json({
+        success: true,
+        eventId,
+        recommendation: {
+          action: 'hold',
+          confidence: 'low',
+          reason: 'Not enough price history yet. Check back soon.',
+          stats: null
+        }
+      });
+    }
+
+    const lowestEverWithFees = Math.min(...withFeesPrices);
+    const highestEverWithFees = Math.max(...withFeesPrices);
+    const avgPriceWithFees = withFeesPrices.reduce((a, b) => a + b, 0) / withFeesPrices.length;
+    // rows is ordered DESC by checked_at, so first row is most recent
+    const currentMinWithFees = withFees(rows[0].min_price, rows[0].source);
+
+    // Also compute base aggregates for transparency in stats response
+    const basePrices = rows.map(r => parseFloat(r.min_price)).filter(p => !isNaN(p));
+    const lowestEverBase = Math.min(...basePrices);
+    const highestEverBase = Math.max(...basePrices);
+    const avgPriceBase = basePrices.reduce((a, b) => a + b, 0) / basePrices.length;
+    const currentMinBase = parseFloat(rows[0].min_price);
 
     // Calculate days until event
     let daysUntilEvent = null;
@@ -3437,12 +3456,12 @@ app.get('/api/prices/recommendation/:eventId', authenticateToken, async (req, re
       daysUntilEvent = Math.ceil((new Date(event.event_date) - new Date()) / (1000 * 60 * 60 * 24));
     }
 
-    // Recommendation logic
+    // Recommendation logic — operates on with-fees prices
     let action = 'hold';
     let confidence = 'medium';
     let reason = 'Prices are within normal range.';
 
-    if (currentMin <= lowestEver * 1.05) {
+    if (currentMinWithFees <= lowestEverWithFees * 1.05) {
       action = 'buy_now';
       confidence = 'high';
       reason = 'Price is at or near the lowest recorded!';
@@ -3454,18 +3473,19 @@ app.get('/api/prices/recommendation/:eventId', authenticateToken, async (req, re
       action = 'buy_now';
       confidence = 'low';
       reason = 'Event is within a week. Consider buying soon.';
-    } else if (currentMin >= avgPrice * 1.2) {
+    } else if (currentMinWithFees >= avgPriceWithFees * 1.2) {
       action = 'wait';
       confidence = 'medium';
       reason = 'Current price is 20%+ above average. Wait for a drop.';
-    } else if (currentMin >= highestEver * 0.95) {
+    } else if (currentMinWithFees >= highestEverWithFees * 0.95) {
       action = 'wait';
       confidence = 'high';
       reason = 'Price is near the highest recorded. Wait for better deals.';
     }
 
-    // Check against target price
-    if (event?.target_price && currentMin <= parseFloat(event.target_price)) {
+    // Target price comparison: target is treated as the all-in price the
+    // user is willing to pay, so we compare it against currentMinWithFees.
+    if (event?.target_price && currentMinWithFees <= parseFloat(event.target_price)) {
       action = 'buy_now';
       confidence = 'high';
       reason = `Price is at or below your target of $${event.target_price}!`;
@@ -3480,10 +3500,16 @@ app.get('/api/prices/recommendation/:eventId', authenticateToken, async (req, re
         confidence,
         reason,
         stats: {
-          currentPrice: currentMin,
-          lowestRecorded: lowestEver,
-          highestRecorded: highestEver,
-          averagePrice: Math.round(avgPrice * 100) / 100,
+          // With-fees primary
+          currentPrice: currentMinWithFees,
+          lowestRecorded: lowestEverWithFees,
+          highestRecorded: highestEverWithFees,
+          averagePrice: Math.round(avgPriceWithFees * 100) / 100,
+          // Base prices for transparency
+          currentPriceBase: currentMinBase,
+          lowestRecordedBase: lowestEverBase,
+          highestRecordedBase: highestEverBase,
+          averagePriceBase: Math.round(avgPriceBase * 100) / 100,
           daysUntilEvent,
           targetPrice: event?.target_price ? parseFloat(event.target_price) : null
         }
