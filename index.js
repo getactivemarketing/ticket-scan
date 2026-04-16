@@ -1709,20 +1709,29 @@ app.get('/api/events/compare', async (req, res) => {
 
     // Parse Ticketmaster results
     const rawTmEvents = results[0].status === 'fulfilled'
-      ? (results[0].value.data._embedded?.events || []).map(e => ({
-          id: e.id,
-          name: e.name,
-          date: e.dates.start.localDate,
-          time: e.dates.start.localTime || 'TBA',
-          venue: e._embedded?.venues?.[0]?.name,
-          city: e._embedded?.venues?.[0]?.city?.name,
-          minPrice: e.priceRanges?.[0]?.min || null,
-          maxPrice: e.priceRanges?.[0]?.max || null,
-          priceRange: e.priceRanges?.[0] ? `$${e.priceRanges[0].min} - $${e.priceRanges[0].max}` : 'N/A',
-          url: e.url,
-          image: e.images?.[0]?.url,
-          source: 'Ticketmaster'
-        }))
+      ? (results[0].value.data._embedded?.events || []).map(e => {
+          const min = e.priceRanges?.[0]?.min || null;
+          const max = e.priceRanges?.[0]?.max || null;
+          const minWithFees = withFees(min, 'ticketmaster');
+          const maxWithFees = withFees(max, 'ticketmaster');
+          return {
+            id: e.id,
+            name: e.name,
+            date: e.dates.start.localDate,
+            time: e.dates.start.localTime || 'TBA',
+            venue: e._embedded?.venues?.[0]?.name,
+            city: e._embedded?.venues?.[0]?.city?.name,
+            minPrice: min,
+            maxPrice: max,
+            minPriceWithFees: minWithFees,
+            maxPriceWithFees: maxWithFees,
+            priceRange: e.priceRanges?.[0] ? `$${e.priceRanges[0].min} - $${e.priceRanges[0].max}` : 'N/A',
+            priceRangeWithFees: minWithFees && maxWithFees ? `$${minWithFees} - $${maxWithFees}` : 'N/A',
+            url: e.url,
+            image: e.images?.[0]?.url,
+            source: 'Ticketmaster'
+          };
+        })
       : [];
 
     // Deduplicate Ticketmaster events
@@ -1740,6 +1749,9 @@ app.get('/api/events/compare', async (req, res) => {
           minPrice: e.stats?.lowest_price || null,
           maxPrice: e.stats?.highest_price || null,
           avgPrice: e.stats?.average_price || null,
+          minPriceWithFees: withFees(e.stats?.lowest_price, 'seatgeek'),
+          maxPriceWithFees: withFees(e.stats?.highest_price, 'seatgeek'),
+          avgPriceWithFees: withFees(e.stats?.average_price, 'seatgeek'),
           listingCount: e.stats?.listing_count || 0,
           url: e.url,
           image: e.performers?.[0]?.image,
