@@ -3339,32 +3339,42 @@ app.get('/api/prices/trend/:eventId', authenticateToken, async (req, res) => {
       LIMIT 2
     `, [eventId]);
 
-    // Calculate trend
+    // Calculate trend (using with-fees prices for consistency with UI)
     const currentPrices = result.rows;
     const previousPrices = previousResult.rows;
 
     let trend = { direction: 'stable', percentChange: 0 };
 
     if (currentPrices.length > 0 && previousPrices.length > 0) {
-      const currentMin = Math.min(...currentPrices.map(p => parseFloat(p.current_min)));
-      const previousMin = Math.min(...previousPrices.map(p => parseFloat(p.previous_min)));
+      const currentMinWithFees = Math.min(
+        ...currentPrices.map(p => withFees(p.current_min, p.source))
+      );
+      const previousMinWithFees = Math.min(
+        ...previousPrices.map(p => withFees(p.previous_min, p.source))
+      );
 
-      if (previousMin > 0) {
-        const change = ((currentMin - previousMin) / previousMin * 100);
+      if (previousMinWithFees > 0) {
+        const change = ((currentMinWithFees - previousMinWithFees) / previousMinWithFees * 100);
         trend = {
           direction: change > 1 ? 'up' : change < -1 ? 'down' : 'stable',
           percentChange: Math.round(change * 10) / 10,
-          currentMinPrice: currentMin,
-          previousMinPrice: previousMin
+          currentMinPrice: currentMinWithFees,
+          previousMinPrice: previousMinWithFees
         };
       }
     }
+
+    const sourcesWithFees = currentPrices.map(row => ({
+      ...row,
+      current_min_with_fees: withFees(row.current_min, row.source),
+      current_avg_with_fees: withFees(row.current_avg, row.source),
+    }));
 
     res.json({
       success: true,
       eventId,
       trend,
-      sources: currentPrices
+      sources: sourcesWithFees
     });
   } catch (error) {
     console.error('Price trend error:', error.message);
