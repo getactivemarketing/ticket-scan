@@ -64,23 +64,56 @@ export default function ComparePage() {
     const matched: MatchedEvent[] = [];
     const usedSG = new Set<string>();
 
+    // Helper: extract a normalized core name (drop common suffixes/punctuation)
+    const normalizeName = (name: string): string => {
+      return name.toLowerCase()
+        .replace(/[.,'']/g, '')
+        .replace(/\s+/g, ' ')
+        .trim();
+    };
+
+    // Helper: parse "HH:MM" time string into hours-since-midnight, or null
+    const parseTime = (t?: string): number | null => {
+      if (!t) return null;
+      const m = t.match(/^(\d{1,2}):(\d{2})/);
+      if (!m) return null;
+      return parseInt(m[1], 10) + parseInt(m[2], 10) / 60;
+    };
+
     tmEvents.forEach(tm => {
-      // Try to find matching SeatGeek event
       const tmDate = tm.date;
       const tmVenue = tm.venue?.toLowerCase() || '';
+      const tmName = normalizeName(tm.name || '');
+      const tmTime = parseTime(tm.time);
 
       const match = sgEvents.find(sg => {
         if (usedSG.has(sg.id)) return false;
         const sgDate = sg.date;
         const sgVenue = sg.venue?.toLowerCase() || '';
+        const sgName = normalizeName(sg.name || '');
+        const sgTime = parseTime(sg.time);
 
-        // Match by date and venue similarity
-        const dateMatch = tmDate === sgDate;
-        const venueMatch = tmVenue.includes(sgVenue.split(' ')[0]) ||
-                          sgVenue.includes(tmVenue.split(' ')[0]) ||
-                          tmVenue === sgVenue;
+        // Date must match exactly
+        if (tmDate !== sgDate) return false;
 
-        return dateMatch && venueMatch;
+        // Venue must match — full equality OR mutual substring (longer than 3 chars)
+        const venueMatch =
+          tmVenue === sgVenue ||
+          (tmVenue.length > 3 && sgVenue.includes(tmVenue)) ||
+          (sgVenue.length > 3 && tmVenue.includes(sgVenue));
+        if (!venueMatch) return false;
+
+        // Time-of-day must match within 2 hours (when both have a time)
+        if (tmTime !== null && sgTime !== null) {
+          if (Math.abs(tmTime - sgTime) > 2) return false;
+        }
+
+        // Name must match: exact OR mutual substring on the longer-of-two strings
+        if (tmName === sgName) return true;
+        if (tmName.length > 4 && sgName.includes(tmName)) return true;
+        if (sgName.length > 4 && tmName.includes(sgName)) return true;
+
+        return false;
       });
 
       if (match) {
