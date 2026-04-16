@@ -1796,12 +1796,14 @@ app.get('/api/events/compare', async (req, res) => {
           const max = e.priceRanges?.[0]?.max || null;
           const minWithFees = withFees(min, 'ticketmaster');
           const maxWithFees = withFees(max, 'ticketmaster');
+          const venueName = e._embedded?.venues?.[0]?.name;
+          const venueSlug = resolveVenueSlug(venueName);
           return {
             id: e.id,
             name: e.name,
             date: e.dates.start.localDate,
             time: e.dates.start.localTime || 'TBA',
-            venue: e._embedded?.venues?.[0]?.name,
+            venue: venueName,
             city: e._embedded?.venues?.[0]?.city?.name,
             minPrice: min,
             maxPrice: max,
@@ -1809,6 +1811,7 @@ app.get('/api/events/compare', async (req, res) => {
             maxPriceWithFees: maxWithFees,
             priceRange: e.priceRanges?.[0] ? `$${e.priceRanges[0].min} - $${e.priceRanges[0].max}` : 'N/A',
             priceRangeWithFees: minWithFees && maxWithFees ? `$${minWithFees} - $${maxWithFees}` : 'N/A',
+            tierEstimates: estimateTierPrices(minWithFees, maxWithFees, venueSlug),
             url: e.url,
             image: e.images?.[0]?.url,
             source: 'Ticketmaster'
@@ -1821,24 +1824,32 @@ app.get('/api/events/compare', async (req, res) => {
 
     // Parse SeatGeek results
     const sgEvents = results[1].status === 'fulfilled'
-      ? (results[1].value.data.events || []).map(e => ({
-          id: String(e.id),
-          name: e.title,
-          date: e.datetime_local?.split('T')[0],
-          time: e.datetime_local?.split('T')[1]?.substring(0, 5) || 'TBA',
-          venue: e.venue?.name,
-          city: e.venue?.city,
-          minPrice: e.stats?.lowest_price || null,
-          maxPrice: e.stats?.highest_price || null,
-          avgPrice: e.stats?.average_price || null,
-          minPriceWithFees: withFees(e.stats?.lowest_price, 'seatgeek'),
-          maxPriceWithFees: withFees(e.stats?.highest_price, 'seatgeek'),
-          avgPriceWithFees: withFees(e.stats?.average_price, 'seatgeek'),
-          listingCount: e.stats?.listing_count || 0,
-          url: e.url,
-          image: e.performers?.[0]?.image,
-          source: 'SeatGeek'
-        }))
+      ? (results[1].value.data.events || []).map(e => {
+          const min = e.stats?.lowest_price || null;
+          const max = e.stats?.highest_price || null;
+          const minWithFees = withFees(min, 'seatgeek');
+          const maxWithFees = withFees(max, 'seatgeek');
+          const venueSlug = resolveVenueSlug(e.venue?.name);
+          return {
+            id: String(e.id),
+            name: e.title,
+            date: e.datetime_local?.split('T')[0],
+            time: e.datetime_local?.split('T')[1]?.substring(0, 5) || 'TBA',
+            venue: e.venue?.name,
+            city: e.venue?.city,
+            minPrice: min,
+            maxPrice: max,
+            avgPrice: e.stats?.average_price || null,
+            minPriceWithFees: minWithFees,
+            maxPriceWithFees: maxWithFees,
+            avgPriceWithFees: withFees(e.stats?.average_price, 'seatgeek'),
+            tierEstimates: estimateTierPrices(minWithFees, maxWithFees, venueSlug),
+            listingCount: e.stats?.listing_count || 0,
+            url: e.url,
+            image: e.performers?.[0]?.image,
+            source: 'SeatGeek'
+          };
+        })
       : [];
 
     res.json({
