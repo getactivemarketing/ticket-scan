@@ -1609,42 +1609,56 @@ app.get('/api/favorites/events', authenticateToken, async (req, res) => {
 
 // Filter out duplicate/hospitality events (like "Jernigan's" packages)
 function deduplicateEvents(events) {
-  // Patterns to exclude (hospitality packages, reseller listings)
+  // Patterns to exclude: hospitality packages, parking, ancillary events
   const excludePatterns = [
     /jernigan/i,
     /hospitality/i,
     /vip package/i,
+    /vip reception/i,
     /suite/i,
     /premium experience/i,
     /meet & greet/i,
-    /meet and greet/i
+    /meet and greet/i,
+    /pregame/i,
+    /post.?game/i,
+    /parking/i,
+    /fan (event|experience|fest|zone)/i,
+    /q.*&.*a/i,
+    /pre.?show/i,
+    /after.?party/i,
   ];
 
-  // First, filter out obvious hospitality packages
+  // First, filter out obvious non-game / hospitality packages
   const filtered = events.filter(event => {
     const name = event.name || '';
     return !excludePatterns.some(pattern => pattern.test(name));
   });
 
-  // Then deduplicate by venue + date + normalized name
+  // Then deduplicate by venue + date + time-of-day-bucket + normalized name.
+  // Time bucket = floor(hours / 2) so events within ~2 hours collapse together
+  // (e.g. 7:30 PM and 8:00 PM bucket the same), but a 5 PM pregame event
+  // doesn't collapse with the 7:30 PM main event.
   const seen = new Map();
 
   return filtered.filter(event => {
     const venue = (event.venue || '').toLowerCase().trim();
     const date = event.date || '';
+    const time = event.time || '';
+    const timeBucket = (() => {
+      const m = time.match(/^(\d{1,2}):/);
+      if (!m) return 'unknown';
+      return String(Math.floor(parseInt(m[1], 10) / 2));
+    })();
 
-    // Normalize team names for comparison
-    // "Orlando Magic vs. Indiana Pacers" and "Pacers vs Magic" should match
     const normalizedName = normalizeEventName(event.name || '');
 
-    const key = `${venue}|${date}|${normalizedName}`;
+    const key = `${venue}|${date}|${timeBucket}|${normalizedName}`;
 
     if (seen.has(key)) {
-      // If we've seen this event, keep the one with the longer/more official name
       const existing = seen.get(key);
       if ((event.name || '').length > (existing.name || '').length) {
         seen.set(key, event);
-        return false; // Will be replaced
+        return false;
       }
       return false;
     }
