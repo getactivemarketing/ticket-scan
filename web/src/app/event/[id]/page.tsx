@@ -18,6 +18,7 @@ interface PriceHistoryItem {
   min_price_with_fees?: number | null;
   avg_price_with_fees?: number | null;
   max_price_with_fees?: number | null;
+  tier_estimates?: { upper?: number; lower?: number; club?: number; floor?: number; suite?: number } | null;
 }
 
 interface ChartDataPoint {
@@ -49,6 +50,39 @@ interface Trend {
   percentChange: number;
   currentMinPrice?: number;
   previousMinPrice?: number;
+}
+
+const TIER_LABELS: Record<string, string> = {
+  upper: 'Upper bowl',
+  lower: 'Lower bowl',
+  club: 'Club',
+  floor: 'Floor',
+  suite: 'Suite',
+};
+
+function TierBreakdown({ tiers, source }: {
+  tiers: { upper?: number; lower?: number; club?: number; floor?: number; suite?: number } | null | undefined;
+  source?: string;
+}) {
+  if (!tiers) return null;
+  const ordered = ['upper', 'lower', 'club', 'floor', 'suite'].filter(t => tiers[t as keyof typeof tiers] != null);
+  if (ordered.length === 0) return null;
+
+  return (
+    <div className="mt-3 p-3 bg-gray-50 rounded-md">
+      <div className="text-xs text-gray-500 mb-2">
+        Estimated by section{source ? ` (${source})` : ''}
+      </div>
+      <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 text-sm">
+        {ordered.map(t => (
+          <div key={t} className="flex flex-col">
+            <span className="text-xs text-gray-500">{TIER_LABELS[t]}</span>
+            <span className="font-medium">~${tiers[t as keyof typeof tiers]}</span>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
 }
 
 export default function EventDetailPage() {
@@ -201,6 +235,31 @@ export default function EventDetailPage() {
             />
           </div>
         )}
+
+        {/* Tier Breakdown */}
+        {(() => {
+          // Find the most recent row per source that has tier_estimates
+          const latestBySource = new Map<string, PriceHistoryItem>();
+          for (const item of [...priceHistory].reverse()) {
+            if (item.tier_estimates && !latestBySource.has(item.source)) {
+              latestBySource.set(item.source, item);
+            }
+          }
+          if (latestBySource.size === 0) return null;
+          return (
+            <div className="mb-6">
+              <h3 className="text-lg font-semibold mb-2">Estimated section pricing</h3>
+              <p className="text-xs text-gray-500 mb-3">
+                Inferred from this venue&apos;s typical pricing pattern. Not live per-section data.
+              </p>
+              {Array.from(latestBySource.entries()).map(([source, item]) => (
+                <div key={source}>
+                  <TierBreakdown tiers={item.tier_estimates} source={source} />
+                </div>
+              ))}
+            </div>
+          );
+        })()}
 
         {/* Price Chart */}
         <div className="mb-6">
