@@ -17,6 +17,10 @@ interface CompareEvent {
   maxPrice?: number | null;
   avgPrice?: number | null;
   priceRange?: string;
+  minPriceWithFees?: number | null;
+  maxPriceWithFees?: number | null;
+  avgPriceWithFees?: number | null;
+  priceRangeWithFees?: string;
   listingCount?: number;
   url: string;
   image?: string;
@@ -83,8 +87,8 @@ export default function ComparePage() {
         usedSG.add(match.id);
 
         // Determine best price
-        const tmMin = parseMinPrice(tm.priceRange);
-        const sgMin = match.minPrice || null;
+        const tmMin = tm.minPriceWithFees ?? parseMinPrice(tm.priceRangeWithFees ?? tm.priceRange);
+        const sgMin = match.minPriceWithFees ?? match.minPrice ?? null;
 
         let bestSource: 'ticketmaster' | 'seatgeek' | undefined;
         let savings: number | undefined;
@@ -323,8 +327,10 @@ export default function ComparePage() {
                 ) : (
                   matchedEvents.map((event, idx) => {
                     const venue = findVenue(event.venue);
-                    const tmPrice = event.ticketmaster ? parseMinPrice(event.ticketmaster.priceRange) : null;
-                    const sgPrice = event.seatgeek?.minPrice || null;
+                    const tmPrice = event.ticketmaster
+                      ? (event.ticketmaster.minPriceWithFees ?? parseMinPrice(event.ticketmaster.priceRangeWithFees ?? event.ticketmaster.priceRange))
+                      : null;
+                    const sgPrice = event.seatgeek?.minPriceWithFees ?? event.seatgeek?.minPrice ?? null;
 
                     return (
                       <div key={idx} className="bg-white rounded-xl shadow-md overflow-hidden">
@@ -363,9 +369,16 @@ export default function ComparePage() {
                             </div>
                             {event.ticketmaster ? (
                               <>
-                                <p className="text-2xl font-bold text-gray-900 mb-2">
-                                  {event.ticketmaster.priceRange || 'Price N/A'}
-                                </p>
+                                <div className="mb-2">
+                                  <p className="text-2xl font-bold text-gray-900">
+                                    {event.ticketmaster.priceRangeWithFees || event.ticketmaster.priceRange || 'Price N/A'}
+                                  </p>
+                                  {event.ticketmaster.priceRange && (
+                                    <p className="text-xs text-gray-500">
+                                      Base: {event.ticketmaster.priceRange} · ~27% fees
+                                    </p>
+                                  )}
+                                </div>
                                 {venue && tmPrice && (
                                   <div className="text-xs text-gray-500 space-y-1 mb-3">
                                     <p>Est. Upper: ${tmPrice}</p>
@@ -401,14 +414,21 @@ export default function ComparePage() {
                             </div>
                             {event.seatgeek ? (
                               <>
-                                <p className="text-2xl font-bold text-gray-900 mb-1">
-                                  {formatPrice(event.seatgeek.minPrice)}
-                                  {event.seatgeek.maxPrice && (
-                                    <span className="text-base font-normal text-gray-500">
-                                      {' '}- {formatPrice(event.seatgeek.maxPrice)}
-                                    </span>
+                                <div className="mb-1">
+                                  <p className="text-2xl font-bold text-gray-900">
+                                    {formatPrice(event.seatgeek.minPriceWithFees ?? event.seatgeek.minPrice)}
+                                    {(event.seatgeek.maxPriceWithFees ?? event.seatgeek.maxPrice) && (
+                                      <span className="text-base font-normal text-gray-500">
+                                        {' '}- {formatPrice(event.seatgeek.maxPriceWithFees ?? event.seatgeek.maxPrice)}
+                                      </span>
+                                    )}
+                                  </p>
+                                  {event.seatgeek.minPrice != null && (
+                                    <p className="text-xs text-gray-500">
+                                      Base: {formatPrice(event.seatgeek.minPrice)} · ~20% fees
+                                    </p>
                                   )}
-                                </p>
+                                </div>
                                 {event.seatgeek.listingCount && (
                                   <p className="text-sm text-gray-500 mb-3">
                                     {event.seatgeek.listingCount} listings available
@@ -457,7 +477,14 @@ export default function ComparePage() {
                           {formatDate(event.date)} • {event.venue}
                         </div>
                         <div className="flex justify-between items-center">
-                          <span className="font-bold text-green-600">{event.ticketmaster?.priceRange}</span>
+                          <div className="flex flex-col">
+                            <span className="font-bold text-green-600">
+                              {event.ticketmaster?.priceRangeWithFees || event.ticketmaster?.priceRange || 'N/A'}
+                            </span>
+                            {event.ticketmaster?.priceRange && (
+                              <span className="text-xs text-gray-500">Base: {event.ticketmaster.priceRange} · ~27% fees</span>
+                            )}
+                          </div>
                           <a href={event.ticketmaster?.url} target="_blank" rel="noopener noreferrer" className="text-blue-600 text-sm">View →</a>
                         </div>
                       </div>
@@ -469,7 +496,14 @@ export default function ComparePage() {
                           {formatDate(event.date)} • {event.venue}
                         </div>
                         <div className="flex justify-between items-center">
-                          <span className="font-bold text-green-600">{event.priceRange || 'N/A'}</span>
+                          <div className="flex flex-col">
+                            <span className="font-bold text-green-600">
+                              {event.priceRangeWithFees || event.priceRange || 'N/A'}
+                            </span>
+                            {event.priceRange && (
+                              <span className="text-xs text-gray-500">Base: {event.priceRange} · ~27% fees</span>
+                            )}
+                          </div>
                           <a href={event.url} target="_blank" rel="noopener noreferrer" className="text-blue-600 text-sm">View →</a>
                         </div>
                       </div>
@@ -502,7 +536,14 @@ export default function ComparePage() {
                           {formatDate(event.date)} • {event.venue}
                         </div>
                         <div className="flex justify-between items-center">
-                          <span className="font-bold text-green-600">{formatPrice(event.seatgeek?.minPrice)}</span>
+                          <div className="flex flex-col">
+                            <span className="font-bold text-green-600">
+                              {formatPrice(event.seatgeek?.minPriceWithFees ?? event.seatgeek?.minPrice)}
+                            </span>
+                            {event.seatgeek?.minPrice != null && (
+                              <span className="text-xs text-gray-500">Base: {formatPrice(event.seatgeek.minPrice)} · ~20% fees</span>
+                            )}
+                          </div>
                           <a href={event.seatgeek?.url} target="_blank" rel="noopener noreferrer" className="text-green-600 text-sm">View →</a>
                         </div>
                       </div>
@@ -514,7 +555,14 @@ export default function ComparePage() {
                           {formatDate(event.date)} • {event.venue}
                         </div>
                         <div className="flex justify-between items-center">
-                          <span className="font-bold text-green-600">{formatPrice(event.minPrice)}</span>
+                          <div className="flex flex-col">
+                            <span className="font-bold text-green-600">
+                              {formatPrice(event.minPriceWithFees ?? event.minPrice)}
+                            </span>
+                            {event.minPriceWithFees != null && event.minPrice !== event.minPriceWithFees && (
+                              <span className="text-xs text-gray-500">Base: {formatPrice(event.minPrice)}</span>
+                            )}
+                          </div>
                           <a href={event.url} target="_blank" rel="noopener noreferrer" className="text-green-600 text-sm">View →</a>
                         </div>
                       </div>
@@ -551,9 +599,9 @@ export default function ComparePage() {
             <div>
               <h4 className="font-semibold text-amber-900">Pro Tip</h4>
               <p className="text-sm text-amber-700">
-                SeatGeek aggregates prices from 60+ resale sites. If you see a lower price there,
-                click through to see options from StubHub, Vivid Seats, and more.
-                Always check the final price at checkout as fees may apply.
+                Prices include estimated platform fees: Ticketmaster ~27%, StubHub ~24%, SeatGeek ~20%.
+                SeatGeek aggregates prices from 60+ resale sites. Final fees vary slightly at checkout
+                based on event, seat, and delivery.
               </p>
             </div>
           </div>
