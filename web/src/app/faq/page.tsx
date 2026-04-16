@@ -5,6 +5,17 @@ export const metadata: Metadata = {
   title: 'FAQ - Frequently Asked Questions',
   description: 'Get answers to common questions about Ticket Scan. Learn how to compare ticket prices, track events, and get price alerts.',
   keywords: 'ticket scan FAQ, ticket comparison help, price tracking questions',
+  openGraph: {
+    title: 'FAQ - Frequently Asked Questions | Ticket Scan',
+    description: 'Get answers to common questions about comparing ticket prices, tracking events, and getting price drop alerts.',
+    type: 'website',
+    url: 'https://ticketscan.io/faq',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'FAQ - Frequently Asked Questions | Ticket Scan',
+    description: 'Get answers to common questions about comparing ticket prices, tracking events, and getting price drop alerts.',
+  },
 };
 
 const faqs = [
@@ -51,7 +62,7 @@ const faqs = [
       },
       {
         q: 'Do prices include fees?',
-        a: 'We display the base ticket price shown by each platform. Service fees vary by platform and are typically shown at checkout. We recommend checking the total cost on each platform before purchasing.',
+        a: 'Yes — we show the estimated all-in price including each platform\'s service fees. Estimates: Ticketmaster ~27%, StubHub ~24%, SeatGeek ~20%. Base prices are shown as a smaller line beneath. Actual fees vary at checkout based on event, seat, and delivery method, but our estimates are based on each platform\'s published fee structure.',
       },
       {
         q: 'Why are prices different on each platform?',
