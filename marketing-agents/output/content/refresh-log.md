@@ -1,5 +1,35 @@
 # Content Refresh Log
 
+## 2026-04-17 — American Airlines Center (venues.ts)
+
+**Page refreshed:** `american-airlines-center` in `web/src/data/venues.ts`
+
+**What changed:**
+1. **Sections expanded** from 5 (1 floor, 2 lower, 2 upper) to 75 sections matching AAC's actual layout:
+   - 1 Floor section (Courtside for Mavs, Ice Level for Stars)
+   - 24 Lower Bowl sections (101-124) — full wrap-around 100 level
+   - 20 Platinum Club boxes (Platinum P1-P20) — added entirely new premium mid-level tier with private lounges and in-seat service
+   - 30 Upper Mezzanine sections (301-330) — full upper wrap
+2. **Description** upgraded from 1 generic sentence to a full paragraph covering: event volume (200+ per year), dual-league tenancy (Mavericks NBA + Stars NHL), Victory Park neighborhood context north of downtown Dallas, Platinum Club perks, Upper Mezzanine value, and TicketScan CTA
+3. **Keywords** expanded from 4 to 10, adding: "Dallas arena tickets," "American Airlines Center seating chart," "Dallas concert tickets," "Mavericks playoff tickets," "Stars playoff tickets," "American Airlines Center events," "Victory Park Dallas tickets"
+
+**Why this venue:**
+- Most sparse remaining venue data after TD Garden (4/10) and Wells Fargo Center (4/11) refreshes (only 4 sections vs 60+ for comparable dual-tenant arenas)
+- **Perfect timing**: Stars vs Wild NHL first-round Game 1 is tonight at AAC, Game 2 Sunday. Mavericks are also in the NBA first round with home games next week. Both active playoff series drive peak search volume for "Stars playoff tickets" and "Mavericks playoff tickets" right now
+- Yesterday's content hook explicitly flagged this venue page as a refresh candidate tied to the Stars-Wild price gap narrative
+- Platinum Club is a legitimate premium tier at AAC that wasn't represented at all in the prior data
+
+**SEO impact expected:**
+- Full section data populates the seating guide sidebar and gives Google more on-page entity signals
+- Richer description lifts the "About" content depth to match MSG/TD Garden/Wells Fargo
+- Dual playoff keyword cluster ("Mavericks playoff tickets" + "Stars playoff tickets") captures Dallas's April-May seasonal search surge
+- Victory Park mention opens internal-link potential to Dallas city page and future AT&T Stadium (Cowboys / World Cup 2026 venue) cross-references
+
+**Verification:**
+- `npx tsc --noEmit` ran clean -- no TypeScript errors introduced
+
+---
+
 ## 2026-04-11 — Wells Fargo Center (venues.ts)
 
 **Page refreshed:** `wells-fargo-center` in `web/src/data/venues.ts`

@@ -1,22 +1,22 @@
-## Today's Content Hook -- 2026-04-16
+## Today's Content Hook -- 2026-04-17
 
-### Hook 1: NBA Play-In wraps tonight, Round 1 seeding locks -- fans shopping 4+ sites before buying
-**Topic:** NBA Play-In Tournament started April 14. Final Play-In games are tonight (Apr 16). Round 1 seeding locks by end of weekend. Search volume for "NBA playoff tickets" and "cheap playoff tickets" is surging. Anecdotally, the typical fan is pulling up Ticketmaster, SeatGeek, StubHub, and at least one aggregator before clicking buy.
-**Angle:** This is the moment to own the "which comparison site should I actually use" query. Write an honest, no-sales-pitch breakdown of the real options. Doubles as a commercial-intent landing page for later paid traffic.
-**Target keyword:** "best ticket comparison sites 2026" (primary), "ticket price comparison tools" (secondary), "TicketScan vs SeatGeek" (long-tail)
-**Content type:** Blog post -- today's Thursday comparison/listicle draft
-**Priority:** High -- SEO Agent Request #2, timed perfectly with playoff search spike
+### Hook 1: Stars vs Wild Game 1 tonight at American Airlines Center
+**Topic:** First NHL playoff game at AAC tonight. Stars host Wild to open the first round. Social posts running the $93 floor vs $58 cross-platform spread narrative. AAC also hosts Game 2 on Sunday. Dual-league playoff relevance here: Mavericks are also in the NBA first round and play at AAC next week.
+**Angle:** Venue-page refresh rather than a new blog. The AAC entry in `venues.ts` was stubbed with 4 sections; today it gets a full 75-section map, rich description, and keywords targeting "Stars playoff tickets," "Mavericks playoff tickets," and "American Airlines Center seating chart." This captures Dallas search-volume spikes from the two active playoff series without creating a thin new page.
+**Target keyword:** "Stars playoff tickets Dallas" (primary), "American Airlines Center seating chart" (secondary), "Mavericks playoff tickets" (tertiary)
+**Content type:** Venue page refresh (Friday task — no new blog draft)
+**Priority:** High
 
-### Hook 2: FIFA resale platform is 2 weeks old -- pricing data exists now
-**Topic:** FIFA's own resale marketplace reopened April 2. Two weeks of live data means we can now pull actual side-by-side prices for World Cup matches across FIFA resale, StubHub, and SeatGeek. Early read: FIFA resale is often the most expensive, which validates our multi-platform pitch.
-**Angle:** "Official isn't always cheapest." Hand off to Social Agent for Friday posting and to SEO Agent for a potential Wednesday-slot piece next week. Not this week's blog -- the comparison listicle is better use of the Thursday slot.
-**Target keyword:** "FIFA resale vs StubHub" / "cheapest World Cup 2026 tickets"
-**Content type:** Social hook + queued blog for next week
-**Priority:** Medium -- strongest social angle of the week, but hold the blog slot
+### Hook 2: NBA Round 1 Game 1 slate tips off this weekend
+**Topic:** Play-In wrapped Thursday, seeding locked overnight, and the first Game 1s tip off Saturday/Sunday. Celtics-Heat upper-deck spread was $67 yesterday across platforms per the social calendar. Worth carrying the data-point narrative into today's Twitter slot.
+**Angle:** Social snippet only -- the existing 4/17 AM tweet already covers the $67 Celtics-Heat spread. No new content needed; defer to Social Agent.
+**Target keyword:** "NBA Round 1 Game 1 tickets"
+**Content type:** Social snippet (already queued for 13:00 ET)
+**Priority:** Medium
 
-### Hook 3: Stars-Wild Game 1 tonight, Game 2 on Friday -- NHL playoff price compression
-**Topic:** First round of NHL playoffs is fully underway. Matchups with huge price swings: Stars vs. Wild Game 1 starts at $93 in Dallas, Game 3 in Minnesota jumps to $171. Classic case of venue + home-ice premium where comparison shopping pays off.
-**Angle:** "NHL playoff tickets vary $80+ between games -- here's where to find the floor." Short social piece with specific numbers.
-**Target keyword:** "NHL playoff tickets," "Stars Wild tickets," "cheap Stanley Cup playoff tickets"
-**Content type:** Social snippet + refresh candidate for Dallas/Minnesota venue pages
+### Hook 3: FIFA resale marketplace is 15 days old -- 2-week data window hardening
+**Topic:** Thursday's spot-check (7 of 10 group-stage matches priced highest on FIFA resale) was the strongest World Cup data point this week. The sample will hit a full month April 30, which is the right cadence for a proper Wednesday-slot blog with real numbers.
+**Angle:** Queue this for Agent 2 (SEO) next week. Today is a refresh day; don't burn the FIFA resale story on a non-publishing task.
+**Target keyword:** "FIFA resale vs StubHub," "cheapest World Cup 2026 tickets"
+**Content type:** Blog queued for Wednesday 2026-04-22
 **Priority:** Medium
