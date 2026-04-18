@@ -1,22 +1,22 @@
-## Today's Content Hook -- 2026-04-17
+## Today's Content Hook -- 2026-04-18
 
-### Hook 1: Stars vs Wild Game 1 tonight at American Airlines Center
-**Topic:** First NHL playoff game at AAC tonight. Stars host Wild to open the first round. Social posts running the $93 floor vs $58 cross-platform spread narrative. AAC also hosts Game 2 on Sunday. Dual-league playoff relevance here: Mavericks are also in the NBA first round and play at AAC next week.
-**Angle:** Venue-page refresh rather than a new blog. The AAC entry in `venues.ts` was stubbed with 4 sections; today it gets a full 75-section map, rich description, and keywords targeting "Stars playoff tickets," "Mavericks playoff tickets," and "American Airlines Center seating chart." This captures Dallas search-volume spikes from the two active playoff series without creating a thin new page.
-**Target keyword:** "Stars playoff tickets Dallas" (primary), "American Airlines Center seating chart" (secondary), "Mavericks playoff tickets" (tertiary)
-**Content type:** Venue page refresh (Friday task — no new blog draft)
+### Hook 1: Nuggets AND Avalanche in active first-round series at Ball Arena
+**Topic:** Dual-league playoff weekend in Denver. NHL first round is already in motion (Avalanche opened Thursday/Friday), NBA Round 1 tips off this weekend, and Nuggets host a first-round Game 1 at Ball Arena. Parallels yesterday's Stars/Mavericks narrative at AAC — same dual-tenant arena dynamic, peak Denver search volume right now, and the venue page in `venues.ts` is currently stubbed with 5 sections.
+**Angle:** Venue-page refresh (not a new blog — Saturday is a refresh day). Expand Ball Arena from 5 sections to ~69, rewrite the description, and add "Nuggets playoff tickets," "Avalanche playoff tickets," and "Ball Arena seating chart" to keywords. Denver city page in `cities.ts` already lists both teams, so this refresh compounds internal-link strength.
+**Target keyword:** "Nuggets playoff tickets" (primary), "Ball Arena seating chart" (secondary), "Avalanche playoff tickets" (tertiary)
+**Content type:** Venue page refresh (Saturday task -- no new blog draft)
 **Priority:** High
 
-### Hook 2: NBA Round 1 Game 1 slate tips off this weekend
-**Topic:** Play-In wrapped Thursday, seeding locked overnight, and the first Game 1s tip off Saturday/Sunday. Celtics-Heat upper-deck spread was $67 yesterday across platforms per the social calendar. Worth carrying the data-point narrative into today's Twitter slot.
-**Angle:** Social snippet only -- the existing 4/17 AM tweet already covers the $67 Celtics-Heat spread. No new content needed; defer to Social Agent.
-**Target keyword:** "NBA Round 1 Game 1 tickets"
-**Content type:** Social snippet (already queued for 13:00 ET)
+### Hook 2: NBA Round 1 Game 1s dominate Saturday-Sunday slate
+**Topic:** Most NBA first-round series open their Game 1s this weekend. Biggest cross-platform spreads in recent days per calendar data: Knicks at MSG ($74 on Section 200), Celtics-Heat upper deck ($67), Nuggets and Lakers also kicking off. Classic "same seat, different site, $40-80 gap" narrative.
+**Angle:** Social snippet only. Social Agent already has weekend NBA Game 1 pricing hooks queued. No new long-form content needed today — refresh beats thin publishing.
+**Target keyword:** "NBA Playoffs Game 1 tickets"
+**Content type:** Social snippet (Social Agent owns)
 **Priority:** Medium
 
-### Hook 3: FIFA resale marketplace is 15 days old -- 2-week data window hardening
-**Topic:** Thursday's spot-check (7 of 10 group-stage matches priced highest on FIFA resale) was the strongest World Cup data point this week. The sample will hit a full month April 30, which is the right cadence for a proper Wednesday-slot blog with real numbers.
-**Angle:** Queue this for Agent 2 (SEO) next week. Today is a refresh day; don't burn the FIFA resale story on a non-publishing task.
+### Hook 3: FIFA resale 2-week data window approaching
+**Topic:** FIFA resale marketplace has been live 16 days. The 30-day window closes April 30, which is the right moment for a data-heavy Wednesday blog built on the "7 of 10 group-stage matches were cheapest on FIFA resale, not FIFA direct" spot-check.
+**Angle:** Hand off to SEO/Content for the Wednesday 2026-04-22 blog slot. Do not burn this narrative on a refresh day.
 **Target keyword:** "FIFA resale vs StubHub," "cheapest World Cup 2026 tickets"
 **Content type:** Blog queued for Wednesday 2026-04-22
 **Priority:** Medium

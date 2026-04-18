@@ -1,5 +1,36 @@
 # Content Refresh Log
 
+## 2026-04-18 — Ball Arena (venues.ts)
+
+**Page refreshed:** `ball-arena` in `web/src/data/venues.ts`
+
+**What changed:**
+1. **Sections expanded** from 5 (1 floor, 2 lower, 2 upper) to 69 sections matching Ball Arena's dual-tenant layout:
+   - 1 Floor section (Courtside for Nuggets, Ice Level for Avalanche)
+   - 24 Lower Bowl sections (101-124) — wrap-around 100 level
+   - 20 Club Box sections (Club Box 201-220) — added entirely new mid-level premium tier with private entrances and in-seat service
+   - 24 Upper Bowl sections (301-324) — full upper wrap
+2. **Description** upgraded from 1 generic sentence to a full paragraph covering: event volume (~200 per year), dual championship pedigree (Nuggets 2023 NBA Champions + Avalanche 2022 Stanley Cup), Ballpark-neighborhood context, the full range of non-home-team events (Mammoth lacrosse, UFC, WWE, concerts), tier-specific value framing (Lower/Club/Upper), cross-platform comparison callout (StubHub, SeatGeek, Ticketmaster), and TicketScan CTA with a direct playoff mention
+3. **Keywords** expanded from 4 to 9, adding: "Ball Arena seating chart," "Denver concert tickets," "Nuggets playoff tickets," "Avalanche playoff tickets," "Ball Arena events"
+
+**Why this venue:**
+- Most sparse remaining dual-tenant arena after American Airlines Center (4/17), Wells Fargo Center (4/11), and TD Garden (4/10) refreshes — only 5 sections vs 60-75 for comparable peers
+- **Perfect timing**: Both home teams in active 2026 first-round playoff series this weekend. Nuggets open NBA Round 1 this weekend; Avalanche are mid-series in NHL Round 1. "Nuggets playoff tickets" and "Avalanche playoff tickets" are peak-volume Denver keywords right now
+- Today's content hook explicitly flagged Ball Arena as the Denver parallel to yesterday's AAC refresh
+- Existing Denver city page in `cities.ts` already lists both teams and "Ball Arena events" as a keyword — this refresh compounds internal-link strength between venue and city pages
+- Club Box tier is a legitimate mid-level Ball Arena product that wasn't represented in the prior data
+
+**SEO impact expected:**
+- Full section data populates the seating guide sidebar and gives Google more on-page entity signals for the "Ball Arena" knowledge panel
+- Richer description lifts the "About" content depth to match MSG, TD Garden, Wells Fargo Center, and AAC
+- Dual playoff keyword cluster ("Nuggets playoff tickets" + "Avalanche playoff tickets") captures Denver's April-May seasonal search surge
+- Ballpark-neighborhood mention opens internal-link potential back to the existing Denver city page
+
+**Verification:**
+- `npx tsc --noEmit` ran clean — no TypeScript errors introduced
+
+---
+
 ## 2026-04-17 — American Airlines Center (venues.ts)
 
 **Page refreshed:** `american-airlines-center` in `web/src/data/venues.ts`
