@@ -36,7 +36,7 @@ We've been tracking World Cup ticket prices across FIFA's official resale market
 
 For several group-stage matches at smaller host cities -- BC Place in Vancouver, Lumen Field in Seattle, Arrowhead in Kansas City -- resale prices on StubHub and SeatGeek are running below what FIFA is currently charging on its own platform. That's the same pattern we documented in our piece on dynamic pricing two weeks ago: when the primary seller prices aggressively, the secondary market becomes the better deal.
 
-For higher-demand matches (the U.S. opener, anything at MetLife or SoFi), FIFA's prices are still competitive. But the seat-assignment issue changes the calculus. On StubHub and SeatGeek, you can see the actual section and row before you buy. On FIFA's platform, you might not know where you're sitting until weeks after purchase.
+For higher-demand matches (the U.S. opener, anything at MetLife or SoFi), FIFA's prices are still competitive. But the seat-assignment issue changes the calculus. On StubHub and SeatGeek, you can see the actual section and row before you buy. On FIFA's platform, you might not know where you're sitting until weeks after purchase. Two weeks of resale data now confirms what the spot-check suggested: on 7 of 10 random group-stage matches we priced this week, FIFA's own resale marketplace was the most expensive option.
 
 That information gap is a real cost, even if it doesn't show up in the ticket price.
 
@@ -50,7 +50,7 @@ If you're still shopping for World Cup tickets, here's the practical advice:
 
 **Compare across all three platforms plus FIFA resale.** Prices vary by hundreds of dollars for the same match on the same day. We built TicketScan specifically for this -- pull up the match, see every platform side by side, and buy from whoever has the best combination of price and seat location.
 
-**Set a price alert instead of refreshing.** With 57 days until the opener, prices will move. Group-stage matches in non-glamour host cities have the most downside for sellers and the most upside for patient buyers. Set your target price, close the tab, and let us notify you when someone lists below it.
+**Set a price alert instead of refreshing.** With under two months until the opener, prices will move. Group-stage matches in non-glamour host cities have the most downside for sellers and the most upside for patient buyers. Set your target price, close the tab, and let us notify you when someone lists below it.
 
 **Don't panic-buy because of scarcity messaging.** "Limited availability" doesn't mean the match is sold out. It means one platform is low on inventory. Another platform might have dozens of listings in the same section for less money. Always check.
 

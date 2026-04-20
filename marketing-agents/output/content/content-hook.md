@@ -1,22 +1,37 @@
-## Today's Content Hook -- 2026-04-18
+## Today's Content Hook -- 2026-04-19 (Sunday — audit day, no new draft)
 
-### Hook 1: Nuggets AND Avalanche in active first-round series at Ball Arena
-**Topic:** Dual-league playoff weekend in Denver. NHL first round is already in motion (Avalanche opened Thursday/Friday), NBA Round 1 tips off this weekend, and Nuggets host a first-round Game 1 at Ball Arena. Parallels yesterday's Stars/Mavericks narrative at AAC — same dual-tenant arena dynamic, peak Denver search volume right now, and the venue page in `venues.ts` is currently stubbed with 5 sections.
-**Angle:** Venue-page refresh (not a new blog — Saturday is a refresh day). Expand Ball Arena from 5 sections to ~69, rewrite the description, and add "Nuggets playoff tickets," "Avalanche playoff tickets," and "Ball Arena seating chart" to keywords. Denver city page in `cities.ts` already lists both teams, so this refresh compounds internal-link strength.
-**Target keyword:** "Nuggets playoff tickets" (primary), "Ball Arena seating chart" (secondary), "Avalanche playoff tickets" (tertiary)
-**Content type:** Venue page refresh (Saturday task -- no new blog draft)
+### Hook 1: Four unpublished drafts are aging in the queue — publish or prune
+**Topic:** Content velocity audit. Only **1 blog post has been published in the last 12 days** (the 4/7 World Cup dynamic pricing piece). Four drafts are sitting in `marketing-agents/output/content/`:
+
+| Draft | Age | Status |
+|-------|-----|--------|
+| `2026-04-08-nba-nhl-playoff-tickets-2026-buying-guide.md` | 11 days | **Stale opener** — "kicked off this week" is false now. Overtaken by the 4/14 post. Recommend archive, not publish. |
+| `2026-04-14-nba-playoff-tickets-compare-prices.md` | 5 days | Opener references "Play-In Tournament started today" — freshened in today's copy edit pass. **Ready to publish Monday.** |
+| `2026-04-15-world-cup-2026-seat-assignments-bait-switch.md` | 4 days | "57 days until the opener" out of date — freshened to 53 days in today's copy edit pass. **Ready to publish Monday.** |
+| `2026-04-16-best-ticket-comparison-sites-2026.md` | 3 days | Mostly evergreen. **Ready to publish Monday.** |
+
+**Angle:** Flag to Lead Architect. Three of these are the best blog inventory we've produced this cycle; all three are stuck behind the publish step. One publish pass clears the backlog and doubles published content in an afternoon.
+**Target keyword:** n/a — pipeline issue, not content issue
+**Content type:** Operational escalation
 **Priority:** High
 
-### Hook 2: NBA Round 1 Game 1s dominate Saturday-Sunday slate
-**Topic:** Most NBA first-round series open their Game 1s this weekend. Biggest cross-platform spreads in recent days per calendar data: Knicks at MSG ($74 on Section 200), Celtics-Heat upper deck ($67), Nuggets and Lakers also kicking off. Classic "same seat, different site, $40-80 gap" narrative.
-**Angle:** Social snippet only. Social Agent already has weekend NBA Game 1 pricing hooks queued. No new long-form content needed today — refresh beats thin publishing.
-**Target keyword:** "NBA Playoffs Game 1 tickets"
-**Content type:** Social snippet (Social Agent owns)
+### Hook 2: FIFA resale hits the 3-week data window on Monday (4/20)
+**Topic:** The FIFA resale marketplace opened April 2. Monday marks 18 days live, enough for a follow-up to the 4/16 spot-check data ("FIFA resale most expensive on 7 of 10 group-stage matches"). Next data drop lands naturally on the Wednesday news slot.
+**Angle:** Queued for Wednesday 4/22 blog. Pairs with Social Agent's ongoing "official isn't cheapest" thread. Also reinforces the seat-assignment bait-switch narrative from 4/15.
+**Target keyword:** "FIFA resale marketplace," "cheapest World Cup 2026 tickets," "FIFA resale vs StubHub"
+**Content type:** Blog queued for Wednesday 2026-04-22 (see next-week-plan.md)
+**Priority:** High
+
+### Hook 3: Pollstar Q1 2026 data — average ticket price is $108.63
+**Topic:** SEO Agent flagged this in the 4/14 playoff keywords request. The five-year-high data point is strong ammunition for a "state of ticket prices" piece, or for enriching existing guides as market context. Currently no blog post references it.
+**Angle:** Slotted for Monday 4/20 big-idea piece (see next-week-plan.md) on the Summer Concert Tour 2026 buying strategy — Pollstar's $108.63 is the opening anchor.
+**Target keyword:** "average concert ticket price 2026," "summer concert tour tickets 2026"
+**Content type:** Blog queued for Monday 2026-04-20
 **Priority:** Medium
 
-### Hook 3: FIFA resale 2-week data window approaching
-**Topic:** FIFA resale marketplace has been live 16 days. The 30-day window closes April 30, which is the right moment for a data-heavy Wednesday blog built on the "7 of 10 group-stage matches were cheapest on FIFA resale, not FIFA direct" spot-check.
-**Angle:** Hand off to SEO/Content for the Wednesday 2026-04-22 blog slot. Do not burn this narrative on a refresh day.
-**Target keyword:** "FIFA resale vs StubHub," "cheapest World Cup 2026 tickets"
-**Content type:** Blog queued for Wednesday 2026-04-22
-**Priority:** Medium
+### Hook 4: `/compare` now has real metadata — internal links are the next move
+**Topic:** SEO Agent's 4/19 fix ships `WebApplication` + `BreadcrumbList` JSON-LD on `/compare` with a proper title/description targeting "compare ticket prices." Page is now eligible to rank but has almost no internal-link support. SEO Agent filed a formal content request.
+**Angle:** Two SEO asks bundle cleanly into next week's calendar: Tuesday's how-to post ("How to Compare Ticket Prices Across Sites in 30 Seconds") + Thursday's head-to-head ("Ticketmaster vs SeatGeek 2026"). Both target queries `/compare` now has a chance at, both internal-link back to `/compare`.
+**Target keyword:** "compare ticket prices," "Ticketmaster vs SeatGeek," "ticket price comparison tool"
+**Content type:** Blogs queued for Tuesday 2026-04-21 + Thursday 2026-04-23 (see next-week-plan.md)
+**Priority:** High

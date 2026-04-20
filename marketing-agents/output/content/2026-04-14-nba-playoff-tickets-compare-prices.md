@@ -10,7 +10,7 @@ featured: false
 
 ## Same seat, different price
 
-The NBA Play-In Tournament started today. By tipoff, the same lower-bowl seat at TD Garden was listed at $140 on one platform and $95 on another. A $45 difference. Same view. Same armrests. Same overpriced beer.
+Round 1 of the NBA Playoffs is in full swing. One morning this week, the same lower-bowl seat at TD Garden was listed at $140 on one platform and $95 on another. A $45 difference. Same view. Same armrests. Same overpriced beer.
 
 This happens every April. Playoff demand spikes, resale inventory floods in from season ticket holders, and three or four platforms end up listing the same seats at very different prices. The fans who check one site pay more. The fans who check three don't.
 
@@ -62,9 +62,7 @@ Check the team's official Ticketmaster page first. If face-value tickets exist, 
 
 ## How this changes as the bracket advances
 
-Play-In wraps April 17. Round 1 starts April 18. Round 1 is your best comparison shopping window by far: most inventory, widest price gaps between platforms, most nervous sellers. By the Conference Finals, inventory tightens and prices across platforms converge. Less room to find an edge.
-
-If you read our broader playoff buying guide from last week, think of this as the wallet card version. That one covers NHL too and goes deeper on fee math. This is the "what to do right now" list.
+We're mid-way through Round 1 as this publishes. Round 1 is your best comparison shopping window by far: most inventory, widest price gaps between platforms, most nervous sellers. By the Conference Finals, inventory tightens and prices across platforms converge. Less room to find an edge. If you're buying for a later round, lock in your baseline target price now — platforms don't start converging until the series narrows.
 
 ## Quick reference
 
