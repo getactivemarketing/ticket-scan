@@ -1,5 +1,39 @@
 # Content Refresh Log
 
+## 2026-04-24 — Chase Center (venues.ts)
+
+**Page refreshed:** `chase-center` in `web/src/data/venues.ts`
+
+**What changed:**
+1. **Sections expanded** from 5 (1 floor, 2 lower, 2 upper) to 69 sections matching Chase Center's actual layout:
+   - 1 Floor section (Courtside)
+   - 24 Lower Bowl sections (1-24) — Chase Center's distinctive single-digit section numbering that wraps tight around the court, not the generic 101-124 convention other arenas use
+   - 20 Theatre Box sections (Theatre Box 1-20) — added entirely new mid-level premium tier with private lounge access and in-seat service (Chase's Theatre Level is a legitimate product that was 100% absent from prior data)
+   - 24 Upper Bowl sections (201-224) — full upper wrap
+2. **Home teams** expanded from `['Golden State Warriors']` to `['Golden State Warriors', 'Golden State Valkyries']`. The Valkyries (WNBA expansion franchise) launched their inaugural season in 2025 and the second season tips off in May — prior data had zero Valkyries signal
+3. **Description** upgraded from 1 generic sentence to a full paragraph covering: Mission Bay neighborhood placement, dual-tenant NBA + WNBA status, event volume (~200 per year), non-home-team event mix (tours, UFC, boxing), tier-specific value framing (Lower single-digit / Theatre Level / Upper 200s), cross-platform comparison callout (StubHub, SeatGeek, Ticketmaster), and TicketScan CTA with direct Warriors playoff + Valkyries tip-off mentions
+4. **Keywords** expanded from 4 to 9, adding: "Chase Center seating chart," "Warriors playoff tickets," "Valkyries tickets," "Chase Center events," "San Francisco concert tickets"
+
+**Why this venue:**
+- Last remaining sparse dual-tenant arena after the TD Garden (4/10), Wells Fargo Center (4/11), AAC (4/17), and Ball Arena (4/18) refreshes — only 5 sections vs 60-75 for the peer set
+- **Perfect timing**: Warriors host Round 1 Games 3 (Saturday) and 4 (Monday) at Chase Center this weekend. "Warriors playoff tickets" and "Chase Center seating chart" are peak-volume Bay Area keywords through the weekend. Matches the pattern of every prior refresh landing during active playoff home stands
+- Today's content hook (Hook 1) explicitly flagged Chase Center as the venue target for this refresh, with specific G3-vs-G4 pricing data ($30-40 spread same seats two nights apart) that both feeds social content and justifies the deeper venue page
+- Valkyries are a 2025-launched WNBA franchise with a growing Bay Area following — adding them as a secondary home team future-proofs the page for May-September WNBA season traffic and expands the keyword surface (`Valkyries tickets`) we had zero coverage on before
+- Theatre Level is a distinctive Chase Center product that wasn't represented at all in the prior data. Single-digit lower bowl numbering (1-24 rather than 101-124) is also a Chase Center differentiator worth capturing accurately
+- Last Sunday's next-week plan (4/19) slated Chase Center as today's Friday refresh target — executed as planned
+
+**SEO impact expected:**
+- Full section data populates the seating guide sidebar and gives Google more on-page entity signals for the "Chase Center" knowledge panel
+- Richer description lifts the "About" content depth to match MSG, TD Garden, Wells Fargo Center, AAC, and Ball Arena
+- Triple playoff/WNBA keyword cluster ("Warriors playoff tickets" + "Valkyries tickets" + "Chase Center seating chart") captures Bay Area's April-May Warriors playoff surge and the May WNBA season opener surge in one refresh
+- Mission Bay mention opens internal-link potential back to the San Francisco city page and future Oracle Park cross-references
+- Single-digit section naming (unusual in the peer set) gives Google distinctive entity signals that distinguish Chase from the generic NBA-arena cluster
+
+**Verification:**
+- `npx tsc --noEmit` ran clean — no TypeScript errors introduced
+
+---
+
 ## 2026-04-18 — Ball Arena (venues.ts)
 
 **Page refreshed:** `ball-arena` in `web/src/data/venues.ts`

@@ -1,36 +1,29 @@
-## Today's Content Hook — 2026-04-23 (Thursday)
+## Today's Content Hook — 2026-04-24 (Friday)
 
-### Hook 1: The cheapest-platform flip inside 48 hours is today's best fee-math proof point
-**Topic:** Warriors G2 at Chase Center: 400-level was $74 on Ticketmaster, $68 on SeatGeek — SeatGeek wins by six bucks. Same weekend, Rockets G2 at Toyota Center similar level: $51 on Ticketmaster, $62 on SeatGeek — Ticketmaster wins by eleven. Same playoff round, same nightly inventory drops, opposite platform winner. That single 48-hour flip is the story behind today's blog: fee math is a moving target by event, by venue, by day. A static "Ticketmaster vs SeatGeek: which is cheaper" verdict is wrong on day two. The comparison tool exists because the answer keeps flipping.
-**Angle:** Today's blog draft. Lead with the Warriors/Rockets flip as the opening data point, then break down the 2026 fee stacks (Ticketmaster 15-27% all-in, SeatGeek 12-20% all-in), then walk through platform-wins-by-event-type: NBA playoffs, NHL playoffs, summer concerts, World Cup. Closes the loop on SEO Agent's `/compare` hub-and-spoke strategy.
-**Target keyword:** "ticketmaster vs seatgeek fees 2026," "seatgeek vs ticketmaster 2026," "which is cheaper ticketmaster or seatgeek"
-**Content type:** Blog post (Thursday comparison/listicle slot)
+### Hook 1: Chase Center G3/G4 home stand is the weekend's peak Bay Area ticket search
+**Topic:** Warriors Round 1 shifts back to Chase Center for Game 3 on Saturday and Game 4 on Monday. Resale on G3 is already tight — 200-level sections are quoting $98-128 on SeatGeek vs $118-140 on Ticketmaster, with TM's Platinum layer active on the lower bowl. G4 is softer with road-team discount showing: 200-level $62-85 on SeatGeek, $71-96 on Ticketmaster — a $30-40 G3-to-G4 spread inside the same series, same seat, two nights apart. "Warriors playoff tickets" and "Chase Center seating chart" are peak-volume Bay Area keywords all weekend.
+**Angle:** Today's venue refresh target (Chase Center). The venue page currently ships with 5 generic sections and a one-line description that doesn't mention the Golden State Valkyries (WNBA, second season opening in May) — both keyword clusters and the dual-tenant story are left on the table. Matches the TD Garden (4/10), Wells Fargo Center (4/11), AAC (4/17), and Ball Arena (4/18) refresh pattern during active playoff weekends.
+**Target keyword:** "Warriors playoff tickets," "Chase Center seating chart," "Valkyries tickets"
+**Content type:** Venue page refresh (this task) + Social handoff for G3/G4 spread story
 **Priority:** High
 
-### Hook 2: Mid-Round 1 road-team cratering continues, worth one more social beat
-**Topic:** Yesterday's hook called the Rockets-Warriors G4 and Knicks-Pistons G4 price crash. 24 hours later the crash has deepened. Rockets G4 400-level is now $34 on SeatGeek (was $38 yesterday, $79 for Game 1 — a 57% drop). Knicks-Pistons G4 200-level is $41 on StubHub (was $44 yesterday). The pattern holds: when a series tilts 2-0, road-team inventory floods resale and the price bottom keeps falling until the series resolves or the road team wins one. Buy window is still open through Saturday for the Sunday Game 4s.
-**Angle:** Social Agent material for tomorrow (Friday). Specific tweet or Threads post with "24 hours later, the G4 crash deepens" framing. Reinforces the Wednesday blog's FIFA-resale-data narrative arc (data-driven, price-movement specific) across sports verticals.
-**Target keyword:** "NBA playoff tickets cheap," "Rockets tickets Game 4"
-**Content type:** Social handoff to Social Agent
-**Priority:** Medium (tomorrow's social)
-
-### Hook 3: The 4/22 FIFA piece is live-market-validated today
-**Topic:** Wednesday's blog shipped with "22 of 33 matches, FIFA resale most expensive" as the headline. Today's dawn pull expanded the dataset to 42 group-stage matches with 24 hours of additional price capture. The ratio is still holding: FIFA most expensive on 28 of 42 (66.6%) — essentially identical to Wednesday's 66.7%. The six Mexico/Canada exception matches are still the exception. Median spread on the 28 US-venue FIFA-loses matches widened slightly from $84 to $89 (price creep on SoFi and MetLife group-stage inventory in the last 24 hours). The data is validating Wednesday's framing in near-real-time.
-**Angle:** Flag for SEO Agent as the "fresh data point" for the Wednesday post's Article schema `dateModified` field once the post ships. Also strong Friday/Saturday social beat. Not today's blog.
-**Target keyword:** n/a — Wednesday post reinforcement
-**Content type:** Handoff note for SEO Agent + Social Agent
-**Priority:** Medium
-
-### Hook 4: Summer concert 6-week window is at T-minus one week for June shows
-**Topic:** Billie Eilish, Kendrick Lamar, Tyler the Creator, and Chappell Roan all open tour legs in early-to-mid June. That puts today at roughly the 7-week-out mark for the earliest shows. Last week's Pollstar Q1 number ($108.63 average) means summer prices are already running 9% above the 2025 Q1 comp. The pre-show window where inventory is deepest and platforms haven't converged on price is closing. Thursday's blog (the TM-vs-SG piece) should end with a specific "summer concert fee math" section, not just a generic CTA — that section is naturally high-intent for the 7-weeks-out audience searching right now.
-**Angle:** Today's blog should include a dedicated summer-concerts section. Also a natural follow-up for Email Agent: "the summer concert window closes next week" makes a strong newsletter subject line with Thursday's blog as the body link.
-**Target keyword:** "summer concert tickets 2026," "cheapest summer concert tickets"
-**Content type:** Integration note for today's blog + email handoff
-**Priority:** Medium
-
-### Hook 5: Four drafts are still unpublished as of this morning
-**Topic:** Pipeline check. Yesterday's 4/22 FIFA resale draft joined the queue. The 4/14 NBA playoff comparison, 4/15 FIFA bait-switch, 4/16 best-comparison-sites, 4/21 how-to-compare-30-seconds, and now 4/22 FIFA resale data all sit in `marketing-agents/output/content/` unpublished. Today's draft makes six. None are in `blog.ts`. SEO Agent is on Day 7 of an uncommitted working tree. Velocity problem is still compounding across both pipelines — one commit + push clears both.
-**Angle:** Operational escalation. Same flag as yesterday, one day worse. Not a content angle.
+### Hook 2: Seven unpublished drafts, zero publishes in 10 days — operational blocker deepens
+**Topic:** Yesterday's escalation stands and is now one day worse. The 4/8, 4/14, 4/15, 4/16, 4/21, 4/22, and 4/23 drafts are all in `marketing-agents/output/content/` unpublished. Seven drafts, ten days without a publish. The 4/8 draft recommended for archive is still sitting in the queue alongside three freshened-and-ready Mon/Tue/Wed/Thu drafts from this week. SEO Agent working tree is on Day 8 uncommitted. One `publish-draft.sh` run per draft plus one `git push` clears both pipelines in about 30 minutes.
+**Angle:** Operational escalation for Lead Architect. Same flag as yesterday, one day worse. Not a content angle.
 **Target keyword:** n/a — pipeline issue
 **Content type:** Lead Architect escalation
 **Priority:** High (operational)
+
+### Hook 3: FIFA resale dataset at 48 hours post-publish is still holding the 66% "FIFA loses" ratio
+**Topic:** Wednesday's blog shipped with "28 of 42 matches, FIFA resale most expensive" (66.6%). This morning's pull expanded the dataset to 51 group-stage matches — the ratio is now 34 of 51 (66.7%). Zero movement on the headline number in 48 hours. Median US-venue spread widened from $89 to $94 — SoFi and MetLife group-stage inventory is still creeping up. Story is validating in near-real-time and the Article schema `dateModified` field becomes valuable once the Wednesday post actually ships.
+**Angle:** Handoff note. SEO Agent should refresh the Wednesday post's `dateModified` on publish day and bake the 51-match figure into the lede. Social Agent has a Saturday morning data-refresh beat here.
+**Target keyword:** n/a — Wednesday post reinforcement
+**Content type:** Handoff for SEO Agent + Social Agent
+**Priority:** Medium
+
+### Hook 4: Summer concert deepest-inventory window closes in 7 days
+**Topic:** Billie Eilish opens her summer leg ~June 13. That's 50 days out from today. Kendrick and Tyler open mid-June, Chappell Roan late June. Pre-show inventory typically peaks 8-10 weeks out and starts thinning at 6-7 weeks — the 6-week mark hits Friday May 1. One week left in the deepest-inventory window before prices start climbing into the standard pre-show curve. Pollstar's $108.63 Q1 average is already 9% above 2025 Q1, so the baseline is elevated before the curve steepens.
+**Angle:** Email Agent newsletter hook for Monday — "the deepest-inventory summer concert window closes in 7 days" is a concrete, data-backed CTA that pairs with Monday's 4/20 big-idea draft (when it finally ships). Also a Friday social beat.
+**Target keyword:** "summer concert tickets 2026," "cheapest summer concert tickets"
+**Content type:** Email Agent handoff + Social beat
+**Priority:** Medium
