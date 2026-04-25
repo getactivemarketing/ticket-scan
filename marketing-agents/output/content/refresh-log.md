@@ -1,5 +1,46 @@
 # Content Refresh Log
 
+## 2026-04-25 — MetLife Stadium (worldcup.ts)
+
+**Page refreshed:** `metlife-stadium` in `web/src/data/worldcup.ts` → renders at `/world-cup-2026/metlife-stadium`
+
+**File-target correction:** Sunday's next-week plan slated MetLife as today's refresh target in `venues.ts`. MetLife is not in `venues.ts` (that file is 24 NBA/NHL arenas only — no NFL stadiums) — it lives in `worldcup.ts` with a different `WorldCupVenue` schema (`{name, priceRange, description}` sections + `ticketTips` + `teams` instead of the `{name, tier}` arena schema). Refresh principle is the same; future plans should target `worldcup.ts` for any of the 16 World Cup stadium pages.
+
+**What changed:**
+1. **Sections expanded** from 3 generic tiers (Field 100s / Mezz 200s / Upper 300s) to 9 specific section groupings mapped to MetLife's actual layout *and* to FIFA's Category 1-4 pricing tiers:
+   - 1 Field Level Sideline grouping (101-115, 134-150) — FIFA Category 1, long-axis pitch views
+   - 1 Field Level Endline grouping (116-118, 134-136) — behind the goals, lower price tier
+   - 1 Coaches Club grouping — premium mid-sideline club with indoor lounge access (entirely new tier — wasn't represented in prior data despite being one of MetLife's most-searched seat products)
+   - 1 Mezzanine Sideline grouping (201-217, 235-250) — FIFA Category 2
+   - 1 Mezzanine Corner grouping (218-220, 232-234) — sub-tier between sideline and endline
+   - 1 Mezzanine Endline grouping (221-231) — supporters-section vibe for traveling fan groups
+   - 1 Upper Level Sideline grouping (301-317, 334-350) — FIFA Category 3
+   - 1 Upper Level Corner & Endline grouping (318-333) — FIFA Category 4, cheapest seats
+   - 1 MetLife Suite Level grouping — Final-only on resale, $15K-$50K+ range to anchor the AggregateOffer high end
+2. **Description** upgraded from a 2-sentence generic blurb to a single rich paragraph covering: World Cup Final date (July 19, 2026), the seven additional matches at MetLife, second-largest US stadium framing, NFL Giants/Jets year-round usage, the Taylor Swift Eras Tour 2023 pricing reference ($1.5K-$5K+ across five sold-out nights — a credibility anchor for "what big-event resale at MetLife looks like"), the soccer-vs-football pitch reconfiguration with specific section-number geometry (long sidelines parallel 100-level row 1; goal lines behind sections 116-118 and 134-136), cross-platform comparison callout (Ticketmaster, SeatGeek, StubHub, FIFA resale), the live $200-$500 platform-spread data point from the 4/22 FIFA resale post, and a price-alert CTA
+3. **TicketTips expanded** from 4 generic tips to 8 MetLife-specific tips covering: best soccer sightlines (101-115, 134-150), goal-line sections to avoid for two-end visibility (116-118, 134-136), best mid-range value (mezz corners 218-220 / 232-234 at $400-$700), Final vs group-stage upper-deck pricing, NJ Transit specifics (Penn Station + Secaucus → Meadowlands Station), why driving to the Final is broken, Coaches Club as the New Jersey-July-humidity hedge, and the 20-30% post-on-sale resale dip pattern from prior MetLife major events
+4. **Keywords** expanded from 4 to 10, adding: "World Cup Final tickets," "MetLife Stadium seating chart," "MetLife World Cup Final," "cheapest MetLife World Cup tickets," "Coaches Club MetLife," "World Cup Final July 19 2026"
+
+**Why this venue:**
+- **The single highest-intent World Cup ticket query for the rest of 2026.** "World Cup Final tickets" is the peak query of the entire tournament arc and MetLife is the venue. Refreshing this page at T-85 days lands directly in the resale-search ramp window. Every prior arena refresh was timed to active home playoff games (search ramp of weeks); this one is timed to the Final ramp (search ramp of months).
+- **Sparse data was the worst in the World Cup file.** 3 generic sections vs 9 now. SoFi (which hosts other knockout matches) had the same sparse-3-sections problem and is the natural next refresh target after the playoff-arena queue clears.
+- **AggregateOffer schema compounding.** SEO Agent's unshipped `web/src/app/world-cup-2026/[stadium]/page.tsx` rewrite extracts `lowPrice` from the lowest section in `venue.sections` and emits it in StadiumOrArena → SportsEvent → AggregateOffer JSON-LD. Today's expanded sections give that schema a real $150 floor (was $150 before but with no upper-tier breakdown to support it; now backed by 9 grouped sections and a $50,000+ ceiling that signals premium availability). The schema gain only lands when the 19-file SEO bundle ships — flagged in Hook 2 today.
+- **Sunday's next-week plan slated MetLife as today's target.** Executed as planned, with the file-target correction noted above.
+- **Compounds with Wednesday's 4/22 FIFA resale data blog.** That post is built around the platform-spread story; today's MetLife description embeds the live $200-$500 spread data point and the FIFA-most-expensive 65-67% ratio, giving the venue page a direct internal-link reason to cite the blog and vice versa.
+
+**SEO impact expected:**
+- Full section data populates the seating guide and gives Google more on-page entity signals for the "MetLife Stadium" + "World Cup Final" knowledge clusters
+- 10 keywords (was 4) covers the full intent spectrum from broad "MetLife Stadium World Cup tickets" to long-tail "World Cup Final July 19 2026" and "Coaches Club MetLife"
+- FIFA Category mapping (Cat 1 / Cat 2 / Cat 3 / Cat 4) inside section descriptions captures the official-pricing-vocabulary search surface that no other US comparison page seems to be hitting yet
+- Taylor Swift Eras Tour resale reference embedded in the description gives Google a credibility entity signal — MetLife is the venue that handled $5K resale on a five-night sellout, which is the closest priced precedent for World Cup Final demand
+- Soccer-vs-football pitch geometry detail (which sections sit behind the goal lines for soccer config) is genuinely differentiated content — competitor pages either skip the geometry shift or describe it incorrectly
+- Once the SEO bundle deploys, the AggregateOffer `lowPrice: 150` becomes a real Google rich-result signal, not the empty schema it currently is
+
+**Verification:**
+- `npx tsc --noEmit` ran clean — no TypeScript errors introduced (verified at 2026-04-25 morning)
+
+---
+
 ## 2026-04-24 — Chase Center (venues.ts)
 
 **Page refreshed:** `chase-center` in `web/src/data/venues.ts`
