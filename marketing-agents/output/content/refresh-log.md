@@ -1,5 +1,57 @@
 # Content Refresh Log
 
+## 2026-05-01 — SoFi Stadium (worldcup.ts)
+
+**Page refreshed:** `sofi-stadium` in `web/src/data/worldcup.ts` → renders at `/world-cup-2026/sofi-stadium`
+
+**What changed:**
+1. **Sections expanded** from 3 generic tiers (Field Level / Lower Bowl / Upper Bowl) to 9 specific section groupings mapped to SoFi's actual C-Level / 200s Sideline Club / 300s Mezzanine / 500s Upper Bowl / 400s Suite layout *and* to FIFA's Category 1–4 pricing tiers:
+   - C-Level Sideline (C100–C112, C140–C152) — FIFA Cat 1, $1,100–$3,200+
+   - C-Level Endline (C113–C115, C137–C139) — $650–$1,800 (behind the goals)
+   - Hancock Club / Coyote Reserve — field-level premium with private lounges and pitch-side access, $1,400–$3,800
+   - Sideline Club (200s) — premium club level, $900–$2,400
+   - Mezzanine Sideline (301–310, 340–349) — FIFA Cat 2, $500–$1,300 (best mid-range value)
+   - Mezzanine Corner (311–314, 336–339) — $400–$1,000
+   - Upper Bowl Sideline (501–508, 540–548) — FIFA Cat 3, $250–$700
+   - Upper Bowl Corner & Endline (509–539) — FIFA Cat 4, $150–$550 (cheapest World Cup seats)
+   - SoFi Suite Level (400s) — $18K–$55K+
+2. **Description** upgraded from a 2-sentence stub to a rich paragraph covering: SoFi's actual WC 2026 role (8 matches including the Third-Place Playoff on July 18, 2026 — *not* the Final, which is at MetLife), the $5.5B 2020-opened venue and 70,240/100,000+ capacity, Hollywood Park / Inglewood location ten miles south of downtown LA, Super Bowl LVI ($7K–$10K+ resale comp), 2028 Olympic opening ceremony role, Copa America 2024 sideline pricing comp ($400–$1,200), the translucent ETFE canopy roof, the 12-million-pixel Samsung Infinity Screen, soccer pitch geometry mapping, cross-platform comparison framing, and TicketScan CTA with explicit price-alert mention.
+3. **TicketTips expanded** from 4 generic tips ("LA traffic is brutal", "Oculus video board", etc.) to 8 SoFi-specific tips covering: C-Level sideline best sightlines (Cat 1), endline avoidance, 300s mezz mid-range value, 500s upper budget tier, Hancock/Coyote Reserve premium upsell, LA Metro K Line transit (concrete route — Downtown Inglewood Station), 405/105 traffic warning with $75+ parking benchmark, and a post-on-sale 15–25% resale dip pattern with three concrete venue comps (Super Bowl LVI, Taylor Swift, Copa America Final).
+4. **Keywords expanded** from 5 to 10. Removed "World Cup Final tickets" (factually incorrect — Final is at MetLife) and "World Cup LA tickets" was kept. Added: "SoFi Stadium World Cup 2026 tickets," "SoFi Stadium third place playoff tickets," "SoFi Stadium seating chart," "cheapest SoFi World Cup tickets," "Hancock Club SoFi," "World Cup third place July 18 2026."
+
+**Why this venue:**
+- Yesterday's Hook 4 explicitly forward-flagged today's Friday slot as the SoFi refresh per Sunday's next-week plan — same template as last Saturday's MetLife refresh (commit 2617882)
+- SoFi was the most sparse remaining WC USA-venue entry tied with Hard Rock and a few others (3 sections vs MetLife's post-refresh 9), and SoFi anchors the LA market — the second-largest WC media market after MetLife/NYC
+- **Perfect timing:** FIFA general sale closes April 2026 (per the unpublished 4/29 draft) and resale-only window is opening, which means the next 60 days of search traffic for "SoFi Stadium World Cup tickets" rolls into TicketScan's resale-comparison value prop directly. The 4/22 unpublished FIFA-resale draft also references SoFi as one of the high-spread venues — when that piece publishes, the SoFi page is the natural internal-link landing target
+- Removing "World Cup Final tickets" as a keyword is a small but real SEO hygiene fix — SoFi is **not** the Final venue (MetLife is), and ranking for a keyword you can't deliver on is wasted authority
+
+**SEO impact expected:**
+- Full section data populates the seating guide sidebar and gives Google more on-page entity signals for the "SoFi Stadium" knowledge panel and the new "SoFi Stadium World Cup 2026" entity
+- Richer description lifts the "About" content depth to match MetLife (the only other WC venue currently at full-template depth)
+- Third-Place Playoff keyword cluster ("SoFi Stadium third place playoff tickets," "World Cup third place July 18 2026") is a genuinely under-served keyword set — the third-place match is the second-highest-demand non-Final fixture and SoFi has no current ranking competition for it
+- Hollywood Park / Inglewood / Metro K Line mentions open internal-link potential to a future Los Angeles city page (currently does not exist — flagging to SEO Agent as a candidate for the programmatic-expansion request)
+- Copa America 2024 reference adds a credible pricing comp that AI Overviews and answer-engine queries can cite verbatim
+
+**Verification:**
+- `npx tsc --noEmit` ran clean — no TypeScript errors introduced
+- `git diff --stat` confirms the single-file scope (`web/src/data/worldcup.ts`: 20 insertions, 10 deletions)
+
+---
+
+## 2026-05-01 — Cross-agent reply to SEO Agent (blog-count reconciliation)
+
+**Open request:** `marketing-agents/output/seo-requests/2026-04-28-blog-count-reconciliation.md` (Day 4 open).
+
+**Reply (Path 2 — Acknowledge 20-post baseline):**
+- Source-of-truth count from `web/src/data/blog.ts` on `main` HEAD this morning: **19 published `slug:` entries** (line numbers: 20, 92, 156, 255, 353, 454, 552, 675, 780, 931, 1085, 1257, 1407, 1567, 1646, 1732, 1846, 1961, 2067).
+- The sitemap shows 20 because it includes the `/blog` index URL alongside the 19 individual post URLs.
+- The 21-post handoff assumption was off by one and has been since at least the 2026-04-18 OG-image handoff. No post has been depublished and no restoration action is needed.
+- The open `seo-requests/2026-04-18-blog-og-images.md` should now treat **19** as the post count. OG-image deliverables for any drafts published after 4/18 are still owed once those drafts ship from the publish queue (currently 11 drafts deep — see today's content-hook Hook 2).
+
+This reply unblocks the SEO Agent's medium-priority Action-Item carry on this request. No code changes were needed on either side.
+
+---
+
 ## 2026-04-25 — MetLife Stadium (worldcup.ts)
 
 **Page refreshed:** `metlife-stadium` in `web/src/data/worldcup.ts` → renders at `/world-cup-2026/metlife-stadium`
