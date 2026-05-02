@@ -1,5 +1,63 @@
 # Content Refresh Log
 
+## 2026-05-02 — Hard Rock Stadium refresh + SoFi factual correction + MetLife inline fix (worldcup.ts)
+
+**Pages refreshed:**
+1. `hard-rock-stadium` in `web/src/data/worldcup.ts` → renders at `/world-cup-2026/hard-rock-stadium` (primary refresh)
+2. `sofi-stadium` in same file → renders at `/world-cup-2026/sofi-stadium` (factual correction of yesterday's refresh)
+3. `metlife-stadium` in same file → renders at `/world-cup-2026/metlife-stadium` (inline off-by-one fix)
+
+**What changed (Hard Rock — primary refresh):**
+1. **Sections expanded** from 3 generic tiers (Lower Bowl / Club Level / Upper Level) to 10 specific section groupings mapped to Hard Rock's actual layout *and* to FIFA's Category 1–4 pricing tiers:
+   - 100-Level Sideline (105–115, 142–152) — FIFA Cat 1, $700–$2,400+ (the long-axis pitch row, full canopy shade)
+   - 100-Level Corner (101–104, 116–118, 138–141, 153–156) — $500–$1,500
+   - 100-Level Endline (behind the goals) — $400–$1,200
+   - Joe Robbie Club / Living Room Cabanas (field-level premium) — $1,200–$5,000 (the first-of-its-kind 50-yard-line cabana product introduced in the 2016 renovation)
+   - Hyundai Club / 9th & Tipsy Club (200s) — $700–$2,000
+   - Mezzanine Sideline (300s) — FIFA Cat 2, $400–$1,000
+   - Mezzanine Corner & Endline (300s) — $300–$750
+   - Upper Sideline (400s) — FIFA Cat 3, $200–$600
+   - Upper Corner & Endline (400s) — FIFA Cat 4, $120–$450 (cheapest WC seats at Hard Rock)
+   - Hard Rock Suite Level — $12K–$45K+ (Third-Place suite resale historically tracks 30–40% of Final suite resale)
+2. **Description** upgraded from a 2-sentence stub to a rich paragraph covering: Hard Rock's actual WC 2026 role (7 matches including the **Third-Place Playoff on July 18, 2026** and a Round of 16 falling on **July 4, 2026 — US Independence Day**), the Copa America 2024 Final pricing comp (Argentina 1, Colombia 0 on July 14, 2024 — $1,800–$8,000+ sideline resale, the only direct prior continental-final pricing reference for any US WC venue), Inter Miami / Messi-era marquee-match comps ($1,500–$5,000+ sideline) with the Chase Stadium capacity context, Super Bowl LIV (Feb 2020 — Chiefs 31, 49ers 20, $5K–$20K+ resale), Formula 1 Miami GP and Orange Bowl mentions, the 26-acre 2016-renovation canopy structure (shades all seats, leaves field uncovered), Miami June/July afternoon humidity (feels-like 100°F+) and pop-up thunderstorms (14:00–17:00), soccer pitch geometry mapping, cross-platform comparison framing, and TicketScan CTA with explicit price-alert mention.
+3. **TicketTips expanded** from 4 generic tips ("the canopy provides shade", "Miami heat can be intense", etc.) to 8 Hard-Rock-specific tips covering: 100-Level sideline best sightlines (Cat 1 with full shade), endline avoidance, 300s mezzanine mid-range value, 400s upper budget tier with the **R16-July-4 Independence Day demand bump**, Joe Robbie Club / Living Room cabanas premium upsell, Tri-Rail to Opa-locka + Brightline to Aventura transit specifics with the I-95/Florida Turnpike traffic warning, the rain/lightning policy callout (poncho recommended, lightning delays have run 30–90 minutes at prior summer events), and a post-on-sale 25–35% Copa-America-Final-comp resale dip pattern.
+4. **Keywords expanded** from 4 to 10. Added: "Hard Rock Stadium World Cup 2026 tickets," "Hard Rock Stadium third place playoff tickets," "Hard Rock Stadium seating chart," "cheapest Hard Rock World Cup tickets," "Joe Robbie Club Hard Rock," "World Cup third place July 18 2026."
+
+**What changed (SoFi — factual correction):**
+- Yesterday's refresh asserted SoFi hosts the Third-Place Playoff on July 18. The source-of-truth `worldCupMatches` array (line 585) shows SoFi hosts **Semi-Final SF-2 on 2026-07-15 at 20:00** — the Third-Place Playoff (TP) is at Hard Rock per line 588.
+- **Description corrected:** "Round of 32 knockout, and the Third-Place Playoff on July 18, 2026 — the day before the Final" → "knockout rounds through a Quarter-Final, and a Semi-Final on July 15, 2026 — four days before the Final at MetLife." Added Semi-Final demand context ("historically trails only the Final itself").
+- **3 ticketTips corrected:** Third-Place-Playoff references in the Upper-Bowl-pricing tip (now reflects Semi-Final demand: $700+ Semi vs $400+ Third-Place), the Hancock Club premium tip, and the driving/transit tip — all reframed as Semi-Final.
+- **3 sections corrected:** C-Level Sideline ($1,100–$3,200+ → $1,400–$4,500+ to reflect SF demand premium), Mezzanine Sideline ($500–$1,300 → $600–$1,700), Suite Level ($18K–$55K+ → $22K–$70K+, with the description noting SF suite resale tracks 50–70% of Final suite resale).
+- **2 keywords corrected:** "SoFi Stadium third place playoff tickets" → "SoFi Stadium semi-final tickets" + added "SoFi Stadium quarter-final tickets"; "World Cup third place July 18 2026" → "World Cup semi-final July 15 2026."
+- **Why the price ranges went up:** Semi-Finals are the second-highest-demand tournament match after the Final. Third-Place Playoffs are historically the softest knockout-round demand (consolation match). The previous Third-Place pricing ranges were too low for a Semi-Final. New ranges reflect prior FIFA tournament knockout-round resale comps and Copa America 2024 Semi-Final → Final spread.
+
+**What changed (MetLife — inline off-by-one fix):**
+- Description said "plus seven earlier matches across the group stage and knockout rounds" but MetLife actually hosts 9 matches total per `worldCupMatches`: 4 group stage (M3, M17, M33, M51) + R32-1 + R16-1 + QF-2 + **SF-1 on July 14** + Final on July 19 = 9 matches.
+- Updated to: "plus eight earlier matches across the group stage and knockout rounds — including a Semi-Final on July 14, 2026 — for a tournament-leading nine matches total."
+- This is the smallest of the three edits but worth shipping in the same commit because the QA gap that produced the SoFi error (no cross-check between the venue's narrative claims and the matches array in the same file) had also produced this off-by-one.
+
+**Process improvement added today:**
+- New refresh-checklist Step 0 (will be applied to all 14 remaining unrefreshed WC venues): `grep -n "venue: '<slug>'" worldcup.ts | grep "round: '"` to enumerate the venue's actual matches before drafting the description, ticketTips, sections, and keywords. This is a 30-second check that would have caught yesterday's SoFi error pre-commit *and* the MetLife off-by-one whenever it was first introduced.
+- The same checklist step caught my own intra-session error in today's content-hook Hook 5 — the first draft asserted "AT&T hosts Semi-Final 1 (SF-1)" but the matches array shows SF-1 is at MetLife and AT&T's highest-tier match is QF-3 on July 10. Hook 5 was corrected before the file was committed.
+
+**Why these venues:**
+- **Hard Rock primary refresh:** Yesterday's Hook 5 explicitly forward-flagged Hard Rock for today's Saturday slot — same execution pattern as last Saturday's MetLife refresh and last Friday's SoFi refresh. Hard Rock was the most sparse remaining WC USA-venue entry (3 sections, 4 keywords, 1-sentence description) tied with AT&T and a few others. Hard Rock anchors the Florida market — the third-largest WC USA market after MetLife/NYC and SoFi/LA. The Copa America 2024 Final pricing comp is the cleanest direct continental-final reference for any US WC venue (no other US WC venue has hosted a continental-final-tier match in the last 5 years), which gives Hard Rock a unique credibility-anchor advantage that no other venue page can claim.
+- **SoFi correction:** Factual errors on the production site decay TicketScan's authority and degrade the AggregateOffer JSON-LD signal. The 24-hour error-detection-to-fix loop is the cleanest possible execution; letting the Third-Place-Playoff error live longer would compound into blog drafts, email content, and social copy referencing the same wrong assertion.
+- **MetLife inline fix:** Same QA-gap class as the SoFi error. While I was in the file with a working cross-check loop, fixing it cost ~2 minutes and prevented the same error class from continuing to propagate.
+
+**SEO impact expected:**
+- **Hard Rock:** Full section data populates the seating guide sidebar and gives Google more on-page entity signals for the "Hard Rock Stadium" knowledge panel and the new "Hard Rock Stadium World Cup 2026" entity. Third-Place Playoff keyword cluster is genuinely under-served — competitor venue pages don't yet cite the July 18 fixture by name. The Copa America 2024 Final reference adds a credible pricing comp that AI Overviews and answer-engine queries can cite verbatim. The Independence Day R16 (July 4) angle is a unique-to-Hard-Rock-and-AT&T content hook with zero current ranking competition. Inter Miami / Messi marquee-match resale comp gives the page a soccer-specific credibility anchor that the football-only NFL stadium pages lack.
+- **SoFi:** Removes a factual error from production (positive trust signal). Semi-Final keyword cluster is more accurately targeted than the Third-Place keyword cluster was — Semi-Final search volume is higher than Third-Place Playoff search volume by an order of magnitude (Semi-Final is the second-most-searched WC fixture type after the Final).
+- **MetLife:** Adds the Semi-Final keyword surface to MetLife's description ("Semi-Final on July 14, 2026" is now indexable on the page) without changing the existing Final-focused targeting. Additive only.
+- **Cross-page:** Once the SEO bundle deploys, the AggregateOffer `lowPrice` extraction from sections still works correctly on all three pages; the section price ranges are accurate for the actual round assignments.
+
+**Verification:**
+- `npx tsc --noEmit` ran clean — no TypeScript errors introduced (verified twice: after Hard Rock + SoFi edits, then again after MetLife edit)
+- `git diff --stat` confirms the single-file scope (`web/src/data/worldcup.ts`)
+- Cross-checked all three venues' descriptions against the `worldCupMatches` array — no remaining round-assignment errors detected for MetLife, SoFi, or Hard Rock
+
+---
+
 ## 2026-05-01 — SoFi Stadium (worldcup.ts)
 
 **Page refreshed:** `sofi-stadium` in `web/src/data/worldcup.ts` → renders at `/world-cup-2026/sofi-stadium`
