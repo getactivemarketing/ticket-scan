@@ -335,13 +335,41 @@ export const venues: Record<string, Venue> = {
     state: 'CA',
     capacity: 18064,
     type: 'arena',
-    homeTeams: ['Golden State Warriors'],
-    description: 'Compare prices at Chase Center in San Francisco. Home of the Warriors, featuring NBA games and world-class concerts.',
-    keywords: ['Chase Center tickets', 'Warriors tickets', 'Golden State tickets', 'San Francisco arena'],
+    homeTeams: ['Golden State Warriors', 'Golden State Valkyries'],
+    description: 'Compare ticket prices for Chase Center in San Francisco\'s Mission Bay, the dual-tenant home of the Golden State Warriors and the Golden State Valkyries WNBA franchise. Roughly 200 events run through the building every year — NBA playoff games, Valkyries home slates, headline tours, boxing and UFC cards, and one-off spectacles. The Lower Bowl uses single-digit sections 1-24 that wrap tight around the court; Theatre Level boxes sit midway up with private lounge access and in-seat service; the Upper Bowl 200-level is where Bay Area fans find the biggest value gap between StubHub, SeatGeek, and Ticketmaster. Track prices and set free alerts before Warriors playoff games or Valkyries tip-offs on TicketScan.',
+    keywords: ['Chase Center tickets', 'Warriors tickets', 'Golden State tickets', 'San Francisco arena', 'Chase Center seating chart', 'Warriors playoff tickets', 'Valkyries tickets', 'Chase Center events', 'San Francisco concert tickets'],
     sections: [
+      // Floor / Courtside
       { name: 'Floor', tier: 'floor' },
-      { name: '101', tier: 'lower' }, { name: '102', tier: 'lower' },
-      { name: '201', tier: 'upper' }, { name: '202', tier: 'upper' },
+      // Lower Bowl (100-level, single-digit sections 1-24, wraps around)
+      { name: '1', tier: 'lower' }, { name: '2', tier: 'lower' }, { name: '3', tier: 'lower' },
+      { name: '4', tier: 'lower' }, { name: '5', tier: 'lower' }, { name: '6', tier: 'lower' },
+      { name: '7', tier: 'lower' }, { name: '8', tier: 'lower' }, { name: '9', tier: 'lower' },
+      { name: '10', tier: 'lower' }, { name: '11', tier: 'lower' }, { name: '12', tier: 'lower' },
+      { name: '13', tier: 'lower' }, { name: '14', tier: 'lower' }, { name: '15', tier: 'lower' },
+      { name: '16', tier: 'lower' }, { name: '17', tier: 'lower' }, { name: '18', tier: 'lower' },
+      { name: '19', tier: 'lower' }, { name: '20', tier: 'lower' }, { name: '21', tier: 'lower' },
+      { name: '22', tier: 'lower' }, { name: '23', tier: 'lower' }, { name: '24', tier: 'lower' },
+      // Theatre Level (mid-level premium tier with private lounge access, in-seat service)
+      { name: 'Theatre Box 1', tier: 'club' }, { name: 'Theatre Box 2', tier: 'club' },
+      { name: 'Theatre Box 3', tier: 'club' }, { name: 'Theatre Box 4', tier: 'club' },
+      { name: 'Theatre Box 5', tier: 'club' }, { name: 'Theatre Box 6', tier: 'club' },
+      { name: 'Theatre Box 7', tier: 'club' }, { name: 'Theatre Box 8', tier: 'club' },
+      { name: 'Theatre Box 9', tier: 'club' }, { name: 'Theatre Box 10', tier: 'club' },
+      { name: 'Theatre Box 11', tier: 'club' }, { name: 'Theatre Box 12', tier: 'club' },
+      { name: 'Theatre Box 13', tier: 'club' }, { name: 'Theatre Box 14', tier: 'club' },
+      { name: 'Theatre Box 15', tier: 'club' }, { name: 'Theatre Box 16', tier: 'club' },
+      { name: 'Theatre Box 17', tier: 'club' }, { name: 'Theatre Box 18', tier: 'club' },
+      { name: 'Theatre Box 19', tier: 'club' }, { name: 'Theatre Box 20', tier: 'club' },
+      // Upper Bowl (200-level, wraps around)
+      { name: '201', tier: 'upper' }, { name: '202', tier: 'upper' }, { name: '203', tier: 'upper' },
+      { name: '204', tier: 'upper' }, { name: '205', tier: 'upper' }, { name: '206', tier: 'upper' },
+      { name: '207', tier: 'upper' }, { name: '208', tier: 'upper' }, { name: '209', tier: 'upper' },
+      { name: '210', tier: 'upper' }, { name: '211', tier: 'upper' }, { name: '212', tier: 'upper' },
+      { name: '213', tier: 'upper' }, { name: '214', tier: 'upper' }, { name: '215', tier: 'upper' },
+      { name: '216', tier: 'upper' }, { name: '217', tier: 'upper' }, { name: '218', tier: 'upper' },
+      { name: '219', tier: 'upper' }, { name: '220', tier: 'upper' }, { name: '221', tier: 'upper' },
+      { name: '222', tier: 'upper' }, { name: '223', tier: 'upper' }, { name: '224', tier: 'upper' },
     ]
   },
   // Denver
@@ -574,6 +602,41 @@ export const venues: Record<string, Venue> = {
       { name: 'Floor', tier: 'floor' },
       { name: '1', tier: 'lower' }, { name: '2', tier: 'lower' }, { name: '3', tier: 'lower' },
       { name: '101', tier: 'upper' }, { name: '102', tier: 'upper' }, { name: '103', tier: 'upper' },
+    ]
+  },
+  // Chicago (Wrigley Field - MLB)
+  'wrigley-field': {
+    id: 'wrigley-field',
+    name: 'Wrigley Field',
+    city: 'Chicago',
+    state: 'IL',
+    capacity: 41649,
+    type: 'stadium',
+    homeTeams: ['Chicago Cubs'],
+    description: 'Compare ticket prices for Chicago Cubs games and concerts at Wrigley Field, the second-oldest active ballpark in Major League Baseball. Built in 1914 at the corner of Clark and Addison in the Lakeview neighborhood, Wrigley is known for its ivy-covered outfield walls (planted 1937), the hand-turned center field scoreboard (also 1937), and a daytime-baseball heritage that lasted until lights were finally installed for the first night game on August 8, 1988. The 2014 to 2019 1060 Project renovation modernized concourses, suites, and player facilities while preserving the brick-and-ivy character. Field Box and Bullpen Box seats run the infield, the bleachers wrap the outfield as their own general-admission ecosystem, and the rooftop clubs across Sheffield and Waddell sell separately ticketed seats with Wrigley views. Day games typically carry a 15 to 25 percent premium for tourist demand; rivalry games against the Cardinals, Brewers, and Dodgers see bleacher prices double versus baseline. Use TicketScan to compare Cubs ticket prices across Ticketmaster, SeatGeek, and StubHub before you buy, and set a price alert on any home stand to catch the typical 20 to 30 percent post-on-sale resale dip on weekday non-marquee games.',
+    keywords: ['Wrigley Field tickets', 'Cubs tickets', 'Chicago Cubs tickets', 'Wrigley Field seating chart', 'cheapest Cubs tickets', 'Cubs vs Cardinals tickets', 'Cubs vs Reds tickets', 'Wrigley Field bleachers tickets', 'Wrigley rooftop seats', 'Cubs day game tickets', 'best seats Wrigley Field', 'Wrigley Field standing room', 'Cubs schedule tickets', 'Cubs ticket prices'],
+    sections: [
+      // Premium / Floor-equivalent (behind home plate)
+      { name: 'Marquee Box', tier: 'floor' },
+      // Lower Bowl - Infield
+      { name: 'Field Box Infield', tier: 'lower' },
+      { name: 'Field Box Outfield', tier: 'lower' },
+      // Lower Bowl - Outfield Bleachers
+      { name: 'Bleachers LF', tier: 'lower' },
+      { name: 'Bleachers RF', tier: 'lower' },
+      { name: 'Bleacher Box', tier: 'lower' },
+      // Club / Premium
+      { name: 'Bullpen Box', tier: 'club' },
+      { name: 'Catalina Club', tier: 'club' },
+      { name: '1914 Club', tier: 'club' },
+      // Mid / Upper (Wrigley has no true mezzanine; 200s map to lower upper rows)
+      { name: 'Terrace Box 200s', tier: 'upper' },
+      { name: 'Terrace Reserved 200s', tier: 'upper' },
+      // Upper Deck
+      { name: 'Upper Deck Box 300s', tier: 'upper' },
+      { name: 'Upper Deck Reserved 400s', tier: 'upper' },
+      // Suites
+      { name: 'Suite Level', tier: 'suite' },
     ]
   },
   // Sacramento
