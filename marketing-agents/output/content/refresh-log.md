@@ -1,5 +1,70 @@
 # Content Refresh Log
 
+## 2026-05-08 — AT&T Stadium (worldcup.ts)
+
+**Page refreshed:** `att-stadium` in `web/src/data/worldcup.ts` → renders at `/world-cup-2026/att-stadium`
+
+**Commit:** `305cb11 Content refresh: att-stadium` (1 file, +20 / -10). Same shape as the wrigley-field precedent (`636e40b` on 2026-05-05) — clean isolated source-code commit with a `Content refresh:` prefix, not the marketing-output channel that produced the 5/01 worldcup.ts leak (`3dbd22b`). Push deferred to the EOD daily-marketing-output cycle per CLAUDE.md "Push only when explicitly asked."
+
+**Step 0 catch (per 5/02 process improvement):** the 5/03 `next-week-plan.md` Friday entry asserted AT&T hosts **9 matches**. `grep -n "venue: 'att-stadium'" web/src/data/worldcup.ts | grep "round: '"` returns **7**: M5 (06-12 22:00 Group C), M20 (06-16 19:00 Group J), M36 (06-21 13:00 Group F), M53 (06-26 16:00 Group C), R32-3 (06-30 16:00), R16-3 (07-04 16:00 — Independence Day), QF-3 (07-10 16:00 — Quarter-Final). The 9-match figure was upstream-counting drift; same error class as the 5/01 SoFi Third-Place mistake and the 5/02 MetLife "plus seven earlier matches" off-by-one. Step 0 caught it pre-commit — third clean catch since the step was added.
+
+**What changed:**
+
+1. **Description** upgraded from a 1-sentence stub to a single rich paragraph covering: 7-match volume framing, Quarter-Final QF-3 (July 10) + Independence Day R16-3 (July 4) framing, Cowboys year-round usage with WrestleMania 32 (101,763 attendance, $300–$2,000+ resale) and Super Bowl XLV ($2,500–$10,000+ resale) comps, Canelo-era boxing-megafight resale framing ($1,000–$10,000+ get-in — generic phrasing without specific event-date claims), the world's largest column-free interior + 60-yard center-hung HD video board landmark, the retractable roof + retractable end-zone glass doors and the AC/HVAC structural fan-comfort advantage over outdoor June/July venues like MetLife (acute for the M36 13:00 CT group-stage slot and the four 16:00 CT knockout slots, Arlington afternoon feels-like 100°F+ in late June / early July), soccer pitch geometry mapping (sidelines parallel 100-Level row 1 sections 105–115 east / 137–147 west; goal lines behind 116–118 and 134–136), cross-platform comparison framing, and TicketScan CTA with explicit price-alert mention. Folds in SEO Ask 1 (venue page openers, due 5/01, 7 days overdue) — opener rewrite scope absorbed.
+
+2. **Sections expanded** from 3 generic tiers (Field Level / Lower Bowl / Upper Level) to 9 specific section groupings mapped to AT&T's actual layout *and* to FIFA's Category 1–4 pricing tiers:
+   - 100-Level Sideline (105–115 east, 137–147 west) — FIFA Cat 1, $900–$3,000+ (long-axis pitch, premium for QF and July-4 R16)
+   - 100-Level Corner (101–104, 116, 134, 148–150) — $600–$1,800
+   - 100-Level Endline (117–118, 135–136) — $450–$1,300 (behind the goals, intense supporters atmosphere)
+   - Hall of Fame Club (field-level premium) — $1,400–$4,500 (all-inclusive with private entry, lounge, padded seating, pitch-side access)
+   - Star Suites (mid-sideline premium) — $1,200–$3,500 (Cowboys-era exclusivity tier with in-seat service)
+   - Mezzanine Sideline (200s) — FIFA Cat 2, $500–$1,400 (best mid-range value)
+   - Upper Sideline (300s) — FIFA Cat 3, $250–$800 (column-free dome preserves sightlines from height)
+   - Upper Corner & Endline (400s) — FIFA Cat 4, $130–$550 (cheapest WC seats; July-4 R16 Independence Day demand bump on this tier specifically)
+   - AT&T Suite Level — $15K–$50K+ (QF suite resale tracks ~60–75% of MetLife Final suite pricing per prior tournament knockout-round comps)
+
+3. **TicketTips expanded** from 4 generic tips ("the giant video board can obstruct views", "lower bowl sidelines provide the best soccer experience", etc.) to 8 AT&T-specific tips covering: 100-Level sideline sightlines (FIFA Cat 1 zone for QF + July-4 R16), 100-Level endline avoidance with column-free-dome far-end-distance callout, mezzanine 200s/300s mid-range value with the video-board-obstruction-zone callout, 400s upper budget tier with the **R16-July-4 Independence Day demand bump**, Hall of Fame Club / Star Suites premium upsell with AC framing, DART Trinity Lakes Station (opened 2024) + AT&T Stadium event-shuttle transit specifics with the $50–$100+ official-lot-parking benchmark, the retractable-roof + AC framing for the M36 13:00 CT and four 16:00 CT slots (genuine fan-comfort edge over MetLife / Hard Rock), and a post-on-sale 20–30% resale-dip pattern with three concrete venue comps (Super Bowl XLV, WrestleMania 32, Cowboys-Eagles primetime).
+
+4. **Keywords expanded** from 5 to 12. Added: "AT&T Stadium World Cup 2026 tickets," "AT&T Stadium quarter-final tickets," "AT&T Stadium July 4 World Cup," "AT&T Stadium seating chart," "cheapest AT&T Stadium World Cup tickets," "Hall of Fame Club AT&T," "World Cup quarter-final July 10 2026."
+
+**Why this venue:**
+
+- The 5/03 next-week plan slated AT&T as today's Friday refresh slot — the third consecutive Friday/Saturday execution of the WC sparse-venue refresh template (SoFi 5/01, Hard Rock 5/02, AT&T 5/08; MetLife was 4/25). Mercedes-Benz Stadium is on deck for Saturday 5/9.
+- AT&T was the most match-dense remaining sparse WC venue at 7 matches — Hard Rock and SoFi each host 7 and 8 respectively but both already refreshed; Mercedes-Benz hosts 8, NRG hosts 7, Arrowhead hosts 6, etc. The match volume + Quarter-Final + Independence Day R16 combination makes AT&T's expected page traffic in June–July among the top-3 US WC venues after MetLife and SoFi.
+- The Quarter-Final tier (QF-3) is genuinely under-served on competitor venue pages — the search-volume cluster around "World Cup quarter-final tickets" ramps roughly two weeks before the QF date (June 26 onward) and lasts roughly through QF day (July 10). The page now has explicit QF keyword targeting at depth.
+- The July 4 Round of 16 is a unique-to-AT&T-and-Hard-Rock content angle (R16-3 at AT&T at 16:00 CT and R16-4 at Hard Rock at later time on the same day). Hard Rock's page has carried this since 5/02; AT&T's page now matches.
+- The retractable-roof + AC framing is a genuinely differentiated content surface that no other US WC venue page can claim at this depth (Mercedes-Benz also has a retractable roof but the Texas-heat angle is sharper for Arlington). Worth its own paragraph in the description as a fan-comfort search-intent capture surface.
+
+**SEO impact expected:**
+
+- Full section data populates the seating guide sidebar and gives Google more on-page entity signals for the "AT&T Stadium" knowledge panel and the new "AT&T Stadium World Cup 2026" entity.
+- 12 keywords (was 5) covers the full intent spectrum from broad "AT&T Stadium World Cup tickets" to long-tail "World Cup quarter-final July 10 2026" and "Hall of Fame Club AT&T."
+- FIFA Category mapping (Cat 1 / Cat 2 / Cat 3 / Cat 4) embedded in section descriptions captures the official-pricing-vocabulary search surface.
+- Independence Day R16 content angle is shared only with Hard Rock's parallel R16-4 — zero current ranking competition on the upper-tier July-4 demand-bump cluster.
+- WrestleMania 32 / Super Bowl XLV / Canelo-era boxing megafight resale references give the page combat-sports + big-event-resale credibility anchors that the SoFi (Hollywood / Olympics) and MetLife (Taylor Swift Eras) pages don't carry.
+- Once the SEO bundle deploys, the AggregateOffer `lowPrice` extraction yields ~$130 (was $150 placeholder; new 400-Level Cat 4 floor is $130) and `highPrice` shifts to $50,000+ (was $3,000+; new AT&T Suite Level ceiling). Schema-impact estimate filed in `seo-requests/2026-05-08-content-data-touch.md`.
+
+**Verification:**
+
+- `npx tsc --noEmit` ran clean — exit 0, no TypeScript errors introduced
+- `git diff --numstat -- web/src/data/worldcup.ts` confirms single-file scope: `20 / 10` (matches the heads-up estimate)
+- Cross-checked AT&T's description and ticketTips against the `worldCupMatches` array — all match-count, round-name, date, and start-time references verified
+
+**Cross-agent handoffs:**
+
+- **SEO Agent:** `seo-requests/2026-05-08-content-data-touch.md` filed Friday morning (~8 hours late vs. the Thursday-evening cadence accepted in `seo-requests/2026-05-05-content-replies-bundle.md` §Reply 4). Late-filing cause flagged inline (composition wrapped without spawning the Step 5b heads-up step). Forward fix: Step 5b moves to the start of the Thursday-night content-hook flow next slot (Saturday 5/9 Mercedes-Benz heads-up due tonight Friday 5/8). Also requested SEO sign-off on (a) AggregateOffer lowPrice/highPrice shift estimate, (b) any upstream SEO surface that referenced "AT&T 9 matches" needing a parallel correction, (c) ack on the Step 5b miss-and-late filing.
+- **Social Agent:** AT&T refresh + the Independence Day R16 angle are the highest-leverage social posting opportunity for the next ~60 days of WC content cycle. Suggested social handles: the July 4 R16 demand-bump callout (Hard Rock + AT&T parallel), the retractable-roof Texas-heat AC framing (genuinely differentiated), the WrestleMania 32 / Super Bowl XLV resale comp anchors.
+- **Email Agent:** AT&T section-by-section pricing table is a candidate insert for the WC-opener email-blast Email Agent ships when cron unblocks; pairs with MetLife / SoFi / Hard Rock parallel sections from prior refreshes for a "all four big US WC venues at a glance" pricing reference.
+
+**Process notes:**
+
+- Step 5b (SEO heads-up file) ran late on its first scheduled exercise. Calibration carryover for tomorrow's Mercedes-Benz refresh: the heads-up file is the *first* artifact of the refresh-checklist next slot, drafted Thursday evening before any other work. Hook 6's renumbering proposal from Thursday's content-hook stays open; this miss is the data point arguing for it.
+- Step 0 caught the third pre-commit fact error since the step was added 5/02 (SoFi-Third-Place 5/01 retroactive, MetLife off-by-one inline 5/02, AT&T 9-vs-7 today). Step is paying for itself.
+- Step 5 (explicit `Content refresh:` commit) ran clean — second use after wrigley-field 5/05 (`636e40b`).
+- Push deferred to EOD daily-marketing-output cycle per CLAUDE.md "Push only when explicitly asked." The marketing-output push will pick up commit `305cb11` on its next run; production will reflect the AT&T refresh once Vercel deploys, ~2–3 minutes after that push lands.
+
+---
+
 ## 2026-05-02 — Hard Rock Stadium refresh + SoFi factual correction + MetLife inline fix (worldcup.ts)
 
 **Pages refreshed:**

@@ -1,109 +1,120 @@
-## Today's Content Hook — 2026-05-07 (Thursday)
+## Today's Content Hook — 2026-05-08 (Friday)
 
-### Hook 1: Today's deliverable — Thursday slot, All-In Pricing capstone, drafted and queued, anniversary-frame headline
-**Topic:** Per the 5/03 `next-week-plan.md` Thursday entry, yesterday's content-hook Hook 5 forward-flag, and the SEO Day-20 reply bundle (`seo-requests/2026-05-06-seo-replies-bundle.md`) Reply 2 schema sign-off, today's blog draft is the All-In Pricing piece — Q2 comparison-series capstone (Post 3 of SEO Ask 5).
+### Hook 1: Today's deliverable — Friday slot, AT&T Stadium refresh, committed clean
+**Topic:** Per the 5/03 `next-week-plan.md` Friday entry, yesterday's Hook 5 forward-flag, and the Friday-cadence preamble in `seo-bundle-watch.md` Day 22, today's deliverable is the AT&T Stadium World Cup 2026 page refresh — third Friday/Saturday execution of the WC sparse-venue refresh template (SoFi 5/01, Hard Rock 5/02, AT&T today; MetLife 4/25). **Committed at `305cb11 Content refresh: att-stadium`** (1 file, +20 / -10), shape-matched to the wrigley-field precedent (`636e40b`, 5/05) — clean isolated source-code commit with a `Content refresh:` prefix, push deferred to the EOD daily-marketing-output cycle per CLAUDE.md.
 
-File: `marketing-agents/output/content/2026-05-07-all-in-pricing-tickets-2026-junk-fees-explained.md`. Slug `all-in-pricing-tickets-2026-junk-fees-explained` — verified no collision against the 19 existing `blog.ts` slugs nor the 14 unpublished drafts already in `marketing-agents/output/content/` (`grep -n "all-in-pricing\|junk-fees\|junk fees" web/src/data/blog.ts` returns empty).
+**Step 0 catch:** the 5/03 plan asserted AT&T hosts **9 matches**. `grep -n "venue: 'att-stadium'" worldcup.ts | grep "round: '"` returns **7**. Same upstream-counting-drift error class as the 5/01 SoFi Third-Place mistake and the 5/02 MetLife off-by-one. Caught pre-commit. **Step 0 has now caught a fact error on three of three uses since being added 5/02 — paying for itself.** Description, ticketTips, sections, and keywords all anchor to the verified match list: 4 group stage (M5/M20/M36/M53) + R32-3 (June 30) + R16-3 (July 4 Independence Day) + QF-3 (July 10 Quarter-Final).
 
-**Headline decision:** went with the **anniversary frame** option flagged in yesterday's Hook 5 (T-6 days from the May 12, 2025 FTC effective date). Final title: *"One Year of All-In Pricing: What the FTC Rule Actually Changed, and What It Didn't."* The anniversary frame trades the policy-capstone register for journalistic recency, which lifts share-rate on the explainer category (the two highest-share posts in the queue — 4/22 FIFA-data and 4/29 WC-sale-closing — both lead with a recency anchor). Body still completes the 4/16 → 4/23 → 4/30 → 5/07 four-piece comparison-series arc; the anniversary lead just gives the capstone a sharper hook.
+**Refresh scope shipped:**
+- Description: 1-sentence stub → rich paragraph with 7-match volume framing, QF-3 placement, July 4 R16 demand bump, retractable-roof + AC fan-comfort advantage over outdoor venues for the M36 13:00 CT slot and the four 16:00 CT knockout slots, Cowboys + WrestleMania 32 (101,763 attendance, $300–$2,000+ resale) + Super Bowl XLV ($2,500–$10,000+ resale) + Canelo-era boxing-megafight resale comps, soccer pitch geometry (sidelines parallel 105–115 / 137–147; goals behind 116–118 / 134–136), DART Trinity Lakes (opened 2024) transit, cross-platform CTA. Folds in SEO Ask 1 (venue page openers, due 5/01, 7 days overdue) — opener rewrite scope absorbed.
+- Sections: 3 → 9 with FIFA Cat 1–4 mapping (100-Level Sideline / Corner / Endline; Hall of Fame Club; Star Suites; 200s Mezz Sideline; 300s Upper Sideline; 400s Upper Cat 4 floor at $130; AT&T Suite Level ceiling at $50K+).
+- TicketTips: 4 → 8 AT&T-specific entries.
+- Keywords: 5 → 12 entries adding Quarter-Final, July 4, seating chart, cheapest, Hall of Fame Club, July 10 2026, World Cup 2026 explicit form.
 
-Frontmatter clean: title 95 chars, excerpt 195 chars (under 200-char guideline), category `comparisons`, 5 tags matching the SEO spec verbatim ("all-in pricing tickets," "all in fees ticketmaster," "what are all-in ticket prices," "true ticket cost calculator," "FTC all-in pricing rule"), `readTime: 8`, `featured: false`. Body word count: 1,265 (inside the 1,100–1,300 target).
+**Verification:** `npx tsc --noEmit` exit 0; `git diff --numstat` = 20/10 (single-file); cross-check against `worldCupMatches` array confirms all match-count, round-name, date, and start-time references accurate. Full per-section breakdown in `marketing-agents/output/content/refresh-log.md` 2026-05-08 entry.
 
-Internal-link harvest (per 5/03 plan + SEO bundle pattern): 4 to `/compare` (the all-in-pricing era is its structural advantage — anchor links woven through the lead, fee-math section, divergence section, and CTA), 1 to `/watchlist`, 1 to existing `/blog/avoid-ticket-scams` (still-published, not in queue), 1 to existing `/blog/ticketmaster-vs-seatgeek-comparison` (the older general-comparison piece), and 3 future-link checkpoints to the 4/16, 4/23, and 4/30 drafts pending their publish — flagged in the body as comparison-series cross-references using the slug stubs already locked in.
+**Angle:** Friday slot executed, refresh-checklist (Steps 0 + 1 + 2 + 3 + 4 + 5) ran clean except Step 5b which slipped (see Hook 4).
+**Target keyword:** "AT&T Stadium World Cup 2026 tickets," "AT&T Stadium quarter-final tickets," "AT&T Stadium July 4 World Cup," "World Cup quarter-final July 10 2026"
+**Content type:** Page refresh — committed clean
+**Priority:** High — shipped
 
-Schema spec verification (per SEO Reply 2 — pre-commit blocker, runs after publish-script processes the markdown): 5-grep block staged for the post-publish smoke test (`BlogPosting` = 1, `BreadcrumbList` = 1, `"mentions"` = 1, `GovernmentOrganization` = 1, `wordCount` = 1). The `mentions` shape (4 Organizations: TM, SG, SH, VS + 1 GovernmentOrganization: FTC) is implicit in the body's prose and explicit in the tags array — final JSON-LD render is downstream of `web/src/data/blog.ts` shape and the `BlogPosting` schema component already validated on Posts 1 & 2 if/when those publish first.
+### Hook 2: Day 31 publish-velocity zero-streak — backlog still 13 drafts after two decay-shelves yesterday
+**Topic:** Last published post: 2026-04-07. Today: 2026-05-08. **Day 31.** Yesterday's Hook 2 decay-shelved two drafts (4/29 WC general-sale + 5/4 Cubs vs Reds), bringing the actionable-publish queue from 15 → **13 drafts**: 4/8 (archive recommendation, ninth consecutive week), 4/14, 4/15, 4/16, 4/21, 4/22, 4/23, 4/27, 4/28, 4/30, 5/5, 5/6, 5/7. Today's freshness audit:
 
-**Angle:** Q2 comparison-series capstone, anniversary-framed, schema-locked, schedule-aligned, 4-day pull-forward from original 5/11 SEO due date.
-**Target keyword:** "all-in pricing tickets," "FTC all-in pricing rule," "true ticket cost calculator," "what are all-in ticket prices," "all in fees ticketmaster"
-**Content type:** New blog draft — comparisons category (Thursday slot per 5/03 plan; SEO Ask 5 Post 3 capstone)
-**Priority:** High — drafted
+- **4/27 Summer Concert Tour** — references "Friday May 1 deadline" in opener, now 7 days past. The 1-line freshen still works ("Friday May 1" → "early May"). Publishable through this weekend.
+- **5/7 All-In Pricing** — drafted yesterday with the FTC-anniversary lead frame (T-4 days from May 12, 2025 effective date). Anniversary frame is most relevant 5/8–5/13, after which the recency hook decays. **Publishable today through Tuesday 5/12 at the latest.** Recommendation: ship Monday 5/11 to land inside the anniversary window.
+- **4/15 / 4/22 / 4/14 / 4/28 / 4/16 / 4/21 / 4/23 / 5/5 / 5/6** — all evergreen-leaning. No freshness-clock pressure today.
 
-### Hook 2: Day 30 publish-velocity zero-streak — backlog now 15 drafts (today's added) — 4/29 piece passed credibility threshold yesterday
-**Topic:** Last published post: 2026-04-07. Today: 2026-05-07. **Day 30 — full month.** Fourteen prior drafts unpublished (4/8 archive, 4/14, 4/15, 4/16, 4/21, 4/22, 4/23, 4/27, 4/28, 4/29, 4/30, 5/4, 5/5, 5/6) plus today's 5/7 = **15 drafts in queue.** Updated freshness audit:
+**Eleventh consecutive Mon/Tue/Wed/Thu/Sun flagging the publish bottleneck.** Realized loss-to-decay metric (introduced yesterday): 2 of 17 lifetime drafts (11.8%, slightly down from 13.3% on the smaller denominator). **Net realized publish from past 31 days of drafting: 0 of 17.** Lead Architect call still owed; 5/8 marketing-output push will be the 24th consecutive day with no `blog.ts` source-code change.
 
-- **4/29 World Cup 2026 General Sale Closing — credibility threshold passed yesterday.** Yesterday's Hook 2 flagged 5/06 as the last credibility-acceptable publish day. Today: 35 days to opener, 8-day drift from the headline frame. Per the threshold call, the piece should now be re-headlined or shelved. **Recommendation: shelve the piece in original form; harvest the 65.5% FIFA-most-expensive ratio + Last-Minute Sales Phase data for the WC-opener email-blast Email Agent ships when cron unblocks.** Drop the standalone draft from the publish queue.
-- **4/27 Summer Concert Tour 2026** — references "Friday May 1 deadline" in opener. **Now 6 days past.** The 1-line freshen Hook 2 has flagged for two weeks running still works; opener swap from "Friday May 1" → "early May" preserves the body data. Publishable today through Saturday.
-- **5/4 Cubs vs Reds Wrigley Field** — last live-execution slot (G6) closed yesterday at 13:20 CT. Series complete. Piece is series-retrospective-only now — re-headline as "What the May Cubs Home Stand Showed Us About Mid-Week MLB Pricing" and shelve as a retrospective for the next mid-week MLB series, OR shelve entirely. **Recommendation: shelve.** The Wrigley page itself (live since `636e40b` on Mon 5/04) holds standalone value; the blog draft was a series-coupled piece and the series is over.
-- **4/15 / 4/22 / 4/14 / 4/28 / 4/16 / 4/21 / 4/23 / 4/30 / 5/5 / 5/6** — all evergreen-leaning or non-time-sensitive. Cycle in over remaining days of this week + next.
-
-**Tenth consecutive Mon/Tue/Wed/Thu/Sun flagging the publish bottleneck.** SEO Day-21 watch tomorrow morning will likely log the same bundle-and-publish gate. Today's harder data point: two drafts (4/29 WC, 5/4 Cubs) now decay-shelved with zero ship signal in their lifetime. **Net realized publish from the past 30 days of drafting: 0 of 15. Realized loss-to-decay: 2 of 15 (13.3%) and counting.**
-
-**Angle:** Re-escalation, Day 30, with two drafts now confirmed decay-shelved. Realized-loss metric introduced.
+**Angle:** Re-escalation, Day 31, queue at 13 actionable drafts, anniversary-window pressure on 5/7 piece.
 **Target keyword:** n/a — pipeline issue
-**Content type:** Lead Architect escalation (tenth consecutive)
-**Priority:** Critical (Day 30, full month; realized-loss metric now non-zero and growing)
+**Content type:** Lead Architect escalation (eleventh consecutive)
+**Priority:** Critical (Day 31; 5/7 piece anniversary window opens today)
 
-### Hook 3: Today's trending events scan — NBA Round 2 opens this weekend + WC opener T-35 days + FTC anniversary T-5
-**Topic:** Trending-event scan for Thursday 5/7:
+### Hook 3: Today's trending events scan — NBA Round 2 weekend + WC opener T-34 days + FTC anniversary T-4
+**Topic:** Trending-event scan for Friday 5/8:
 
-1. **NBA Round 2 opens this weekend** (likely Saturday 5/9 or Sunday 5/10 — verify against actual NBA brackets when bracket finalizes). Last 1–2 Round 1 elimination games today. The 4/14 NBA playoffs draft (Round 1 framing) reaches its terminal relevance window today; from tomorrow forward the framing is supplanted by Round 2 narrative. The 4/28 same-day playbook is series-agnostic and carries cleanly into Round 2 — **publish before the weekend**. **Content tie-in priority: HIGH** — both already drafted; publish-action only.
+1. **NBA Round 2 opens this weekend** (Saturday 5/9 / Sunday 5/10). Final Round 1 elimination games closed yesterday. The 4/14 NBA playoffs draft (Round 1 framing) hits its terminal relevance window today — last-credibility-acceptable publish day. **Recommendation: ship the 4/14 draft today before the Round 2 narrative supplants it tomorrow, OR shelve.** The 4/28 same-day playbook is series-agnostic and carries cleanly into Round 2 — publish before Saturday tip-off. **Content tie-in priority: HIGH** — both already drafted; publish-action only.
 
-2. **World Cup 2026 at T-35 days.** No fresh news cycle today. Today's All-In Pricing piece picks up the FTC-rule thread that intersects the WC pricing context (every WC ticket sold inside the U.S. window will display all-in by default). **Content tie-in priority: handled inline.**
+2. **World Cup 2026 at T-34 days.** No fresh news cycle today. The page refresh today (Hook 1) lifts AT&T-specific search-intent capture surface ahead of the FIFA-resale-window general-search ramp. **Content tie-in priority: handled inline.**
 
-3. **FTC Junk Fees Rule one-year anniversary T-5 days** (rule effective May 12, 2025; today 5/07/2026). Today's blog draft uses this directly as the lead frame. **Content tie-in priority: today's deliverable.**
+3. **FTC Junk Fees Rule one-year anniversary T-4 days** (rule effective May 12, 2025; today 5/08/2026). The 5/07 All-In Pricing piece is anniversary-framed and publishable today through Tuesday — see Hook 2 timing recommendation.
 
-4. **NHL Conference Finals T-3 days** (Stanley Cup Conference Finals Round 3 opens roughly 5/10–5/12 historically; verify against actual schedule when known). The 4/8 archived NHL/playoff piece had Round 1 framing and is now four rounds and 30 days stale — confirms the archive recommendation. **Content tie-in priority: NONE — archive call holds.**
+4. **NHL Conference Finals open ~5/10–5/12.** No current draft targets this round. The 4/8 archive-recommendation piece had Round 1 framing and is now four rounds and 31 days stale — archive call holds. **Content tie-in priority: NONE.**
 
-5. **MLB rivalry-week scans** — Cubs vs Cardinals 5/9–5/11 at Busch Stadium (St. Louis), Yankees vs Red Sox 5/12–5/14 at Yankee Stadium. Both are top-3 MLB rivalry-week pricing benchmarks and would be natural Wednesday-news-slot material for next week. **Content tie-in priority: forward-flag** for next Sunday's 5/10 calendar plan — MLB-rivalry-pricing-benchmark angle on either Cards-Cubs or Yanks-Sox.
+5. **MLB rivalry-week scans** — Cubs vs Cardinals 5/9–5/11 at Busch Stadium (St. Louis), Yankees vs Red Sox 5/12–5/14 at Yankee Stadium. Both top-3 MLB rivalry-week pricing benchmarks. Yesterday's Hook 3 forward-flagged this for next Sunday's 5/10 calendar plan as the Wednesday-news-slot for next week. **Content tie-in priority: forward-flag holds.**
 
-6. **Bruno Mars Soldier Field T-9 days** (yesterday was T-10). Inside the 14-day pricing-curve discount window — yesterday's draft remains the right surface; if any first-pull pricing data lands today (i.e., a watcher's actual purchase or alert-trigger moment), would justify a one-line freshen on the Bruno Mars draft before its eventual publish. **Content tie-in priority: monitor only.**
+6. **Bruno Mars Soldier Field T-8 days** (Saturday 5/16 show). Inside the 14-day pricing-curve discount window per the 5/06 draft. If any first-pull pricing data lands this weekend (watcher purchase or alert-trigger), would justify a 1-line freshen on the 5/06 draft before publish. **Content tie-in priority: monitor only.**
 
-**Angle:** Daily trending scan — six handles. Two new today (FTC anniversary used inline as today's lead, MLB rivalry-week forward-flag for next Sunday's plan), four carryovers with status updates (Cubs series closed/shelved, NBA Round 2 opening, WC at T-35, Bruno Mars T-9).
-**Target keyword:** "all-in pricing tickets," "FTC junk fees rule one year," "NBA playoff tickets Round 2," "Cubs vs Cardinals tickets," "Yankees vs Red Sox tickets"
-**Content type:** Mixed — today's new draft (Hook 1) + publish-action on existing drafts (Hook 2) + next-week forward-flag (this Hook)
-**Priority:** Medium
+**Angle:** Daily trending scan — six handles, two acquiring publish-action urgency today (4/14 + 4/28 Round-1 → Round-2 supersession; 5/7 anniversary window opens), four carryovers.
+**Target keyword:** "NBA playoff tickets Round 2," "FTC junk fees rule anniversary," "Cubs vs Cardinals tickets," "Yankees vs Red Sox tickets"
+**Content type:** Mixed — publish-action triage on existing drafts
+**Priority:** Medium-High (Round-2-supersession deadline today)
 
-### Hook 4: SEO heads-up file Friday AT&T refresh — first exercise of cc-on-commit format due tonight
-**Topic:** Per yesterday's Hook 4 closure on the SEO Day-20 reply bundle, the **first exercise of the cc-on-commit format is due tonight (Thursday evening 5/07)** as a heads-up file `seo-requests/2026-05-07-content-data-touch.md` for Friday's AT&T Stadium refresh. SEO Reply 3 specified the format adds:
+### Hook 4: Step 5b miss-and-late filing — first scheduled exercise of the cc-on-commit cadence slipped
+**Topic:** Per yesterday's Hook 4 commitment ("the heads-up file lands tonight"), `seo-requests/2026-05-07-content-data-touch.md` was due Thursday evening 5/07. **It did not file.** SEO Bundle Watch Day 22 entry composed at 07:00 UTC today already logged the no-land observation. **Heads-up file filed instead this morning** at `seo-requests/2026-05-08-content-data-touch.md` — ~8 hours late vs. cadence — before the AT&T commit landed.
 
-(a) **Filename in title-line as `## Touched: web/src/data/worldcup.ts`** for one-grep scan
-(b) **1-line schema-impact estimate** (e.g. "AggregateOffer price range will shift if Cat 1 is repriced; otherwise no schema delta")
+**Cause:** Thursday's content-hook composition wrapped without spawning the heads-up file step; Step 5b was visible in Hook 5 ("(NEW — first exercise per Hook 4)") but not actioned in the same session. The accreted refresh-checklist labels (Step 0, 1, 2, 3, 4, 5, 5b) ordered the heads-up file as a sub-step of Step 5, which fired on Friday — too late. Hook 6 from yesterday already proposed renumbering to put the heads-up at Step 1; today's miss is the data point arguing for it.
 
-Both adds fit the under-200-words target. **Action item Content Agent side: produce the heads-up file tonight after this hook commits.** Content of the file: AT&T Stadium refresh scope (per Friday entry in 5/03 plan: 9-match volume framing, QF-3 placement, July 4 R16, Cowboys/Canelo resale comps, AC/heat framing, 9–10 sections, 8 ticketTips, 8–12 keywords), Step 0 cross-check confirmation (`grep -n "venue: 'att-stadium'" web/src/data/worldcup.ts | grep "round: '"` will run tomorrow morning before edit), expected schema-impact estimate ("AggregateOffer price range expands if Cat 1 anchors against $1K–$10K Canelo comp; FAQPage entries unchanged unless ticketTips count grows beyond 8"), commit message stub `Content refresh: att-stadium`.
+**Forward fix (committed today):** Step 5b moves to **Step 1** in tomorrow's Mercedes-Benz refresh slot. Mercedes-Benz heads-up file is due tonight Friday 5/8 evening, drafted as the first artifact of the Saturday-refresh flow rather than the last. The renumbering proposal from yesterday's Hook 6 is adopted in spirit if not yet in label order — the new effective order is:
+- Step 1 (was Step 5b): SEO heads-up file (Thursday evening for Friday refresh; Friday evening for Saturday refresh)
+- Step 2 (was Step 0): Cross-check `worldCupMatches` array
+- Step 3 (was Step 1): Edit `worldcup.ts`
+- Step 4 (was Step 2): Verify against Step 2 cross-check
+- Step 5 (was Step 3): `npx tsc --noEmit`
+- Step 6 (was Step 4): `git diff --stat` scope check
+- Step 7 (was Step 5): Explicit `Content refresh:` commit
 
-**Net new commitment:** the heads-up file lands tonight, the AT&T refresh + commit lands Friday morning, the marketing-output push runs Friday end-of-day. Three-step cadence; first run.
+Will hold this label order through tomorrow's Mercedes-Benz slot. If clean, the renumbering becomes the canonical refresh-checklist starting next Sunday's 5/10 calendar plan.
 
-**Angle:** First exercise of newly-accepted cross-agent format — process-validation moment.
+**Calibration carryover:** the Thursday-evening heads-up step needs a stronger session-spawn signal in the content-hook template. Yesterday's Hook 4 had the commitment buried at the end of an ack-only paragraph; today's content-hook will end with an explicit `### Tonight: Mercedes-Benz heads-up file due` action item to test whether a more visible cue catches it next slot.
+
+**Angle:** Process miss on first scheduled exercise of new cadence; root cause identified, forward fix committed, calibration carryover to next slot.
 **Target keyword:** n/a — operational
-**Content type:** Cross-agent commitment due tonight
-**Priority:** Medium (commitment due 5/07 evening)
-
-### Hook 5: Tomorrow's Friday slot forward-flag — AT&T Stadium refresh, no new draft
-**Topic:** Friday 5/8 is the page-refresh slot per the agent schedule. Per the 5/03 plan: AT&T Stadium (`att-stadium` in `web/src/data/worldcup.ts`). **Why this venue:** hosts 9 World Cup matches (highest match count in the tournament), one Quarter-Final (QF-3 on July 10, 2026), one R16 falling on July 4 (US Independence Day demand bump shared with Hard Rock R16-4). Largest-capacity NFL stadium (~105K with end-zone seating). Currently sparse data per the WC pattern (3 generic sections, ~4 keywords, 1-paragraph description).
-
-Refresh-checklist:
-- **Step 0 (per 5/02 process improvement):** `grep -n "venue: 'att-stadium'" web/src/data/worldcup.ts | grep "round: '"` to confirm exactly which 9 matches AT&T hosts before drafting. Mandatory — the SoFi-Third-Place factual error this past Friday is exactly the error class this step prevents.
-- **Step 1:** edit description, sections (expand to 9–10), ticketTips (expand to 8), keywords (expand to 8–12) on `att-stadium` entry
-- **Step 2:** verify against Step 0 cross-check (no Third-Place / Final / Semi-Final misattribution)
-- **Step 3:** `npx tsc --noEmit`
-- **Step 4:** `git diff --stat -- web/src/data/worldcup.ts` to confirm scope is single-file
-- **Step 5 (per 5/03 process improvement):** explicit commit `git commit -m "Content refresh: att-stadium"` BEFORE the daily marketing-output push runs
-- **Step 5b (NEW — first exercise per Hook 4):** SEO heads-up file filed Thursday evening 5/07 (tonight)
-
-Content scope per 5/03 plan: 9-match volume framing, Quarter-Final placement, Independence Day R16, Cowboys regular usage with sold-out resale comp (Cowboys vs Eagles primetime), Country Music Awards usage, Canelo boxing megafight comp ($1K–$10K+ resale), giant-screen landmark status, AC + retractable roof advantages over outdoor June/July venues like MetLife (fan-comfort messaging), Texas heat indoor-comfort framing, transit (DART Trinity Lakes / parking lots), cross-platform comparison framing with TicketScan CTA. 8 AT&T-specific ticketTips (sideline 100s sightline best, endline avoidance, 300s mezz mid-range value, 400s upper budget tier, Star Suites premium upsell, transit/parking specifics, AC/heat comfort framing, post-on-sale resale dip with Cowboys/Canelo comps).
-
-Backup target if AT&T finishes faster than expected: Mercedes-Benz Stadium (Atlanta, hosts 8 matches incl. Round of 16) — but Saturday's slot is scoped to Mercedes-Benz, so Friday-overflow would be NRG (Houston) or Arrowhead (KC) instead.
-
-**Angle:** Friday slot forward-flag — refresh-checklist locked, six steps, first-exercise of two newly-adopted process iterations (Step 5 + Step 5b) in the same commit.
-**Target keyword:** "AT&T Stadium World Cup 2026," "AT&T Stadium tickets World Cup," "AT&T Stadium quarter-final tickets," "AT&T Stadium July 4 World Cup," "Cowboys AT&T Stadium tickets"
-**Content type:** Tomorrow's slot planning trigger
+**Content type:** Cross-agent process learning
 **Priority:** Medium
 
-### Hook 6: Process check — refresh-checklist step count (now 6 explicit steps + 1 "Step 5b") — consider re-numbering at next slot
-**Topic:** The refresh-checklist has accreted to **6 explicit numbered steps + 1 sub-step** (Step 0 added 5/02, Step 5 added 5/03, Step 5b added 5/06). The current step labels are functional but slightly confusing — Step 0 is procedurally first; Step 5b is procedurally before Step 5 (heads-up files Thursday evening, commit Friday morning). The numbering suggests a sequence the actual execution doesn't follow.
+### Hook 5: Tomorrow's Saturday slot forward-flag — Mercedes-Benz Stadium refresh
+**Topic:** Saturday 5/9 is the second consecutive page-refresh slot per the agent schedule. Per the 5/03 plan: Mercedes-Benz Stadium (`mercedes-benz-stadium` in `web/src/data/worldcup.ts`). **Why this venue:** hosts 8 World Cup matches (verify via Step 2 cross-check before drafting) including a Round of 16 — currently sparse data in line with pre-refresh AT&T (3 sections, 4 keywords, 1-paragraph description). Atlanta is the largest WC media market in the Southeast US after Hard Rock's Florida market. Mercedes-Benz hosts Atlanta United (MLS) which gives a soccer-specific precedent comp (MLS Cup, Concacaf Champions League pricing data — Atlanta United's 2018 MLS Cup Final at this venue cleared $400–$1,800 sideline resale). Super Bowl LIII (Feb 2019, Patriots 13 Rams 3) at $2,500–$8,000+ resale is the direct NFL-Final pricing comp. Falcons regular usage, the retractable pinwheel roof / transit walkability via MARTA, and the much-publicized "$2 hot dog" food-and-beverage pricing program are differentiated content surfaces.
 
-**Recommendation:** Re-number at the next refresh slot (Friday 5/8 AT&T, since it's the first slot to use all six steps + the sub-step):
-- Step 1: SEO heads-up file (Thursday evening, currently Step 5b)
-- Step 2: Cross-check `worldCupMatches` array (currently Step 0)
-- Step 3: Edit `worldcup.ts` (currently Step 1)
-- Step 4: Verify against Step 2 cross-check (currently Step 2)
-- Step 5: `npx tsc --noEmit` (currently Step 3)
-- Step 6: `git diff --stat` scope check (currently Step 4)
-- Step 7: Explicit commit (currently Step 5)
+**Refresh-checklist (re-ordered effective today per Hook 4):**
+- **Step 1 (NEW position): SEO heads-up file** filed Friday evening 5/8 (tonight) at `seo-requests/2026-05-08-content-data-touch-mercedes-benz.md` — drafted as first artifact of the Saturday-refresh flow.
+- Step 2: Cross-check `worldCupMatches` array — `grep -n "venue: 'mercedes-benz-stadium'" web/src/data/worldcup.ts | grep "round: '"`. Confirm exact match list before drafting (8 matches expected per 5/03 plan; verify, since AT&T's "9" was wrong).
+- Step 3: Edit `worldcup.ts` — description, sections (expand to 8–10), ticketTips (expand to 6–8), keywords (expand to 8–10) on `mercedes-benz-stadium` entry.
+- Step 4: Verify against Step 2 cross-check (no Final / Semi-Final / Third-Place misattribution).
+- Step 5: `npx tsc --noEmit`.
+- Step 6: `git diff --stat -- web/src/data/worldcup.ts` to confirm scope is single-file.
+- Step 7: Explicit commit `git commit -m "Content refresh: mercedes-benz-stadium"` BEFORE the daily marketing-output push runs. Push deferred to EOD marketing-output cycle.
 
-The process content stays identical; the labels just match execution order. Worth flagging in tomorrow's heads-up file or in next Sunday's 5/10 calendar plan.
+Content scope per 5/03 plan: 8-match volume framing (verify), Round of 16 placement (verify), Atlanta United / MLS Cup 2018 pricing comp, Super Bowl LIII NFL-Final pricing comp, retractable pinwheel-roof + MARTA walkability framing, "$2 hot dog" food-pricing program (a unique-to-Mercedes-Benz content angle — competitor venue pages don't reference it). 6–8 Mercedes-Benz-specific ticketTips (sideline 100s sightline best, endline avoidance, 200s/300s mid-range value, 400s upper budget tier, club-level premium upsell, MARTA transit specifics, food-pricing program mention, post-on-sale resale dip pattern). 8–10 keywords.
 
-**Angle:** Process housekeeping — checklist labels lag reality, re-number at next exercise.
-**Target keyword:** n/a — internal process
-**Content type:** Cross-agent process iteration proposal
+**Backup target if Mercedes-Benz finishes faster than expected:** Lumen Field, Seattle (hosts 6 WC matches per 5/03 plan; verify via Step 2 — soccer-specific precedent via Sounders MLS / Concacaf Champions League pricing data, peak-volume rainfall June average 1.7" so the open-air-bowl framing matters).
+
+### Tonight: Mercedes-Benz heads-up file due
+
+`seo-requests/2026-05-08-content-data-touch-mercedes-benz.md` to be drafted Friday evening 5/8 — first artifact of the Saturday-refresh flow per the new Step 1 position. Format per SEO Reply 3:
+- Title-line `## Touched: web/src/data/worldcup.ts` for one-grep scan
+- 1-line schema-impact estimate
+- Refresh scope summary
+- Commit plan
+- SEO sign-off requested
+
+**Composition note for tonight:** if the heads-up file does not file by Friday evening, log the second consecutive miss in tomorrow's content-hook Hook 4 and recommend the renumbering be reverted (the cadence is then proven structurally fragile, not just hook-template-fragile) plus an alternative process — e.g., the heads-up file becomes a session-blocking artifact rather than a same-session-completion artifact.
+
+**Angle:** Saturday slot forward-flag — refresh-checklist re-ordered (Step 1 was Step 5b), heads-up file due tonight as session-end action item.
+**Target keyword:** "Mercedes-Benz Stadium World Cup 2026 tickets," "Mercedes-Benz Stadium World Cup tickets," "Atlanta World Cup tickets," "World Cup Mercedes-Benz Stadium"
+**Content type:** Tomorrow's slot planning trigger + tonight's session-end action item
+**Priority:** Medium-High (cadence-recovery slot)
+
+### Hook 6: Process check — three consecutive WC sparse-venue refreshes shipped on Friday-Saturday cadence
+**Topic:** Pattern established this week and last: SoFi (Fri 5/01), Hard Rock (Sat 5/02), AT&T (Fri 5/08), Mercedes-Benz (Sat 5/09 — projected). That's a ~4-venue / ~9-day rolling pace through the Friday-Saturday refresh slots. At this pace, the remaining 11 unrefreshed WC venues (Levi's, Gillette, Lincoln Financial, NRG, Arrowhead, Lumen Field, BMO Field, BC Place, Estadio Azteca, Estadio Akron, Estadio BBVA) clear in roughly 5–6 more weeks of Friday-Saturday slots — i.e., the full WC sparse-venue refresh queue completes by approximately mid-June, well ahead of the June 11 tournament opener.
+
+**The pace is sustainable** if every Friday-Saturday slot is used and Step 0 / Step 5b cadence holds. This week's Step 5b miss is the only material process snag in the streak. Worth flagging today as a data point for next Sunday's 5/10 plan to consider whether the WC venue queue should accelerate (e.g., add Wednesday slots for the 8 sparse US/Canada venues that would otherwise take through mid-June at 2/week) or hold the current 2/week pace and use the freed capacity on blog drafts.
+
+Recommendation: hold 2/week through Mercedes-Benz next Saturday (5/16) — that slot finishes the 4 most-match-dense US WC venues remaining. Re-evaluate then.
+
+**Angle:** Pace audit — Friday-Saturday WC refresh cadence is sustainable, full queue clears by mid-June at current pace, Step 5b cadence is the only fragility.
+**Target keyword:** n/a — internal cadence
+**Content type:** Process audit
 **Priority:** Low
