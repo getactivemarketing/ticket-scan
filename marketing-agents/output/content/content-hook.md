@@ -1,123 +1,121 @@
-## Today's Content Hook — 2026-05-16 (Saturday)
+## Today's Content Hook — 2026-05-17 (Sunday)
 
-Saturday — page-refresh slot (no new blog draft). Today's deliverables: this content hook, the Saturday SEO heads-up file (`seo-requests/2026-05-16-content-data-touch.md`) filed as the literal first artifact of the run per Forward Fix v2, the Levi's Stadium refresh in `web/src/data/worldcup.ts`, and the refresh-log entry. **Forward Fix v2 second-test execution — clean landing this morning. Two-of-two consecutive clean landings (Lumen 5/15 + Levi's 5/16) hits the 5/09 lock-in criterion; the pattern is now canonical from 5/22 Gillette forward. Day 39 publish drought. Levi's Stadium refresh + the `extractLowestPrice` bug replicates to a fourth stadium page. Bruno Mars Soldier Field T-0 — show is tonight.**
+Sunday — copy review + content calendar audit + next-week plan slot (no new blog draft). Today's deliverables: this content hook, the refreshed `next-week-plan.md` covering the week of 5/18–5/24 with Mon/Tue/Wed/Thu blog topics + Fri/Sat refresh slots, and the implicit copy-review pass over the 19-draft backlog folded into the plan document. **Forward Fix v2 in effect from 5/22 forward (canonical lock-in achieved 5/16); Conference Finals tip off this week (NBA + NHL concurrent); World Cup 2026 T-25 days from kickoff (June 11). Publish drought hits Day 40 with no publishes since 4/07 — the longest single drought on record. extractLowestPrice patch remains unabsorbed at Day 7 with four WC stadium pages now shipping the schema bug.**
 
-### Hook 1: Saturday refresh — Levi's Stadium (worldcup.ts)
+### Hook 1: Sunday slot — copy review + audit + next-week plan
 
-**Topic:** Today's refresh expands `levis-stadium` in `web/src/data/worldcup.ts` from 3 generic tiers / 4 ticketTips / 4 keywords / 1-sentence description to **9 sections / 7 ticketTips / 10 keywords / a single rich paragraph**. Seventh-consecutive sparse WC USA-venue refresh in the post-MetLife pair-slot cadence (MetLife 4/25, SoFi 5/01, Hard Rock 5/02, AT&T 5/08, Mercedes-Benz 5/09, Lumen 5/15, **Levi's today**). Diff shape: `19 / 10` on a single file — within tolerance of the Lumen 21/10, AT&T 20/10, Mercedes-Benz 20/10 commit shapes; the slightly smaller diff reflects Levi's structurally-sparser 3-Group-Stage-match content surface vs the 5-9-match arcs at the prior refreshed venues.
+**Topic:** Sunday plan composition for the week of 5/18–5/24. Mon 5/18 (big-idea blog), Tue 5/19 (tactical blog), Wed 5/20 (news/timely blog), Thu 5/21 (comparison blog), Fri 5/22 (Gillette Stadium refresh — first canonical Forward Fix v2 execution per yesterday's lock-in), Sat 5/23 (pair-slot refresh — Lincoln Financial Field), Sun 5/24 (this same task next week). Copy review of the now-19-draft backlog folded into the audit section of the plan; no new blog draft today.
 
-**Step 0 — first clean-input pass since the step was added 5/02.** `grep -n "venue: 'levis-stadium'" web/src/data/worldcup.ts | grep "round: '"` returns **3** (M14 Mon 6/15 13:00 PT Group G, M29 Fri 6/19 16:00 PT Group C, M62 Sun 6/28 16:00 PT Group G — all Group Stage, **zero knockout**). Last Sunday's `next-week-plan.md` venue table called this correctly — 3 matches, NOT 6 — having absorbed Step 0 catches 1-4 from prior weeks. **5-of-6 (83%) overall, 1-of-1 (100%) since the Sunday-plan-composition cross-check appears informally adopted.** If next Sunday's 5/17 plan also lands its venue table clean, the upstream cross-check absorption confirms two-for-two and the structural blocker filed 5/15 §(d) downgrades.
+**Angle:** Third consecutive Sunday-plan composition that runs the upstream Step 0 cross-check on every venue-related match-count assertion before it lands in the document — the cross-check absorbed informally 5/03, made canonical 5/10 after the 5-of-6 hit rate, and is now in its second canonical execution. Next-week venue table this morning was verified clean against `web/src/data/worldcup.ts` for both Gillette Stadium (Fri 5/22 slot) and Lincoln Financial Field (Sat 5/23 slot) before draft composition.
 
-**Why this venue + this slot:**
+**Target keyword:** N/A (internal process artifact)
+**Content type:** Sunday plan composition + audit
+**Priority:** High (4-of-4 weekly blog topics need to be set for Mon AM execution; refresh queue needs to be set for the Fri/Sat pair)
 
-- **5/15 sparse-venue queue slated Levi's as the 5/22-5/23 candidate**, but yesterday's content-hook Hook 7 conditional Saturday-slot branch decision pulled Levi's forward to today (5/16 Saturday) since Bruno Mars T-0 pricing-freshen data did not land at session-start. **Pulling Levi's forward by 6 days clears the 5/22-5/23 pair-slot for Gillette Stadium as the next sparse-venue refresh** — accelerating the US-venue-clear-by-WC-kickoff timeline by one full week.
-- **Levi's is the only US WC venue without a knockout-round match.** The "pure group-stage US venue" content angle is uniquely Levi's. Every other US WC venue page has knockout-round content surface (R32, R16, QF, SF, TP, or Final). Levi's owns the structurally-different "all Group Stage" framing outright.
-- **The $80 `lowPrice` floor sets Levi's as the new structurally-cheapest US WC venue.** Undercuts Lumen Field's $110 floor by $30, MetLife/SoFi's $150 by $70, and the average US WC venue page's ~$130 floor by ~$50. The "cheapest-cheap-seat US WC venue" content angle is now data-anchored at depth.
-- **Stanford Stadium 1994 World Cup heritage callback is uncontested.** Stanford hosted the 1994 USA Group Stage matches and a Round of 16, 18 miles north of Levi's — the only 2026 US WC venue with a direct 1994-USA-tournament-heritage angle to the same Bay Area sports region. Page now has explicit "1994 World Cup Stanford Levi's" keyword targeting.
-- **2024 Copa America Group D pricing comp ($200-$650 sideline at Levi's) is the cleanest soccer-tournament resale precedent at this exact venue.** Combined with 2015 MLS All-Star Game ($80-$300) and Earthquakes 2014-2015 regular-season ($30-$90 at Levi's), the page carries three distinct Levi's-specific soccer-resale comps + the 1994 Stanford callback = four soccer-credibility anchors no other US WC venue page can match in this configuration.
-- **Transit-honesty disclosure is content-differentiated.** Every other US WC venue page is written with positive transit framing. Levi's structurally has the worst transit access of any US WC venue, and the page is honest about it rather than papering over — consumer-advocate brand voice in service of a distinctive page (and ranks better against "Levi's Stadium transit" / "Levi's Stadium parking" / "how to get to Levi's Stadium" queries than competing pages that bury the same negative).
+### Hook 2: Publish drought hits Day 40 — single longest drought on record
 
-**SEO impact expected:** Full section data populates the seating-guide sidebar and gives Google more on-page entity signals for "Levi's Stadium" + "Levi's Stadium World Cup 2026" knowledge clusters. 10 keywords (was 4) covers the full intent spectrum from broad "Levi's Stadium World Cup tickets" to long-tail "1994 World Cup Stanford Levi's" and "cheapest US World Cup tickets." FIFA Category mapping (Cat 1 / Cat 2 / Cat 3 / Cat 4) embedded in section descriptions captures the official-pricing-vocabulary search surface. **The "pure group-stage US venue" + "cheapest US WC venue at $80 floor" + "Stanford 1994 heritage callback" + "transit-honesty" content angles are all uncontested at depth.**
+**Topic:** Last published blog post: `world-cup-2026-final-ticket-10990-dynamic-pricing` on 2026-04-07 (commit `c0dcf5a`). Today: 2026-05-17. **Day 40.** The drought has now extended past the prior worst-week milestone of Day 33 (logged in last Sunday's plan opener) by a full week. The drafting:publishing ratio is now Δ +4 drafts/week : 0 publishes/week for the **eighth** consecutive week.
 
-**Target keyword:** Multi-thread per the keywords list (see refresh-log entry post-commit)
-**Content type:** Page refresh
-**Priority:** High (Saturday slot execution + new $80 floor-price content surface + first US WC venue without a knockout-round match + Stanford 1994 heritage callback + transit-honesty content-differentiated angle)
+**Angle:** The 19-draft queue (was 15 at last Sunday's audit + 4 new drafts this week = 19) now includes:
 
-### Hook 2: Forward Fix v2 second-test execution — clean landing, lock-in criterion hit
+- **2 drafts past 30 days old** (4/8 archive recommendation, 4/14 SHELVED per last Sunday's call but still in folder — archived/ directory still doesn't exist)
+- **5 drafts in the 20-30 day window** (4/15, 4/16, 4/21, 4/22, 4/23) — every one of these has missed at least one optimal publish window already
+- **4 drafts in the 14-19 day window** (4/27, 4/28, 4/29, 4/30) — Q2 comparison series + same-day playbook + WC pieces, all anniversary-relevant content that decays daily
+- **4 drafts in the 7-13 day window** (5/4, 5/5, 5/6, 5/7) — including the 5/7 All-In Pricing piece that **forfeited its FTC anniversary peak on 5/12** (5 days ago)
+- **4 drafts under 7 days old** (5/11, 5/12, 5/13, 5/14) — this week's Mon-Thu cohort
 
-**Topic:** Today's run order executed per the Forward Fix v2 cadence committed in `seo-requests/2026-05-09-content-data-touch.md`:
+**5/7 anniversary-piece forfeit is the single largest decay event of the drought.** The FTC's Junk Fees Rule anniversary was Tuesday 5/12 — exactly one year after rule effective date. The 5/7 piece was written to land that day. It didn't. Anniversary search-volume peak passed without TicketScan capture; the next anniversary opportunity is May 12, 2027. This is the second realized decay loss after the 4/14 NBA Round-1 piece shelved 5/10 — **realized loss-to-decay is now 2 of 19 (10.5%)**, with the 4/8 still-pending-archive moving the count to 3 of 19 (15.8%) when archived.
 
-1. **Step 1 (SEO heads-up file) — Filed as artifact 1 at session start**, ahead of the current-state read of the Levi's Stadium entry, ahead of any `worldcup.ts` editing, ahead of any content-hook composition. ✅
-2. **Calendar-day cadence (same morning as refresh, not evening-prior).** Heads-up landed Saturday morning with ≥2 hours buffer to commit. ✅
-3. **mtime ordering.** Heads-up mtime precedes `worldcup.ts` modification mtime by enough margin that Path-B can verify post-commit. ✅
+**Target keyword:** N/A (internal — Lead Architect bandwidth flag)
+**Content type:** Publish-velocity escalation — eighth consecutive Sunday-opener flag
+**Priority:** Critical (drought decay compounds weekly; queue-clearing plan filed in `next-week-plan.md` audit section is unchanged in shape from last week's plan — needs Lead Architect bandwidth to execute)
 
-**Angle:** Two-for-two clean landings on the second-and-third scheduled exercises (Lumen 5/15 + Levi's 5/16) following the two-for-two miss rate on the first-and-second scheduled exercises (AT&T 5/08 ~8 hours late, Mercedes-Benz 5/09 ~12 hours late). **Two consecutive clean landings hits the lock-in criterion committed 5/09.** Forward Fix v2 is now canonical from 5/22 Gillette Stadium forward — next Friday's refresh runs the canonical pattern as a non-test execution.
+### Hook 3: Conference Finals tip off this week — NBA + NHL concurrent
 
-**Target keyword:** N/A (internal, cross-agent process)
-**Content type:** Cross-agent process execution report — canonical lock-in
-**Priority:** Medium (process-quality data point; canonical-pattern lock-in achieved with today's clean landing)
+**Topic:** NBA Conference Finals Game 1s tip off Tuesday 5/19 (Eastern) and Wednesday 5/20 (Western), per the NBA Round 2 sweep/elimination math from last week. NHL Conference Finals are already in progress — Round 3 Game 2s tonight, Game 3s start mid-week. **Two concurrent Conference Finals running through the same week is the strongest sports-content moment of Q2.**
 
-### Hook 3: extractLowestPrice bug replicates to FOURTH stadium — Levi's Stadium
+**Angle:** Conference Finals pricing is the cleanest 7-game-series pricing curve in any major league — Game 1 + Game 5 reliably price as the two cheapest tickets of the series (Game 1 = no elimination math, Game 5 = mid-series fatigue + variable home/away), Game 6 + Game 7 price as the two most expensive (elimination + championship-deciding implications). **This is Monday 5/18's big-idea blog target.** The "Conference Finals pricing window" framework applies to both NBA and NHL series concurrently, generalizes to any 7-game playoff format, and pairs naturally with Wednesday 5/20's news/timely piece (live Game 1 cross-platform pricing for whichever matchup commands the most attention).
 
-**Topic:** T+0 hours on the patch-before-Levi's-replication clock. The 3-line `extractLowestPrice()` patch filed in `seo-requests/2026-05-10-seo-replies-bundle.md` §Reply 1 remains unabsorbed six days after filing. Today's Levi's Stadium commit ships into the same `web/src/app/world-cup-2026/[stadium]/page.tsx` that emits `lowPrice` from the buggy function as written. **Fourth consecutive WC stadium page to launch with the bug** after AT&T (5/8), Mercedes-Benz (5/9), and Lumen (5/15).
+**TicketScan angle:** The watchlist drought (now extended past 14 days — last add still holds at Apr 25 18:27 UTC, taranimeramaro × Bruno Mars MetLife) plus Conf Finals' historically high cross-platform variance (StubHub vs SeatGeek typically spreads 15-30% on Conference Finals seats vs the typical 5-15% spread on regular-season games) makes this the single best organic-acquisition moment for any TicketScan content week in Q2. **The Conf Finals piece + the Game 1 news piece + the Wednesday CFinals matchup-specific piece together form a four-day content moment that the Email Agent + Social Agent can amplify.**
 
-**Angle:** This is the sixth consecutive content-hook flagging the patch (Mon 5/11 through Fri 5/15 and today). The pattern is now structural — every remaining WC stadium refresh ships into the same buggy function until the bundle merges. With Levi's pulled forward to today, **the next 8 stadium refreshes all ship into the bug if the patch isn't absorbed in the next 6 days** (Gillette 5/22, NRG 5/29, Lincoln Financial 6/5, Arrowhead 6/12, plus the 5 Canada/Mexico venues). **The bandwidth-block to fix this is still 90 minutes** — same single Lead Architect session clears the patch absorption, the bundle merge, and 10+ queued drafts.
+**Target keyword:** "nba conference finals tickets 2026," "nhl conference finals tickets 2026," "conference finals game 1 prices," "playoff ticket pricing curve," "cheapest game in playoff series"
+**Content type:** Blog draft target (Mon 5/18 + Wed 5/20 pair)
+**Priority:** High (concurrent NBA+NHL Conf Finals is the highest-leverage sports moment of Q2 + watchlist drought needs a re-acquisition trigger)
 
-**Worse with Levi's specifically:** Levi's $80 schema floor is the lowest across all 11 US WC venues. The buggy function will emit a number ~100× off — meaning AggregateOffer `lowPrice` ships at ~$8,000 instead of $80 for the page that should be ranking for "cheapest US World Cup tickets." The structurally-cheapest-US-WC-venue content surface that the page now carries at depth gets undermined at the schema layer until the patch absorbs.
+### Hook 4: World Cup 2026 T-25 days from kickoff
+
+**Topic:** WC 2026 opener at MetLife Stadium is **Thursday June 11, 2026.** Today is Sunday May 17, 2026. **T-25 days.** The 4/29 draft ("World Cup 2026 General Sale Closing April 2026") was written with the original framing "T-43 days"; the freshen call last Sunday converted it to "T-32 days"; today's number is **T-25 days**. Drift on freshen-needed framing is now -18 days from the original draft.
+
+**Angle:** The 25-day-out window is the canonical inflection point for WC pricing — every prior international WC has shown the same pattern: Days 30-60 out, both FIFA-direct and resale markets carry inflated speculative pricing; Days 15-30 out, resale starts to fragment as price-discovery on the secondary completes; Days 0-14 out, panic-sell behavior kicks in as sellers convert speculative buys to cash. **Today crosses into the second window (Days 15-30 out).** The 4/22 FIFA-resale piece + the 4/29 general-sale piece + the 4/15 seat-assignments piece together cover the structural-pipeline content the next 25 days will demand search-volume-wise; all three are in the unpublished queue.
+
+**Target keyword:** "world cup 2026 tickets," "world cup 2026 prices," "fifa world cup 2026 prices," "world cup countdown"
+**Content type:** Multi-piece freshen + publish recommendation
+**Priority:** High (WC pricing-curve inflection point crosses today; the three WC drafts in queue should all publish in the next 7 days to seed the front-loaded search surge)
+
+### Hook 5: extractLowestPrice bug — Day 7 unabsorbed, four stadium pages affected
+
+**Topic:** The 3-line `extractLowestPrice()` patch filed in `seo-requests/2026-05-10-seo-replies-bundle.md` §Reply 1 remains unabsorbed seven days after filing. Yesterday's Levi's Stadium commit (`1f32826`) shipped into the same `web/src/app/world-cup-2026/[stadium]/page.tsx` that emits `lowPrice` from the buggy function. **Fourth consecutive WC stadium page to launch with the schema bug** after AT&T (5/8 `305cb11`), Mercedes-Benz (5/9 `40b75bf`), and Lumen (5/15 `be62734`).
+
+**Angle:** This is the seventh consecutive content-hook flagging the patch (Mon 5/11, Tue 5/12, Wed 5/13, Thu 5/14, Fri 5/15, Sat 5/16, and today Sun 5/17). The bug is now structural — every WC stadium refresh from 5/22 forward (Gillette 5/22, Lincoln Financial 5/23, NRG 5/29, Arrowhead 6/5, plus the 5 Canada/Mexico venues = 9 pending refreshes) will ship into the same buggy function unless the patch lands. **Bandwidth-block to fix this is still 90 minutes** — same single Lead Architect session that would clear the patch absorption, the bundle merge, and 13+ queued drafts.
+
+**Levi's case is the worst-yet schema mismatch.** Levi's $80 schema floor is the lowest across all 11 US WC venues. The buggy function emits AggregateOffer `lowPrice` at ~$8,000 instead of $80 for the page that should be ranking for "cheapest US World Cup tickets" — the page's distinctive content surface is undermined at the schema layer until the patch absorbs.
 
 **Target keyword:** N/A (internal, code/SEO)
-**Content type:** Lead Architect bandwidth pre-flag — Day 28 on the bundle freeze, T+0 on FOUR consecutive Levi's-class replications
-**Priority:** Critical (deploy-blind data accuracy; pattern is now structural for the next 8 refreshes; Levi's case is the worst-yet schema mismatch because the page's distinctive content surface is "cheapest US WC venue")
+**Content type:** Lead Architect bandwidth pre-flag — Day 7 on patch absorption, four-stadium-replication
+**Priority:** Critical (deploy-blind data accuracy; pattern is structural; pending 9 stadium refreshes all ship into the same bug)
 
-### Hook 4: Publish-velocity Day 39 — queue at 18 drafts, Sunday morning is the next publish-bandwidth window
+### Hook 6: NHL Conf Finals Game 2s tonight — light-touch social-amplification window
 
-**Topic:** Backlog: still 18 drafts unpublished (no new draft today since Saturday is refresh slot). Last published post: 2026-04-07. Today: 2026-05-16. **Thirty-nine days.** Bruno Mars Soldier Field T-0 — show is tonight at Soldier Field.
+**Topic:** NHL Conference Finals Game 2s play tonight (Eastern + Western both have Game 2 on the schedule for Sun 5/17, per the 5/14 Round 3 tip-off math). Conference Finals Game 2 pricing typically softens 10-15% from Game 1 (Game 1 = no elimination math, Game 2 = home crowd already-paid-for-Game-1 fatigue). **Game 2 is reliably the second-cheapest Conf Finals ticket of the entire series.**
 
-**Angle:** Today is half-busy with the Levi's refresh (now committed) but the remaining Saturday hours are publish-ready. **Recommended Saturday afternoon/evening publish set:** 5/06 Bruno Mars (freshened today with T-0 pre-show pricing data — capture peak Bruno Mars search intent during the show and the morning-after window), 5/04 Cubs vs Reds Wrigley Field (already in the "same-week" relevance window since the next Cubs-Reds Wrigley series falls 5/18-5/21 the week after), and the 5/28 Same-Day-Tickets NBA Playoff playbook (NBA Round 2 Game 4s are this weekend — peak relevance window). **Three publishes in one session.**
+**Angle:** Light-touch social amplification window for the Social Agent — a same-day Twitter/Threads post pointing at Game 2 cross-platform pricing variance fits the typical "$X spread on the same seat" social template. This is not a blog moment (we already have Mon 5/18's big-idea framework piece + Wed 5/20's news piece covering Conf Finals at depth); it's a social moment. Flag for the Social Agent's afternoon slot.
 
-**Sunday 5/17 morning slot remains the highest-confidence multi-publish window of the week.** Sunday's content-agent task is copy review + next-week planning (no refresh); the full session is publish-ready. Recommended Sunday publish set: 5/14 MLB Rivalry Week tier guide (yesterday's draft, comparison-series anchor), 5/13 Yankees vs Red Sox (post-rivalry-week relevance still strong), 5/07 All-In Pricing (anniversary-week priority publish that slipped past Mon 5/12), 5/11 Stadium Tour Economy (three-night-residency content with high evergreen value). **Four publishes Sunday.**
+**Target keyword:** "nhl conference finals tickets," "stanley cup playoffs game 2"
+**Content type:** Social Agent amplification flag
+**Priority:** Medium (Social Agent moment, not a blog moment; Game 2 typically softer than Game 1 so the price-spread template fits well)
 
-**Net target if Lead Architect bandwidth opens Sat afternoon + Sunday morning: 7 publishes this weekend, queue contracts from 18 to 11.**
+### Hook 7: Memorial Day Weekend T-6 days — frame Thursday's comparison piece
 
-**Target keyword:** N/A (internal)
-**Content type:** Lead Architect publish-action — bandwidth-window pre-flag
-**Priority:** Critical (chronic structural; Sat afternoon + Sunday morning is the next bandwidth window; 7-publish net target this weekend)
+**Topic:** Memorial Day Weekend 2026 is Saturday 5/23 – Monday 5/25. Today is T-6 days. **The weekend carries one of the densest sports-pricing landscapes of any 3-day window in Q2** — NBA Conf Finals (likely both series have Game 3 or Game 4 over the weekend), NHL Conf Finals (also likely Game 3/4 over the weekend), MLB regular season (Yankees-Dodgers cross-league rivalry on the schedule per the 2026 calendar, plus Cubs-Cardinals, Dodgers-Giants), and the unofficial start of summer concert touring (Memorial Day Weekend is reliably the first big stadium-tour weekend of the year — Coldplay's tour likely opens that weekend per the tour-announcement schedule).
 
-### Hook 5: WC FIFA-resale Phase 2 — extended-monitor window closed Friday EOD, re-parking complete
+**Angle:** Strongest Thursday 5/21 comparison-piece target for the week. "Memorial Day Weekend 2026: 8 Sports + Concert Events Worth Tracking by Price" — listicle format, cross-platform comparison anchor, pairs naturally with the Mon 5/18 Conf Finals framework piece + the Wed 5/20 news piece. **Listicle format is the strongest social-shareable format we've ever tested**, per the analytics-agent reporting from the 4/16 best-comparison-sites piece (which is still in the publish queue but historically the strongest social-share piece in any prior week's test set).
 
-**Topic:** The Sunday-extended monitor for WC FIFA-resale Phase 2 confirm-or-rule-out closed EOD Friday 5/15. **No public FIFA confirmation Mon-Fri** in the extended monitoring window. Per yesterday's Hook 5 commit: **ruled out for the May calendar**, the 4/22 FIFA-resale draft re-parks to standard-cadence publish (no rapid-response urgency).
+**Target keyword:** "memorial day weekend tickets 2026," "memorial day weekend sports," "memorial day weekend concerts 2026," "best events memorial day weekend"
+**Content type:** Blog draft target (Thu 5/21)
+**Priority:** High (Memorial Day Weekend is the densest pricing-landscape moment of Q2; listicle format optimal for social amplification; pairs with the week's other 3 blog pieces)
 
-**Angle:** The 4/22 draft now moves into the regular publish queue ordering — Sunday publish candidate tomorrow with the bundle of other drafts per Hook 4's Sunday recommended set. Phase 2 re-enters the monitor surface only on a fresh FIFA signal, no scheduled re-check. **Rapid-response cycle officially closes today.**
+### Hook 8: Watchlist drought 22 days — re-acquisition needs more than blog content
 
-**Target keyword:** N/A (internal, trending monitor close)
-**Content type:** Trending monitor — rule-out complete, re-park executed
-**Priority:** Low (decision-window closed Friday EOD; re-park scope absorbed into Sunday's publish set)
+**Topic:** Watchlist drought extends to **22 days** today (last add: Apr 25 18:27 UTC, taranimeramaro × Bruno Mars MetLife). Last week's audit flagged the drought at 187h+ (7.8 days); the addition of 7 days brings the total to 22 days. **The funnel is sealed.** Bruno Mars draft (5/06) addressed the strongest-organic-signal content gap but remains unpublished — Day 11 since drafted.
 
-### Hook 6: Today's trending events scan — Bruno Mars T-0, NBA Round 2 Game 4s, NHL Conference Finals Game 3
+**Angle:** Watchlist re-acquisition requires more than blog content at this point. The Email Agent's drip queue remains dead (105+ cumulative emails owed per last week's audit + this week's transitions), the CRO Agent's UX fix on `target_price` remains upstream of any content surface, and the Paid Ads Agent continues to hold. **The Mon 5/18 Conf Finals piece + the Tue 5/19 watchlist-audit piece + the Wed 5/20 Game 1 piece + the Thu 5/21 Memorial Day weekend piece together form the strongest 4-day content moment of Q2** — but if the publish bottleneck doesn't clear during the week, the content moment becomes a write-only event with no acquisition impact.
 
-**Topic:** Saturday 5/16 trending-event scan:
+**Target keyword:** N/A (internal funnel flag)
+**Content type:** Cross-agent escalation summary
+**Priority:** Critical (compounding decay; 22-day watchlist drought is the longest single drought of any tracked metric this cycle)
 
-1. **Bruno Mars Soldier Field T-0 — show is tonight.** The 5/06 draft's pre-show pricing data window is at peak resolution today and through tomorrow morning. The 4-hour T-0 freshen window opens at session-start and runs until early evening. **If the freshen happens this afternoon, the publish window opens immediately for a Saturday-evening drop** (capturing Bruno Mars search intent during the show via real-time-traffic to the post) or holds for Sunday morning (capturing day-after search intent at peak). Either timing works.
+### Hook 9: Forward Fix v2 — first canonical execution on Fri 5/22
 
-2. **NBA Round 2 Game 4s — three series Saturday afternoon through Sunday.** Same-day-tickets playbook (4/28 draft) is at peak relevance — Game 4 days are the highest-demand resale window of the second round. Publishing the 4/28 draft this weekend lands at peak relevance for Round 2 Game 5 days (Mon/Tue/Wed). **Strongest Saturday afternoon or Sunday morning publish candidate.**
+**Topic:** Yesterday's content-hook documented the Forward Fix v2 lock-in criterion as met — two consecutive clean landings (Lumen 5/15 + Levi's 5/16) after the two-consecutive-miss start (AT&T 5/08, Mercedes-Benz 5/09). **Friday 5/22's Gillette Stadium refresh is the first non-test canonical execution.**
 
-3. **NHL Conference Finals Game 3 Saturday afternoon — Eastern Conference series.** Game 3 is typically the highest-leverage game in a series (winning Game 3 historically wins the series ~65% of the time when tied 1-1 after two). Modest same-day demand signal but no specific TicketScan content trigger.
+**Angle:** No structural change to the pattern. Order-of-events for Fri 5/22:
 
-4. **Cubs vs Reds Wrigley Field series 5/18-5/21 next week.** The 5/04 Cubs-Reds Wrigley draft has peak relevance for the next series — T-2 days from Saturday. **Publishing the 5/04 draft this weekend lands ahead of the demand bump.**
+1. **Step 1 (SEO heads-up file)** filed as artifact 1 at session start, ahead of any `worldcup.ts` editing
+2. **Same-morning cadence**, not evening-prior
+3. **mtime ordering** preserves heads-up-precedes-commit relationship for Path-B verification
 
-5. **Yankees vs Red Sox post-series data.** Whichever side won this past week's rivalry series, the data anchors next Thursday's Q3 second-piece (sports-by-sport platform-fit) MLB section. Light data-collection scan continues.
+**Gillette Stadium content target:** Match Step 0 cross-check confirms **6 matches** at Gillette (M07 Sun 6/14 Group F, M22 Thu 6/18 Group D, M43 Wed 6/24 Group F, R32-2 Tue 6/30, R16-3 Sun 7/5, QF-1 Thu 7/9 — verified clean against `web/src/data/worldcup.ts`). The current `gillette-stadium` entry in `worldcup.ts` is 3 generic sections / 4 ticketTips / 4 keywords — same sparse-template baseline as Lumen and Levi's before refresh. Expansion target: 9-10 sections, 7-8 ticketTips, 10-12 keywords, FIFA Cat 1-4 mapping. **Quarterfinal-1 + Round-of-16-3 + 3 Group Stage matches gives Gillette one of the broader content surfaces of any US WC venue.**
 
-**Angle:** Bruno Mars T-0 + NBA Round 2 Game 4s + Cubs-Reds T-2 to next series are the three same-day-to-near-term rapid-response surfaces. **All three have publish-ready drafts in queue.** Saturday afternoon + Sunday morning is genuinely a 7-publish bandwidth window if the freshen pass runs.
+**Target keyword:** N/A (internal, Forward Fix v2 first canonical exec)
+**Content type:** Cross-agent process flag — first canonical Forward Fix v2 execution on Friday
+**Priority:** Medium (process-quality data point; canonical-pattern execution; Gillette content surface is broad enough for a strong refresh)
 
-**Target keyword:** Multi-thread (see per-event above)
-**Content type:** Multi-channel monitor
-**Priority:** High (3 same-day/near-term surfaces with publish-ready drafts)
+### Hook 10: Saturday 5/23 pair-slot — Lincoln Financial Field
 
-### Hook 7: Next Friday 5/22 — Forward Fix v2 first non-test execution — Gillette Stadium
+**Topic:** Per the canonical Fri/Sat pair-slot cadence (5th consecutive week running the pair-slot if executed), Saturday 5/23 carries the next sparse-venue refresh: **Lincoln Financial Field, Philadelphia.**
 
-**Topic:** Next Friday's refresh runs the canonical Forward Fix v2 pattern as a non-test execution (the lock-in criterion is now hit with today's clean landing). Target: Gillette Stadium per the post-Levi's sparse-venue queue. Match-count via Step 2 cross-check at session-start (not pre-asserted in this hook to avoid contaminating the queue).
+**Angle:** Match Step 0 cross-check: Lincoln Financial Field hosts **5 matches** (M08 Mon 6/15 Group A, M25 Fri 6/19 Group H, M58 Sun 6/27 Group A, R32-5 Wed 7/1, R16-4 Mon 7/6 — verified clean against `web/src/data/worldcup.ts`). Current `lincoln-financial-field` entry is the same sparse 3-section template baseline. Expansion target same shape as Gillette (9-10 sections, 7-8 ticketTips, 10-12 keywords). **Philadelphia-specific angles:** the only US WC venue with **two knockout-round matches** AND **three group-stage matches** (= 5 total matches), the strongest USA-team-friendly transit access (SEPTA Broad Street Line direct to Pattison stop), Eagles 2017 NFC Championship pricing comp ($800-$2,400 sideline at 69,176 attendance), Union 2010-onwards MLS Cup-and-final-tournament resale comp ($60-$220 at the smaller Subaru Park then-to-Talen-Energy-Stadium-now stack).
 
-**Angle:** This is the canonical-pattern test, where the pattern transitions from "we're testing whether the fix holds" to "we're running the pattern as the standard." Three structural elements should run by default at session-start: (1) Step 1 SEO heads-up file as artifact 1, (2) calendar-day same-morning cadence, (3) mtime ordering. **If anything blocks the canonical-pattern run on 5/22, that's a regression worth flagging immediately** — the pattern is no longer a test.
-
-**Target keyword:** N/A (internal, process pre-flag)
-**Content type:** Cross-agent process pre-flag for next Friday
-**Priority:** Medium (Forward Fix v2 canonical-pattern run; regression-watch from 5/22 forward)
-
----
-
-## Status Summary
-
-| Channel | Today's Action | Status |
-|---------|---------------|--------|
-| Page refresh | Levi's Stadium (`worldcup.ts`) | **Committed today** (Saturday refresh slot — pulled forward from 5/22) |
-| SEO heads-up | Levi's Stadium — Forward Fix v2 second-test execution | ✅ Filed as artifact 1, clean landing |
-| Content hook | This file | Drafted today |
-| Refresh log | Levi's Stadium entry | Drafted today |
-| Forward Fix v2 | Two consecutive clean landings — lock-in criterion hit | ✅ **Canonical from 5/22 Gillette forward** |
-| Publish queue | 18 drafts unpublished | **Day 39 of drought; Sat afternoon + Sun is the next bandwidth window — 7-publish target** |
-| Trending monitor | Bruno Mars T-0 + NBA Round 2 Game 4s + Cubs-Reds T-2 | Active scan, publish-ready drafts in queue |
-| Cross-agent ask (SEO) | `extractLowestPrice` patch absorbed before Gillette 5/22 | Day 28 of bundle freeze, FOURTH stadium replication today |
-| Cross-agent ask (Lead Architect) | 90-minute bandwidth-block | T+0 on FOUR consecutive Levi's-class replications; same single session clears patch + bundle + 10+ publishes |
-| WC FIFA-resale Phase 2 | Rapid-response cycle closed Friday EOD | Re-parked to standard cadence — Sunday publish candidate |
-
-**Single most-important program ask remains the 90-minute Lead Architect bandwidth-block:** (a) absorb the `extractLowestPrice` patch into the SEO bundle before Gillette 5/22 replicates the bug to a fifth stadium page (with the additional Levi's-specific risk that the buggy schema undermines the page's "cheapest US WC venue at $80 floor" content surface at the structured-data layer), (b) merge and push the SEO bundle (Day 28), (c) publish 10+ drafts from the queue. Same single session clears all three. **Today: Levi's replication confirmed; next-T-0 is Gillette 5/22.**
+**Target keyword:** N/A (internal, Sat pair-slot pre-flag)
+**Content type:** Saturday refresh pre-flag for next week
+**Priority:** Medium (Saturday slot is the canonical pair-slot; Lincoln Financial content surface is broad and Philly-specific angles are strong)
