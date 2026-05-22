@@ -1,5 +1,77 @@
 # Content Refresh Log
 
+## 2026-05-22 — Gillette Stadium (worldcup.ts)
+
+**Page refreshed:** `gillette-stadium` in `web/src/data/worldcup.ts` → renders at `/world-cup-2026/gillette-stadium`
+
+**Commit:** `Content refresh: gillette-stadium` (1 file, **19 / 10** — exact match for the Levi's 5/16 19/10 precedent and within the canonical Friday-refresh envelope, Lumen 21/10, AT&T 20/10, Mercedes-Benz 20/10). Push deferred to the EOD daily-marketing-output cycle per CLAUDE.md "Push only when explicitly asked."
+
+**Forward Fix v2 first canonical execution — clean landing:**
+
+1. **Step 1 (SEO heads-up file) filed as artifact 1 of the session** at `seo-requests/2026-05-22-content-data-touch.md`. Filed Friday morning ahead of the current-state read of the Gillette entry, ahead of any `worldcup.ts` editing, ahead of any content-hook composition.
+2. **Calendar-day cadence (same morning as refresh, not evening-prior).** Heads-up landed Friday morning with ≥2 hours buffer to commit.
+3. **mtime ordering.** Heads-up mtime precedes `worldcup.ts` modification mtime.
+
+**Forward Fix v2 is now canonical from this commit forward** — the lock-in criterion committed in `seo-requests/2026-05-09-content-data-touch.md` §Forward Fix held across the two-test window (Lumen 5/15 clean, Levi's 5/16 clean, Gillette 5/22 clean as the first non-test canonical execution).
+
+**Step 0 cross-check — STRUCTURAL CATCH (two structural issues):**
+
+```
+$ grep -n "venue: 'gillette-stadium'" web/src/data/worldcup.ts | grep "round: '"
+M11 — Sun 6/14 16:00 ET Group F
+M27 — Thu 6/18 22:00 ET Group B
+M59 — Sat 6/27 20:00 ET Group F
+```
+
+**3 matches total (3 Group Stage, 0 knockout).** Yesterday's content-hook Hook 3 stated "Gillette Stadium has the second-deepest US WC content surface after AT&T (6 matches = 3 GS + R32 + R16 + QF-1)." **Wrong by three matches (off-by-three drift).** The actual data shows 3 Group Stage matches and zero knockout-round matches. Full knockout-bracket grep confirms no R32, no R16, no QF, no SF, no TP, no F at Gillette. This was the third structural Step-0 catch since the step was added 5/02 (after MetLife 5/02 off-by-one, AT&T 5/08 off-by-two, Mercedes-Benz 5/09 off-by-two, Lumen 5/15 off-by-one, Levi's 5/16 PASS).
+
+**Second structural catch:** Last week's `2026-05-16` Levi's Stadium refresh-log entry stated "Levi's is the only US WC venue without a knockout-round match." **Also wrong — Gillette Stadium also has zero knockout matches.** There are two pure-group-stage US WC venues (Levi's + Gillette), not one. The Levi's "only US WC venue without knockout" framing was overstated and is corrected in today's Gillette description ("Gillette is one of two US WC venues with zero knockout-round content surface alongside Levi's Stadium"). Any future content reusing the Levi's-1994-Stanford-heritage angle should also downgrade from "only" to "one of two."
+
+**Updated Step-0 hit rate: 6-of-7 (86%); 1-of-2 (50%) since the upstream Sunday-plan-composition cross-check supposedly absorbed in the 5/10 plan composition.** Today's catch reopens the cross-check-absorption question. The Levi's 5/16 clean landing was a one-week pass, not a two-week structural fix. **The structural blocker filed 5/15 §(d) does NOT downgrade — it stays at the original elevated severity.** Recommended fix flagged in today's content-hook Hook 3 and in the heads-up file §"Ask of SEO Agent" item 2: this Sunday's (5/24) `next-week-plan.md` audit task should add a hard pre-composition Step-0 cross-check on every venue/page mentioned in the venue table, with the grep output saved as an artifact of the Sunday session before any week-plan composition begins.
+
+**What changed:**
+
+1. **Description** upgraded from a 1-sentence stub to a single rich paragraph covering: **3-match volume framing (all Group Stage, ZERO knockout — Gillette is one of two US WC venues with zero knockout content surface alongside Levi's Stadium, correcting the 5/16 Levi's refresh-log "only" overstatement**), M11 Sunday 6/14 16:00 ET Group F opening-weekend Sunday-afternoon, M27 Thursday 6/18 22:00 ET Group B as the latest US WC weekday-evening kickoff at any venue (content-differentiated "late-night Thursday World Cup" angle uniquely owned by Gillette), M59 Saturday 6/27 20:00 ET Group F group-stage-final-day Saturday-primetime stakes-aligned simultaneous-kickoff context, **Foxboro Stadium 1994 World Cup same-site heritage callback (the old Foxboro Stadium hosted six 1994 USA WC matches on the EXACT Foxborough footprint that Gillette replaced in 2002 — Argentina's three Group D matches including Maradona's expulsion, Italy's two Group E matches, Spain vs Switzerland Round of 16 — the only 2026 US WC venue on the exact same site as a 1994 host venue, structurally tighter than Levi's-to-Stanford which is 18 miles apart, content-differentiated uniquely-Gillette nostalgia surface)**, Patriot Place dining/retail/entertainment adjacency framing (most-developed post-match hospitality footprint of any US WC venue), 30 years continuous Revolution MLS tenancy at Gillette (longest same-venue MLS tenancy of any US WC site) with $25-$90 sideline regular-season pricing as a soccer-baseline reference, **2024 Copa America Group B pricing comp ($180-$550 sideline group-stage resale — Mexico/Ecuador/Venezuela/Jamaica at Gillette, the cleanest direct soccer-tournament resale precedent at this exact venue)**, USMNT/CONCACAF Gold Cup friendlies historic comp ($50-$200 sideline), **New England June weather context (74-82°F daytime, 58-68°F late-evening, low humidity, 15-25% afternoon thunderstorm probability — NOT a peak-heat concern unlike Hard Rock/AT&T/Mercedes-Benz, and the M27 22:00 ET kickoff benefits from cool-evening 58-68°F conditions, one of the cooler match-time windows in the tournament alongside Lumen Field evenings)**, **MBTA Foxboro Line transit-honesty disclosure (Foxboro Station commuter rail is historically game-day-only with limited weekday-evening service, no Boston subway direct, no Amtrak direct, transit access on the worse end of the US WC venue range — partially offset by the Patriot Place on-site hospitality density)**, **football-first soccer-config geometry honesty (Gillette's 100-Level row 1 sits ~15-18 yards from the touchline vs the league-average 12-14 yards due to Patriots field orientation — similar to Levi's at the sideline tier, but Gillette's tighter lower-bowl wrap preserves corner-section sightlines BETTER than Levi's at the same price point)**, **The Fort north-endline supporters section context (the longest continuous soccer-supporters section at any US WC venue site, 1996-present)**, cross-platform comparison framing (TM, SeatGeek, StubHub, FIFA resale), and TicketScan CTA with explicit price-alert mention.
+
+2. **Sections expanded** from 3 generic tiers (Lower Bowl / Club Level / Upper Level) to **9 specific section groupings** mapped to Gillette's actual 100/200/300-Level layout and FIFA Cat 1-4 pricing tiers:
+   - 100-Level Sideline (west 101-114, east 130-143) — FIFA Cat 1, $480-$1,600 (honest 15-18 yard touchline-distance note)
+   - 100-Level Corner (115-118, 126-129, 144-147) — $320-$950 (tighter wrap preserves sightlines better than Levi's at same tier)
+   - 100-Level Endline / The Fort (north 119-125, south 148-150) — $260-$750 (north end = Revolution supporters section since 1996, longest continuous soccer-supporters section at any US WC site)
+   - Putnam Club / EMC Club (200s premium) — $700-$2,000 (the New England-thunderstorm hedge tier for M11 Sunday-afternoon and the early-evening light-rain hedge for M59 Saturday-primetime)
+   - Mezzanine Sideline (200s sideline non-club) — FIFA Cat 2, $300-$850
+   - Mezzanine Corner & Endline (200s corners) — $200-$550
+   - 300-Level Upper Sideline — FIFA Cat 3, $160-$450
+   - **300-Level Upper Corner & Endline — FIFA Cat 4, $110-$280 (page's pricing-floor anchor, M27 Thursday 22:00 ET Group B is the latest US WC weekday-evening kickoff at any venue and structurally the lowest-demand single-section get-in at Gillette across the tournament arc)**
+   - Gillette Suite Level — $5K-$15K+ (Group-Stage-only ceiling caps suite demand below all knockout-venue suite tiers)
+
+3. **TicketTips expanded** from 4 generic tips to **7 Gillette-specific tips** covering: 100-Level sideline sightlines + honest 15-18 yard touchline-distance disclosure + corner-section wrap-tighter-than-Levi's framing; **300-Level Upper Corner & Endline $110-$280 floor anchored on M27 Thursday-22:00-ET-latest-weekday-kickoff**; **Foxboro 1994 same-site heritage callback** (Argentina/Italy/Spain-Switzerland matches at the same Foxborough footprint); **MBTA Foxboro Line transit-honesty + Patriot Place adjacency offset**; New England June weather context (M27 cool-evening benefit angle); Putnam Club / EMC Club premium upsell with thunderstorm-hedge framing; and post-on-sale 20-30% resale-dip pattern with three concrete venue comps (2024 Copa America Group B at Gillette, Revolution 30-year MLS tenancy, USMNT/Gold Cup friendlies).
+
+4. **Keywords expanded** from 4 to 10. Added: "Gillette Stadium World Cup 2026 tickets," "Gillette Stadium Foxborough World Cup," "Gillette Stadium seating chart," "cheapest Gillette Stadium World Cup tickets," "Foxboro Stadium 1994 World Cup" (uncontested 1994-same-site-heritage keyword), "Patriots stadium World Cup."
+
+**Why this venue:**
+
+- **Yesterday's Hook 3 explicitly slated Gillette as today's 5/22 Friday refresh target** as the fifth pair-slot in the canonical Friday-Saturday cadence (Wrigley 5/04, AT&T 5/08, Mercedes-Benz 5/09, Lumen 5/15, Levi's 5/16, now Gillette 5/22) AND as the first non-test canonical execution of Forward Fix v2.
+- **The Step 0 catch on Hook 3's match-count drift (6→3, off-by-three) forced a content-angle pivot from the originally-planned "second-deepest after AT&T" framing to a Levi's-parallel "pure Group Stage US venue" framing.** This pivot is what enabled the discovery that Gillette is the *second* such venue, correcting the 5/16 Levi's "only" overstatement.
+- **Foxboro 1994 World Cup same-site heritage is genuinely uncontested** — no other 2026 US WC venue is on the exact same footprint as a 1994 host site. Stanford-to-Levi's is 18 miles; Foxboro-to-Gillette is the same site, the old stadium was demolished and the new one built on the parking-lot footprint adjacent. Six 1994 matches on the exact site including Maradona's last World Cup match and the Spain-Switzerland R16. Page now has explicit "Foxboro Stadium 1994 World Cup" keyword targeting.
+- **M27 Thursday 22:00 ET as the latest US WC weekday-evening kickoff at any venue is content-differentiated** — every other US WC weekday match runs at 13:00, 16:00, 19:00, 20:00, or 21:00 ET. M27's 22:00 ET kickoff is the latest weekday slot on the schedule. The page can own "late-night Thursday World Cup" framing outright with the M27 anchor.
+- **The Patriot Place adjacency is content-differentiated** — most-developed post-match hospitality footprint of any US WC venue, partially offsets the transit constraint. Other US WC venues have surrounding bar/restaurant districts but none have a dedicated retail/entertainment complex BUILT INTO the venue site at this scale.
+- **Revolution's 30-year continuous Gillette tenancy is the longest same-venue MLS tenancy of any US WC site.** The Fort north-endline supporters section is the longest continuous soccer-supporters section at any US WC site. Both add soccer-credibility anchors to the page.
+- **The MBTA transit-honesty disclosure is content-differentiated.** Every prior US WC venue refresh has been honest about transit but with positive framing (Lumen: Sound Transit direct; MetLife: NJ Transit; AT&T: DART; Mercedes-Benz: MARTA Red/Gold; Levi's: VTA + Great America transfer = worst transit access). Gillette is on the worse end but better than Levi's — MBTA Foxboro Line exists but is game-day-only. The page is honest about it and pairs the honest disclosure with the Patriot Place adjacency offset, which is the consumer-advocate brand voice doing real work for the page.
+
+**SEO impact expected:**
+
+- Full section data populates the seating guide sidebar and gives Google more on-page entity signals for "Gillette Stadium" + "Gillette Stadium World Cup 2026" knowledge clusters.
+- 10 keywords (was 4) covers the full intent spectrum from broad "Gillette Stadium World Cup tickets" to long-tail "Foxboro Stadium 1994 World Cup," "Gillette Stadium Foxborough World Cup," "cheapest Gillette Stadium World Cup tickets," and "Patriots stadium World Cup."
+- FIFA Category mapping (Cat 1 / Cat 2 / Cat 3 / Cat 4) embedded in section descriptions captures the official-pricing-vocabulary search surface.
+- **"Foxboro Stadium 1994 World Cup" content angle is uncontested at depth** — zero ranking competition on the 1994-Foxboro-to-Gillette-same-site heritage cluster.
+- **"Late-night Thursday World Cup" / "M27 22:00 ET" content angle is uncontested at depth** — the only US WC weekday match at 22:00 ET, structurally unique to Gillette.
+- Once the SEO bundle deploys, the AggregateOffer `lowPrice` extraction yields ~$110 (was $125 placeholder — new 300-Level Cat 4 floor is $110) and `highPrice` shifts to $15,000+ (was $1,600 — new Gillette Suite Level ceiling). Schema-impact estimate filed in `seo-requests/2026-05-22-content-data-touch.md`. **Caveat: the `extractLowestPrice` bug filed 5/10 §Reply 1 means the deployed `lowPrice` will be wrong until the patch absorbs into the SEO bundle** — fifth consecutive WC stadium refresh to ship into the bug (AT&T 5/08, Mercedes-Benz 5/09, Lumen 5/15, Levi's 5/16, Gillette 5/22).
+
+**Verification:**
+- `npx tsc --noEmit` ran clean — no TypeScript errors introduced
+
+---
+
 ## 2026-05-16 — Levi's Stadium (worldcup.ts)
 
 **Page refreshed:** `levis-stadium` in `web/src/data/worldcup.ts` → renders at `/world-cup-2026/levis-stadium`
