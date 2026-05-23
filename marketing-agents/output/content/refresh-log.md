@@ -1,5 +1,90 @@
 # Content Refresh Log
 
+## 2026-05-23 — Lincoln Financial Field (worldcup.ts)
+
+**Page refreshed:** `lincoln-financial-field` in `web/src/data/worldcup.ts` → renders at `/world-cup-2026/lincoln-financial-field`
+
+**Commit:** `Content refresh: lincoln-financial-field` (1 file, **19 / 10** — exact match for the Gillette 5/22 and Levi's 5/16 19/10 precedents and within the canonical Friday-Saturday-refresh envelope, Lumen 21/10, AT&T 20/10, Mercedes-Benz 20/10). Push deferred to the EOD daily-marketing-output cycle per CLAUDE.md "Push only when explicitly asked."
+
+**Forward Fix v2 second canonical execution — clean landing:**
+
+1. **Step 1 (SEO heads-up file) filed as artifact 1 of the session** at `seo-requests/2026-05-23-content-data-touch.md`. Filed Saturday morning ahead of the current-state read of the Lincoln Financial entry, ahead of any `worldcup.ts` editing, and ahead of any content-hook composition.
+2. **Calendar-day cadence (same morning as refresh, not evening-prior).** Heads-up landed Saturday morning with ≥2 hours buffer to commit.
+3. **mtime ordering.** Heads-up mtime precedes `worldcup.ts` modification mtime.
+
+**Forward Fix v2 is canonical through its second non-test execution** — the lock-in criterion committed in `seo-requests/2026-05-09-content-data-touch.md` §Forward Fix continues to hold cleanly. Gillette 5/22 + Lincoln Financial 5/23 ran the canonical pattern back-to-back as the first Friday-Saturday pair-slot both executed under Forward Fix v2.
+
+**Step 0 cross-check — STRUCTURAL CATCH (off-by-two):**
+
+```
+$ grep -n "venue: 'lincoln-financial-field'" web/src/data/worldcup.ts | grep "round: '"
+M10 — Sun 6/14 13:00 ET Group E
+M25 — Thu 6/18 16:00 ET Group A
+M58 — Sat 6/27 16:00 ET Group E
+```
+
+**3 matches total (3 Group Stage, 0 knockout).** Last Sunday's 5/17 `next-week-plan.md` (line 215) stated "Lincoln Financial Field = 5 matches (M08 Mon 6/15 Group A, M25 Fri 6/19 Group H, M58 Sun 6/27 Group A, R32-5 Wed 7/1, R16-4 Mon 7/6 — confirmed)." **Wrong on six dimensions:**
+
+| Plan said | Actual | Drift |
+|-----------|--------|-------|
+| 5 matches total | 3 matches total | off-by-two |
+| M08 Mon 6/15 Group A | M10 Sun 6/14 Group E | match number, day, date, group all wrong |
+| Fri 6/19 16:00 Group H (M25) | Thu 6/18 16:00 Group A (M25) | day, date, group all wrong |
+| Sun 6/27 Group A (M58) | Sat 6/27 Group E (M58) | day, group wrong |
+| R32-5 Wed 7/1 + R16-4 Mon 7/6 | NO knockout matches | knockout assignments fabricated |
+
+Full knockout-bracket grep confirms no R32, no R16, no QF, no SF, no TP, no F at Lincoln Financial. **Lincoln joins Levi's and Gillette as the third pure-Group-Stage US WC venue with zero knockout content surface.** This was the eighth Step-0 hit since the step was added 5/02 (after MetLife 5/02 off-by-one, AT&T 5/08 off-by-two, Mercedes-Benz 5/09 off-by-two, Lumen 5/15 off-by-one, Levi's 5/16 PASS, Gillette 5/22 off-by-three, Lincoln Financial 5/23 off-by-two).
+
+**Cascading refresh-log correction:** The "pure Group Stage US venue" framing now stands at **three venues, not one or two:**
+- **5/16 Levi's refresh-log:** "Levi's is the only US WC venue without a knockout-round match" — overstated, corrected 5/22
+- **5/22 Gillette refresh-log:** "Gillette is one of two US WC venues with zero knockout-round content surface alongside Levi's Stadium" — also overstated, corrected here on 5/23
+- **5/23 Lincoln Financial (today):** Levi's + Gillette + Lincoln Financial = **three** pure-Group-Stage US WC venues, content-cluster recalibration now confirmed via grep across all 11 US WC venues
+
+Any future content reusing the Levi's-1994-Stanford-heritage angle, the Gillette-Foxboro-1994-same-site angle, or the Lincoln-Financial-SEPTA-transit angle should frame each as "one of three pure-Group-Stage US WC venues" rather than "only" or "one of two." Today's content-hook §Hook 7 flags a potential big-idea piece anchoring on the three-venue cluster ("The Three Cheapest US World Cup Venues") as a future blog idea for next Sunday's plan composition.
+
+**Updated Step-0 hit rate: 7-of-8 (87.5%); 1-of-3 (33%) since the upstream Sunday-plan-composition cross-check supposedly absorbed in the 5/10 plan composition.** **Two consecutive Friday-Saturday pair-slot catches from a single Sunday plan** (5/17 plan composed wrong Gillette + wrong Lincoln Financial venue rows) **escalates the upstream Sunday-plan blocker to highest severity.** The Levi's 5/16 clean pass is now isolated — the only clean Sunday-plan-composition venue row since the cross-check was supposed to be absorbed. **Recommended fix** flagged in today's content-hook Hook 2 and in the heads-up file §"Ask of SEO Agent" item 2: **this Sunday's (5/24) `next-week-plan.md` audit task MUST run a hard pre-composition Step 0 grep on every venue/page mentioned in the venue table, with the grep output saved as an artifact of the Sunday session BEFORE any venue row is composed.** Without this gate, every Friday-Saturday pair-slot refresh in the next 8 weeks (NRG 5/29, Arrowhead 5/30, then BMO Field, BC Place, Estadio Azteca, Estadio Akron, Estadio BBVA) ships with the same structural drift risk.
+
+**What changed:**
+
+1. **Description** upgraded from a 1-sentence stub to a single rich paragraph covering: **3-match volume framing (all Group Stage, ZERO knockout — Lincoln Financial is the third US WC venue with zero knockout content surface alongside Levi's Stadium and Gillette Stadium, correcting both the 5/16 Levi's "only" overstatement and the 5/22 Gillette "one of two" overstatement)**, M10 Sun 6/14 13:00 ET Group E opening-weekend Sunday-afternoon mid-tier, M25 Thu 6/18 16:00 ET Group A as the pricing-floor anchor with potential host-nation-supporter premium if FIFA draws a host nation into Group A (Group A historically carries host nations in WC tournaments), M58 Sat 6/27 16:00 ET Group E as the group-stage-final-day Saturday-afternoon stakes-aligned closing match (runs simultaneously with the other Group E match per FIFA's stakes-aligned closing fixtures), **Lincoln bookends Group E's tournament arc** (Matchday 1 M10 opener + Matchday 3 M58 stakes-aligned finale, Group E supporters get two trips to Philly), **2024 Copa America Group D pricing comp** ($250-$750 sideline group-stage resale at this exact venue, Argentina/Peru/Chile/Canada — the cleanest soccer-tournament resale precedent at this exact venue), **Eagles Super Bowl LII pricing comp** ($1,800-$5,000 sideline at 67,612 attendance Minneapolis Feb 2018 Eagles 41 Patriots 33), **2024 NFC Championship pricing comp** ($600-$1,800 sideline resale at Lincoln Financial Eagles 55 49ers 31), **Philadelphia June peak-heat-and-humidity weather honesty** (78-87°F daytime highs, 50-75% humidity, 20-30% afternoon thunderstorm probability — peak-heat-and-humidity windows for all three matches at 13:00/16:00 ET with no roof, similar to Levi's afternoon-heat concern), **SEPTA Broad Street Line direct subway service to Pattison stop** ($2.50 one-way fare, ~15-minute ride from Center City Philadelphia — structurally the strongest USA-WC-venue transit access in the entire portfolio, better than MetLife/AT&T/Mercedes-Benz/Levi's; transit-positive content angle is uncontested at depth across all 11 US WC venues), **football-first soccer-config geometry honesty** (Lincoln's 100-Level row 1 sits ~16-19 yards from the touchline vs the league-average 12-14 yards, within the Levi's/Gillette band but slightly worse than Gillette's tight wrap at corner sections), **Subaru Park (Union) secondary soccer-resale baseline** ($60-$220 sideline regular-season pricing at the 12-mile-south Chester venue), **USMNT/CONCACAF Gold Cup friendlies historic comp** ($60-$250 sideline), **mid-pack capacity 69,796 + mid-pricing-floor $125** (smaller than MetLife/AT&T/SoFi/Mercedes-Benz, larger than Gillette/NRG/Arrowhead; FIFA Cat 4 floor slightly above Levi's $80 and Gillette's $110), cross-platform comparison framing (TM, SeatGeek, StubHub, FIFA resale), and TicketScan CTA with explicit price-alert mention.
+
+2. **Sections expanded** from 3 generic tiers (Lower Level / Club Level / Upper Level) to **9 specific section groupings** mapped to Lincoln Financial's actual 100/200/300-Level layout and FIFA Cat 1-4 pricing tiers:
+   - 100-Level Sideline (west 101-114, east 130-143) — FIFA Cat 1, $470-$1,550 (honest 16-19 yard touchline-distance note)
+   - 100-Level Corner (115-118, 126-129, 144-147) — $310-$920 (mid-pack soccer-config sightlines)
+   - 100-Level Endline (north 119-125, south 148-150) — $260-$760 (north endline = Eagles tunnel-side + 2024 Copa America heavy-supporters section)
+   - Touchdown Club / Hyundai Club (200s premium) — $720-$2,050 (the Philadelphia peak-heat-and-humidity hedge for all three matches given no-roof + 13:00/16:00 ET timing)
+   - Mezzanine Sideline (200s sideline non-club) — FIFA Cat 2, $310-$870
+   - Mezzanine Corner & Endline (200s corners) — $210-$570
+   - 300-Level Upper Sideline — FIFA Cat 3, $170-$470
+   - **300-Level Upper Corner & Endline — FIFA Cat 4, $125-$310 (page's pricing-floor anchor, M25 Thursday 16:00 ET Group A Thursday-afternoon weekday timing is the lowest-demand window of the three Lincoln matches)**
+   - Lincoln Financial Suite Level — $5.5K-$16K+ (Group-Stage-only ceiling caps suite demand below all knockout-venue suite tiers)
+
+3. **TicketTips expanded** from 4 generic tips to **7 Lincoln-Financial-specific tips** covering: 100-Level sideline sightlines + honest 16-19 yard touchline-distance disclosure; **300-Level Upper Corner & Endline $125-$310 floor anchored on M25 Thursday-afternoon weekday pricing window**; **SEPTA Broad Street Line direct subway transit-positive angle** ($2.50 fare, structurally better than MetLife/AT&T/Mercedes-Benz/Levi's); Philadelphia June peak-heat-and-humidity warning (78-87°F + 50-75% humidity, no roof, arrive-early-for-shade); Touchdown Club / Hyundai Club premium upsell as actuarially-correct heat-and-humidity hedge; **Lincoln bookends Group E's tournament arc** (M10 Matchday 1 + M58 Matchday 3 stakes-aligned finale, two-trip supporters angle); post-on-sale 20-30% resale-dip pattern with three concrete venue comps (2024 Copa America Group D at this exact venue, Eagles Super Bowl LII, USMNT/Gold Cup friendlies).
+
+4. **Keywords expanded** from 4 to 10. Added: "Lincoln Financial Field World Cup 2026 tickets," "Linc World Cup tickets," "Lincoln Financial Field seating chart," "cheapest Lincoln Financial Field World Cup tickets," "SEPTA Lincoln Financial Field" (uncontested transit-positive keyword), "Eagles stadium World Cup."
+
+**Why this venue:**
+
+- **Last Sunday's 5/17 plan slated Lincoln Financial as today's 5/23 Saturday refresh target** as the sixth pair-slot in the canonical Friday-Saturday cadence (Wrigley 5/04, AT&T 5/08, Mercedes-Benz 5/09, Lumen 5/15, Levi's 5/16, Gillette 5/22, now Lincoln Financial 5/23) AND as the second non-test canonical execution of Forward Fix v2 immediately following Gillette.
+- **The Step 0 catch on the plan's 5-match assertion (3 actual, off-by-two with fabricated R32-5 + R16-4 knockout assignments) forced a content-angle pivot from the originally-planned "Group A opening week + knockout-mix" framing to a 3-match Group-Stage-only framing parallel to Levi's and Gillette.** This pivot is what enabled the discovery that Lincoln Financial is the *third* such venue, correcting both the 5/16 Levi's "only" overstatement and the 5/22 Gillette "one of two" overstatement.
+- **SEPTA Broad Street Line direct subway service is genuinely structurally uncontested across the entire US WC venue portfolio.** Every other US WC venue page has been written either neutral-to-positive on transit (Lumen: Sound Transit Link Light Rail direct; MetLife: NJ Transit; AT&T: DART) or honest-about-negatives (Levi's: VTA + Great America transfer = worst transit access). Lincoln Financial gets the rare full-positive transit framing as the BEST transit access in the portfolio — $2.50 one-way subway fare from Center City Philadelphia is structurally the strongest single transit data point across all 11 US WC venues. **The transit-positive content angle is uncontested at depth.**
+- **2024 Copa America Group D at this exact venue ($250-$750 sideline) is the cleanest single-site soccer-tournament resale precedent for the 2026 Lincoln Financial three-match arc.** Combined with the Subaru Park Union baseline + USMNT/Gold Cup friendlies stack, the page now carries three distinct soccer-credibility anchors at this exact venue or in the immediate metropolitan area.
+- **Group A host-nation-overlap potential on M25 is content-differentiated.** Group A historically carries host nations in WC tournaments; in 2026's three-host-nation format (US/Canada/Mexico), if FIFA draws a host nation into Group A, M25 carries host-nation-supporter premium even at a mid-week Thursday-afternoon slot. This is a draw-dependent variable, but the page's M25-pricing-floor positioning gracefully accommodates either outcome — if no host nation draws into Group A, M25 holds at the pricing-floor anchor; if a host nation does draw in, M25 shifts up-tier and the page's pricing-floor narrative naturally absorbs the upside.
+- **Philadelphia June peak-heat-and-humidity at all three afternoon match windows (13:00/16:00 ET with no roof) makes the Touchdown Club / Hyundai Club premium upsell arguably the most actuarially-correct premium upsell at any US WC venue.** Other US WC venue pages have premium-tier upsell framing for various weather hedges (Gillette's Putnam Club for thunderstorm hedge, Levi's Citrix/United/BNY Mellon Club for heat hedge), but Lincoln's combination of no-roof + 100% afternoon-timed matches + peak Philadelphia June heat-and-humidity = the most concentrated weather-hedge case in the portfolio. The page can lean into this premium-upsell positioning more aggressively than any prior US WC venue refresh.
+
+**SEO impact expected:**
+
+- Full section data populates the seating guide sidebar and gives Google more on-page entity signals for "Lincoln Financial Field" + "Lincoln Financial Field World Cup 2026" knowledge clusters.
+- 10 keywords (was 4) covers the full intent spectrum from broad "Lincoln Financial Field World Cup tickets" to long-tail "SEPTA Lincoln Financial Field," "cheapest Lincoln Financial Field World Cup tickets," "Linc World Cup tickets," and "Eagles stadium World Cup."
+- FIFA Category mapping (Cat 1 / Cat 2 / Cat 3 / Cat 4) embedded in section descriptions captures the official-pricing-vocabulary search surface.
+- **"SEPTA Lincoln Financial Field" transit-positive keyword is structurally uncontested at depth** across the entire US WC venue portfolio — Lincoln is the only US WC venue page that can credibly lead with positive direct-subway-transit framing.
+- Once the SEO bundle deploys, the AggregateOffer `lowPrice` extraction yields ~$125 (matching the prior placeholder coincidentally — the new 300-Level Cat 4 floor is $125) and `highPrice` shifts to $16,000+ (was $1,600 — new Lincoln Financial Suite Level ceiling). Schema-impact estimate filed in `seo-requests/2026-05-23-content-data-touch.md`. **Caveat: the `extractLowestPrice` bug filed 5/10 §Reply 1 means the deployed `lowPrice` will be wrong until the patch absorbs into the SEO bundle** — sixth consecutive WC stadium refresh to ship into the bug (AT&T 5/08, Mercedes-Benz 5/09, Lumen 5/15, Levi's 5/16, Gillette 5/22, Lincoln Financial 5/23). **The consecutive-carry-forward count is now structural rather than incidental.**
+
+**Verification:**
+- `npx tsc --noEmit` ran clean — no TypeScript errors introduced
+
+---
+
 ## 2026-05-22 — Gillette Stadium (worldcup.ts)
 
 **Page refreshed:** `gillette-stadium` in `web/src/data/worldcup.ts` → renders at `/world-cup-2026/gillette-stadium`

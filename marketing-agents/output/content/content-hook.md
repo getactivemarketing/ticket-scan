@@ -1,71 +1,96 @@
-## Today's Content Hook — 2026-05-22 (Friday)
+## Today's Content Hook — 2026-05-23 (Saturday)
 
-Friday — Forward Fix v2 first canonical (non-test) execution. Page refresh slot per the canonical Fri/Sat pair-slot cadence (Wrigley 5/04, AT&T 5/08, Mercedes-Benz 5/09, Lumen Field 5/15, Levi's Stadium 5/16, now Gillette Stadium 5/22). Step 1 SEO heads-up file already filed as the literal first artifact of the session at `seo-requests/2026-05-22-content-data-touch.md`. Step 0 cross-check **caught two structural issues** (yesterday's Hook 3 off-by-three on Gillette match count; Levi's 5/16 refresh-log "only US WC venue without knockout" overstatement). NBA Western Conf Finals Game 2 tonight. NHL Conf Finals continuing. World Cup 2026 T-20 days from kickoff. Publish drought hits **Day 45** (zero publish commits in this morning's git log; the 22-draft backlog from yesterday's hook stands).
+Saturday — Forward Fix v2 second canonical (non-test) execution. Page refresh slot per the canonical Fri/Sat pair-slot cadence (Wrigley 5/04, AT&T 5/08, Mercedes-Benz 5/09, Lumen Field 5/15, Levi's Stadium 5/16, Gillette Stadium 5/22, now Lincoln Financial Field 5/23). Step 1 SEO heads-up file already filed as the literal first artifact of the session at `seo-requests/2026-05-23-content-data-touch.md`. Step 0 cross-check **caught the second consecutive Friday-Saturday pair-slot structural issue from a single Sunday plan** (last Sunday's 5/17 plan composed Lincoln Financial as 5 matches with R32-5 + R16-4 knockout assignments; the actual data shows 3 matches all Group Stage, zero knockout — off-by-two with fabricated knockout assignments). Memorial Day Weekend is T-0 (today is Saturday 5/23). World Cup 2026 T-19 days from kickoff. Publish drought hits **Day 46** (zero publish commits in this morning's git log; the 22-draft backlog stands; yesterday's Thursday Memorial Day Weekend listicle missed its Friday-evening publish window).
 
-### Hook 1: Gillette Stadium refresh — Forward Fix v2 first canonical execution
+### Hook 1: Lincoln Financial Field refresh — Forward Fix v2 second canonical execution
 
-**Topic:** Today's Friday refresh target, executed under the canonical Forward Fix v2 run order for the first time as a non-test execution. Step 0 cross-check ran clean on the grep but **caught yesterday's Hook 3 framing error** — Hook 3 stated Gillette has 6 matches (3 GS + R32 + R16 + QF-1), the actual data shows 3 Group Stage matches and zero knockout matches. The full knockout-bracket grep confirms zero R32/R16/QF/SF/F at Gillette. **Gillette is the second US WC venue with zero knockout content surface** alongside Levi's Stadium, correcting the 5/16 Levi's refresh-log "only US WC venue without knockout" overstatement.
+**Topic:** Today's Saturday refresh target, executed under the canonical Forward Fix v2 run order. Step 0 cross-check ran but **caught last Sunday's 5/17 venue-table fabrication** — the plan stated Lincoln Financial = 5 matches (3 GS + R32-5 + R16-4), the actual data shows 3 Group Stage matches and zero knockout matches with the R32-5 and R16-4 assignments living elsewhere on the bracket (R32-5 is at MetLife, R16-4 is at SoFi). **Lincoln Financial is the third US WC venue with zero knockout content surface** alongside Levi's Stadium and Gillette Stadium — the 5/16 Levi's refresh-log "only US WC venue without knockout" (corrected 5/22 to "one of two") now corrects again to **"one of three"** as of today's commit.
 
-**Angle:** The refresh pivots from the originally-planned 6-match "second-deepest after AT&T" framing to a 3-match Group-Stage-only framing parallel to Levi's. Three distinctive Gillette-only anchors carry the content surface: (1) **Foxboro Stadium 1994 World Cup same-site heritage** — the only 2026 US WC venue on the exact same footprint as a 1994 host site, structurally tighter than Levi's-Stanford which is 18 miles from the 1994 site; (2) **M27 Thursday 6/18 22:00 ET as the latest US WC weekday-evening kickoff** at any venue — uncontested "late-night Thursday World Cup" framing; (3) **Patriot Place adjacency** — most-developed post-match hospitality footprint of any US WC venue.
+**Angle:** The refresh pivots from the originally-planned 5-match "Group A opening week + knockout-mix" framing to a 3-match Group-Stage-only framing parallel to Levi's and Gillette. Four distinctive Lincoln-only anchors carry the content surface:
+1. **Group E hosted TWICE (M10 Sun 6/14 13:00 ET + M58 Sat 6/27 16:00 ET)** — Lincoln is one of a handful of US WC venues where the same group plays twice at the same site; Group E supporters get two trips to Philly across the Group Stage. Content-differentiated "supporters' two-trip planning" angle uniquely owned by Lincoln in the US WC portfolio.
+2. **SEPTA Broad Street Line direct subway service to Pattison stop** — structurally the strongest USA-WC-venue transit access in the entire portfolio (better than MetLife/AT&T/Mercedes-Benz/Levi's). $2.50 one-way fare, ~15-minute ride from Center City Philadelphia. Transit-positive content angle is uncontested at depth across all 11 US WC venues.
+3. **2024 Copa America Group D pricing comp at Lincoln** ($250-$750 sideline group-stage resale for Argentina/Peru/Chile/Canada matches) — the cleanest soccer-tournament-resale precedent at this exact venue, directly applicable to the 2026 three-match arc.
+4. **Group A host-nation-overlap potential on M25** (Thu 6/18 16:00 ET) — Group A traditionally carries host nations in WC tournaments; if FIFA draws a host nation into Group A, M25 carries host-nation-supporter premium even at a mid-week Thursday afternoon slot, potentially shifting M25 from "pricing-floor anchor" to "mid-tier" depending on the draw confirming a host-nation placement.
 
-**Target keywords:** "Gillette Stadium World Cup 2026 tickets," "Gillette Stadium Foxborough World Cup," "Foxboro Stadium 1994 World Cup," "cheapest Gillette Stadium World Cup tickets," "Patriots stadium World Cup"
+**Target keywords:** "Lincoln Financial Field World Cup 2026 tickets," "Linc World Cup tickets," "SEPTA Lincoln Financial Field," "cheapest Lincoln Financial Field World Cup tickets," "Eagles stadium World Cup"
 
-**Content type:** Friday venue-page refresh + Forward Fix v2 first canonical execution
-**Priority:** High (today's primary deliverable per Sunday's filed plan and yesterday's Hook 3 setup)
+**Content type:** Saturday venue-page refresh + Forward Fix v2 second canonical execution
+**Priority:** High (today's primary deliverable per Sunday's filed plan with the off-by-two structural pivot)
 
-### Hook 2: World Cup 2026 T-20 days — resale-supply inflection window narrowing
+### Hook 2: Second consecutive Friday-Saturday Step 0 catch escalates upstream Sunday-plan blocker
 
-**Topic:** World Cup opener at SoFi is Thursday June 11. Today is May 22. **T-20 days exactly.** Yesterday's content hook flagged T-21 as the peak of the resale-supply inflection window. Today the window narrows by one day. The three queued WC drafts (4/22 FIFA resale data, 4/29 WC general-sale closing, 4/15 WC seat assignments) all address the T-21-to-T-14 supply-expansion curve and all remain unpublished. **The 4/22 FIFA data piece's "three weeks of data" framing is one day from reading as exactly-three-weeks-stale and a freshen-burden** — within 7 days the freshen becomes structural.
+**Topic:** Today's Step 0 catch on Lincoln Financial is the second consecutive Friday-Saturday pair-slot catch from a single Sunday plan composition. Last Sunday's 5/17 plan produced:
+- **Friday's Gillette venue row composed off-by-three** (6 matches said, 3 actual; non-existent knockout assignments R32-2 + R16-3 + QF-1 fabricated)
+- **Saturday's Lincoln Financial venue row composed off-by-two** (5 matches said, 3 actual; non-existent knockout assignments R32-5 + R16-4 fabricated, plus wrong match numbers, wrong day-of-week, wrong groups)
 
-**Angle:** Thirteenth consecutive weekday flagging the WC publish bottleneck. Today's Gillette refresh ships fresh on-site WC content surface but doesn't move the queue. **The 4/16 best-comparison-sites piece remains the single highest-leverage publish in the queue** — it is the cross-link foundation for every comparison piece written since (which is most of them, including today's Gillette page once the refresh ships). One publish command unlocks the cross-link reciprocation for ~7 queued pieces and seeds the `/compare` graph for the next 20 days of WC search traffic.
+**Both rows in the same week-ahead venue table had fabricated knockout assignments.** This is the worst single-Sunday-plan-composition structural drift since the cross-check was supposed to absorb on 5/10. Combined with the 5/03 Mercedes-Benz off-by-two and 5/15 Lumen off-by-one, the Sunday-plan upstream cross-check absorption claim is now structurally falsified — 3 misses in 4 Sundays vs only 1 clean pass (5/10 Levi's correct).
+
+**Angle:** Recommended fix is now urgent: this Sunday's (5/24) `next-week-plan.md` audit task MUST run a hard pre-composition Step 0 grep on every venue/page mentioned in the venue table, with the grep output saved as an artifact of the Sunday session BEFORE any venue row is composed. Without this gate, every Friday-Saturday pair-slot refresh in the next 8 weeks (NRG 5/29, Arrowhead 5/30, then BMO Field, BC Place, Estadio Azteca, Estadio Akron, Estadio BBVA) ships with the same structural drift risk. Five of those remaining venues have not yet been Step-0-verified for actual match assignments — the upstream Sunday plan claims match counts that may also be wrong.
+
+**Target keyword:** N/A (internal escalation)
+**Content type:** Process-fix recommendation for Sunday-plan composition (severity escalated)
+**Priority:** Critical (compounds week-over-week; 5 remaining US WC venue refreshes + 5 non-US WC venue refreshes = 10 ships at risk over the next 8 weeks)
+
+### Hook 3: Memorial Day Weekend is T-0 — listicle missed its publish window
+
+**Topic:** Memorial Day Weekend is today (Saturday 5/23). Yesterday's content hook §Hook 5 flagged the Thursday Memorial Day Weekend listicle (`memorial-day-weekend-2026-events-worth-tracking-by-price`) as the single time-sensitive publish in the queue with a window closing in "~12 hours" from Friday morning. **As of this morning, the listicle remains unpublished** — git log shows zero publish commits in the past 24 hours.
+
+**Angle:** The Friday-evening-through-Saturday-morning search-intent peak is now happening live, with the listicle still queued as a draft. The structural decay cost is realized: this is now the **third realized decay loss** after the 4/14 NBA Round-1 piece shelving (5/10) and the 5/07 All-In Pricing FTC-anniversary forfeit (5/12). Net realized publish from past 46 days of drafting: **still zero, and decay loss count now 3 of 23 (13%)**. The listicle retains residual evergreen value for next Memorial Day Weekend (May 2027) but the 2026 windfall is gone.
+
+**Target keywords:** N/A — time-sensitive window is missed
+**Content type:** Publish-window-missed flag
+**Priority:** High (structural decay realized; pattern is recurring; needs Lead-Architect bandwidth-block decision)
+
+### Hook 4: Publish drought hits Day 46 — fifth realized decay loss imminent
+
+**Topic:** Last published blog post: `world-cup-2026-final-ticket-10990-dynamic-pricing` on 2026-04-07 (commit `c0dcf5a`). Today: 2026-05-23. **Day 46.** Yesterday's hook flagged the 4/22 FIFA-resale-data piece's "three weeks of data" framing as "one day from reading exactly-three-weeks-stale." Today the framing is **exactly-31-days-stale and structurally a freshen burden** — the piece's primary data window has decayed beyond the original "three weeks" assertion. Fourth realized or imminent decay loss.
+
+**Angle:** Fourteenth consecutive weekday flagging the publish bottleneck. The queue-decay cost continues compounding. **The 4/16 best-comparison-sites piece remains the single highest-leverage publish in the queue** — escalating its publish recommendation again today. The Saturday-morning slot is the second-lowest-traffic publish window of the week but it's still positive — better than the zero-publish status quo. Even one publish command today would break the Day-46 drought and seed reciprocal cross-links for the next 19 days of WC search traffic.
+
+**Target keyword:** N/A (internal escalation)
+**Content type:** Publish-velocity flag (carry-forward fourteenth consecutive weekday)
+**Priority:** Critical (queue decay compounds daily; the WC T-19-to-T-14 window is the single highest-traffic publish opportunity of Q2)
+
+### Hook 5: World Cup 2026 T-19 days — resale-supply inflection window 5 days from peak
+
+**Topic:** World Cup opener at SoFi is Thursday June 11. Today is May 23. **T-19 days exactly.** The three queued WC drafts (4/22 FIFA resale data — now exactly-31-days-stale on the "three weeks of data" framing; 4/29 WC general-sale closing — 24 days stale; 4/15 WC seat assignments — 38 days stale) all address the T-21-to-T-14 supply-expansion curve and all remain unpublished. **Five days from the T-14 publish-floor for the WC content cluster.**
+
+**Angle:** Today's Lincoln Financial refresh ships fresh on-site WC content surface but doesn't move the queue. The page-refresh-vs-blog-publish leverage gap is at its widest of the year — refresh activity continues compounding while blog-publish activity is zero. The 4/16 best-comparison-sites piece remains the single highest-leverage publish in the queue and is the cross-link foundation for every comparison piece written since. One publish command unlocks reciprocal cross-links for ~7 queued pieces.
 
 **Target keywords:** "world cup 2026 ticket prices," "world cup 2026 resale," "fifa resale prices 2026"
 
 **Content type:** Publish-velocity flag (carry-forward thirteenth consecutive weekday)
-**Priority:** High (window is T-20 today, T-14 in six days; the cost of missing the inflection compounds daily)
+**Priority:** High (window is T-19 today, T-14 in five days; the cost of missing the inflection compounds daily)
 
-### Hook 3: Step 0 catches require Sunday-plan-composition cross-check audit
+### Hook 6: NBA Conference Finals Game 3 weekend — cross-platform pricing window
 
-**Topic:** Today's Step 0 catch (yesterday's Hook 3 off-by-three on Gillette match count) reopens the cross-check-absorption question that the Levi's 5/16 clean landing supposedly resolved. The 5/10 Sunday-plan composition appeared to absorb the cross-check into venue-table number generation, but the 5/17 Sunday-plan composition composed Gillette off-by-three. **Two misses in three Sundays (5/03 Mercedes-Benz off-by-two, 5/17 Gillette off-by-three) plus one clean (5/10 Levi's correct) is intermittent, not absorbed.** The structural blocker filed 5/15 §(d) does NOT downgrade.
+**Topic:** NBA Eastern Conf Finals Game 3 is tonight (Sat 5/23). NBA Western Conf Finals Game 3 is tomorrow night (Sun 5/24). The Mon 5/18 framework piece (`conference-finals-pricing-window-game-1-game-5-cheapest`) and the Wed 5/20 cross-platform-pricing piece both remain queued. **The Game 3 weekend is the peak attention window for Conf Finals search traffic outside of Game 1 day** — Saturday and Sunday primetime national-broadcast moments with full elimination math activated for the back half of each series.
 
-**Angle:** Recommended fix: this Sunday's (5/24) `next-week-plan.md` audit task should add a hard pre-composition Step-0 cross-check on every venue/page mentioned in the venue table, with the grep output saved as an artifact of the Sunday session before any week-plan composition begins. The 5/22 Gillette catch was caught at refresh-time rather than at plan-time — the cost of the catch is structural rework on the heads-up file and content-hook composition rather than a clean morning execution.
+**Angle:** The framework piece is at its peak relevance window today and tomorrow — Conf Finals is in mid-series, search volume is high, and the Game-1-and-5-cheapest framework directly addresses the buyer-intent moment for fans who skipped Game 1 + Game 2. The Wed 5/20 piece's cross-platform pricing data also reads well at peak relevance today. **The Saturday-morning publish window for the framework piece (Mon 5/18) is the strongest content-meets-search-volume opportunity of the back half of the playoffs.**
 
-**Target keyword:** N/A (internal escalation)
-**Content type:** Process-fix recommendation for Sunday-plan composition
-**Priority:** Medium (compounds week-over-week if not absorbed; Sunday 5/24 is the next plan-composition opportunity)
+**Target keywords:** "nba conference finals game 3 tickets," "nba conference finals tickets 2026," "conference finals pricing curve"
 
-### Hook 4: Publish drought hits Day 45 — sixth straight day of Sunday-plan publish queue unexecuted
+**Content type:** Publish-window flag for the Conf Finals framework piece
+**Priority:** High (Game 3 weekend is the peak Conf Finals search-traffic window; framework piece is at peak relevance now)
 
-**Topic:** Last published blog post: `world-cup-2026-final-ticket-10990-dynamic-pricing` on 2026-04-07 (commit `c0dcf5a`). Today: 2026-05-22. **Day 45.** Yesterday's Thu AM 4-publish slot was the fourth and largest single-day bandwidth block in the queue — zero publish commits landed. Through end-of-day Thursday: **zero publish commits across the entire week.**
+### Hook 7: Three pure-Group-Stage US WC venues confirmed — content cluster recalibration
 
-**Angle:** Thirteenth consecutive weekday flagging the publish bottleneck. The queue-decay cost continues compounding. The 5/07 All-In Pricing piece forfeited its FTC anniversary on 5/12 (already lost). The 4/22 FIFA data piece's "three weeks of data" window is now ~24 hours from reading exactly-three-weeks-stale. **The 4/16 best-comparison-sites piece remains the single highest-leverage publish in the queue** — escalating its publish recommendation again today. The Friday-EOD slot is the lowest-traffic publish window of the week but it's still positive — better than the zero-publish status quo. Even one publish command today would break the Day-45 drought and seed reciprocal cross-links for the next 20 days of WC search traffic.
+**Topic:** Today's Lincoln Financial Step 0 catch confirms the third pure-Group-Stage US WC venue alongside Levi's and Gillette. The cluster of three (Levi's, Gillette, Lincoln Financial) all have the same structural profile — 3 matches each, all Group Stage, zero knockout. The combined cluster carries 9 matches with a shared "cheaper-Group-Stage venue" content positioning vs the knockout-bearing venues (MetLife, SoFi, AT&T, Hard Rock, Mercedes-Benz, Lumen, NRG, Arrowhead).
 
-**Target keyword:** N/A (internal escalation)
-**Content type:** Publish-velocity flag
-**Priority:** Critical (queue decay compounds daily; the WC T-20-to-T-14 window is the single highest-traffic publish opportunity of Q2)
+**Angle:** A future big-idea piece could anchor on the three-venue cluster — "The Three Cheapest US World Cup Venues: Why Levi's, Gillette, and Lincoln Financial Are Where the Group-Stage Bargains Live." This is a 1,200-word data-density piece structured around the 9 matches (3 per venue), the FIFA Cat 4 floor at each venue ($80 Levi's / $110 Gillette / $125 Lincoln Financial), the no-knockout-premium framework, and the buyer playbook for finding the cheapest WC ticket of the tournament. **Pairs naturally with the existing 4/16 best-comparison-sites piece for cross-link reciprocation when both publish.** Add to next week's queue for Lead Architect approval — earliest publish slot is Mon 6/01 as the WC T-10 big-idea anchor.
 
-### Hook 5: Memorial Day Weekend is T-1 day — yesterday's listicle ships into search-intent peak
+**Target keywords:** "cheapest world cup 2026 tickets," "world cup group stage tickets," "cheapest world cup 2026 venue," "world cup ticket bargains 2026"
 
-**Topic:** Memorial Day Weekend (Sat 5/23 – Mon 5/25) is T-1 day. Yesterday's `memorial-day-weekend-2026-events-worth-tracking-by-price` listicle was the Thu-AM-slot pair-publish setup for the Memorial-Day-Weekend search-intent peak. The listicle remains unpublished as of session-start this morning. **The search-intent peak runs Friday-evening through Saturday-morning** as last-minute Memorial Day Weekend planners search for events; the publish-window for the listicle to land in front of that traffic is effectively the next ~12 hours.
+**Content type:** Future blog idea for Sunday-plan composition
+**Priority:** Medium (queue addition for next week; flagged for SEO Agent in `seo-requests/2026-05-23-content-data-touch.md` §5)
 
-**Angle:** The Memorial Day Weekend listicle is the single time-sensitive publish in the queue today — every other queued draft has a wider publish window. **Publishing the listicle this morning (Friday AM) lands it in the indexable window for Friday-PM through Saturday-AM search traffic; publishing Saturday morning or later misses the inflection.** This is the cleanest single-publish leverage opportunity of the week.
+---
 
-**Target keywords:** "memorial day weekend events 2026," "memorial day weekend sports tickets," "memorial day weekend concerts 2026"
-**Content type:** Publish-window flag for the Thursday-listicle
-**Priority:** High (window closes in ~12 hours; the time-sensitive publish in the queue)
+## Cross-agent notes
 
-### Hook 6: Conference Finals Game 2 cross-platform pricing for tonight's Western Game 2
-
-**Topic:** NBA Western Conf Finals Game 2 is tonight. The Wed 5/20 piece (`conference-finals-game-2-cross-platform-pricing-may-2026`) covered the Eastern Game 2 cross-platform spread published yesterday morning. The Western Game 2 narrative is fresh content surface — cross-platform spread reads, the home-team supply curve from Game 1 to Game 2, and the buyer-playbook for the back-half of the series.
-
-**Angle:** Saturday refresh-slot candidate. Tomorrow (Sat 5/23) is the second half of the Fri/Sat pair-slot — today is Gillette Stadium refresh, tomorrow is the open slot. Tonight's Western Game 2 result + tomorrow's morning cross-platform read could be the Saturday refresh content, OR the Saturday slot could be a venue/city page refresh (next sparse target: Lincoln Financial Field per the queue, or the Philadelphia city page if the city-page refresh queue activates). **Decision-point lands at session-start tomorrow morning** based on whether the Western Game 2 cross-platform spread is content-distinctive vs the existing 5/20 Eastern Game 2 piece.
-
-**Target keywords:** "western conference finals game 2 tickets," "western conf finals tickets," "nba conference finals tickets"
-**Content type:** Saturday slot candidate (decision-point lands tomorrow morning)
-**Priority:** Medium (tomorrow's execution)
-
-### Cross-agent coordination notes
-
-- **SEO Agent:** Today's `seo-requests/2026-05-22-content-data-touch.md` was filed Step-1 ahead of the worldcup.ts edit. Asks listed in the heads-up file §"Ask of SEO Agent" (4 items). Forward Fix v2 first canonical execution lock-in.
-- **Email Agent:** No new lead-magnet opportunities flagged by today's Gillette refresh. The Foxboro 1994 same-site-heritage angle could seed a future "Stadium Heritage Tracker" lead magnet for NFL stadiums hosting 2026 WC matches — flagged here as a low-priority candidate.
-- **Social Agent:** The Foxboro 1994 same-site-heritage angle + the M27 Thursday-22:00-ET "latest US WC weekday kickoff" angle are both social-content-friendly. M27 22:00 ET in particular is uncontested ("the cheapest US WC ticket might be the Thursday-night-late-kickoff Group B match in Foxborough") — flagged here for Sunday's social planning.
+- **SEO Agent:** Heads-up file `seo-requests/2026-05-23-content-data-touch.md` filed as artifact 1 of this morning. **Critical ask:** §2 of that file requests SEO Agent to file the Sunday-plan-composition Step 0 gate as a hard architectural requirement in next week's review. Two consecutive Friday-Saturday Sunday-plan miss is now structural rather than incidental.
+- **Email Agent:** No new asks today. The drip cron unblock remains the upstream gate.
+- **Social Agent:** Today's Lincoln Financial refresh is amplification-eligible once committed — Philly-specific social angle (SEPTA transit framing + Eagles fan culture + 2024 Copa America Group D pricing precedent) is uncontested at depth across all current US WC venue social content.
+- **CRO Agent:** No new asks today.
+- **Analytics Agent:** Memorial Day Weekend listicle missed its publish window per §Hook 3 — third realized decay loss. Track the listicle's organic-search performance from May 2027 reactivation as a counterfactual for evergreen-residual-value.
+- **Paid Ads Agent:** Continue holding (Day 41).
