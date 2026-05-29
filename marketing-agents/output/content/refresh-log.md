@@ -1,5 +1,68 @@
 # Content Refresh Log
 
+## 2026-05-29 — NRG Stadium (worldcup.ts)
+
+**Page refreshed:** `nrg-stadium` in `web/src/data/worldcup.ts` → renders at `/world-cup-2026/nrg-stadium`
+
+**Commit:** `Content refresh: nrg-stadium` (1 file expected ~21 / 10 — within the canonical Friday-Saturday-refresh envelope; first 5-match venue refresh in the arc so absolute line-count is slightly higher than the 3-match Levi's/Gillette/Lincoln Financial 19/10 trio). Push deferred to the EOD daily-marketing-output cycle per CLAUDE.md "Push only when explicitly asked."
+
+**Forward Fix v2 third canonical execution — clean landing:**
+
+1. **Step 1 (SEO heads-up file) filed as artifact 1 of the session** at `seo-requests/2026-05-29-content-data-touch.md`. Filed Friday morning ahead of the current-state read of the NRG Stadium entry, ahead of any `worldcup.ts` editing, and ahead of any content-hook composition.
+2. **Calendar-day cadence (same morning as refresh, not evening-prior).** Heads-up landed Friday morning with ≥2 hours buffer to commit.
+3. **mtime ordering.** Heads-up mtime precedes `worldcup.ts` modification mtime.
+
+**Forward Fix v2 is canonical through its third non-test execution** — Gillette 5/22 + Lincoln Financial 5/23 + NRG 5/29 ran the canonical pattern across two consecutive Friday-Saturday pair-slot windows.
+
+**Step 0 cross-check — FIRST CLEAN PASS COMPOSED-AGAINST-GATE:**
+
+```
+$ grep -n "venue: 'nrg-stadium'" web/src/data/worldcup.ts
+M9   — 2026-06-13 (Sat) 22:00 ET — Group Stage Group E
+M23  — 2026-06-17 (Wed) 16:00 ET — Group Stage Group L
+M39  — 2026-06-21 (Sun) 22:00 ET — Group Stage Group H
+M57  — 2026-06-27 (Sat) 16:00 ET — Group Stage Group E
+R16-7 — 2026-07-06 (Mon) 16:00 ET — Round of 16
+```
+
+**5 matches total (4 Group Stage, 1 Round of 16).** This week's 5/24 `next-week-plan.md` stated "NRG Stadium = 5 matches (M9 Sat 6/13 22:00 ET Group E, M23 Wed 6/17 16:00 ET Group L, M39 Sun 6/21 22:00 ET Group H, M57 Sat 6/27 16:00 ET Group E, R16-7 Mon 7/6 16:00 ET)." **Exact match across all five matches.** First Step-0 clean pass that landed *because* the upstream Sunday-plan-composition Step 0 gate ran pre-composition, not by coincidence — qualitatively different from the 5/16 Levi's clean pass which was coincidence-clean.
+
+**Updated Step-0 hit rate post-NRG:** 7-of-9 (78%); 2-of-3 (67%) since the upstream Sunday-plan cross-check was supposed to absorb on 5/10. The pre-composition Step 0 gate added to the 5/24 Sunday plan composition is working as designed in its first refresh execution. **Saturday's Arrowhead refresh will be the gate's second execution test** — if it also lands clean, the gate is canonically locked in alongside Forward Fix v2 as the second structural Content-Agent process control.
+
+**Historical contrast:** Last Sunday's 5/17 plan (composed pre-Step-0-gate) stated "NRG = 5 matches (3 GS + R32 + R16)" — match-count correct by coincidence, round composition wrong (R32 fabricated, 1 GS undercounted, actual is 4 GS + R16). This week's 5/24 plan caught it pre-composition; today's brief composed against the corrected venue row.
+
+**Match-by-match content surface (as built into the description):**
+
+1. **M9 — Sat 6/13 22:00 ET — Group E.** Opening-weekend Saturday-primetime opener; third match of the tournament. Group E supporters' first NRG trip.
+2. **M23 — Wed 6/17 16:00 ET — Group L.** Peak Houston afternoon heat (heat-index 110°F+); retractable-roof-closed scenario structurally certain. **Pricing-floor anchor for the page.**
+3. **M39 — Sun 6/21 22:00 ET — Group H.** Sunday-primetime; mid-tier between Saturday-primetime ceiling and Wednesday-afternoon floor.
+4. **M57 — Sat 6/27 16:00 ET — Group E.** Group-stage final-day stakes-aligned closing. Group E supporters' second NRG trip; pairs with M58 at Lincoln Financial for the Houston-Philadelphia trip pair.
+5. **R16-7 — Mon 7/6 16:00 ET — Round of 16.** **Page's highest-demand match.** One of four US R16 games on Mon 7/6 (Arrowhead R16-8 20:00 ET prime-time + Lincoln Financial R16-4 + one other US R16). Densest R16 concentration of any US WC hosting year on record.
+
+**Diff summary:**
+
+| Field | Before | After |
+|-------|--------|-------|
+| description | 1 sentence, generic | Multi-paragraph rich description with all 5 matches, retractable-roof framing, four-US-R16 day, Group E cross-venue itinerary, heat-and-humidity weather honesty, 2017 Gold Cup + Texans + Dynamo comps, METRORail transit-positive, FIFA Cat 4 floor estimate, capacity context, football-first geometry honesty |
+| ticketTips | 4 generic | 8 NRG-specific (sightline tier + pricing-floor anchor + pricing-ceiling anchor + retractable-roof angle + METRORail transit + Group E two-trip + weather honesty + resale-dip pattern with three concrete venue comps) |
+| sections | 3 (Lower Bowl / Club Level / Upper Level) | 9 (100-Level Sideline / Corner / Endline + Verizon Wireless Club / Diamond Club premium + Mezzanine Sideline / Corner & Endline + 300-Level Upper Sideline / Corner & Endline + NRG Suite Level) with FIFA Cat 1-4 mapping AND R16 pricing-ceiling tier per band |
+| keywords | 4 | 11 (added NRG Stadium World Cup 2026 tickets, NRG Stadium seating chart, cheapest NRG Stadium World Cup tickets, NRG Stadium retractable roof — content-differentiated uncontested keyword, NRG Stadium Round of 16, Houston METRORail NRG Stadium — uncontested transit-positive keyword, Texans stadium World Cup) |
+
+**Differentiated content angles uncontested at depth:**
+
+1. **NRG is the only US WC venue with a retractable roof** — the structural weather-management hedge no other US WC venue can claim.
+2. **Four-US-R16-game day on Mon 7/6** — NRG R16-7 16:00 ET + Arrowhead R16-8 20:00 ET + Lincoln Financial R16-4 + one more US R16; densest R16 concentration of any US WC hosting year on record.
+3. **Group E two-city supporters itinerary** — Houston + Philadelphia, not Houston-or-Philadelphia. Cross-links with yesterday's Lincoln Financial refresh.
+4. **METRORail Red Line direct service from Downtown Houston** — second-best US WC venue transit access in the entire portfolio behind only Lincoln Financial's SEPTA. Complements the transit-positive content cluster opened by yesterday's Lincoln Financial refresh.
+5. **Three-comp soccer-resale precedent stack** — 2017 CONCACAF Gold Cup at NRG ($80-$280 sideline group-stage), Texans NFL secondary at $120-$450 / $450-$1,200 divisional, Houston Dynamo MLS at $45-$180 sideline at the smaller PNC Stadium MLS-proxy.
+6. **Houston June peak heat-and-humidity weather honesty** — 95-105°F daytime, heat-index 110°F+ midday; retractable-roof-closed scenario certain for all three afternoon matches.
+
+**TypeScript verified clean via npx tsc --noEmit.**
+
+**Tenth-of-eleven sparse-data US WC venue refresh in this arc.** Arrowhead Stadium tomorrow (Sat 5/30) is the eleventh and final US WC venue refresh, closing the arc.
+
+---
+
 ## 2026-05-23 — Lincoln Financial Field (worldcup.ts)
 
 **Page refreshed:** `lincoln-financial-field` in `web/src/data/worldcup.ts` → renders at `/world-cup-2026/lincoln-financial-field`
