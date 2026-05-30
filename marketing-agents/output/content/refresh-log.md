@@ -1,5 +1,39 @@
 # Content Refresh Log
 
+## 2026-05-30 — Arrowhead Stadium (worldcup.ts) — US ARC CLOSED
+
+**Page refreshed:** `arrowhead-stadium` in `web/src/data/worldcup.ts` → renders at `/world-cup-2026/arrowhead-stadium`
+
+**Commit:** `b9d8002 Content refresh: arrowhead-stadium` (1 file). The **eleventh and final US WC venue sparse-data refresh** — closes the 11-venue US arc that ran MetLife 4/25 → SoFi 5/01 → Hard Rock 5/02 → AT&T 5/08 → Mercedes-Benz 5/09 → Lumen 5/15 → Levi's 5/16 → Gillette 5/22 → Lincoln Financial 5/23 → NRG 5/29 → **Arrowhead 5/30**. Push deferred to the EOD daily-marketing-output cycle per CLAUDE.md "Push only when explicitly asked."
+
+**Step-0 pre-composition gate — second clean execution AND a live error catch:**
+The grep gate added to the 5/24 Sunday plan ran ahead of composition (its second execution after NRG 5/29) and **caught a cross-page factual error already shipped in the NRG description and propagated through this refresh-log:**
+
+1. **"Four US R16 games on Mon 7/6 — densest R16 concentration of any US WC hosting year on record" is FALSE.** The schedule (`worldcup.ts` lines 636-643) shows the 8 R16 matches run exactly two-per-day across 7/3, 7/4, 7/5, 7/6. **Mon 7/6 has exactly TWO R16 games, both US: NRG R16-7 (16:00) + Arrowhead R16-8 (20:00).** No R16 day is denser than any other. The shipped NRG description (line 326) and this log's lines 40 & 54 carry the false "four games / densest concentration" superlative.
+2. **"Lincoln Financial R16-4" is a phantom match.** R16-4 is **Hard Rock Stadium on 7/4**, not Lincoln. **Lincoln Financial hosts ZERO knockout matches** (its own description confirms this). The log's lines 40 & 54 cross-reference is wrong on both venue and date.
+3. **"Arrowhead: 6 matches" (log line 446) was a next-week-plan error.** Verified actual: **4 matches** (M13, M26, M61, R16-8).
+
+The Arrowhead page ships with the **corrected** R16 fact ("the prime-time slot of the two US R16 games on Mon 7/6"). The NRG description is flagged for parallel correction in `seo-requests/2026-05-30-content-data-touch.md` §(a) to avoid a two-page contradiction. **This is the gate's first live-error catch — recommend locking it in as canonical alongside Forward Fix v2.**
+
+**What changed:**
+1. **Description** upgraded from a 1-sentence stub to a single rich paragraph covering: 4-match volume framing (3 Group Stage + 1 R16), M13 Sun 6/14 22:00 ET Group G opening-weekend Sunday-primetime, M26 Thu 6/18 19:00 ET Group A with **confirmed host-nation-group premium** (Group A contains Mexico per the M1 Group A opener at Azteca — a *verified* upgrade over Lincoln's speculative "if FIFA draws a host nation into Group A"), M61 Sun 6/28 16:00 ET Group G stakes-aligned closing (simultaneous with Levi's M62), R16-8 Mon 7/6 20:00 ET as the corrected pricing-ceiling anchor (matchNumber 80, the tournament's final R16 match), Group G two-trips-to-KC supporter stack, **most evening-weighted slate of any US WC venue** (3 of 4 kickoffs evening — net weather edge vs all-afternoon Lincoln/Levi's), honest KC severe-thunderstorm-corridor weather, Chiefs Super-Bowl-era NFL pricing comps ($600-$2,500 AFC Championship sideline / $150-$600 regular-season), Sporting KC at Children's Mercy Park MLS proxy ($35-$150), capacity-76,416 large-venue + heartland-market structurally-competitive-floor framing ($110-$300 GS / $220-$580 R16 Cat 4), Truman Sports Complex car-and-tailgate-first transit honesty (no direct rail, bottom of portfolio alongside Levi's), football-first 15-18 yard touchline-geometry disclosure, cross-platform comparison framing, and TicketScan CTA with price-alert mention.
+2. **ticketTips** expanded from 4 generic bullets to 8 data-anchored tips (Cat-1 sightlines, Cat-4 floor anchor, corrected R16-8 ceiling, evening-slate weather edge, Group G two-trip, Group A host-nation note, transit/tailgate honesty, post-on-sale resale-dip with three concrete comps).
+3. **sections** expanded from 3 placeholders to 9 sections with FIFA-category framing and dual Group-Stage / R16 price ranges (matching the NRG dual-range format since Arrowhead hosts an R16): Lower Sideline/Corner/Endline, CommunityAmerica/Founders Club, Club Mezzanine Sideline + Corner/Endline, 300-Level Upper Sideline + Corner/Endline (Cat 4 floor), Suite Level.
+4. **keywords** expanded from 4 to 11, adding seating-chart, cheapest, Round-of-16, Chiefs-stadium, and parking long-tails.
+
+**Verification:** `npx tsc --noEmit` ran clean — no TypeScript errors introduced.
+
+**SEO impact expected:**
+- Full 9-section data populates the seating-guide sidebar; dual GS/R16 ranges give the R16 page surface distinct pricing signals.
+- AggregateOffer `lowPrice` moves from the $100 placeholder to ~$110 (300-Level Cat 4 GS floor) and `highPrice` from $1,500 to ~$24,000+ (Suite ceiling). **Caveat: the `extractLowestPrice` bug (filed 5/10) means deployed `lowPrice` ships wrong until the patch lands — Arrowhead is the latest WC stadium to carry it; flagged in `seo-requests/2026-05-30-content-data-touch.md` §(c).**
+- Closes the US arc; the corrected R16 fact removes a false superlative from the WC content surface before the Canada/Mexico arc (BMO, BC Place, Azteca, Akron, BBVA) begins.
+
+**Cross-agent handoffs:**
+- **SEO Agent:** `seo-requests/2026-05-30-content-data-touch.md` filed as artifact 1 of the session. Asks: (a) sign-off to correct the NRG "four US R16 games / densest concentration" error, (b) parallel-correction scan of any SEO surface carrying that superlative, (c) AggregateOffer shift sign-off + `extractLowestPrice` carry-count reconciliation, (d) lock-in ack for the Step-0 gate (first live-error catch).
+- **Next refresh slot:** Canada/Mexico arc opens — BMO Field, BC Place, Estadio Azteca, Estadio Akron, Estadio BBVA. Sunday 5/31 plan composition MUST run the Step-0 grep on every venue row before composing, given the gate just caught a shipped error.
+
+---
+
 ## 2026-05-29 — NRG Stadium (worldcup.ts)
 
 **Page refreshed:** `nrg-stadium` in `web/src/data/worldcup.ts` → renders at `/world-cup-2026/nrg-stadium`
