@@ -1,27 +1,32 @@
-## Today's Content Hook — 2026-06-04 (Thursday — WC T-7 — comparison blog day)
+## Today's Content Hook — 2026-06-05 (Friday)
 
-**Day task executed:** Thursday comparison blog written per the 5/31 next-week plan's Thursday slot. Draft: `2026-06-04-fifa-direct-vs-resale-platforms-t-7-world-cup-2026.md`, `category: comparisons`, ~1,050 words, three H2s + a per-category comparison table. CTA = side-by-side compare. The piece caps the WC content week and answers the single highest-intent pre-tournament question: "Should I just buy from FIFA?"
+**Topic:** With kickoff 6 days out (June 11), the World Cup 2026 resale market has split in two: standard group-stage tickets are softening as sellers panic-dump, while marquee/knockout matches hold firm at the top. Separately, the NY and NJ attorneys general have subpoenaed FIFA over a ticket-pricing process that "far exceeded the prices for any previous World Cup."
 
----
+**Angle:** This is TicketScan's exact lane as a consumer advocate. The takeaway for fans: don't buy the average — the market is bifurcating, so a group-stage seat bought today on FIFA Official Resale (which adds ~15% fees per side) may be beatable on StubHub, while a marquee match won't drop. The actionable move is to *compare* FIFA Resale vs StubHub side-by-side and set a price alert on the softening group-stage games rather than overpaying out of fear.
 
-### Hook 1 — Same World Cup match, $200 on SeatGeek vs $700 on FIFA's own resale (today's draft)
-**Topic:** With kickoff seven days out (June 11), the resale market is now visibly *undercutting FIFA-direct* on comparable inventory. Reported this week: comparable group-stage seats listed near ~$200 on SeatGeek vs ~$700 on FIFA's official resale platform; StubHub get-ins from ~$162; some resale group-stage seats falling to ~$100 as unsold inventory piles up. At the top, the Final is listed from ~$7,291 on StubHub resale vs FIFA's $10,990 face — resale undercuts FIFA by ~$3,700 on the marquee match. FIFA dropped price caps for US/Canada matches this cycle, which is exactly why the spread is this wide.
-**Angle:** Demolishes the "official = cheapest" assumption at the highest-intent moment of the campaign. FIFA-direct is genuinely cheapest *only* for the Cat-4 floor seats that never moved; everywhere demand softened, resale is now the value play. The honest, cross-platform finding is the structural moat — no single-source seller will ever tell you a competitor is $500 lower.
-**Target keyword:** "is FIFA cheaper than StubHub" / "FIFA direct vs resale World Cup" / "where to buy World Cup 2026 tickets cheapest"
-**Content type:** Blog post (today's draft) + social snippet
-**Priority:** High — peak "where do I actually buy" search intent at T-7; relevant every day through kickoff.
+**Target keyword:** "world cup 2026 ticket prices dropping" / "world cup resale fees" / "cheapest world cup 2026 group stage tickets"
 
-### Hook 2 — The "unsold blocks" tell: when whole rows appear on resale, the floor is about to fall
-**Topic:** Reuters/Newsweek reporting this week flagged large contiguous blocks (full rows, multiple sections) appearing on SeatGeek for softer group-stage matches — e.g. Saudi Arabia–Cape Verde in Houston (June 26). Whole-block dumps are a leading indicator that a match is over-supplied and its resale floor is about to drop. The consumer-advocate read: contiguous-block availability on a non-glamour match = wait-and-watch signal, not a buy signal.
-**Angle:** A reusable "read the inventory shape" framework — block availability as a demand-softness tell. Pairs with the buy-late / smaller-market lesson from the 6/3 hook and the last-minute-deals evergreen cluster.
-**Target keyword:** "World Cup tickets unsold" / "World Cup resale prices dropping" / "cheapest World Cup group stage tickets"
-**Content type:** Future tips-slot blog peg OR social snippet (Agent 4)
-**Priority:** Medium — evergreen framework, lightly date-pegged to the final-week inventory dump.
+**Content type:** Blog post (news/timely — slot for next week) + social snippet + email hook. Today is a Friday refresh day, so no draft written; logged here for next week's plan.
+
+**Priority:** High — timely (6 days to kickoff), on-brand, ties directly to the compare + price-alert funnel.
 
 ---
 
-**Cross-agent flags:**
-- **Social Agent (Agent 4):** Hook 1 is a ready-made TicketScan-voice post: "Same World Cup seat: ~$200 on one app, ~$700 on FIFA's own resale, right now. 'Official' is not 'cheapest.'" A 4-bar price-spread graphic (StubHub $162 / SeatGeek $200 / FIFA resale $700, + Final $7,291 resale vs $10,990 FIFA face) converts hard in the pre-tournament window. Source the numbers to this week's reporting.
-- **SEO Agent (Agent 2):** "is FIFA cheaper than StubHub" and "where to buy World Cup 2026 tickets cheapest" are peaking now with no dedicated on-site target until this draft. Strong candidate for a `/faq` long-tail entry: "Is FIFA's official platform cheaper than resale for World Cup 2026?" Filing a keyword note in `seo-requests/`.
-- **Email Agent (Agent 5):** The FIFA-vs-resale spread is a concrete, screenshot-able proof point for the cross-platform value email — "$500 difference on the same match, official vs resale" is a clean hook for the comparison drip. Pairs with the ready-to-gate "All 11 US Venues" PDF lead magnet.
-- **Publishing note:** This is the WC content week's closer and is at peak relevance through June 11. Among the decaying-WC backlog it is one of the *least* perishable (the thesis stays true all tournament), so it does not need to jump the queue ahead of the hard-date-anchored 4/15 / 4/22 / 4/29 drafts — but it is a strong publish-this-week candidate alongside the Monday venue-map flagship.
+### Secondary hook / data flag (HIGH priority — for SEO Agent + Lead Architect)
+
+**Topic:** While refreshing the BMO Field (Toronto) WC page I found that `web/src/data/worldcup.ts` carries **stale pre-draw schedule data**. The file says BMO hosts **3 group-stage matches, Group F, no knockout**; reputable public sources (FIFA.com, Goal.com, Vivid Seats, SeatGeek) all show the **real** BMO slate is **6 matches including a Round of 32**, with **Canada in Group B (vs Bosnia, June 12)** — not Group F.
+
+**Angle:** The entire WC schedule array (`worldCupSchedule`) appears to be placeholder/pre-draw data with TBD teams and generic group letters. The prior 11 weeks of US-venue refreshes only ever verified copy *against this file*, never against the post-draw FIFA schedule, so the internal "Step-0 grep gate" was validating against a wrong source. **Today's BMO refresh deliberately avoids asserting match counts/groups/dates** and sticks to evergreen, verifiable facts until the schedule data is corrected.
+
+**Recommended action:** Full audit + update of `worldCupSchedule` against the real post-draw FIFA fixtures BEFORE any further WC venue refreshes or before relying on the schedule for AggregateOffer/Event schema. Filed in `seo-requests/2026-06-05-worldcup-schedule-divergence.md`.
+
+**Priority:** High — factual-accuracy and SEO-credibility issue 6 days before the tournament.
+
+---
+
+**Sources (web):**
+- [Why 2026 World Cup Ticket Prices Are So High — TIME](https://time.com/article/2026/05/24/why-2026-world-cup-ticket-prices-are-so-high/)
+- [World Cup sticker shock — ESPN](https://www.espn.com/soccer/story/_/id/48947095/2026-fifa-world-cup-sticker-shock-ugly-cost-beautiful-game-grand-event)
+- [How to buy World Cup 2026 resale tickets — Goal.com](https://www.goal.com/en-us/news/world-cup-resale-tickets-information/blta98fd2cf01ecfd44)
+- [World Cup 2026 Toronto Tickets Guide: BMO Field — Goal.com](https://www.goal.com/en/lists/bmo-field-stadium-guide-history-stay/bltb15d51079e27f74b)
+- [Toronto Host City — FIFA.com](https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/canada/toronto)

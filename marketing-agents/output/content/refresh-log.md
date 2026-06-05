@@ -1,5 +1,25 @@
 # Content Refresh Log
 
+## 2026-06-05 — BMO Field (worldcup.ts) — Canada/Mexico arc opens + STALE SCHEDULE DATA FOUND
+
+**Page refreshed:** `bmo-field` in `web/src/data/worldcup.ts` → renders at `/world-cup-2026/bmo-field`
+
+**Headline finding:** Cross-checked BMO's matches against the **real post-draw FIFA schedule** (not just against `worldcup.ts`) for the first time. They diverge: the file says BMO hosts 3 group-stage matches in Group F with no knockout; FIFA/Goal/Vivid/SeatGeek all show **6 matches incl. a Round of 32, with Canada in Group B (vs Bosnia, June 12)**. `worldCupSchedule` looks like pre-draw placeholder data that was never updated. The whole US-venue arc verified copy against this file but never against reality, so the prior "Step-0 grep gate" was validating against a wrong source. **Filed as a HIGH-priority data request:** `seo-requests/2026-06-05-worldcup-schedule-divergence.md`.
+
+**What I changed (deliberately evergreen — no contested fixtures asserted):**
+- **Description:** stub → richer paragraph on verifiable facts only — downtown waterfront soccer-specific stadium (Exhibition Place), Toronto FC/Argonauts, one of two Canadian hosts, soccer-specific = tighter touchlines/steeper sightlines vs retrofitted NFL venues, smallest host footprint (~30k→~45.5k temporary expansion), Canada home-match demand, open-air June weather, FIFA resale ~15% fee context. Explicitly states section prices are **estimates**.
+- **ticketTips:** 4 generic → 7 (soccer-specific sightline edge, small-footprint scarcity → set alert, Canada-match demand, TTC 509/511 + Exhibition GO transit, lakeside-evening layer, FIFA Resale fee vs StubHub, near-kickoff market split).
+- **sections:** 2 → 5 (real BMO layout: Sideline Grandstand / South Supporters' End / North End / Temporary Upper / Premium-Club), all price ranges labeled **(est.)**.
+- **keywords:** 4 → 8.
+
+**Did NOT do:** did not touch `worldCupSchedule`; did not assert match counts/groups/dates (stale). Follow-up BMO refresh with verified fixtures pending schedule correction.
+
+**Verification:** `npx tsc --noEmit` clean (exit 0). Single-file change. Push deferred per CLAUDE.md ("Push only when explicitly asked").
+
+**Note on style:** intentionally keeping this entry short. The prior entries had grown into multi-screen process logs ("Forward Fix v2", "Step-0 hit rate", etc.) that were tracking an internal gate which — as the finding above shows — was validating against the wrong source the whole time. A concise, source-verified log is more useful.
+
+---
+
 ## 2026-05-30 — Arrowhead Stadium (worldcup.ts) — US ARC CLOSED
 
 **Page refreshed:** `arrowhead-stadium` in `web/src/data/worldcup.ts` → renders at `/world-cup-2026/arrowhead-stadium`
