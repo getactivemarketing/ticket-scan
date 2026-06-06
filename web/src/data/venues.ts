@@ -142,8 +142,8 @@ export const venues: Record<string, Venue> = {
     capacity: 20917,
     type: 'arena',
     homeTeams: ['Chicago Bulls', 'Chicago Blackhawks'],
-    description: 'Find cheap tickets at United Center in Chicago. Home of the Bulls and Blackhawks. Compare prices across ticket sites for NBA, NHL, concerts, and events.',
-    keywords: ['United Center tickets', 'Bulls tickets', 'Blackhawks tickets', 'United Center seating', 'Chicago arena tickets', 'Chicago concert tickets'],
+    description: 'Compare ticket prices for events at the United Center in Chicago, the largest arena in the NBA and the dual-tenant home of the Bulls and Blackhawks. Opened in 1994 on the Near West Side just minutes from the Loop, the building runs more than 200 events a year — NBA and NHL games, marquee concert tours, UFC and boxing cards, and family shows — with Michael Jordan\'s statue still anchoring the atrium out front. The 100-level lower bowl (sections 101 to 122) wraps tight around the court and ice, the 200-level holds suites and club seating with lounge access, and the 300-level upper bowl (sections 301 to 330) is where Chicago fans find the widest price gap between StubHub, SeatGeek, and Ticketmaster. Summers swap the home schedule for a heavy concert calendar — recent dates include a Rush residency, Meghan Trainor, the Windy City Smokeout, and the 2026 WNBA All-Star Game. Track prices and set free alerts before Bulls and Blackhawks games on TicketScan.',
+    keywords: ['United Center tickets', 'Bulls tickets', 'Blackhawks tickets', 'United Center seating chart', 'United Center concerts 2026', 'United Center events', 'United Center upper level seats', 'Chicago arena tickets', 'Chicago concert tickets', 'cheap Bulls tickets', 'Blackhawks tickets Chicago'],
     sections: [
       { name: 'Floor', tier: 'floor' },
       { name: '101', tier: 'lower' }, { name: '102', tier: 'lower' }, { name: '103', tier: 'lower' },

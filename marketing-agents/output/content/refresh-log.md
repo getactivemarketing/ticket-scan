@@ -1,5 +1,28 @@
 # Content Refresh Log
 
+## 2026-06-06 — United Center (venues.ts) — thin one-liner → rich evergreen guide
+
+**Page refreshed:** `united-center` in `web/src/data/venues.ts` → renders at `/venues/united-center`
+
+**Why this page:** First non-WC venue refresh since April (Chase/Ball/AAC/Wells Fargo/TD Garden). United Center is a top-market arena (Chicago, largest capacity in the NBA) that was still carrying a generic one-sentence description while peer arenas had been upgraded to 100+ word guides. Stepping off the worldcup.ts cadence on purpose — `worldcup.ts` schedule data is flagged stale (see 2026-06-05 entry) and shouldn't get more refreshes until corrected.
+
+**What changed:**
+- `description`: rewrote the single generic sentence into a ~130-word evergreen guide matching the TD Garden / Wells Fargo / Chase Center pattern — venue identity (largest NBA arena, dual-tenant Bulls/Blackhawks, opened 1994, Near West Side, Jordan statue), seating tiers mapped to the actual sections in the data file (100-level lower bowl 101–122, 200-level suites/club, 300-level upper bowl 301–330 called out as the value tier with the widest cross-platform spread), and the standard compare-three-sites + free-alert CTA.
+- `keywords`: expanded from 6 → 11. Added long-tail: `United Center concerts 2026`, `United Center events`, `United Center upper level seats`, `cheap Bulls tickets`, `Blackhawks tickets Chicago`; tightened `United Center seating` → `United Center seating chart`.
+
+**Data-integrity guardrails:**
+- Evergreen only in the persistent `description` — no dollar figures (price feed returns null prices), no dated event list baked into meta.
+- One durable timely reference included (2026 WNBA All-Star Game at United Center) since it's confirmed and on-calendar through July. Dated summer concerts (Rush residency, Meghan Trainor, Windy City Smokeout) live in `content-hook.md`, not the venue meta.
+- Facts verified: largest NBA arena by capacity, 1994 opening, Bulls/Blackhawks tenancy, Jordan statue, section ranges cross-checked against `venues.ts` `sections[]`.
+
+**Validation:** `npx tsc --noEmit --skipLibCheck src/data/venues.ts` → clean (no quote/template-literal breakage from the apostrophe in "Jordan's").
+
+**Handoffs:**
+- SEO Agent: keyword opportunity note filed at `seo-requests/2026-06-06-keyword-opportunities.md` (United Center long-tail + the "off-season arena pricing" / "multi-night residency cheap night" cluster).
+- Blog candidate flagged for next Tue tactical slot: "Multi-Night Residencies: How to Find the Cheap Night."
+
+---
+
 ## 2026-06-05 — BMO Field (worldcup.ts) — Canada/Mexico arc opens + STALE SCHEDULE DATA FOUND
 
 **Page refreshed:** `bmo-field` in `web/src/data/worldcup.ts` → renders at `/world-cup-2026/bmo-field`
