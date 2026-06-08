@@ -1,24 +1,29 @@
-## Today's Content Hook — 2026-06-07 (Sunday)
+## Today's Content Hook — 2026-06-08 (Monday)
 
-**Topic:** Two live price stories collide this weekend. (1) NBA Finals seat prices at Madison Square Garden have gone vertical now that the Knicks lead the Spurs 2-0: get-in for Game 3 was reported around $9,257 and Game 4 around $13,159, while the same series' Spurs home games in San Antonio sat near $1,521 get-in — a same-series spread of roughly 6x driven entirely by which building you're walking into. (2) The World Cup 2026 opener (Mexico vs South Africa, Mexico City) is now four days out, sold out on FIFA's own platform, and trading on resale around $2,800–$3,250 get-in, while standard group-stage matches reportedly sit in the $650–$1,100 band.
+**Topic:** World Cup 2026 kicks off Thursday June 11. Press is reporting a two-track market in the final days. "Panic-selling" has dragged standard group-stage resale down to neutral fixtures starting around $116–$120 (Ivory Coast–Curacao $116+, Qatar–Switzerland $120+, Czech Republic–South Africa $120+, per Goal.com), while knockout and marquee matches are "holding in the stratosphere." Goal.com lists Cat-1 semis/final face at $1,500–$6,730, and ESPN reported FIFA tripled the best-available final ticket to $33K. General group-stage resale still averages $650–$1,100.
 
-**Angle:** Classic TicketScan consumer-advocate territory: the price you pay is mostly about the room, the round, and the platform — not the event. The MSG vs San Antonio gap is the cleanest "same series, wildly different bill" story we've had all postseason, and it lands right as casual fans are deciding whether to chase Finals seats. Pair it with the WC T-4 reminder that cheap seats aren't dropping (grab them) while premium seats still have room to fall.
+**Angle:** Tournament-eve buy-or-wait call across *every* seat tier in one framework. The consumer-advocate read: the cheap seats have already bottomed and won't drop further, so buy; the premium and knockout seats are either still falling or are pure FOMO tax, so wait or skip. TicketScan's job is comparing all platforms at the moment of purchase.
 
-**Target keyword:** "NBA Finals ticket prices 2026", "Knicks Finals tickets MSG", "Spurs Finals tickets San Antonio", "World Cup 2026 opening match tickets", "Mexico vs South Africa tickets price"
+**Target keyword:** "world cup 2026 tickets buy now or wait", "are world cup tickets getting cheaper", "world cup 2026 ticket prices june"
 
-**Content type:** Wednesday news-blog candidate for next week — "Same Finals, 6x the Price: Why an MSG Seat Costs What a Used Car Does and a San Antonio Seat Doesn't." Plus a social snippet (hand to Agent 3) and an email subject-line hook (hand to Agent 5). No new draft today (Sunday is audit-only).
+**Content type:** Blog post (today's Monday big-idea flagship) + social snippet + email subject line
 
-**Priority:** High — the MSG number is genuinely viral-adjacent and time-boxed to the Finals window; the WC opener is a hard T-4 deadline. Both decay fast.
+**Priority:** High
 
 ---
 
-### Verification notes (data-integrity discipline)
-- All dollar figures above are **reported market prices from third-party press/secondary platforms** (Yahoo Sports, SeatGeek, Goal.com, PBS), not from the TicketScan price feed — our feed still returns null prices, so we never assert our own numbers. Cite sources inline if these run in a blog draft.
-- NBA Finals matchup (Knicks vs Spurs, series 2-0 Knicks) and WC opener (Mexico vs South Africa, June 11, Mexico City, sold out on FIFA) both confirmed across multiple sources this weekend.
-- Treat all figures as "as reported [date]" — Finals resale moves hourly, so a Wednesday draft should re-pull before publish.
+### Secondary hook (for Agent 3 / Agent 5)
+- **Social:** "Two World Cups are happening at once. Neutral group-stage matches: down to ~$116 (panic-selling). The Final: $33K best-available. Same tournament, same week." Facts only, all figures attributed to press (Goal.com, ESPN). No invented price arcs.
+- **Email subject candidates:** "World Cup opens Thursday: buy these seats, wait on those." / "The $116 seat and the $33K seat are at the same tournament."
+
+### Keyword targets for SEO Agent (Agent 2)
+Filed: `world cup 2026 tickets buy now or wait`, `are world cup tickets getting cheaper`, `world cup 2026 category prices`, `cheapest world cup 2026 group stage tickets`. Strong internal-link cluster opportunity between this piece, the venue-ranking flagship (`all-11-us-world-cup-2026-venues-ranked-cheapest-get-in`), and `/world-cup-2026`.
+
+### Sourcing note
+All dollar figures sourced to third-party press (Goal.com, ESPN, Time), attributed inline. Our own price feed returns null and is NOT used. WC category/match specifics cited from press reporting, not from stale `worldcup.ts`.
 
 Sources:
-- [NBA Finals ticket prices: Games 3 and 4 at MSG skyrocket — Yahoo Sports](https://sports.yahoo.com/nba/article/nba-finals-ticket-prices-cost-for-games-3-and-4-at-msg-skyrocket-as-knicks-take-2-0-series-lead-over-spurs-044513719.html)
-- [NBA Finals Tickets 2026 — SeatGeek](https://seatgeek.com/nba-finals-tickets)
 - [Are 2026 World Cup tickets getting cheaper? — Goal.com](https://www.goal.com/en-us/news/world-cup-tickets-pricing-guide-getting-cheaper-updates/bltc4ebefa2a78f6149)
-- [Expensive tickets for early World Cup games still on general sale — PBS News](https://www.pbs.org/newshour/world/expensive-tickets-for-early-world-cup-games-still-on-general-sale)
+- [FIFA triples best available World Cup final ticket to $33K — ESPN](https://www.espn.com/soccer/story/_/id/48707727/fifa-triples-best-available-world-cup-final-ticket-33k)
+- [World Cup sticker shock: the ugly cost of the beautiful game's grand event — ESPN](https://www.espn.com/soccer/story/_/id/48947095/2026-fifa-world-cup-sticker-shock-ugly-cost-beautiful-game-grand-event)
+- [Why 2026 World Cup ticket prices are so high — TIME](https://time.com/article/2026/05/24/why-2026-world-cup-ticket-prices-are-so-high/)
