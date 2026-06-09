@@ -1,29 +1,28 @@
-## Today's Content Hook — 2026-06-08 (Monday)
+## Today's Content Hook — 2026-06-09 (Tuesday)
 
-**Topic:** World Cup 2026 kicks off Thursday June 11. Press is reporting a two-track market in the final days. "Panic-selling" has dragged standard group-stage resale down to neutral fixtures starting around $116–$120 (Ivory Coast–Curacao $116+, Qatar–Switzerland $120+, Czech Republic–South Africa $120+, per Goal.com), while knockout and marquee matches are "holding in the stratosphere." Goal.com lists Cat-1 semis/final face at $1,500–$6,730, and ESPN reported FIFA tripled the best-available final ticket to $33K. General group-stage resale still averages $650–$1,100.
+**Topic:** Two stories are live the same week. (1) World Cup 2026 kicks off Thursday June 11, and last-minute group-stage resale has cratered: Goal.com reports more than half of group-stage matches are down 20%+ from a few weeks ago, the cheapest U.S. get-in across all 11 host cities fell ~37% vs 60 days out, and the single cheapest resale seat is now ~$157 (Cape Verde vs Saudi Arabia, Houston, June 26). FIFA's official Resale/Exchange stays open until one hour before each kickoff. (2) NBA Finals Game 3 was at MSG Monday — Knicks lead 2-0 — with the cheapest seat at $3,940 and an average sold price of $7,683; Knicks' Josh Hart publicly called the prices "ridiculous."
 
-**Angle:** Tournament-eve buy-or-wait call across *every* seat tier in one framework. The consumer-advocate read: the cheap seats have already bottomed and won't drop further, so buy; the premium and knockout seats are either still falling or are pure FOMO tax, so wait or skip. TicketScan's job is comparing all platforms at the moment of purchase.
+**Angle (today's tactical blog):** The final-48-hours World Cup buyer's playbook. Not "should you buy" (that was Monday's flagship) but "here's exactly how to buy without overpaying when the clock is running" — FIFA Resale mechanics, mobile-transfer gotchas, why neutral group-stage seats keep sliding into kickoff, and how to compare official-resale vs secondary under a deadline.
 
-**Target keyword:** "world cup 2026 tickets buy now or wait", "are world cup tickets getting cheaper", "world cup 2026 ticket prices june"
+**Target keyword:** "world cup 2026 last minute tickets", "how to buy world cup tickets day of game", "fifa resale marketplace how it works", "cheapest world cup 2026 tickets resale"
 
-**Content type:** Blog post (today's Monday big-idea flagship) + social snippet + email subject line
+**Content type:** Blog post (today's Tuesday tactical/how-to draft) + social snippet + email hook
 
 **Priority:** High
 
 ---
 
 ### Secondary hook (for Agent 3 / Agent 5)
-- **Social:** "Two World Cups are happening at once. Neutral group-stage matches: down to ~$116 (panic-selling). The Final: $33K best-available. Same tournament, same week." Facts only, all figures attributed to press (Goal.com, ESPN). No invented price arcs.
-- **Email subject candidates:** "World Cup opens Thursday: buy these seats, wait on those." / "The $116 seat and the $33K seat are at the same tournament."
+- **Social:** "The cheapest World Cup 2026 resale seat right now: ~$157 (Cape Verde–Saudi Arabia, Houston). The cheapest NBA Finals Game 3 seat last night: $3,940. Pick your sport. (Figures: Goal.com, Yahoo Sports.)" Facts only, all figures attributed.
+- **Email subject candidates:** "World Cup seats dropped 37%. Here's how to buy in the last 48 hours." / "A $157 World Cup seat exists. Here's how not to miss it."
 
 ### Keyword targets for SEO Agent (Agent 2)
-Filed: `world cup 2026 tickets buy now or wait`, `are world cup tickets getting cheaper`, `world cup 2026 category prices`, `cheapest world cup 2026 group stage tickets`. Strong internal-link cluster opportunity between this piece, the venue-ranking flagship (`all-11-us-world-cup-2026-venues-ranked-cheapest-get-in`), and `/world-cup-2026`.
+Filed: `world cup 2026 last minute tickets`, `fifa resale marketplace how it works`, `how to buy world cup tickets day of game`, `world cup 2026 tickets resale price drop`. Internal-link cluster: this piece ↔ Monday's buy-or-wait flagship (`world-cup-2026-opens-buy-or-wait-every-seat-tier`) ↔ venue-ranking flagship (`all-11-us-world-cup-2026-venues-ranked-cheapest-get-in`) ↔ `/world-cup-2026`.
 
 ### Sourcing note
-All dollar figures sourced to third-party press (Goal.com, ESPN, Time), attributed inline. Our own price feed returns null and is NOT used. WC category/match specifics cited from press reporting, not from stale `worldcup.ts`.
+Every dollar figure is third-party press (Goal.com, Yahoo Sports, ESPN), attributed inline. Our own price feed returns null and is NOT used. WC fixture/category specifics cited from press, not from stale `worldcup.ts`.
 
 Sources:
 - [Are 2026 World Cup tickets getting cheaper? — Goal.com](https://www.goal.com/en-us/news/world-cup-tickets-pricing-guide-getting-cheaper-updates/bltc4ebefa2a78f6149)
-- [FIFA triples best available World Cup final ticket to $33K — ESPN](https://www.espn.com/soccer/story/_/id/48707727/fifa-triples-best-available-world-cup-final-ticket-33k)
-- [World Cup sticker shock: the ugly cost of the beautiful game's grand event — ESPN](https://www.espn.com/soccer/story/_/id/48947095/2026-fifa-world-cup-sticker-shock-ugly-cost-beautiful-game-grand-event)
-- [Why 2026 World Cup ticket prices are so high — TIME](https://time.com/article/2026/05/24/why-2026-world-cup-ticket-prices-are-so-high/)
+- [How to get FIFA World Cup 2026 tickets: Last Minute Sales Phase & resale — Goal.com](https://www.goal.com/en/news/how-to-buy-world-cup-tickets/blt13fd3078b4ca56ce)
+- [NBA Finals Game 3 ticket prices continue to drop — Yahoo Sports](https://sports.yahoo.com/nba/article/nba-finals-ticket-prices-game-3-continues-to-drop-after-knicks-josh-hart-laments-ridiculous-cost-for-fans-wanting-to-attend-at-msg-201054244.html)
