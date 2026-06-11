@@ -1,35 +1,32 @@
-## Today's Content Hook — 2026-06-10 (Wednesday)
+## Today's Content Hook — 2026-06-11 (Thursday)
 
-**Topic:** NBA Finals price disparity is the live story. Knicks–Spurs, Knicks lead the series 2-1, **Game 4 tonight (Wed June 10, 8:30 ET) at MSG**, Game 5 Saturday June 13 in San Antonio. The same Finals is priced in two different universes: a get-in seat to Game 4 at MSG is **$13,159** (Yahoo/ESPN), while get-in for the San Antonio games has run **under $1,000** (Yahoo). Game 3 at MSG: cheapest $3,940, avg sold $7,683, priciest listed $30,970, highest sold ~$65,000 (ESPN); listings pushed past $40K (Front Office Sports). Knicks' Josh Hart called the MSG prices "ridiculous" (Fox News). Meanwhile, World Cup kicks off TOMORROW (June 11) and group-stage resale keeps sliding — the parallel "demand pricing" story.
+**Topic:** The World Cup kicks off TODAY. Mexico opens the tournament against South Africa at Estadio Azteca, 5 p.m. ET (FIFA). The opening-weekend resale market is wildly uneven: Mexico vs South Africa reportedly starts around **$3,017**, while **South Korea vs Czechia the same day starts near $276** (SeatPick / Goal.com). The cheapest opening-weekend match is reportedly Qatar vs Switzerland (June 13) at **~$199**; Brazil vs Morocco the same day runs ~**$1,725**. The USA opens tomorrow vs Paraguay at SoFi — NPR reported it was still not sold out days before kickoff, with ~132 tickets left on FIFA's site.
 
-**Angle:** Consumer-advocate "same product, 13x the price" piece. The gap is venue/market-driven, not basketball-driven — and the takeaway is universal: compare every source before buying (cheapest of TM/SeatGeek/StubHub flips intraday) and stay flexible on the *where*. Same rule whether the seat is $157 (WC) or $13K (Finals).
+**Angle:** Consumer-advocate price check. Same round, same group stage, but a **10x+ spread** on the same opening day — driven by which flag is on the badge and which country the stadium sits in. American and Canadian venues are reportedly 40–60% cheaper than equivalent Azteca fixtures (Goal.com). TicketScan's job: flag which opening-weekend matches are overpaying-for-the-occasion vs genuine bargains, and tell fans to compare every source before tapping buy.
 
-**Target keyword:** nba finals 2026 ticket prices / knicks finals tickets MSG / cheapest nba finals tickets / nba finals ticket prices san antonio
+**Target keyword:** world cup 2026 ticket prices opening weekend / cheapest world cup 2026 group stage tickets / world cup 2026 mexico vs south africa tickets
 
-**Content type:** Blog post (today's Wednesday news/timely draft) + social snippet + email hook
+**Content type:** Blog post (Thursday comparison slot) + social snippet + email hook
 
-**Priority:** High (perishable — Game 4 is tonight; Finals pricing moves hourly)
+**Priority:** High (perishable — peak search volume today through ~June 17)
 
-**Deliverable:** `2026-06-10-nba-finals-2026-msg-vs-san-antonio-price-gap.md` (category: news, ~1,000w)
+**Deliverable:** `2026-06-11-world-cup-2026-opening-weekend-price-check-bargains-overpriced.md` (category: comparisons, ~1,000w)
 
 ---
 
-### Why NBA today and not a 4th World Cup post
-This week already shipped 3 WC drafts (6/8 buy-or-wait flagship, 6/9 final-48-hours how-to) on top of the cluster. A 4th WC piece in 3 days = keyword cannibalization. The pre-set calendar (next-week-plan.md) slots Wednesday for the NBA Finals disparity story specifically. Did that. Thursday's planned WC opening-weekend comparison piece is the right time to return to WC.
+### Handoffs
 
-### Secondary hooks (for Agent 3 / Agent 5)
-- **Social (Agent 3):** "Same NBA Finals. Same two teams. A get-in seat: $13,159 at MSG (Game 4) vs under $1,000 in San Antonio. The game doesn't change — the zip code does. (Figures: Yahoo Sports, ESPN.)" Facts only, all figures attributed — no invented price arcs.
-- **Email (Agent 5):** Subject candidates: "Same Finals. 13x the price." / "A Finals seat is $13K in NY and under $1K in San Antonio. Here's the move." Tie to free price-alert signup. Do NOT fabricate per-user savings (see watchlist-no-targets memo).
+- **Agent 3 (Social):** "Same opening day. One match starts at $276, one at $3,000+" is a clean standalone snippet. Figures are press-attributed (SeatPick / Goal.com), not from our feed — keep the attribution, never invent a price arc (see social-agent-price-ledger memo).
+- **Agent 5 (Email):** Subject-line candidate: "Same opening day. One match starts at $276, one at $3,000." Second hook: the US opener at SoFi still had tickets days out (NPR). Tie to free price-alert signup; do NOT fabricate per-user savings.
+- **Agent 2 (SEO):** Keyword targets filed above. Internal-link cluster: this piece ↔ 6/1 "All 11 US WC Venues Ranked" flagship ↔ 6/8 "Buy-or-Wait Every Seat Tier" ↔ `/world-cup-2026` ↔ `/compare`.
 
-### Keyword targets for SEO Agent (Agent 2) — filed in seo-requests/
-`nba finals 2026 ticket prices`, `knicks finals tickets msg`, `cheapest nba finals tickets`, `nba finals ticket prices san antonio`. Internal-link cluster: this piece ↔ 6/3 Game-1 cross-platform pricing ↔ 5/28 NBA-vs-Stanley-Cup value comparison ↔ `/compare`. Spiking now around Game 4.
-
-### Sourcing note
-Every dollar figure is third-party press (ESPN, Yahoo Sports, Front Office Sports, Fox News), attributed inline and dated June 8–10. Our own price feed returns null and is NOT used. No platform-sourced figures asserted.
+### Discipline notes
+- Every dollar figure traces to third-party press (FIFA, SeatPick, Goal.com, NPR, NBC News), attributed inline. None come from our own price feed (still returns null).
+- Do NOT assert fixture counts/groups/dates from `worldcup.ts` — it holds stale pre-draw placeholders. Today's fixtures come from FIFA / press, not the repo.
 
 Sources:
-- [Knicks fans see surge in ticket prices for Finals games at MSG — ESPN](https://www.espn.com/nba/story/_/id/48986912/new-york-knicks-2026-nba-finals-madison-square-garden-ticket-prices)
-- [NBA Finals ticket prices: Games 3 & 4 at MSG skyrocket as Knicks take 2-0 lead — Yahoo Sports](https://sports.yahoo.com/nba/article/nba-finals-ticket-prices-cost-for-games-3-and-4-at-msg-skyrocket-as-knicks-take-2-0-series-lead-over-spurs-044513719.html)
-- [Josh Hart calls MSG Finals prices 'ridiculous' — Fox News](https://www.foxnews.com/sports/josh-hart-calls-finals-ticket-prices-madison-square-garden-ridiculous-fans-priced-game-3)
-- [NBA Finals ticket prices at MSG push above $40,000 — Front Office Sports](https://frontofficesports.com/nba-finals-ticket-prices-at-msg-push-above-40000/)
-- [2026 NBA Finals schedule: Game 4 Wednesday — CBS Sports](https://www.cbssports.com/nba/news/2026-nba-finals-schedule-odds/)
+- [Estadio Azteca to host opening match — FIFA](https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/articles/estadio-azteca-mexico-city-host-opening-match-world-cup-2026)
+- [World Cup 2026 ticket prices, all teams ranked — SeatPick](https://seatpick.com/blog/world-cup-2026-ticket-prices-all-42-teams-ranked)
+- [Are 2026 World Cup tickets getting cheaper? — Goal.com](https://www.goal.com/en-us/news/world-cup-tickets-pricing-guide-getting-cheaper-updates/bltc4ebefa2a78f6149)
+- [With days left, the U.S. opener is still not sold out — NPR](https://www.npr.org/2026/06/08/nx-s1-5849905/fifa-world-cup-tickets-prices)
+- [How much does it cost to go to a World Cup game? — NBC News](https://www.nbcnews.com/sports/soccer/world-cup-game-cost-ticket-hotel-fifa-rcna347377)
