@@ -12,6 +12,8 @@ export interface Venue {
   name: string;
   city: string;
   state: string;
+  // Override for city slug when it doesn't match `city.toLowerCase().replace(/\s+/g, '-')` (e.g. Washington → washington-dc).
+  citySlug?: string;
   capacity: number;
   type: 'arena' | 'stadium' | 'theater';
   sections: VenueSection[];
@@ -426,12 +428,34 @@ export const venues: Record<string, Venue> = {
     capacity: 18118,
     type: 'arena',
     homeTeams: ['Atlanta Hawks'],
-    description: 'Find cheap tickets at State Farm Arena in Atlanta. Home of the Hawks, featuring NBA games and top concerts.',
-    keywords: ['State Farm Arena tickets', 'Hawks tickets', 'Atlanta arena tickets', 'Atlanta concerts'],
+    description: 'Compare ticket prices for State Farm Arena, the downtown Atlanta home of the NBA\'s Hawks and a year-round stop for arena tours, comedy specials, and championship boxing. Roughly 150 events run through the building every year. The 100-Level lower bowl (sections 101-126) wraps tight around the court and carries the steepest price swings between Ticketmaster, SeatGeek, and StubHub; the renovated courtside and club areas add in-seat service and lounge access; the 200-Level upper bowl (201-226) is where Atlanta fans find the widest cross-platform value gap on a single game. The arena sits a few blocks from Mercedes-Benz Stadium — Atlanta\'s FIFA World Cup 2026 host venue — so summer 2026 visitors can pair a downtown match day with whatever else is on the calendar. Track prices and set a free alert before Hawks games or headline tours on TicketScan, and let the platforms compete for your buy.',
+    keywords: ['State Farm Arena tickets', 'Hawks tickets', 'Atlanta arena tickets', 'Atlanta concerts', 'State Farm Arena seating chart', 'Atlanta Hawks tickets', 'State Farm Arena events', 'Atlanta concert tickets', 'downtown Atlanta events'],
     sections: [
+      // Floor / Courtside
       { name: 'Floor', tier: 'floor' },
-      { name: '101', tier: 'lower' }, { name: '102', tier: 'lower' },
-      { name: '201', tier: 'upper' }, { name: '202', tier: 'upper' },
+      // Lower Bowl (100-Level, wraps around the court)
+      { name: '101', tier: 'lower' }, { name: '102', tier: 'lower' }, { name: '103', tier: 'lower' },
+      { name: '104', tier: 'lower' }, { name: '105', tier: 'lower' }, { name: '106', tier: 'lower' },
+      { name: '107', tier: 'lower' }, { name: '108', tier: 'lower' }, { name: '109', tier: 'lower' },
+      { name: '110', tier: 'lower' }, { name: '111', tier: 'lower' }, { name: '112', tier: 'lower' },
+      { name: '113', tier: 'lower' }, { name: '114', tier: 'lower' }, { name: '115', tier: 'lower' },
+      { name: '116', tier: 'lower' }, { name: '117', tier: 'lower' }, { name: '118', tier: 'lower' },
+      { name: '119', tier: 'lower' }, { name: '120', tier: 'lower' }, { name: '121', tier: 'lower' },
+      { name: '122', tier: 'lower' }, { name: '123', tier: 'lower' }, { name: '124', tier: 'lower' },
+      { name: '125', tier: 'lower' }, { name: '126', tier: 'lower' },
+      // Club / Premium (renovated courtside and sideline clubs with lounge access, in-seat service)
+      { name: 'Courtside Club', tier: 'club' }, { name: 'Hawks Club East', tier: 'club' },
+      { name: 'Hawks Club West', tier: 'club' }, { name: 'Topgolf Suite', tier: 'club' },
+      // Upper Bowl (200-Level, wraps around)
+      { name: '201', tier: 'upper' }, { name: '202', tier: 'upper' }, { name: '203', tier: 'upper' },
+      { name: '204', tier: 'upper' }, { name: '205', tier: 'upper' }, { name: '206', tier: 'upper' },
+      { name: '207', tier: 'upper' }, { name: '208', tier: 'upper' }, { name: '209', tier: 'upper' },
+      { name: '210', tier: 'upper' }, { name: '211', tier: 'upper' }, { name: '212', tier: 'upper' },
+      { name: '213', tier: 'upper' }, { name: '214', tier: 'upper' }, { name: '215', tier: 'upper' },
+      { name: '216', tier: 'upper' }, { name: '217', tier: 'upper' }, { name: '218', tier: 'upper' },
+      { name: '219', tier: 'upper' }, { name: '220', tier: 'upper' }, { name: '221', tier: 'upper' },
+      { name: '222', tier: 'upper' }, { name: '223', tier: 'upper' }, { name: '224', tier: 'upper' },
+      { name: '225', tier: 'upper' }, { name: '226', tier: 'upper' },
     ]
   },
   // Brooklyn
@@ -457,6 +481,7 @@ export const venues: Record<string, Venue> = {
     name: 'Capital One Arena',
     city: 'Washington',
     state: 'DC',
+    citySlug: 'washington-dc',
     capacity: 20356,
     type: 'arena',
     homeTeams: ['Washington Wizards', 'Washington Capitals'],

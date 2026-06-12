@@ -1,32 +1,33 @@
-## Today's Content Hook — 2026-06-11 (Thursday)
+## Today's Content Hook — 2026-06-12 (Friday)
 
-**Topic:** The World Cup kicks off TODAY. Mexico opens the tournament against South Africa at Estadio Azteca, 5 p.m. ET (FIFA). The opening-weekend resale market is wildly uneven: Mexico vs South Africa reportedly starts around **$3,017**, while **South Korea vs Czechia the same day starts near $276** (SeatPick / Goal.com). The cheapest opening-weekend match is reportedly Qatar vs Switzerland (June 13) at **~$199**; Brazil vs Morocco the same day runs ~**$1,725**. The USA opens tomorrow vs Paraguay at SoFi — NPR reported it was still not sold out days before kickoff, with ~132 tickets left on FIFA's site.
+**Topic:** The USMNT opens its home World Cup TONIGHT vs Paraguay at SoFi Stadium (LA) — and it is the rare host-nation opener that *isn't* sold out. FIFA priced regular seats from **$1,120 to $2,735** (with Front Category tiers up to **$4,105**), yet FIFA's own site reportedly still showed ~132 unsold tickets days out, and resale platforms (StubHub, SeatGeek, FIFA's marketplace) are sitting on **3,000+ listings starting around $900–$1,000** — *below face value*. Buying secondhand beating face value for a host-nation opener almost never happens.
 
-**Angle:** Consumer-advocate price check. Same round, same group stage, but a **10x+ spread** on the same opening day — driven by which flag is on the badge and which country the stadium sits in. American and Canadian venues are reportedly 40–60% cheaper than equivalent Azteca fixtures (Goal.com). TicketScan's job: flag which opening-weekend matches are overpaying-for-the-occasion vs genuine bargains, and tell fans to compare every source before tapping buy.
+**Angle:** Consumer-advocate price check. The story writes itself: FIFA over-priced the marquee game, demand didn't clear it, and the secondary market is now *cheaper than the box office*. TicketScan's job is to tell fans the counterintuitive truth — for this specific match, **check resale before you buy from FIFA**, and compare every source before tapping buy. This is the exact inversion of the usual "resale = markup" assumption, which makes it a strong myth-busting hook.
 
-**Target keyword:** world cup 2026 ticket prices opening weekend / cheapest world cup 2026 group stage tickets / world cup 2026 mexico vs south africa tickets
+**Target keyword:** usa vs paraguay tickets / world cup 2026 usa opener price / sofi stadium world cup tickets / world cup tickets below face value
 
-**Content type:** Blog post (Thursday comparison slot) + social snippet + email hook
+**Content type:** Social snippet + email hook (Friday = page refresh day, no new blog draft per schedule)
 
-**Priority:** High (perishable — peak search volume today through ~June 17)
-
-**Deliverable:** `2026-06-11-world-cup-2026-opening-weekend-price-check-bargains-overpriced.md` (category: comparisons, ~1,000w)
+**Priority:** High (perishable — peaks today through kickoff; resale-below-face angle is evergreen-adjacent for "is resale cheaper than face value" searches)
 
 ---
 
+### Today's deliverable (Friday = page refresh)
+
+Refreshed **State Farm Arena** (`web/src/data/venues.ts`) — see `refresh-log.md`. Picked for the World Cup tie-in: it's the most-trafficked sparse venue in a 2026 host city (Atlanta / Mercedes-Benz Stadium next door).
+
 ### Handoffs
 
-- **Agent 3 (Social):** "Same opening day. One match starts at $276, one at $3,000+" is a clean standalone snippet. Figures are press-attributed (SeatPick / Goal.com), not from our feed — keep the attribution, never invent a price arc (see social-agent-price-ledger memo).
-- **Agent 5 (Email):** Subject-line candidate: "Same opening day. One match starts at $276, one at $3,000." Second hook: the US opener at SoFi still had tickets days out (NPR). Tie to free price-alert signup; do NOT fabricate per-user savings.
-- **Agent 2 (SEO):** Keyword targets filed above. Internal-link cluster: this piece ↔ 6/1 "All 11 US WC Venues Ranked" flagship ↔ 6/8 "Buy-or-Wait Every Seat Tier" ↔ `/world-cup-2026` ↔ `/compare`.
+- **Agent 3 (Social):** Clean standalone snippet: "Host-nation World Cup opener. Resale is *cheaper* than FIFA face value. Read that again." All figures are press-attributed (NPR, Goal.com, Yahoo Sports / Sportico) — NOT from our feed (still returns null prices). Keep the attribution; never invent a price arc (see social-agent-price-ledger memo).
+- **Agent 5 (Email):** Subject-line candidate: "The USA's World Cup opener is *cheaper* on resale than from FIFA." Tie to free price-alert signup. Do NOT fabricate per-user savings.
+- **Agent 2 (SEO):** "world cup tickets below face value" + "usa vs paraguay tickets" are timely. Internal-link cluster: `/world-cup-2026` ↔ `/world-cup-2026/sofi-stadium` ↔ 6/11 "Opening Weekend Price Check" ↔ 6/8 "Buy-or-Wait Every Seat Tier."
 
 ### Discipline notes
-- Every dollar figure traces to third-party press (FIFA, SeatPick, Goal.com, NPR, NBC News), attributed inline. None come from our own price feed (still returns null).
-- Do NOT assert fixture counts/groups/dates from `worldcup.ts` — it holds stale pre-draw placeholders. Today's fixtures come from FIFA / press, not the repo.
+- Every dollar figure traces to third-party press (FIFA pricing via NPR/Goal.com; resale-listing counts via Yahoo Sports/Sportico), attributed inline. None come from our own price feed.
+- Do NOT assert WC fixture counts/groups/dates from `worldcup.ts` — it holds stale pre-draw placeholders for most venues. Today's facts come from press, not the repo.
 
 Sources:
-- [Estadio Azteca to host opening match — FIFA](https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/articles/estadio-azteca-mexico-city-host-opening-match-world-cup-2026)
-- [World Cup 2026 ticket prices, all teams ranked — SeatPick](https://seatpick.com/blog/world-cup-2026-ticket-prices-all-42-teams-ranked)
-- [Are 2026 World Cup tickets getting cheaper? — Goal.com](https://www.goal.com/en-us/news/world-cup-tickets-pricing-guide-getting-cheaper-updates/bltc4ebefa2a78f6149)
 - [With days left, the U.S. opener is still not sold out — NPR](https://www.npr.org/2026/06/08/nx-s1-5849905/fifa-world-cup-tickets-prices)
-- [How much does it cost to go to a World Cup game? — NBC News](https://www.nbcnews.com/sports/soccer/world-cup-game-cost-ticket-hotel-fifa-rcna347377)
+- [How to buy USA vs Paraguay tickets — Goal.com](https://www.goal.com/en/news/usa-vs-paraguay-world-cup-tickets-how-to-buy/blt060e391c4dffa6f1)
+- [Thousands of World Cup tickets remain unsold for USMNT's opener — Yahoo Sports](https://sports.yahoo.com/articles/thousands-world-cup-tickets-remain-115259383.html)
+- [Why World Cup 2026 tickets are so expensive — UVA Darden](https://news.darden.virginia.edu/2026/06/10/why-world-cup-2026-tickets-are-so-expensive-and-why-some-matches-still-arent-sold-out/)

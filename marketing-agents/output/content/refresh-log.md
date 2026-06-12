@@ -1,5 +1,32 @@
 # Content Refresh Log
 
+## 2026-06-12 — State Farm Arena (venues.ts) — 5 sections + one-liner → 53 sections + rich guide
+
+**Page refreshed:** `state-farm-arena` in `web/src/data/venues.ts` → renders at `/venues/state-farm-arena`
+
+**Why this page:** Friday refresh. State Farm Arena was the most sparse high-value page left in a 2026 World Cup host city — 5 placeholder sections (Floor + 2 lower + 2 upper), a 110-char one-liner description, and only 4 keywords, while peer arenas (Chase, AAC, United Center, TD Garden, Wells Fargo) had already been upgraded to full seating maps + 100-word guides. Atlanta is a live search market this week: Mercedes-Benz Stadium (a World Cup 2026 host venue) is a few blocks away downtown, so the venue earns a timely World Cup tie-in without us asserting any fixture data from the stale `worldcup.ts` (see 2026-06-05 entry — schedule data is flagged pre-draw/stale, so I referenced the host-venue relationship only, never a match count).
+
+**What changed:**
+1. **Sections expanded** from 5 → 53 with an accurate State Farm Arena layout:
+   - 1 Floor section
+   - 26 Lower Bowl sections (101–126) — full 100-Level wrap
+   - 4 Club/Premium areas (Courtside Club, Hawks Club East/West, Topgolf Suite) — reflects the 2018 renovation's premium tier, previously absent
+   - 26 Upper Bowl sections (201–226) — full 200-Level wrap
+2. **Description** upgraded from a 110-char one-liner to a ~880-char data-driven guide: event volume (~150/yr), 100-Level price-swing context across Ticketmaster/SeatGeek/StubHub, renovated club perks, 200-Level cross-platform value gap, the Mercedes-Benz Stadium / World Cup 2026 host-city tie-in (soft reference, no match count), and a TicketScan price-alert CTA.
+3. **Keywords** expanded from 4 → 9, adding: "State Farm Arena seating chart", "Atlanta Hawks tickets", "State Farm Arena events", "Atlanta concert tickets", "downtown Atlanta events".
+
+**SEO impact expected:**
+- Full section data populates the Seating Sections sidebar on `/venues/state-farm-arena` (was showing only 2 lower / 2 upper)
+- Richer description lifts on-page entity depth to match the upgraded peer arenas; description also feeds page metadata + JSON-LD (`page.tsx:109`)
+- Mercedes-Benz Stadium / World Cup 2026 entity association supports the Atlanta host-city cluster during peak tournament search
+- New keywords capture "seating chart" and "events" intent we were missing
+
+**Discipline note:** The description renders as plain text (`page.tsx:244`), so the Mercedes-Benz reference is an entity/keyword signal, not a clickable link — a future component tweak could add a conditional World Cup related-link for host-city venues (flagged for CRO/Agent 2, not done here to keep the Friday refresh scoped to the data file).
+
+**Verification:** `npx tsc --noEmit` ran clean — no TypeScript errors introduced.
+
+---
+
 ## 2026-06-06 — United Center (venues.ts) — thin one-liner → rich evergreen guide
 
 **Page refreshed:** `united-center` in `web/src/data/venues.ts` → renders at `/venues/united-center`
