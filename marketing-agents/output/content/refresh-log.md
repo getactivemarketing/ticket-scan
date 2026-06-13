@@ -1,5 +1,36 @@
 # Content Refresh Log
 
+## 2026-06-13 — Toyota Center (venues.ts) — 5 sections + one-liner → 57 sections + rich guide
+
+**Page refreshed:** `toyota-center` in `web/src/data/venues.ts` → renders at `/venues/toyota-center`
+
+**Why this page:** Saturday refresh. Toyota Center was the single thinnest venue left in the dataset — 5 placeholder sections (Floor + 2 lower + 2 upper), a 96-char one-liner description, and only 4 keywords, while every peer NBA arena (Chase, Ball, AAC, United Center, TD Garden, Wells Fargo, State Farm) had already been upgraded to a full seating map + ~100-word guide. Houston is also a live search market this week: it's a 2026 World Cup host city (matches at NRG Stadium), and Toyota Center has a loaded June concert slate — so the page earns a timely, demand-spike tie-in.
+
+**What changed:**
+1. **Sections** expanded from 5 → 57 with the real Toyota Center layout:
+   - 1 Floor section
+   - 22 Lower Bowl sections (101-122) — full 100-level wrap
+   - 1 Lexus Level suite tier (mid-building premium)
+   - 34 Upper Bowl sections (401-434) — full 400-level wrap
+2. **Description** upgraded from a 96-char one-liner to a ~120-word consumer-advocate guide: event volume (150+/yr), tier-by-tier value breakdown (Lower 101-122 / Lexus Level suites / Upper 401-434), the widest cross-platform value gap in the Upper Bowl, real June 2026 anchor events (Nate Bargatze, A$AP Rocky, Summer Walker, Rosalia — verified via web search), Houston's World Cup host-city tie-in (NRG Stadium, host relationship only — no fixtures asserted), and a "compare + set a free alert, don't buy the first listing" CTA.
+3. **Keywords** expanded from 4 → 9, adding: "Houston Rockets tickets", "Houston concert tickets", "Toyota Center seating chart", "Toyota Center events", "Rockets game tickets".
+
+**Guardrails honored:**
+- **No fabricated prices** (price-history feed returns null prices) — description describes value *gaps* between StubHub/SeatGeek/Ticketmaster, never a dollar figure.
+- **No WC fixture data** — Houston referenced as a host city / NRG Stadium host venue only; nothing pulled from the stale `worldcup.ts` (see 2026-06-05 entry).
+- June concert acts/dates are real (web-search verified 2026-06-13), not invented.
+
+**SEO impact expected:**
+- Full section data populates the seating-guide sidebar (was nearly empty).
+- Richer description deepens "About" content to match peer arena pages.
+- New keywords capture Houston concert + seating-chart intent during a World Cup demand spike.
+- Houston host-city mention opens an internal-link cluster: Toyota Center ↔ Houston city/tickets page ↔ NRG Stadium World Cup 2026 page (flagged to SEO Agent in content-hook.md).
+
+**Verification:**
+- `npx tsc --noEmit` ran clean — no TypeScript errors introduced.
+
+---
+
 ## 2026-06-12 — State Farm Arena (venues.ts) — 5 sections + one-liner → 53 sections + rich guide
 
 **Page refreshed:** `state-farm-arena` in `web/src/data/venues.ts` → renders at `/venues/state-farm-arena`

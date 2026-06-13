@@ -304,12 +304,35 @@ export const venues: Record<string, Venue> = {
     capacity: 18055,
     type: 'arena',
     homeTeams: ['Houston Rockets'],
-    description: 'Compare ticket prices at Toyota Center in Houston. Home of the Rockets, featuring NBA games and major concerts.',
-    keywords: ['Toyota Center tickets', 'Rockets tickets', 'Houston arena tickets', 'Houston concerts'],
+    description: 'Compare ticket prices for Toyota Center in downtown Houston, home of the NBA\'s Rockets and one of the busiest arenas in Texas — well over 150 events a year spanning Rockets games, marquee tours, UFC and boxing cards, and comedy and family shows. The 100-level Lower Bowl (sections 101-122) wraps tight around the floor and is the premium tier for hoops and floor-seat concerts; the Lexus Level suites sit mid-building with private lounge access and in-seat service; and the 400-level Upper Bowl (sections 401-434) is where Houston fans find the widest value gap between StubHub, SeatGeek, and Ticketmaster. The summer 2026 slate is loaded — Nate Bargatze, A$AP Rocky, Summer Walker, and Rosalia all play the building in June — and with Houston hosting 2026 World Cup matches at NRG Stadium the same weeks, the city\'s event calendar is stacked and resale prices get noisy. Track Toyota Center prices and set a free alert before tip-off or doors instead of overpaying on the first listing you see.',
+    keywords: ['Toyota Center tickets', 'Rockets tickets', 'Houston Rockets tickets', 'Houston arena tickets', 'Houston concerts', 'Houston concert tickets', 'Toyota Center seating chart', 'Toyota Center events', 'Rockets game tickets'],
     sections: [
+      // Floor / Courtside (basketball) and GA/seated floor (concerts)
       { name: 'Floor', tier: 'floor' },
-      { name: '101', tier: 'lower' }, { name: '102', tier: 'lower' },
-      { name: '401', tier: 'upper' }, { name: '402', tier: 'upper' },
+      // Lower Bowl (100 Level, wraps around the floor)
+      { name: '101', tier: 'lower' }, { name: '102', tier: 'lower' }, { name: '103', tier: 'lower' },
+      { name: '104', tier: 'lower' }, { name: '105', tier: 'lower' }, { name: '106', tier: 'lower' },
+      { name: '107', tier: 'lower' }, { name: '108', tier: 'lower' }, { name: '109', tier: 'lower' },
+      { name: '110', tier: 'lower' }, { name: '111', tier: 'lower' }, { name: '112', tier: 'lower' },
+      { name: '113', tier: 'lower' }, { name: '114', tier: 'lower' }, { name: '115', tier: 'lower' },
+      { name: '116', tier: 'lower' }, { name: '117', tier: 'lower' }, { name: '118', tier: 'lower' },
+      { name: '119', tier: 'lower' }, { name: '120', tier: 'lower' }, { name: '121', tier: 'lower' },
+      { name: '122', tier: 'lower' },
+      // Lexus Level (mid-building suite tier — private lounge access, in-seat service)
+      { name: 'Lexus Level Suites', tier: 'suite' },
+      // Upper Bowl (400 Level, wraps around)
+      { name: '401', tier: 'upper' }, { name: '402', tier: 'upper' }, { name: '403', tier: 'upper' },
+      { name: '404', tier: 'upper' }, { name: '405', tier: 'upper' }, { name: '406', tier: 'upper' },
+      { name: '407', tier: 'upper' }, { name: '408', tier: 'upper' }, { name: '409', tier: 'upper' },
+      { name: '410', tier: 'upper' }, { name: '411', tier: 'upper' }, { name: '412', tier: 'upper' },
+      { name: '413', tier: 'upper' }, { name: '414', tier: 'upper' }, { name: '415', tier: 'upper' },
+      { name: '416', tier: 'upper' }, { name: '417', tier: 'upper' }, { name: '418', tier: 'upper' },
+      { name: '419', tier: 'upper' }, { name: '420', tier: 'upper' }, { name: '421', tier: 'upper' },
+      { name: '422', tier: 'upper' }, { name: '423', tier: 'upper' }, { name: '424', tier: 'upper' },
+      { name: '425', tier: 'upper' }, { name: '426', tier: 'upper' }, { name: '427', tier: 'upper' },
+      { name: '428', tier: 'upper' }, { name: '429', tier: 'upper' }, { name: '430', tier: 'upper' },
+      { name: '431', tier: 'upper' }, { name: '432', tier: 'upper' }, { name: '433', tier: 'upper' },
+      { name: '434', tier: 'upper' },
     ]
   },
   // Phoenix
