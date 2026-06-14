@@ -1,65 +1,75 @@
-# Content Calendar — Week of June 8–14, 2026
+# Content Calendar — Week of June 15–21, 2026
 
-World Cup kicks off **Thursday June 11**. This is the peak-relevance week for the entire WC content cluster, and the NBA Finals are live. The plan below front-loads timely pieces.
+The World Cup is live and now alone at the top of the live-event calendar. The NBA Finals closed Saturday (Knicks 4-1 over the Spurs, first NY title since 1973), MLB is in its summer lull, and the tournament moves into Matchday 2 this week with the group stage closing around June 27 and the knockout rounds opening shortly after. Search intent is shifting from "should I buy" to matchup-specific and knockout-round queries. Next week's plan rides that shift.
 
-## This Week's Audit (June 1–7)
+## This Week's Audit (June 8–14)
 
 ### What shipped
 
 | Date | Type | Title/Action | Status |
 |------|------|--------------|--------|
-| Mon 6/1 | Big-idea blog | "All 11 US World Cup 2026 Venues, Ranked by Cheapest Get-In" (1,337w, `featured: true`) | Drafted, not published |
-| Tue 6/2 | Tactical blog | "The Last-10-Days World Cup Buying Playbook" (796w) | Drafted, not published |
-| Wed 6/3 | News blog | "NBA Finals Game 1: Same Nosebleed Seat $767 or $1,245" (744w) | Drafted, not published |
-| Thu 6/4 | Comparison blog | "FIFA-Direct vs Resale at T-7" (985w) | Drafted, not published |
-| Fri 6/5 | Venue refresh | bmo-field — Canada/Mexico arc + flagged stale WC schedule data | Committed (`f11586a`) |
-| Sat 6/6 | Venue refresh | united-center — evergreen description + long-tail keywords | Committed (`128b169`) |
-| Sun 6/7 | Audit + hook | This doc + content-hook (NBA Finals MSG spread / WC T-4) | In progress |
+| Mon 6/8 | Big-idea blog | "World Cup 2026 Opens Thursday: Buy-or-Wait on Every Seat Tier" (`featured`) | Drafted, not published |
+| Tue 6/9 | Tactical blog | "World Cup 2026: The Final 48 Hours Buying Guide" | Drafted, not published |
+| Wed 6/10 | News blog | "NBA Finals 2026: MSG vs San Antonio Price Gap" | Drafted, not published |
+| Thu 6/11 | Comparison blog | "Opening Weekend Price Check: Bargains vs Overpriced Group-Stage Matches" | Drafted, not published |
+| Fri 6/12 | Venue refresh | State Farm Arena — sections + rich description + keywords | Committed (`7e7d7c2`) |
+| Sat 6/13 | Venue refresh | Toyota Center — 57 sections + description + keywords (was thinnest in dataset) | Committed (`fd99cba`) |
+| Sun 6/14 | Audit + hook | This doc + content-hook (post-Finals demand consolidation / WC Matchday 2) | In progress |
 
 ### What worked
 
-- **4/4 blog drafts Mon–Thu, full category rotation** (guides / tips / news / comparisons). Frontmatter clean on all four: slugs URL-safe, excerpts under the 200-char limit, no unescaped backticks or `${}`. The Monday venue-ranking piece is the correct `featured: true` pick as the WC cluster anchor.
-- **The Wednesday news slot stayed genuinely timely** — Game 1 cross-platform pricing the day it tipped. The story has since moved (Knicks now lead 2-0, MSG prices exploded), which is exactly the follow-on a news cadence should chase. That becomes next Wednesday's piece.
-- **2/2 venue refreshes shipped Fri/Sat**, both committed to source with the honest `Content refresh:` prefix. The bmo-field refresh did the right thing by **flagging the stale WC schedule data** rather than asserting fixture counts from `worldcup.ts` (the file still holds pre-draw placeholder fixtures — match counts, groups, and dates are wrong vs real FIFA). The refreshes kept those numbers off the page.
+- **Full execution: 4 drafts Mon–Thu, full category rotation** (guides / tips / news / comparisons), plus 2 venue refreshes committed Fri/Sat. Seventh-plus straight week at program-high output. The Monday flagship landed the highest-intent WC question of the week ("buy or wait") on the day of kickoff.
+- **Both venue refreshes shipped to source** with the honest `Content refresh:` prefix. Toyota Center was the right pick — it was the thinnest venue page in the dataset, and the refresh built it out to 57 sections with real June event anchors. State Farm Arena got the same treatment Friday. The arc keeps converting our weakest pages into the strongest.
+- **Fact-gate discipline held.** No WC fixture specifics leaked onto refreshed pages from the stale `worldcup.ts` data, and no dollar figure in any draft or hook came from our null price feed — every number was press-attributed inline. This is the discipline that keeps the cluster trustworthy as the search window peaks.
+
+### Decayed drafts — move to forfeit watch
+
+The tournament is now three days live, which kills two of this week's drafts as written:
+
+- `2026-06-09-world-cup-2026-final-48-hours-buying-guide` — the "final 48 hours" frame referred to pre-kickoff. Dead as a pre-tournament piece. Salvageable only by re-cutting it into an evergreen "last 48 hours before any match" tactical guide, which next week's Tuesday tactical effectively replaces. Recommend retiring it.
+- `2026-06-11-...opening-weekend-price-check-bargains-overpriced` — opening weekend has passed. Either reframe as a retrospective ("how opening-weekend resale actually moved") or let it go. Do not ship as live.
+- `2026-06-10-nba-finals-2026-msg-vs-san-antonio-price-gap` — the series is over (Knicks in 5). Still publishable as a retrospective data piece on how Finals resale behaved, but the live framing is dead. Lower priority than the WC core.
 
 ### Standing blockers (status only — not re-escalated)
 
-These are real and upstream of the content layer. Logging status, no new escalation doc.
+- **Publish velocity is still zero.** Last published post: `c0dcf5a` (2026-04-07). `blog.ts` holds 21 live entries; the draft backlog is now ~36. This is a shipping-bandwidth bottleneck, not a drafting one — the CRO/shipping standing note already owns it. Nothing actionable from this seat except keeping the queue clean and prioritized.
+- **`worldcup.ts` schedule data is stale (pre-draw placeholders).** A rebuild was requested before further WC refreshes lean on it. Until then, WC pages stay on evergreen venue facts plus Category floor guidance, never fixture specifics. (Note: SEO confirmed the WC stadium schema uses the tournament-wide date window, so the stale data does not leak into structured data.)
+- **Price feed returns null; drip/email cron and `target_price` arming are inert.** Every dollar figure this week was third-party press, attributed inline. Keep that discipline.
+- **No GSC/GA4.** Every "top/bottom performer" call remains a proxy until analytics is wired. Single highest-leverage unblocker for real performance data. Flag, don't own.
 
-- **Publish velocity is 0.** Last published post: 2026-04-07. Backlog is now ~31 drafts (27 prior + 4 this week). This is a shipping-bandwidth problem, not a drafting one. Nothing actionable from this seat except keeping the queue clean and prioritized (order below).
-- **`worldcup.ts` schedule data is stale (pre-draw placeholders).** A rebuild was requested before further WC refreshes lean on it. Until then, WC pages stay on evergreen venue facts plus Category floor guidance, not fixture specifics. Friday's refresh followed this.
-- **Price feed returns null; drip/email cron and `target_price` arming are inert.** Every dollar figure in drafts and hooks this week came from third-party press, attributed inline — never from our own feed. Keep that discipline.
+### Publish-priority order (if any window opens)
 
-### Copy review — queued drafts
+Unchanged logic, refreshed for the calendar:
+1. `2026-06-01-all-11-us-world-cup-2026-venues-ranked-cheapest-get-in` — the flagship. Evergreen through the whole tournament; no date decay; the cross-link hub for the entire cluster. Ship FIRST.
+2. `2026-06-08-world-cup-2026-opens-buy-or-wait-every-seat-tier` — still relevant per-tier framework while the group stage runs.
+3. Next week's Monday knockout-tickets flagship (below) once drafted — it owns the search volume the closing group stage will create.
 
-This week's 4 are all publish-ready, but three carry date anchors that decay before Thursday:
-
-- `2026-06-01-all-11-us...venues-ranked` — flagship; publish FIRST when bandwidth opens. Peak relevance is now through June 11. No edits.
-- `2026-06-02-...last-10-days-buying-playbook` — lead says "Nine days out"; today is T-4. One-line freshen to "final week" on publish, or it ships stale.
-- `2026-06-03-nba-finals-game-1-cross-platform-pricing` — Game 1 has passed and the series is 2-0. **Reframe to retrospective** or fold into next Wednesday's MSG piece; the "tips off tonight" framing is dead.
-- `2026-06-04-fifa-direct-vs-resale-t-7` — title anchors "T-7"; today is T-4. Freshen to "final week" or drop the day-count for an evergreen FIFA-vs-resale comparison.
-
-**Backlog call:** the older WC drafts (4/15, 4/22, 4/29) lose nearly all value the moment the tournament starts Thursday. If they don't publish before June 11, treat them as forfeited and stop carrying them as "high freshen-burden, publish ASAP" every week. The two April playoff guides (4/08, 4/14) should move to an `archived/` folder, or just drop off this list.
+Everything date-anchored to opening weekend or kickoff is now forfeit-watch, not "publish ASAP."
 
 ### Style watch (non-blocking)
-Excerpts and leads still lean hard on em-dashes (3–4 per excerpt). On-brand, but it's compounding into an AI-tell across the cluster. Next week, vary it — a period or colon where the dash has become reflexive.
+Em-dash density eased slightly this week but is still the cluster's main AI-tell. I trimmed it in today's hook and audit on purpose (periods and colons where the dash had gone reflexive). Carry that into next week's drafts: vary the punctuation, especially in excerpts.
+
+### Backlog hygiene
+Recommend actually creating `content/archived/` and moving the two April playoff guides (4/08, 4/14) and the terminal-decay April WC drafts (4/15, 4/22, 4/29) into it this week. They have been flagged as forfeit for three consecutive audits; carrying them as live entries inflates the backlog count and the status with no upside. One-command cleanup, not a content decision.
 
 ---
 
-## Next Week's Plan — 4 Blog Topics (Mon–Thu, June 8–11)
+## Next Week's Plan — 4 Blog Topics (Mon–Thu, June 15–18)
+
+The pivot: the group stage closes ~June 27, the knockout bracket fills in, and "how do I buy a ticket to a match before I know who's playing" becomes the highest-volume unanswered WC question. We own it before the spike.
 
 | Day | Slot | Working title | Angle |
 |-----|------|---------------|-------|
-| Mon 6/8 | Big-idea | "World Cup 2026 Opens Thursday: The Final Buy-or-Wait Call on Every Seat Tier" | Tournament-eve flagship. Cheap seats won't drop, so buy; premium seats still have room, so wait or skip. One framework across all categories. Cross-links the venue-ranking flagship. |
-| Tue 6/9 | Tactical | "Game-Day at the World Cup: How to Land a Seat in the Final 48 Hours Without Overpaying" | Last-minute buyer playbook — resale timing, mobile-transfer gotchas, FIFA-resale vs secondary under deadline. |
-| Wed 6/10 | News/timely | "Same Finals, 6x the Price: An MSG Seat Costs $13K, the Same Series in San Antonio Costs $1.5K" | From today's hook. Knicks-Spurs venue/price disparity as a consumer-advocate story. **Re-pull prices the morning of** (Finals resale moves hourly) and attribute every figure. |
-| Thu 6/11 | Comparison | "Opening Weekend Price Check: Which Group-Stage Matches Are Overpriced — and Which Are the Bargains" | WC live as of today. Cross-match comparison of opening-weekend fixtures by get-in price vs demand. Reported resale bands ($650–$1,100 standard), attributed — no feed numbers. |
+| Mon 6/15 | Big-idea | "World Cup Knockout Tickets: How to Buy a Round-of-32 Seat Before You Know Who's Playing" | Flagship. Explains conditional/placeholder knockout inventory: what you're actually buying when the matchup is TBD, how FIFA's resale handles it vs the secondary platforms, and why the period right before the bracket sets is a distinct pricing regime. Cross-links the venue-ranking flagship. Evergreen through early July. |
+| Tue 6/16 | Tactical | "The Between-Matchdays Dip: When World Cup Resale Prices Actually Soften, and How to Catch One" | Tactical timing piece. Resale prices breathe between a team's matches; the lull after Matchday 2 and before the knockouts is the realistic buy window. Concrete steps: set a price alert on your target match, name your floor, wait for the dip. Direct product CTA (watchlist + alert). |
+| Wed 6/17 | News/timely | "World Cup Matchday 2 Price Check: Which This-Week Fixtures Are Overpriced on Resale" | Timely cross-platform read on the marquee Matchday 2 matches (Spain-Cape Verde, Saudi Arabia-Uruguay, Belgium-Egypt and the week's other US-venue draws). **Re-pull the morning of and attribute every figure to press** — our feed is null. Consumer-advocate "fair get-in vs hype" frame. |
+| Thu 6/18 | Comparison | "FIFA Official Resale vs the Secondary Market for World Cup Tickets, Now That the Tournament Is Live" | The live-tournament rematch of the pre-kickoff FIFA-direct-vs-resale piece (6/4, which was T-7 and is now stale). Dynamics changed once matches started: FIFA resale inventory, transfer/mobile-ticket gotchas, secondary-market premiums under a live deadline. Distinct angle, distinct slug. |
 
-**Fri 6/12 / Sat 6/13:** venue refreshes. Continue the international arc started Friday (bmo-field). Candidates: BC Place, or a Mexico venue (Azteca / Akron / BBVA). **Keep fixture specifics off the page until `worldcup.ts` is rebuilt** — venue facts plus Category floor guidance only.
+**Fri 6/19 / Sat 6/20:** venue refreshes. Continue the arc. Candidates: a remaining thin US venue page, or extend the international arc (BC Place, or a Mexico venue — Azteca / Akron / BBVA). **Keep WC fixture specifics off the page until `worldcup.ts` is rebuilt** — venue facts plus Category floor guidance only.
 
-**Sun 6/14:** audit + plan + hook.
+**Sun 6/21:** audit + plan + hook.
 
 ### Handoffs
-- **Agent 3 (Social):** the MSG 6x-price-spread stat is a strong standalone snippet. Facts only, figures attributed to press — no invented price arcs.
-- **Agent 5 (Email):** "Same Finals, 6x the price" is a strong subject line. The WC-opener T-minus reminder is a second hook.
-- **Agent 2 (SEO):** keyword targets are filed in today's content-hook (NBA Finals price keywords + WC opener keywords).
+- **Agent 3 (Social):** the post-Finals demand-consolidation angle and the Matchday 2 fixtures are strong standalone snippets. Teams/dates/venues only; any figure press-attributed.
+- **Agent 5 (Email):** "The NBA Finals are over, the World Cup is the only game in town" is a ready subject line, and it pairs with the price-alert CTA better than any hook this month.
+- **Agent 2 (SEO):** knockout-round keyword intent is the next volume spike (filed in today's content-hook). Worth a pass before the group stage closes ~June 27.
