@@ -1,22 +1,22 @@
-## Today's Content Hook — 2026-06-14 (Sunday)
+## Today's Content Hook — 2026-06-16 (Tuesday)
 
-**Topic:** The live-event calendar consolidated overnight. The NBA Finals ended Saturday (6/13) — the Knicks beat the Spurs 94-90 in Game 5 to take the series 4-1, New York's first title since 1973 — so the single biggest competing demand sink for secondary-market dollars is now gone. Meanwhile the World Cup rolls into its second wave of group-stage matches this week (Matchday 2, roughly June 15-21: Belgium-Egypt at Lumen Field, Spain-Cape Verde at Mercedes-Benz, Saudi Arabia-Uruguay at Hard Rock, plus more across US venues). With no NBA, no Finals, and MLB in its summer lull, World Cup resale is the loudest signal on every platform.
+**Topic:** The World Cup is in the gap between matchdays. Most groups finished their opening fixtures over the weekend (Matchday 1, June 11–16), and the second round of group games runs Wednesday through Friday (June 17–19), with games like Portugal–DR Congo and England–Croatia on the second-matchday slate. The group stage closes around June 27; the Round of 32 opens June 28 and runs to July 3. Resale is hot: per Yahoo Sports and Edmunds analysis of opening-week listings, the five most in-demand matches jumped 92%–136% in three days, and more than half of the 92 remaining matches now carry a four-figure get-in. The Final on July 19 at MetLife is averaging roughly $16,849 a ticket on TickPick as of June 15.
 
-**Angle:** When demand consolidates onto one event, cross-platform price spreads tend to widen, not narrow. Every resale buyer is chasing the same inventory, and Ticketmaster, SeatGeek, and StubHub re-price that inventory on different clocks. That is exactly the moment a 30-second three-way comparison and a free price alert pay off. Consumer-advocate framing: the tournament is live, hype is peaking, and peaking hype is precisely when you should NOT buy the first listing you see.
+**Angle:** Resale prices for a given match are not flat across the tournament. They breathe with that team's schedule. Prices spike around a match, then soften in the days a team is idle, then climb again as the next fixture nears. The lull between a team's matchday-2 game and the knockout bracket is the realistic buy window for fans who already know which match they want. Consumer-advocate framing: name your price, set an alert, and let the dip come to you instead of buying into a spike.
 
-**Target keyword:** "World Cup 2026 tickets this week" / "World Cup group stage tickets price" / "World Cup 2026 resale prices" / matchup queries like "Spain vs Saudi Arabia tickets"
+**Target keyword:** "when do World Cup ticket prices drop" / "best time to buy World Cup 2026 tickets" / "World Cup resale price dip" / "World Cup ticket price alert"
 
-**Content type:** Calendar audit + next-week plan (Sunday cadence, no new draft today). Feeds Monday's flagship draft and the handoffs below.
+**Content type:** Tactical blog draft (Tuesday cadence) + product CTA (watchlist + price alert). Slug: between-matchdays-world-cup-2026-resale-buy-window.
 
-**Priority:** High (World Cup is now the sole live mega-event; the peak organic-search window for the cluster runs through the knockout rounds in early July).
+**Priority:** High (the timing window is live right now and closes when the bracket sets ~June 27).
 
 ---
 
 ### Note for SEO Agent (Agent 2)
-Search intent is shifting from pre-tournament "should I buy World Cup tickets" toward live, matchup-specific queries: "[team] vs [team] tickets," "World Cup round of 32 tickets," "World Cup knockout tickets price." Worth a keyword pass on knockout-round intent now, before the group stage closes (~June 27) and that volume spikes. The venue-ranking flagship plus the 11 US venue pages are the natural landing cluster.
+The intent cluster "when do World Cup ticket prices drop / best time to buy" is distinct from the matchup queries flagged Sunday and likely lower-competition. Pair it with the knockout-round keyword pass already filed. Landing target: this tactical post plus the venue-ranking flagship.
 
 ### Note for Social Agent (Agent 3)
-Postable, web-verified facts (no price data): NBA Finals over, Knicks 4-1 over Spurs, first title since 1973, Brunson 45 in Game 5. World Cup Matchday 2 fixtures this week include Belgium-Egypt (Lumen Field), Spain-Cape Verde (Mercedes-Benz), Saudi Arabia-Uruguay (Hard Rock). Safe to reference teams/dates/venues. Do NOT attach dollar figures — our price feed returns null; any price must be press-attributed inline.
+Safe, web-verified facts (no dollar figures unless press-attributed inline): group stage closes ~June 27, Round of 32 opens June 28. Matchday 2 runs June 17–19. The "prices breathe with a team's schedule, so wait for the idle-days dip" idea is a strong standalone snippet. If you cite the 92%–136% three-day jump or the Final average, attribute to Yahoo Sports / Edmunds / TickPick.
 
 ### Note for Email Agent (Agent 5)
-Subject-line angle: "The NBA Finals are over. The World Cup just became the only game in town." Pairs naturally with a price-alert CTA — consolidated demand is the strongest "set an alert, don't buy the first listing" case we've had all season.
+Subject-line angle: "World Cup prices dip when your team isn't playing. Here's how to catch it." Natural pairing with the price-alert CTA. The between-matches lull is the cleanest "set an alert, don't chase a spike" case of the tournament.
