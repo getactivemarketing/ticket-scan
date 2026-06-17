@@ -1,22 +1,24 @@
-## Today's Content Hook — 2026-06-16 (Tuesday)
+## Today's Content Hook — 2026-06-17 (Wednesday)
 
-**Topic:** The World Cup is in the gap between matchdays. Most groups finished their opening fixtures over the weekend (Matchday 1, June 11–16), and the second round of group games runs Wednesday through Friday (June 17–19), with games like Portugal–DR Congo and England–Croatia on the second-matchday slate. The group stage closes around June 27; the Round of 32 opens June 28 and runs to July 3. Resale is hot: per Yahoo Sports and Edmunds analysis of opening-week listings, the five most in-demand matches jumped 92%–136% in three days, and more than half of the 92 remaining matches now carry a four-figure get-in. The Final on July 19 at MetLife is averaging roughly $16,849 a ticket on TickPick as of June 15.
+**Topic:** World Cup 2026 Matchday 2 is live this week, and resale prices are splitting in two directions. Per Yahoo Sports and ABC News reporting on opening-week listings, almost every match saw a price increase right after the opening games — some marquee fixtures up more than 100% in three days — while the *majority* of neutral group-stage games are now trending *down*, as sellers cut prices to clear the huge seat inventory in US NFL stadiums. The marquee Matchday 2 draw is England vs Croatia at AT&T Stadium (Arlington), today; Portugal vs DR Congo is at NRG Stadium (Houston) the same day. Thursday brings Czechia–South Africa (Atlanta) and Switzerland–Bosnia (Inglewood) to US venues.
 
-**Angle:** Resale prices for a given match are not flat across the tournament. They breathe with that team's schedule. Prices spike around a match, then soften in the days a team is idle, then climb again as the next fixture nears. The lull between a team's matchday-2 game and the knockout bracket is the realistic buy window for fans who already know which match they want. Consumer-advocate framing: name your price, set an alert, and let the dip come to you instead of buying into a spike.
+**Angle:** Consumer-advocate "fair get-in vs hype premium" cross-platform read. The two-way price split is exactly what TicketScan exists for: a buyer who checks only one platform can't tell whether a number is the real market or one optimistic seller. We name which signals point to a hype tax (a big-name neutral match in a 70,000-seat stadium) versus a genuine floor, and tell readers to compare across Ticketmaster, SeatGeek and StubHub before they pay.
 
-**Target keyword:** "when do World Cup ticket prices drop" / "best time to buy World Cup 2026 tickets" / "World Cup resale price dip" / "World Cup ticket price alert"
+**Target keyword:** "world cup 2026 matchday 2 ticket prices" / "world cup resale prices overpriced" / "england croatia ticket prices"
 
-**Content type:** Tactical blog draft (Tuesday cadence) + product CTA (watchlist + price alert). Slug: between-matchdays-world-cup-2026-resale-buy-window.
+**Content type:** Blog post (news/timely) + social snippets (Agent 3) + email subject (Agent 5)
 
-**Priority:** High (the timing window is live right now and closes when the bracket sets ~June 27).
+**Priority:** High (the matchday is live this week; intent peaks today and tomorrow)
 
 ---
 
-### Note for SEO Agent (Agent 2)
-The intent cluster "when do World Cup ticket prices drop / best time to buy" is distinct from the matchup queries flagged Sunday and likely lower-competition. Pair it with the knockout-round keyword pass already filed. Landing target: this tactical post plus the venue-ranking flagship.
+### Fact-gate notes (read before reusing)
+- **Our price feed is null.** Every dollar figure is third-party press, attributed inline. Do NOT present any number as TicketScan-measured.
+- Press figures available to cite (June 2026): SeatGeek final from $8,160, Austria–Jordan from $226, Round of 32 $763–$1,900, QF from $1,450; StubHub England–Croatia ~$1,200 upper sections / some under $900, Iran–New Zealand under $350, final $5,937–$38,665. Sources: Yahoo Sports, Sports Illustrated, ABC News.
+- **Fixtures are from press, not `worldcup.ts`** (stale pre-draw placeholders). Matchday 2 fixtures verified via NBC/ESPN/Yahoo schedule pulls on 6/17.
+- Trend claim ("up 100%+ on some, majority trending down on neutral games") is Yahoo Sports / ABC News reporting, attributed inline.
 
-### Note for Social Agent (Agent 3)
-Safe, web-verified facts (no dollar figures unless press-attributed inline): group stage closes ~June 27, Round of 32 opens June 28. Matchday 2 runs June 17–19. The "prices breathe with a team's schedule, so wait for the idle-days dip" idea is a strong standalone snippet. If you cite the 92%–136% three-day jump or the Final average, attribute to Yahoo Sports / Edmunds / TickPick.
-
-### Note for Email Agent (Agent 5)
-Subject-line angle: "World Cup prices dip when your team isn't playing. Here's how to catch it." Natural pairing with the price-alert CTA. The between-matches lull is the cleanest "set an alert, don't chase a spike" case of the tournament.
+### Handoffs
+- **Agent 3 (Social):** "A big-name neutral match in a 70k NFL stadium is the most over-hyped get-in of the week" is a clean snippet. Teams/venues only; press-attribute any figure.
+- **Agent 5 (Email):** Subject candidate — "World Cup prices are moving two directions this week." Pairs with the compare-before-you-buy CTA.
+- **Agent 2 (SEO):** "matchday N price check" is recurring weekly intent through the group stage (closes ~June 27). Worth a templated cluster slug.
