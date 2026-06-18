@@ -1,24 +1,25 @@
-## Today's Content Hook — 2026-06-17 (Wednesday)
+## Today's Content Hook — 2026-06-18 (Thursday)
 
-**Topic:** World Cup 2026 Matchday 2 is live this week, and resale prices are splitting in two directions. Per Yahoo Sports and ABC News reporting on opening-week listings, almost every match saw a price increase right after the opening games — some marquee fixtures up more than 100% in three days — while the *majority* of neutral group-stage games are now trending *down*, as sellers cut prices to clear the huge seat inventory in US NFL stadiums. The marquee Matchday 2 draw is England vs Croatia at AT&T Stadium (Arlington), today; Portugal vs DR Congo is at NRG Stadium (Houston) the same day. Thursday brings Czechia–South Africa (Atlanta) and Switzerland–Bosnia (Inglewood) to US venues.
+**Topic:** Now that the World Cup is live, the "where do I buy" question has flipped from a pre-kickoff price race into a mechanics question with a real cost attached. FIFA's own resale marketplace charges a 15% buyer fee plus a 15% seller fee, 30% total per transaction (worldcuppass.com, ticket-compare.com, FIFA support). Meanwhile resale on StubHub and SeatGeek keeps sliding: TicketData.com (via NBC News) reports prices falling on more than 90% of matches, down roughly 24% from a month ago and about 8% in the past week, after FIFA's portal shed ~44,000 tickets in late May that reappeared on the secondary market below official prices. Thursday's US-venue draws are Czechia–South Africa (Mercedes-Benz, Atlanta) and Switzerland–Bosnia (SoFi, Inglewood).
 
-**Angle:** Consumer-advocate "fair get-in vs hype premium" cross-platform read. The two-way price split is exactly what TicketScan exists for: a buyer who checks only one platform can't tell whether a number is the real market or one optimistic seller. We name which signals point to a hype tax (a big-name neutral match in a 70,000-seat stadium) versus a genuine floor, and tell readers to compare across Ticketmaster, SeatGeek and StubHub before they pay.
+**Angle:** The live-tournament rematch of our T-7 FIFA-vs-resale piece (6/4). The buy decision changed once matches started: FIFA-resale's 30% all-in bite, the mobile-ticket transfer mechanics (free FIFA transfers, 72-hour accept window, QR appears in the app near match day), and how to weigh official-resale safety against a secondary market that's actively softening. Consumer-advocate frame: "official" is the safe path, not automatically the cheap one, and the fee math is now the deciding factor.
 
-**Target keyword:** "world cup 2026 matchday 2 ticket prices" / "world cup resale prices overpriced" / "england croatia ticket prices"
+**Target keyword:** "fifa official resale vs stubhub" / "world cup 2026 resale fees" / "is fifa resale cheaper than stubhub"
 
-**Content type:** Blog post (news/timely) + social snippets (Agent 3) + email subject (Agent 5)
+**Content type:** Blog post (comparison) + social snippet (Agent 3) + email subject (Agent 5)
 
-**Priority:** High (the matchday is live this week; intent peaks today and tomorrow)
+**Priority:** High (group stage closes ~June 27; buy-mechanics intent is peaking as casual buyers enter)
 
 ---
 
 ### Fact-gate notes (read before reusing)
-- **Our price feed is null.** Every dollar figure is third-party press, attributed inline. Do NOT present any number as TicketScan-measured.
-- Press figures available to cite (June 2026): SeatGeek final from $8,160, Austria–Jordan from $226, Round of 32 $763–$1,900, QF from $1,450; StubHub England–Croatia ~$1,200 upper sections / some under $900, Iran–New Zealand under $350, final $5,937–$38,665. Sources: Yahoo Sports, Sports Illustrated, ABC News.
-- **Fixtures are from press, not `worldcup.ts`** (stale pre-draw placeholders). Matchday 2 fixtures verified via NBC/ESPN/Yahoo schedule pulls on 6/17.
-- Trend claim ("up 100%+ on some, majority trending down on neutral games") is Yahoo Sports / ABC News reporting, attributed inline.
+- **Our price feed is null.** Every figure below is third-party press, attributed inline. Do not present any number as TicketScan-measured.
+- FIFA resale fee: 15% buyer + 15% seller = 30% per transaction (worldcuppass.com, ticket-compare.com, FIFA customer support).
+- Secondary trend: 90%+ of matches falling, ~24% month-over-month, ~8% week-over-week; ~44,000 tickets left FIFA's portal in late May and resurfaced on resale below official (TicketData.com via NBC News, Consequence, Newsweek).
+- Mechanics: FIFA tickets are mobile-only, live QR in the official app near match day; FIFA transfers are free with a 72-hour accept window; FIFA resale cancels the original ticket and reissues it digitally to the buyer's account (FIFA support, theworldcupguide.com).
+- **Fixtures from press, not worldcup.ts** (stale pre-draw placeholders). Thursday US draws verified via schedule pulls 6/18.
 
 ### Handoffs
-- **Agent 3 (Social):** "A big-name neutral match in a 70k NFL stadium is the most over-hyped get-in of the week" is a clean snippet. Teams/venues only; press-attribute any figure.
-- **Agent 5 (Email):** Subject candidate — "World Cup prices are moving two directions this week." Pairs with the compare-before-you-buy CTA.
-- **Agent 2 (SEO):** "matchday N price check" is recurring weekly intent through the group stage (closes ~June 27). Worth a templated cluster slug.
+- **Agent 3 (Social):** "FIFA's own resale charges 30% all-in. That's the number nobody mentions when they say 'just buy official.'" Clean snippet. Press-attribute the fee.
+- **Agent 5 (Email):** Subject candidate — "The 30% fee hiding inside 'official' World Cup tickets." Pairs with the compare-before-you-buy CTA.
+- **Agent 2 (SEO):** "fifa resale fees" and "fifa resale vs stubhub" are buy-mechanics intent that will outlive the group stage. Worth a durable comparison slug.
