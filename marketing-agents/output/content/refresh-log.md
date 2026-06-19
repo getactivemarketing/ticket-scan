@@ -1,5 +1,27 @@
 # Content Refresh Log
 
+## 2026-06-19 — World Cup 2026 flagship guide (blog.ts) — de-staled pre-sale framing for the LIVE tournament
+
+**Page refreshed:** `world-cup-2026-ticket-guide` in `web/src/data/blog.ts` (featured: true — flagship WC post, peak live-tournament traffic)
+
+**Why this page:** Recent Fri/Sat refreshes have all been arena venues (Toyota, State Farm, United Center). Nothing had touched the flagship WC content since the tournament went live June 11. The post was written entirely in pre-sale/lottery future tense ("Official Ticket Sales: Expected to begin late 2025," "register now for the lottery," "FIFA will announce phases in 2025") — actively wrong for a guide getting peak search traffic 8 days into the group stage. Also carried a factual error: called SoFi a "potential Final venue" when the Final is confirmed at MetLife.
+
+**What changed:**
+1. **Intro + Key Dates** rewritten present-tense: tournament is underway, primary sale phases closed, two real paths now are FIFA Resale Marketplace + secondary platforms. Added a "Last updated June 2026, mid-tournament" line and broke Key Dates into Group Stage / Knockout / Final.
+2. **"How to Buy Official FIFA Tickets" → "How Official Tickets Work Now"** — replaced the dead lottery checklist with how the live FIFA Resale/Exchange Marketplace works (only official channel, open until 1hr pre-kickoff, mobile-only QR, fee warning).
+3. **New "FIFA Resale Marketplace Fee Math" section** — the 15% buyer + 15% seller = up to 30% all-in math, with a worked $400-listing example. Consumer-advocate angle: "official" ≠ "cheapest."
+4. **Resale section reframed** as "Secondary Marketplaces: The Other Path" — fixed the inaccurate "StubHub = Official FIFA resale partner" line (FIFA's own marketplace is the official channel now); added the press-attributed softening trend (TicketData via The Hill / Yahoo / Consequence, 20%+ drops on majority of group-stage matches).
+5. **Stadium tips** — corrected MetLife to confirmed July 19 Final host; removed SoFi "potential Final venue" error.
+6. **Pro Tips + What to Avoid** — swapped dead lottery advice ("register early," "don't miss the lottery window") for live-tournament guidance (compare all-in price, don't panic-buy, inventory available late).
+
+**Fact-gating:** No TicketScan-measured prices (our feed returns null). All figures press-attributed inline. No specific WC fixtures asserted from worldcup.ts (flagged stale). FIFA 30% fee verified via FIFA customer-support docs + Goal/Wego/FootballGroundGuide; softening trend via TicketData press.
+
+**Verification:** `npx tsc --noEmit` ran clean (exit 0) — template literal intact, no stray backticks or `${}`.
+
+**SEO impact expected:** Reclaims "world cup 2026 resale fees" / "is fifa resale cheaper than stubhub" / "world cup 2026 tickets still available" — durable buy-mechanics intent that outlives the group stage. Removes the freshness/accuracy penalty of a flagship page reading like it's still 2025.
+
+---
+
 ## 2026-06-13 — Toyota Center (venues.ts) — 5 sections + one-liner → 57 sections + rich guide
 
 **Page refreshed:** `toyota-center` in `web/src/data/venues.ts` → renders at `/venues/toyota-center`

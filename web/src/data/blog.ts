@@ -10,7 +10,10 @@ export interface BlogPost {
   tags: string[];
   readTime: number;
   featured?: boolean;
+  image?: string;
 }
+
+export const DEFAULT_BLOG_IMAGE = 'https://www.ticketscan.io/logo.png';
 
 export const blogPosts: BlogPost[] = [
   {
@@ -1967,20 +1970,25 @@ Compare Super Bowl ticket prices on Ticket Scan across all platforms.
     content: `
 ## 2026 FIFA World Cup Ticket Guide
 
-The 2026 FIFA World Cup will be the biggest sporting event in North American history. With 48 teams, 104 matches across 16 stadiums in the USA, Canada, and Mexico, getting tickets requires strategy and preparation.
+The 2026 FIFA World Cup is underway. With 48 teams, 104 matches across 16 stadiums in the USA, Canada, and Mexico, it's the biggest sporting event in North American history -- and now that the group stage is in full swing, the way you buy tickets has changed. The official lottery and presale phases are over. If you don't already have a seat, your two realistic paths are FIFA's own resale marketplace and the major secondary platforms. This guide covers both, plus the fee math that decides which is actually cheaper.
+
+*Last updated June 2026, mid-tournament. Tournament runs June 11 - July 19, 2026.*
 
 ### Key Dates
 
 - **Tournament Dates**: June 11 - July 19, 2026
-- **Official Ticket Sales**: Expected to begin late 2025
+- **Group Stage**: through late June 2026
+- **Knockout Rounds**: late June through the July 19 Final
 - **Host Countries**: USA (11 cities), Canada (2 cities), Mexico (3 cities)
 
-### How to Buy Official FIFA Tickets
+### How Official Tickets Work Now
 
-1. **Register on FIFA.com** - Create an account now to be ready for the ticket lottery
-2. **Watch for announcements** - FIFA will announce ticket phases in 2025
-3. **Apply in the lottery** - Most tickets are allocated via random selection
-4. **Check results** - Selected applicants can purchase their tickets
+FIFA's primary sale phases -- the presale draw, the random-selection lottery, and the first-come windows -- have closed. The official channel still live during the tournament is the **FIFA Resale/Exchange Marketplace** at FIFA.com/tickets, where existing ticket holders list seats they can no longer use. Here's how it works:
+
+1. **It's the only FIFA-official resale channel** - tickets are reissued digitally to the buyer's FIFA account, so there's no fraud risk
+2. **It stays open until one hour before kickoff** for each match, so inventory keeps moving right up to game day
+3. **Tickets are mobile-only** - your QR code appears in the official FIFA app close to match day
+4. **Watch the fees** - see the breakdown below, because "official" does not automatically mean "cheapest"
 
 ### Ticket Categories
 
@@ -1993,35 +2001,29 @@ FIFA typically offers several ticket categories:
 | Category 3 | Upper level, corners | $80-250 |
 | Category 4 | Residents only, limited | $50-150 |
 
-### Understanding the Resale Market
+### The FIFA Resale Marketplace Fee Math
 
-Once official tickets sell out (they will), the resale market becomes your next option:
+Here's the part nobody mentions when they say "just buy official." The FIFA Resale Marketplace charges **15% to the buyer and 15% to the seller** -- up to 30% of the resale price in fees combined, per FIFA's own customer-support documentation. The buyer's share is added on top of the listed price; the seller's is deducted from their payout. So a seat listed at $400 can cost you around $460 all-in, while the seller nets roughly $340.
 
-**Pros of Resale:**
-- Tickets available after sellout
-- Choose specific seats
-- Last-minute availability
+That 30% spread is exactly why it pays to compare before you commit. "Official and safe" and "cheapest" are not the same thing.
 
-**Cons of Resale:**
-- Higher prices (often 2-5x face value)
-- Risk of fraud if using unofficial platforms
-- Must verify ticket authenticity
+### Secondary Marketplaces: The Other Path
 
-### Where to Buy Resale Tickets Safely
+The big secondary platforms run their own buyer-guarantee programs and have been a real alternative this tournament -- partly because resale prices softened as the group stage approached and played out. Reporting from TicketData (via The Hill, Yahoo Sports, and Consequence) found prices on a majority of group-stage matches fell 20% or more in the weeks around kickoff, as supply outpaced last-minute demand. The takeaway for buyers: patience has been rewarded, and lowball seats exist if you watch for them.
 
-Only use verified platforms with buyer protection:
-- **StubHub** - Official FIFA resale partner
-- **Ticketmaster** - Verified resale marketplace
-- **SeatGeek** - Buyer guarantee program
+Platforms worth comparing:
+- **StubHub** - FanProtect buyer guarantee
+- **SeatGeek** - buyer guarantee program
+- **Ticketmaster** - verified resale marketplace
 - **Vivid Seats** - 100% buyer guarantee
 
-**Use Ticket Scan to compare prices across all these platforms and find the best deal.**
+**Use Ticket Scan to compare the all-in price -- FIFA Marketplace fees included -- across every platform at once, so you're not guessing which "deal" is actually the deal.**
 
 ### Stadium-Specific Tips
 
-**MetLife Stadium (New York)**: Largest US venue, expect highest demand. Lower bowl sidelines are best for soccer.
+**MetLife Stadium (New York/New Jersey)**: Host of the July 19 Final and the largest US venue -- expect the highest demand of the tournament. Lower-bowl sidelines give the best soccer sightlines.
 
-**SoFi Stadium (Los Angeles)**: Potential Final venue. Book accommodations early - LA hotels will be expensive.
+**SoFi Stadium (Los Angeles)**: One of the marquee US venues. Book accommodations early - LA hotels are expensive during the tournament.
 
 **Estadio Azteca (Mexico City)**: Historic venue, incredible atmosphere. Altitude of 7,200 feet affects players.
 
@@ -2039,19 +2041,19 @@ Here's a realistic budget for attending a World Cup match:
 
 ### Pro Tips for 2026 World Cup Tickets
 
-1. **Register with FIFA early** - Don't miss the lottery window
-2. **Consider group stage matches** - Much cheaper than knockout rounds
-3. **Be flexible on location** - Smaller cities have better availability
-4. **Set price alerts** - Use Ticket Scan to track resale prices
-5. **Book travel separately** - Don't commit until you have tickets
-6. **Join supporter groups** - Some allocations go to official fan clubs
+1. **Compare the all-in price, not the sticker** - factor FIFA's 30% fee spread against secondary-platform service fees before deciding
+2. **Consider group stage matches** - much cheaper than knockout rounds, and that's where the softest resale pricing has shown up
+3. **Be flexible on location** - smaller host cities consistently have better availability and lower get-in prices
+4. **Set price alerts** - use Ticket Scan to track resale prices and catch the dips instead of refreshing tabs
+5. **Book travel separately** - don't commit to flights and hotels until the ticket is in your account
+6. **Don't panic-buy** - inventory has stayed available deep into the tournament; the seat you want at your price often appears late
 
 ### What to Avoid
 
-- **Unofficial ticket sites** - High fraud risk
-- **Social media sellers** - No buyer protection
-- **Buying before allocation** - Prices will change significantly
-- **Last-minute final tickets** - Expect extreme prices
+- **Random sites and social-media sellers** - no buyer protection and high fraud risk; stick to FIFA's marketplace or guaranteed secondary platforms
+- **Assuming "official" means "cheapest"** - the 30% FIFA fee spread frequently makes a guaranteed secondary listing the better all-in deal
+- **Paying the first price you see** - prices have moved a lot; compare across platforms every time
+- **Knockout and Final tickets at panic prices** - expect extreme numbers, and weigh whether a group-stage match delivers more value
 
 ### Track World Cup Ticket Prices
 
