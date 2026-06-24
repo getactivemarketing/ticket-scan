@@ -1,26 +1,25 @@
-## Today's Content Hook — 2026-06-23 (Tuesday)
+## Today's Content Hook — 2026-06-24 (Wednesday)
 
-**Topic:** The group stage closes ~June 27 and the knockout bracket is filling in. Fresh mid-June reporting (ABC News, ESPN, Goal.com) shows FIFA pushed the final's top price to a record **$32,970** (Front Category 1), with Category 4 at $2,030 and a mid-June resale get-in around $8,303. But on several knockout-bound matches, FIFA's *own* resale was undercutting SeatGeek (Paraguay–US: ~$661 FIFA vs ~$920 SeatGeek; England–Croatia: ~$850 FIFA vs ~$880 SeatGeek). On the eve of the tournament, 75 games still had inventory — both semis, all four quarterfinals, and five Round of 16 matches.
+**Topic:** With the World Cup group stage live, several families in Philadelphia were turned away at the gate — resale tickets they'd paid for through third-party / social-media sellers never showed up. FIFA put out a public reminder that only its official channels can guarantee a valid ticket. At the same time, legitimate resale on the big marketplaces is sitting at sane prices: today's Bosnia & Herzegovina vs. Qatar at Lumen Field started around $198 (SeatPick).
 
-**Angle:** Consumer-advocate tactical how-to for buying Round of 16 / knockout tickets *while the tournament is live*, when the cheapest source flips daily and "official = cheapest" is no longer true. The catch fans miss: FIFA's resale charges up to **30% all-in** (15% buyer + 15% seller), so the buy decision is an all-in comparison, not a sticker comparison. TicketScan's side-by-side compare is the exact tool for this moment.
+**Angle:** Consumer-advocate safety guide for buying World Cup resale *during* the tournament. The takeaway isn't "never buy resale" — it's "buy from marketplaces that carry a buyer guarantee, compare them side by side, and never wire a stranger on Facebook or WhatsApp." That side-by-side check (Ticketmaster, SeatGeek, StubHub) is exactly what TicketScan does. Distinct from our evergreen scam guide and our April dynamic-pricing piece — this one is specifically about gate-day fraud risk while the matches are happening.
 
-**Target keyword:** "world cup 2026 knockout tickets" / "round of 16 tickets" / "world cup resale prices" / "is fifa resale cheaper than stubhub"
+**Target keyword:** "world cup 2026 resale tickets scam" / "how to buy world cup tickets safely" / "world cup ticket never arrived"
 
-**Content type:** Blog post (tactical how-to, Tuesday slot) + social snippets (Agent 3) + email hook (Agent 5)
+**Content type:** Blog post (news/timely, Wednesday slot) — drafted today. Also a social snippet (Agent 3) and an email hook (Agent 5).
 
-**Priority:** High — peak live-tournament intent; knockout searches spike as the bracket sets.
+**Priority:** High — the story is breaking now, the tournament runs through July 19, and "world cup tickets safe / scam" search intent spikes during the event.
 
 ---
 
 ### Fact-gate notes (read before reusing)
-- **Our price feed returns null prices.** Every dollar figure below is third-party press, attributed inline. Never present a number as TicketScan-measured.
-- FIFA final top price raised to **$32,970** Front Cat 1; Cat 4 $2,030; resale get-in ~$8,303 mid-June (ABC News, ESPN).
-- Cross-platform examples where official undercut resale: Paraguay–US ~$661 FIFA vs ~$920 SeatGeek; England–Croatia ~$850 FIFA vs ~$880 SeatGeek (ABC News). Use sparingly — these specific matchups age fast.
-- FIFA resale fee: 15% buyer + 15% seller = up to **30% per transaction** (FIFA support docs; corroborated Goal.com, Wego).
-- Eve-of-tournament availability: 75 games still had tickets incl. both semis, all 4 QFs, 5 R16 (ABC News).
-- **Do NOT assert specific WC fixtures from worldcup.ts** (stale pre-draw placeholders). Press-confirmed examples only.
+- **Our price feed returns null prices.** Any dollar figure is third-party press, attributed inline. Never present a number as TicketScan-measured. (See [[price-history-empty-alerts-broken]], [[social-agent-price-ledger-fabrication]].)
+- Philadelphia gate turn-aways from undelivered resale tickets, plus FIFA's official-channel guarantee statement: 6abc Philadelphia / FIFA.
+- Cheapest match example: Bosnia & Herzegovina vs. Qatar, Lumen Field, ~$198 get-in (SeatPick, today). Ages fast — use as a "resale can be reasonable" illustration, not a standing price.
+- **Do NOT assert specific WC fixtures from worldcup.ts** (stale pre-draw placeholders — see [[worldcup-schedule-stale-predraw]]). Press-confirmed examples only.
+- The two existing related posts are `avoid-ticket-scams` (evergreen) and `world-cup-2026-final-ticket-10990-dynamic-pricing` (pricing). This draft links to both and stays in its own lane (gate-day delivery fraud).
 
 ### Handoffs
-- **Agent 3 (Social):** "FIFA just made the World Cup final a $32,970 ticket. But on some knockout matches, FIFA's *own* resale is cheaper than SeatGeek right now. The only move is to compare all three." Attribute figures.
-- **Agent 5 (Email):** Subject — "How to buy a Round of 16 ticket without overpaying" (pairs with compare-all-in CTA).
-- **Agent 2 (SEO):** "world cup 2026 knockout tickets" and "is fifa resale cheaper than stubhub" are durable buy-mechanics intent that outlive the group stage. New draft `world-cup-2026-knockout-tickets-guide` targets them.
+- **Agent 3 (Social):** "People are getting turned away at World Cup gates because their resale tickets never showed. The fix isn't 'avoid resale' — it's buy from a marketplace with a guarantee, and compare all three before you pay." No invented prices.
+- **Agent 5 (Email):** Subject — "Don't get turned away at the gate." Safety-checklist hook, pairs with compare CTA.
+- **Agent 2 (SEO):** "how to buy world cup tickets safely" and "world cup resale scam" are durable buy-safety intent that lasts the whole tournament. New draft `world-cup-2026-resale-tickets-scam-safety` targets them.
