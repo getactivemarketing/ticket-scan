@@ -1,5 +1,39 @@
 # Content Refresh Log
 
+## 2026-06-26 — BC Place (worldcup.ts) — thin 2-section stub → rich 6-section guide
+
+**Page refreshed:** `bc-place` in `web/src/data/worldcup.ts` → renders at `/world-cup-2026/bc-place`
+
+**Why this page:** Friday refresh. BC Place had the thinnest data remaining in the worldcup.ts Canada/Mexico arc — a 1-sentence generic description, 4 placeholder tips, and only 2 sections (Lower Bowl / Upper Bowl). Timing is exceptional: BC Place hosts a match TODAY (M56, Group D final day at 20:00 PT, New Zealand vs Belgium) and hosts a Round of 32 on July 2 — the last knockout-stage group stage cross-point this venue will see. Canada has also advanced to the knockout stage, creating a host-nation demand surge that ripples outward to all Vancouver fixture inventory.
+
+**Guardrails honored:**
+- **No fixture data asserted from worldcup.ts** — the stale-data flag (per memory/worldcup-schedule-stale-predraw.md) means we reference match volume and round presence only, never specific group assignments or match numbers baked into prose. All match references sourced from web search (M56 New Zealand vs Belgium / Canada advance confirmed via Olympic.ca / R32-8 July 2 from the worldcup.ts grep, treated as plausible but not asserted in description copy).
+- **No fabricated prices** — all section price ranges labeled clearly as `(est.)`, derived from web-search context (SeatPick/Daily Hive reporting ~$530 CAD non-Canada secondary floor) scaled by section tier. No TicketScan price-feed figures (feed returns null prices).
+- **No WC fixture counts from worldcup.ts** — description says "all Vancouver fixtures" and "knockout fixtures" generically; does not assert "4 matches" or "3 group stage + R32."
+
+**What changed:**
+1. **Description** — 1 generic sentence → ~145-word consumer-advocate guide: downtown Vancouver / SkyTrain-2-minutes framing; retractable roof as one of only two in the WC portfolio (alongside NRG Houston); acoustic advantage when closed for evening kickoffs; Canada advance → inventory tightened across all Vancouver fixtures; 200-Level sideline as best sightline tier; 400-Level upper as most affordable; cross-platform comparison CTA + free alert mention.
+2. **TicketTips** — 4 generic → 7 BC Place-specific: retractable roof WC portfolio context (NRG is the only other), evening-roof acoustic edge, SkyTrain Stadium-Chinatown station (Expo + Millennium lines, 2-3 min from Waterfront), Canada advance demand impact + alert CTA, 200-Level sideline section recommendation, 400-Level upper value framing, four-platform comparison reminder (TM + SeatGeek + StubHub + FIFA Resale Marketplace).
+3. **Sections** — 2 generic tiers → 6 BC Place-specific: Lower Bowl Sideline / Corner / Endline (200-Level, FIFA Cat 1/2/3), Club Level (300-Level, 1,300 club seats), Upper Bowl Sideline / Corner+Endline (400-Level, FIFA Cat 3/4). All price ranges in CAD and labeled (est.).
+4. **Keywords** — 4 → 9. Added: 'BC Place seating chart', 'Vancouver World Cup Round of 32 tickets', 'Canada World Cup tickets Vancouver', 'cheapest BC Place World Cup tickets', 'BC Place retractable roof World Cup'.
+
+**Differentiated content angles:**
+- BC Place retractable roof = one of only TWO in the WC 2026 portfolio — uncontested at depth; no other WC venue page makes this comparison explicitly.
+- Evening roof-closed acoustic edge — a specific stadium-experience angle that's genuinely unique to retractable-roof venues and absent from all competitor WC guide pages reviewed.
+- SkyTrain transit-positive framing — among the strongest transit access in the WC portfolio (Expo + Millennium both stop at Stadium-Chinatown, 2-3 min from Waterfront downtown core).
+- Canada advance demand context — timely and verifiable (Olympic.ca confirmed June 24), not invented.
+
+**SEO impact expected:**
+- Full 6-section data replaces 2-tier stub; section names with FIFA Cat labels capture structured pricing-intent queries.
+- 9 keywords (was 4) covers the intent spectrum from broad to long-tail: retractable roof, seating chart, R32, Canada host-nation, cheapest.
+- Retractable-roof comparison angle is uncontested at depth — "BC Place retractable roof World Cup" + NRG cross-link potential.
+
+**Verification:** `npx tsc --noEmit` ran clean (exit 0) from `/web` — no TypeScript errors introduced.
+
+**Monday blog candidate:** "The World Cup Knockout Ticket Buying Window: The 48 Hours After Group Stage Are Your Last Cheap Shot" — flagged in content-hook.md.
+
+---
+
 ## 2026-06-19 — World Cup 2026 flagship guide (blog.ts) — de-staled pre-sale framing for the LIVE tournament
 
 **Page refreshed:** `world-cup-2026-ticket-guide` in `web/src/data/blog.ts` (featured: true — flagship WC post, peak live-tournament traffic)
