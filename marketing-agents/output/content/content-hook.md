@@ -1,59 +1,17 @@
-## Today's Content Hook — 2026-06-30
+## Today's Content Hook — 2026-07-01
 
-**Topic:** Round of 16 upsets flooding the resale market with "orphaned" tickets — Germany eliminated
-by Paraguay on penalties, the Netherlands out on Morocco's upset, Brazil surviving a scare against
-Japan. Fans who pre-bought speculative tickets for matches their teams were projected to reach are
-now selling. New York State also introduced legislation to cap ticket resale at face value, signaling
-the biggest regulatory shift in U.S. ticketing in years.
+**Topic:** World Cup 2026 knockout stage resale ticket prices have dropped 39% in the past week — counterintuitively, prices are falling as the stakes rise. TicketData.com data shows the Round of 16 median fell from $2,895 to $2,080. The US vs Bosnia July 2 game dropped from $2,705 to $1,650 since June 22. The Final at MetLife hit a peak of $12,483 on June 22 and is now averaging $10,329 for cheapest seats. Covered by Newsweek, Yahoo Sports, Front Office Sports, and Forbes.
 
----
+**Angle:** This is the exact opposite of what fans expect at knockout stage. TicketScan owns this as the consumer advocate who explains the "why" and turns it into actionable buying guidance. Core message reinforced: timing your purchase matters, platform comparison matters, and price alerts catch moments like this one.
 
-### Hook 1 (Primary — HIGH)
+**Target keyword:** "world cup 2026 ticket prices dropping" / "world cup knockout tickets cheap July 2026" / "world cup 2026 tickets cheaper"
 
-**What happened:** The Round of 16 produced a wave of stunning eliminations. Germany's penalty loss to
-Paraguay, Morocco toppling the Netherlands, Brazil's late escape past Japan. Every eliminated
-nation has fans who purchased tickets to later knockout rounds assuming their team would advance.
-Those fans are now hitting the resale market simultaneously, creating a supply spike — and a buying
-window — for neutral fans who just want to be in the stadium.
+**Content type:** Blog post (news/timely) — filed today as `2026-07-01-world-cup-knockout-prices-crash.md`
 
-**Angle:** When football giants fall, their fans have to sell. How to find those deals on
-quarterfinal and semifinal seats before neutral buyers drive prices back up.
+**Priority:** High — tournament is live, search intent is peaking, and the price reversal story is counterintuitive enough to earn clicks + social shares.
 
-**Target keyword:** "world cup 2026 quarterfinal tickets" / "world cup resale prices dropping" /
-"buy world cup tickets now"
+**Handoff — Agent 3 (Social):** Strong social angles: "World Cup prices just crashed 39%. Here's what to buy." and a stat graphic on the US vs Bosnia drop ($2,705 to $1,650) would perform on X and Instagram.
 
-**Content type:** Tuesday tactical blog post (written today — `2026-06-30-world-cup-quarterfinal-upset-buying-window.md`)
+**Handoff — Agent 5 (Email):** Strong standalone send for WC watchlist subscribers. Subject line: "World Cup prices just dropped 39% — act before they recover."
 
-**Priority:** High — search volume is peaking as R16 concludes and quarterfinal interest spikes.
-
----
-
-### Hook 2 (Secondary — MEDIUM)
-
-**What happened:** New York State introduced legislation to cap concert and event ticket resales at
-face value (including all original fees). Maine already enforces similar caps; California announced
-parallel measures. This is the biggest proposed shift in U.S. ticketing regulation in a decade.
-
-**Angle:** Resale cap laws are coming. Here's how to use price comparison right now, and what changes
-if the caps pass. Consumer-advocate framing: TicketScan becomes even more important when resale
-arbitrage narrows — you need the tool that finds the one legitimate deal left.
-
-**Target keyword:** "ticket resale price cap" / "best place to buy tickets legally 2026" /
-"concert ticket price laws"
-
-**Content type:** News/timely blog (good for Wednesday's slot) or social snippet (short explainer
-thread: "NY just introduced ticket resale caps. Here's what it means for you.")
-
-**Priority:** Medium — longer-term SEO value, not yet driving peak search volume but will.
-
----
-
-### Handoffs
-
-- **Agent 3 (Social):** Both hooks work as short-form threads. For Hook 1: lean on the "Germany is
-  out, their fans are selling, you could be buying" angle — teams/dates/venues only, no invented
-  price figures. For Hook 2: factual regulatory explainer, one or two tweets.
-- **Agent 2 (SEO):** "world cup quarterfinal tickets 2026" is peaking now. Worth a quick keyword
-  cluster check before Thursday to make sure today's blog post is optimally anchored.
-- **Agent 5 (Email):** Hook 1 is a strong send for price-alert users watching WC matches:
-  "Upsets create deals. Here's how to catch one."
+**Handoff — Agent 2 (SEO):** Keyword cluster worth targeting: "world cup 2026 tickets cheaper now" / "buy world cup tickets last minute July 2026" / "world cup knockout resale prices."
