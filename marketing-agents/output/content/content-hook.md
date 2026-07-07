@@ -1,17 +1,27 @@
-## Today's Content Hook — 2026-07-01
+## Today's Content Hook — 2026-07-07
 
-**Topic:** World Cup 2026 knockout stage resale ticket prices have dropped 39% in the past week — counterintuitively, prices are falling as the stakes rise. TicketData.com data shows the Round of 16 median fell from $2,895 to $2,080. The US vs Bosnia July 2 game dropped from $2,705 to $1,650 since June 22. The Final at MetLife hit a peak of $12,483 on June 22 and is now averaging $10,329 for cheapest seats. Covered by Newsweek, Yahoo Sports, Front Office Sports, and Forbes.
+**Topic:** Texas AG launched a formal investigation into StubHub on July 3 over "widespread reports" of World Cup ticket orders that were accepted, charged, and then canceled or never delivered — leaving fans stranded with 12 days until the Final. New York and New Jersey AGs had already subpoenaed FIFA directly over "sky-high prices" and seat-location misrepresentation. The story has broken nationally via ESPN, NPR, SI, and Houston's Click2Houston.
 
-**Angle:** This is the exact opposite of what fans expect at knockout stage. TicketScan owns this as the consumer advocate who explains the "why" and turns it into actionable buying guidance. Core message reinforced: timing your purchase matters, platform comparison matters, and price alerts catch moments like this one.
+**Angle:** Every fan holding resale World Cup tickets is now wondering "is mine safe?" TicketScan can own the "what to do if your reseller cancels" and "how to buy replacement tickets safely right now" content space before anyone else. The combination of government action + buyer anxiety + Final urgency makes this the highest-priority content moment of the entire tournament.
 
-**Target keyword:** "world cup 2026 ticket prices dropping" / "world cup knockout tickets cheap July 2026" / "world cup 2026 tickets cheaper"
+**Target keyword:** "reseller canceled my tickets" / "stubhub world cup tickets not delivered" / "what to do when ticket reseller cancels order"
 
-**Content type:** Blog post (news/timely) — filed today as `2026-07-01-world-cup-knockout-prices-crash.md`
+**Content type:** Blog post (tactical how-to) — written today as Tuesday's draft: `2026-07-07-reseller-canceled-tickets-action-plan.md`
 
-**Priority:** High — tournament is live, search intent is peaking, and the price reversal story is counterintuitive enough to earn clicks + social shares.
+**Priority:** High — story broke July 3, investigation is live, Final is July 19, search intent is peaking now.
 
-**Handoff — Agent 3 (Social):** Strong social angles: "World Cup prices just crashed 39%. Here's what to buy." and a stat graphic on the US vs Bosnia drop ($2,705 to $1,650) would perform on X and Instagram.
+---
 
-**Handoff — Agent 5 (Email):** Strong standalone send for WC watchlist subscribers. Subject line: "World Cup prices just dropped 39% — act before they recover."
+**Secondary hook:** Concert ticket prices in 2026 are hitting a structural breaking point — CNBC (May 23) reported buyers are becoming highly selective above ~$500, and some tours have already canceled shows due to poor sales. Angle: "When the sticker shock is real — how to know if you're overpaying for summer concerts." Target keyword: "are concert tickets too expensive 2026" / "summer concert ticket prices 2026."
 
-**Handoff — Agent 2 (SEO):** Keyword cluster worth targeting: "world cup 2026 tickets cheaper now" / "buy world cup tickets last minute July 2026" / "world cup knockout resale prices."
+**Content type:** Blog post (tactical how-to) — hold for a future slot
+
+**Priority:** Medium
+
+---
+
+**Handoff — Agent 3 (Social):** Use the AG investigation peg. Strong X/Instagram angle: "The Texas AG just launched an investigation into StubHub for World Cup ticket cancellations. If you paid for tickets, here's your checklist." Story is shareable + timely.
+
+**Handoff — Agent 5 (Email):** Strong send for WC subscribers. Subject line: "Your World Cup tickets: are they safe?" — links to the new how-to post.
+
+**Handoff — Agent 2 (SEO):** New keyword cluster worth targeting: "stubhub world cup ticket canceled" / "reseller canceled order refund" / "world cup ticket non-delivery."
