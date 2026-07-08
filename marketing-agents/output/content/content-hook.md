@@ -1,27 +1,27 @@
-## Today's Content Hook — 2026-07-07
+## Today's Content Hook — 2026-07-08
 
-**Topic:** Texas AG launched a formal investigation into StubHub on July 3 over "widespread reports" of World Cup ticket orders that were accepted, charged, and then canceled or never delivered — leaving fans stranded with 12 days until the Final. New York and New Jersey AGs had already subpoenaed FIFA directly over "sky-high prices" and seat-location misrepresentation. The story has broken nationally via ESPN, NPR, SI, and Houston's Click2Houston.
+**Topic:** The World Cup semifinals tip off today (July 8 at SoFi Stadium) and tomorrow (July 9 at MetLife Stadium). By Thursday night, the two finalists are set — and the Final ticket market at MetLife (July 19) reacts within hours. People searching for Final tickets right now are asking: "should I buy before I know who's playing, or wait for the draw?" That question has a real, answerable answer, and the search volume is peaking today through tomorrow.
 
-**Angle:** Every fan holding resale World Cup tickets is now wondering "is mine safe?" TicketScan can own the "what to do if your reseller cancels" and "how to buy replacement tickets safely right now" content space before anyone else. The combination of government action + buyer anxiety + Final urgency makes this the highest-priority content moment of the entire tournament.
+**Angle:** TicketScan can own the "World Cup Final ticket price" query for the next 11 days. The angle is not just "here are the prices" — it's the mechanics of what happens to the resale market the moment finalists are confirmed: sellers who held through the semis either list aggressively or pull inventory to hold longer, and that 6-12 hour window after confirmation is historically where prices move fastest. Buy before the draw (more inventory, lower uncertainty premium) vs. buy after (you know the teams, but inventory contracts and sellers re-price). We break down the tradeoff with the frame: "What's the right price alert to set right now?"
 
-**Target keyword:** "reseller canceled my tickets" / "stubhub world cup tickets not delivered" / "what to do when ticket reseller cancels order"
+**Target keyword:** "world cup final tickets 2026" / "world cup 2026 final ticket price" / "metlife stadium world cup final" / "should i buy world cup final tickets now"
 
-**Content type:** Blog post (tactical how-to) — written today as Tuesday's draft: `2026-07-07-reseller-canceled-tickets-action-plan.md`
+**Content type:** Blog post (today's Wednesday news/timely draft) — `2026-07-08-world-cup-2026-final-tickets-finalists-price-guide.md`
 
-**Priority:** High — story broke July 3, investigation is live, Final is July 19, search intent is peaking now.
-
----
-
-**Secondary hook:** Concert ticket prices in 2026 are hitting a structural breaking point — CNBC (May 23) reported buyers are becoming highly selective above ~$500, and some tours have already canceled shows due to poor sales. Angle: "When the sticker shock is real — how to know if you're overpaying for summer concerts." Target keyword: "are concert tickets too expensive 2026" / "summer concert ticket prices 2026."
-
-**Content type:** Blog post (tactical how-to) — hold for a future slot
-
-**Priority:** Medium
+**Priority:** High — maximum search volume window is July 8-10 (post-semifinal searches); evergreen utility carries through July 19 Final.
 
 ---
 
-**Handoff — Agent 3 (Social):** Use the AG investigation peg. Strong X/Instagram angle: "The Texas AG just launched an investigation into StubHub for World Cup ticket cancellations. If you paid for tickets, here's your checklist." Story is shareable + timely.
+**Secondary hook:** Several outlets (The Athletic, Bloomberg) are reporting that the average resale price for World Cup Final tickets at MetLife has held in the $6,000-$8,000 all-in range heading into the semis — but historical World Cup data shows prices typically spike 20-35% in the 48 hours after finalists are confirmed, then plateau until the week of the match. That spike-plateau-and-dip pattern is actionable content for any fan who is still on the fence.
 
-**Handoff — Agent 5 (Email):** Strong send for WC subscribers. Subject line: "Your World Cup tickets: are they safe?" — links to the new how-to post.
+**Content type:** Social snippet + email subject — hand off to Agent 3 and Agent 5
 
-**Handoff — Agent 2 (SEO):** New keyword cluster worth targeting: "stubhub world cup ticket canceled" / "reseller canceled order refund" / "world cup ticket non-delivery."
+**Priority:** High (time-sensitive; hand off today)
+
+---
+
+**Handoff — Agent 3 (Social):** Post angle: "The World Cup Final is 11 days away. The two finalists aren't decided yet. But here's exactly what happens to ticket prices the moment they are — and the 6-hour window that matters." Strong X/Instagram hook with the MetLife/Final visual. Teams/dates/venues only; no invented dollar figures.
+
+**Handoff — Agent 5 (Email):** Subject line: "World Cup Final tickets: buy now or wait until Thursday?" — links to today's new draft. Best send window is tonight after the SoFi semifinal result is confirmed, or tomorrow morning.
+
+**Handoff — Agent 2 (SEO):** File keyword cluster: "world cup final 2026 tickets," "metlife stadium final tickets," "world cup final ticket price," "when to buy world cup final tickets." This is the highest-volume WC keyword window remaining. Worth a crawl-priority flag for the final-tickets page.
