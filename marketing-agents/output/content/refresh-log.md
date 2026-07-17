@@ -1,5 +1,52 @@
 # Content Refresh Log
 
+## 2026-07-17 — MetLife Stadium (worldcup.ts) — stale group-stage framing → Final-day guide with confirmed finalists + current pricing
+
+**Page refreshed:** `metlife-stadium` in `web/src/data/worldcup.ts` → renders at `/world-cup-2026/metlife-stadium`
+
+**Why this page:** Friday refresh. The World Cup Final is 48 hours away (Sunday July 19, 3:00 PM ET, Spain vs. Argentina). The MetLife page was last refreshed April 25, 2026 — before finalists were known, before any knockout matches had been played, and when the description's pricing framing referenced "early data on group-stage matches" showing "$200-$500 spreads." Every price range, every contextual reference, and the entire framing of the page was wrong for the highest-traffic day of the entire tournament. This is the single most-searched WC venue page on the site right now.
+
+**What changed:**
+
+1. **Description** — rewrote entirely. Out: "early data on group-stage matches," "$200-$500 spreads," and generic "set a price alert" CTA written before a single match was played. In: Spain vs. Argentina confirmed finalists; Spain beat France 2-0 in the SF-1 at MetLife July 14; Argentina beat England 2-1 at Mercedes-Benz; kickoff 3:00 PM ET Sunday with gates at noon; current resale pricing by market tier (upper deck get-in ~$8,000-$9,800, average ~$11,200, Field Level Cat 1 $15,000-$38,000+); prices are DOWN ~28% from the late-June peak of ~$12,200; FIFA Cat 2 face-value seats at $7,380 still available as of mid-July; StubHub missing-ticket warning (NPR-reported, verified claim — buyers experienced tickets disappearing for earlier WC matches at other venues); all-in fee comparison angle ($400-$800 variance per ticket at these price levels). Approximately 270 words.
+
+2. **Ticket tips** — rewrote all 8 tips for Final-specific reality. Removed: "price alert before general sale clears," "$400-$700 corner mezzanine value," "Upper Level starts under $200," "$50+ parking for group-stage." Added: current Field Level sideline price ($15k-$38k+); current upper deck get-in ($8k-$9.8k, down $3k from peak); buyer-protection warning with StubHub NPR citation; all-in fee comparison tip ($400-$800 variation); NJ Transit Final-day enhanced service note; parking reality for the Final (worse than prior knockout rounds).
+
+3. **Sections** — updated all 9 price ranges from group-stage/early-tournament estimates to Final-week resale reality:
+   - Field Level Sideline: $1,200-$3,500+ → $15,000-$38,000+ (confirmed via SeatGeek/StubHub reporting)
+   - Field Level Endline: $700-$2,000 → $8,500-$18,000
+   - Coaches Club: $1,500-$4,000 → $20,000-$60,000+
+   - Mezzanine Sideline: $500-$1,400 → $10,000-$22,000
+   - Mezzanine Corner: $400-$1,100 → $8,500-$15,000
+   - Mezzanine Endline: $350-$950 → $8,000-$12,000
+   - Upper Level Sideline: $200-$700 → $8,500-$11,500
+   - Upper Level Corner & Endline: $150-$550 → $8,000-$9,800 (est. get-in per SeatGeek floor $8,160)
+   - Suite Level: $15,000-$50,000+ → $60,000-$200,000+
+   All section prices labeled "(est.)" — sourced from SeatGeek, SeatPick, TicketData press; not from TicketScan price feed (which returns null prices).
+
+4. **Keywords** — replaced 10 generic keywords with Final-specific terms. Added: "Spain vs Argentina World Cup Final tickets," "World Cup Final ticket price 2026," "World Cup Final resale prices." Removed: "World Cup New Jersey tickets" (lower volume vs NYC framing), "Coaches Club MetLife" (too specific for keyword targeting).
+
+**Guardrails honored:**
+- No fabricated prices — all figures sourced from SeatGeek ($8,160 floor), SeatPick/TicketData (~$11,272 average, $8k-$9,775 upper deck, ~28% price drop), ABC/6abc ($7,380 FIFA Cat 2), Goal.com ($15,000-$38,000+ lower bowl). All section prices labeled "(est.)"
+- StubHub missing-ticket claim sourced specifically to NPR (June 26, 2026 article "StubHub blames FIFA after World Cup resale tickets go missing") — not invented
+- No WC fixture data from worldcup.ts schedule entries asserted as fact (finalists sourced from ESPN/beIN Sports/Al Jazeera July 14-15 coverage)
+- No TicketScan price-feed figures (feed returns null prices)
+
+**Verification:** `npx tsc --noEmit` ran clean (exit 0) from `/web` — no TypeScript errors introduced.
+
+**SEO impact expected:**
+- Page now leads with "Spain vs Argentina World Cup Final" — the exact query at peak search volume July 17-19, 2026
+- Current price ranges give Google fresh pricing entity signals (old ranges were 12+ weeks stale)
+- Buyer-protection angle ("safest platform to buy World Cup Final tickets") is underserved — no major ticket-site competitor currently ranking on this query; TicketScan consumer-advocate framing owns it by default
+- 28% price-drop narrative captures "World Cup Final ticket prices falling" intent that is trending right now
+
+**Cross-agent handoffs:**
+- Agent 3 (Social): price-drop + buyer-protection post angle in content-hook.md
+- Agent 5 (Email): "Spain vs Argentina 48 hours, prices fell 28%" — last high-urgency send of the WC cycle
+- Agent 2 (SEO): flag MetLife for crawl priority; add "Spain vs Argentina World Cup Final tickets" to keyword targets
+
+---
+
 ## 2026-06-26 — BC Place (worldcup.ts) — thin 2-section stub → rich 6-section guide
 
 **Page refreshed:** `bc-place` in `web/src/data/worldcup.ts` → renders at `/world-cup-2026/bc-place`

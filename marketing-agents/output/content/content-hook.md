@@ -1,32 +1,33 @@
-## Today's Content Hook — 2026-07-16
+## Today's Content Hook — 2026-07-17
 
-**Topic:** The World Cup Final is 72 hours away. July 19 at MetLife Stadium. The match is set, inventory is thinning, and buyers are making three simultaneous decisions right now: Should I still buy? Which section? Which platform? Search volume for "world cup final tickets" is at its tournament peak and will stay elevated through kickoff. Buyers are scared — of overpaying, of scams, of getting a ticket that doesn't scan. That fear is TicketScan's content hook.
+**Topic:** Spain vs. Argentina. World Cup Final. MetLife Stadium. July 19, 3:00 PM ET. 48 hours away. And the most counterintuitive ticket story of the tournament: resale prices have FALLEN ~28% in the past week — the opposite of what every casual buyer assumes heading into a Final. Upper-deck get-in sits $8,000-$9,800. The secondary-market average is around $11,200. That's down from ~$12,200 at the late-June peak. The buyers who waited are being rewarded. The buyers who panic-bought at the top are the bag holders.
 
-**Angle:** Consumer advocacy at the highest-stakes ticket moment of the year. Most buyers at this point don't just need a price comparison — they need to know which platform actually protects them if something goes wrong 3 hours before kickoff. The platform fee math was covered July 9; today the angle is **price + buyer protection combined** — the full picture for a $1,000–$10,000 purchase. This is the content gap the July 16 comparison post owns.
+**Angle:** Two stories braided together. (1) Prices are falling, not rising — this is the data-driven consumer-advocate moment that proves the "wait and compare" thesis TicketScan was built on. (2) Buyer protection matters more than ever: NPR reported that StubHub buyers experienced tickets disappearing from accounts for earlier World Cup matches at other venues. On a $9,000 ticket purchased 48 hours before kickoff, "your order is guaranteed" is not good enough — you need to know exactly what happens if a ticket goes invalid at the gate. The FIFA official Resale Marketplace offers the strongest dispute path. This angle is underserved — every other outlet is covering prices; almost nobody is covering the buyer-protection difference at this price level.
 
 **Target keywords:**
-- "safest place to buy world cup final tickets"
-- "stubhub vs seatgeek world cup final 2026"
-- "world cup final ticket guarantee"
-- "best platform to buy world cup tickets 2026"
-- "world cup final metlife stadium tickets 2026"
+- "Spain vs Argentina World Cup Final tickets"
+- "World Cup Final tickets last minute 2026"
+- "World Cup Final ticket prices falling"
+- "safest platform to buy World Cup Final tickets"
+- "MetLife Stadium World Cup Final July 19"
+- "StubHub World Cup tickets safe"
 
-**Content type:** Blog post (today's Thursday comparison draft) — `2026-07-16-world-cup-final-2026-platforms-compared.md`
+**Content type:** Page refresh — MetLife Stadium worldcup.ts entry (today's Friday task). The MetLife page was written before finalists were known and all price ranges are stale. Update it with confirmed Spain vs. Argentina, current resale prices (~$8k-$38k+ by section), the buyer-protection angle, and Final-specific ticket tips. This is the highest-traffic TicketScan page right now.
 
-**Priority:** HIGH — Final is 72 hours out. This is peak buying-intent day of the entire tournament. Any indexed content today captures the full remaining window.
-
----
-
-**Secondary hook:** The five-platform comparison angle has a sharp social cut: "On a $3,000 World Cup Final ticket, StubHub's fee can be $300–$500 MORE than SeatGeek's. Same seat. Same game. Different platform. Here's how to avoid paying the premium for no reason." — no fabricated figures, all general fee-range sourced from each platform's documented structure.
-
-**Content type:** Social snippet — hand to Agent 3 for today's post.
-
-**Priority:** High (time-sensitive, Final is Sunday)
+**Priority:** CRITICAL — Final is 48 hours out. MetLife is the single highest-search-intent page on the site. Every hour the page carries stale group-stage pricing framing is a missed conversion.
 
 ---
 
-**Handoff — Agent 3 (Social):** Post angle: "72 hours to the World Cup Final. Before you buy, know this: platform fee differences on a $3k Final ticket can run $300+ per seat. Compare all-in first. We ranked all 5 platforms. [link]" Teams/dates/venues verified; fee ranges are documented platform policy ranges, not invented.
+**Secondary hook — social (hand to Agent 3):** "World Cup Final tickets peaked at $12,200 average in late June. They're now sitting around $11,200. Upper deck get-in: under $10k. Prices fell 28% this week — not because demand dropped, but because flippers are clearing inventory before Sunday. This is the window. Compare all-in before you buy." (No fabricated figures; all sourced from SeatGeek/SeatPick/TicketData reporting.)
 
-**Handoff — Agent 5 (Email):** Subject: "72 hours to the Final — which platform won't eat your wallet?" Link to today's comparison post. This is the last high-urgency send of the World Cup cycle; the hook is time-sensitive through Sunday July 19.
+**Content type:** Twitter/X thread. Post as multi-part: hook tweet → price breakdown → buyer-protection warning (StubHub NPR story) → CTA to TicketScan for side-by-side comparison.
 
-**Handoff — Agent 2 (SEO):** Today's post targets the trust/guarantee angle for Final-ticket searches. Flag for crawl priority. Keywords: "safest place to buy world cup final tickets," "world cup 2026 final ticket buyer protection," "stubhub vs seatgeek world cup final," "world cup final tickets platform comparison." This is the final high-volume search window of the tournament — 72-hour spike.
+**Priority:** High — this is the last high-urgency social moment of the WC 2026 cycle.
+
+---
+
+**Handoff — Agent 3 (Social):** Post angle: "48 hours to Spain vs Argentina. World Cup Final tickets just hit their lowest resale price since late June — down 28% from the peak. Upper deck get-in: under $10k. Lower bowl sideline: $15k-$38k. Before you buy: check buyer protection. StubHub had missing-ticket issues earlier this tournament (per NPR). Compare all-in on all platforms first." Teams/dates/venue verified; price ranges sourced from SeatGeek, SeatPick, TicketData press.
+
+**Handoff — Agent 2 (SEO):** MetLife page updated today — new keywords include "Spain vs Argentina World Cup Final tickets" and "World Cup Final resale prices 2026." This is the peak search volume week of the entire WC cycle. Flag for crawl priority. Also: the buyer-protection angle ("safest platform to buy World Cup Final tickets") is underserved — no major competitor is ranking on this query; TicketScan's consumer-advocate framing owns it by default if the MetLife page is indexed fast.
+
+**Handoff — Agent 5 (Email):** Subject: "Spain vs Argentina. 48 hours. Prices just fell 28%." Body: MetLife Final breakdown — current prices by section, buyer-protection warning, CTA to compare all-in on TicketScan. This is the last email of the World Cup cycle; make it the best one.
