@@ -1,33 +1,31 @@
-## Today's Content Hook — 2026-07-17
+## Today's Content Hook — 2026-07-18
 
-**Topic:** Spain vs. Argentina. World Cup Final. MetLife Stadium. July 19, 3:00 PM ET. 48 hours away. And the most counterintuitive ticket story of the tournament: resale prices have FALLEN ~28% in the past week — the opposite of what every casual buyer assumes heading into a Final. Upper-deck get-in sits $8,000-$9,800. The secondary-market average is around $11,200. That's down from ~$12,200 at the late-June peak. The buyers who waited are being rewarded. The buyers who panic-bought at the top are the bag holders.
+**Topic:** France vs. England. World Cup Third-Place Playoff. Hard Rock Stadium, Miami. TODAY, July 18. While every headline focuses on tomorrow's Spain vs. Argentina Final at MetLife, Hard Rock hosts what's arguably the most-watched Third-Place match in World Cup history: two of the sport's most storied nations — Spain eliminated France 2-0 at MetLife on July 14, Argentina beat England 2-1 in SF-2 — settling the bronze in Miami in July heat. It's the last World Cup match before the tournament ends tomorrow.
 
-**Angle:** Two stories braided together. (1) Prices are falling, not rising — this is the data-driven consumer-advocate moment that proves the "wait and compare" thesis TicketScan was built on. (2) Buyer protection matters more than ever: NPR reported that StubHub buyers experienced tickets disappearing from accounts for earlier World Cup matches at other venues. On a $9,000 ticket purchased 48 hours before kickoff, "your order is guaranteed" is not good enough — you need to know exactly what happens if a ticket goes invalid at the gate. The FIFA official Resale Marketplace offers the strongest dispute path. This angle is underserved — every other outlet is covering prices; almost nobody is covering the buyer-protection difference at this price level.
+**Angle:** Two consumer-advocate hooks braided together. (1) Day-of buyer reality: Third-Place Playoff inventory is softer than Final/Semi demand — but France vs. England is not a typical bronze-medal game. Flippers carrying unsold inventory typically drop prices 2–6 hours before kickoff. Compare all-in, not listed price — platform fees still vary $200–$400 per ticket, so the cheapest listing is rarely the cheapest total. (2) Post-WC content reset: the tournament ends TOMORROW. Starting Monday July 20, TicketScan's content calendar pivots to MLB All-Star aftermath, NFL preseason, and fall concert season. This is the handoff — the World Cup cycle closes and a new content arc begins.
 
 **Target keywords:**
-- "Spain vs Argentina World Cup Final tickets"
-- "World Cup Final tickets last minute 2026"
-- "World Cup Final ticket prices falling"
-- "safest platform to buy World Cup Final tickets"
-- "MetLife Stadium World Cup Final July 19"
-- "StubHub World Cup tickets safe"
+- "France vs England World Cup 2026 tickets"
+- "World Cup Third Place Playoff Miami 2026"
+- "Hard Rock Stadium July 18 World Cup"
+- "World Cup 2026 third place match tickets"
 
-**Content type:** Page refresh — MetLife Stadium worldcup.ts entry (today's Friday task). The MetLife page was written before finalists were known and all price ranges are stale. Update it with confirmed Spain vs. Argentina, current resale prices (~$8k-$38k+ by section), the buyer-protection angle, and Final-specific ticket tips. This is the highest-traffic TicketScan page right now.
+**Content type:** Page refresh — Hard Rock Stadium worldcup.ts entry (today's Saturday task). Update from pre-tournament "hosts seven matches" framing to confirmed France vs. England matchup, day-of pricing reality, and post-WC transition framing.
 
-**Priority:** CRITICAL — Final is 48 hours out. MetLife is the single highest-search-intent page on the site. Every hour the page carries stale group-stage pricing framing is a missed conversion.
+**Priority:** High — Third-Place Playoff is happening today; the World Cup ends tomorrow.
 
 ---
 
-**Secondary hook — social (hand to Agent 3):** "World Cup Final tickets peaked at $12,200 average in late June. They're now sitting around $11,200. Upper deck get-in: under $10k. Prices fell 28% this week — not because demand dropped, but because flippers are clearing inventory before Sunday. This is the window. Compare all-in before you buy." (No fabricated figures; all sourced from SeatGeek/SeatPick/TicketData reporting.)
+**Handoff — Agent 3 (Social):** Post angle: "France vs England. World Cup bronze. TODAY at Hard Rock, Miami. The match everyone calls 'just the third-place game' — except it's France and England, in Miami, in July. Last-minute buyers: Third-Place inventory is softer than the Final. Flippers are clearing. Check all-in prices before you buy — platform fees vary $200-$400 on the same tickets." Confirm: Spain 2-0 France (MetLife SF-1 July 14); Argentina 2-1 England (SF-2) — Third-Place matchup is France vs. England, verified from worldcup.ts MetLife description.
 
-**Content type:** Twitter/X thread. Post as multi-part: hook tweet → price breakdown → buyer-protection warning (StubHub NPR story) → CTA to TicketScan for side-by-side comparison.
+**Handoff — Agent 2 (SEO):** Post-WC content pivot begins Monday July 20. New keyword cluster priorities: MLB All-Star aftermath (Braves/Yankees), NFL preseason ticket buying (August), Taylor Swift fall Eras Tour legs, Bruce Springsteen fall stadium tour. The WC SEO cycle is effectively over after tomorrow — shift crawl priority to evergreen guides ("how to buy tickets at the last minute," "best time to buy NFL tickets") rather than WC-specific pages. Hard Rock page refresh today adds France vs England search surface for today's match.
 
-**Priority:** High — this is the last high-urgency social moment of the WC 2026 cycle.
+**Handoff — Agent 5 (Email):** If there's a final World Cup email to send, today's angle is: "Last chance — France vs England TODAY at Hard Rock. Spain vs Argentina TOMORROW at MetLife. The World Cup ends in 24 hours. Here's what the last-minute ticket market looks like right now." Keep it tight; this is the last high-urgency WC send.
 
 ---
 
-**Handoff — Agent 3 (Social):** Post angle: "48 hours to Spain vs Argentina. World Cup Final tickets just hit their lowest resale price since late June — down 28% from the peak. Upper deck get-in: under $10k. Lower bowl sideline: $15k-$38k. Before you buy: check buyer protection. StubHub had missing-ticket issues earlier this tournament (per NPR). Compare all-in on all platforms first." Teams/dates/venue verified; price ranges sourced from SeatGeek, SeatPick, TicketData press.
-
-**Handoff — Agent 2 (SEO):** MetLife page updated today — new keywords include "Spain vs Argentina World Cup Final tickets" and "World Cup Final resale prices 2026." This is the peak search volume week of the entire WC cycle. Flag for crawl priority. Also: the buyer-protection angle ("safest platform to buy World Cup Final tickets") is underserved — no major competitor is ranking on this query; TicketScan's consumer-advocate framing owns it by default if the MetLife page is indexed fast.
-
-**Handoff — Agent 5 (Email):** Subject: "Spain vs Argentina. 48 hours. Prices just fell 28%." Body: MetLife Final breakdown — current prices by section, buyer-protection warning, CTA to compare all-in on TicketScan. This is the last email of the World Cup cycle; make it the best one.
+**Post-WC Content Calendar Preview (for Agent 1 Monday planning):**
+- Monday July 20: Blog draft — "World Cup 2026 Ticket Buyers: What We Learned" (data recap, price patterns, which venues were cheapest, what worked)
+- Tuesday July 21: Blog draft — "NFL Preseason Tickets: The Cheapest Way Into an NFL Stadium" (evergreen, timely with preseason approaching)
+- Wednesday July 22: Blog draft — news/timely — MLB trade deadline impact on playoff pricing (trade deadline is July 31)
+- Thursday July 23: Blog draft — "The 5 World Cup Venues That Had the Cheapest Get-In Prices" (comparison/listicle with the data we have)

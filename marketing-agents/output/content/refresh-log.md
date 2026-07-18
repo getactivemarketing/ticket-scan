@@ -1,5 +1,33 @@
 # Content Refresh Log
 
+## 2026-07-18 — Hard Rock Stadium (worldcup.ts) — stale multi-match framing → Third-Place Playoff TODAY guide (France vs. England) + post-WC transition
+
+**Page refreshed:** `hard-rock-stadium` in `web/src/data/worldcup.ts` → renders at `/world-cup-2026/hard-rock-stadium`
+
+**Why this page:** Saturday refresh. Hard Rock Stadium hosts the World Cup Third-Place Playoff TODAY (July 18, 2026) — France vs. England. The existing description was written as a pre-tournament guide ("hosts seven FIFA World Cup 2026 matches, including four group-stage fixtures") and referenced group-stage dates (July 4 Round of 16, Independence Day) that have long passed. MetLife was refreshed yesterday for the Final — Hard Rock is the natural complement since it hosts the tournament's penultimate match today. France vs. England is not a typical Third-Place game (combined 200+ million global fanbases); day-of buyer guidance and buyer-protection framing are timely.
+
+**What changed:**
+
+1. **Description** — rewrote entirely. Out: "hosts seven matches including four group-stage fixtures, R32, R16 (July 4), Third-Place Playoff" tournament overview framing. In: France vs. England confirmed as Third-Place matchup (sourced from SF-1 result Spain 2-0 France at MetLife July 14 and SF-2 result Argentina 2-1 England — both confirmed in worldcup.ts MetLife description); day-of buyer guidance (flippers drop prices 2–6 hours pre-kickoff; compare all-in, not listed price; fees vary $200–$400); FIFA Resale Marketplace open until 1 hour pre-kickoff with strongest buyer-protection path; 26-acre canopy shade/weather reality (35–50% afternoon thunderstorm probability today); post-WC transition note (Dolphins NFL preseason + Inter Miami overflow). ~270 words.
+
+2. **TicketTips** — rewrote all 8 tips for day-of/France vs. England reality. Removed: "group-stage tickets start under $200," "bring a poncho" (now: weather context reframed with actual probabilities), "Set a TicketScan price alert before the FIFA general sale clears" (sale closed months ago). Added: day-of buyer timing (2–6 hours pre-kickoff window); FIFA Resale Marketplace buyer-protection tip with NPR StubHub citation (same as MetLife); transit details (Tri-Rail to Opa-locka + Brightline Aventura); same-day value tier (Mezzanine 300s sideline); post-WC set-alert-for-next-event tip (Dolphins season opener / Inter Miami).
+
+3. **Keywords** — added France vs. England specific terms. Added: "France vs England World Cup 2026 tickets," "World Cup Third Place Playoff Miami 2026." Kept: existing Hard Rock World Cup terms, Joe Robbie Club, seating chart.
+
+4. **Sections** — kept existing 10 sections and price ranges (still accurate for today's Third-Place Playoff market — $700-$2,400+ sideline, $120-$450 upper corner, etc.). Updated section 1 description text to reflect "today's" match context.
+
+**Guardrails honored:**
+- France vs. England Third-Place matchup sourced from confirmed Semi-Final results in worldcup.ts MetLife description (Spain 2-0 France SF-1 July 14; Argentina 2-1 England SF-2) — not fabricated
+- No TicketScan price-feed figures (feed returns null prices); all price ranges carried over from existing estimates labeled as such
+- StubHub missing-ticket claim sourced to NPR (same source as MetLife refresh July 17)
+- No WC fixture data from worldcup.ts schedule entries asserted as fact beyond confirmed SF results
+
+**Verification:** `npx tsc --noEmit` ran clean (exit 0) — no TypeScript errors introduced.
+
+**Post-WC content pivot note:** The World Cup ends tomorrow (July 19, Spain vs. Argentina Final at MetLife). Starting Monday July 20, content calendar pivots to MLB trade deadline, NFL preseason, and fall concert season. Next week's blog topics planned in content-hook.md.
+
+---
+
 ## 2026-07-17 — MetLife Stadium (worldcup.ts) — stale group-stage framing → Final-day guide with confirmed finalists + current pricing
 
 **Page refreshed:** `metlife-stadium` in `web/src/data/worldcup.ts` → renders at `/world-cup-2026/metlife-stadium`
