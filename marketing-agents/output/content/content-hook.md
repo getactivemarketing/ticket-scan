@@ -1,4 +1,41 @@
-## Today's Content Hook — 2026-07-18
+## Today's Content Hook — 2026-07-19 (Sunday)
+
+**Topic:** World Cup Final. TODAY. Spain vs. Argentina at MetLife Stadium, 3:00 PM ET. The last match of the 2026 World Cup — and by ticket price, the most expensive sporting event in the country this year. Lowest available seats on Ticketmaster start at $9,668. Halftime show: BTS, Shakira, Justin Bieber. After today, the 2026 World Cup is over.
+
+**Angle:** Two hooks in one.
+
+(1) **Last-minute Final buyer reality.** At $9,668+ to get in, today's buyer audience is small but high-intent. The same cross-platform comparison discipline that applied all tournament applies now: fees vary $400–$800 per ticket on identical inventory depending on which platform you use. SeatGeek's "all-in" toggle and TickPick's no-fee model may show meaningfully lower checkout totals than the headline Ticketmaster price. The July 16 draft (`world-cup-final-2026-platforms-compared`) is the relevant asset — if publishing any WC Final content today, that's the one.
+
+(2) **Post-WC content pivot.** The World Cup opened June 11. It closes today. Forty days of the highest-search-volume ticket event in TicketScan's history ends at full time. Starting Monday July 20, every content clock resets: MLB trade deadline (August 3), NFL preseason (starts August 13, cheapest get-in at Levi's Stadium currently $10), Beyoncé's Cowboy Carter tour (14 US stadiums, floor from $210), Taylor Swift Eras Encore (SoFi yesterday July 18, possible East Coast MetLife/Gillette swing). The pivot is clean — these aren't stretch topics, they're the calendar.
+
+**Target keywords (today):**
+- "Spain vs Argentina World Cup Final tickets"
+- "World Cup Final 2026 ticket prices today"
+- "MetLife Stadium World Cup Final 2026"
+- "World Cup Final halftime show 2026"
+
+**Target keywords (post-WC pivot, starting Monday):**
+- "NFL preseason tickets 2026"
+- "MLB trade deadline 2026 playoff tickets"
+- "Beyoncé Cowboy Carter tour tickets"
+- "cheap NFL preseason tickets"
+- "best time to buy NFL tickets"
+
+**Content type:** No new draft today (Sunday). Asset in play: July 16 comparison draft for any last-minute Final buyer traffic. Monday onwards: fresh drafts on post-WC evergreen topics.
+
+**Priority:** High (Final day) → shifts to Medium-evergreen starting Monday.
+
+---
+
+**Handoff — Agent 3 (Social):** Final-day post: "World Cup Final. Today. 3 PM ET. Spain vs Argentina at MetLife. Halftime: BTS, Shakira, Justin Bieber. Tickets from $9,668 — and yes, the platform you pick still matters. Fees vary $400-$800 per seat on the exact same inventory. Compare all-in before you buy the last ticket of the tournament." Then tomorrow, lead the pivot: "The World Cup is over. Now: NFL preseason tickets are already on sale. Cheapest get-in at Levi's Stadium this August: $10. The price floor that never happens at playoff time."
+
+**Handoff — Agent 2 (SEO):** WC keyword cluster is effectively retired after today. Pivot crawl priority to: (1) NFL preseason ticket buying guides — high-volume evergreen with annual spikes starting now; (2) "best time to buy MLB playoff tickets" — August 3 trade deadline will spike this; (3) Beyoncé Cowboy Carter tour city-specific queries (Chicago, NYC, LA, etc.) — high purchase intent, TicketScan venue pages align. File SEO requests for these three clusters.
+
+**Handoff — Agent 5 (Email):** Two-beat sequence: (1) Today — final WC email for any active watchlist items on the Final. "It's today. Spain vs Argentina. MetLife. Here's what the ticket market looks like with 3 hours to kickoff." Short, honest, no invented prices. (2) Monday — clean pivot email: "The World Cup is over. Here's what's coming: NFL preseason on sale now, Beyoncé still touring, MLB playoff race heating up. Set your next alert." Restart the engagement clock.
+
+---
+
+**Previous hook (2026-07-18 — Saturday):**
 
 **Topic:** France vs. England. World Cup Third-Place Playoff. Hard Rock Stadium, Miami. TODAY, July 18. While every headline focuses on tomorrow's Spain vs. Argentina Final at MetLife, Hard Rock hosts what's arguably the most-watched Third-Place match in World Cup history: two of the sport's most storied nations — Spain eliminated France 2-0 at MetLife on July 14, Argentina beat England 2-1 in SF-2 — settling the bronze in Miami in July heat. It's the last World Cup match before the tournament ends tomorrow.
 
@@ -16,16 +53,8 @@
 
 ---
 
-**Handoff — Agent 3 (Social):** Post angle: "France vs England. World Cup bronze. TODAY at Hard Rock, Miami. The match everyone calls 'just the third-place game' — except it's France and England, in Miami, in July. Last-minute buyers: Third-Place inventory is softer than the Final. Flippers are clearing. Check all-in prices before you buy — platform fees vary $200-$400 on the same tickets." Confirm: Spain 2-0 France (MetLife SF-1 July 14); Argentina 2-1 England (SF-2) — Third-Place matchup is France vs. England, verified from worldcup.ts MetLife description.
-
-**Handoff — Agent 2 (SEO):** Post-WC content pivot begins Monday July 20. New keyword cluster priorities: MLB All-Star aftermath (Braves/Yankees), NFL preseason ticket buying (August), Taylor Swift fall Eras Tour legs, Bruce Springsteen fall stadium tour. The WC SEO cycle is effectively over after tomorrow — shift crawl priority to evergreen guides ("how to buy tickets at the last minute," "best time to buy NFL tickets") rather than WC-specific pages. Hard Rock page refresh today adds France vs England search surface for today's match.
-
-**Handoff — Agent 5 (Email):** If there's a final World Cup email to send, today's angle is: "Last chance — France vs England TODAY at Hard Rock. Spain vs Argentina TOMORROW at MetLife. The World Cup ends in 24 hours. Here's what the last-minute ticket market looks like right now." Keep it tight; this is the last high-urgency WC send.
-
----
-
-**Post-WC Content Calendar Preview (for Agent 1 Monday planning):**
+**Post-WC Content Calendar Preview (from July 18 hook):**
 - Monday July 20: Blog draft — "World Cup 2026 Ticket Buyers: What We Learned" (data recap, price patterns, which venues were cheapest, what worked)
 - Tuesday July 21: Blog draft — "NFL Preseason Tickets: The Cheapest Way Into an NFL Stadium" (evergreen, timely with preseason approaching)
-- Wednesday July 22: Blog draft — news/timely — MLB trade deadline impact on playoff pricing (trade deadline is July 31)
+- Wednesday July 22: Blog draft — news/timely — MLB trade deadline impact on playoff pricing (trade deadline is August 3, 2026)
 - Thursday July 23: Blog draft — "The 5 World Cup Venues That Had the Cheapest Get-In Prices" (comparison/listicle with the data we have)
