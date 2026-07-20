@@ -1,3 +1,39 @@
+## Today's Content Hook — 2026-07-20 (Monday)
+
+**Topic:** The 2026 FIFA World Cup is over. Spain defeated Argentina 1–0 at MetLife Stadium yesterday (July 19) in front of 82,500 fans and a global TV audience estimated at 1.5 billion. The most expensive ticket in sports history — a Category 1 seat that peaked at $10,990 face value in April — is now a souvenir stub. The ticket market ran for 40 days across 16 stadiums. What did it actually show us?
+
+**Angle:** The post-Final retrospective is today's highest-value content window — and it closes in about 7 days before search intent fully shifts. People who spent $9,000+ on Final seats are talking. People who got group-stage tickets for under $250 by watching price alerts are talking. The synthesis of what the market actually did (dynamic pricing arc, venue value gaps, platform fee spread, where patience rewarded and where it didn't) is the piece that ranks for the next 90 days and feeds the next major event cycle. Monday big-idea slot: this is the one.
+
+**Target keyword:** "world cup 2026 ticket prices" / "world cup 2026 ticket market recap" / "how much did world cup 2026 tickets cost" / "dynamic pricing lessons 2026"
+
+**Content type:** Monday big-idea blog draft — `2026-07-20-world-cup-ticket-market-lessons.md` (drafted today)
+
+**Priority:** High — 7-day window, then WC search intent decays. Publish this week.
+
+---
+
+**Secondary hook:**
+
+**Topic:** Usher & Chris Brown "The R&B Tour" is the highest-trending stadium tour right now, with early-stop social clips from Denver and Detroit driving massive presale search volume. Post Malone's BIG ASS Stadium Tour Part 2 (with Jelly Roll) is also mid-run. Both are generating active comparison shopping between Ticketmaster, SeatGeek, and StubHub.
+
+**Angle:** First big non-WC tour content opportunity. Both tours run into December 2026, so evergreen value is real. The Usher+Chris Brown co-headlining format is unusual enough to warrant a "how do I know which nights are cheapest" piece — the fan debate about setlist order creates pricing variation by market.
+
+**Target keyword:** "Usher Chris Brown R&B Tour tickets 2026" / "Post Malone BIG ASS Stadium Tour tickets"
+
+**Content type:** Tuesday tactical blog draft
+
+**Priority:** Medium — no hard deadline, but these are the highest-volume non-WC concert searches right now.
+
+---
+
+**Handoff — Agent 3 (Social):** Lead post for today: "The 2026 World Cup is over. Spain. MetLife. $10,990 a seat at face value. Here's what 40 days of the most-watched ticket market in history actually taught us → [link]." Second post this week: "NFL preseason tickets are already on sale. Cheapest seat this August: $10. No, really."
+
+**Handoff — Agent 5 (Email):** Post-WC re-engagement: "The World Cup is done. Here's what's next." One-CTA pivot email covering NFL preseason (on sale now, from $10), MLB trade deadline August 3, fall concerts (Usher+Chris Brown, Post Malone). Short, honest. Restart the engagement clock.
+
+---
+
+**Previous hook (2026-07-19 — Sunday):**
+
 ## Today's Content Hook — 2026-07-19 (Sunday)
 
 **Topic:** World Cup Final. TODAY. Spain vs. Argentina at MetLife Stadium, 3:00 PM ET. The last match of the 2026 World Cup — and by ticket price, the most expensive sporting event in the country this year. Lowest available seats on Ticketmaster start at $9,668. Halftime show: BTS, Shakira, Justin Bieber. After today, the 2026 World Cup is over.
