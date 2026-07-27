@@ -1,39 +1,114 @@
-'use client';
-
-import { useState } from 'react';
+import { Metadata } from 'next';
 import Link from 'next/link';
-import { worldCupVenues, worldCupCities, featuredTeams, worldCupSchedule, getScheduleDates, WorldCupMatch } from '@/data/worldcup';
+import { worldCupVenues, worldCupCities, featuredTeams } from '@/data/worldcup';
+import WorldCupSchedule from './WorldCupSchedule';
 
-type ScheduleView = 'date' | 'round';
-type RoundFilter = 'all' | 'Group Stage' | 'Round of 32' | 'Round of 16' | 'Quarter-Final' | 'Semi-Final' | 'Third Place' | 'Final';
+export const metadata: Metadata = {
+  title: 'FIFA World Cup 2026 — Ticket Prices, Venues & Results',
+  description: 'The biggest World Cup in history wrapped July 19 at MetLife. See what tickets actually cost across all 104 matches — Final, semifinals, group stage — compared across Ticketmaster, SeatGeek, and StubHub.',
+  keywords: 'World Cup 2026 tickets, FIFA World Cup 2026 results, World Cup Final 2026 ticket prices, World Cup 2026 venues, World Cup ticket cost, compare World Cup tickets, World Cup USA tickets, World Cup 2026 winner, FIFA World Cup Final 2026',
+  alternates: {
+    canonical: 'https://www.ticketscan.io/world-cup-2026',
+  },
+  openGraph: {
+    title: 'FIFA World Cup 2026 — Ticket Prices, Venues & Results | Ticket Scan',
+    description: 'The biggest World Cup in history wrapped July 19 at MetLife. See what tickets actually cost across all 104 matches, compared across Ticketmaster, SeatGeek, and StubHub.',
+    type: 'website',
+    url: 'https://www.ticketscan.io/world-cup-2026',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'FIFA World Cup 2026 — Ticket Prices, Venues & Results | Ticket Scan',
+    description: 'World Cup 2026 wrapped July 19 at MetLife. See what tickets actually cost across all 104 matches, compared across Ticketmaster, SeatGeek, and StubHub.',
+  },
+};
 
 export default function WorldCup2026Page() {
-  const [scheduleView, setScheduleView] = useState<ScheduleView>('date');
-  const [selectedDate, setSelectedDate] = useState<string>('2026-06-11');
-  const [selectedRound, setSelectedRound] = useState<RoundFilter>('all');
-
-  const scheduleDates = getScheduleDates();
-
-  const filteredMatches = scheduleView === 'date'
-    ? worldCupSchedule.filter(m => m.date === selectedDate)
-    : selectedRound === 'all'
-      ? worldCupSchedule
-      : worldCupSchedule.filter(m => m.round === selectedRound);
-
-  const formatDate = (dateStr: string) => {
-    const date = new Date(dateStr + 'T12:00:00');
-    return date.toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric' });
+  const sportsEventSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'SportsEvent',
+    name: 'FIFA World Cup 2026',
+    description: 'The 2026 FIFA World Cup, hosted across the United States, Canada, and Mexico. 48 teams compete in 104 matches across 16 stadiums.',
+    startDate: '2026-06-11',
+    endDate: '2026-07-19',
+    eventStatus: 'https://schema.org/EventCompleted',
+    eventAttendanceMode: 'https://schema.org/OfflineEventAttendanceMode',
+    location: [
+      ...worldCupCities.usa.map(({ city, venue, state }) => ({
+        '@type': 'StadiumOrArena',
+        name: worldCupVenues[venue].name,
+        address: {
+          '@type': 'PostalAddress',
+          addressLocality: city,
+          addressRegion: state,
+          addressCountry: 'US',
+        },
+      })),
+      ...worldCupCities.canada.map(({ city, venue, state }) => ({
+        '@type': 'StadiumOrArena',
+        name: worldCupVenues[venue].name,
+        address: {
+          '@type': 'PostalAddress',
+          addressLocality: city,
+          addressRegion: state,
+          addressCountry: 'CA',
+        },
+      })),
+      ...worldCupCities.mexico.map(({ city, venue }) => ({
+        '@type': 'StadiumOrArena',
+        name: worldCupVenues[venue].name,
+        address: {
+          '@type': 'PostalAddress',
+          addressLocality: city,
+          addressCountry: 'MX',
+        },
+      })),
+    ],
+    image: 'https://www.ticketscan.io/logo.png',
+    organizer: {
+      '@type': 'Organization',
+      name: 'FIFA',
+      url: 'https://www.fifa.com',
+    },
+    // No `offers` block here on purpose: this tournament hub displays no single
+    // authoritative ticket price, so we don't declare one in structured data —
+    // same null-safe principle used on /venues/[slug] and /tickets/[slug], where
+    // an AggregateOffer is only emitted when a real minPrice exists. The prior
+    // hardcoded lowPrice: '50' matched nothing on the page (lowest real section
+    // floor in worldcup.ts is $80) and risked a price-mismatch structured-data
+    // error. Per-stadium pages carry grounded AggregateOffers from section data.
   };
 
-  const formatTime = (time: string) => {
-    const [hours, minutes] = time.split(':');
-    const hour = parseInt(hours);
-    const ampm = hour >= 12 ? 'PM' : 'AM';
-    const hour12 = hour % 12 || 12;
-    return `${hour12}:${minutes} ${ampm}`;
+  const breadcrumbSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      {
+        '@type': 'ListItem',
+        position: 1,
+        name: 'Home',
+        item: 'https://www.ticketscan.io',
+      },
+      {
+        '@type': 'ListItem',
+        position: 2,
+        name: 'World Cup 2026',
+        item: 'https://www.ticketscan.io/world-cup-2026',
+      },
+    ],
   };
+
   return (
     <div className="min-h-screen bg-gray-50">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(sportsEventSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
+
       {/* Hero Section */}
       <div className="bg-gradient-to-br from-green-600 via-green-700 to-emerald-800 text-white py-20">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -45,20 +120,20 @@ export default function WorldCup2026Page() {
               2026 FIFA World Cup Tickets
             </h1>
             <p className="text-xl text-green-100 max-w-3xl mx-auto mb-8">
-              The biggest World Cup ever is coming to North America. Compare ticket prices across all platforms for matches in the USA, Canada, and Mexico.
+              The biggest World Cup in history just wrapped. See what tickets actually cost — Final, semifinals, group stage — across Ticketmaster, SeatGeek, and StubHub.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link
                 href="/dashboard?keyword=world+cup+2026"
                 className="bg-white text-green-700 px-8 py-4 rounded-lg font-bold text-lg hover:bg-green-50 transition-colors"
               >
-                Search World Cup Tickets
+                Explore WC 2026 Prices
               </Link>
               <Link
                 href="#schedule"
                 className="bg-green-500 text-white px-8 py-4 rounded-lg font-bold text-lg hover:bg-green-400 transition-colors"
               >
-                View Match Schedule
+                View All Matches
               </Link>
             </div>
           </div>
@@ -140,150 +215,8 @@ export default function WorldCup2026Page() {
         </div>
       </div>
 
-      {/* Match Schedule */}
-      <div id="schedule" className="py-16 bg-white">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="font-heading text-3xl font-bold text-gray-900 text-center mb-4">
-            Match Schedule
-          </h2>
-          <p className="text-gray-600 text-center mb-8">
-            Browse matches by date or tournament round. Schedule is preliminary and subject to change by FIFA.
-          </p>
-
-          {/* View Toggle */}
-          <div className="flex justify-center gap-4 mb-8">
-            <button
-              onClick={() => setScheduleView('date')}
-              className={`px-6 py-3 rounded-lg font-medium transition-colors ${
-                scheduleView === 'date'
-                  ? 'bg-green-600 text-white'
-                  : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
-              }`}
-            >
-              By Date
-            </button>
-            <button
-              onClick={() => setScheduleView('round')}
-              className={`px-6 py-3 rounded-lg font-medium transition-colors ${
-                scheduleView === 'round'
-                  ? 'bg-green-600 text-white'
-                  : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
-              }`}
-            >
-              By Round
-            </button>
-          </div>
-
-          {/* Date Picker */}
-          {scheduleView === 'date' && (
-            <div className="mb-8">
-              <div className="flex gap-2 overflow-x-auto pb-4 scrollbar-hide">
-                {scheduleDates.map((date) => (
-                  <button
-                    key={date}
-                    onClick={() => setSelectedDate(date)}
-                    className={`flex-shrink-0 px-4 py-2 rounded-lg text-sm font-medium transition-colors ${
-                      selectedDate === date
-                        ? 'bg-green-600 text-white'
-                        : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
-                    }`}
-                  >
-                    {formatDate(date)}
-                  </button>
-                ))}
-              </div>
-            </div>
-          )}
-
-          {/* Round Filter */}
-          {scheduleView === 'round' && (
-            <div className="mb-8">
-              <div className="flex flex-wrap justify-center gap-2">
-                {(['all', 'Group Stage', 'Round of 32', 'Round of 16', 'Quarter-Final', 'Semi-Final', 'Final'] as RoundFilter[]).map((round) => (
-                  <button
-                    key={round}
-                    onClick={() => setSelectedRound(round)}
-                    className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors ${
-                      selectedRound === round
-                        ? 'bg-green-600 text-white'
-                        : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
-                    }`}
-                  >
-                    {round === 'all' ? 'All Rounds' : round}
-                  </button>
-                ))}
-              </div>
-            </div>
-          )}
-
-          {/* Matches List */}
-          <div className="space-y-4">
-            {filteredMatches.length === 0 ? (
-              <div className="text-center py-8 text-gray-500">
-                No matches scheduled for this selection.
-              </div>
-            ) : (
-              filteredMatches.slice(0, 20).map((match) => {
-                const venue = worldCupVenues[match.venue];
-                return (
-                  <div
-                    key={match.id}
-                    className="bg-gray-50 rounded-xl p-4 sm:p-6 flex flex-col sm:flex-row sm:items-center gap-4"
-                  >
-                    <div className="flex-shrink-0 text-center sm:text-left sm:w-32">
-                      <p className="text-sm text-gray-500">{formatDate(match.date)}</p>
-                      <p className="font-bold text-green-600">{formatTime(match.time)} ET</p>
-                    </div>
-                    <div className="flex-1">
-                      <div className="flex items-center gap-2 mb-1">
-                        <span className={`text-xs px-2 py-1 rounded-full font-medium ${
-                          match.round === 'Final' ? 'bg-yellow-100 text-yellow-800' :
-                          match.round === 'Semi-Final' ? 'bg-brand/10 text-brand-dark' :
-                          match.round === 'Quarter-Final' ? 'bg-blue-100 text-blue-800' :
-                          match.round === 'Group Stage' ? 'bg-gray-100 text-gray-800' :
-                          'bg-green-100 text-green-800'
-                        }`}>
-                          {match.round}
-                        </span>
-                        {match.group && (
-                          <span className="text-xs text-gray-500">Group {match.group}</span>
-                        )}
-                      </div>
-                      <p className="font-bold text-gray-900">
-                        {match.team1 && match.team2
-                          ? `${match.team1} vs ${match.team2}`
-                          : match.team1
-                            ? `${match.team1} vs TBD`
-                            : `Match ${match.matchNumber}`
-                        }
-                      </p>
-                      <Link
-                        href={`/world-cup-2026/${match.venue}`}
-                        className="text-sm text-gray-600 hover:text-green-600"
-                      >
-                        {venue?.name}, {venue?.city}
-                      </Link>
-                    </div>
-                    <div className="flex-shrink-0">
-                      <Link
-                        href={`/dashboard?keyword=world+cup+${venue?.city.toLowerCase().replace(' ', '+')}`}
-                        className="inline-block bg-green-600 text-white px-4 py-2 rounded-lg text-sm font-medium hover:bg-green-700 transition-colors"
-                      >
-                        Find Tickets
-                      </Link>
-                    </div>
-                  </div>
-                );
-              })
-            )}
-            {filteredMatches.length > 20 && scheduleView === 'round' && (
-              <p className="text-center text-gray-500 text-sm">
-                Showing first 20 matches. Use date view to see all matches.
-              </p>
-            )}
-          </div>
-        </div>
-      </div>
+      {/* Match Schedule (Client Component) */}
+      <WorldCupSchedule />
 
       {/* USA Venues */}
       <div id="venues" className="py-16 bg-white">
@@ -409,11 +342,90 @@ export default function WorldCup2026Page() {
             <div className="bg-white rounded-xl p-6 flex justify-between items-center border-2 border-green-500">
               <div>
                 <p className="font-bold text-gray-900">World Cup Final</p>
-                <p className="text-gray-600">Location TBA (likely SoFi or MetLife)</p>
+                <p className="text-gray-600">MetLife Stadium, East Rutherford, NJ</p>
               </div>
               <p className="text-green-600 font-bold text-lg">July 19, 2026</p>
             </div>
           </div>
+        </div>
+      </div>
+
+      {/* Knockout Stage */}
+      <div id="knockout" className="py-16 bg-white">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 className="font-heading text-3xl font-bold text-gray-900 text-center mb-4">
+            Knockout Stage Venues
+          </h2>
+          <p className="text-gray-600 text-center mb-10">
+            Group stage ends June 28. Round of 32 runs June 29–July 3 across all 16 host stadiums.
+            Later rounds concentrate at the largest venues.
+          </p>
+          <div className="overflow-x-auto rounded-xl border border-gray-200">
+            <table className="w-full text-sm">
+              <thead className="bg-green-600 text-white">
+                <tr>
+                  <th className="text-left px-5 py-3 font-semibold">Round</th>
+                  <th className="text-left px-5 py-3 font-semibold">Dates</th>
+                  <th className="text-left px-5 py-3 font-semibold">Key Venues</th>
+                </tr>
+              </thead>
+              <tbody className="divide-y divide-gray-100">
+                <tr className="bg-white">
+                  <td className="px-5 py-4 font-medium text-gray-900">Round of 32</td>
+                  <td className="px-5 py-4 text-gray-600">June 29 – July 3</td>
+                  <td className="px-5 py-4 text-gray-600">All 16 host stadiums</td>
+                </tr>
+                <tr className="bg-gray-50">
+                  <td className="px-5 py-4 font-medium text-gray-900">Quarterfinals</td>
+                  <td className="px-5 py-4 text-gray-600">July 4–5</td>
+                  <td className="px-5 py-4 text-gray-600">
+                    <Link href="/world-cup-2026/metlife-stadium" className="text-green-600 hover:underline">MetLife</Link>
+                    {', '}
+                    <Link href="/world-cup-2026/sofi-stadium" className="text-green-600 hover:underline">SoFi</Link>
+                    {', '}
+                    <Link href="/world-cup-2026/att-stadium" className="text-green-600 hover:underline">AT&T</Link>
+                    {', '}
+                    <Link href="/world-cup-2026/hard-rock-stadium" className="text-green-600 hover:underline">Hard Rock</Link>
+                    {', '}
+                    <Link href="/world-cup-2026/mercedes-benz-stadium" className="text-green-600 hover:underline">Mercedes-Benz</Link>
+                  </td>
+                </tr>
+                <tr className="bg-white">
+                  <td className="px-5 py-4 font-medium text-gray-900">Semifinals</td>
+                  <td className="px-5 py-4 text-gray-600">July 8–9</td>
+                  <td className="px-5 py-4 text-gray-600">
+                    <Link href="/world-cup-2026/metlife-stadium" className="text-green-600 hover:underline">MetLife Stadium</Link>
+                    {' · '}
+                    <Link href="/world-cup-2026/sofi-stadium" className="text-green-600 hover:underline">SoFi Stadium</Link>
+                  </td>
+                </tr>
+                <tr className="bg-gray-50">
+                  <td className="px-5 py-4 font-medium text-gray-900">3rd Place</td>
+                  <td className="px-5 py-4 text-gray-600">July 12</td>
+                  <td className="px-5 py-4 text-gray-600">
+                    <Link href="/world-cup-2026/hard-rock-stadium" className="text-green-600 hover:underline">Hard Rock Stadium</Link>
+                    {', Miami'}
+                  </td>
+                </tr>
+                <tr className="bg-white border-t-2 border-green-500">
+                  <td className="px-5 py-4 font-bold text-gray-900">Final</td>
+                  <td className="px-5 py-4 font-bold text-green-600">July 19</td>
+                  <td className="px-5 py-4 font-medium text-gray-900">
+                    <Link href="/world-cup-2026/metlife-stadium" className="text-green-600 hover:underline font-bold">MetLife Stadium</Link>
+                    {', East Rutherford, NJ'}
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <p className="text-center mt-6">
+            <Link
+              href="/blog/world-cup-2026-knockout-tickets"
+              className="inline-block bg-green-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-green-700 transition-colors"
+            >
+              Knockout Stage Ticket Guide: Prices &amp; Strategy →
+            </Link>
+          </p>
         </div>
       </div>
 
@@ -427,8 +439,8 @@ export default function WorldCup2026Page() {
             <div className="flex gap-4">
               <div className="bg-green-100 text-green-600 w-10 h-10 rounded-full flex items-center justify-center font-bold flex-shrink-0">1</div>
               <div>
-                <h3 className="font-heading font-bold text-gray-900 mb-1">Register Early with FIFA</h3>
-                <p className="text-gray-600">Official FIFA ticket sales will begin in late 2025. Register on FIFA.com to get priority access to the ticket portal.</p>
+                <h3 className="font-heading font-bold text-gray-900 mb-1">Act Fast — The Tournament Is Live</h3>
+                <p className="text-gray-600">The 2026 World Cup kicked off June 11. Resale prices fluctuate daily as matches approach. Now is the time to compare and lock in your seats before knockout round prices spike.</p>
               </div>
             </div>
             <div className="flex gap-4">
@@ -460,10 +472,10 @@ export default function WorldCup2026Page() {
       <div className="bg-gradient-to-br from-green-600 to-emerald-700 py-20">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-white">
           <h2 className="font-heading text-3xl font-bold mb-4">
-            Don&apos;t Miss the Biggest World Cup Ever
+            The World Cup Is Over. Your Next One Doesn&apos;t Have to Cost a Fortune.
           </h2>
           <p className="text-green-100 mb-8 text-lg">
-            Create a free account to track World Cup ticket prices and get alerts when deals drop.
+            Create a free account to track ticket prices for concerts, sports, and the next major event — and get alerts when prices drop.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
@@ -473,10 +485,10 @@ export default function WorldCup2026Page() {
               Create Free Account
             </Link>
             <Link
-              href="/dashboard?keyword=world+cup"
+              href="/dashboard"
               className="bg-green-500 text-white px-8 py-4 rounded-lg font-bold text-lg hover:bg-green-400 transition-colors"
             >
-              Search Tickets Now
+              Find Your Next Event
             </Link>
           </div>
         </div>

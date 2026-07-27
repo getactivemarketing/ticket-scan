@@ -2,7 +2,8 @@ import { Metadata } from 'next';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { marked } from 'marked';
-import { getAllBlogPosts, getBlogPostBySlug, getRelatedPosts } from '@/data/blog';
+import { DEFAULT_BLOG_IMAGE, getAllBlogPosts, getBlogPostBySlug, getRelatedPosts } from '@/data/blog';
+import NewsletterSignup from '@/components/NewsletterSignup';
 
 interface PageProps {
   params: Promise<{ slug: string }>;
@@ -21,11 +22,16 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     return { title: 'Article Not Found' };
   }
 
+  const ogImage = post.image || DEFAULT_BLOG_IMAGE;
+
   return {
-    title: `${post.title} | Ticket Scan Blog`,
+    title: { absolute: `${post.title} | Ticket Scan Blog` },
     description: post.excerpt,
     keywords: post.tags.join(', '),
     authors: [{ name: post.author }],
+    alternates: {
+      canonical: `https://www.ticketscan.io/blog/${slug}`,
+    },
     openGraph: {
       title: post.title,
       description: post.excerpt,
@@ -33,12 +39,14 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       publishedTime: post.publishedAt,
       modifiedTime: post.updatedAt || post.publishedAt,
       authors: [post.author],
-      url: `https://ticketscan.io/blog/${slug}`,
+      url: `https://www.ticketscan.io/blog/${slug}`,
+      images: [ogImage],
     },
     twitter: {
       card: 'summary_large_image',
       title: post.title,
       description: post.excerpt,
+      images: [ogImage],
     },
   };
 }
@@ -76,16 +84,40 @@ export default async function BlogPostPage({ params }: PageProps) {
   const relatedPosts = getRelatedPosts(slug, 3);
   const htmlContent = marked.parse(post.content) as string;
 
+  const articleImage = post.image || DEFAULT_BLOG_IMAGE;
+
   const articleJsonLd = {
     '@context': 'https://schema.org',
-    '@type': 'Article',
-    headline: post.title,
-    description: post.excerpt,
-    author: { '@type': 'Organization', name: post.author },
-    publisher: { '@type': 'Organization', name: 'Ticket Scan', url: 'https://ticketscan.io' },
-    datePublished: post.publishedAt,
-    dateModified: post.updatedAt || post.publishedAt,
-    mainEntityOfPage: { '@type': 'WebPage', '@id': `https://ticketscan.io/blog/${slug}` },
+    '@graph': [
+      {
+        '@type': 'Article',
+        '@id': `https://www.ticketscan.io/blog/${slug}#article`,
+        headline: post.title,
+        description: post.excerpt,
+        image: articleImage,
+        author: { '@type': 'Organization', name: post.author, url: 'https://www.ticketscan.io' },
+        publisher: {
+          '@type': 'Organization',
+          name: 'Ticket Scan',
+          url: 'https://www.ticketscan.io',
+          logo: { '@type': 'ImageObject', url: 'https://www.ticketscan.io/logo.png' },
+        },
+        datePublished: post.publishedAt,
+        dateModified: post.updatedAt || post.publishedAt,
+        mainEntityOfPage: { '@type': 'WebPage', '@id': `https://www.ticketscan.io/blog/${slug}` },
+        keywords: post.tags.join(', '),
+        articleSection: post.category,
+      },
+      {
+        '@type': 'BreadcrumbList',
+        '@id': `https://www.ticketscan.io/blog/${slug}#breadcrumb`,
+        itemListElement: [
+          { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://www.ticketscan.io' },
+          { '@type': 'ListItem', position: 2, name: 'Blog', item: 'https://www.ticketscan.io/blog' },
+          { '@type': 'ListItem', position: 3, name: post.title, item: `https://www.ticketscan.io/blog/${slug}` },
+        ],
+      },
+    ],
   };
 
   return (
@@ -190,9 +222,7 @@ export default async function BlogPostPage({ params }: PageProps) {
               </div>
 
               <div className="bg-navy rounded-xl p-5 text-white">
-                <h3 className="font-bold font-heading text-sm mb-2">Get More Tips</h3>
-                <p className="text-white/50 text-xs mb-4">Subscribe for ticket buying tips and exclusive deals.</p>
-                <Link href="/" className="block bg-white text-navy text-center py-2 rounded-lg font-bold text-sm hover:bg-gray-100 transition-colors">Subscribe</Link>
+                <NewsletterSignup source="blog-post" variant="footer" />
               </div>
             </aside>
           </div>

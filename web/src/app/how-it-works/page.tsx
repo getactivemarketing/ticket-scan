@@ -5,6 +5,20 @@ export const metadata: Metadata = {
   title: 'How It Works - Compare Ticket Prices in 3 Easy Steps',
   description: 'Learn how Ticket Scan helps you find the best ticket deals. Search events, compare prices, and get alerts when prices drop.',
   keywords: 'how ticket scan works, compare ticket prices, ticket price alerts',
+  alternates: {
+    canonical: 'https://www.ticketscan.io/how-it-works',
+  },
+  openGraph: {
+    title: 'How It Works - Compare Ticket Prices in 3 Easy Steps',
+    description: 'Search events, compare prices across Ticketmaster, SeatGeek, and more, then get alerts when prices drop.',
+    type: 'website',
+    url: 'https://www.ticketscan.io/how-it-works',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'How It Works - Compare Ticket Prices in 3 Easy Steps',
+    description: 'Search events, compare prices across Ticketmaster, SeatGeek, and more, then get alerts when prices drop.',
+  },
 };
 
 const steps = [
@@ -66,8 +80,45 @@ const features = [
   },
 ];
 
+const howToJsonLd = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'HowTo',
+      '@id': 'https://www.ticketscan.io/how-it-works#howto',
+      name: 'How to Compare Ticket Prices with Ticket Scan',
+      description: 'Find the best ticket deals in 3 simple steps. Compare prices across Ticketmaster, SeatGeek, StubHub, and more.',
+      image: 'https://www.ticketscan.io/logo.png',
+      step: steps.map((step, idx) => ({
+        '@type': 'HowToStep',
+        position: idx + 1,
+        name: step.title,
+        text: step.description,
+        url: `https://www.ticketscan.io/how-it-works#step-${step.number}`,
+      })),
+      tool: [
+        { '@type': 'HowToTool', name: 'Ticket Scan website' },
+        { '@type': 'HowToTool', name: 'Email address (for alerts)' },
+      ],
+    },
+    {
+      '@type': 'BreadcrumbList',
+      '@id': 'https://www.ticketscan.io/how-it-works#breadcrumb',
+      itemListElement: [
+        { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://www.ticketscan.io' },
+        { '@type': 'ListItem', position: 2, name: 'How It Works', item: 'https://www.ticketscan.io/how-it-works' },
+      ],
+    },
+  ],
+};
+
 export default function HowItWorksPage() {
   return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(howToJsonLd) }}
+      />
     <div className="min-h-screen bg-gray-50">
       {/* Hero */}
       <div className="bg-gradient-to-br from-navy via-brand to-teal text-white py-20">
@@ -244,5 +295,6 @@ export default function HowItWorksPage() {
         </div>
       </div>
     </div>
+    </>
   );
 }

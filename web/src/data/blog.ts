@@ -2198,6 +2198,279 @@ Use Ticket Scan to compare ticket prices across all World Cup venues and find th
 [View All World Cup Venues →](/world-cup-2026)
     `,
   },
+  {
+    slug: 'world-cup-2026-knockout-tickets',
+    title: 'World Cup 2026 Knockout Stage Tickets: Prices, Venues, and How to Compare',
+    excerpt: 'The Round of 32 has started. Here\'s what you\'ll pay for World Cup quarterfinal, semifinal, and Final tickets — and how to compare across platforms before prices spike further.',
+    category: 'guides',
+    tags: ['World Cup 2026', 'World Cup knockout tickets', 'World Cup Final tickets', 'World Cup quarterfinal', 'ticket prices'],
+    author: 'Ticket Scan Team',
+    publishedAt: '2026-07-01',
+    readTime: 6,
+    featured: true,
+    content: `
+# World Cup 2026 Knockout Stage Tickets: Prices, Venues, and How to Compare
+
+The group stage is over. The Round of 32 kicked off June 29, and every match from here until the Final on July 19 is single-elimination. That changes the ticket market dramatically — and if you're trying to attend a quarterfinal, semifinal, or the Final at MetLife Stadium, the window to act is narrowing fast.
+
+Here's what's actually happening with prices right now, which stadiums host which rounds, and how to avoid overpaying.
+
+## What Knockout Tickets Actually Cost
+
+Resale prices scale sharply with each round. Here's where the market is sitting as of early July:
+
+| Round | Get-in Price | Average Floor | Top End |
+|---|---|---|---|
+| Round of 32 | ~$200–$500 | ~$350 | $1,500+ |
+| Quarterfinals | ~$500–$1,200 | ~$800 | $3,000+ |
+| Semifinals | ~$1,500–$3,500 | ~$2,200 | $8,000+ |
+| Final (MetLife) | ~$3,000–$5,000 | ~$6,000 | $12,000+ |
+
+These are resale figures. Platform fees vary: StubHub typically adds 25–32% on top, SeatGeek 20–25%, and Ticketmaster varies by listing. That means a $400 R32 ticket on SeatGeek could cost $480–$500 all-in — while the same seat on StubHub runs $520–$528. The gap compounds dramatically at higher price points.
+
+**At semifinal prices, a platform fee difference of 5% is $110 per ticket.** Comparing before you buy isn't optional at this stage — it's how you avoid leaving hundreds on the table.
+
+## Knockout Stage Venues
+
+The Round of 32 uses all 16 host stadiums. From quarterfinals onward, FIFA concentrates matches at the largest and most accessible venues:
+
+| Round | Dates | Key Venues |
+|---|---|---|
+| Round of 32 | June 29 – July 3 | All 16 host stadiums |
+| Quarterfinals | July 4–5 | MetLife, SoFi, AT&T, Hard Rock, Mercedes-Benz |
+| Semifinals | July 8–9 | MetLife Stadium · SoFi Stadium |
+| 3rd Place | July 12 | Hard Rock Stadium, Miami |
+| **Final** | **July 19** | **MetLife Stadium, East Rutherford, NJ** |
+
+The Final at MetLife is confirmed. At 82,500 capacity it's the largest stadium in the tournament — but it's also in the New York metro, which means hotel prices, demand from European fan groups, and a premium hospitality market all pile on. Budget accordingly if you're going.
+
+## Why Comparing Matters More in Knockout Rounds
+
+In the group stage, most matches had reasonable inventory and platforms stayed within 5–8% of each other. That's not true once teams are eliminated and resale sellers panic-reprice.
+
+In knockout rounds you'll see:
+- **Sellers listing at different moments** — someone who listed before a high-profile team advanced is sitting on stale pricing that platforms haven't updated
+- **Fee structures that vary by face value** — some platforms charge lower percentage fees on premium listings, flipping which is cheapest above a certain price point
+- **Inventory that disappears fast** — a cheap listing at $480 all-in gets bought in minutes; refreshing every day and finding "prices went up" is the default experience without a price alert
+
+The right move: set a price alert at your target, stop checking manually, and let TicketScan notify you when a platform actually hits it.
+
+## Which Round Should You Target?
+
+If you want to be at the World Cup but the Final is out of budget, here's how to think about each round:
+
+**Round of 32** — Best value. Guaranteed quality soccer at the lowest knockout prices. Pick a match in a mid-tier US host city (Atlanta, Houston, Kansas City) for even better deals vs. coastal venues.
+
+**Quarterfinals** — Sweet spot for many fans. Prices are still in four figures for good seats, the stakes are high, and you don't need to predict which teams are playing months out.
+
+**Semifinals** — The best soccer you can watch without holding a four-figure seat at the Final. If there's a European powerhouse or USMNT involved, prices will move fast.
+
+**The Final** — If this is your bucket list moment, buy now. Final ticket prices have historically gone in one direction in the two weeks before the match.
+
+## How to Find the Best Price Right Now
+
+Three steps:
+
+1. **Search the match** on [TicketScan's dashboard](/dashboard?keyword=world+cup+2026) — we pull live prices from Ticketmaster, SeatGeek, and StubHub into one view
+2. **Set a price alert** on any match you're targeting — we'll email you if any platform drops to your target price
+3. **Compare all-in prices** (not the listing price) — the platform fee is where most of the variance hides
+
+The resale market for knockout rounds moves fast. If you see a price that works, the window to act is measured in hours, not days.
+
+---
+
+**Ready to compare?** [Search World Cup knockout tickets →](/world-cup-2026)
+
+**Want a venue guide?** Check our [MetLife Stadium guide](/world-cup-2026/metlife-stadium), [SoFi Stadium guide](/world-cup-2026/sofi-stadium), or [Hard Rock Stadium guide](/world-cup-2026/hard-rock-stadium) for stadium-specific buying tips.
+    `,
+  },
+  {
+    slug: 'world-cup-final-2026-platforms-compared-price-fees-protection',
+    title: 'World Cup Final 2026: 5 Ticket Platforms Compared on Price, Fees, and Buyer Protection',
+    excerpt: 'Three days out, here\'s how FIFA Resale, Ticketmaster, SeatGeek, StubHub, and Vivid Seats compare on price, fees, and what happens if your ticket fails at the gate.',
+    category: 'comparisons',
+    tags: ['world cup 2026', 'world cup final', 'stubhub', 'seatgeek', 'ticketmaster', 'ticket fees', 'metlife stadium', 'buyer protection'],
+    author: 'Ticket Scan Team',
+    publishedAt: '2026-07-17',
+    readTime: 6,
+    featured: false,
+    content: `
+# World Cup Final 2026: 5 Ticket Platforms Compared on Price, Fees, and Buyer Protection
+
+The World Cup Final is two days away. MetLife Stadium. July 19. 82,500 seats. Two nations. One match.
+
+If you still need a ticket, you're making a high-stakes decision under time pressure — the exact moment buyers get taken. This comparison is not about which platform you've heard of. It's about which one costs you the least, protects you the most, and actually delivers a working ticket when you walk through the gate on Sunday.
+
+Here are the five main options, straight.
+
+## 1. FIFA Official Resale Marketplace
+
+**Fees:** FIFA charges buyers a 15% service fee on top of the listed resale price. Sellers pay a separate 15% fee deducted from their payout. The combined spread between what a buyer pays and what the seller receives can reach 30% of the resale price — the widest gap in the market.
+
+**Buyer protection:** Strong from an authenticity standpoint. When you buy through FIFA's official marketplace, your ticket is re-issued digitally to your FIFA account. There is no risk of receiving a duplicate or counterfeit — the ticket belongs to you specifically in the system.
+
+**Mobile ticket handling:** Tickets appear in the official FIFA app, linked to your identity. This is the cleanest mobile ticket experience available for this event.
+
+**The catch:** "Official" does not mean "cheapest." On a $2,000 resale listing, FIFA's 15% buyer fee adds $300. The same seat on SeatGeek with a 20% all-in fee structure adds $400 — but if SeatGeek's listing is $1,750, it's cheaper all-in even with the higher percentage. Fee percentages don't tell you the story; the all-in total does.
+
+**Verdict:** Best for peace of mind on transfer and authenticity. Not automatically the best price. Compare the all-in total before choosing it by default.
+
+## 2. Ticketmaster Verified Resale
+
+**Fees:** Service fees on Ticketmaster resale typically run 20–27% above the listed price at checkout. The fee is disclosed at checkout, not surfaced in search results — so what looks like a $600 seat often becomes $740–$762 by the time you hit "buy."
+
+**Buyer protection:** Ticketmaster's Fan Guarantee covers verified resale tickets. If a ticket is invalid at entry, they offer a comparable replacement or a refund. For an event at this scale, replacement inventory is a legitimate question — have a backup plan if you're relying on this.
+
+**Mobile ticket handling:** Solid. Ticketmaster's app is the standard for US NFL venues, and MetLife operates on their infrastructure. Tickets transfer cleanly for domestic buyers.
+
+**The catch:** Fee transparency is the weak point. The gap between listing price and checkout total is real and occasionally surprising. Always confirm the all-in total before committing.
+
+**Verdict:** Trusted platform, good mobile support at MetLife specifically. Compare the all-in total — fees can exceed SeatGeek or StubHub depending on the listing.
+
+## 3. SeatGeek
+
+**Fees:** SeatGeek typically charges 20–25% above the listing price in service fees. They offer an "all-in pricing" toggle that shows the true checkout price in search results — turn it on. Their Deal Score feature flags listings above or below market average for a given section, which is genuinely useful when individual listings for the same section vary by hundreds of dollars.
+
+**Buyer protection:** SeatGeek's buyer guarantee covers you if a ticket is invalid, the event is cancelled, or the ticket doesn't transfer. Replacement or full refund. Coverage is contractually similar to the other major platforms.
+
+**Mobile ticket handling:** Strong. SeatGeek handles major event mobile ticketing reliably. Confirm the ticket appears in your app — not just your confirmation email — before you leave for East Rutherford.
+
+**The catch:** SeatGeek's Final inventory may be thinner than StubHub's at this stage of the resale cycle. If your target section is listed on both, compare all-in. If only one has it, your choice is made.
+
+**Verdict:** Most fee-transparent of the big three. Use the Deal Score to sanity-check any listing. The best starting platform for comparison shopping.
+
+## 4. StubHub
+
+**Fees:** StubHub's buyer fee typically runs 25–32% above the listing price — the highest standard fee structure of the five platforms. On a $1,500 listing, that's $375–$480 on top. On a $5,000 listing, it's $1,250–$1,600. At Final-level prices, this gap relative to SeatGeek is measured in hundreds of dollars per ticket.
+
+**Buyer protection:** StubHub's FanProtect guarantee is the most clearly stated in the market. If your ticket is invalid, they will provide a replacement of equal or greater value or a full refund. Their customer service is staffed around the clock and historically responsive for premium events. This is the guarantee that earns StubHub its brand trust.
+
+**Mobile ticket handling:** StubHub handles mobile tickets through their own app. For FIFA events, confirm whether your specific ticket transfers as a mobile transfer (clean) or as a PDF/image (red flag for this event's security protocol). Ask the seller directly if it's unclear.
+
+**The catch:** The fee is the catch. StubHub is the most expensive platform by default at this price tier. Their guarantee is excellent, but it comes with a premium that can be $200–$500 more per ticket than SeatGeek for the same seat.
+
+**Verdict:** Best guarantee, most responsive support, highest fees. Use it when the all-in price is competitive — it occasionally is — or when the guarantee matters more to you than saving $200.
+
+## 5. Vivid Seats
+
+**Fees:** Vivid Seats typically charges buyers 15–25% in service fees, disclosed at checkout. On some listings, this comes in lower than StubHub; on others it's comparable to SeatGeek.
+
+**Buyer protection:** Vivid Seats offers a 100% buyer guarantee covering invalid, fraudulent, or cancelled tickets — contractually similar to the others, less tested at World Cup scale.
+
+**Mobile ticket handling:** Functional but less polished than Ticketmaster or SeatGeek for international FIFA events. Confirm delivery method carefully before buying.
+
+**The catch:** Vivid Seats carries a loyalty rewards program that earns credits for future purchases. Useful for repeat buyers. Irrelevant for a one-time World Cup Final buy.
+
+**Verdict:** Worth including in the comparison pass, especially if their all-in price undercuts the others. Less proven than the top three for this specific event type.
+
+## The Decision Framework
+
+No platform wins across every listing and every section. Fee ranges describe the typical spread — individual listings vary based on when they were posted, seller pricing strategy, and platform-specific fee application.
+
+The right process:
+
+1. **Search your target section on TicketScan** — we pull live listings from Ticketmaster, SeatGeek, and StubHub into one view so you can compare all-in totals directly.
+2. **Toggle all-in pricing on every platform** before comparing. The listing price tells you nothing; the checkout total tells you everything.
+3. **Match apples to apples** — a $500 upper-level seat and a $500 mezzanine seat are not the same comparison. Same section tier, same row range.
+4. **Buy with a credit card**, regardless of which platform wins. It's your last line of dispute protection if something goes wrong between now and Sunday.
+
+On the question of waiting: don't. At 48 hours out, the typical price-drop window for major events has already passed. Any sellers who were going to offload inventory at a discount have done it. What remains trends up as demand spikes in the final 48 hours before kickoff. If the all-in total works for you, buy it.
+
+---
+
+**Compare Final tickets across all platforms now:** [ticketscan.io/world-cup-2026](/world-cup-2026)
+
+**Need section details before you choose?** [MetLife Stadium World Cup guide](/world-cup-2026/metlife-stadium) covers sightlines, transportation, and what to expect inside.
+    `,
+  },
+  {
+    slug: 'world-cup-2026-final-tickets-guide',
+    title: 'World Cup 2026 Final Tickets: What You\'ll Pay at MetLife and How to Buy',
+    excerpt: 'The World Cup Final is July 19 at MetLife Stadium. Here\'s what tickets actually cost by section, why prices won\'t drop in the next 3 days, and how to compare across platforms before kickoff.',
+    category: 'guides',
+    tags: ['world cup 2026', 'world cup final', 'metlife stadium', 'ticket prices', 'dynamic pricing', 'world cup final tickets'],
+    author: 'Ticket Scan Team',
+    publishedAt: '2026-07-16',
+    readTime: 5,
+    featured: true,
+    content: `
+# World Cup 2026 Final Tickets: What You'll Pay at MetLife and How to Buy
+
+The Final is set. Three days from now, the two best teams in the world meet at MetLife Stadium in East Rutherford, New Jersey. 82,500 seats. One match. No tomorrow.
+
+If you're still looking for tickets, here's the honest version of what you need to know: the prices you see today are very likely the floor. Here's what they look like by section, why the math doesn't favor waiting, and how to find the cheapest option still available.
+
+## What Final Tickets Actually Cost Right Now
+
+MetLife has 10 seating sections for major events. Here's where resale is sitting as of this week, before fees:
+
+| Section | Estimated Resale Range |
+|---|---|
+| Field Level Sideline | $1,200 – $3,500+ |
+| Lower Bowl Corner | $800 – $2,200 |
+| Mezzanine Sideline | $500 – $1,400 |
+| Upper Level Sideline | $250 – $800 |
+| Upper Level Corner | $180 – $550 |
+| Suite Level | $15,000 – $50,000+ |
+
+**These are pre-fee estimates.** Platform fees vary significantly:
+- StubHub: typically 25–32% on top of listing price
+- SeatGeek: 20–25%
+- Ticketmaster: varies by event and delivery method
+
+At the $800 level, that fee difference is $40–$56 per ticket. At $2,000, it's $100–$140. **Comparing platforms isn't optional at these prices — it's where you find the money.**
+
+## Should You Wait for Prices to Drop?
+
+No. Here's why.
+
+The standard advice on TicketScan is to set a price alert and wait — prices for most events do dip in the days before as sellers offload inventory. That logic breaks for the World Cup Final for three reasons:
+
+**1. Three days is not enough time.** The resale dip window for major events is typically 7–14 days out. At 3 days out, you're past that window. Any sellers who were going to panic-sell at a discount have already done so.
+
+**2. Demand is still rising.** As the match date closes in, casual fans who weren't sure they'd attend start pulling the trigger. Demand typically spikes in the 48 hours before a major final — the same period when you'd be waiting.
+
+**3. Platform inventory is thin.** When a specific section sells out on one platform, prices on others move immediately. Low inventory + rising demand = prices go up, not down.
+
+Our buy recommendation for the Final: if you see a price you can live with, compare across platforms for the best all-in total, then buy. Don't wait for a lower number that probably isn't coming.
+
+## How to Compare Without Getting Played
+
+Three steps that take about 5 minutes:
+
+**Step 1: Search the Final on TicketScan.**
+Go to the [World Cup 2026 hub](/world-cup-2026) or search "World Cup Final" in the [dashboard](/dashboard?keyword=world+cup+final). We pull live prices from Ticketmaster, SeatGeek, and StubHub into one view so you can compare all-in totals side by side.
+
+**Step 2: Filter for your section tier.**
+Don't compare a $500 upper level seat on StubHub against a $500 mezzanine seat on SeatGeek — those aren't the same thing. Match apples to apples: same section tier, same row range.
+
+**Step 3: Check the all-in total, not the listing price.**
+Every platform shows a "get in from" price that excludes fees. Click through to the actual ticket and verify the all-in checkout price before deciding. The cheapest listing is not always the cheapest final cost.
+
+## MetLife Stadium: What to Know Before You Go
+
+If you haven't been to MetLife, a few things worth knowing:
+
+- **Getting there**: MetLife has no parking lot — take the NJ Transit Meadowlands Rail or a rideshare. Driving is not recommended for large events.
+- **Capacity**: 82,500. The stadium fills from the field level up; upper level views are genuine but distant.
+- **Weather**: July in New Jersey means hot and humid. The stadium has no roof — factor that into your seat selection.
+- **Entry**: FIFA's international ticketing is mobile-only. Make sure your ticket is downloaded and accessible offline before you arrive.
+
+Our full [MetLife Stadium guide](/world-cup-2026/metlife-stadium) covers section-by-section views, transportation, and what to expect on match day.
+
+## The Bottom Line
+
+The World Cup Final happens once every four years, and it hasn't been in the United States since 1994. For most people reading this, that's the whole argument.
+
+If your budget works, compare platforms on TicketScan now, verify the all-in price, and buy. Waiting 72 hours for a price drop that probably won't come is not a strategy — it's just risk.
+
+---
+
+**Ready to compare Final tickets?** [Search World Cup 2026 Final tickets →](/world-cup-2026)
+
+**Want section-level details?** [MetLife Stadium World Cup guide →](/world-cup-2026/metlife-stadium)
+    `,
+  },
 ];
 
 export function getBlogPostBySlug(slug: string): BlogPost | null {

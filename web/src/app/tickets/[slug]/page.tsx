@@ -15,6 +15,9 @@ interface Event {
   minPrice: number | null;
   maxPrice: number | null;
   type: string;
+  url?: string;
+  image?: string;
+  state?: string;
 }
 
 interface PageProps {
@@ -57,12 +60,12 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 
   if (pageData.type === 'city') {
     const city = pageData.data;
-    title = `${city.name} Event Tickets - Compare Prices | Ticket Scan`;
+    title = `${city.name} Event Tickets - Compare Prices`;
     description = city.description;
     keywords = city.keywords;
   } else {
     const category = pageData.data;
-    title = `${category.name} Tickets - Best Prices | Ticket Scan`;
+    title = `${category.name} Tickets - Best Prices`;
     description = category.description;
     keywords = category.keywords;
   }
@@ -71,11 +74,14 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     title,
     description,
     keywords: keywords.join(', '),
+    alternates: {
+      canonical: `https://www.ticketscan.io/tickets/${slug}`,
+    },
     openGraph: {
       title,
       description,
       type: 'website',
-      url: `https://ticketscan.io/tickets/${slug}`,
+      url: `https://www.ticketscan.io/tickets/${slug}`,
     },
     twitter: {
       card: 'summary_large_image',
@@ -125,7 +131,19 @@ export default async function TicketsPage({ params }: PageProps) {
     notFound();
   }
 
-  const events = await getEvents(slug, pageData.type);
+  const rawEvents = await getEvents(slug, pageData.type);
+
+  // Deduplicate events by (name + venue + date) so recurring same-day showtimes
+  // collapse to one entry in both the rendered list and the ItemList JSON-LD.
+  // Google's structured-data guidance requires distinct ListItem entries, and
+  // the public events API can return multiple showtimes of the same event.
+  const seenEventKeys = new Set<string>();
+  const events = rawEvents.filter((event) => {
+    const key = `${event.name}|${event.venue}|${event.date}`;
+    if (seenEventKeys.has(key)) return false;
+    seenEventKeys.add(key);
+    return true;
+  });
 
   const isCity = pageData.type === 'city';
   const pageTitle = isCity
@@ -147,44 +165,69 @@ export default async function TicketsPage({ params }: PageProps) {
     ? getAllCategories().slice(0, 4)
     : getAllCities().slice(0, 4);
 
-  // JSON-LD structured data
-  const jsonLd = isCity
-    ? {
-        '@context': 'https://schema.org',
+  // JSON-LD structured data — shared between city and category branches
+  const itemListElement = events.slice(0, 5).map((event, index) => ({
+    '@type': 'ListItem',
+    position: index + 1,
+    item: {
+      '@type': 'Event',
+      name: event.name,
+      startDate: event.date,
+      // Constant-string fields Google recommends for Event rich results — no data
+      // lookup required; every listed event is a scheduled, in-person event.
+      eventStatus: 'https://schema.org/EventScheduled',
+      eventAttendanceMode: 'https://schema.org/OfflineEventAttendanceMode',
+      // image + url are returned by /api/public/events for every event; include
+      // them so the per-event node is eligible for the richer SERP treatment.
+      ...(event.image ? { image: event.image } : {}),
+      ...(event.url ? { url: event.url } : {}),
+      location: {
+        '@type': 'Place',
+        name: event.venue,
+        address: {
+          '@type': 'PostalAddress',
+          addressLocality: event.city,
+          ...(event.state ? { addressRegion: event.state } : {}),
+        },
+      },
+      offers: event.minPrice
+        ? {
+            '@type': 'AggregateOffer',
+            lowPrice: event.minPrice,
+            priceCurrency: 'USD',
+            availability: 'https://schema.org/InStock',
+            ...(event.url ? { url: event.url } : {}),
+          }
+        : undefined,
+    },
+  }));
+
+  const itemListName = isCity
+    ? `Events in ${pageData.data.name}`
+    : `${pageTitle} Events`;
+
+  const jsonLd = {
+    '@context': 'https://schema.org',
+    '@graph': [
+      {
         '@type': 'ItemList',
-        name: `Events in ${pageData.data.name}`,
-        description: pageData.data.description,
-        itemListElement: events.slice(0, 5).map((event, index) => ({
-          '@type': 'ListItem',
-          position: index + 1,
-          item: {
-            '@type': 'Event',
-            name: event.name,
-            startDate: event.date,
-            location: {
-              '@type': 'Place',
-              name: event.venue,
-              address: {
-                '@type': 'PostalAddress',
-                addressLocality: event.city,
-              },
-            },
-            offers: event.minPrice
-              ? {
-                  '@type': 'AggregateOffer',
-                  lowPrice: event.minPrice,
-                  priceCurrency: 'USD',
-                }
-              : undefined,
-          },
-        })),
-      }
-    : {
-        '@context': 'https://schema.org',
-        '@type': 'ItemList',
-        name: pageTitle,
-        description: pageSubtitle,
-      };
+        '@id': `https://www.ticketscan.io/tickets/${slug}#itemlist`,
+        name: itemListName,
+        description: isCity ? pageData.data.description : pageSubtitle,
+        numberOfItems: itemListElement.length,
+        itemListElement,
+      },
+      {
+        '@type': 'BreadcrumbList',
+        '@id': `https://www.ticketscan.io/tickets/${slug}#breadcrumbs`,
+        itemListElement: [
+          { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://www.ticketscan.io' },
+          { '@type': 'ListItem', position: 2, name: 'Tickets', item: 'https://www.ticketscan.io/tickets' },
+          { '@type': 'ListItem', position: 3, name: pageTitle, item: `https://www.ticketscan.io/tickets/${slug}` },
+        ],
+      },
+    ],
+  };
 
   return (
     <>
@@ -199,6 +242,8 @@ export default async function TicketsPage({ params }: PageProps) {
           <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
             <nav className="text-sm mb-4">
               <Link href="/" className="text-blue-200 hover:text-white">Home</Link>
+              <span className="mx-2 text-blue-300">/</span>
+              <Link href="/tickets" className="text-blue-200 hover:text-white">Tickets</Link>
               <span className="mx-2 text-blue-300">/</span>
               <span>{pageTitle}</span>
             </nav>

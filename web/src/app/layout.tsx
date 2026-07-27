@@ -38,7 +38,7 @@ export const metadata: Metadata = {
   keywords: ["tickets", "concert tickets", "sports tickets", "ticket prices", "compare tickets", "cheap tickets"],
   authors: [{ name: "Ticket Scan" }],
   creator: "Ticket Scan",
-  metadataBase: new URL("https://ticketscan.io"),
+  metadataBase: new URL("https://www.ticketscan.io"),
   manifest: "/manifest.json",
   appleWebApp: {
     capable: true,
@@ -48,7 +48,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: "https://ticketscan.io",
+    url: "https://www.ticketscan.io",
     siteName: "Ticket Scan",
     title: "Ticket Scan - Compare Ticket Prices",
     description: "Never overpay for tickets again. Compare prices across multiple platforms and find the best deals.",
@@ -67,18 +67,36 @@ export const metadata: Metadata = {
   // Note: Impact verification is in head with non-standard 'value' attribute
 };
 
-// Organization structured data
+// Site-wide structured data: Organization + WebSite.
+// The WebSite node (#website) is referenced via `isPartOf` by the dashboard and
+// compare WebApplication schemas; without it those references dangle. No
+// SearchAction/Sitelinks Searchbox is declared because site search is
+// client-side only (no `?q=` deep-link URL exists to target).
 const organizationJsonLd = {
   "@context": "https://schema.org",
-  "@type": "Organization",
-  name: "Ticket Scan",
-  url: "https://ticketscan.io",
-  logo: "https://ticketscan.io/logo.png",
-  description: "Compare ticket prices across multiple platforms. Find the best deals on concerts, sports, and theater events.",
-  sameAs: [
-    "https://x.com/ticketscan_io",
-    "https://instagram.com/ticketscan_io",
-    "https://tiktok.com/@ticketscan_io",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://www.ticketscan.io/#organization",
+      name: "Ticket Scan",
+      url: "https://www.ticketscan.io",
+      logo: "https://www.ticketscan.io/logo.png",
+      description: "Compare ticket prices across multiple platforms. Find the best deals on concerts, sports, and theater events.",
+      sameAs: [
+        "https://x.com/ticketscan_io",
+        "https://instagram.com/ticketscan_io",
+        "https://tiktok.com/@ticketscan_io",
+      ],
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://www.ticketscan.io/#website",
+      url: "https://www.ticketscan.io",
+      name: "Ticket Scan",
+      description: "Compare ticket prices across Ticketmaster, SeatGeek, and more. Track price history and get alerts when tickets drop.",
+      publisher: { "@id": "https://www.ticketscan.io/#organization" },
+      inLanguage: "en-US",
+    },
   ],
 };
 

@@ -2,19 +2,22 @@ import { Metadata } from 'next';
 import Link from 'next/link';
 
 export const metadata: Metadata = {
-  title: 'FAQ - Frequently Asked Questions',
-  description: 'Get answers to common questions about Ticket Scan. Learn how to compare ticket prices, track events, and get price alerts.',
-  keywords: 'ticket scan FAQ, ticket comparison help, price tracking questions',
+  title: 'Ticket Buying FAQ - Common Questions Answered',
+  description: 'Answers to common questions about comparing ticket prices, tracking events, and getting price drop alerts on Ticket Scan.',
+  keywords: 'ticket buying FAQ, ticket price comparison help, price alert questions, how to compare tickets',
+  alternates: {
+    canonical: 'https://www.ticketscan.io/faq',
+  },
   openGraph: {
-    title: 'FAQ - Frequently Asked Questions | Ticket Scan',
-    description: 'Get answers to common questions about comparing ticket prices, tracking events, and getting price drop alerts.',
+    title: 'Ticket Buying FAQ - Common Questions Answered | Ticket Scan',
+    description: 'Answers to common questions about comparing ticket prices, tracking events, and getting price drop alerts.',
     type: 'website',
-    url: 'https://ticketscan.io/faq',
+    url: 'https://www.ticketscan.io/faq',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'FAQ - Frequently Asked Questions | Ticket Scan',
-    description: 'Get answers to common questions about comparing ticket prices, tracking events, and getting price drop alerts.',
+    title: 'Ticket Buying FAQ - Common Questions Answered | Ticket Scan',
+    description: 'Answers to common questions about comparing ticket prices, tracking events, and getting price drop alerts.',
   },
 };
 
@@ -113,17 +116,30 @@ const faqs = [
 // Generate JSON-LD structured data
 const faqJsonLd = {
   '@context': 'https://schema.org',
-  '@type': 'FAQPage',
-  mainEntity: faqs.flatMap((category) =>
-    category.questions.map((item) => ({
-      '@type': 'Question',
-      name: item.q,
-      acceptedAnswer: {
-        '@type': 'Answer',
-        text: item.a,
-      },
-    }))
-  ),
+  '@graph': [
+    {
+      '@type': 'FAQPage',
+      '@id': 'https://www.ticketscan.io/faq#faqpage',
+      mainEntity: faqs.flatMap((category) =>
+        category.questions.map((item) => ({
+          '@type': 'Question',
+          name: item.q,
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: item.a,
+          },
+        }))
+      ),
+    },
+    {
+      '@type': 'BreadcrumbList',
+      '@id': 'https://www.ticketscan.io/faq#breadcrumb',
+      itemListElement: [
+        { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://www.ticketscan.io' },
+        { '@type': 'ListItem', position: 2, name: 'FAQ', item: 'https://www.ticketscan.io/faq' },
+      ],
+    },
+  ],
 };
 
 export default function FAQPage() {

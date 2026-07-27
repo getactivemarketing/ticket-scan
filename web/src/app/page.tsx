@@ -14,13 +14,22 @@ export const metadata: Metadata = {
   title: 'TicketScan - Compare Ticket Prices Across Multiple Sites',
   description: 'Find the best deals on concert, sports, and theater tickets. Compare prices from Ticketmaster, SeatGeek, and more. Track price trends and get alerts when prices drop.',
   keywords: 'ticket prices, compare tickets, cheap tickets, concert tickets, sports tickets, NBA tickets, NHL tickets, Ticketmaster, SeatGeek',
+  alternates: {
+    canonical: 'https://www.ticketscan.io',
+  },
   openGraph: {
     title: 'TicketScan - Compare Ticket Prices',
     description: 'Never overpay for tickets again. Compare prices across multiple platforms and find the best deals.',
     type: 'website',
-    url: 'https://ticketscan.io',
+    url: 'https://www.ticketscan.io',
   },
 };
+
+const homepageFaqs = [
+  { q: 'How does TicketScan help me find cheaper tickets?', a: 'TicketScan compares ticket prices from Ticketmaster, SeatGeek, and other major ticket sites in real-time. We track price trends so you can see if prices are going up or down, and alert you when tickets drop to your target price.' },
+  { q: 'Is TicketScan free to use?', a: 'Yes, TicketScan is completely free. Create an account to track events, compare prices, and get alerts when prices drop.' },
+  { q: 'What events can I track with TicketScan?', a: 'You can track any event available on major ticket platforms including concerts, NBA games, NHL hockey, NFL football, MLB baseball, theater shows, and more.' },
+];
 
 export default function Home() {
   const venues = getAllVenues();
@@ -28,33 +37,33 @@ export default function Home() {
   const categories = getAllCategories();
   const featuredPosts = getFeaturedPosts().slice(0, 3);
 
+  // The site-wide WebSite node (@id …/#website) is defined once in the root
+  // layout (layout.tsx) and renders on every page, including this one. We do NOT
+  // redeclare it here — two nodes sharing an @id is a structured-data conflict.
+  // No SearchAction is declared: the dashboard is client-side and ignores ?q=,
+  // so a Sitelinks Searchbox target would be non-functional. The homepage's only
+  // unique structured data is its FAQPage.
   const jsonLd = {
     '@context': 'https://schema.org',
-    '@type': 'WebSite',
-    name: 'TicketScan',
-    url: 'https://ticketscan.io',
-    description: 'Compare ticket prices across multiple platforms. Find the best deals on concerts, sports, and theater events.',
-    potentialAction: {
-      '@type': 'SearchAction',
-      target: 'https://ticketscan.io/dashboard?q={search_term_string}',
-      'query-input': 'required name=search_term_string',
-    },
-  };
-
-  const faqJsonLd = {
-    '@context': 'https://schema.org',
-    '@type': 'FAQPage',
-    mainEntity: [
-      { '@type': 'Question', name: 'How does TicketScan help me find cheaper tickets?', acceptedAnswer: { '@type': 'Answer', text: 'TicketScan compares ticket prices from Ticketmaster, SeatGeek, and other major ticket sites in real-time. We track price trends so you can see if prices are going up or down, and alert you when tickets drop to your target price.' } },
-      { '@type': 'Question', name: 'Is TicketScan free to use?', acceptedAnswer: { '@type': 'Answer', text: 'Yes, TicketScan is completely free. Create an account to track events, compare prices, and get alerts when prices drop.' } },
-      { '@type': 'Question', name: 'What events can I track with TicketScan?', acceptedAnswer: { '@type': 'Answer', text: 'You can track any event available on major ticket platforms including concerts, NBA games, NHL hockey, NFL football, MLB baseball, theater shows, and more.' } },
+    '@graph': [
+      {
+        '@type': 'FAQPage',
+        '@id': 'https://www.ticketscan.io/#faq',
+        mainEntity: homepageFaqs.map((faq) => ({
+          '@type': 'Question',
+          name: faq.q,
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: faq.a,
+          },
+        })),
+      },
     ],
   };
 
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }} />
 
       <div className="min-h-screen">
         {/* Hero Section */}
@@ -257,11 +266,7 @@ export default function Home() {
           <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
             <h2 className="text-2xl font-heading font-bold text-navy mb-8 text-center tracking-tight">Frequently Asked Questions</h2>
             <div className="space-y-4">
-              {[
-                { q: 'How does TicketScan help me find cheaper tickets?', a: 'TicketScan compares ticket prices from Ticketmaster, SeatGeek, and other major ticket sites in real-time. We track price trends so you can see if prices are going up or down, and alert you when tickets drop to your target price.' },
-                { q: 'Is TicketScan free to use?', a: 'Yes, TicketScan is completely free. Create an account to track events, compare prices, and get alerts when prices drop.' },
-                { q: 'What events can I track with TicketScan?', a: 'You can track any event available on major ticket platforms including concerts, NBA games, NHL hockey, NFL football, MLB baseball, theater shows, and more.' },
-              ].map((faq) => (
+              {homepageFaqs.map((faq) => (
                 <div key={faq.q} className="border border-gray-200 rounded-xl p-5">
                   <h3 className="font-bold text-navy text-sm mb-2">{faq.q}</h3>
                   <p className="text-gray-500 text-sm">{faq.a}</p>

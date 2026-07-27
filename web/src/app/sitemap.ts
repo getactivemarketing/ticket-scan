@@ -5,10 +5,18 @@ import { categories } from '@/data/categories';
 import { getAllBlogPosts } from '@/data/blog';
 import { worldCupVenues } from '@/data/worldcup';
 
-const BASE_URL = 'https://ticketscan.io';
+const BASE_URL = 'https://www.ticketscan.io';
+
+// Stable last-modified for programmatic pages (venues, cities, categories, WC).
+// These data files have no per-entity date, so we use a single content-revision
+// stamp instead of `new Date()` — otherwise every URL reports "today" on each
+// crawl, which trains search engines to ignore our <lastmod>. Bump this when the
+// venue/city/category/World Cup data sets are meaningfully revised.
+// (Blog posts use their own real publishedAt/updatedAt dates below.)
+const CONTENT_LAST_MODIFIED = new Date('2026-07-20');
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const lastModified = new Date();
+  const lastModified = CONTENT_LAST_MODIFIED;
   const blogPosts = getAllBlogPosts();
 
   // Static pages
@@ -20,15 +28,15 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 1,
     },
     {
-      url: `${BASE_URL}/dashboard`,
+      url: `${BASE_URL}/venues`,
       lastModified,
-      changeFrequency: 'daily',
-      priority: 0.9,
+      changeFrequency: 'weekly',
+      priority: 0.8,
     },
     {
-      url: `${BASE_URL}/compare`,
+      url: `${BASE_URL}/tickets`,
       lastModified,
-      changeFrequency: 'daily',
+      changeFrequency: 'weekly',
       priority: 0.8,
     },
     {
@@ -50,18 +58,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.3,
     },
     {
-      url: `${BASE_URL}/login`,
-      lastModified,
-      changeFrequency: 'monthly',
-      priority: 0.3,
-    },
-    {
-      url: `${BASE_URL}/register`,
-      lastModified,
-      changeFrequency: 'monthly',
-      priority: 0.3,
-    },
-    {
       url: `${BASE_URL}/faq`,
       lastModified,
       changeFrequency: 'monthly',
@@ -72,6 +68,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified,
       changeFrequency: 'monthly',
       priority: 0.7,
+    },
+    {
+      url: `${BASE_URL}/contact`,
+      lastModified,
+      changeFrequency: 'monthly',
+      priority: 0.4,
     },
   ];
 

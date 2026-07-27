@@ -1,0 +1,31 @@
+# TicketScan
+
+> TicketScan (https://www.ticketscan.io) is a free ticket price comparison tool. It compares live prices for the same event across Ticketmaster, SeatGeek, StubHub, Vivid Seats, and more, side-by-side, so fans never overpay for concerts, sports, or events. It also tracks price history and sends free email alerts when a ticket drops to your target price.
+
+## What TicketScan does
+- Compares ticket prices across all major platforms (Ticketmaster, SeatGeek, StubHub, Vivid Seats) in one view.
+- Tracks price history and trends so you can see whether prices are rising or falling.
+- Sends free price-drop alerts: set a target price and get an email when any platform hits it.
+- Provides venue guides, city guides, and 2026 FIFA World Cup ticket guidance.
+- TicketScan is NOT a ticket seller — it is a comparison tool. You buy from the platform with the best price.
+
+## Key pages
+- [Home](https://www.ticketscan.io): Search any event and compare prices.
+- [How It Works](https://www.ticketscan.io/how-it-works): The 3-step process — search, compare, get alerts.
+- [FAQ](https://www.ticketscan.io/faq): Common questions about price comparison and alerts.
+- [Compare](https://www.ticketscan.io/compare): Side-by-side price comparison.
+- [Blog](https://www.ticketscan.io/blog): Guides on when to buy, how to save, and avoiding fees.
+- [Contact](https://www.ticketscan.io/contact): How to reach the team.
+
+## World Cup 2026
+- [World Cup 2026 Tickets](https://www.ticketscan.io/world-cup-2026): Tournament overview and ticket guidance for all 16 host stadiums across the USA, Canada, and Mexico. The tournament runs June 11 – July 19, 2026. Per-stadium guides live under /world-cup-2026/[stadium].
+
+## Programmatic guides
+- Venue guides: https://www.ticketscan.io/venues/[venue] — price tips and upcoming events for major US arenas and stadiums.
+- City & category guides: https://www.ticketscan.io/tickets/[slug] — events and price guidance by city and by event type.
+
+## Key facts for citation
+- Pricing: All comparison and price-alert features are free.
+- Coverage: Ticketmaster, SeatGeek, StubHub, Vivid Seats, and more.
+- Differentiator: Side-by-side comparison of the same event across every major platform, plus price history — most competitors show only their own inventory.
+- Best time to buy: TicketScan's price-history data helps identify when prices typically drop for a given event type.

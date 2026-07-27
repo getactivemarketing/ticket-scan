@@ -1,16 +1,20 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
 import { getAllBlogPosts, getFeaturedPosts } from '@/data/blog';
+import NewsletterSignup from '@/components/NewsletterSignup';
 
 export const metadata: Metadata = {
-  title: 'Ticket Buying Tips & Guides - Ticket Scan Blog',
+  title: 'Ticket Buying Tips & Guides',
   description: 'Expert tips on finding cheap tickets, best times to buy, and strategies for concerts, sports, and events. Save money on every purchase.',
   keywords: 'ticket tips, cheap tickets, buying guide, concert tickets, sports tickets, save money',
+  alternates: {
+    canonical: 'https://www.ticketscan.io/blog',
+  },
   openGraph: {
     title: 'Ticket Scan Blog - Expert Ticket Buying Tips',
     description: 'Learn how to find the best ticket deals with our expert guides and tips.',
     type: 'website',
-    url: 'https://ticketscan.io/blog',
+    url: 'https://www.ticketscan.io/blog',
   },
 };
 
@@ -43,15 +47,28 @@ export default function BlogPage() {
 
   const jsonLd = {
     '@context': 'https://schema.org',
-    '@type': 'Blog',
-    name: 'Ticket Scan Blog',
-    description: 'Expert tips and guides for buying tickets to concerts, sports, and events.',
-    url: 'https://ticketscan.io/blog',
-    publisher: {
-      '@type': 'Organization',
-      name: 'Ticket Scan',
-      url: 'https://ticketscan.io',
-    },
+    '@graph': [
+      {
+        '@type': 'CollectionPage',
+        '@id': 'https://www.ticketscan.io/blog#collectionpage',
+        name: 'Ticket Scan Blog',
+        description: 'Expert tips and guides for buying tickets to concerts, sports, and events.',
+        url: 'https://www.ticketscan.io/blog',
+        publisher: {
+          '@type': 'Organization',
+          name: 'Ticket Scan',
+          url: 'https://www.ticketscan.io',
+        },
+      },
+      {
+        '@type': 'BreadcrumbList',
+        '@id': 'https://www.ticketscan.io/blog#breadcrumb',
+        itemListElement: [
+          { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://www.ticketscan.io' },
+          { '@type': 'ListItem', position: 2, name: 'Blog', item: 'https://www.ticketscan.io/blog' },
+        ],
+      },
+    ],
   };
 
   return (
@@ -160,18 +177,8 @@ export default function BlogPage() {
           </section>
 
           {/* Newsletter CTA */}
-          <section className="mt-16 bg-gradient-to-br from-brand to-navy rounded-2xl p-8 text-white text-center">
-            <h2 className="text-2xl font-bold font-heading mb-2">Get Ticket Tips in Your Inbox</h2>
-            <p className="text-white/50 mb-6 max-w-xl mx-auto">
-              Subscribe to our newsletter for the latest strategies, deals, and tips
-              to save money on concerts, sports, and events.
-            </p>
-            <Link
-              href="/"
-              className="inline-block bg-white text-brand px-6 py-3 rounded-lg font-bold hover:bg-blue-50 transition-colors"
-            >
-              Subscribe Now
-            </Link>
+          <section className="mt-16">
+            <NewsletterSignup source="blog-index" />
           </section>
         </div>
       </div>

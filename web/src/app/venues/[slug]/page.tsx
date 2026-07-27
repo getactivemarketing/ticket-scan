@@ -31,18 +31,21 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     return { title: 'Venue Not Found' };
   }
 
-  const title = `${venue.name} Tickets - Compare Prices | Ticket Scan`;
+  const title = `${venue.name} Tickets - Compare Prices`;
   const description = venue.description || `Find cheap tickets for events at ${venue.name} in ${venue.city}, ${venue.state}. Compare prices across Ticketmaster, SeatGeek and more.`;
 
   return {
     title,
     description,
     keywords: venue.keywords?.join(', '),
+    alternates: {
+      canonical: `https://www.ticketscan.io/venues/${slug}`,
+    },
     openGraph: {
       title,
       description,
       type: 'website',
-      url: `https://ticketscan.io/venues/${slug}`,
+      url: `https://www.ticketscan.io/venues/${slug}`,
     },
     twitter: {
       card: 'summary_large_image',
@@ -95,17 +98,78 @@ export default async function VenuePage({ params }: PageProps) {
   const events = await getVenueEvents(slug);
 
   // JSON-LD structured data
+  const citySlug = venue.citySlug || venue.city.toLowerCase().replace(/\s+/g, '-');
+  const venueCountry = ['AB', 'BC', 'MB', 'NB', 'NL', 'NS', 'NT', 'NU', 'ON', 'PE', 'QC', 'SK', 'YT'].includes(venue.state) ? 'CA' : 'US';
+
+  // Per-event nodes from the already-fetched `events` list (same null-safe
+  // pattern proven on /tickets/[slug]): emit an `offers` block only when
+  // minPrice exists, so we never declare a price we don't have. Each event
+  // references the venue's Place node by @id rather than duplicating the address.
+  const eventListElement = events.slice(0, 5).map((event, index) => ({
+    '@type': 'ListItem',
+    position: index + 1,
+    item: {
+      '@type': 'Event',
+      name: event.name,
+      startDate: event.date,
+      eventStatus: 'https://schema.org/EventScheduled',
+      eventAttendanceMode: 'https://schema.org/OfflineEventAttendanceMode',
+      location: { '@id': `https://www.ticketscan.io/venues/${slug}#place` },
+      ...(event.minPrice
+        ? {
+            offers: {
+              '@type': 'AggregateOffer',
+              lowPrice: event.minPrice,
+              ...(event.maxPrice ? { highPrice: event.maxPrice } : {}),
+              priceCurrency: 'USD',
+              availability: 'https://schema.org/InStock',
+              url: `https://www.ticketscan.io/venues/${slug}`,
+            },
+          }
+        : {}),
+    },
+  }));
+
   const jsonLd = {
     '@context': 'https://schema.org',
-    '@type': 'EventVenue',
-    name: venue.name,
-    address: {
-      '@type': 'PostalAddress',
-      addressLocality: venue.city,
-      addressRegion: venue.state,
-      addressCountry: 'US',
-    },
-    maximumAttendeeCapacity: venue.capacity,
+    '@graph': [
+      {
+        '@type': venue.type === 'stadium' ? 'StadiumOrArena' : venue.type === 'arena' ? 'StadiumOrArena' : 'PerformingArtsTheater',
+        '@id': `https://www.ticketscan.io/venues/${slug}#place`,
+        name: venue.name,
+        description: venue.description,
+        url: `https://www.ticketscan.io/venues/${slug}`,
+        address: {
+          '@type': 'PostalAddress',
+          addressLocality: venue.city,
+          addressRegion: venue.state,
+          addressCountry: venueCountry,
+        },
+        maximumAttendeeCapacity: venue.capacity,
+      },
+      // Only surface the event list when the venue actually has upcoming events,
+      // mirroring the rendered "Upcoming Events" section below.
+      ...(eventListElement.length > 0
+        ? [
+            {
+              '@type': 'ItemList',
+              '@id': `https://www.ticketscan.io/venues/${slug}#events`,
+              name: `Upcoming Events at ${venue.name}`,
+              numberOfItems: eventListElement.length,
+              itemListElement: eventListElement,
+            },
+          ]
+        : []),
+      {
+        '@type': 'BreadcrumbList',
+        '@id': `https://www.ticketscan.io/venues/${slug}#breadcrumb`,
+        itemListElement: [
+          { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://www.ticketscan.io' },
+          { '@type': 'ListItem', position: 2, name: `${venue.city} Events`, item: `https://www.ticketscan.io/tickets/${citySlug}` },
+          { '@type': 'ListItem', position: 3, name: venue.name, item: `https://www.ticketscan.io/venues/${slug}` },
+        ],
+      },
+    ],
   };
 
   // Seating tier info
@@ -130,7 +194,7 @@ export default async function VenuePage({ params }: PageProps) {
             <nav className="text-sm mb-4">
               <Link href="/" className="text-blue-200 hover:text-white">Home</Link>
               <span className="mx-2 text-blue-300">/</span>
-              <Link href={`/tickets/${venue.city.toLowerCase().replace(' ', '-')}`} className="text-blue-200 hover:text-white">
+              <Link href={`/tickets/${citySlug}`} className="text-blue-200 hover:text-white">
                 {venue.city}
               </Link>
               <span className="mx-2 text-blue-300">/</span>
@@ -277,7 +341,7 @@ export default async function VenuePage({ params }: PageProps) {
                   More in {venue.city}
                 </h3>
                 <Link
-                  href={`/tickets/${venue.city.toLowerCase().replace(' ', '-')}`}
+                  href={`/tickets/${citySlug}`}
                   className="block text-brand hover:text-brand-dark font-medium"
                 >
                   All {venue.city} Events &rarr;

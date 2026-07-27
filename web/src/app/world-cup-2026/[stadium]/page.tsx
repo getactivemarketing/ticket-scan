@@ -25,6 +25,22 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     title: `${venue.name} World Cup 2026 Tickets - ${venue.city}`,
     description: `Find the best deals on World Cup 2026 tickets at ${venue.name} in ${venue.city}. Compare prices, view seating charts, and get ticket tips for FIFA World Cup matches.`,
     keywords: venue.keywords.join(', '),
+    alternates: {
+      canonical: `https://www.ticketscan.io/world-cup-2026/${stadium}`,
+    },
+    openGraph: {
+      type: 'website',
+      url: `https://www.ticketscan.io/world-cup-2026/${stadium}`,
+      title: `${venue.name} World Cup 2026 Tickets - ${venue.city}`,
+      description: `Compare World Cup 2026 ticket prices at ${venue.name} in ${venue.city}. Find the best deals across multiple platforms.`,
+      siteName: 'Ticket Scan',
+    },
+    twitter: {
+      card: 'summary_large_image',
+      site: '@ticketscan_io',
+      title: `${venue.name} World Cup 2026 Tickets`,
+      description: `Compare World Cup 2026 ticket prices at ${venue.name}. Track prices and find the best deals.`,
+    },
   };
 }
 
@@ -38,8 +54,86 @@ export default async function StadiumPage({ params }: Props) {
 
   const countryFlag = venue.country === 'USA' ? '🇺🇸' : venue.country === 'Canada' ? '🇨🇦' : '🇲🇽';
 
+  // Lowest advertised get-in price across ALL sections. The first dollar figure
+  // in each section's range is that tier's floor, so we scan for the true minimum
+  // rather than relying on section ordering. (The suite tier sits last in every
+  // venue's array but is the most expensive — reading only the last section
+  // reported ~$15k as the "low price.")
+  const extractLowestPrice = (): number | undefined => {
+    let lowest: number | undefined;
+    for (const section of venue.sections) {
+      const match = section.priceRange.match(/\$(\d+)/);
+      if (!match) continue;
+      const price = parseInt(match[1], 10);
+      if (lowest === undefined || price < lowest) lowest = price;
+    }
+    return lowest;
+  };
+  const lowPrice = extractLowestPrice();
+
+  // Section prices are quoted in the venue's local currency (USA → USD,
+  // Canada → CAD, Mexico → MXN). Match priceCurrency so the AggregateOffer
+  // doesn't declare a CAD/MXN figure as USD.
+  const priceCurrency = venue.country === 'Canada' ? 'CAD' : venue.country === 'Mexico' ? 'MXN' : 'USD';
+
+  const stadiumJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'StadiumOrArena',
+    '@id': `https://www.ticketscan.io/world-cup-2026/${stadium}#place`,
+    name: venue.name,
+    description: venue.description,
+    url: `https://www.ticketscan.io/world-cup-2026/${venue.slug}`,
+    address: {
+      '@type': 'PostalAddress',
+      addressLocality: venue.city,
+      addressRegion: venue.state || venue.country,
+      addressCountry: venue.country === 'USA' ? 'US' : venue.country === 'Canada' ? 'CA' : 'MX',
+    },
+    maximumAttendeeCapacity: venue.capacity,
+    event: {
+      '@type': 'SportsEvent',
+      name: `FIFA World Cup 2026 at ${venue.name}`,
+      startDate: '2026-06-11',
+      endDate: '2026-07-19',
+      image: 'https://www.ticketscan.io/logo.png',
+      location: {
+        '@id': `https://www.ticketscan.io/world-cup-2026/${stadium}#place`,
+      },
+      organizer: {
+        '@type': 'Organization',
+        name: 'FIFA',
+        url: 'https://www.fifa.com',
+      },
+      offers: {
+        '@type': 'AggregateOffer',
+        url: `https://www.ticketscan.io/world-cup-2026/${venue.slug}`,
+        priceCurrency,
+        availability: 'https://schema.org/InStock',
+        ...(lowPrice && { lowPrice: lowPrice }),
+      },
+    },
+  };
+
+  const breadcrumbJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://www.ticketscan.io' },
+      { '@type': 'ListItem', position: 2, name: 'World Cup 2026', item: 'https://www.ticketscan.io/world-cup-2026' },
+      { '@type': 'ListItem', position: 3, name: venue.name, item: `https://www.ticketscan.io/world-cup-2026/${venue.slug}` },
+    ],
+  };
+
   return (
     <div className="min-h-screen bg-gray-50">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(stadiumJsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
+      />
       {/* Hero */}
       <div className="bg-gradient-to-br from-green-600 via-green-700 to-emerald-800 text-white py-16">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">

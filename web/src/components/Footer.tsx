@@ -1,10 +1,15 @@
 import Link from 'next/link';
 import Logo from '@/components/Logo';
+import NewsletterSignup from '@/components/NewsletterSignup';
 
 export default function Footer() {
   return (
     <footer className="bg-gray-900 text-gray-300">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        {/* Newsletter capture — present on every page */}
+        <div className="border-b border-gray-800 pb-10 mb-10 max-w-xl">
+          <NewsletterSignup source="site-footer" variant="footer" />
+        </div>
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           {/* Brand */}
           <div className="col-span-1 md:col-span-2">
@@ -66,6 +71,16 @@ export default function Footer() {
               <li>
                 <Link href="/compare" className="hover:text-white transition-colors">
                   Compare Prices
+                </Link>
+              </li>
+              <li>
+                <Link href="/venues" className="hover:text-white transition-colors">
+                  Venue Guides
+                </Link>
+              </li>
+              <li>
+                <Link href="/tickets" className="hover:text-white transition-colors">
+                  Ticket Guides
                 </Link>
               </li>
               <li>
