@@ -12,12 +12,12 @@
 
 ## Global Constraints
 
-- **Never commit secrets.** The API key lives only in `~/.config/ticketscan/marketing.env`, which is outside the repo and stays `chmod 600`.
-- **Never weaken the missing-key hard abort.** It is what stops an unattended run from silently falling back to a plan-credit login. It must `exit 1`, not warn.
+- **Never commit secrets.** The key lives only in `~/.config/ticketscan/marketing.env` and `~/.codex/auth.json`, both outside the repo, both `chmod 600`.
+- **Never weaken the auth hard abort.** It is what stops an unattended run from silently falling back to a plan-credit login. It must `exit 1`, not warn. As amended in Task 2, it guards the *login mode*, not the presence of an env var.
 - **Agent prompts in `marketing-agents/prompts/` are not to be edited.** They carry tuned anti-AI voice calibration. This migration must not touch them.
-- **Pin the model explicitly.** Do not float to a default alias. Rationale matches the existing `MODEL="claude-sonnet-4-6"` comment: cost-predictable unattended runs.
+- **Pin the model explicitly.** Do not float to a default alias. Codex's unpinned default is `gpt-5.6-sol` at $5/$30 per 1M tokens — roughly 25x the pinned choice, so floating is the most expensive possible outcome for a job that runs unattended every morning.
 - **Ordering is load-bearing:** the Vercel deploy must run *before* Blotato scheduling. Blotato consumes `https://www.ticketscan.io/social/generated/*.png` URLs that 404 until deployed.
-- **Verify, don't assume, three values** (Task 1 resolves all three): the API-key env var name, the exact model ID, and the sandbox flag name. Current model IDs postdate the assistant's knowledge cutoff.
+- **All four unknowns are now RESOLVED** (Task 1, 2026-07-31) — see `docs/superpowers/plans/2026-07-27-codex-resolved-values.md`. Use those literal values; do not re-derive or guess.
 - **No automated test suite exists for these shell scripts and none is being added** — three scripts differing by one line do not justify a harness. Verification is manual, with the explicit pass criteria stated in each task.
 
 ---
@@ -103,14 +103,26 @@ git commit -m "docs: record verified Codex CLI values for agent migration"
 
 ---
 
-### Task 2: Migrate the secrets file to the OpenAI key
+### Task 2: Provision Codex auth and keep a re-provisioning copy of the key
+
+> **AMENDED 2026-07-31.** The original version of this task was wrong and would have failed
+> unattended. It assumed Codex reads an API key from the environment, mirroring how Claude Code
+> reads `ANTHROPIC_API_KEY`. **It does not.** This was tested directly: with `~/.codex/auth.json`
+> moved aside and `OPENAI_API_KEY` exported into the environment, `codex exec` fails with
+> `401 Unauthorized: Missing bearer or basic authentication in header`. Codex authenticates
+> *only* from `~/.codex/auth.json`, written by `codex login --with-api-key` reading the key on
+> **stdin**. Sourcing a key from `marketing.env` authenticates nothing.
+>
+> The env-var guard is therefore replaced by a guard that asserts what actually matters:
+> that Codex is logged in **in API-key mode** rather than via a ChatGPT plan sign-in.
 
 **Files:**
 - Modify: `~/.config/ticketscan/marketing.env` (outside the repo, not version controlled)
+- Create: `~/.codex/auth.json` (outside the repo; written by `codex login`, never hand-edited)
 
 **Interfaces:**
-- Consumes: `CODEX_KEY_VAR` from Task 1.
-- Produces: a secrets file exporting the OpenAI key, sourced by all three run scripts.
+- Produces: a Codex login in API-key mode, plus a copy of the key in `marketing.env` used *only*
+  to re-provision that login if it is lost or flipped to plan mode.
 
 - [ ] **Step 1: Back up the current file**
 
@@ -120,38 +132,62 @@ cp ~/.config/ticketscan/marketing.env ~/.config/ticketscan/marketing.env.anthrop
 
 Keeping the Anthropic key lets you roll back without hunting for it.
 
-- [ ] **Step 2: Replace the contents**
+- [ ] **Step 2: Write the OpenAI key into the secrets file**
 
-The file currently holds exactly one line: `export ANTHROPIC_API_KEY=<redacted>`. Replace it:
+The file currently holds exactly one line: `export ANTHROPIC_API_KEY=<redacted>`. Replace it.
 
-```bash
-printf 'export OPENAI_API_KEY=%s\n' '<the funded API key>' > ~/.config/ticketscan/marketing.env
-```
-
-- [ ] **Step 3: Re-assert restrictive permissions**
+Note the **leading space** before `printf`, which keeps the key out of shell history:
 
 ```bash
-chmod 600 ~/.config/ticketscan/marketing.env
-ls -la ~/.config/ticketscan/marketing.env
+ printf 'export OPENAI_API_KEY=%s\n' '<the funded API key>' > ~/.config/ticketscan/marketing.env
 ```
 
-Expected: `-rw-------`.
+This variable does **not** authenticate Codex. It exists so the runner can re-provision
+`~/.codex/auth.json` non-interactively (Step 5) without a human pasting a key at 6 AM.
 
-- [ ] **Step 4: Verify it sources cleanly and the variable is set**
+- [ ] **Step 3: Re-assert restrictive permissions on both files**
 
 ```bash
-( source ~/.config/ticketscan/marketing.env && [ -n "$OPENAI_API_KEY" ] && echo "KEY PRESENT" || echo "KEY MISSING" )
+chmod 600 ~/.config/ticketscan/marketing.env ~/.codex/auth.json
+ls -la ~/.config/ticketscan/marketing.env ~/.codex/auth.json
 ```
 
-Expected: `KEY PRESENT`. This prints presence only, never the value.
+Expected: `-rw-------` on both. `auth.json` holds the key in cleartext and must not be readable
+by other accounts.
 
-- [ ] **Step 5: Confirm nothing secret entered the repo**
+- [ ] **Step 4: Provision the Codex login from that key**
+
+```bash
+( set -a; source ~/.config/ticketscan/marketing.env; set +a
+  printf '%s' "$OPENAI_API_KEY" | codex login --with-api-key )
+codex login status
+```
+
+Expected: `Logged in using an API key - sk-proj-***<last5>`.
+
+**`codex login --with-api-key` does NOT validate the key.** It reports `Successfully logged in`
+for any string it is handed, including a malformed one. `codex login status` echoing the correct
+prefix is the only cheap check that the stored value is really a key; a live `codex exec` call is
+the only proof it is a *valid* one. Do not treat the login message as verification.
+
+- [ ] **Step 5: Confirm the auth mode, since this is the whole point of the guard**
+
+```bash
+codex login status | grep -q 'using an API key' && echo "API-KEY MODE — OK" || echo "FAIL: not API-key mode"
+```
+
+Expected: `API-KEY MODE — OK`. If it reports a ChatGPT sign-in instead, spend is silently drawing
+plan credits rather than the metered API balance — the exact class of failure that killed the
+Anthropic setup. Re-run Step 4 before continuing.
+
+- [ ] **Step 6: Confirm nothing secret entered the repo**
 
 ```bash
 cd /Applications/XAMPP/xamppfiles/htdocs/Sites/ticketscan && git status --porcelain
 ```
 
-Expected: no changes from this task. The secrets file is outside the repo by design; if it shows up here, stop and investigate.
+Expected: no changes from this task. Both `marketing.env` and `~/.codex/auth.json` live outside
+the repo by design; if either shows up here, stop and investigate.
 
 ---
 
@@ -282,28 +318,52 @@ Expected: a PNG created in the last minute. This is the riskiest single integrat
 Replace lines 12-28 (from `CLAUDE_BIN=` through the closing `fi` of the key guard) with:
 
 ```bash
-CODEX_BIN="<CODEX_BIN from Task 1>"
-MODEL="<CODEX_MODEL from Task 1>"   # pinned for cost-predictable unattended runs
-SANDBOX="<CODEX_SANDBOX from Task 1>"   # needs network egress + reads outside the workspace
+CODEX_BIN="/opt/homebrew/bin/codex"
+MODEL="gpt-5.6-luna"   # pinned for cost-predictable unattended runs
+SANDBOX="danger-full-access"   # needs network egress + reads outside the workspace
 DATE=$(date +%Y-%m-%d)
 LOG_FILE="$LOG_DIR/daily-$DATE.log"
 DRY_RUN="${DRY_RUN:-0}"
 
 # Bill to the metered OpenAI API (NOT a ChatGPT plan).
-# An API key bills per token; a saved ChatGPT sign-in draws plan credits instead.
-# launchd does not inherit the shell env, so source the key explicitly.
+# Codex authenticates ONLY from ~/.codex/auth.json — it ignores OPENAI_API_KEY in the
+# environment (verified 2026-07-31: env var set + auth.json absent => 401 Unauthorized).
+# So the guard asserts the LOGIN MODE, not the presence of a variable.
+# The key in the secrets file exists solely to re-provision that login unattended.
 SECRETS_FILE="$HOME/.config/ticketscan/marketing.env"
-if [ -f "$SECRETS_FILE" ]; then
-    # shellcheck disable=SC1090
-    source "$SECRETS_FILE"
-fi
-if [ -z "$OPENAI_API_KEY" ]; then
-    echo "FATAL: OPENAI_API_KEY not set (expected in $SECRETS_FILE). Aborting to avoid billing a ChatGPT plan." >&2
-    exit 1
+
+if ! "$CODEX_BIN" login status 2>/dev/null | grep -q 'using an API key'; then
+    echo "WARN: Codex not in API-key mode. Attempting to re-provision from $SECRETS_FILE." >&2
+    if [ -f "$SECRETS_FILE" ]; then
+        # shellcheck disable=SC1090
+        set -a; source "$SECRETS_FILE"; set +a
+    fi
+    if [ -z "${OPENAI_API_KEY:-}" ]; then
+        echo "FATAL: Codex is not in API-key mode and no OPENAI_API_KEY found in $SECRETS_FILE." >&2
+        echo "Aborting to avoid billing a ChatGPT plan instead of metered API credit." >&2
+        exit 1
+    fi
+    printf '%s' "$OPENAI_API_KEY" | "$CODEX_BIN" login --with-api-key >/dev/null 2>&1
+    if ! "$CODEX_BIN" login status 2>/dev/null | grep -q 'using an API key'; then
+        echo "FATAL: re-provisioning failed; Codex still not in API-key mode. Aborting." >&2
+        exit 1
+    fi
+    echo "Codex login re-provisioned in API-key mode." >&2
 fi
 ```
 
 Note `DRY_RUN` is declared here but not used until Task 6.
+
+**Why a self-healing guard rather than a bare check.** The failure this must prevent is Codex
+quietly running on a ChatGPT plan sign-in. That state is easy to enter by accident — running
+`codex login` interactively for unrelated work overwrites `auth.json` with plan auth, and every
+subsequent 6 AM run would then bill plan credits with no visible symptom. Re-provisioning from
+the secrets file makes the correct mode self-restoring, and the second status check means a
+failed repair still hard-aborts rather than proceeding.
+
+The guard aborts on `exit 1` in both failure paths, satisfying the "never weaken the missing-key
+hard abort" constraint. It is strictly stronger than the original: the old check confirmed a
+variable was non-empty, which — as the 401 test proved — had no bearing on how the run billed.
 
 - [ ] **Step 2: Replace the `run_agent` function**
 
@@ -332,7 +392,7 @@ run_agent() {
 $(cat "$prompt_file")"
 
     set +e
-    "$CODEX_BIN" exec --sandbox "$SANDBOX" --model "$MODEL" "$full_prompt" 2>&1 | tee -a "$LOG_FILE"
+    "$CODEX_BIN" exec --sandbox "$SANDBOX" --model "$MODEL" "$full_prompt" < /dev/null 2>&1 | tee -a "$LOG_FILE"
     local rc=${PIPESTATUS[0]}
     set -e
 
@@ -348,6 +408,16 @@ $(cat "$prompt_file")"
 `${PIPESTATUS[0]}` reads the exit code of `codex` rather than of `tee`. `set +e` around the pipeline keeps a single agent failure from aborting the whole run under the script's `set -e`, while still recording it; `set -e` is restored immediately after. Each `run_agent` returns 0 deliberately, for the same reason.
 
 **Do not split `local rc=${PIPESTATUS[0]}` into two lines.** Writing `local rc` on its own line runs a command, which overwrites `PIPESTATUS` before you read it, and `rc` silently becomes 0 — restoring the exact bug this task exists to fix. It must stay a single statement.
+
+**Do not verify this snippet by pasting it into an interactive shell.** The default shell here is
+zsh, where `PIPESTATUS` is empty (zsh spells it `$pipestatus`, and it is 1-indexed). All three
+runner scripts are `#!/bin/bash`, so the code above is correct as written — but tested by hand in
+zsh it will read as broken and invite a "fix" that breaks it for real.
+
+**`< /dev/null` is required, not optional.** `codex exec` prints `Reading additional input from
+stdin...` and blocks waiting on stdin. Under launchd there is no tty, so without the redirect the
+6 AM run can hang indefinitely rather than fail — which is worse than failing, because a hung job
+produces no failure count at all.
 
 - [ ] **Step 3: Add the failure summary before the final banner**
 
@@ -373,13 +443,27 @@ bash -n marketing-agents/scripts/run-daily.sh && echo "SYNTAX OK"
 
 Expected: `SYNTAX OK`.
 
-- [ ] **Step 5: Verify the key guard still aborts**
+- [ ] **Step 5: Verify the auth guard still aborts**
+
+Point `HOME` at an empty directory. Codex resolves `~/.codex/auth.json` through `HOME`, so this
+simulates both halves of the failure at once: no usable login *and* no secrets file to repair it
+from.
 
 ```bash
-( unset OPENAI_API_KEY; env -u OPENAI_API_KEY HOME=/tmp/nonexistent-home bash marketing-agents/scripts/run-daily.sh; echo "exit=$?" )
+( env HOME=/tmp/nonexistent-home bash marketing-agents/scripts/run-daily.sh; echo "exit=$?" )
 ```
 
-Expected: the `FATAL: OPENAI_API_KEY not set` message and `exit=1`. This confirms the load-bearing guard survived the rewrite.
+Expected: `FATAL: Codex is not in API-key mode and no OPENAI_API_KEY found ...` and `exit=1`.
+This confirms the load-bearing guard survived the rewrite.
+
+Note this test writes nothing to the real `~/.codex/`, because the fake `HOME` redirects those
+paths too. Afterwards, confirm your real login is untouched:
+
+```bash
+codex login status
+```
+
+Expected: still `Logged in using an API key - sk-proj-***<last5>`.
 
 - [ ] **Step 6: Run Agent 2 (SEO) alone — the simplest agent**
 
@@ -387,14 +471,21 @@ Agent 2 has no MCP calls and no file appends, so it isolates auth and basic file
 
 ```bash
 cd /Applications/XAMPP/xamppfiles/htdocs/Sites/ticketscan
-source ~/.config/ticketscan/marketing.env
-codex exec --sandbox '<CODEX_SANDBOX>' --model '<CODEX_MODEL>' \
-  "$(cat marketing-agents/prompts/02-seo-specialist-daily.md)"
+codex exec --sandbox danger-full-access --model gpt-5.6-luna \
+  "$(cat marketing-agents/prompts/02-seo-specialist-daily.md)" < /dev/null
 echo "exit=$?"
 ls -lt marketing-agents/output/seo-requests/ | head -3
 ```
 
+No `source` of the secrets file here — it would do nothing, since Codex reads `~/.codex/auth.json`
+and ignores the environment.
+
 Expected: exit 0 and a file dated today in `output/seo-requests/`. Read it and confirm it is real marketing analysis, not a refusal or an empty stub.
+
+**This is also the first quality read on `gpt-5.6-luna`**, which was pinned on a start-cheap,
+escalate-if-bad basis (see Global Constraints). Judge the output on substance, not just presence.
+If it is thin, generic, or ignores instructions in the prompt, re-pin `MODEL="gpt-5.6-terra"` and
+re-run this step before continuing.
 
 - [ ] **Step 7: Commit**
 
