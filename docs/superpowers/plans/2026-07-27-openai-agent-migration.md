@@ -173,8 +173,11 @@ the only proof it is a *valid* one. Do not treat the login message as verificati
 - [ ] **Step 5: Confirm the auth mode, since this is the whole point of the guard**
 
 ```bash
-codex login status | grep -q 'using an API key' && echo "API-KEY MODE — OK" || echo "FAIL: not API-key mode"
+codex login status 2>&1 | grep -q 'using an API key' && echo "API-KEY MODE — OK" || echo "FAIL: not API-key mode"
 ```
+
+Note the `2>&1`: `codex login status` writes to stderr, so a plain pipe inspects an empty stream
+and reports failure on a healthy login.
 
 Expected: `API-KEY MODE — OK`. If it reports a ChatGPT sign-in instead, spend is silently drawing
 plan credits rather than the metered API balance — the exact class of failure that killed the
@@ -332,7 +335,7 @@ DRY_RUN="${DRY_RUN:-0}"
 # The key in the secrets file exists solely to re-provision that login unattended.
 SECRETS_FILE="$HOME/.config/ticketscan/marketing.env"
 
-if ! "$CODEX_BIN" login status 2>/dev/null | grep -q 'using an API key'; then
+if ! "$CODEX_BIN" login status 2>&1 | grep -q 'using an API key'; then
     echo "WARN: Codex not in API-key mode. Attempting to re-provision from $SECRETS_FILE." >&2
     if [ -f "$SECRETS_FILE" ]; then
         # shellcheck disable=SC1090
@@ -344,13 +347,20 @@ if ! "$CODEX_BIN" login status 2>/dev/null | grep -q 'using an API key'; then
         exit 1
     fi
     printf '%s' "$OPENAI_API_KEY" | "$CODEX_BIN" login --with-api-key >/dev/null 2>&1
-    if ! "$CODEX_BIN" login status 2>/dev/null | grep -q 'using an API key'; then
+    if ! "$CODEX_BIN" login status 2>&1 | grep -q 'using an API key'; then
         echo "FATAL: re-provisioning failed; Codex still not in API-key mode. Aborting." >&2
         exit 1
     fi
     echo "Codex login re-provisioned in API-key mode." >&2
 fi
 ```
+
+**`2>&1` before the pipe is mandatory.** `codex login status` writes to **stderr**, not stdout
+(verified 2026-07-31). Piping with `2>/dev/null` — the obvious-looking way to keep the key prefix
+out of the log — discards the only line the guard inspects. The guard would then report
+"not API-key mode" on a perfectly healthy login, re-provision needlessly, fail the second check
+for the same reason, and hard-abort **every** run. Left unnoticed, that turns a cost safeguard
+into a total outage.
 
 Note `DRY_RUN` is declared here but not used until Task 6.
 

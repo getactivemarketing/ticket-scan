@@ -77,6 +77,10 @@ folded into this migration.
 - **`codex exec` blocks on stdin**, printing `Reading additional input from stdin...`. Redirect
   `< /dev/null` in unattended runs or launchd jobs can hang instead of failing. A hang is worse
   than a failure here: it produces no `AGENT FAILURES:` line at all.
+- **`codex login status` writes to stderr, not stdout.** Any guard that pipes it must use
+  `2>&1 | grep -q`. Using `2>/dev/null` — the natural instinct, to keep the key prefix out of a
+  log — inspects an empty stream, so a healthy login reads as failed. In the runner's auth guard
+  that inverts a cost safeguard into a total outage: every run would abort.
 - **`--full-auto` does not exist** in 0.145.0. The plan described it as deprecated; it is simply
   absent. Use `--sandbox`.
 - **`codex mcp` is a real subcommand**, so Task 4 can register the Banana server through the CLI
