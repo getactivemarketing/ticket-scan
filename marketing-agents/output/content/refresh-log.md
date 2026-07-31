@@ -1,5 +1,30 @@
 # Content Refresh Log
 
+## 2026-07-31 — Golden 1 Center (venues.ts) — placeholder seating data → current Sacramento event guide
+
+**Page refreshed:** `golden-1-center` in `web/src/data/venues.ts` → renders at `/venues/golden-1-center`
+
+**Why this page:** Friday refresh. Golden 1 Center was still a thin four-section placeholder with a generic description, despite a busy official August calendar and clear Sacramento intent around concert, UFC, Kings, seating-chart, and seat-view searches.
+
+**What changed:**
+
+1. **Description** — replaced the one-sentence stub with an event-aware venue guide. Added the two-deck bowl framing, the 100 Level (101-126) and 200 Level (201-222) value distinction, the warning that concert configurations vary, and current official-calendar anchors: Don Toliver (August 4), Megan Moroney (August 5), Benson Boone (August 8), UFC Sacramento (August 22), and J. Cole (August 27). Kept the TicketScan cross-platform comparison and free-alert CTA.
+2. **Sections** — expanded from 4 placeholders to 51 named areas: floor, lower bowl sections 101-126, Michelob Ultra Club, upper bowl sections 201-222, and Suite Level. The section inventory follows the venue's two-deck layout and current seating-chart references; event-specific maps can differ.
+3. **Keywords** — expanded from 4 generic terms to 9 intent-focused terms, including seating chart, seat views, Don Toliver, UFC Sacramento, J. Cole, and cheap Golden 1 Center tickets.
+
+**Guardrails honored:**
+
+- Current event names and dates come from the official Golden 1 Center events calendar checked July 31, 2026.
+- No dollar prices or TicketScan savings claims were added; the analytics report flags a July 24 price-history gap.
+- The description explicitly warns that concert layouts vary by event, so the section list is not presented as a universal concert map.
+
+**Verification:** `npx tsc --noEmit` run from `web` after the edit; no TypeScript errors introduced.
+
+**Handoffs:**
+
+- SEO: target `Golden 1 Center seating chart`, `Golden 1 Center seat views`, and Sacramento event-specific queries; no inventory-count decision was made for the separate Wrigley/Golden 1 page reconciliation request.
+- Email/Social: early-August Sacramento event cluster is a timely comparison/alert hook.
+
 ## 2026-07-18 — Hard Rock Stadium (worldcup.ts) — stale multi-match framing → Third-Place Playoff TODAY guide (France vs. England) + post-WC transition
 
 **Page refreshed:** `hard-rock-stadium` in `web/src/data/worldcup.ts` → renders at `/world-cup-2026/hard-rock-stadium`
