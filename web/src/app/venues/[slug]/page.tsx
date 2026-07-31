@@ -95,7 +95,15 @@ export default async function VenuePage({ params }: PageProps) {
     notFound();
   }
 
-  const events = await getVenueEvents(slug);
+  // Keep stale cached/API responses from publishing past events in the page
+  // or its Event JSON-LD. The API requests future events, but this boundary
+  // protects SEO output when an upstream/CDN response is older than its TTL.
+  const today = new Date();
+  today.setHours(0, 0, 0, 0);
+  const events = (await getVenueEvents(slug)).filter((event) => {
+    const eventDate = new Date(`${event.date}T00:00:00`);
+    return !Number.isNaN(eventDate.getTime()) && eventDate >= today;
+  });
 
   // JSON-LD structured data
   const citySlug = venue.citySlug || venue.city.toLowerCase().replace(/\s+/g, '-');
