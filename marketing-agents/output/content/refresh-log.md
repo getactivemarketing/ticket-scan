@@ -1,5 +1,15 @@
 # Content Refresh Log
 
+## 2026-08-01 — Golden 1 Center (venues.ts) — August calendar refresh
+
+**Page refreshed:** `golden-1-center` in `web/src/data/venues.ts` → renders at `/venues/golden-1-center`
+
+**What changed:** Updated the venue description with the current official August calendar through August 27: Don Toliver (August 4), Megan Moroney (August 5), Benson Boone (August 8), Grupo Frontera (August 12), Monster Jam (August 15-16), UFC Sacramento (August 22), and J. Cole (August 27). Added event-intent keywords for Megan Moroney, Benson Boone, Grupo Frontera, and Monster Jam. Added a reminder to compare all three marketplaces and account for fees before choosing the apparent lowest listing.
+
+**Sources:** [Golden 1 Center official events calendar](https://www.golden1center.com/events/) and [Ticketmaster venue schedule](https://www.ticketmaster.com/golden-1-center-tickets-sacramento/venue/229976), checked August 1, 2026.
+
+**Handoffs:** SEO should review the new Sacramento event-intent keywords and consider an internal link from the Sacramento city page. Email can use the near-term Sacramento concert run as a local-alert signup hook.
+
 ## 2026-07-31 — Golden 1 Center (venues.ts) — placeholder seating data → current Sacramento event guide
 
 **Page refreshed:** `golden-1-center` in `web/src/data/venues.ts` → renders at `/venues/golden-1-center`
