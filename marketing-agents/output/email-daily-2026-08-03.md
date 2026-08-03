@@ -1,0 +1,63 @@
+# Email Daily — 2026-08-03
+
+**Run date:** 2026-08-03  
+**Status:** Monitoring and content preparation only; no outbound email or drip run was triggered.
+
+## Drip Campaign
+
+- Emails sent (24h): **0 recorded**
+- By email #: E1: **0**, E2: **0**, E3: **0**, E4: **0**, E5: **0** (the live stats endpoint returned no rows)
+- Failures/bounces: **Not measurable** — no delivery log, failure field, or bounce table is exposed.
+- Opens/clicks: **Not available** — Nodemailer/Resend delivery is not connected to engagement tracking.
+- Pending users: **20 visible** (endpoint cap); **at least 19 appear due by age** among the visible records, but the full due count is unavailable.
+- Schedule: E1 day 3, E2 day 7, E3 day 14, E4 day 21, E5 day 30.
+
+## Price Alerts
+
+- Alerts triggered (24h): **0 recorded**; `/api/admin/stats` reports **0 triggered alerts ever** and **0 active alerts**.
+- Events with drops: **None recorded**.
+- Delivery failures: **Not measurable**.
+- Health check issue: `/api/admin/alerts` returns **HTTP 500** because it selects `triggered_at`, while the local schema and alert writer use `sent_at`.
+- Price-history check: **No price-history rows** were returned for the eight distinct upcoming events in today’s digest. Price deltas and recommendation changes cannot be claimed.
+
+## Subscriber Growth
+
+- New subscribers today: **0 recorded** (sources: none)
+- Unsubscribes today: **0 recorded**
+- Net: **0**
+- Total active: **4**
+- Total records: **4**
+- Source mix: `site-footer`: 1, `homepage`: 1, `test`: 1, `api-test`: 1
+
+The subscriber endpoint exposes signup and unsubscribe timestamps, but there were no records dated 2026-08-03 and no unsubscribe events in the returned dataset.
+
+## Watchlist Digest Readiness
+
+- Watchlist items: **199** across **115** users.
+- Active target prices: **0 of 199**.
+- Upcoming within 14 days, Aug. 3–17 inclusive: **9 rows / 8 users**.
+- Price movement and recommendation changes: **Unavailable** — the admin watchlist feed has no current-price fields, and the admin price-history query returned no rows for these events.
+- Expired events suppressed: **1** (WWE SummerSlam Sunday, Aug. 2).
+- Send-ready content: [watchlist-digest-2026-08-03.md](./watchlist-digest-2026-08-03.md)
+
+## Subject Line / CTA A/B Test
+
+For the eight-user near-term-event segment; volume is directional, not statistically significant.
+
+- **A — urgency:** `Your [Event] is [X] days away — set your price target`
+- **B — consumer advocate:** `[X] days until [Event]. Tell us your number before prices get weird.`
+- Preview: `You're tracking [Event]. TicketScan can watch the price once you set a target.`
+- Primary CTA: **Set my price target** → `https://www.ticketscan.io/watchlist`
+- Split: 50/50 where possible. Measure opens, CTA clicks, and target-price completion once telemetry exists.
+- CTA QA: Keep the primary CTA above the fold; link to `/watchlist`; retain the existing unsubscribe footer and sender identity.
+
+## Escalation
+
+1. Fix `/api/admin/alerts` to use `sent_at` consistently, then add a 24-hour filter and delivery-status reporting.
+2. Add durable email delivery logging with message ID, status, failure reason, bounce, and complaint state.
+3. Investigate why the daily drip job has recorded zero sends; verify `/api/admin/drip-run` in a controlled test before manually triggering it.
+4. Add target-price onboarding: **0 of 199** tracked items currently have a threshold.
+
+## Analytics Handoff (Agent 7)
+
+As of 2026-08-03: **196 users**, **0 users today**, **9 users this week**, **199 watchlist items**, **4 active subscribers**, **0 active alerts**, **0 recorded triggered alerts**, and **0 watchlist targets**. The alert endpoint failure and absent email telemetry remain instrumentation blockers.
