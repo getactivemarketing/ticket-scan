@@ -1,10 +1,11 @@
-## Today's Content Hook — 2026-08-04
-**Topic:** J. Cole plays Madison Square Garden tonight, and the Foo Fighters’ 2026 tour opens in Toronto today — two timely reminders that fans are actively comparing arena-ticket prices right now. [MSG event listing](https://www.msg.com/events-tickets/j-cole-madison-square-garden-august-2026/3B006435ED9472E6) · [Ticketmaster Foo Fighters tour announcement](https://blog.ticketmaster.com/foo-fighters-2026-tour/)
-**Angle:** Use today’s high-intent concert shopping to teach fans how to compare equivalent seats on Ticketmaster, SeatGeek, and StubHub using all-in totals, delivery terms, and buyer protection—not the lowest pre-fee number.
-**Target keyword:** how to compare concert ticket prices after fees
-**Content type:** Blog post / social snippet
+## Today's Content Hook — August 5, 2026
+
+**Topic:** The 2026 NFL preseason is about to move from offseason speculation to actual ticket-shopping urgency: the Hall of Fame Game is scheduled for August 6, followed by the first full preseason weekend August 13–15.
+**Angle:** Fans are about to encounter the classic “limited inventory” pressure cycle. TicketScan can help them check the same game across Ticketmaster, SeatGeek, and StubHub, compare the total rather than the teaser price, and set a target before clicking buy.
+**Target keyword:** NFL preseason tickets 2026
+**Content type:** Social snippet / email hook / venue-page update
 **Priority:** High
 
-**Lead magnet opportunity:** Pair this article with a one-page “All-In Ticket Price Comparison Checklist” for Email Agent.
+**Source:** [NFL 2026 preseason schedule](https://www.nfl.com/news/2026-nfl-preseason-complete-team-by-team-opponents)
 
-**SEO request:** Consider an internal-link cluster around “ticket fees,” “Ticketmaster vs SeatGeek,” “StubHub fees,” and “best time to buy concert tickets.”
+**Lead-magnet opportunity:** Turn today’s checklist post into a one-page “5 Signs You’re About to Overpay” download for Email Agent. The natural follow-up is a short sequence about all-in totals, target prices, and comparing three marketplaces.
