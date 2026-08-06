@@ -95,8 +95,14 @@ run_agent "Email Marketing — Weekly"           "$PROMPTS_DIR/05-email-marketin
 run_agent "Analytics & Intelligence — Weekly"  "$PROMPTS_DIR/07-analytics-intelligence-weekly.md"
 run_agent "Growth & Retention — Weekly"        "$PROMPTS_DIR/08-growth-retention-weekly.md"
 
-if [ -n "$(git status --porcelain marketing-agents/output)" ]; then
-    git add marketing-agents/output
+# Commit agent deliverables AND any source the agents edited — see run-daily.sh
+# for why: `vercel --prod` ships the working directory, so an uncommitted
+# web/src edit goes live untracked.
+COMMIT_PATHS=(marketing-agents/output web/src)
+if [ -n "$(git status --porcelain -- "${COMMIT_PATHS[@]}")" ]; then
+    echo "Agent-edited source (review these):" | tee -a "$LOG_FILE"
+    git status --porcelain -- web/src | tee -a "$LOG_FILE"
+    git add -- "${COMMIT_PATHS[@]}"
     git commit -m "Weekly analysis agent output — Friday $DATE" | tee -a "$LOG_FILE"
     git push origin main 2>&1 | tee -a "$LOG_FILE" || echo "Push failed" | tee -a "$LOG_FILE"
 fi

@@ -151,14 +151,23 @@ run_agent "Agent 8: Growth & Retention"        "$PROMPTS_DIR/08-growth-retention
 echo "" | tee -a "$LOG_FILE"
 echo ">>> Committing outputs — $(date +%H:%M:%S)" | tee -a "$LOG_FILE"
 cd "$PROJECT_DIR"
+# Commit agent deliverables AND any source the agents edited. `vercel --prod`
+# uploads the working directory, not a git ref, so a web/src edit ships to
+# production whether or not it is committed. Leaving it untracked let prod
+# drift from git silently for days. Recording it here means `git log` is an
+# accurate account of what is live, and a bad edit can be found and reverted.
+COMMIT_PATHS=(marketing-agents/output web/src)
 if [ "$DRY_RUN" = "1" ]; then
     echo "[DRY_RUN] Skipping output commit and push" | tee -a "$LOG_FILE"
-elif [ -n "$(git status --porcelain marketing-agents/output)" ]; then
-    git add marketing-agents/output
+elif [ -n "$(git status --porcelain -- "${COMMIT_PATHS[@]}")" ]; then
+    echo "Agent-edited source (review these):" | tee -a "$LOG_FILE"
+    git status --porcelain -- web/src | tee -a "$LOG_FILE"
+    git add -- "${COMMIT_PATHS[@]}"
     git commit -m "Daily marketing agent output — $DATE
 
 Automated daily run of all 8 marketing agents.
-See marketing-agents/output/ for agent deliverables." | tee -a "$LOG_FILE"
+See marketing-agents/output/ for agent deliverables.
+Any web/src changes were made by the agents and are already live." | tee -a "$LOG_FILE"
     git push origin main 2>&1 | tee -a "$LOG_FILE" || echo "Push failed" | tee -a "$LOG_FILE"
 else
     echo "No output changes to commit" | tee -a "$LOG_FILE"
