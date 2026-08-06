@@ -4,6 +4,9 @@ import Link from 'next/link';
 export const metadata: Metadata = {
   title: 'Terms of Service - Ticket Scan',
   description: 'Terms of Service for Ticket Scan. Read our terms and conditions for using our ticket comparison service.',
+  alternates: {
+    canonical: 'https://www.ticketscan.io/terms',
+  },
 };
 
 export default function TermsPage() {

@@ -75,6 +75,7 @@ export default async function StadiumPage({ params }: Props) {
   // Canada → CAD, Mexico → MXN). Match priceCurrency so the AggregateOffer
   // doesn't declare a CAD/MXN figure as USD.
   const priceCurrency = venue.country === 'Canada' ? 'CAD' : venue.country === 'Mexico' ? 'MXN' : 'USD';
+  const tournamentCompleted = new Date() > new Date('2026-07-19T23:59:59Z');
 
   const stadiumJsonLd = {
     '@context': 'https://schema.org',
@@ -95,6 +96,9 @@ export default async function StadiumPage({ params }: Props) {
       name: `FIFA World Cup 2026 at ${venue.name}`,
       startDate: '2026-06-11',
       endDate: '2026-07-19',
+      eventStatus: tournamentCompleted
+        ? 'https://schema.org/EventCompleted'
+        : 'https://schema.org/EventScheduled',
       image: 'https://www.ticketscan.io/logo.png',
       location: {
         '@id': `https://www.ticketscan.io/world-cup-2026/${stadium}#place`,
@@ -104,13 +108,20 @@ export default async function StadiumPage({ params }: Props) {
         name: 'FIFA',
         url: 'https://www.fifa.com',
       },
-      offers: {
-        '@type': 'AggregateOffer',
-        url: `https://www.ticketscan.io/world-cup-2026/${venue.slug}`,
-        priceCurrency,
-        availability: 'https://schema.org/InStock',
-        ...(lowPrice && { lowPrice: lowPrice }),
-      },
+      // Do not publish an active ticket offer after the tournament ends. The
+      // seating-guide prices remain useful editorial context, but InStock
+      // markup would claim that this completed event still has inventory.
+      ...(tournamentCompleted
+        ? {}
+        : {
+            offers: {
+              '@type': 'AggregateOffer',
+              url: `https://www.ticketscan.io/world-cup-2026/${venue.slug}`,
+              priceCurrency,
+              availability: 'https://schema.org/InStock',
+              ...(lowPrice && { lowPrice: lowPrice }),
+            },
+          }),
     },
   };
 

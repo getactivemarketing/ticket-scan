@@ -4,6 +4,9 @@ import Link from 'next/link';
 export const metadata: Metadata = {
   title: 'Privacy Policy - Ticket Scan',
   description: 'Privacy Policy for Ticket Scan. Learn how we collect, use, and protect your personal information.',
+  alternates: {
+    canonical: 'https://www.ticketscan.io/privacy',
+  },
 };
 
 export default function PrivacyPage() {

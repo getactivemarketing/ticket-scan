@@ -2287,7 +2287,7 @@ The resale market for knockout rounds moves fast. If you see a price that works,
   {
     slug: 'world-cup-final-2026-platforms-compared-price-fees-protection',
     title: 'World Cup Final 2026: 5 Ticket Platforms Compared on Price, Fees, and Buyer Protection',
-    excerpt: 'Three days out, here\'s how FIFA Resale, Ticketmaster, SeatGeek, StubHub, and Vivid Seats compare on price, fees, and what happens if your ticket fails at the gate.',
+    excerpt: 'A data-backed comparison of FIFA Resale, Ticketmaster, SeatGeek, StubHub, and Vivid Seats on World Cup Final price, fees, and buyer protection.',
     category: 'comparisons',
     tags: ['world cup 2026', 'world cup final', 'stubhub', 'seatgeek', 'ticketmaster', 'ticket fees', 'metlife stadium', 'buyer protection'],
     author: 'Ticket Scan Team',
@@ -2297,7 +2297,7 @@ The resale market for knockout rounds moves fast. If you see a price that works,
     content: `
 # World Cup Final 2026: 5 Ticket Platforms Compared on Price, Fees, and Buyer Protection
 
-The World Cup Final is two days away. MetLife Stadium. July 19. 82,500 seats. Two nations. One match.
+The World Cup Final was played at MetLife Stadium on July 19. This comparison preserves the buying decision that mattered before kickoff — and the fee and buyer-protection lessons that still matter for future high-demand events.
 
 If you still need a ticket, you're making a high-stakes decision under time pressure — the exact moment buyers get taken. This comparison is not about which platform you've heard of. It's about which one costs you the least, protects you the most, and actually delivers a working ticket when you walk through the gate on Sunday.
 
