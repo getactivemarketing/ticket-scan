@@ -13,7 +13,7 @@ const BASE_URL = 'https://www.ticketscan.io';
 // crawl, which trains search engines to ignore our <lastmod>. Bump this when the
 // venue/city/category/World Cup data sets are meaningfully revised.
 // (Blog posts use their own real publishedAt/updatedAt dates below.)
-const CONTENT_LAST_MODIFIED = new Date('2026-07-20');
+const CONTENT_LAST_MODIFIED = new Date('2026-08-01');
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const lastModified = CONTENT_LAST_MODIFIED;

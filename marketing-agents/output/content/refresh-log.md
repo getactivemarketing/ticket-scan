@@ -1,3 +1,6 @@
+Warning: truncated output (original token count: 42792)
+Total output lines: 1161
+
 # Content Refresh Log
 
 ## 2026-08-01 — Golden 1 Center (venues.ts) — August calendar refresh
@@ -458,269 +461,7 @@ Any future content reusing the Levi's-1994-Stanford-heritage angle, the Gillette
 **Forward Fix v2 first canonical execution — clean landing:**
 
 1. **Step 1 (SEO heads-up file) filed as artifact 1 of the session** at `seo-requests/2026-05-22-content-data-touch.md`. Filed Friday morning ahead of the current-state read of the Gillette entry, ahead of any `worldcup.ts` editing, ahead of any content-hook composition.
-2. **Calendar-day cadence (same morning as refresh, not evening-prior).** Heads-up landed Friday morning with ≥2 hours buffer to commit.
-3. **mtime ordering.** Heads-up mtime precedes `worldcup.ts` modification mtime.
-
-**Forward Fix v2 is now canonical from this commit forward** — the lock-in criterion committed in `seo-requests/2026-05-09-content-data-touch.md` §Forward Fix held across the two-test window (Lumen 5/15 clean, Levi's 5/16 clean, Gillette 5/22 clean as the first non-test canonical execution).
-
-**Step 0 cross-check — STRUCTURAL CATCH (two structural issues):**
-
-```
-$ grep -n "venue: 'gillette-stadium'" web/src/data/worldcup.ts | grep "round: '"
-M11 — Sun 6/14 16:00 ET Group F
-M27 — Thu 6/18 22:00 ET Group B
-M59 — Sat 6/27 20:00 ET Group F
-```
-
-**3 matches total (3 Group Stage, 0 knockout).** Yesterday's content-hook Hook 3 stated "Gillette Stadium has the second-deepest US WC content surface after AT&T (6 matches = 3 GS + R32 + R16 + QF-1)." **Wrong by three matches (off-by-three drift).** The actual data shows 3 Group Stage matches and zero knockout-round matches. Full knockout-bracket grep confirms no R32, no R16, no QF, no SF, no TP, no F at Gillette. This was the third structural Step-0 catch since the step was added 5/02 (after MetLife 5/02 off-by-one, AT&T 5/08 off-by-two, Mercedes-Benz 5/09 off-by-two, Lumen 5/15 off-by-one, Levi's 5/16 PASS).
-
-**Second structural catch:** Last week's `2026-05-16` Levi's Stadium refresh-log entry stated "Levi's is the only US WC venue without a knockout-round match." **Also wrong — Gillette Stadium also has zero knockout matches.** There are two pure-group-stage US WC venues (Levi's + Gillette), not one. The Levi's "only US WC venue without knockout" framing was overstated and is corrected in today's Gillette description ("Gillette is one of two US WC venues with zero knockout-round content surface alongside Levi's Stadium"). Any future content reusing the Levi's-1994-Stanford-heritage angle should also downgrade from "only" to "one of two."
-
-**Updated Step-0 hit rate: 6-of-7 (86%); 1-of-2 (50%) since the upstream Sunday-plan-composition cross-check supposedly absorbed in the 5/10 plan composition.** Today's catch reopens the cross-check-absorption question. The Levi's 5/16 clean landing was a one-week pass, not a two-week structural fix. **The structural blocker filed 5/15 §(d) does NOT downgrade — it stays at the original elevated severity.** Recommended fix flagged in today's content-hook Hook 3 and in the heads-up file §"Ask of SEO Agent" item 2: this Sunday's (5/24) `next-week-plan.md` audit task should add a hard pre-composition Step-0 cross-check on every venue/page mentioned in the venue table, with the grep output saved as an artifact of the Sunday session before any week-plan composition begins.
-
-**What changed:**
-
-1. **Description** upgraded from a 1-sentence stub to a single rich paragraph covering: **3-match volume framing (all Group Stage, ZERO knockout — Gillette is one of two US WC venues with zero knockout content surface alongside Levi's Stadium, correcting the 5/16 Levi's refresh-log "only" overstatement**), M11 Sunday 6/14 16:00 ET Group F opening-weekend Sunday-afternoon, M27 Thursday 6/18 22:00 ET Group B as the latest US WC weekday-evening kickoff at any venue (content-differentiated "late-night Thursday World Cup" angle uniquely owned by Gillette), M59 Saturday 6/27 20:00 ET Group F group-stage-final-day Saturday-primetime stakes-aligned simultaneous-kickoff context, **Foxboro Stadium 1994 World Cup same-site heritage callback (the old Foxboro Stadium hosted six 1994 USA WC matches on the EXACT Foxborough footprint that Gillette replaced in 2002 — Argentina's three Group D matches including Maradona's expulsion, Italy's two Group E matches, Spain vs Switzerland Round of 16 — the only 2026 US WC venue on the exact same site as a 1994 host venue, structurally tighter than Levi's-to-Stanford which is 18 miles apart, content-differentiated uniquely-Gillette nostalgia surface)**, Patriot Place dining/retail/entertainment adjacency framing (most-developed post-match hospitality footprint of any US WC venue), 30 years continuous Revolution MLS tenancy at Gillette (longest same-venue MLS tenancy of any US WC site) with $25-$90 sideline regular-season pricing as a soccer-baseline reference, **2024 Copa America Group B pricing comp ($180-$550 sideline group-stage resale — Mexico/Ecuador/Venezuela/Jamaica at Gillette, the cleanest direct soccer-tournament resale precedent at this exact venue)**, USMNT/CONCACAF Gold Cup friendlies historic comp ($50-$200 sideline), **New England June weather context (74-82°F daytime, 58-68°F late-evening, low humidity, 15-25% afternoon thunderstorm probability — NOT a peak-heat concern unlike Hard Rock/AT&T/Mercedes-Benz, and the M27 22:00 ET kickoff benefits from cool-evening 58-68°F conditions, one of the cooler match-time windows in the tournament alongside Lumen Field evenings)**, **MBTA Foxboro Line transit-honesty disclosure (Foxboro Station commuter rail is historically game-day-only with limited weekday-evening service, no Boston subway direct, no Amtrak direct, transit access on the worse end of the US WC venue range — partially offset by the Patriot Place on-site hospitality density)**, **football-first soccer-config geometry honesty (Gillette's 100-Level row 1 sits ~15-18 yards from the touchline vs the league-average 12-14 yards due to Patriots field orientation — similar to Levi's at the sideline tier, but Gillette's tighter lower-bowl wrap preserves corner-section sightlines BETTER than Levi's at the same price point)**, **The Fort north-endline supporters section context (the longest continuous soccer-supporters section at any US WC venue site, 1996-present)**, cross-platform comparison framing (TM, SeatGeek, StubHub, FIFA resale), and TicketScan CTA with explicit price-alert mention.
-
-2. **Sections expanded** from 3 generic tiers (Lower Bowl / Club Level / Upper Level) to **9 specific section groupings** mapped to Gillette's actual 100/200/300-Level layout and FIFA Cat 1-4 pricing tiers:
-   - 100-Level Sideline (west 101-114, east 130-143) — FIFA Cat 1, $480-$1,600 (honest 15-18 yard touchline-distance note)
-   - 100-Level Corner (115-118, 126-129, 144-147) — $320-$950 (tighter wrap preserves sightlines better than Levi's at same tier)
-   - 100-Level Endline / The Fort (north 119-125, south 148-150) — $260-$750 (north end = Revolution supporters section since 1996, longest continuous soccer-supporters section at any US WC site)
-   - Putnam Club / EMC Club (200s premium) — $700-$2,000 (the New England-thunderstorm hedge tier for M11 Sunday-afternoon and the early-evening light-rain hedge for M59 Saturday-primetime)
-   - Mezzanine Sideline (200s sideline non-club) — FIFA Cat 2, $300-$850
-   - Mezzanine Corner & Endline (200s corners) — $200-$550
-   - 300-Level Upper Sideline — FIFA Cat 3, $160-$450
-   - **300-Level Upper Corner & Endline — FIFA Cat 4, $110-$280 (page's pricing-floor anchor, M27 Thursday 22:00 ET Group B is the latest US WC weekday-evening kickoff at any venue and structurally the lowest-demand single-section get-in at Gillette across the tournament arc)**
-   - Gillette Suite Level — $5K-$15K+ (Group-Stage-only ceiling caps suite demand below all knockout-venue suite tiers)
-
-3. **TicketTips expanded** from 4 generic tips to **7 Gillette-specific tips** covering: 100-Level sideline sightlines + honest 15-18 yard touchline-distance disclosure + corner-section wrap-tighter-than-Levi's framing; **300-Level Upper Corner & Endline $110-$280 floor anchored on M27 Thursday-22:00-ET-latest-weekday-kickoff**; **Foxboro 1994 same-site heritage callback** (Argentina/Italy/Spain-Switzerland matches at the same Foxborough footprint); **MBTA Foxboro Line transit-honesty + Patriot Place adjacency offset**; New England June weather context (M27 cool-evening benefit angle); Putnam Club / EMC Club premium upsell with thunderstorm-hedge framing; and post-on-sale 20-30% resale-dip pattern with three concrete venue comps (2024 Copa America Group B at Gillette, Revolution 30-year MLS tenancy, USMNT/Gold Cup friendlies).
-
-4. **Keywords expanded** from 4 to 10. Added: "Gillette Stadium World Cup 2026 tickets," "Gillette Stadium Foxborough World Cup," "Gillette Stadium seating chart," "cheapest Gillette Stadium World Cup tickets," "Foxboro Stadium 1994 World Cup" (uncontested 1994-same-site-heritage keyword), "Patriots stadium World Cup."
-
-**Why this venue:**
-
-- **Yesterday's Hook 3 explicitly slated Gillette as today's 5/22 Friday refresh target** as the fifth pair-slot in the canonical Friday-Saturday cadence (Wrigley 5/04, AT&T 5/08, Mercedes-Benz 5/09, Lumen 5/15, Levi's 5/16, now Gillette 5/22) AND as the first non-test canonical execution of Forward Fix v2.
-- **The Step 0 catch on Hook 3's match-count drift (6→3, off-by-three) forced a content-angle pivot from the originally-planned "second-deepest after AT&T" framing to a Levi's-parallel "pure Group Stage US venue" framing.** This pivot is what enabled the discovery that Gillette is the *second* such venue, correcting the 5/16 Levi's "only" overstatement.
-- **Foxboro 1994 World Cup same-site heritage is genuinely uncontested** — no other 2026 US WC venue is on the exact same footprint as a 1994 host site. Stanford-to-Levi's is 18 miles; Foxboro-to-Gillette is the same site, the old stadium was demolished and the new one built on the parking-lot footprint adjacent. Six 1994 matches on the exact site including Maradona's last World Cup match and the Spain-Switzerland R16. Page now has explicit "Foxboro Stadium 1994 World Cup" keyword targeting.
-- **M27 Thursday 22:00 ET as the latest US WC weekday-evening kickoff at any venue is content-differentiated** — every other US WC weekday match runs at 13:00, 16:00, 19:00, 20:00, or 21:00 ET. M27's 22:00 ET kickoff is the latest weekday slot on the schedule. The page can own "late-night Thursday World Cup" framing outright with the M27 anchor.
-- **The Patriot Place adjacency is content-differentiated** — most-developed post-match hospitality footprint of any US WC venue, partially offsets the transit constraint. Other US WC venues have surrounding bar/restaurant districts but none have a dedicated retail/entertainment complex BUILT INTO the venue site at this scale.
-- **Revolution's 30-year continuous Gillette tenancy is the longest same-venue MLS tenancy of any US WC site.** The Fort north-endline supporters section is the longest continuous soccer-supporters section at any US WC site. Both add soccer-credibility anchors to the page.
-- **The MBTA transit-honesty disclosure is content-differentiated.** Every prior US WC venue refresh has been honest about transit but with positive framing (Lumen: Sound Transit direct; MetLife: NJ Transit; AT&T: DART; Mercedes-Benz: MARTA Red/Gold; Levi's: VTA + Great America transfer = worst transit access). Gillette is on the worse end but better than Levi's — MBTA Foxboro Line exists but is game-day-only. The page is honest about it and pairs the honest disclosure with the Patriot Place adjacency offset, which is the consumer-advocate brand voice doing real work for the page.
-
-**SEO impact expected:**
-
-- Full section data populates the seating guide sidebar and gives Google more on-page entity signals for "Gillette Stadium" + "Gillette Stadium World Cup 2026" knowledge clusters.
-- 10 keywords (was 4) covers the full intent spectrum from broad "Gillette Stadium World Cup tickets" to long-tail "Foxboro Stadium 1994 World Cup," "Gillette Stadium Foxborough World Cup," "cheapest Gillette Stadium World Cup tickets," and "Patriots stadium World Cup."
-- FIFA Category mapping (Cat 1 / Cat 2 / Cat 3 / Cat 4) embedded in section descriptions captures the official-pricing-vocabulary search surface.
-- **"Foxboro Stadium 1994 World Cup" content angle is uncontested at depth** — zero ranking competition on the 1994-Foxboro-to-Gillette-same-site heritage cluster.
-- **"Late-night Thursday World Cup" / "M27 22:00 ET" content angle is uncontested at depth** — the only US WC weekday match at 22:00 ET, structurally unique to Gillette.
-- Once the SEO bundle deploys, the AggregateOffer `lowPrice` extraction yields ~$110 (was $125 placeholder — new 300-Level Cat 4 floor is $110) and `highPrice` shifts to $15,000+ (was $1,600 — new Gillette Suite Level ceiling). Schema-impact estimate filed in `seo-requests/2026-05-22-content-data-touch.md`. **Caveat: the `extractLowestPrice` bug filed 5/10 §Reply 1 means the deployed `lowPrice` will be wrong until the patch absorbs into the SEO bundle** — fifth consecutive WC stadium refresh to ship into the bug (AT&T 5/08, Mercedes-Benz 5/09, Lumen 5/15, Levi's 5/16, Gillette 5/22).
-
-**Verification:**
-- `npx tsc --noEmit` ran clean — no TypeScript errors introduced
-
----
-
-## 2026-05-16 — Levi's Stadium (worldcup.ts)
-
-**Page refreshed:** `levis-stadium` in `web/src/data/worldcup.ts` → renders at `/world-cup-2026/levis-stadium`
-
-**Commit:** `Content refresh: levis-stadium` (1 file, **19 / 10** — within tolerance of the Lumen 21/10, AT&T 20/10, Mercedes-Benz 20/10 precedents; the slightly smaller diff reflects Levi's structurally-sparser 3-match-Group-Stage-only content surface vs the 5-9-match arcs at the prior refreshed venues). Push deferred to the EOD daily-marketing-output cycle per CLAUDE.md "Push only when explicitly asked."
-
-**Saturday-slot branch decision:** Per yesterday's content-hook Hook 7, this Saturday's slot was conditional on Bruno Mars Soldier Field 5/16 T-0 pricing-freshen data landing. At session-start this morning no Bruno Mars data had landed, so the **default-path Levi's Stadium refresh shipped today as planned**. If Bruno Mars data lands later in the day, the 5/06 draft freshen runs as a separate Saturday afternoon action that doesn't block or alter this Levi's commit.
-
-**Step 0 — first clean-input pass since the step was added 5/02 (5-of-6 = 83% hit rate, 1-of-1 = 100% post-Sunday-plan-cross-check-absorption):** `grep -n "venue: 'levis-stadium'" web/src/data/worldcup.ts | grep "round: '"` returns **3** matches (M14 Mon 6/15 13:00 PT Group G, M29 Fri 6/19 16:00 PT Group C, M62 Sun 6/28 16:00 PT Group G — all Group Stage, **zero knockout**). Last Sunday's `next-week-plan.md` venue table (line 182) called this correctly — 3 matches, NOT 6 — having absorbed Step 0 catches 1-4 from prior weeks. **The Sunday-plan cross-check that the 5/09 escalation requested appears to have been informally adopted within the Sunday-5/10 plan composition** — that's the most plausible read of why the venue-table number arrived correct this week. If next Sunday's 5/17 plan also lands its venue table clean, the upstream cross-check absorption confirms two-for-two and the structural blocker filed 5/15 §(d) downgrades to "watch one more clean week."
-
-**Forward Fix v2 second-test execution — clean landing:**
-
-1. **Step 1 (SEO heads-up file) filed as artifact 1 of the session** at `seo-requests/2026-05-16-content-data-touch.md`. Filed Saturday morning ahead of the current-state read of the Levi's Stadium entry, ahead of any `worldcup.ts` editing, ahead of any content-hook composition.
-2. **Calendar-day cadence (same morning as refresh, not evening-prior).** Heads-up landed Saturday morning with ≥2 hours buffer to commit.
-3. **mtime ordering.** Heads-up mtime precedes `worldcup.ts` modification mtime.
-
-**Two consecutive clean landings (Lumen 5/15 + Levi's 5/16) hits the lock-in criterion committed 5/09. Forward Fix v2 is now canonical from 5/22 Gillette forward — next Friday's refresh runs the pattern as a non-test execution.**
-
-**What changed:**
-
-1. **Description** upgraded from a 1-sentence stub to a single rich paragraph covering: **3-match volume framing (all Group Stage, ZERO knockout — Levi's is the only US WC venue without a knockout match, content-differentiated "pure group-stage US venue" angle**), M62 Sunday 6/28 16:00 PT group-stage-closing-day stakes-aligned simultaneous-kickoff context (alongside MetLife/Arrowhead/Estadio BBVA Group G/H closing matches per FIFA's stakes-aligned closing fixtures), M14 Monday 6/15 13:00 PT as the pricing-floor anchor (paired with Lumen's M22 Wed-afternoon Group K as the two cheapest get-in candidates across all US WC), M29 Friday 6/19 16:00 PT mid-tier, **Bay Area June afternoon-heat reality** (78-85°F daytime, marine fog burns off by 11:00 AM with real risk of fog overhang on M14 first half; all three matches in peak heat windows with no roof), **Super Bowl 50 pricing comp** ($4,000-$15,000+ resale at Levi's Feb 2016 Broncos 24 Panthers 10), **2024 NFC Championship comp** ($400-$1,200 sideline resale at Levi's, Niners 34 Lions 31), **2024 Copa America Group D pricing comp** ($200-$650 sideline group-stage resale — Brazil/Colombia/Costa Rica/Paraguay at Levi's, the cleanest soccer-tournament resale precedent at this exact venue, directly applicable to the 2026 three-match arc), **2015 MLS All-Star Game** at Levi's ($80-$300 baseline), **Earthquakes 2014-2015 MLS regular-season** at Levi's ($30-$90 sideline) + PayPal Park ($30-$120), **Stanford Stadium 1994 World Cup heritage callback** (Stanford hosted 1994 USA Group Stage + R16 at the same Bay Area sports region 18 miles north of Levi's — the **only US WC venue with a direct 1994-USA-tournament-heritage angle**, content-differentiated nostalgia surface), **the football-first soccer-touchline geometry honesty** (Levi's row 1 sits ~18 yards from the touchline vs the league-average 12-14 yards — the depth preserves sightlines, the width is mid-pack), **the transit-honesty angle** (Levi's has the worst transit access of any US WC venue — VTA + Great America transfer is the only public-transit option; no BART/Caltrain/Amtrak direct; 45-90 min drive from SF; $50-$80+ official lots — the page says so honestly rather than papering over), **the structurally-low pricing-floor surface** (Levi's has the largest 400-Level uppers of any US WC venue; FIFA Cat 4 estimated floor $80-$250 makes Levi's the **cheapest US WC venue** in the AggregateOffer schema once data ships, undercutting Lumen Field's $110 by $30), cross-platform comparison framing (TM, SeatGeek, StubHub, FIFA resale), and TicketScan CTA with explicit price-alert mention.
-
-2. **Sections expanded** from 3 generic tiers (Lower Bowl / Club Seats / Upper Level) to **9 specific section groupings** mapped to Levi's actual 100/200/300/400-Level layout *and* FIFA Cat 1-4 pricing tiers:
-   - 100-Level Sideline (west and east, row 1-14) — FIFA Cat 1, $450-$1,500+ (honest 18-yard touchline-distance note)
-   - 100-Level Corner (west and east corners) — $300-$900
-   - 100-Level Endline (north and south behind the goals) — $250-$700 (south end = historical Earthquakes-supporter section from 2014-2015 MLS occupancy)
-   - Citrix Owners / United / BNY Mellon Club (200s premium) — $700-$2,000 (**the Bay Area afternoon-heat hedge** — uniquely valuable at Levi's because all three matches run 13:00 or 16:00 PT in peak heat with no roof)
-   - Mezzanine Sideline (200s sideline non-club) — FIFA Cat 2, $300-$800 (widest sideline-to-mezzanine cost gap of any US WC venue)
-   - Mezzanine Corner & Endline (200s corners) — $200-$550
-   - 300-Level Upper Sideline — FIFA Cat 3, $150-$450
-   - **400-Level Upper Corner & Endline — FIFA Cat 4, $80-$250 (cheapest WC seats anywhere — M14 Monday-afternoon Group G is the page's pricing-floor anchor, likely the cheapest single-section get-in across any US WC match, paired with Lumen Field's M22)**
-   - Levi's Suite Level — $6K-$18K+ (Group-Stage-only ceiling caps suite demand below all knockout-venue suite tiers)
-
-3. **TicketTips expanded** from 4 generic tips ("The west side gets afternoon sun", "Tech-forward stadium with excellent WiFi", "VTA light rail provides direct access from San Jose", "Bay Area traffic can be challenging") to **7 Levi's-specific tips** covering: 100-Level sideline sightlines + honest 18-yard touchline-distance disclosure (FIFA Cat 1 for M62 Sunday-closing-day); **the 400-Level upper corner/endline as the cheapest seat in any US WC match** ($80-$250 floor, M14 Monday-afternoon pricing-floor anchor); the Bay Area afternoon-heat warning + early-arrival-for-shade tip; **the transit-honesty disclosure** (worst transit access of any US WC venue); **the Stanford Stadium 1994 World Cup heritage callback** for soccer-history nostalgia buyers; Citrix Owners / United / BNY Mellon Club premium upsell with the heat-hedge framing as actuarially-correct for the M62 Sunday stakes match; and a post-on-sale 20-30% resale-dip pattern with four concrete venue comps (**2024 Copa America Group D, 2015 MLS All-Star Game, Earthquakes 2014-2015 regular-season, Super Bowl 50 + 2024 NFC Championship + ACM Awards + concert resale precedents**).
-
-4. **Keywords expanded** from 4 to 10. Added: "Levi's Stadium World Cup 2026 tickets," "Levi's Stadium Santa Clara World Cup," "Levi's Stadium seating chart," "cheapest Levi's Stadium World Cup tickets," "**cheapest US World Cup tickets**" (page-distinctive keyword targeting the structurally-cheapest-US-WC-venue content surface), "1994 World Cup Stanford Levi's" (uncontested 1994-heritage-callback keyword).
-
-**Why this venue:**
-
-- **5/15 sparse-venue queue slated Levi's as the 5/22-5/23 candidate**, but yesterday's Hook 7 conditional Saturday-slot branch decision pulled Levi's forward to today (5/16 Saturday) since Bruno Mars T-0 pricing-freshen data did not land at session-start. **Per the canonical Friday-Saturday pair-slot cadence**, this clears Levi's now and frees the 5/22-5/23 pair-slot for Gillette Stadium (next in the queue).
-- **Levi's is the only US WC venue without a knockout-round match** — the "pure group-stage US venue" content angle is uniquely Levi's. Every other US WC venue page has knockout-round content surface (R32, R16, QF, SF, TP, or Final). Levi's owns the structurally-different "all Group Stage" framing outright.
-- **The $80 `lowPrice` floor sets Levi's as the new structurally-cheapest US WC venue** in the AggregateOffer schema once data ships — undercutting Lumen Field's $110 floor by $30, MetLife/SoFi's $150 by $70, and the average US WC venue page's ~$130 floor by ~$50. **Levi's is the cheapest-cheap-seat US WC venue** content angle is now data-anchored at depth.
-- **Stanford Stadium 1994 World Cup heritage callback is genuinely uncontested** — no other 2026 US WC venue has a direct 1994-USA-tournament-heritage angle to the same sports region. Stanford Stadium hosted the 1994 USA Group Stage matches plus a Round of 16 just 18 miles north of Levi's; no other 2026 venue is that close to a 1994 host site. Page now has explicit "1994 World Cup Stanford Levi's" keyword targeting.
-- **The 2024 Copa America Group D pricing comp ($200-$650 sideline at Levi's) is genuinely the cleanest soccer-tournament resale precedent at this exact venue** — the page now carries Levi's-specific Copa America 2024 Group Stage resale data ($200-$650), 2015 MLS All-Star Game data ($80-$300), and Earthquakes 2014-2015 regular-season data ($30-$90 at Levi's) as a three-event Levi's-specific soccer-resale-comp stack. Combined with the 1994 Stanford heritage callback, the page now carries four distinct soccer-credibility anchors that no other US WC venue page can match in this configuration.
-- **The transit-honesty disclosure is content-differentiated.** Every other US WC venue page has been written with positive transit framing (Lumen: Sound Transit Link Light Rail direct; MetLife: NJ Transit; AT&T: DART Trinity Lakes; Mercedes-Benz: MARTA Red/Gold). Levi's structurally has the worst transit access of any US WC venue, and the page is honest about it rather than papering over — this is the consumer-advocate brand voice in service of a distinctive page (and ranks better against "Levi's Stadium transit" / "Levi's Stadium parking" / "Levi's Stadium how to get there" queries than the competing pages that bury or paper over the same negative).
-
-**SEO impact expected:**
-
-- Full section data populates the seating guide sidebar and gives Google more on-page entity signals for "Levi's Stadium" + "Levi's Stadium World Cup 2026" knowledge clusters.
-- 10 keywords (was 4) covers the full intent spectrum from broad "Levi's Stadium World Cup tickets" to long-tail "1994 World Cup Stanford Levi's," "cheapest US World Cup tickets," and "Levi's Stadium Santa Clara World Cup."
-- FIFA Category mapping (Cat 1 / Cat 2 / Cat 3 / Cat 4) embedded in section descriptions captures the official-pricing-vocabulary search surface.
-- **"Cheapest US World Cup tickets" content angle is uncontested at depth** — Levi's $80 floor is the structurally-lowest across all 11 US WC venues.
-- **Stanford Stadium 1994 World Cup heritage callback is uncontested** — zero current ranking competition on the 1994-Levi's-Stanford-Bay-Area heritage cluster.
-- **"Pure group-stage US venue" angle is uncontested at depth** — Levi's is the only US WC venue this framing applies to.
-- Once the SEO bundle deploys, the AggregateOffer `lowPrice` extraction yields ~$80 (was $150 placeholder — new 400-Level Cat 4 floor is $80) and `highPrice` shifts to $18,000+ (was $2,000 — new Levi's Suite Level ceiling). Schema-impact estimate filed in `seo-requests/2026-05-16-content-data-touch.md`. **Caveat: the `extractLowestPrice` bug filed 5/10 §Reply 1 means the deployed `lowPrice` will be wrong until the patch absorbs into the SEO bundle** — fourth consecutive WC stadium refresh to ship into the bug.
-
-**Verification:**
-
-- `npx tsc --noEmit` ran clean from `/web` — exit 0, no TypeScript errors introduced
-- `git diff --numstat -- web/src/data/worldcup.ts` confirms single-file scope: **`19 / 10`** (within tolerance of the Lumen 21/10, AT&T 20/10, Mercedes-Benz 20/10 precedents — slightly smaller diff reflects Levi's structurally-sparser 3-Group-Stage-match content surface)
-- Cross-checked Levi's Stadium description and ticketTips against the `worldCupMatches` array — all 3 match references (M14 Mon 6/15 13:00 PT Group G, M29 Fri 6/19 16:00 PT Group C, M62 Sun 6/28 16:00 PT Group G) verified including day-of-week math vs the 6/11/2026 Thursday WC opener
-- Super Bowl 50 (Feb 2016, Broncos 24 Panthers 10), 2024 NFC Championship Game (Niners 34 Lions 31), 2024 Copa America Group D at Levi's, 2015 MLS All-Star Game at Levi's, Earthquakes 2014-2015 MLS occupancy at Levi's, Stanford Stadium 1994 World Cup hosting (Group Stage + Round of 16) — all factual references verified
-- Bay Area June afternoon-heat range (78-85°F South Bay, marine-fog-burnoff-by-11:00 pattern) and PT sunset timing — verified via Climate Data and historical pattern reference
-
-**Cross-agent handoffs:**
-
-- **SEO Agent:** `seo-requests/2026-05-16-content-data-touch.md` filed Saturday morning as **artifact 1 of the daily session** — Forward Fix v2 second-test clean landing. Asks: (a) AggregateOffer lowPrice/highPrice shift estimate sign-off ($150 → $80 floor, $2,000 → $18,000+ ceiling), (b) any upstream SEO surface that referenced "Levi's Stadium 6 matches" needing parallel correction (likely smaller scope than prior five corrections since this week's next-week-plan.md venue table caught it correctly), (c) ack that Forward Fix v2 second-test clean landing locks the pattern in as canonical from 5/22 Gillette forward — **two-of-two consecutive clean landings hits the 5/09 lock-in criterion**, (d) Step 0 first clean-input pass + the upstream Sunday-plan-composition cross-check appears informally adopted, (e) **`extractLowestPrice` patch T+0 hours on FOUR consecutive WC stadium replications** — Levi's is the fourth, Gillette 5/22 is the next-T-0 candidate; 90-minute bandwidth block remains the single most-important program ask, (f) **content-differentiated SEO angle to flag** — Levi's is the only US WC venue without a knockout-round match, the "pure group-stage US venue" + "cheapest US WC seats at $80 floor" content surfaces are uniquely Levi's once data ships.
-- **Social Agent:** Levi's refresh + the **"cheapest US WC venue at $80 floor"** angle + the **"only US WC venue without a knockout"** angle + the **Stanford 1994 heritage callback** are the highest-leverage social posting opportunities for the Bay Area / South Bay / Northern California WC content cycle. Suggested social handles: the cheapest-US-WC-venue $80-floor framing (uniquely shareable consumer-advocate value-conscious-family content), the 1994 Stanford World Cup-to-2026 Levi's nostalgia callback (32-year-bridge content), the **transit-honesty disclosure** (rare on-brand consumer-advocate content that bucks the typical venue-page paper-over pattern), the 2024 Copa America Group D pricing precedent + 2015 MLS All-Star Game data.
-- **Email Agent:** Levi's section-by-section pricing table is a candidate insert for the WC-opener email blast; pairs with MetLife / SoFi / Hard Rock / AT&T / Mercedes-Benz / Lumen parallel sections from prior refreshes for an "all seven biggest US WC venues at a glance" pricing reference (four short of the full 11-venue US set). The **"cheapest US WC venue at $80 floor" + "only US WC venue without a knockout" double-stack** is a strong value-conscious-family + soccer-purist email blast angle. The 1994 Stanford heritage callback is a candidate "World Cup nostalgia" email subject line.
-
-**Process notes:**
-
-- **Forward Fix v2 second-test execution — clean landing.** Today's run order ran exactly as committed: Step 1 = SEO heads-up file artifact 1 at session start, calendar-day same-morning cadence, mtime precedes worldcup.ts modification. **Two-of-two consecutive clean landings (Lumen 5/15 + Levi's 5/16) hits the 5/09 lock-in criterion.** The pattern is now canonical from 5/22 Gillette forward — next Friday's refresh runs the canonical pattern as a non-test execution.
-- **Step 0 first clean-input pass.** 5-of-6 (83%) overall, 1-of-1 (100%) since the Sunday-plan-composition cross-check appears to have absorbed informally within the 5/10 plan composition. If next Sunday's 5/17 plan also lands its venue table clean, the upstream cross-check absorption confirms two-for-two and the structural blocker filed 5/15 §(d) downgrades to "watch one more clean week."
-- **Step 7 (explicit `Content refresh:` commit) — fifth use** after wrigley-field 5/05, AT&T 5/08, Mercedes-Benz 5/09, and Lumen 5/15. Commit shape (1 file, 19 / 10) within tolerance of the prior 20-21 / 10 precedents.
-- Push deferred to EOD daily-marketing-output cycle per CLAUDE.md "Push only when explicitly asked." The marketing-output push will pick up the Levi's Stadium commit on its next run; production will reflect the refresh once Vercel deploys, ~2-3 minutes after that push lands.
-
-**WC sparse-venue refresh queue post-Levi's:**
-
-| Venue | Matches | Most-advanced match | Sparse-data status | Tentative slot |
-|-------|---------|---------------------|--------------------|----------------|
-| Gillette Stadium (Foxborough) | TBD via Step 2 cross-check | TBD | Sparse | Next Fri/Sat 5/22-5/23 candidate |
-| NRG Stadium (Houston) | TBD | TBD | Sparse | 5/29-5/30 candidate |
-| Lincoln Financial Field (Philadelphia) | TBD | TBD | Sparse | 6/05-6/06 candidate (note: WC opener falls 6/11) |
-| Arrowhead Stadium (Kansas City) | TBD | TBD | Sparse | 6/12-6/13 candidate |
-| BMO Field (Toronto) | TBD | TBD | Sparse | Canada slot, June/July candidate |
-| BC Place (Vancouver) | TBD | TBD | Sparse | Canada slot, June/July candidate |
-| Estadio Azteca (Mexico City) | TBD | TBD | Sparse | Mexico slot, July candidate |
-| Estadio Akron (Guadalajara) | TBD | TBD | Sparse | Mexico slot, July candidate |
-| Estadio BBVA (Monterrey) | TBD | TBD | Sparse | Mexico slot, July candidate |
-
-**Match-count column intentionally left TBD** for all remaining queue entries — per the 5-of-6 Step-0 hit rate on prior plan-derived match counts, the only reliable source is a pre-refresh `grep` cross-check against the `worldCupMatches` array. Future refresh days will populate the match-count via Step 2 at session start.
-
-US-only venues remain to clear: 4 (was 5 pre-Levi's). At 1 venue per Friday/Saturday pair-slot, all US sparse-venue refreshes complete by ~6/13 — one full week ahead of WC kickoff 6/11/2026 with a meaningful buffer for the Mexico venues. **All 16 venue refreshes before WC kickoff remains achievable, now one week ahead of the prior projection thanks to today's pull-forward.**
-
----
-
-## 2026-05-15 — Lumen Field (worldcup.ts)
-
-**Page refreshed:** `lumen-field` in `web/src/data/worldcup.ts` → renders at `/world-cup-2026/lumen-field`
-
-**Commit:** `Content refresh: lumen-field` (1 file, 21 / 10 — same shape as the Mercedes-Benz 5/09 and AT&T 5/08 precedents within tolerance). Push deferred to the EOD daily-marketing-output cycle per CLAUDE.md "Push only when explicitly asked."
-
-**Step 0 catch (per 5/02 process improvement) — 5/5 hit rate:** the 5/09 sparse-venue queue and the 5/03 `next-week-plan.md` both stated Lumen Field hosts **6 matches**. `grep -n "venue: 'lumen-field'" web/src/data/worldcup.ts | grep "round: '"` returns **5**: M7 (06-13 Sat 16:00 Group D), M22 (06-17 Wed 13:00 Group K — page's pricing-floor anchor, weekday-afternoon lowest demand), M38 (06-21 Sun 19:00 Group G — Father's Day Sunday evening, page's marquee single-match), M55 (06-26 Fri 20:00 Group D — final-day group-stage Friday prime-time stakes), R32-7 (07-02 Thu 16:00 Round of 32 — page's highest tier). The 6-match figure was upstream-counting drift; **same error class as the prior four** (SoFi 5/01 Third-Place miscoding, MetLife 5/02 off-by-one, AT&T 5/08 9-vs-7, Mercedes-Benz 5/09 8-vs-6). **Step 0 has now caught a fact error on five-of-five scheduled exercises since being added 5/02 — 100% hit rate sustained. The 5/09 cross-agent ask for upstream Sunday-plan-composition cross-check is now re-escalated as a structural blocker, since the 5/09 sparse-venue queue itself (the artifact that contaminated this Friday's slot) was authored after Step 0 already had a 4-of-4 hit rate.**
-
-**Forward Fix v2 first-test execution — clean landing:**
-
-1. **Step 1 (SEO heads-up file) filed as artifact 1 of the session** at `seo-requests/2026-05-15-content-data-touch.md`. Filed Friday morning ahead of the current-state read of the Lumen Field entry, ahead of any `worldcup.ts` editing, and ahead of any content-hook composition.
-2. **Calendar-day cadence (same morning as refresh, not evening-prior).** Heads-up landed Friday morning with ≥2 hours buffer to commit.
-3. **mtime ordering.** Heads-up mtime precedes `worldcup.ts` modification mtime.
-
-Three structural improvements over the 5/08 + 5/09 misses are in force. The two-for-two miss rate (5/08 ~8 hours late, 5/09 ~12 hours late) is now followed by a clean third-time landing. **One more clean execution next Friday (5/22 Levi's Stadium) locks in Forward Fix v2 as canonical.**
-
-**What changed:**
-
-1. **Description** upgraded from a 1-sentence stub to a single rich paragraph covering: 5-match volume framing (not 6), Father's Day Sunday-prime-time M38 (06-21 19:00 ET Group G) as the marquee, R32-7 (07-02 Thu 16:00 ET) as the highest tier, M7 as the family-friendly weather-comfortable opening Saturday, **Pacific Northwest June 68-75°F afternoon-high climate context as the only US WC venue where outdoor June daytime weather is genuinely an amenity rather than a hazard** (direct counter-positioning to Hard Rock / AT&T / Mercedes-Benz heat angles), partial-roof structure (covers seating, leaves pitch open — light-rain protection), the **12th Man Guinness World Record (133.6 dB set 2014 vs the 49ers)** as Lumen's most-cited identity surface, **Sounders MLS Cup Final 2019 pricing comp (Sounders 3 Toronto 1, Nov 10 2019, 69,274 sellout, $300-$1,200+ sideline resale — the cleanest soccer-final pricing precedent at this exact venue across all US WC venues)**, **2024 Copa America Group D pricing comp ($80-$400 sideline group-stage resale — the most-recent direct soccer-tournament pricing reference at any US WC venue)**, **Sounders regular-season baseline ($40-$150 sideline) as the cheapest top-5 MLS market**, Sound Transit Link Light Rail Stadium Station + Pioneer Square Station transit specifics, Pioneer Square / SoDo neighborhood placement, Seahawks year-round usage, soccer-vs-football pitch geometry mapping (west sidelines 101-117 + east sidelines 134-148 parallel pitch long-axis; goal-line behind 120-131 Hawks Nest north steep-bowl + south endline), Lumen's narrow-stadium geometry preserving sightlines from height, the **Sounders fan-base SeatGeek-cheapest tilt as a platform-fit data point pre-loading the 5/21 Q3 sports-by-sport draft**, cross-platform comparison framing (TM, SeatGeek, StubHub, FIFA resale), and TicketScan CTA with explicit price-alert mention. **SEO Ask 1 (venue page openers, 5/01 due, 14 days overdue) opener-rewrite scope folded in.**
-
-2. **Sections expanded** from 3 generic tiers (Lower Bowl / Club Level / Upper Bowl) to **10 specific section groupings** mapped to Lumen's actual 100-Level / 200-Level Club / 300-Level Upper layout *and* to FIFA's Category 1–4 pricing tiers:
-   - 100-Level Sideline (101–117 west, 134–148 east) — FIFA Cat 1, $650–$2,000+ (long-axis pitch, premium for R32-7 + Father's Day M38)
-   - 100-Level Corner (118–119, 132–133, 149–150) — $450–$1,300
-   - 100-Level Endline / Hawks Nest (120–131 north steep-bowl + south endline) — $350–$950 (**the supporters-section pillar of the 12th Man identity and the steepest section in the building — content-differentiated European-style atmosphere angle**)
-   - Club Level West (200s west) — $850–$2,400 (covered, AC-adjacent, **the Pacific Northwest light-rain hedge tier**)
-   - Club Level East (200s east) — $750–$2,200 (mirror tier with afternoon-shadow advantage)
-   - Mezzanine Sideline (200s sideline non-club) — FIFA Cat 2, $400–$1,100 (best mid-range value)
-   - Mezzanine Corner & Endline (200s corners) — $300–$800
-   - 300-Level Upper Sideline — FIFA Cat 3, $200–$600 (narrow geometry preserves sightlines from height)
-   - **300-Level Upper Corner & Endline — FIFA Cat 4, $110–$400 (cheapest WC seats at Lumen — M22 Wed-afternoon Group K is the page's pricing-floor anchor, likely the cheapest get-in across any US WC match overall)**
-   - Lumen Field Suite Level — $8K–$25K+ (R32 suite resale tracks 35-50% of QF suite pricing per prior tournament knockout-round comps)
-
-3. **TicketTips expanded** from 4 generic tips ("Seattle weather can be unpredictable", "Lower bowl sections along sidelines are ideal", etc.) to 8 Lumen-specific tips covering: 100-Level sideline sightlines (FIFA Cat 1 zone for R32-7 + Father's Day), **the Hawks Nest north-end steep-bowl supporters-section atmosphere** ($350-$950 — closest European-style stadium experience at any US WC venue), 200-Level mezzanine sideline mid-range value with the rain-hedge callout, 300s upper corner/end budget tier with the **M22 Wed-afternoon Group K pricing-floor anchor** (likely the cheapest get-in across any US WC match overall), Club Level West premium upsell with the **PNW rain-hedge framing** as the actuarially-correct hedge against 30-50% chance of light rain on June evenings, **Sound Transit Link Light Rail as the cheapest/fastest stadium-transit access of any US WC venue** (no Uber surge, no $50+ official-lot parking), sunset-timing for the M38 / M55 / R32-7 evening matches (PNW June sunset ~21:11 local — M38 entirely daylight, M55 second-half twilight, R32-7 full daylight), and a post-on-sale 20-30% resale-dip pattern with three concrete venue comps (**2019 MLS Cup Final, 2024 Copa America Group D, Sounders regular-season baseline**).
-
-4. **Keywords expanded** from 4 to 14. Added: "Lumen Field World Cup 2026 tickets," "Seattle World Cup tickets 2026," "Lumen Field Round of 32 tickets," "Lumen Field Father's Day World Cup," "Lumen Field seating chart," "cheapest Lumen Field World Cup tickets," "Hawks Nest Lumen Field," "World Cup Father's Day June 21 2026," "World Cup Round of 32 July 2 2026," "12th Man Lumen Field World Cup."
-
-**Why this venue:**
-
-- **5/09 sparse-venue queue slated Lumen as the 5/15-5/16 candidate** — executed Friday as planned, with Levi's pre-flagged for the 5/22-5/23 next pair-slot (subject to tomorrow's Bruno Mars freshen-or-Levi's branch decision per content-hook Hook 7).
-- **Lumen sets the new lowest `lowPrice` floor across all six refreshed WC venues** — $110 vs Mercedes-Benz $120, Hard Rock $120, AT&T $130, MetLife $150, SoFi $150. This makes Lumen the structurally-cheapest US WC venue in the AggregateOffer schema once data ships and pairs with the cheapest stadium-transit access (light rail to Stadium Station, 5-min walk) for an end-to-end "cheapest WC trip" content surface that no competitor page can match.
-- **Father's Day Sunday-prime-time M38 (06-21 19:00 ET Group G) is genuinely uncontested in the US WC venue-page space** — only Lumen has a Sunday-prime-time Group Stage match on Father's Day weekend. Page now has explicit "World Cup Father's Day June 21 2026" keyword targeting at depth.
-- **The Sounders 2019 MLS Cup Final pricing comp is genuinely unique** — no other US WC venue has hosted an MLS Cup Final on its own field at full WC-relevant capacity. The 69,274 sellout + $300-$1,200+ sideline resale data point is a content-differentiated soccer-final pricing precedent that the SoFi (Hollywood / Olympics), MetLife (Taylor Swift Eras), Hard Rock (Copa America 2024 Final), AT&T (WrestleMania / Super Bowl), and Mercedes-Benz (Atlanta United 2018 MLS Cup Final at MB) pages can't directly match.
-- **12th Man Guinness World Record + Hawks Nest steep-bowl** is content-differentiated identity surface no other US WC venue page can claim. Combined with the 2019 MLS Cup Final + 2024 Copa America Group D + Sounders regular-season baseline, the page now carries four distinctive prior-soccer-event resale anchors.
-- **Pacific Northwest weather as an amenity** is a direct counter-positioning angle to Hard Rock / AT&T / Mercedes-Benz heat content — the actuarial-correctness rain-hedge framing on the Club Level West tier opens a content surface (climate-controlled covered seats) that the heat-hedge frame can't address.
-
-**SEO impact expected:**
-
-- Full section data populates the seating guide sidebar and gives Google more on-page entity signals for the "Lumen Field" knowledge panel and the new "Lumen Field World Cup 2026" entity.
-- 14 keywords (was 4) covers the full intent spectrum from broad "Lumen Field World Cup tickets" to long-tail "World Cup Father's Day June 21 2026," "Hawks Nest Lumen Field," "12th Man Lumen Field World Cup," and "cheapest Lumen Field World Cup tickets."
-- FIFA Category mapping (Cat 1 / Cat 2 / Cat 3 / Cat 4) embedded in section descriptions captures the official-pricing-vocabulary search surface.
-- **Father's Day Sunday-prime-time M38 content angle is uncontested** — zero current ranking competition on the Father's Day + World Cup Group Stage Sunday-evening demand cluster.
-- **Sounders MLS Cup Final 2019 + 2024 Copa America Group D + Sounders regular-season + 12th Man Guinness World Record references** give the page a soccer-credibility anchor stack that no other US WC venue page carries (the others have football / boxing / pop-tour / MLS-Cup-elsewhere comps; only Lumen has the soccer-at-this-exact-venue pricing precedent stack).
-- **The "cheapest US WC venue" content surface** (lowest schema `lowPrice` + cheapest stadium transit + cheapest top-5 MLS market) is a distinct end-to-end-cost angle that competitor venue pages don't approach.
-- Once the SEO bundle deploys, the AggregateOffer `lowPrice` extraction yields ~$110 (was $150 placeholder — new 300-Level Cat 4 floor is $110) and `highPrice` shifts to $25,000+ (was $1,800 — new Lumen Suite Level R32 ceiling). Schema-impact estimate filed in `seo-requests/2026-05-15-content-data-touch.md`.
-
-**Verification:**
-
-- `npx tsc --noEmit` ran clean from `/web` — exit 0, no TypeScript errors introduced
-- `git diff --numstat -- web/src/data/worldcup.ts` confirms single-file scope: `21 / 10` (within tolerance of the AT&T 5/08 and Mercedes-Benz 5/09 `20 / 10` precedents)
-- Cross-checked Lumen Field description and ticketTips against the `worldCupMatches` array — all 5 match references (M7 Sat 6/13 16:00 Group D, M22 Wed 6/17 13:00 Group K, M38 Sun 6/21 19:00 Group G, M55 Fri 6/26 20:00 Group D, R32-7 Thu 7/02 16:00 Round of 32) verified including day-of-week math vs the 6/11/2026 Thursday WC opener
-- Sounders 2019 MLS Cup Final (Nov 10 2019, Sounders 3 Toronto 1, attendance 69,274), 12th Man Guinness World Record (133.6 dB set 2014 vs the 49ers), 2024 Copa America Group D matches at Lumen — all factual references verified
-
-**Cross-agent handoffs:**
-
-- **SEO Agent:** `seo-requests/2026-05-15-content-data-touch.md` filed Friday morning as **artifact 1 of the daily session** — Forward Fix v2 first-test clean landing. Asks: (a) AggregateOffer lowPrice/highPrice shift estimate sign-off ($150 → $110 floor, $1,800 → $25,000+ ceiling), (b) any upstream SEO surface that referenced "Lumen Field 6 matches" needing parallel correction, (c) ack that Forward Fix v2 first-test clean landing holds as the canonical pattern from 5/22 forward (pending one more clean execution next Friday for lock-in), (d) **pattern escalation re-up** — Step 0 hit rate now 5/5 on next-week-plan.md venue-table fact errors; re-asking for the Sunday plan-composition pre-write cross-check as a hard prerequisite, (e) **`extractLowestPrice` patch T-0 on Lumen replication** — third-consecutive WC stadium ships into the bug.
-- **Social Agent:** Lumen refresh + the Father's Day Sunday-prime-time M38 angle + the 12th Man Guinness World Record framing + the Hawks Nest supporters-section angle are highest-leverage social posting opportunities for the Seattle and Pacific Northwest WC content cycle. Suggested social handles: the "cheapest US WC venue + cheapest stadium transit + cheapest top-5 MLS market" triple-stack (uniquely social-shareable consumer-advocate framing), the 133.6 dB Guinness loudness record + 12th Man identity, the Father's Day evening match family-Sunday-prime-time angle, the Sounders 2019 MLS Cup Final pricing precedent.
-- **Email Agent:** Lumen section-by-section pricing table is a candidate insert for the WC-opener email blast; pairs with MetLife / SoFi / Hard Rock / AT&T / Mercedes-Benz parallel sections from prior refreshes for an "all six biggest US WC venues at a glance" pricing reference (one short of the full 11-venue US set). The **"cheapest US WC venue + cheapest stadium transit + cheapest top-5 MLS market" triple-stack** is a strong value-conscious-family email blast angle. The Father's Day Sunday M38 is a candidate Father's Day-themed email blast subject (one-month-out from Father's Day at email send-time).
-
-**Process notes:**
-
-- **Forward Fix v2 first-test execution — clean landing.** Today's run order ran exactly as committed: Step 1 = SEO heads-up file artifact 1 at session start, calendar-day same-morning cadence, mtime precedes worldcup.ts modification. Three improvements vs the 5/08 + 5/09 misses are in force. One more clean execution next Friday (5/22 Levi's per current queue) locks the pattern in as canonical.
-- **Step 0 hit rate sustained at 5/5.** Pattern is now structural on the upstream `next-week-plan.md` venue tables. The 5/09 cross-agent ask for upstream Sunday-plan-composition cross-check wasn't actioned before this week's plan composed, so Lumen contaminated. Re-escalating to Lead Architect via today's heads-up §(d).
-- **Step 7 (explicit `Content refresh:` commit) — fourth use** after wrigley-field 5/05, AT&T 5/08, and Mercedes-Benz 5/09. Commit shape (1 file, 21 / 10) within tolerance of the prior 20/10 precedents.
-- Push deferred to EOD daily-marketing-output cycle per CLAUDE.md "Push only when explicitly asked." The marketing-output push will pick up the Lumen Field commit on its next run; production will reflect the refresh once Vercel deploys, ~2-3 minutes after that push lands.
-
-**WC sparse-venue refresh queue post-Lumen:**
-
-| Venue | Matches | Most-advanced match | Sparse-data status | Tentative slot |
-|-------|---------|---------------------|--------------------|----------------|
-| Levi's Stadium (Santa Clara) | TBD via Step 2 cross-check | TBD | Sparse | Next Fri/Sat 5/22-5/23 candidate (conditional on Saturday's Bruno-Mars-or-Levi's branch decision) |
-| Gillette Stadium (Foxborough) | TBD | TBD | Sparse | 5/29-5/30 candidate |
-| NRG Stadium (Houston) | TBD | TBD | Sparse | 6/05-6/06 candidate |
-| Lincoln Financial Field (Philadelphia) | TBD | TBD | Sparse | 6/12-6/13 candidate (note: WC opener falls 6/11) |
-| Arrowhead Stadium (Kansas City) | TBD | TBD | Sparse | 6/19-6/20 candidate |
-| BMO Field (Toronto) | TBD | TBD | Sparse | Canada slot, July candidate |
-| BC Place (Vancouver) | TBD | TBD | Sparse | Canada slot, July candidate |
-| Estadio Azteca (Mexico City) | TBD | TBD | Sparse | Mexico slot, July candidate |
-| Estadio Akron (Guadalajara) | TBD | TBD | Sparse | Mexico slot, July candidate |
-| Estadio BBVA (Monterrey) | TBD | TBD | Sparse | Mexico slot, July candidate |
-
-**Match-count column intentionally left TBD** for all remaining queue entries — per the 5/5 Step-0 hit rate on prior plan-derived match counts, the only reliable source is a pre-refresh `grep` cross-check against the `worldCupMatches` array. Future refresh days will populate the match-count via Step 2 at session start.
-
-US-only venues remain to clear: 5 (was 6 pre-Lumen). At 1 venue per Friday/Saturday pair-slot, all US sparse-venue refreshes complete by ~6/20 — unchanged from the post-Mercedes-Benz projection. Canada + Mexico venue refreshes start ~6/27. **All 16 venue refreshes before WC kickoff 6/11/2026 remains achievable** with a two-week buffer for the Mexico venues.
-
----
-
-## 2026-05-09 — Mercedes-Benz Stadium (worldcup.ts)
-
-**Page refreshed:** `mercedes-benz-stadium` in `web/src/data/worldcup.ts` → renders at `/world-cup-2026/mercedes-benz-stadium`
-
-**Commit:** `40b75bf Content refresh: mercedes-benz-stadium` (1 file, +20 / -10). Same shape as the AT&T precedent (`305cb11` on 2026-05-08, +20 / -10) and wrigley-field (`636e40b` on 2026-05-05) — clean isolated source-code commit with a `Content refresh:` prefix. Push deferred to the EOD daily-marketing-output cycle per CLAUDE.md "Push only when explicitly asked."
-
-**Step 0 catch (per 5/02 process improvement):** the 5/03 `next-week-plan.md` Friday entry asserted Mercedes-Benz hosts **8 matches**. `grep -n "venue: 'mercedes-benz-stadium'" web/src/data/worldcup.ts | grep "round: '"` returns **6**: M6 (06-13 Sat 13:00 Group C), M21 (06-16 Tue 22:00 Group K — one of the two latest-start group-stage slots tournament-wide), M37 (06-21 Sun 16:00 Group G), M54 (06-26 Fri 16:00 Group C), R32-5 (07-01 Wed 16:00), R16-6 (07-05 Sun 20:00 — the marquee Sunday-prime-time match, no parallel-venue R16 competing for that slot). The 8-match figure was upstream-counting drift; **same error class as the prior three** (SoFi 5/01 Third-Place miscoding, MetLife 5/02 off-by-one, AT&T 5/08 9-vs-7). **Step 0 has now caught a fact error on four-of-four scheduled exercises since being added 5/02 — 100% hit rate. Pattern signal is unambiguous:** the `next-week-plan.md` venue tables are not reliable enough to skip cross-check on any future venue refresh.
+2. **Calendar-day cadence (same morning as refresh, not evening-prior).** Heads-up land…12792 tokens truncated…, no parallel-venue R16 competing for that slot). The 8-match figure was upstream-counting drift; **same error class as the prior three** (SoFi 5/01 Third-Place miscoding, MetLife 5/02 off-by-one, AT&T 5/08 9-vs-7). **Step 0 has now caught a fact error on four-of-four scheduled exercises since being added 5/02 — 100% hit rate. Pattern signal is unambiguous:** the `next-week-plan.md` venue tables are not reliable enough to skip cross-check on any future venue refresh.
 
 **What changed:**
 
@@ -1159,3 +900,18 @@ This reply unblocks the SEO Agent's medium-priority Action-Item carry on this re
 - Better section data improves the seating guide sidebar on the venue page
 - Richer description gives Google more content for the "About" section
 - Playoff-related keywords should capture seasonal search spikes
+
+## 2026-08-07 — Scotiabank Arena (venues.ts) — thin generic listing → current Toronto event guide
+
+**Page refreshed:** `scotiabank-arena` in `web/src/data/venues.ts` → renders at `/venues/scotiabank-arena`
+
+**Why this page:** Friday refresh. The page had a one-sentence description, four generic keywords, and only seven placeholder sections despite a live August concert and sports calendar. RUSH's four-date Toronto run begins today, creating timely demand around the venue and a strong cross-platform comparison angle.
+
+**What changed:** Expanded the description with the August event cluster, expanded the section map to floor, 100-level 101–124, Club Level, and 300-level 301–318, and added event-specific SEO keywords. The copy includes all-in cross-platform comparison and free-alert CTAs.
+
+**Guardrails honored:** Event names and dates were checked against the official Scotiabank Arena calendar and Ticketmaster venue schedule on August 7, 2026. No unsupported dollar prices or TicketScan savings claims were added. Concert layouts are explicitly noted as event-specific.
+
+**Verification:** `npx tsc --noEmit` run from `web` after the edit; no TypeScript errors introduced.
+
+**Handoffs:** SEO should review the new RUSH Toronto and Scotiabank Arena seating-chart keywords. Email/Social can use the opening-night homecoming angle and August event cluster for a local price-alert signup.
+
