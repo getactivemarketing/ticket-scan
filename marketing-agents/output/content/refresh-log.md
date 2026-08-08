@@ -3,6 +3,24 @@ Total output lines: 1161
 
 # Content Refresh Log
 
+## 2026-08-08 — United Center (venues.ts) — same-day Sky vs. Fever event refresh
+
+**Page refreshed:** `united-center` in `web/src/data/venues.ts` → renders at `/venues/united-center`
+
+**Why this page:** Saturday refresh. United Center hosts Indiana Fever at Chicago Sky today, August 8, 2026, at 2:30 p.m. CT. The existing page was strong on permanent venue context but did not capture the timely WNBA demand spike or the event-specific search terms.
+
+**What changed:**
+
+1. **Description** — added the same-day matchup, a dated price snapshot (roughly $61-$70 upper-level listings and $2,000+ premium inventory), an explicit volatility/fees disclaimer, and a cross-platform comparison CTA.
+2. **Keywords** — added Chicago Sky, Indiana Fever, and Sky vs. Fever intent terms.
+3. **FAQs** — added three venue-specific questions covering value sections, current matchup pricing, and the arena’s resident teams. The venue page now renders these answers and emits FAQPage JSON-LD.
+
+**Pricing guardrail:** Snapshot figures come from current public marketplace results checked August 8, 2026; they are not presented as guaranteed prices or as TicketScan’s live feed. Buyers should verify all-in totals before checkout.
+
+**Sources:** [United Center](https://www.unitedcenter.com/events/2026/08/08/chicago-sky-indiana-fever/), [SeatGeek](https://seatgeek.com/matchups/wnba/indiana-fever-chicago-sky-tickets), [Gametime](https://gametime.co/basketball/fever-at-sky-tickets/8-8-2026-chicago-il-united-center/events/69718f745b47465d0c41dffa), [Ticketmaster](https://www.ticketmaster.com/chicago-sky-vs-indiana-fever-chicago-08-08-2026/event/04006462BAFA76BD)
+
+**Handoffs:** SEO should review the new WNBA event-intent terms and internal-link the Chicago city page. Social and Email can use the “$70 upper level vs. $2,000+ premium” contrast, with the date and volatility disclaimer attached.
+
 ## 2026-08-01 — Golden 1 Center (venues.ts) — August calendar refresh
 
 **Page refreshed:** `golden-1-center` in `web/src/data/venues.ts` → renders at `/venues/golden-1-center`
@@ -914,4 +932,3 @@ This reply unblocks the SEO Agent's medium-priority Action-Item carry on this re
 **Verification:** `npx tsc --noEmit` run from `web` after the edit; no TypeScript errors introduced.
 
 **Handoffs:** SEO should review the new RUSH Toronto and Scotiabank Arena seating-chart keywords. Email/Social can use the opening-night homecoming angle and August event cluster for a local price-alert signup.
-

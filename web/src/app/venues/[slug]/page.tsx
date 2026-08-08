@@ -177,6 +177,17 @@ export default async function VenuePage({ params }: PageProps) {
           { '@type': 'ListItem', position: 3, name: venue.name, item: `https://www.ticketscan.io/venues/${slug}` },
         ],
       },
+      ...(venue.faqs && venue.faqs.length > 0
+        ? [{
+            '@type': 'FAQPage',
+            '@id': `https://www.ticketscan.io/venues/${slug}#faq`,
+            mainEntity: venue.faqs.map((faq) => ({
+              '@type': 'Question',
+              name: faq.question,
+              acceptedAnswer: { '@type': 'Answer', text: faq.answer },
+            })),
+          }]
+        : []),
     ],
   };
 
@@ -297,6 +308,22 @@ export default async function VenuePage({ params }: PageProps) {
                   {venue.description || `${venue.name} is a premier ${venue.type} venue located in ${venue.city}, ${venue.state}. With a capacity of ${venue.capacity.toLocaleString()}, it hosts a variety of events including ${venue.homeTeams ? venue.homeTeams.join(', ') + ' games, ' : ''}concerts, and special events. Use Ticket Scan to compare prices across multiple ticket sites and find the best deals.`}
                 </p>
               </div>
+
+              {venue.faqs && venue.faqs.length > 0 && (
+                <div className="mt-8 bg-white rounded-xl shadow-md p-8">
+                  <h2 className="text-xl font-bold font-heading text-gray-900 mb-4">
+                    United Center Ticket FAQs
+                  </h2>
+                  <div className="space-y-5">
+                    {venue.faqs.map((faq) => (
+                      <div key={faq.question}>
+                        <h3 className="font-semibold text-gray-900">{faq.question}</h3>
+                        <p className="text-gray-600 leading-relaxed mt-1">{faq.answer}</p>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
             </div>
 
             {/* Sidebar */}
