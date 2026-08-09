@@ -1,13 +1,15 @@
-## Today's Content Hook — August 8, 2026
+## Today's Content Hook — 2026-08-09
 
-**Topic:** Indiana Fever at Chicago Sky is at United Center today, Saturday, August 8, at 2:30 p.m. CT. The official venue page confirms the event, while current marketplace snapshots show upper-level get-in listings around $61-$70 and premium seats reaching more than $2,000.
-**Angle:** WNBA star power creates a perfect live example of why “cheap ticket” is not one universal number. Compare the same section across Ticketmaster, SeatGeek, and StubHub, inspect fees, and don’t confuse the first available listing with the best value.
-**Target keyword:** Chicago Sky vs Indiana Fever tickets
-**Content type:** Venue page update / social snippet / email hook
+**Topic:** NFL preseason ticket buying begins in earnest this week, with Preseason Week 1 starting August 13. At the same time, the FTC's live-event fee rule says mandatory charges known upfront must be included in the displayed total price.
+
+**Angle:** Fans should compare the all-in number for the same game across Ticketmaster, SeatGeek, and StubHub before deciding that a low headline price is a deal. The useful consumer question is not “Which listing starts cheapest?” but “Which option costs less after mandatory fees, delivery, and the seat I actually want?” Pair the hook with a price alert: set a ceiling, then let TicketScan watch for a qualifying drop instead of refreshing three checkout pages like a person who enjoys suffering.
+
+**Target keyword:** all-in NFL ticket prices 2026
+
+**Content type:** Social snippet / email hook / short blog follow-up
+
 **Priority:** High
 
-**Sources:** [United Center event page](https://www.unitedcenter.com/events/2026/08/08/chicago-sky-indiana-fever/), [Ticketmaster event page](https://www.ticketmaster.com/chicago-sky-vs-indiana-fever-chicago-08-08-2026/event/04006462BAFA76BD), [SeatGeek matchup page](https://seatgeek.com/matchups/wnba/indiana-fever-chicago-sky-tickets), [Gametime all-in listing snapshot](https://gametime.co/basketball/fever-at-sky-tickets/8-8-2026-chicago-il-united-center/events/69718f745b47465d0c41dffa)
+**Sources:** [NFL 2026 Preseason Week 1 schedule](https://www.nfl.com/schedules/2026/by-week/preseason-week-1); [FTC fee rule FAQ](https://search.ftc.gov/business-guidance/resources/rule-unfair-or-deceptive-fees-frequently-asked-questions)
 
-**Lead-magnet opportunity:** A one-page “Game-Day Ticket Price Check” worksheet covering section, listed price, fees, delivery, and personal maximum. Pair it with a free price-alert signup.
-
-**SEO handoff:** Prioritize `Chicago Sky tickets`, `Indiana Fever tickets`, `Sky vs Fever tickets`, and `United Center tickets`; link the United Center venue page to the Chicago city page and the compare flow.
+**Lead magnet opportunity:** Add the “5 Signs You're About to Overpay” checklist as the follow-up CTA, with a specific prompt to compare the final payable total and set a target-price alert.
