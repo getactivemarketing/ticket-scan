@@ -1,15 +1,8 @@
-## Today's Content Hook — 2026-08-09
-
-**Topic:** NFL preseason ticket buying begins in earnest this week, with Preseason Week 1 starting August 13. At the same time, the FTC's live-event fee rule says mandatory charges known upfront must be included in the displayed total price.
-
-**Angle:** Fans should compare the all-in number for the same game across Ticketmaster, SeatGeek, and StubHub before deciding that a low headline price is a deal. The useful consumer question is not “Which listing starts cheapest?” but “Which option costs less after mandatory fees, delivery, and the seat I actually want?” Pair the hook with a price alert: set a ceiling, then let TicketScan watch for a qualifying drop instead of refreshing three checkout pages like a person who enjoys suffering.
-
-**Target keyword:** all-in NFL ticket prices 2026
-
-**Content type:** Social snippet / email hook / short blog follow-up
-
+## Today's Content Hook — 2026-08-10
+**Topic:** UEFA, CONCACAF, and AFC publicly accused FIFA of a “fundamental breach of trust” over FIFA’s proposed World Cup commercialization plans, according to the Associated Press.
+**Angle:** Ticket buyers have a reason to care: the same trust problem shows up when organizers use variable pricing, opaque seat maps, changing fees, and official resale rules. Explain how fans can verify the total price and compare primary and resale inventory before paying.
+**Target keyword:** FIFA World Cup ticket pricing transparency
+**Content type:** Blog post / social snippet
 **Priority:** High
 
-**Sources:** [NFL 2026 Preseason Week 1 schedule](https://www.nfl.com/schedules/2026/by-week/preseason-week-1); [FTC fee rule FAQ](https://search.ftc.gov/business-guidance/resources/rule-unfair-or-deceptive-fees-frequently-asked-questions)
-
-**Lead magnet opportunity:** Add the “5 Signs You're About to Overpay” checklist as the follow-up CTA, with a specific prompt to compare the final payable total and set a target-price alert.
+**Source notes:** [Associated Press report](https://apnews.com/article/b51ac48f03623851e07c8199342913bb) and [FIFA’s ticket-sales phase announcement](https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/articles/last-minute-tickets-sales-phase-to-start-on-1-april).
