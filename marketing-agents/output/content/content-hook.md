@@ -1,14 +1,13 @@
-## Today's Content Hook — 2026-08-11
+## Today's Content Hook — 2026-08-12
 
-**Topic:** FIFA is facing a fresh backlash from UEFA, CONCACAF, and AFC over its reported plan to sell a stake in the World Cup business to private investors. The dispute adds another consumer-trust problem after a tournament defined by unusually high and variable ticket prices. [AP coverage](https://apnews.com/article/b51ac48f03623851e07c8199342913bb)
+**Topic:** A recent Axios report contrasts a $931 fifth-row Rod Stewart ticket with much lower available prices for his August 14 Iowa State Fair show, where he is performing with Richard Marx. The story is a useful reminder that ticket prices are driven by date, market, inventory, and demand—not just the artist's name. [Axios coverage](https://www.axios.com/local/des-moines/2026/08/07/rod-stewart-iowa-state-fair-ticket-prices)
 
-**Angle:** Fans do not need another executive soap opera; they need a practical way to protect their budgets. Explain why “official” does not automatically mean “best-priced,” and give readers a repeatable checklist for comparing the full price across Ticketmaster, SeatGeek, and StubHub before buying. Keep the FIFA governance story as the timely lead, then pivot quickly to the buyer’s checklist.
+**Angle:** Turn one fan's painful $931 purchase into a practical consumer lesson: before assuming a tour is unaffordable, compare nearby dates, venues, seat tiers, and all-in totals. A high-profile show can be expensive in one market and comparatively reasonable in another. TicketScan helps fans see that spread across Ticketmaster, SeatGeek, and StubHub.
 
-**Target keyword:** how to compare World Cup 2026 ticket prices
+**Target keyword:** same concert different city ticket prices
 
 **Content type:** Blog post / social snippet / email hook
 
-**Priority:** High
+**Priority:** Medium
 
-**Lead magnet opportunity:** A one-page “World Cup Ticket Price-Check Checklist” PDF or email opt-in, with fields for match, section, all-in price, fees, and target price. Pair it with a free TicketScan price alert.
-
+**Lead magnet opportunity:** A “Tour Date Deal Finder” worksheet that asks fans to list nearby cities, dates, acceptable sections, travel cost, and all-in ticket price. Pair it with a free TicketScan watchlist alert.
