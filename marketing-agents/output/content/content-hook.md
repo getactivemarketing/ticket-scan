@@ -1,13 +1,8 @@
-## Today's Content Hook — 2026-08-12
-
-**Topic:** A recent Axios report contrasts a $931 fifth-row Rod Stewart ticket with much lower available prices for his August 14 Iowa State Fair show, where he is performing with Richard Marx. The story is a useful reminder that ticket prices are driven by date, market, inventory, and demand—not just the artist's name. [Axios coverage](https://www.axios.com/local/des-moines/2026/08/07/rod-stewart-iowa-state-fair-ticket-prices)
-
-**Angle:** Turn one fan's painful $931 purchase into a practical consumer lesson: before assuming a tour is unaffordable, compare nearby dates, venues, seat tiers, and all-in totals. A high-profile show can be expensive in one market and comparatively reasonable in another. TicketScan helps fans see that spread across Ticketmaster, SeatGeek, and StubHub.
-
-**Target keyword:** same concert different city ticket prices
-
-**Content type:** Blog post / social snippet / email hook
-
+## Today's Content Hook — 2026-08-13
+**Topic:** A busy August 13 ticketing slate includes Foo Fighters at Lincoln Financial Field, Tim McGraw at Birmingham's Coca-Cola Amphitheater, and other major live events.
+**Angle:** Use today's events to show that the lowest advertised price is not automatically the lowest checkout price. Compare Ticketmaster, SeatGeek, and StubHub for the same event, then account for fees, seat quality, and delivery.
+**Target keyword:** cheapest Foo Fighters tickets August 2026
+**Content type:** Blog post / social snippet
 **Priority:** Medium
 
-**Lead magnet opportunity:** A “Tour Date Deal Finder” worksheet that asks fans to list nearby cities, dates, acceptable sections, travel cost, and all-in ticket price. Pair it with a free TicketScan watchlist alert.
+**Source notes:** The Foo Fighters date is listed by Ticketmaster; Tim McGraw's August 13 date appears in Live Nation's tour announcement. Treat event availability and prices as live data that can change.
