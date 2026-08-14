@@ -439,8 +439,8 @@ export default function WorldCup2026Page() {
             <div className="flex gap-4">
               <div className="bg-green-100 text-green-600 w-10 h-10 rounded-full flex items-center justify-center font-bold flex-shrink-0">1</div>
               <div>
-                <h3 className="font-heading font-bold text-gray-900 mb-1">Act Fast — The Tournament Is Live</h3>
-                <p className="text-gray-600">The 2026 World Cup kicked off June 11. Resale prices fluctuate daily as matches approach. Now is the time to compare and lock in your seats before knockout round prices spike.</p>
+                <h3 className="font-heading font-bold text-gray-900 mb-1">The Tournament Wrapped — Prices Still Tell a Story</h3>
+                <p className="text-gray-600">The 2026 World Cup ended July 19. Use our match and stadium guides to see what tickets cost across platforms and spot the pricing patterns worth remembering for the next big event.</p>
               </div>
             </div>
             <div className="flex gap-4">
