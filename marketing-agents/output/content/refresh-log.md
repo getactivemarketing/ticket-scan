@@ -3,6 +3,23 @@ Total output lines: 1161
 
 # Content Refresh Log
 
+## 2026-08-14 — United Center (venues.ts) — stale WNBA snapshot → current event calendar guide
+
+**Page refreshed:** `united-center` in `web/src/data/venues.ts` → renders at `/venues/united-center`
+
+**Why this page:** Friday refresh. The prior copy was anchored to the August 8 Chicago Sky vs. Indiana Fever game and its same-day pricing, which was no longer useful on August 14.
+
+**What changed:**
+
+1. Replaced the dated matchup and price snapshot with the current official event cluster: Kacey Musgraves (August 21), Bulls Fest 2026 (August 22), Omar Courtz (September 5), Jungle (September 10), and Eric Clapton (September 11).
+2. Kept the durable seating guidance for the 100-level lower bowl and 300-level upper bowl, while clarifying that event layouts and prices vary.
+3. Replaced the expired WNBA FAQ with a current “what’s coming up” FAQ and expanded event-specific keywords.
+4. Preserved the cross-platform all-in comparison and free price-alert CTAs.
+
+**Guardrails honored:** No unsupported current dollar prices were added. Event names and dates were checked against the [official United Center upcoming-events page](https://www.unitedcenter.com/upcoming-events/) on August 14, 2026.
+
+**Handoffs:** SEO should link the Chicago city page to the refreshed venue guide. Email can use the late-August Chicago event cluster as a local price-alert signup hook.
+
 ## 2026-08-08 — United Center (venues.ts) — same-day Sky vs. Fever event refresh
 
 **Page refreshed:** `united-center` in `web/src/data/venues.ts` → renders at `/venues/united-center`

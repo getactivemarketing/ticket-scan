@@ -1,8 +1,17 @@
-## Today's Content Hook — 2026-08-13
-**Topic:** A busy August 13 ticketing slate includes Foo Fighters at Lincoln Financial Field, Tim McGraw at Birmingham's Coca-Cola Amphitheater, and other major live events.
-**Angle:** Use today's events to show that the lowest advertised price is not automatically the lowest checkout price. Compare Ticketmaster, SeatGeek, and StubHub for the same event, then account for fees, seat quality, and delivery.
-**Target keyword:** cheapest Foo Fighters tickets August 2026
-**Content type:** Blog post / social snippet
+## Today's Content Hook — August 14, 2026
+**Topic:** NFL preseason Week 1 is underway, with three games scheduled tonight: Broncos at Falcons, Buccaneers at Jets, and Dolphins at Commanders.
+**Angle:** Preseason demand is a useful consumer-advocacy story because the matchup may be less predictable than the ticket markup. Show buyers how to compare the same game and seat zone across marketplaces, read the payable total, and avoid paying regular-season money for exhibition stakes.
+**Target keyword:** NFL preseason tickets 2026 price comparison
+**Content type:** Social snippet / email hook
+**Priority:** High
+
+**Source:** [NFL Week 1 schedule](https://www.nfl.com/schedules/2026/by-week/preseason-week-1), checked August 14, 2026.
+
+## Secondary Hook — August 14, 2026
+**Topic:** World Cup 2026 is over, but its resale price data is still useful.
+**Angle:** Turn the post-tournament pricing conversation into an evergreen “what tickets actually cost” explainer. Lead with the difference between official pricing, resale get-in prices, fees, and last-minute volatility; do not imply 2026 inventory is still available.
+**Target keyword:** World Cup 2026 ticket prices and resale history
+**Content type:** Blog refresh / lead-magnet email hook
 **Priority:** Medium
 
-**Source notes:** The Foo Fighters date is listed by Ticketmaster; Tim McGraw's August 13 date appears in Live Nation's tour announcement. Treat event availability and prices as live data that can change.
+**Lead magnet opportunity:** Offer a downloadable “Ticket Price Reality Check” worksheet that lets readers record face value, listed price, fees, and final payable total for future events.
