@@ -66,8 +66,13 @@ export const venues: Record<string, Venue> = {
     capacity: 19600,
     type: 'arena',
     homeTeams: ['Miami Heat'],
-    description: 'Find the best deals on tickets at Kaseya Center in Miami. Home of the Miami Heat, featuring NBA games, concerts, and entertainment events. Compare prices across multiple ticket sites.',
-    keywords: ['Kaseya Center tickets', 'Miami Heat tickets', 'Kaseya Center seating', 'Miami arena events', 'FTX Arena tickets'],
+    description: 'Compare Kaseya Center ticket prices in downtown Miami before you buy. The 19,600-seat arena is home to the Miami HEAT and a busy stop for Latin music, pop, and hip-hop tours. The current official calendar lists Unidos Por Venezuela on August 16, Don Toliver on August 22, Ricardo Montaner on August 29-30, Juanes on September 4, Omar Courtz on September 11-12, Rosalía on September 14-16, and Gorillaz on September 18. For HEAT games, the 100 level puts you close to the court while the 300 level is usually the practical value tier; concert floor plans can change the section map. Compare the same seat zone across Ticketmaster, SeatGeek, and StubHub, check the all-in total, and set a free TicketScan alert instead of rewarding the first inflated listing you see.',
+    keywords: ['Kaseya Center tickets', 'Miami Heat tickets', 'Kaseya Center seating chart', 'Kaseya Center events 2026', 'Kaseya Center concerts', 'Don Toliver Miami tickets', 'Rosalia Miami tickets', 'Gorillaz Miami tickets', 'cheap Miami concert tickets', 'FTX Arena tickets'],
+    faqs: [
+      { question: 'What events are coming up at Kaseya Center?', answer: 'The official calendar currently lists Unidos Por Venezuela on August 16, Don Toliver on August 22, Ricardo Montaner on August 29-30, Juanes on September 4, Omar Courtz on September 11-12, Rosalía on September 14-16, and Gorillaz on September 18, subject to schedule and inventory changes.' },
+      { question: 'What are the best value seats at Kaseya Center?', answer: 'For many Miami HEAT games, the 300 level offers the most practical budget view, while 100-level seats put you closer to the court. Concert configurations vary, so check the event-specific map and compare the same section across marketplaces.' },
+      { question: 'Where can I compare Kaseya Center ticket prices?', answer: 'TicketScan compares listings from Ticketmaster, SeatGeek, and StubHub so you can compare the same seat zone and check the payable total before choosing a seller.' },
+    ],
     sections: [
       { name: 'Floor', tier: 'floor' },
       { name: '101', tier: 'lower' }, { name: '102', tier: 'lower' }, { name: '103', tier: 'lower' },

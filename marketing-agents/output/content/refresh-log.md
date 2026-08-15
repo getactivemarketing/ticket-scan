@@ -3,6 +3,23 @@ Total output lines: 1161
 
 # Content Refresh Log
 
+## 2026-08-15 — Kaseya Center (venues.ts) — generic venue stub → current Miami event and value guide
+
+**Page refreshed:** `kaseya-center` in `web/src/data/venues.ts` → renders at `/venues/kaseya-center`
+
+**Why this page:** Saturday refresh. The prior page had a generic two-sentence description, five broad keywords, and no FAQs. It missed current Miami concert searches and gave buyers no event-specific seating or comparison guidance.
+
+**What changed:**
+
+1. Rewrote the description around the current official calendar: Unidos Por Venezuela (August 16), Don Toliver (August 22), Ricardo Montaner (August 29-30), Juanes (September 4), Omar Courtz (September 11-12), Rosalía (September 14-16), and Gorillaz (September 18).
+2. Added durable seating guidance: 100-level proximity for HEAT games, 300-level value positioning, and a warning that concert maps vary by configuration.
+3. Expanded keywords for Kaseya Center events, seating-chart, Miami concert, and artist-specific intent.
+4. Added three schema-ready FAQs covering upcoming events, value sections, and cross-platform ticket comparison.
+
+**Guardrails honored:** No unsupported dollar prices or savings claims were added. Event names and dates were checked against the [official Kaseya Center events calendar](https://www.kaseyacenter.com/events/all) on August 15, 2026. Buyers are told to verify inventory, event-specific maps, and all-in totals before checkout.
+
+**Handoffs:** SEO should review the new `Kaseya Center concerts 2026`, `Don Toliver Miami tickets`, `Rosalia Miami tickets`, and `Gorillaz Miami tickets` terms. Email can use the late-August Miami concert run as a price-alert signup hook.
+
 ## 2026-08-14 — United Center (venues.ts) — stale WNBA snapshot → current event calendar guide
 
 **Page refreshed:** `united-center` in `web/src/data/venues.ts` → renders at `/venues/united-center`
