@@ -12,7 +12,7 @@ featured: false
 
 A recent ticket-price story about Rod Stewart makes a point that concert shoppers learn the expensive way: the price of seeing an artist is not one number.
 
-An Axios report described a fan paying $931 for a fifth-row Rod Stewart ticket on Long Island. Just days later, Stewart was scheduled to perform with Richard Marx at the Iowa State Fair, where tickets were available at prices far below that purchase. Same headliner. Same tour cycle. Very different market.
+An [Axios report](https://www.axios.com/local/des-moines/2026/08/07/rod-stewart-iowa-state-fair-ticket-prices) described a fan paying $931 for a fifth-row Rod Stewart ticket on Long Island. The report compared that purchase with Stewart's planned August 14 appearance with Richard Marx at the Iowa State Fair, where tickets were available at prices far below that purchase. The Iowa show was canceled on August 11 because of medical issues, so it is no longer a live buying opportunity—but the comparison still shows the underlying point: same headliner, same tour cycle, very different market.
 
 That does not mean every Iowa ticket was a bargain, or that every expensive seat was a rip-off. It does mean a single search in a single city can create a dangerously incomplete picture of what a tour costs.
 

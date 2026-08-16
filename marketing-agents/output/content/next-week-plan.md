@@ -1,65 +1,38 @@
-# TicketScan Content Plan — Week of August 10–13, 2026
+# TicketScan Content Plan — Week of August 17, 2026
 
-**Prepared:** Sunday, August 9, 2026  
-**Editorial goal:** Make “compare first” concrete by helping readers evaluate the payable total, timing, and risk of common late-summer purchases. Every piece should link to `/compare` and one relevant watchlist or price-alert action.
+## Sunday audit — August 16
 
-## Monday — Price alerts
+The week produced four queued drafts covering FIFA pricing transparency, a practical three-marketplace comparison, cross-city concert pricing, and cheapest-concert-ticket tactics. The slate has a coherent consumer-advocate theme, but the first two and the fourth overlap around all-in comparison language. Keep all four drafts in review, but publish or refresh only after assigning distinct internal links and search intent.
 
-**Working title:** How Ticket Price Alerts Beat the Refresh-and-Panic Cycle  
-**Format:** Evergreen guide  
-**Target keyword:** ticket price alerts  
-**Search intent:** Buyers want to know whether alerts are useful and what target to set.  
-**Editorial angle:** Explain a practical ceiling-setting method using budget, seat quality, event date, and observed price history. Be clear that an alert does not guarantee a drop or a specific inventory outcome.  
-**CTA:** Set a free price alert.
+Measurement remains the limiting factor: the latest content-performance report says page-level traffic, Search Console rankings, named conversion events, and price-history freshness are unavailable or unverified. Do not claim that a topic “won” based on traffic or savings without those exports.
 
-## Tuesday — NFL preseason
+### Copy and freshness actions completed
 
-**Working title:** NFL Preseason Week 1 Tickets: Compare the Total Before You Buy  
-**Format:** Timely buying guide  
-**Target keyword:** NFL preseason Week 1 tickets 2026  
-**Search intent:** Fans are moving from schedule discovery to purchase this week.  
-**Editorial angle:** Use the official August 13 start date, explain why the first visible price is not the final comparison, and show how to compare the same matchup and seating zone across three marketplaces. Do not publish unsourced “cheapest game” claims.  
-**CTA:** Compare NFL tickets.
+- Corrected the Rod Stewart draft to link its source and explain that the Iowa State Fair appearance was canceled on August 11. The comparison remains useful as a cross-city pricing example, but the event is no longer presented as purchasable.
+- Confirmed the four queued drafts meet the 800-word minimum and use valid frontmatter with unique slugs.
+- Kept price examples labeled as snapshots, examples, or estimates; no new unsupported TicketScan savings claim was added.
+- Flagged the all-in pricing request from SEO as the next evergreen priority.
 
-## Wednesday — Concert VIP pricing
+## Recommended production slate
 
-**Working title:** VIP Concert Tickets: What the Premium Actually Buys You  
-**Format:** Consumer guide / comparison  
-**Target keyword:** are VIP concert tickets worth it  
-**Search intent:** Fans need help separating a better seat from merch, early entry, and photo-op add-ons.  
-**Editorial angle:** Break down the value of seat location, bundled extras, transfer restrictions, and resale liquidity. Use the recent wave of four-figure VIP packages as a news hook, but avoid treating one artist's package as representative of every tour.  
-**CTA:** Compare standard and premium listings before buying.
+| Day | Working title | Format | Primary keyword | Conversion goal |
+|---|---|---|---|---|
+| Mon Aug 17 | **All-In Ticket Prices Explained: How to Compare Fees Across Ticket Platforms** | New comparison guide | all-in ticket price comparison | Run a comparison; set a target price |
+| Tue Aug 18 | **How to Buy 2026 US Open Tickets: Sessions, Sections, and Resale Timing** | New seasonal guide | 2026 US Open tickets | Compare a session; start a watchlist |
+| Wed Aug 19 | **When to Buy NFL Tickets in 2026: A Preseason Price-Timing Guide** | New tactical guide | when to buy NFL tickets 2026 | Watchlist a game; set a target price |
+| Thu Aug 20 | **Will Ticket Prices Drop? Five Signals to Watch Before You Buy** | New data-led guide | will ticket prices drop | Set a free price alert |
 
-## Thursday — WNBA late-season buying
+## Editorial requirements for next week
 
-**Working title:** How to Find Better-Value WNBA Tickets Before the 2026 Playoffs  
-**Format:** Tactical guide  
-**Target keyword:** WNBA tickets 2026 price comparison  
-**Search intent:** Fans are shopping late-season games while the regular season continues through September 24.  
-**Editorial angle:** Compare weekday versus weekend demand, rivalry and playoff-position effects, seat location, and all-in totals. Keep advice qualified; do not promise a fixed discount percentage. Link to team and venue pages where inventory exists.  
-**CTA:** Watch a WNBA game and set a target price.
-
-## Editorial guardrails
-
-- Keep World Cup, US Open, NFL preseason overview, overpay-checklist, and generic Ticketmaster-vs-SeatGeek comparison topics out of this week's new drafts; they were already assigned or published in the August 3–9 calendar.
-- Use “all-in,” “total payable,” or “mandatory fees shown upfront” precisely. Taxes, shipping, and optional add-ons may be treated differently under the FTC guidance.
-- No fabricated current prices, savings percentages, rankings, or “cheapest” labels. Timestamp and source any live price observation.
-- Each draft must include one comparison example, a cautious qualification where inventory can change, and one conversion CTA.
-
-## Sunday audit notes
-
-- The August 3–9 calendar was followed at the topic level: three new pieces, two refresh-oriented assignments, the overpay checklist lead magnet, and a Sunday social/QA slot.
-- The current queue has useful handoffs for price alerts, the checklist, and all-in pricing. The main copy risk is overclaiming savings or implying that one marketplace is always cheapest; future drafts should use “can vary” language and point readers to a same-event comparison.
-- No new blog draft was created today, per the Sunday schedule.
+1. Make the Monday guide the canonical fee-comparison resource. Link it from `/faq`, `/how-it-works`, `/compare`, the existing Ticketmaster-versus-SeatGeek post, and at least one venue or city guide.
+2. Use a worked comparison table only with clearly labeled estimates or a timestamped live snapshot. Final fees vary by event, seat, location, delivery method, and platform policy.
+3. The US Open guide should focus on session type, grounds admission, seat location, and timing. The tournament begins August 23; verify the official schedule and inventory before inserting event examples.
+4. The NFL piece should explain preseason versus regular-season demand and avoid guarantees about late drops. Link to the watchlist flow rather than promising savings.
+5. The price-drop piece should distinguish internal price history from general marketplace anecdotes. Current price-tracking freshness is not verified, so do not present a current “lowest price” claim.
 
 ## Handoffs
 
-- **SEO:** Prioritize `all-in NFL ticket prices 2026`, `ticket price alerts`, `are VIP concert tickets worth it`, and `WNBA tickets 2026 price comparison`.
-- **Email:** Use the overpay checklist as the conversion asset for Monday's alert piece and Tuesday's NFL piece.
-- **Social:** Turn today's hook into a short “headline price vs payable total” carousel or thread; use a timestamp if showing any live listing.
-
-## Sources
-
-- [NFL 2026 Preseason Week 1 schedule](https://www.nfl.com/schedules/2026/by-week/preseason-week-1)
-- [FTC Rule on Unfair or Deceptive Fees FAQ](https://search.ftc.gov/business-guidance/resources/rule-unfair-or-deceptive-fees-frequently-asked-questions)
-- [WNBA 2026 regular-season schedule information](https://pr.nba.com/2026-wnba-game-schedule/)
+- **SEO:** prioritize the August 16 `seatgeek-all-in-pricing` request and consolidate overlapping fee/comparison pages through internal links rather than creating multiple near-duplicate URLs.
+- **Email:** consider the “60-second same-day ticket check” checklist as a lead magnet; collect section, quantity, listed price, fees, all-in total, and target price.
+- **Social:** repurpose today’s FedEx St. Jude hook into “scarcity is not a math strategy,” with a short all-in comparison CTA.
+- **Analytics/CRO:** do not evaluate the slate on traffic or conversion lift until `compare_view`, `watchlist_add`, `target_price_set`, and `outbound_ticket_click` are verified and price-history freshness is repaired.

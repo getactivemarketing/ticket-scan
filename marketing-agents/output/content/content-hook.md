@@ -1,19 +1,21 @@
-## Today's Content Hook — August 15, 2026
-**Topic:** NFL preseason Week 1 reaches its Saturday slate with six games, including Rams at Chiefs, Eagles at Ravens, and Cowboys at Seahawks.
-**Angle:** Exhibition football creates a perfect price-transparency test: a recognizable team name can make a preseason listing look like a bargain while the final total tells a different story. Compare the same game and seat zone across marketplaces, then use price history to decide whether “buy now” is real urgency or just a loud headline.
-**Target keyword:** NFL preseason tickets 2026 price comparison
+## Today's Content Hook — August 16, 2026
+**Topic:** The FedEx St. Jude Championship reaches its final round today, closing the first FedExCup Playoff event of the season in Memphis.
+**Angle:** Use the final-round urgency to explain the difference between legitimate scarcity and panic pricing. Buyers considering a same-day or near-term sports event should compare equivalent seats across marketplaces, check the all-in total, and decide whether a limited inventory window justifies buying now. “Last chance” is not a pricing strategy; it is a reason to verify the math quickly.
+**Target keyword:** FedEx St. Jude Championship tickets 2026 price comparison
 **Content type:** Social snippet / email hook
 **Priority:** High
 
-**Source:** [NFL Week 1 schedule](https://www.nfl.com/schedules/2026/by-week/preseason-week-1), checked August 15, 2026.
+**Source:** [Golf Monthly event coverage](https://www.golfmonthly.com/tour/pga-tour/how-to-watch-fedex-st-jude-championship-2026-live-streams-and-tv-details-for-opening-fedex-cup-playoff), checked August 16, 2026.
 
-## Secondary Hook — August 15, 2026
-**Topic:** Miami’s late-August and September arena calendar is filling up, with Don Toliver, Ricardo Montaner, Juanes, Omar Courtz, Rosalía, and Gorillaz listed at Kaseya Center.
-**Angle:** Use the concert run to explain why one marketplace rarely wins every event. Encourage Miami buyers to compare the same section, account for fees, and set alerts before demand spikes around an artist’s on-sale or show week.
-**Target keyword:** Kaseya Center concerts 2026 tickets
-**Content type:** Venue-page update / social snippet
+## Secondary Hook — August 16, 2026
+**Topic:** Indiana Fever at Atlanta is scheduled for tonight at State Farm Arena; ESPN lists tickets as low as $231 in its schedule snapshot.
+**Angle:** A recognizable team and a single same-day price are not enough to call a deal. Compare seat location, ticket quantity, fees, and buyer terms across Ticketmaster, SeatGeek, and StubHub before treating the lowest displayed number as the winner. Label the ESPN figure as a snapshot, not a guaranteed current price.
+**Target keyword:** Indiana Fever Atlanta tickets August 16 2026
+**Content type:** Social snippet / venue or city-page hook
 **Priority:** Medium
 
-**Source:** [Kaseya Center official events calendar](https://www.kaseyacenter.com/events/all), checked August 15, 2026.
+**Source:** [ESPN Indiana Fever 2026 schedule](https://www.espn.com/wnba/team/schedule/_/name/ind/season/2026), checked August 16, 2026.
 
-**Lead magnet opportunity:** Add a “Miami concert ticket checklist” to the Email Agent queue: event date, section, listed price, fees, all-in total, and alert target.
+**Lead magnet opportunity:** “The 60-second same-day ticket check” — a one-page checklist for section, quantity, all-in total, delivery timing, and price-alert eligibility. Route qualified readers to the comparison flow and avoid promising a price drop.
+
+**SEO handoff:** The all-in ticket pricing request from August 16 remains the strongest evergreen follow-up; prioritize it next week over another World Cup article because the 2026 tournament ended July 19.
