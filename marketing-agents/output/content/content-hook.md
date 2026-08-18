@@ -1,12 +1,12 @@
-## Today's Content Hook — August 17, 2026
-**Topic:** The 2026 US Open begins Sunday, August 23, with Arthur Ashe Kids' Day and Fan Week before main-draw singles begin August 30. Individual tickets are on sale, and the event includes distinct sessions, courts, and ticket types.
-**Angle:** “US Open tickets” is not one comparable product. Help fans compare session, stadium, seat quality, quantity, and all-in total across marketplaces before assuming the first listed price is the deal. Fan Week also creates a useful lower-cost/free-access angle, but confirm the required Fan Access Pass and session terms before publishing specifics.
-**Target keyword:** 2026 US Open tickets price comparison
-**Content type:** Blog hook / social snippet / email hook
+## Today's Content Hook — 2026-08-18
+**Topic:** FIFA's chief operating officer has reportedly left after publicly criticizing the abandoned plan to sell stakes in future World Cup profits to private-equity investors.
+**Angle:** Use the news to explain why fans should treat “official” pricing and “market” pricing as separate questions. The useful consumer takeaway is not inside-baseball FIFA drama; it is a reminder to compare the primary seller with resale marketplaces before assuming the first price is the fair price.
+**Target keyword:** World Cup 2026 ticket prices
+**Content type:** Social snippet / World Cup guide update / email hook
 **Priority:** High
 
-**Source:** [Official 2026 US Open schedule](https://www.usopen.org/en_US/about/eventschedule.html) and [official individual-ticket page](https://www.usopen.org/en_US/tickets/individual_tickets.html), checked August 17, 2026.
+**Secondary timely angle:** NFL preseason is back, and current coverage of the Los Angeles market shows get-in prices can be dramatically lower than regular-season expectations. This is a useful short-term hook for a tactical guide about buying preseason tickets before fans pay regular-season hype for an exhibition game.
 
-**Lead magnet opportunity:** “The 60-second all-in ticket check” — a one-page worksheet for event/session, ticket quantity, section, listed price, fees, final total, delivery timing, and target price.
+**Lead magnet opportunity:** A “Ticket Buyer’s Price-Check Worksheet” with fields for all-in price, fees, seat section, seller, and target price. Email Agent can offer it in exchange for a newsletter signup.
 
-**SEO handoff:** Build the new all-in-pricing guide as the canonical resource for “ticket fees” and “compare ticket prices,” then link the overlapping comparison posts to it instead of creating another generic “cheapest ticket site” page.
+**SEO handoff:** Consider a supporting page or FAQ targeting “World Cup 2026 ticket prices vs resale” and “cheap NFL preseason tickets.”

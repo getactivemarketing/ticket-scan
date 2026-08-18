@@ -401,7 +401,7 @@ export default function WorldCup2026Page() {
                 </tr>
                 <tr className="bg-gray-50">
                   <td className="px-5 py-4 font-medium text-gray-900">3rd Place</td>
-                  <td className="px-5 py-4 text-gray-600">July 12</td>
+                  <td className="px-5 py-4 text-gray-600">July 18</td>
                   <td className="px-5 py-4 text-gray-600">
                     <Link href="/world-cup-2026/hard-rock-stadium" className="text-green-600 hover:underline">Hard Rock Stadium</Link>
                     {', Miami'}
