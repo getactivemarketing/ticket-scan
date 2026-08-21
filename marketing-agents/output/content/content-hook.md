@@ -1,11 +1,11 @@
-## Today's Content Hook — 2026-08-20
+## Today's Content Hook — 2026-08-21
 
-**Topic:** Garth Brooks' Blame It All On My Roots Arena Tour opens its Indianapolis run today with every seat advertised at one $154 price before applicable taxes.
-**Angle:** Use the unusually simple price promise to explain why shoppers should compare the final, all-in cost across Ticketmaster, SeatGeek, and StubHub instead of trusting a big “starting at” number. A fair-looking primary price can still be beaten by resale inventory—or become more expensive after fees.
-**Target keyword:** Garth Brooks Indianapolis tickets 2026
-**Content type:** Blog post / social snippet
+**Topic:** Chase Center will host the 2027 AT&T WNBA All-Star Game on July 31, 2027, plus the Shooting Stars and 3-Point Contest on July 30.
+**Angle:** San Francisco just got a high-demand sports weekend, but ticket information is not live yet. Own the “when do 2027 WNBA All-Star tickets go on sale?” search with a practical guide to official-release timing, resale markups, seat-zone comparisons, and price alerts. In other words: excitement is free; panic-buying is not.
+**Target keyword:** 2027 WNBA All-Star tickets Chase Center
+**Content type:** Venue page update / social snippet / email hook
 **Priority:** High
 
-**Supporting signal:** World Cup 2026 fans continue discussing resale and refund deductions, reinforcing the need to verify marketplace rules and total cost before buying.
+**Supporting signal:** The official announcement says this is the first WNBA All-Star event in the San Francisco Bay Area and that ticket details will be announced in the coming months. The Golden State Valkyries also clinched a 2026 playoff berth, keeping local demand active.
 
-**Sources:** [Gainbridge Fieldhouse event listing](https://www.gainbridgefieldhouse.com/events/detail/garth-brooks) · [World Cup marketplace discussion](https://www.reddit.com/r/WorldCup2026Tickets/comments/1vt42il/marketplace_refundticket_update/)
+**Sources:** [Chase Center official announcement](https://www.chasecenter.com/news/valkyries-wnba-all-star-2027/) · [Golden State Valkyries announcement](https://valkyries.wnba.com/news/category/news)

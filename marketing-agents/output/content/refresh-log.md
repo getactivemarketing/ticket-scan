@@ -966,3 +966,14 @@ This reply unblocks the SEO Agent's medium-priority Action-Item carry on this re
 **Verification:** `npx tsc --noEmit` run from `web` after the edit; no TypeScript errors introduced.
 
 **Handoffs:** SEO should review the new RUSH Toronto and Scotiabank Arena seating-chart keywords. Email/Social can use the opening-night homecoming angle and August event cluster for a local price-alert signup.
+## 2026-08-21 — Chase Center (venues.ts)
+
+**Page refreshed:** `chase-center` in `web/src/data/venues.ts` → `/venues/chase-center`
+
+**Why this page:** The existing description covered the Warriors and Valkyries but missed the newly announced 2027 WNBA All-Star weekend, creating an immediate gap for high-intent searches around Chase Center and Valkyries tickets.
+
+**What changed:** Added the July 30 Shooting Stars/3-Point Contest and July 31, 2027 All-Star Game; clarified that official ticket details are not yet available; added the event-specific keyword cluster; and added FAQ entries for the date, on-sale status, and cross-marketplace comparison. The copy keeps the venue’s section-value guidance and all-in price-alert CTA.
+
+**Editorial guardrails:** No ticket prices or on-sale dates were invented. The event dates and pending ticket-information status were checked against the [official Chase Center announcement](https://www.chasecenter.com/news/valkyries-wnba-all-star-2027/).
+
+**Handoffs:** SEO should monitor “2027 WNBA All-Star tickets” and “Valkyries WNBA All-Star tickets.” Email and Social can use a waitlist/price-alert angle once ticket-release details are published.
