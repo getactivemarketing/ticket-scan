@@ -126,5 +126,18 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.8,
   }));
 
-  return [...staticPages, ...blogPages, ...venuePages, ...cityPages, ...categoryPages, ...worldCupMainPage, ...worldCupVenuePages];
+  // City and category pages share the `/tickets/[slug]` namespace. Keep the
+  // first entry when a future data update introduces the same slug in both
+  // collections, because sitemap files must not repeat a URL.
+  const entries = [
+    ...staticPages,
+    ...blogPages,
+    ...venuePages,
+    ...cityPages,
+    ...categoryPages,
+    ...worldCupMainPage,
+    ...worldCupVenuePages,
+  ];
+
+  return Array.from(new Map(entries.map((entry) => [entry.url, entry])).values());
 }
