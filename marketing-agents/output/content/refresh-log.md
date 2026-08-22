@@ -977,3 +977,14 @@ This reply unblocks the SEO Agent's medium-priority Action-Item carry on this re
 **Editorial guardrails:** No ticket prices or on-sale dates were invented. The event dates and pending ticket-information status were checked against the [official Chase Center announcement](https://www.chasecenter.com/news/valkyries-wnba-all-star-2027/).
 
 **Handoffs:** SEO should monitor “2027 WNBA All-Star tickets” and “Valkyries WNBA All-Star tickets.” Email and Social can use a waitlist/price-alert angle once ticket-release details are published.
+## 2026-08-22 — Kia Center (venues.ts)
+
+**Page refreshed:** `kia-center` in `web/src/data/venues.ts` → `/venues/kia-center`
+
+**Why this page:** Saturday refresh. The page had a generic one-sentence description and a short keyword list despite a current official calendar with a late-August and September event run. It was a high-intent venue page with room for event-specific search coverage and practical buying guidance.
+
+**What changed:** Replaced the generic description with a current event guide covering Ricardo Montaner (August 28), Duel Arena: Mike Perry vs. Dillon Danis (August 29), Disney On Ice (September 4-6), Rosalía (September 9), Grupo Frontera (September 12), Omar Courtz (September 13 and 19), and Gorillaz (September 17). Added event-specific keywords for Orlando ticket searches and three schema-ready FAQs covering upcoming events, value seating, and cross-marketplace price comparison.
+
+**Editorial guardrails:** Event names and dates were checked against the [official Kia Center events calendar](https://www.kiacenter.com/events/all). No unsupported ticket prices, savings claims, or unannounced Orlando Magic dates were added. Concert layouts are explicitly described as event-specific.
+
+**Handoffs:** SEO should monitor “Kia Center events 2026,” “Ricardo Montaner Orlando tickets,” “Rosalía Orlando tickets,” and “Gorillaz Orlando tickets.” Email and Social can use the near-term Orlando event cluster for price-alert signups.

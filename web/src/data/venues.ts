@@ -33,8 +33,13 @@ export const venues: Record<string, Venue> = {
     capacity: 20000,
     type: 'arena',
     homeTeams: ['Orlando Magic'],
-    description: 'Compare ticket prices for events at Kia Center in Orlando. Home of the Orlando Magic, hosting NBA games, concerts, and special events. Find cheap tickets and track price trends.',
-    keywords: ['Kia Center tickets', 'Orlando Magic tickets', 'Kia Center seating chart', 'Kia Center events', 'Orlando arena tickets'],
+    description: 'Compare Kia Center ticket prices in downtown Orlando before you buy. The 20,000-seat home of the Orlando Magic also hosts a busy mix of arena concerts, family shows, combat sports, and special events. The official calendar currently lists Ricardo Montaner on August 28, Duel Arena: Mike Perry vs. Dillon Danis on August 29, Disney On Ice from September 4-6, Rosalía on September 9, Grupo Frontera on September 12, Omar Courtz on September 13 and 19, and Gorillaz on September 17. For Magic games, the 100 level brings you close to the court while the 200 level is usually the practical value tier; concert layouts can change the map. Compare the same seat zone across Ticketmaster, SeatGeek, and StubHub, check the all-in total, and set a free TicketScan alert before the first inflated listing gets your money.',
+    keywords: ['Kia Center tickets', 'Orlando Magic tickets', 'Kia Center seating chart', 'Kia Center events 2026', 'Orlando concert tickets', 'Ricardo Montaner Orlando tickets', 'Rosalia Orlando tickets', 'Grupo Frontera Orlando tickets', 'Gorillaz Orlando tickets', 'Omar Courtz Orlando tickets', 'Disney On Ice Orlando tickets', 'cheap Kia Center tickets'],
+    faqs: [
+      { question: 'What events are coming up at Kia Center?', answer: 'The official calendar currently lists Ricardo Montaner on August 28, Duel Arena: Mike Perry vs. Dillon Danis on August 29, Disney On Ice from September 4-6, Rosalía on September 9, Grupo Frontera on September 12, Omar Courtz on September 13 and 19, and Gorillaz on September 17, subject to schedule and inventory changes.' },
+      { question: 'What are the best value seats at Kia Center?', answer: 'For many Orlando Magic games, the 200 level offers a useful full-court view at a lower price than the 100 level. For concerts and family shows, the event-specific map matters because the floor and stage layout can change.' },
+      { question: 'Where can I compare Kia Center ticket prices?', answer: 'TicketScan compares listings from Ticketmaster, SeatGeek, and StubHub so you can compare the same seat zone, account for fees, and choose the marketplace with the best payable total.' },
+    ],
     sections: [
       // Floor
       { name: 'Floor', tier: 'floor' },
