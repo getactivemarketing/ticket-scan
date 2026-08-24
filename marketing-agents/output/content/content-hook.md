@@ -1,13 +1,12 @@
-## Today's Content Hook — 2026-08-23
-
-**Topic:** 2026 US Open Fan Week opens today in New York. The official tournament schedule runs August 23 through September 13; qualifying begins this week, and the main draw starts August 30.
-**Angle:** Treat Fan Week as the start of the buying window, not a reason to panic-buy. Explain the difference between free/low-cost Fan Week access, qualifying sessions, and main-draw day/night sessions, then show readers how to compare the same session and seat area across Ticketmaster, SeatGeek, and StubHub. The consumer-advocate punchline: “US Open tickets” is not one product, and “starting at” is not a budget.
-**Target keyword:** 2026 US Open tickets
-**Content type:** Social snippet / email hook / timely blog angle
+## Today's Content Hook — 2026-08-24
+**Topic:** 2026 U.S. Open Fan Week and qualifying begin today in New York, with the main draw starting August 30. Current coverage is spotlighting a Serena Williams/Carlos Alcaraz mixed-doubles session advertised at $68 while marquee Arthur Ashe sessions command much higher demand.
+**Angle:** Help fans separate the cheapest way to experience the tournament (Fan Week, grounds access, outer courts) from the most expensive way (marquee stadium sessions), then compare primary and resale prices before buying.
+**Target keyword:** US Open 2026 tickets
+**Content type:** Blog post / social snippet / email hook
 **Priority:** High
 
-**Supporting signal:** The [official 2026 US Open schedule](https://www.usopen.org/en_US/about/eventschedule.html) lists Fan Week from August 23–29, qualifying sessions from August 24–27, and the main draw beginning August 30. The [official Fan Access Pass page](https://fanpass.usopen.org/) says adults need a free Fan Access Pass for Fan Week admission.
+**Source notes:** [USOpen.org individual tickets](https://www.usopen.org/en_US/tickets/individual_tickets.html) lists the 2026 sessions and [NBC 6's tournament guide](https://www.nbcmiami.com/news/sports/tennis/us-open-2026-guide-how-to-watch-ticket-prices-full-schedule/3849030/) confirms the dates, Fan Week access requirements, and current ticket context.
 
-**Secondary hook:** NFL preseason Week 3 and the final preseason weekend are keeping low-stakes live football on the market while regular-season demand approaches. Use the [official NFL preseason schedule](https://www.nfl.com/schedules/2026/by-week/preseason-week-3) only for verified matchups and dates; do not claim that late inventory will always get cheaper.
+**Email Agent lead magnet:** Offer a one-page “US Open ticket value calculator” that asks whether a fan prioritizes a specific player, a full day of tennis, or the lowest total spend, then recommends which session type to track.
 
-**Handoffs:** Email Agent can offer a “US Open session chooser” checklist. Social Agent can use: “Fan Week is free with a pass. Main-draw tickets are not. Compare the session, seat area, and checkout total before the tennis tax serves you.” SEO should prioritize session-level terms such as `US Open qualifying tickets 2026`, `US Open Fan Week tickets`, and `US Open day session vs night session`.
+**SEO request:** Consider a supporting page for “US Open 2026 tickets” linking to this guide, the New York/Queens venue content, and the comparison page.
