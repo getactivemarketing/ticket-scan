@@ -9,29 +9,30 @@ import { getAllCities } from '@/data/cities';
 import { getAllCategories } from '@/data/categories';
 import { getFeaturedPosts } from '@/data/blog';
 import BrowseTabsClient from '@/components/BrowseTabsClient';
+import UpcomingEvents from '@/components/UpcomingEvents';
 
 export const metadata: Metadata = {
-  title: 'TicketScan - Compare Ticket Prices Across Multiple Sites',
-  description: 'Find the best deals on concert, sports, and theater tickets. Compare prices from Ticketmaster, SeatGeek, and more. Track price trends and get alerts when prices drop.',
-  keywords: 'ticket prices, compare tickets, cheap tickets, concert tickets, sports tickets, NBA tickets, NHL tickets, Ticketmaster, SeatGeek',
+  title: 'TicketScan - Event Search, Venue Guides and Onsale Dates',
+  description: 'Search concert, sports and theater events across the major ticket platforms. Browse venue guides, save events to a watchlist, and find out when tickets go on sale.',
+  keywords: 'event search, concert tickets, sports tickets, NFL tickets, college football tickets, venue seating guides, ticket onsale dates, presale tickets',
   alternates: {
     canonical: 'https://www.ticketscan.io',
   },
   openGraph: {
-    title: 'TicketScan - Compare Ticket Prices',
-    description: 'Never overpay for tickets again. Compare prices across multiple platforms and find the best deals.',
+    title: 'TicketScan - Find Events, Track Onsales',
+    description: 'Search events across the major ticket platforms, save what you care about, and get told when tickets go on sale.',
     type: 'website',
     url: 'https://www.ticketscan.io',
   },
 };
 
 const homepageFaqs = [
-  { q: 'How does TicketScan help me find cheaper tickets?', a: 'TicketScan compares ticket prices from Ticketmaster, SeatGeek, and other major ticket sites in real-time. We track price trends so you can see if prices are going up or down, and alert you when tickets drop to your target price.' },
-  { q: 'Is TicketScan free to use?', a: 'Yes, TicketScan is completely free. Create an account to track events, compare prices, and get alerts when prices drop.' },
-  { q: 'What events can I track with TicketScan?', a: 'You can track any event available on major ticket platforms including concerts, NBA games, NHL hockey, NFL football, MLB baseball, theater shows, and more.' },
+  { q: 'What does TicketScan actually do?', a: 'TicketScan searches events across the major ticket platforms from one place, publishes venue guides covering seating and access, and tracks when tickets for an event go on sale. Add an event to your watchlist and we tell you when its onsale or presale window opens.' },
+  { q: 'Is TicketScan free to use?', a: 'Yes, TicketScan is completely free. Create an account to search events, build a watchlist, and get notified when tickets go on sale.' },
+  { q: 'What events can I track with TicketScan?', a: 'Any event listed on the major ticket platforms — concerts, NFL and college football, NBA, NHL, MLB, theater shows and more.' },
 ];
 
-export default function Home() {
+export default async function Home() {
   const venues = getAllVenues();
   const cities = getAllCities();
   const categories = getAllCategories();
@@ -129,18 +130,21 @@ export default function Home() {
                   <svg className="w-7 h-7 text-teal" fill="none" stroke="currentColor" strokeWidth={1.5} viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M3 13.125C3 12.504 3.504 12 4.125 12h2.25c.621 0 1.125.504 1.125 1.125v6.75C7.5 20.496 6.996 21 6.375 21h-2.25A1.125 1.125 0 0 1 3 19.875v-6.75ZM9.75 8.625c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125v11.25c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 0 1-1.125-1.125V8.625ZM16.5 4.125c0-.621.504-1.125 1.125-1.125h2.25C20.496 3 21 3.504 21 4.125v15.75c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 0 1-1.125-1.125V4.125Z" /></svg>
                 </div>
                 <h3 className="font-heading font-bold text-navy mb-2">Track</h3>
-                <p className="text-gray-500 text-sm">Add events to your watchlist and we monitor prices 24/7.</p>
+                <p className="text-gray-500 text-sm">Add events to your watchlist and we watch them for you.</p>
               </div>
               <div className="text-center">
                 <div className="w-16 h-16 mx-auto mb-4 bg-success/5 rounded-xl flex items-center justify-center">
                   <svg className="w-7 h-7 text-success" fill="none" stroke="currentColor" strokeWidth={1.5} viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M14.857 17.082a23.848 23.848 0 0 0 5.454-1.31A8.967 8.967 0 0 1 18 9.75V9A6 6 0 0 0 6 9v.75a8.967 8.967 0 0 1-2.312 6.022c1.733.64 3.56 1.085 5.455 1.31m5.714 0a24.255 24.255 0 0 1-5.714 0m5.714 0a3 3 0 1 1-5.714 0" /></svg>
                 </div>
-                <h3 className="font-heading font-bold text-navy mb-2">Save</h3>
-                <p className="text-gray-500 text-sm">Get alerts when prices drop to your target and buy at the right time.</p>
+                <h3 className="font-heading font-bold text-navy mb-2">Get Told</h3>
+                <p className="text-gray-500 text-sm">Hear the moment tickets go on sale, including presales before the public window.</p>
               </div>
             </div>
           </div>
         </div>
+
+        {/* Coming Up — live Ticketmaster dates at the venues we cover */}
+        <UpcomingEvents />
 
         {/* Popular Venues */}
         <div className="bg-gray-50 py-12">
@@ -219,7 +223,7 @@ export default function Home() {
                   <Logo size={28} className="text-white" />
                   <span className="text-white font-heading font-bold text-xl tracking-tight">TicketScan</span>
                 </div>
-                <p className="text-sm mb-4">Compare ticket prices across multiple platforms and find the best deals on concerts, sports, and events.</p>
+                <p className="text-sm mb-4">Search concerts, sports and theater events across the major ticket platforms, browse venue guides, and know when tickets go on sale.</p>
                 <div className="flex gap-3 mb-6">
                   <a href="https://twitter.com/ticketscan" target="_blank" rel="noopener noreferrer" className="text-gray-500 hover:text-white transition-colors"><TwitterIcon /></a>
                   <a href="https://tiktok.com/@ticketscan" target="_blank" rel="noopener noreferrer" className="text-gray-500 hover:text-white transition-colors"><TikTokIcon /></a>
