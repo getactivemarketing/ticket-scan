@@ -1908,32 +1908,45 @@ app.get('/api/public/events', async (req, res) => {
       sort: 'date,asc'
     };
 
-    // Venue name mapping
-    const venueNames = {
-      'kia-center': 'Kia Center',
-      'kaseya-center': 'Kaseya Center',
-      'msg': 'Madison Square Garden',
-      'crypto-arena': 'Crypto.com Arena',
-      'united-center': 'United Center',
-      'td-garden': 'TD Garden',
-      'wells-fargo-center': 'Wells Fargo Center',
-      'american-airlines-center': 'American Airlines Center',
-      'toyota-center': 'Toyota Center',
-      'footprint-center': 'Footprint Center',
-      'chase-center': 'Chase Center',
-      'ball-arena': 'Ball Arena',
-      'state-farm-arena': 'State Farm Arena',
-      'barclays-center': 'Barclays Center',
-      'capital-one-arena': 'Capital One Arena',
-      'little-caesars-arena': 'Little Caesars Arena',
-      'fiserv-forum': 'Fiserv Forum',
-      'target-center': 'Target Center',
-      'smoothie-king-center': 'Smoothie King Center',
-      'scotiabank-arena': 'Scotiabank Arena',
-      't-mobile-arena': 'T-Mobile Arena',
-      'climate-pledge-arena': 'Climate Pledge Arena',
-      'prudential-center': 'Prudential Center',
-      'golden-1-center': 'Golden 1 Center'
+    // Venue slug -> Ticketmaster venueId.
+    //
+    // These were keyword searches until now, which is why several venues were
+    // broken: `keyword: 'United Center'` is a full-text match, so it returned
+    // events at Arthur Ashe Stadium and a venue in Belfast, and it returned
+    // nothing at all for venues Ticketmaster lists under a newer name. venueId
+    // is exact. IDs resolved from /discovery/v2/venues.json and each verified
+    // to return correctly-attributed events.
+    //
+    // NOTE: two slugs are deliberately stale, because the published URL must
+    // keep working after the building was renamed:
+    //   footprint-center   -> Mortgage Matchup Center (renamed Oct 2025)
+    //   wells-fargo-center -> Xfinity Mobile Arena    (renamed Sep 2025)
+    const venueIds = {
+      'kia-center': 'KovZpZAEvEEA',
+      'kaseya-center': 'KovZpZAJtFaA',
+      'msg': 'KovZpZA7AAEA',
+      'crypto-arena': 'KovZpZAEdntA',
+      'united-center': 'KovZpa2M7e',
+      'td-garden': 'KovZpa2gne',
+      'wells-fargo-center': 'KovZ917AiMF',
+      'american-airlines-center': 'KovZpZAJ67eA',
+      'toyota-center': 'KovZpZAJJIIA',
+      'footprint-center': 'KovZpZAE617A',
+      'chase-center': 'KovZ917Ah1H',
+      'ball-arena': 'KovZpZAFaJeA',
+      'state-farm-arena': 'KovZpa2Xke',
+      'barclays-center': 'KovZ917AtP3',
+      'capital-one-arena': 'KovZpaKuJe',
+      'little-caesars-arena': 'KovZ917A25V',
+      'fiserv-forum': 'KovZ917A_fV',
+      'target-center': 'KovZpZAE7evA',
+      'smoothie-king-center': 'KovZpZAJAJAA',
+      'scotiabank-arena': 'KovZpZAFFE1A',
+      't-mobile-arena': 'KovZpZAIIIdA',
+      'climate-pledge-arena': 'KovZ917Ahkk',
+      'prudential-center': 'KovZpZAE7vaA',
+      'wrigley-field': 'KovZpZAFlktA',
+      'golden-1-center': 'KovZpZAEF76A'
     };
 
     // City mapping
@@ -1978,30 +1991,101 @@ app.get('/api/public/events', async (req, res) => {
       'festivals': { classificationName: 'Music', keyword: 'festival' },
       'soccer': { classificationName: 'Soccer', keyword: 'MLS' },
       'tennis': { classificationName: 'Tennis' },
-      'family': { classificationName: 'Family' }
+      'family': { classificationName: 'Family' },
+      // Broader groupings. These have no page of their own yet, but they are
+      // the obvious things to ask this endpoint for and previously returned an
+      // unrelated national feed instead of an error.
+      'sports': { segmentName: 'Sports' },
+      'music': { segmentName: 'Music' },
+      'arts-theater': { segmentName: 'Arts & Theatre' },
+      'football': { classificationName: 'Football' },
+      'college-football': { classificationName: 'Football', keyword: 'NCAA' },
+      'basketball': { classificationName: 'Basketball' },
+      'hockey': { classificationName: 'Hockey' },
+      'baseball': { classificationName: 'Baseball' }
     };
 
-    // Apply filters
-    if (venue && venueNames[venue]) {
-      tmParams.keyword = venueNames[venue];
-    } else if (city && cityNames[city]) {
-      tmParams.city = cityNames[city];
-    } else if (category && categoryMapping[category]) {
-      const cat = categoryMapping[category];
-      if (cat.classificationName) {
-        tmParams.classificationName = cat.classificationName;
+    // Normalize so that both a slug and a display name are accepted:
+    // 'washington-dc', 'Washington DC' and 'Washington' all resolve.
+    const slugify = (v) => String(v).trim().toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+    const cityBySlug = {};
+    for (const [slug, name] of Object.entries(cityNames)) {
+      cityBySlug[slug] = name;
+      cityBySlug[slugify(name)] = name;
+    }
+
+    // Apply filters.
+    //
+    // Two changes from the previous behaviour. First, an unrecognised value is
+    // now a 400 rather than being silently dropped: the old code fell through
+    // to an unfiltered national feed and still answered 200 with
+    // success: true, so a caller asking for `category=sports` got Las Vegas
+    // comedy shows and no indication anything was wrong. Second, the filters
+    // combine instead of being an if/else chain, so `city` plus `category`
+    // now narrows rather than silently ignoring the category.
+    const invalid = [];
+
+    if (venue) {
+      const id = venueIds[slugify(venue)];
+      if (id) tmParams.venueId = id;
+      else invalid.push({ param: 'venue', value: venue, valid: Object.keys(venueIds) });
+    }
+
+    if (city) {
+      const name = cityBySlug[slugify(city)];
+      if (name) tmParams.city = name;
+      else invalid.push({ param: 'city', value: city, valid: Object.keys(cityNames) });
+    }
+
+    if (category) {
+      const cat = categoryMapping[slugify(category)];
+      if (cat) {
+        if (cat.classificationName) tmParams.classificationName = cat.classificationName;
+        if (cat.segmentName) tmParams.segmentName = cat.segmentName;
+        // Only apply a category keyword when the venue hasn't already claimed
+        // the search: combining them would over-narrow to near-zero results.
+        if (cat.keyword && !tmParams.venueId) tmParams.keyword = cat.keyword;
+      } else {
+        invalid.push({ param: 'category', value: category, valid: Object.keys(categoryMapping) });
       }
-      if (cat.keyword) {
-        tmParams.keyword = cat.keyword;
-      }
+    }
+
+    if (invalid.length > 0) {
+      return res.status(400).json({
+        success: false,
+        error: invalid.map(i => `Unknown ${i.param}: '${i.value}'`).join('; '),
+        invalid
+      });
     }
 
     // Default to future events
     tmParams.startDateTime = new Date().toISOString().split('.')[0] + 'Z';
 
-    const response = await axios.get('https://app.ticketmaster.com/discovery/v2/events.json', {
-      params: tmParams
-    });
+    // Ticketmaster enforces a spike arrest of 5 requests/second with a burst of
+    // 1, and rejects the overflow. A page that fans out across several venues
+    // trips this routinely, and the rejection surfaced as a generic 500 with no
+    // indication it was a transient rate limit. Retry a spike arrest with a
+    // short backoff; leave every other error to the handler below.
+    const isSpikeArrest = (err) =>
+      err.response?.status === 429 ||
+      err.response?.data?.fault?.detail?.errorcode === 'policies.ratelimit.SpikeArrestViolation';
+
+    let response;
+    for (let attempt = 0; ; attempt++) {
+      try {
+        response = await axios.get('https://app.ticketmaster.com/discovery/v2/events.json', {
+          params: tmParams,
+          timeout: 10000
+        });
+        break;
+      } catch (err) {
+        if (!isSpikeArrest(err) || attempt >= 3) throw err;
+        // 250ms, 500ms, 1s, plus jitter so retries don't resynchronize.
+        const wait = 250 * Math.pow(2, attempt) + Math.floor(Math.random() * 100);
+        console.warn(`Ticketmaster spike arrest, retrying in ${wait}ms (attempt ${attempt + 1}/3)`);
+        await new Promise(r => setTimeout(r, wait));
+      }
+    }
 
     const rawEvents = response.data._embedded?.events || [];
 
@@ -2034,9 +2118,12 @@ app.get('/api/public/events', async (req, res) => {
     });
   } catch (error) {
     console.error('Public events API error:', error.response?.data || error.message);
-    res.status(500).json({
+    const rateLimited =
+      error.response?.status === 429 ||
+      error.response?.data?.fault?.detail?.errorcode === 'policies.ratelimit.SpikeArrestViolation';
+    res.status(rateLimited ? 429 : 500).json({
       success: false,
-      error: 'Failed to fetch events'
+      error: rateLimited ? 'Upstream rate limit reached, try again shortly' : 'Failed to fetch events'
     });
   }
 });

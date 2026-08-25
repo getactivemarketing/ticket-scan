@@ -123,7 +123,14 @@ function formatDate(date: string) {
 }
 
 export default async function UpcomingEvents() {
-  const perVenue = await Promise.all(FEATURED.map(getVenueEvents));
+  // Deliberately sequential. Ticketmaster enforces a spike arrest of 5
+  // requests/second with a burst of 1, so fanning ten venue lookups out with
+  // Promise.all trips the limit and drops most of them. This render is cached
+  // for an hour, so paying ~1s once per revalidation costs nothing.
+  const perVenue: UpcomingEvent[][] = [];
+  for (const slug of FEATURED) {
+    perVenue.push(await getVenueEvents(slug));
+  }
 
   const seen = new Set<string>();
 
