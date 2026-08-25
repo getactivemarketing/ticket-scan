@@ -33,12 +33,10 @@ export const venues: Record<string, Venue> = {
     capacity: 20000,
     type: 'arena',
     homeTeams: ['Orlando Magic'],
-    description: 'Compare Kia Center ticket prices in downtown Orlando before you buy. The 20,000-seat home of the Orlando Magic also hosts a busy mix of arena concerts, family shows, combat sports, and special events. The official calendar currently lists Ricardo Montaner on August 28, Duel Arena: Mike Perry vs. Dillon Danis on August 29, Disney On Ice from September 4-6, Rosalía on September 9, Grupo Frontera on September 12, Omar Courtz on September 13 and 19, and Gorillaz on September 17. For Magic games, the 100 level brings you close to the court while the 200 level is usually the practical value tier; concert layouts can change the map. Compare the same seat zone across Ticketmaster, SeatGeek, and StubHub, check the all-in total, and set a free TicketScan alert before the first inflated listing gets your money.',
-    keywords: ['Kia Center tickets', 'Orlando Magic tickets', 'Kia Center seating chart', 'Kia Center events 2026', 'Orlando concert tickets', 'Ricardo Montaner Orlando tickets', 'Rosalia Orlando tickets', 'Grupo Frontera Orlando tickets', 'Gorillaz Orlando tickets', 'Omar Courtz Orlando tickets', 'Disney On Ice Orlando tickets', 'cheap Kia Center tickets'],
+    description: 'The 20,000-seat home of the Orlando Magic also hosts a busy mix of arena concerts, family shows, combat sports, and special events. For Magic games, the 100 level brings you close to the court while the 200 level is usually the practical value tier; concert layouts can change the map. TicketScan tracks when tickets for Kia Center events go on sale, including presale windows that open before the public onsale.',
+    keywords: ['Kia Center tickets', 'Orlando Magic tickets', 'Kia Center seating chart', 'Kia Center events 2026', 'Orlando concert tickets', 'Ricardo Montaner Orlando tickets', 'Rosalia Orlando tickets', 'Grupo Frontera Orlando tickets', 'Gorillaz Orlando tickets', 'Omar Courtz Orlando tickets', 'Disney On Ice Orlando tickets'],
     faqs: [
-      { question: 'What events are coming up at Kia Center?', answer: 'The official calendar currently lists Ricardo Montaner on August 28, Duel Arena: Mike Perry vs. Dillon Danis on August 29, Disney On Ice from September 4-6, Rosalía on September 9, Grupo Frontera on September 12, Omar Courtz on September 13 and 19, and Gorillaz on September 17, subject to schedule and inventory changes.' },
       { question: 'What are the best value seats at Kia Center?', answer: 'For many Orlando Magic games, the 200 level offers a useful full-court view at a lower price than the 100 level. For concerts and family shows, the event-specific map matters because the floor and stage layout can change.' },
-      { question: 'Where can I compare Kia Center ticket prices?', answer: 'TicketScan compares listings from Ticketmaster, SeatGeek, and StubHub so you can compare the same seat zone, account for fees, and choose the marketplace with the best payable total.' },
     ],
     sections: [
       // Floor
@@ -71,12 +69,10 @@ export const venues: Record<string, Venue> = {
     capacity: 19600,
     type: 'arena',
     homeTeams: ['Miami Heat'],
-    description: 'Compare Kaseya Center ticket prices in downtown Miami before you buy. The 19,600-seat arena is home to the Miami HEAT and a busy stop for Latin music, pop, and hip-hop tours. The current official calendar lists Unidos Por Venezuela on August 16, Don Toliver on August 22, Ricardo Montaner on August 29-30, Juanes on September 4, Omar Courtz on September 11-12, Rosalía on September 14-16, and Gorillaz on September 18. For HEAT games, the 100 level puts you close to the court while the 300 level is usually the practical value tier; concert floor plans can change the section map. Compare the same seat zone across Ticketmaster, SeatGeek, and StubHub, check the all-in total, and set a free TicketScan alert instead of rewarding the first inflated listing you see.',
-    keywords: ['Kaseya Center tickets', 'Miami Heat tickets', 'Kaseya Center seating chart', 'Kaseya Center events 2026', 'Kaseya Center concerts', 'Don Toliver Miami tickets', 'Rosalia Miami tickets', 'Gorillaz Miami tickets', 'cheap Miami concert tickets', 'FTX Arena tickets'],
+    description: 'The 19,600-seat arena is home to the Miami HEAT and a busy stop for Latin music, pop, and hip-hop tours. For HEAT games, the 100 level puts you close to the court while the 300 level is usually the practical value tier; concert floor plans can change the section map. TicketScan tracks when tickets for Kaseya Center events go on sale, including presale windows that open before the public onsale.',
+    keywords: ['Kaseya Center tickets', 'Miami Heat tickets', 'Kaseya Center seating chart', 'Kaseya Center events 2026', 'Kaseya Center concerts', 'Don Toliver Miami tickets', 'Rosalia Miami tickets', 'Gorillaz Miami tickets', 'FTX Arena tickets'],
     faqs: [
-      { question: 'What events are coming up at Kaseya Center?', answer: 'The official calendar currently lists Unidos Por Venezuela on August 16, Don Toliver on August 22, Ricardo Montaner on August 29-30, Juanes on September 4, Omar Courtz on September 11-12, Rosalía on September 14-16, and Gorillaz on September 18, subject to schedule and inventory changes.' },
-      { question: 'What are the best value seats at Kaseya Center?', answer: 'For many Miami HEAT games, the 300 level offers the most practical budget view, while 100-level seats put you closer to the court. Concert configurations vary, so check the event-specific map and compare the same section across marketplaces.' },
-      { question: 'Where can I compare Kaseya Center ticket prices?', answer: 'TicketScan compares listings from Ticketmaster, SeatGeek, and StubHub so you can compare the same seat zone and check the payable total before choosing a seller.' },
+      { question: 'What are the best value seats at Kaseya Center?', answer: 'For many Miami HEAT games, the 300 level offers the most practical budget view, while 100-level seats put you closer to the court.' },
     ],
     sections: [
       { name: 'Floor', tier: 'floor' },
@@ -103,7 +99,7 @@ export const venues: Record<string, Venue> = {
     capacity: 20789,
     type: 'arena',
     homeTeams: ['New York Knicks', 'New York Rangers'],
-    description: 'Compare ticket prices for events at Madison Square Garden in NYC. The world\'s most famous arena, home to the Knicks and Rangers. Track prices for concerts, sports, and special events.',
+    description: 'The world\'s most famous arena, home to the Knicks and Rangers. TicketScan tracks when tickets for Madison Square Garden events go on sale, including presale windows that open before the public onsale.',
     keywords: ['MSG tickets', 'Madison Square Garden tickets', 'Knicks tickets', 'Rangers tickets', 'MSG seating chart', 'NYC concert tickets'],
     sections: [
       { name: 'Floor', tier: 'floor' },
@@ -128,7 +124,7 @@ export const venues: Record<string, Venue> = {
     capacity: 20000,
     type: 'arena',
     homeTeams: ['Los Angeles Lakers', 'LA Clippers', 'LA Kings'],
-    description: 'Get the best prices on tickets at Crypto.com Arena in Los Angeles. Home of the Lakers, Clippers, and Kings. Compare prices for NBA, NHL, concerts, and award shows.',
+    description: 'Home of the Lakers, Clippers, and Kings. TicketScan tracks when tickets for Crypto.com Arena events go on sale, including presale windows that open before the public onsale.',
     keywords: ['Crypto.com Arena tickets', 'Lakers tickets', 'Clippers tickets', 'LA Kings tickets', 'Staples Center tickets', 'LA concert tickets'],
     sections: [
       { name: 'Floor', tier: 'floor' },
@@ -155,11 +151,10 @@ export const venues: Record<string, Venue> = {
     capacity: 20917,
     type: 'arena',
     homeTeams: ['Chicago Bulls', 'Chicago Blackhawks'],
-    description: 'Compare ticket prices for events at the United Center in Chicago, home of the Bulls and Blackhawks. The official calendar currently lists Kacey Musgraves on August 21, Bulls Fest 2026 on August 22, Omar Courtz on September 5, Jungle on September 10, and Eric Clapton on September 11, with additional NBA, NHL, and concert dates added as announced. Event inventory and prices move quickly, and a low headline number may not include every fee, so compare the same section across Ticketmaster, SeatGeek, and StubHub before buying. The 100-level lower bowl (sections 101 to 122) wraps around the court and ice, while the 300-level upper bowl (sections 301 to 330) is often the practical value tier. Track prices and set a free alert on TicketScan instead of letting deadline pressure pick your seat — or your budget.',
-    keywords: ['United Center tickets', 'Bulls tickets', 'Blackhawks tickets', 'United Center seating chart', 'United Center concerts 2026', 'United Center events', 'United Center upper level seats', 'Chicago arena tickets', 'Chicago concert tickets', 'cheap Bulls tickets', 'Blackhawks tickets Chicago', 'Kacey Musgraves Chicago tickets', 'Bulls Fest 2026 tickets', 'Omar Courtz Chicago tickets', 'Jungle Chicago tickets', 'Eric Clapton Chicago tickets'],
+    description: 'The 100-level lower bowl (sections 101 to 122) wraps around the court and ice, while the 300-level upper bowl (sections 301 to 330) is often the practical value tier. TicketScan tracks when tickets for United Center events go on sale, including presale windows that open before the public onsale.',
+    keywords: ['United Center tickets', 'Bulls tickets', 'Blackhawks tickets', 'United Center seating chart', 'United Center concerts 2026', 'United Center events', 'United Center upper level seats', 'Chicago arena tickets', 'Chicago concert tickets', 'Blackhawks tickets Chicago', 'Kacey Musgraves Chicago tickets', 'Bulls Fest 2026 tickets', 'Omar Courtz Chicago tickets', 'Jungle Chicago tickets', 'Eric Clapton Chicago tickets'],
     faqs: [
-      { question: 'What is the best value seating section at United Center?', answer: 'For many basketball games, the 300-level sections offer the widest view for the money. Compare the same section across Ticketmaster, SeatGeek, and StubHub, and check the all-in total before choosing.' },
-      { question: 'What events are coming up at United Center?', answer: 'The official United Center calendar currently lists Kacey Musgraves on August 21, Bulls Fest 2026 on August 22, Omar Courtz on September 5, Jungle on September 10, and Eric Clapton on September 11, subject to schedule and inventory changes.' },
+      { question: 'What is the best value seating section at United Center?', answer: 'For many basketball games, the 300-level sections offer the widest view for the money.' },
       { question: 'Does United Center have Bulls and Blackhawks tickets?', answer: 'Yes. United Center is home to both the Chicago Bulls and Chicago Blackhawks, in addition to concerts, WNBA games, and other major events.' },
     ],
     sections: [
@@ -193,7 +188,7 @@ export const venues: Record<string, Venue> = {
     capacity: 19580,
     type: 'arena',
     homeTeams: ['Boston Celtics', 'Boston Bruins'],
-    description: 'Compare ticket prices for events at TD Garden in Boston. Home of the Celtics and Bruins, TD Garden hosts over 200 events per year including NBA and NHL games, major concert tours, UFC fights, and Disney on Ice. The arena sits above North Station in downtown Boston, making it one of the most transit-accessible venues in the country. Loge and balcony sections offer strong sightlines, while club seats include lounge access. Use TicketScan to compare prices across Ticketmaster, SeatGeek, and StubHub before you buy.',
+    description: 'Home of the Celtics and Bruins, TD Garden hosts over 200 events per year including NBA and NHL games, major concert tours, UFC fights, and Disney on Ice. The arena sits above North Station in downtown Boston, making it one of the most transit-accessible venues in the country. Loge and balcony sections offer strong sightlines, while club seats include lounge access. TicketScan tracks when tickets for TD Garden events go on sale, including presale windows that open before the public onsale.',
     keywords: ['TD Garden tickets', 'Celtics tickets', 'Bruins tickets', 'Boston arena tickets', 'TD Garden seating chart', 'Boston concert tickets', 'Celtics playoff tickets', 'Bruins playoff tickets', 'TD Garden events'],
     sections: [
       // Floor / Courtside (Loge 1)
@@ -234,7 +229,7 @@ export const venues: Record<string, Venue> = {
     capacity: 20478,
     type: 'arena',
     homeTeams: ['Philadelphia 76ers', 'Philadelphia Flyers'],
-    description: 'Compare ticket prices for events at Wells Fargo Center in South Philadelphia. Home of both the 76ers and Flyers, the arena hosts over 250 NBA games, NHL games, concerts, and family shows each year in the heart of the South Philly Sports Complex alongside Citizens Bank Park and Lincoln Financial Field. Lower-level sections wrap the bowl from 101 to 124, while the mezzanine club level offers padded seating with in-seat service. Upper-level sections 201 through 224 are among the best value seats in the NBA and NHL. Use TicketScan to compare prices across Ticketmaster, SeatGeek, and StubHub before you buy.',
+    description: 'Home of both the 76ers and Flyers, the arena hosts over 250 NBA games, NHL games, concerts, and family shows each year in the heart of the South Philly Sports Complex alongside Citizens Bank Park and Lincoln Financial Field. Lower-level sections wrap the bowl from 101 to 124, while the mezzanine club level offers padded seating with in-seat service. Upper-level sections 201 through 224 are among the best value seats in the NBA and NHL. TicketScan tracks when tickets for Wells Fargo Center events go on sale, including presale windows that open before the public onsale.',
     keywords: ['Wells Fargo Center tickets', '76ers tickets', 'Flyers tickets', 'Philadelphia arena tickets', 'Wells Fargo Center seating chart', 'Philadelphia concert tickets', '76ers playoff tickets', 'Flyers playoff tickets', 'Wells Fargo Center events'],
     sections: [
       // Floor / Courtside
@@ -273,7 +268,7 @@ export const venues: Record<string, Venue> = {
     capacity: 19200,
     type: 'arena',
     homeTeams: ['Dallas Mavericks', 'Dallas Stars'],
-    description: 'Compare ticket prices for events at American Airlines Center in Dallas. Home of both the Mavericks (NBA) and Stars (NHL), the arena hosts over 200 events per year across basketball, hockey, concerts, UFC, and family shows in the Victory Park neighborhood just north of downtown. The lower-bowl 100-level sections wrap the ice and court from 101 through 124, while the Platinum Club level offers premium box seating with private lounges and in-seat service. Upper Mezzanine sections 301 through 330 are consistently among the most affordable playoff-atmosphere seats in either league. Use TicketScan to compare prices across Ticketmaster, SeatGeek, and StubHub before you buy.',
+    description: 'Home of both the Mavericks (NBA) and Stars (NHL), the arena hosts over 200 events per year across basketball, hockey, concerts, UFC, and family shows in the Victory Park neighborhood just north of downtown. The lower-bowl 100-level sections wrap the ice and court from 101 through 124, while the Platinum Club level offers premium box seating with private lounges and in-seat service. Upper Mezzanine sections 301 through 330 are consistently among the most affordable playoff-atmosphere seats in either league. TicketScan tracks when tickets for American Airlines Center events go on sale, including presale windows that open before the public onsale.',
     keywords: ['American Airlines Center tickets', 'Mavericks tickets', 'Dallas Stars tickets', 'Dallas arena tickets', 'American Airlines Center seating chart', 'Dallas concert tickets', 'Mavericks playoff tickets', 'Stars playoff tickets', 'American Airlines Center events', 'Victory Park Dallas tickets'],
     sections: [
       // Floor / Courtside / Ice Level
@@ -320,7 +315,7 @@ export const venues: Record<string, Venue> = {
     capacity: 18055,
     type: 'arena',
     homeTeams: ['Houston Rockets'],
-    description: 'Compare ticket prices for Toyota Center in downtown Houston, home of the NBA\'s Rockets and one of the busiest arenas in Texas — well over 150 events a year spanning Rockets games, marquee tours, UFC and boxing cards, and comedy and family shows. The 100-level Lower Bowl (sections 101-122) wraps tight around the floor and is the premium tier for hoops and floor-seat concerts; the Lexus Level suites sit mid-building with private lounge access and in-seat service; and the 400-level Upper Bowl (sections 401-434) is where Houston fans find the widest value gap between StubHub, SeatGeek, and Ticketmaster. The summer 2026 slate is loaded — Nate Bargatze, A$AP Rocky, Summer Walker, and Rosalia all play the building in June — and with Houston hosting 2026 World Cup matches at NRG Stadium the same weeks, the city\'s event calendar is stacked and resale prices get noisy. Track Toyota Center prices and set a free alert before tip-off or doors instead of overpaying on the first listing you see.',
+    description: 'The 100-level Lower Bowl (sections 101-122) wraps tight around the floor and is the premium tier for hoops and floor-seat concerts; the Lexus Level suites sit mid-building with private lounge access and in-seat service; and the 400-level Upper Bowl (sections 401-434) is where Houston fans find the widest value gap between StubHub, SeatGeek, and Ticketmaster. TicketScan tracks when tickets for Toyota Center events go on sale, including presale windows that open before the public onsale.',
     keywords: ['Toyota Center tickets', 'Rockets tickets', 'Houston Rockets tickets', 'Houston arena tickets', 'Houston concerts', 'Houston concert tickets', 'Toyota Center seating chart', 'Toyota Center events', 'Rockets game tickets'],
     sections: [
       // Floor / Courtside (basketball) and GA/seated floor (concerts)
@@ -360,7 +355,7 @@ export const venues: Record<string, Venue> = {
     capacity: 17071,
     type: 'arena',
     homeTeams: ['Phoenix Suns', 'Phoenix Mercury'],
-    description: 'Find tickets at Footprint Center in Phoenix. Home of the Suns, hosting NBA games, WNBA, and events.',
+    description: 'Find tickets at Footprint Center in Phoenix. Home of the Suns, hosting NBA games, WNBA, and events. TicketScan tracks when tickets for Footprint Center events go on sale, including presale windows that open before the public onsale.',
     keywords: ['Footprint Center tickets', 'Suns tickets', 'Phoenix arena tickets', 'Phoenix Suns'],
     sections: [
       { name: 'Floor', tier: 'floor' },
@@ -377,12 +372,11 @@ export const venues: Record<string, Venue> = {
     capacity: 18064,
     type: 'arena',
     homeTeams: ['Golden State Warriors', 'Golden State Valkyries'],
-    description: 'Compare ticket prices for Chase Center in San Francisco\'s Mission Bay, home of the Golden State Warriors and Golden State Valkyries. The venue will host the 2027 AT&T WNBA All-Star Game on July 31, 2027, plus the Kia WNBA Shooting Stars and State Farm WNBA 3-Point Contest on July 30 — the first WNBA All-Star weekend in the San Francisco Bay Area. Ticket details for the All-Star events are still pending, so fans should track the official calendar rather than trust mystery resale listings. The Lower Bowl uses single-digit sections 1-24; Theatre Level boxes sit midway up with premium amenities; and the Upper Bowl 200-level is often the practical value tier. Compare the same seat zone across Ticketmaster, SeatGeek, and StubHub, then set a free TicketScan alert before paying the Bay Area premium.',
+    description: 'Ticket details for the All-Star events are still pending, so fans should track the official calendar rather than trust mystery resale listings. The Lower Bowl uses single-digit sections 1-24; Theatre Level boxes sit midway up with premium amenities; and the Upper Bowl 200-level is often the practical value tier. TicketScan tracks when tickets for Chase Center events go on sale, including presale windows that open before the public onsale.',
     keywords: ['Chase Center tickets', 'Warriors tickets', 'Golden State tickets', 'San Francisco arena', 'Chase Center seating chart', 'Warriors playoff tickets', 'Valkyries tickets', 'Valkyries WNBA All-Star tickets', '2027 WNBA All-Star tickets', 'Chase Center events', 'San Francisco concert tickets'],
     faqs: [
       { question: 'When is the 2027 WNBA All-Star Game at Chase Center?', answer: 'The 2027 AT&T WNBA All-Star Game is scheduled for Saturday, July 31, 2027, at Chase Center. The Kia WNBA Shooting Stars and State Farm WNBA 3-Point Contest are scheduled for Friday, July 30, at the same venue.' },
       { question: 'Are 2027 WNBA All-Star tickets on sale?', answer: 'The official Chase Center announcement says ticket information and the complete event schedule will be announced in the coming months. Check the official event page and compare any later resale listings carefully once inventory appears.' },
-      { question: 'Where can I compare Chase Center ticket prices?', answer: 'TicketScan compares listings from Ticketmaster, SeatGeek, and StubHub so you can compare the same seat zone and check the payable total before choosing a seller.' },
     ],
     sections: [
       // Floor / Courtside
@@ -427,7 +421,7 @@ export const venues: Record<string, Venue> = {
     capacity: 19520,
     type: 'arena',
     homeTeams: ['Denver Nuggets', 'Colorado Avalanche'],
-    description: 'Compare ticket prices for Ball Arena in Denver, the dual-tenant home of the NBA champion Nuggets and Stanley Cup winner Avalanche. Nearly 200 events a year run through this Ballpark-neighborhood arena, from NBA and NHL playoff games to Colorado Mammoth lacrosse, UFC cards, WWE, and headline tours. Lower Bowl 100-level seats wrap tight around the ice and court; mid-level Club Boxes add private entrances and in-seat service; Upper Bowl 300-level is where Denver fans find the best value against StubHub, SeatGeek, and Ticketmaster markups. Track prices and set free alerts before Nuggets and Avalanche playoff games on TicketScan.',
+    description: 'Nearly 200 events a year run through this Ballpark-neighborhood arena, from NBA and NHL playoff games to Colorado Mammoth lacrosse, UFC cards, WWE, and headline tours. Lower Bowl 100-level seats wrap tight around the ice and court; mid-level Club Boxes add private entrances and in-seat service; Upper Bowl 300-level is where Denver fans find the best value against StubHub, SeatGeek, and Ticketmaster markups. TicketScan tracks when tickets for Ball Arena events go on sale, including presale windows that open before the public onsale.',
     keywords: ['Ball Arena tickets', 'Nuggets tickets', 'Avalanche tickets', 'Denver arena tickets', 'Ball Arena seating chart', 'Denver concert tickets', 'Nuggets playoff tickets', 'Avalanche playoff tickets', 'Ball Arena events'],
     sections: [
       // Floor / Courtside (Nuggets) / Ice Level (Avalanche)
@@ -472,7 +466,7 @@ export const venues: Record<string, Venue> = {
     capacity: 18118,
     type: 'arena',
     homeTeams: ['Atlanta Hawks'],
-    description: 'Compare ticket prices for State Farm Arena, the downtown Atlanta home of the NBA\'s Hawks and a year-round stop for arena tours, comedy specials, and championship boxing. Roughly 150 events run through the building every year. The 100-Level lower bowl (sections 101-126) wraps tight around the court and carries the steepest price swings between Ticketmaster, SeatGeek, and StubHub; the renovated courtside and club areas add in-seat service and lounge access; the 200-Level upper bowl (201-226) is where Atlanta fans find the widest cross-platform value gap on a single game. The arena sits a few blocks from Mercedes-Benz Stadium — Atlanta\'s FIFA World Cup 2026 host venue — so summer 2026 visitors can pair a downtown match day with whatever else is on the calendar. Track prices and set a free alert before Hawks games or headline tours on TicketScan, and let the platforms compete for your buy.',
+    description: 'Roughly 150 events run through the building every year. The 100-Level lower bowl (sections 101-126) wraps tight around the court, the renovated courtside and club areas add in-seat service and lounge access, and the 200-Level upper bowl runs sections 201-226. The arena sits a few blocks from Mercedes-Benz Stadium — Atlanta\'s FIFA World Cup 2026 host venue — so summer 2026 visitors can pair a downtown match day with whatever else is on the calendar. TicketScan tracks when tickets for State Farm Arena events go on sale, including presale windows that open before the public onsale.',
     keywords: ['State Farm Arena tickets', 'Hawks tickets', 'Atlanta arena tickets', 'Atlanta concerts', 'State Farm Arena seating chart', 'Atlanta Hawks tickets', 'State Farm Arena events', 'Atlanta concert tickets', 'downtown Atlanta events'],
     sections: [
       // Floor / Courtside
@@ -511,7 +505,7 @@ export const venues: Record<string, Venue> = {
     capacity: 17732,
     type: 'arena',
     homeTeams: ['Brooklyn Nets', 'New York Liberty'],
-    description: 'Compare ticket prices at Barclays Center in Brooklyn. Home of the Nets and Liberty, hosting NBA, WNBA, concerts, and boxing.',
+    description: 'Home of the Nets and Liberty, hosting NBA, WNBA, concerts, and boxing. TicketScan tracks when tickets for Barclays Center events go on sale, including presale windows that open before the public onsale.',
     keywords: ['Barclays Center tickets', 'Brooklyn Nets tickets', 'Barclays concerts', 'Brooklyn arena tickets'],
     sections: [
       { name: 'Floor', tier: 'floor' },
@@ -529,7 +523,7 @@ export const venues: Record<string, Venue> = {
     capacity: 20356,
     type: 'arena',
     homeTeams: ['Washington Wizards', 'Washington Capitals'],
-    description: 'Find tickets at Capital One Arena in Washington DC. Home of the Wizards and Capitals, featuring NBA, NHL, and concerts.',
+    description: 'Find tickets at Capital One Arena in Washington DC. Home of the Wizards and Capitals, featuring NBA, NHL, and concerts. TicketScan tracks when tickets for Capital One Arena events go on sale, including presale windows that open before the public onsale.',
     keywords: ['Capital One Arena tickets', 'Wizards tickets', 'Capitals tickets', 'DC arena tickets', 'Washington DC concerts'],
     sections: [
       { name: 'Floor', tier: 'floor' },
@@ -546,7 +540,7 @@ export const venues: Record<string, Venue> = {
     capacity: 20332,
     type: 'arena',
     homeTeams: ['Detroit Pistons', 'Detroit Red Wings'],
-    description: 'Compare prices at Little Caesars Arena in Detroit. Home of the Pistons and Red Wings, hosting NBA, NHL, and major concerts.',
+    description: 'Home of the Pistons and Red Wings, hosting NBA, NHL, and major concerts. TicketScan tracks when tickets for Little Caesars Arena events go on sale, including presale windows that open before the public onsale.',
     keywords: ['Little Caesars Arena tickets', 'Pistons tickets', 'Red Wings tickets', 'Detroit arena tickets'],
     sections: [
       { name: 'Floor', tier: 'floor' },
@@ -563,7 +557,7 @@ export const venues: Record<string, Venue> = {
     capacity: 17341,
     type: 'arena',
     homeTeams: ['Milwaukee Bucks'],
-    description: 'Get tickets at Fiserv Forum in Milwaukee. Home of the NBA champion Bucks, featuring basketball and world-class entertainment.',
+    description: 'Get tickets at Fiserv Forum in Milwaukee. Home of the NBA champion Bucks, featuring basketball and world-class entertainment. TicketScan tracks when tickets for Fiserv Forum events go on sale, including presale windows that open before the public onsale.',
     keywords: ['Fiserv Forum tickets', 'Bucks tickets', 'Milwaukee arena tickets', 'Milwaukee concerts'],
     sections: [
       { name: 'Floor', tier: 'floor' },
@@ -580,7 +574,7 @@ export const venues: Record<string, Venue> = {
     capacity: 18798,
     type: 'arena',
     homeTeams: ['Minnesota Timberwolves', 'Minnesota Lynx'],
-    description: 'Find cheap tickets at Target Center in Minneapolis. Home of the Timberwolves and Lynx, hosting NBA, WNBA, and concerts.',
+    description: 'Home of the Timberwolves and Lynx, hosting NBA, WNBA, and concerts. TicketScan tracks when tickets for Target Center events go on sale, including presale windows that open before the public onsale.',
     keywords: ['Target Center tickets', 'Timberwolves tickets', 'Minneapolis arena tickets', 'Minnesota basketball tickets'],
     sections: [
       { name: 'Floor', tier: 'floor' },
@@ -597,7 +591,7 @@ export const venues: Record<string, Venue> = {
     capacity: 16867,
     type: 'arena',
     homeTeams: ['New Orleans Pelicans'],
-    description: 'Compare ticket prices at Smoothie King Center in New Orleans. Home of the Pelicans, featuring NBA games and major events.',
+    description: 'Home of the Pelicans, featuring NBA games and major events. TicketScan tracks when tickets for Smoothie King Center events go on sale, including presale windows that open before the public onsale.',
     keywords: ['Smoothie King Center tickets', 'Pelicans tickets', 'New Orleans arena tickets', 'NOLA concerts'],
     sections: [
       { name: 'Floor', tier: 'floor' },
@@ -614,8 +608,8 @@ export const venues: Record<string, Venue> = {
     capacity: 19800,
     type: 'arena',
     homeTeams: ['Toronto Raptors', 'Toronto Maple Leafs'],
-    description: 'Compare ticket prices at Scotiabank Arena in downtown Toronto, home of the Raptors and Maple Leafs and a busy stop for major concert tours. The current August 2026 calendar includes RUSH: Fifty Something on August 7, 9, 11, and 13, Nate Bargatze on August 15-16, and Toronto Tempo vs. Indiana Fever on August 18. Floor and 100-level seats put you closest to the action, while the 300 level is usually the practical value play for basketball and hockey; concert layouts can move the floor and rename sections, so check the event-specific map. Ticket prices can diverge sharply between Ticketmaster, SeatGeek, and StubHub, especially when a hometown run creates a rush of demand. Compare the same section across all three marketplaces, check the all-in total, then set a free TicketScan alert instead of paying the first price you see.',
-    keywords: ['Scotiabank Arena tickets', 'Raptors tickets', 'Maple Leafs tickets', 'Toronto arena tickets', 'Scotiabank Arena seating chart', 'Scotiabank Arena concerts 2026', 'RUSH Toronto tickets', 'Nate Bargatze Toronto tickets', 'Toronto Tempo tickets', 'cheap Scotiabank Arena tickets'],
+    description: 'Floor and 100-level seats put you closest to the action, while the 300 level is usually the practical value play for basketball and hockey; concert layouts can move the floor and rename sections, so check the event-specific map. TicketScan tracks when tickets for Scotiabank Arena events go on sale, including presale windows that open before the public onsale.',
+    keywords: ['Scotiabank Arena tickets', 'Raptors tickets', 'Maple Leafs tickets', 'Toronto arena tickets', 'Scotiabank Arena seating chart', 'Scotiabank Arena concerts 2026', 'RUSH Toronto tickets', 'Nate Bargatze Toronto tickets', 'Toronto Tempo tickets'],
     sections: [
       { name: 'Floor', tier: 'floor' },
       { name: '101', tier: 'lower' }, { name: '102', tier: 'lower' }, { name: '103', tier: 'lower' },
@@ -644,7 +638,7 @@ export const venues: Record<string, Venue> = {
     capacity: 20000,
     type: 'arena',
     homeTeams: ['Vegas Golden Knights'],
-    description: 'Compare prices at T-Mobile Arena in Las Vegas. Home of the Golden Knights, featuring NHL, UFC, boxing, and superstar concerts.',
+    description: 'Home of the Golden Knights, featuring NHL, UFC, boxing, and superstar concerts. TicketScan tracks when tickets for T-Mobile Arena events go on sale, including presale windows that open before the public onsale.',
     keywords: ['T-Mobile Arena tickets', 'Golden Knights tickets', 'Las Vegas arena tickets', 'Vegas concerts', 'UFC tickets'],
     sections: [
       { name: 'Floor', tier: 'floor' },
@@ -661,7 +655,7 @@ export const venues: Record<string, Venue> = {
     capacity: 17100,
     type: 'arena',
     homeTeams: ['Seattle Kraken', 'Seattle Storm'],
-    description: 'Get tickets at Climate Pledge Arena in Seattle. Home of the Kraken and Storm, featuring NHL, WNBA, and world tours.',
+    description: 'Get tickets at Climate Pledge Arena in Seattle. Home of the Kraken and Storm, featuring NHL, WNBA, and world tours. TicketScan tracks when tickets for Climate Pledge Arena events go on sale, including presale windows that open before the public onsale.',
     keywords: ['Climate Pledge Arena tickets', 'Kraken tickets', 'Seattle arena tickets', 'Seattle concerts'],
     sections: [
       { name: 'Floor', tier: 'floor' },
@@ -678,7 +672,7 @@ export const venues: Record<string, Venue> = {
     capacity: 16514,
     type: 'arena',
     homeTeams: ['New Jersey Devils'],
-    description: 'Find cheap tickets at Prudential Center in Newark. Home of the Devils, hosting NHL games, concerts, and major events.',
+    description: 'Home of the Devils, hosting NHL games, concerts, and major events. TicketScan tracks when tickets for Prudential Center events go on sale, including presale windows that open before the public onsale.',
     keywords: ['Prudential Center tickets', 'Devils tickets', 'Newark arena tickets', 'New Jersey concerts'],
     sections: [
       { name: 'Floor', tier: 'floor' },
@@ -695,8 +689,8 @@ export const venues: Record<string, Venue> = {
     capacity: 41649,
     type: 'stadium',
     homeTeams: ['Chicago Cubs'],
-    description: 'Compare ticket prices for Chicago Cubs games and concerts at Wrigley Field, the second-oldest active ballpark in Major League Baseball. Built in 1914 at the corner of Clark and Addison in the Lakeview neighborhood, Wrigley is known for its ivy-covered outfield walls (planted 1937), the hand-turned center field scoreboard (also 1937), and a daytime-baseball heritage that lasted until lights were finally installed for the first night game on August 8, 1988. The 2014 to 2019 1060 Project renovation modernized concourses, suites, and player facilities while preserving the brick-and-ivy character. Field Box and Bullpen Box seats run the infield, the bleachers wrap the outfield as their own general-admission ecosystem, and the rooftop clubs across Sheffield and Waddell sell separately ticketed seats with Wrigley views. Day games typically carry a 15 to 25 percent premium for tourist demand; rivalry games against the Cardinals, Brewers, and Dodgers see bleacher prices double versus baseline. Use TicketScan to compare Cubs ticket prices across Ticketmaster, SeatGeek, and StubHub before you buy, and set a price alert on any home stand to catch the typical 20 to 30 percent post-on-sale resale dip on weekday non-marquee games.',
-    keywords: ['Wrigley Field tickets', 'Cubs tickets', 'Chicago Cubs tickets', 'Wrigley Field seating chart', 'cheapest Cubs tickets', 'Cubs vs Cardinals tickets', 'Cubs vs Reds tickets', 'Wrigley Field bleachers tickets', 'Wrigley rooftop seats', 'Cubs day game tickets', 'best seats Wrigley Field', 'Wrigley Field standing room', 'Cubs schedule tickets', 'Cubs ticket prices'],
+    description: 'Built in 1914 at the corner of Clark and Addison in the Lakeview neighborhood, Wrigley is known for its ivy-covered outfield walls (planted 1937), the hand-turned center field scoreboard (also 1937), and a daytime-baseball heritage that lasted until lights were finally installed for the first night game on August 8, 1988. The 2014 to 2019 1060 Project renovation modernized concourses, suites, and player facilities while preserving the brick-and-ivy character. Field Box and Bullpen Box seats run the infield, the bleachers wrap the outfield as their own general-admission ecosystem, and the rooftop clubs across Sheffield and Waddell sell separately ticketed seats with Wrigley views. TicketScan tracks when tickets for Wrigley Field events go on sale, including presale windows that open before the public onsale.',
+    keywords: ['Wrigley Field tickets', 'Cubs tickets', 'Chicago Cubs tickets', 'Wrigley Field seating chart', 'Cubs vs Cardinals tickets', 'Cubs vs Reds tickets', 'Wrigley Field bleachers tickets', 'Wrigley rooftop seats', 'Cubs day game tickets', 'best seats Wrigley Field', 'Wrigley Field standing room', 'Cubs schedule tickets', 'Cubs ticket prices'],
     sections: [
       // Premium / Floor-equivalent (behind home plate)
       { name: 'Marquee Box', tier: 'floor' },
@@ -730,8 +724,8 @@ export const venues: Record<string, Venue> = {
     capacity: 17608,
     type: 'arena',
     homeTeams: ['Sacramento Kings'],
-    description: 'Compare Golden 1 Center ticket prices in downtown Sacramento before you buy. The home of the Sacramento Kings has a two-deck seating bowl plus floor, club, and suite configurations that change by event. For Kings games, the 100 Level (sections 101-126) puts you closest to the court, while the 200 Level (sections 201-222) usually gives budget-minded fans the widest view for the money. Concert layouts can remove or rename sections, so check the event-specific map rather than trusting a generic seating chart. The August 2026 calendar is stacked: Don Toliver (August 4), Megan Moroney (August 5), Benson Boone (August 8), Grupo Frontera (August 12), Monster Jam (August 15-16), UFC Sacramento (August 22), and J. Cole (August 27). Compare Ticketmaster, SeatGeek, and StubHub for the same section, check fees before judging the winner, then set a free TicketScan alert instead of paying the first price you see.',
-    keywords: ['Golden 1 Center tickets', 'Golden 1 Center seating chart', 'Golden 1 Center seat views', 'Sacramento Kings tickets', 'Sacramento concerts', 'Don Toliver Sacramento tickets', 'Megan Moroney Sacramento tickets', 'Benson Boone Sacramento tickets', 'Grupo Frontera Sacramento tickets', 'Monster Jam Sacramento tickets', 'UFC Sacramento tickets', 'J Cole Sacramento tickets', 'cheap Golden 1 Center tickets'],
+    description: 'The home of the Sacramento Kings has a two-deck seating bowl plus floor, club, and suite configurations that change by event. For Kings games, the 100 Level (sections 101-126) puts you closest to the court, while the 200 Level (sections 201-222) usually gives budget-minded fans the widest view for the money. Concert layouts can remove or rename sections, so check the event-specific map rather than trusting a generic seating chart. TicketScan tracks when tickets for Golden 1 Center events go on sale, including presale windows that open before the public onsale.',
+    keywords: ['Golden 1 Center tickets', 'Golden 1 Center seating chart', 'Golden 1 Center seat views', 'Sacramento Kings tickets', 'Sacramento concerts', 'Don Toliver Sacramento tickets', 'Megan Moroney Sacramento tickets', 'Benson Boone Sacramento tickets', 'Grupo Frontera Sacramento tickets', 'Monster Jam Sacramento tickets', 'UFC Sacramento tickets', 'J Cole Sacramento tickets'],
     sections: [
       { name: 'Floor', tier: 'floor' },
       { name: '101', tier: 'lower' }, { name: '102', tier: 'lower' }, { name: '103', tier: 'lower' },
