@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { getVenueBySlug } from '@/data/venues';
+import { isRealEvent, normalizeName } from '@/lib/events';
 
 // Venues we publish guides for, chosen for geographic spread. Two constraints
 // shaped this list. The API's `city` and `category` params are accepted but not
@@ -81,32 +82,6 @@ async function getVenueEvents(slug: string): Promise<UpcomingEvent[]> {
     return [];
   }
 }
-
-// The Ticketmaster feed mixes real ticketed events with hospitality add-ons,
-// venue tours and premium-seating upsells. index.js filters these server-side
-// for search; the public events endpoint does not, so filter here too.
-const EXCLUDE = [
-  /hospitality/i,
-  /vip package/i,
-  /\bsuite\b/i,
-  /\b(arena|stadium|venue)s? tours?\b/i,
-  /tour experience/i,
-  /red carpet/i,
-  /club (access|experience|level|seats?|seating)/i,
-  /(premium|preferred|priority) seating/i,
-  /\blounge\b/i,
-  /parking/i,
-  /meet (&|and) greet/i,
-];
-
-// A few feed rows arrive with a missing or blank name; they render as an empty
-// card, so require a usable title before anything else.
-const isRealEvent = (name?: string) =>
-  !!name && name.trim().length > 1 && !EXCLUDE.some((rx) => rx.test(name));
-
-// Series like "Cirque du Soleil" list the same title on consecutive nights.
-// Showing one row per night crowds out every other venue, so keep the first.
-const normalizeName = (name: string) => name.toLowerCase().replace(/[^a-z0-9]+/g, ' ').trim();
 
 function formatDate(date: string) {
   // API dates are plain YYYY-MM-DD. Parsing that string directly would be read

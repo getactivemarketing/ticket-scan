@@ -62,6 +62,9 @@ export default function Navbar() {
                 <Link href="/tickets" className="text-white/80 hover:text-white transition-colors text-sm">
                   Events
                 </Link>
+                <Link href="/onsales" className="text-white/80 hover:text-white transition-colors text-sm">
+                  Onsales
+                </Link>
                 <Link href="/venues" className="text-white/80 hover:text-white transition-colors text-sm">
                   Venues
                 </Link>
@@ -89,6 +92,9 @@ export default function Navbar() {
                 </Link>
                 <Link href="/tickets" className="text-white/80 hover:text-white transition-colors text-sm">
                   Events
+                </Link>
+                <Link href="/onsales" className="text-white/80 hover:text-white transition-colors text-sm">
+                  Onsales
                 </Link>
                 <Link href="/venues" className="text-white/80 hover:text-white transition-colors text-sm">
                   Venues
@@ -145,6 +151,9 @@ export default function Navbar() {
                 <Link href="/tickets" className="block text-white hover:text-white/80 py-2 transition-colors" onClick={closeMenu}>
                   Events
                 </Link>
+                <Link href="/onsales" className="block text-white hover:text-white/80 py-2 transition-colors" onClick={closeMenu}>
+                  Onsales
+                </Link>
                 <Link href="/venues" className="block text-white hover:text-white/80 py-2 transition-colors" onClick={closeMenu}>
                   Venues
                 </Link>
@@ -171,6 +180,9 @@ export default function Navbar() {
                 </Link>
                 <Link href="/tickets" className="block text-white hover:text-white/80 py-2 transition-colors" onClick={closeMenu}>
                   Events
+                </Link>
+                <Link href="/onsales" className="block text-white hover:text-white/80 py-2 transition-colors" onClick={closeMenu}>
+                  Onsales
                 </Link>
                 <Link href="/venues" className="block text-white hover:text-white/80 py-2 transition-colors" onClick={closeMenu}>
                   Venues

@@ -1892,7 +1892,7 @@ app.get('/api/events/compare', async (req, res) => {
 // Public endpoint to get events for SEO pages
 app.get('/api/public/events', async (req, res) => {
   try {
-    const { venue, city, category, limit = 10 } = req.query;
+    const { venue, city, category, onsaleDate, country, sort, limit = 10 } = req.query;
 
     if (!TICKETMASTER_API_KEY) {
       return res.status(500).json({
@@ -1904,7 +1904,7 @@ app.get('/api/public/events', async (req, res) => {
     // Build Ticketmaster params based on query
     const tmParams = {
       apikey: TICKETMASTER_API_KEY,
-      size: Math.min(parseInt(limit), 20),
+      size: Math.min(parseInt(limit) || 10, 50),
       sort: 'date,asc'
     };
 
@@ -2050,6 +2050,28 @@ app.get('/api/public/events', async (req, res) => {
       }
     }
 
+    const SORTS = { date: 'date,asc', relevance: 'relevance,desc', name: 'name,asc' };
+    if (sort) {
+      const key = String(sort).toLowerCase();
+      if (SORTS[key]) tmParams.sort = SORTS[key];
+      else invalid.push({ param: 'sort', value: sort, valid: Object.keys(SORTS) });
+    }
+
+    const COUNTRIES = ['US', 'CA', 'MX', 'GB', 'IE', 'AU', 'NZ'];
+    if (country) {
+      const cc = String(country).toUpperCase();
+      if (COUNTRIES.includes(cc)) tmParams.countryCode = cc;
+      else invalid.push({ param: 'country', value: country, valid: COUNTRIES });
+    }
+
+    if (onsaleDate) {
+      if (!/^\d{4}-\d{2}-\d{2}$/.test(onsaleDate)) {
+        invalid.push({ param: 'onsaleDate', value: onsaleDate, valid: ['YYYY-MM-DD'] });
+      } else {
+        tmParams.onsaleOnStartDate = onsaleDate;
+      }
+    }
+
     if (invalid.length > 0) {
       return res.status(400).json({
         success: false,
@@ -2099,6 +2121,13 @@ app.get('/api/public/events', async (req, res) => {
       venue: event._embedded?.venues?.[0]?.name,
       city: event._embedded?.venues?.[0]?.city?.name,
       state: event._embedded?.venues?.[0]?.state?.stateCode,
+      onsaleStart: event.sales?.public?.startDateTime || null,
+      onsaleEnd: event.sales?.public?.endDateTime || null,
+      presales: (event.sales?.presales || []).map(p => ({
+        name: p.name || null,
+        start: p.startDateTime || null,
+        end: p.endDateTime || null
+      })),
       minPrice: event.priceRanges?.[0]?.min || null,
       maxPrice: event.priceRanges?.[0]?.max || null,
       url: event.url,
@@ -2112,7 +2141,7 @@ app.get('/api/public/events', async (req, res) => {
 
     res.json({
       success: true,
-      query: { venue, city, category },
+      query: { venue, city, category, onsaleDate, country, sort },
       count: events.length,
       events
     });
