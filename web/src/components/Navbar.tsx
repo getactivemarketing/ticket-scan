@@ -59,8 +59,11 @@ export default function Navbar() {
                 <Link href="/dashboard" className="text-white/80 hover:text-white transition-colors text-sm">
                   Search
                 </Link>
-                <Link href="/compare" className="text-white/80 hover:text-white transition-colors text-sm">
-                  Compare
+                <Link href="/tickets" className="text-white/80 hover:text-white transition-colors text-sm">
+                  Events
+                </Link>
+                <Link href="/venues" className="text-white/80 hover:text-white transition-colors text-sm">
+                  Venues
                 </Link>
                 <Link href="/watchlist" className="text-white/80 hover:text-white transition-colors text-sm">
                   Watchlist
@@ -83,6 +86,12 @@ export default function Navbar() {
               <>
                 <Link href="/dashboard" className="text-white/80 hover:text-white transition-colors text-sm">
                   Search
+                </Link>
+                <Link href="/tickets" className="text-white/80 hover:text-white transition-colors text-sm">
+                  Events
+                </Link>
+                <Link href="/venues" className="text-white/80 hover:text-white transition-colors text-sm">
+                  Venues
                 </Link>
                 <Link href="/blog" className="text-white/80 hover:text-white transition-colors text-sm">
                   Blog
@@ -133,8 +142,11 @@ export default function Navbar() {
                 <Link href="/dashboard" className="block text-white hover:text-white/80 py-2 transition-colors" onClick={closeMenu}>
                   Search Events
                 </Link>
-                <Link href="/compare" className="block text-white hover:text-white/80 py-2 transition-colors" onClick={closeMenu}>
-                  Compare Prices
+                <Link href="/tickets" className="block text-white hover:text-white/80 py-2 transition-colors" onClick={closeMenu}>
+                  Events
+                </Link>
+                <Link href="/venues" className="block text-white hover:text-white/80 py-2 transition-colors" onClick={closeMenu}>
+                  Venues
                 </Link>
                 <Link href="/watchlist" className="block text-white hover:text-white/80 py-2 transition-colors" onClick={closeMenu}>
                   My Watchlist
@@ -156,6 +168,12 @@ export default function Navbar() {
               <>
                 <Link href="/dashboard" className="block text-white hover:text-white/80 py-2 transition-colors" onClick={closeMenu}>
                   Search Events
+                </Link>
+                <Link href="/tickets" className="block text-white hover:text-white/80 py-2 transition-colors" onClick={closeMenu}>
+                  Events
+                </Link>
+                <Link href="/venues" className="block text-white hover:text-white/80 py-2 transition-colors" onClick={closeMenu}>
+                  Venues
                 </Link>
                 <Link href="/blog" className="block text-white hover:text-white/80 py-2 transition-colors" onClick={closeMenu}>
                   Blog & Tips

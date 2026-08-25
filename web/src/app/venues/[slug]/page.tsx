@@ -3,6 +3,19 @@ import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { venues, getVenueBySlug, tierPricing } from '@/data/venues';
 
+// Venue guides had no links to each other, so each one was an SEO island. Relate
+// them same-state first, then same-type, so the 25 guides form a crawlable
+// cluster. Ordering is deterministic for stable static output.
+function getRelatedVenues(current: typeof venues[string], limit = 6) {
+  const others = Object.values(venues).filter((v) => v.id !== current.id);
+  const score = (v: typeof current) =>
+    (v.state === current.state ? 0 : 1) * 2 + (v.type === current.type ? 0 : 1);
+  return [...others]
+    .sort((a, b) => score(a) - score(b) || a.name.localeCompare(b.name))
+    .slice(0, limit);
+}
+
+
 interface Event {
   id: string;
   name: string;
@@ -402,6 +415,28 @@ export default async function VenuePage({ params }: PageProps) {
                   <li>
                     <Link href="/blog" className="text-brand hover:text-brand-dark font-medium">
                       View All Tips &rarr;
+                    </Link>
+                  </li>
+                </ul>
+              </div>
+
+              {/* More Venues — builds the internal link cluster across all guides */}
+              <div className="mt-6 bg-white rounded-xl shadow-md p-6">
+                <h3 className="text-lg font-bold font-heading text-gray-900 mb-4">
+                  More Venue Guides
+                </h3>
+                <ul className="space-y-2 text-sm">
+                  {getRelatedVenues(venue).map((related) => (
+                    <li key={related.id}>
+                      <Link href={`/venues/${related.id}`} className="text-brand hover:text-brand-dark">
+                        {related.name}
+                      </Link>
+                      <span className="text-gray-400"> &middot; {related.city}, {related.state}</span>
+                    </li>
+                  ))}
+                  <li className="pt-1">
+                    <Link href="/venues" className="text-brand hover:text-brand-dark font-medium">
+                      All Venue Guides &rarr;
                     </Link>
                   </li>
                 </ul>

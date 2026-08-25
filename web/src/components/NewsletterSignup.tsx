@@ -45,9 +45,9 @@ export default function NewsletterSignup({ source = 'website', variant = 'card' 
   if (variant === 'footer') {
     return (
       <div className="w-full">
-        <h4 className="text-white font-semibold mb-3">Get Ticket Deals</h4>
+        <h4 className="text-white font-semibold mb-3">Get Onsale Alerts</h4>
         <p className="text-gray-400 text-sm mb-4">
-          Subscribe for exclusive deals and price drop alerts.
+          Hear the moment tickets go on sale, including presales.
         </p>
         {status === 'success' ? (
           <p className="text-green-400 text-sm">{message}</p>
@@ -90,7 +90,7 @@ export default function NewsletterSignup({ source = 'website', variant = 'card' 
               type="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              placeholder="Enter your email for deals"
+              placeholder="Enter your email"
               className="flex-1 px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-brand"
               required
             />
@@ -99,7 +99,7 @@ export default function NewsletterSignup({ source = 'website', variant = 'card' 
               disabled={status === 'loading'}
               className="bg-brand hover:bg-brand-dark disabled:bg-brand-light text-white px-6 py-3 rounded-lg font-bold transition-colors whitespace-nowrap"
             >
-              {status === 'loading' ? 'Subscribing...' : 'Get Deals'}
+              {status === 'loading' ? 'Subscribing...' : 'Get Alerts'}
             </button>
           </form>
         )}
@@ -115,9 +115,9 @@ export default function NewsletterSignup({ source = 'website', variant = 'card' 
     <div className="bg-gradient-to-br from-brand to-navy rounded-2xl p-8 text-white">
       <div className="max-w-xl mx-auto text-center">
         <span className="text-4xl mb-4 block">📬</span>
-        <h3 className="text-2xl font-bold mb-2">Never Miss a Deal</h3>
+        <h3 className="text-2xl font-bold mb-2">Never Miss an Onsale</h3>
         <p className="text-blue-100 mb-6">
-          Get exclusive ticket deals, price drop alerts, and tips on finding cheap tickets delivered to your inbox.
+          Get onsale and presale alerts for the events you follow, plus venue guides and tips, delivered to your inbox.
         </p>
 
         {status === 'success' ? (
