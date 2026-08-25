@@ -22,8 +22,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   }
 
   return {
-    title: `${venue.name} World Cup 2026 Tickets - ${venue.city}`,
-    description: `Find the best deals on World Cup 2026 tickets at ${venue.name} in ${venue.city}. Compare prices, view seating charts, and get ticket tips for FIFA World Cup matches.`,
+    title: `${venue.name} — World Cup 2026 Host Venue, ${venue.city}`,
+    description: `${venue.name} in ${venue.city} hosted FIFA World Cup 2026 matches. Seating layout, getting there, and the matches played at the venue.`,
     keywords: venue.keywords.join(', '),
     alternates: {
       canonical: `https://www.ticketscan.io/world-cup-2026/${stadium}`,
@@ -31,15 +31,15 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     openGraph: {
       type: 'website',
       url: `https://www.ticketscan.io/world-cup-2026/${stadium}`,
-      title: `${venue.name} World Cup 2026 Tickets - ${venue.city}`,
-      description: `Compare World Cup 2026 ticket prices at ${venue.name} in ${venue.city}. Find the best deals across multiple platforms.`,
+      title: `${venue.name} — World Cup 2026 Host Venue, ${venue.city}`,
+      description: `${venue.name} in ${venue.city} hosted FIFA World Cup 2026 matches. Seating layout, access and the full match list.`,
       siteName: 'Ticket Scan',
     },
     twitter: {
       card: 'summary_large_image',
       site: '@ticketscan_io',
-      title: `${venue.name} World Cup 2026 Tickets`,
-      description: `Compare World Cup 2026 ticket prices at ${venue.name}. Track prices and find the best deals.`,
+      title: `${venue.name} — World Cup 2026 Host Venue`,
+      description: `${venue.name} hosted FIFA World Cup 2026 matches. Seating layout, access and the full match list.`,
     },
   };
 }
@@ -233,23 +233,23 @@ export default async function StadiumPage({ params }: Props) {
           <div className="space-y-6">
             {/* Search CTA */}
             <div className="bg-gradient-to-br from-green-600 to-emerald-700 rounded-xl p-6 text-white">
-              <h3 className="font-bold text-xl mb-3">Find World Cup Tickets</h3>
+              <h3 className="font-bold text-xl mb-3">What&apos;s on here now</h3>
               <p className="text-green-100 mb-4 text-sm">
-                Compare prices from multiple platforms for {venue.name} matches.
+                See upcoming events at {venue.name} and when their tickets go on sale.
               </p>
               <Link
                 href={`/dashboard?keyword=world+cup+${venue.city.toLowerCase().replace(' ', '+')}`}
                 className="block w-full bg-white text-green-600 py-3 rounded-lg font-bold text-center hover:bg-green-50 transition-colors"
               >
-                Search Tickets
+                Search events
               </Link>
             </div>
 
-            {/* Price Alert CTA */}
+            {/* Onsale Alert CTA */}
             <div className="bg-white rounded-xl p-6 shadow-sm">
-              <h3 className="font-bold text-xl text-gray-900 mb-3">Get Price Alerts</h3>
+              <h3 className="font-bold text-xl text-gray-900 mb-3">Get Onsale Alerts</h3>
               <p className="text-gray-600 mb-4 text-sm">
-                Set your target price and we&apos;ll notify you when tickets drop.
+                Add an event and we&apos;ll tell you when its presale or public onsale opens.
               </p>
               <Link
                 href="/register"
@@ -311,7 +311,7 @@ export default async function StadiumPage({ params }: Props) {
             Ready to Experience the World Cup at {venue.name}?
           </h2>
           <p className="text-gray-600 mb-6">
-            Start tracking ticket prices now and be first to know when deals are available.
+            Follow the venue and hear the moment tickets for its next events go on sale.
           </p>
           <Link
             href="/world-cup-2026"

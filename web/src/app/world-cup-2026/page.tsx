@@ -4,22 +4,22 @@ import { worldCupVenues, worldCupCities, featuredTeams } from '@/data/worldcup';
 import WorldCupSchedule from './WorldCupSchedule';
 
 export const metadata: Metadata = {
-  title: 'FIFA World Cup 2026 — Ticket Prices, Venues & Results',
-  description: 'The biggest World Cup in history wrapped July 19 at MetLife. See what tickets actually cost across all 104 matches — Final, semifinals, group stage — compared across Ticketmaster, SeatGeek, and StubHub.',
-  keywords: 'World Cup 2026 tickets, FIFA World Cup 2026 results, World Cup Final 2026 ticket prices, World Cup 2026 venues, World Cup ticket cost, compare World Cup tickets, World Cup USA tickets, World Cup 2026 winner, FIFA World Cup Final 2026',
+  title: 'FIFA World Cup 2026 — Venues, Schedule & Results',
+  description: 'The 2026 FIFA World Cup wrapped on 19 July at MetLife Stadium. Browse the full match schedule and results, and guides to all 16 host stadiums across the USA, Canada and Mexico.',
+  keywords: 'FIFA World Cup 2026 results, World Cup 2026 venues, World Cup 2026 schedule, World Cup 2026 host stadiums, World Cup Final 2026, World Cup USA Canada Mexico, World Cup 2026 winner',
   alternates: {
     canonical: 'https://www.ticketscan.io/world-cup-2026',
   },
   openGraph: {
-    title: 'FIFA World Cup 2026 — Ticket Prices, Venues & Results | Ticket Scan',
-    description: 'The biggest World Cup in history wrapped July 19 at MetLife. See what tickets actually cost across all 104 matches, compared across Ticketmaster, SeatGeek, and StubHub.',
+    title: 'FIFA World Cup 2026 — Venues, Schedule & Results | Ticket Scan',
+    description: 'The 2026 FIFA World Cup wrapped on 19 July at MetLife Stadium. Browse the full match schedule and results, and guides to all 16 host stadiums across the USA, Canada and Mexico.',
     type: 'website',
     url: 'https://www.ticketscan.io/world-cup-2026',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'FIFA World Cup 2026 — Ticket Prices, Venues & Results | Ticket Scan',
-    description: 'World Cup 2026 wrapped July 19 at MetLife. See what tickets actually cost across all 104 matches, compared across Ticketmaster, SeatGeek, and StubHub.',
+    title: 'FIFA World Cup 2026 — Venues, Schedule & Results | Ticket Scan',
+    description: 'The 2026 FIFA World Cup wrapped on 19 July at MetLife Stadium. Full schedule, results and guides to all 16 host stadiums.',
   },
 };
 
@@ -120,7 +120,7 @@ export default function WorldCup2026Page() {
               2026 FIFA World Cup Tickets
             </h1>
             <p className="text-xl text-green-100 max-w-3xl mx-auto mb-8">
-              The biggest World Cup in history just wrapped. See what tickets actually cost — Final, semifinals, group stage — across Ticketmaster, SeatGeek, and StubHub.
+              The biggest World Cup in history has wrapped. Browse every match and result, and guides to all 16 host stadiums across the USA, Canada and Mexico.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link
@@ -155,38 +155,6 @@ export default function WorldCup2026Page() {
             <div className="text-center">
               <p className="text-4xl font-bold">3</p>
               <p className="text-green-200">Countries</p>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      {/* Why Compare Prices */}
-      <div className="py-16 bg-white">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="font-heading text-3xl font-bold text-gray-900 text-center mb-12">
-            Why Compare World Cup Ticket Prices?
-          </h2>
-          <div className="grid md:grid-cols-3 gap-8">
-            <div className="text-center p-6">
-              <div className="text-4xl mb-4">💰</div>
-              <h3 className="font-heading font-bold text-gray-900 mb-2">Save Hundreds</h3>
-              <p className="text-gray-600">
-                The same World Cup ticket can vary by 30%+ between platforms. We show you all options so you get the best deal.
-              </p>
-            </div>
-            <div className="text-center p-6">
-              <div className="text-4xl mb-4">🔔</div>
-              <h3 className="font-heading font-bold text-gray-900 mb-2">Price Alerts</h3>
-              <p className="text-gray-600">
-                Set your target price and we&apos;ll notify you when tickets drop. Never miss a deal on your bucket-list match.
-              </p>
-            </div>
-            <div className="text-center p-6">
-              <div className="text-4xl mb-4">✅</div>
-              <h3 className="font-heading font-bold text-gray-900 mb-2">Trusted Platforms</h3>
-              <p className="text-gray-600">
-                We only compare prices from verified resellers with buyer protection. Buy with confidence.
-              </p>
             </div>
           </div>
         </div>
@@ -453,8 +421,8 @@ export default function WorldCup2026Page() {
             <div className="flex gap-4">
               <div className="bg-green-100 text-green-600 w-10 h-10 rounded-full flex items-center justify-center font-bold flex-shrink-0">3</div>
               <div>
-                <h3 className="font-heading font-bold text-gray-900 mb-1">Set Price Alerts</h3>
-                <p className="text-gray-600">Don&apos;t constantly check prices. Set your target price on Ticket Scan and we&apos;ll email you when tickets drop to your budget.</p>
+                <h3 className="font-heading font-bold text-gray-900 mb-1">Set Onsale Alerts</h3>
+                <p className="text-gray-600">Don&apos;t keep checking back. Add an event to your watchlist and we&apos;ll email you when its presale or public onsale opens.</p>
               </div>
             </div>
             <div className="flex gap-4">
@@ -472,10 +440,10 @@ export default function WorldCup2026Page() {
       <div className="bg-gradient-to-br from-green-600 to-emerald-700 py-20">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-white">
           <h2 className="font-heading text-3xl font-bold mb-4">
-            The World Cup Is Over. Your Next One Doesn&apos;t Have to Cost a Fortune.
+            The World Cup Is Over. Don&apos;t Miss What&apos;s Next.
           </h2>
           <p className="text-green-100 mb-8 text-lg">
-            Create a free account to track ticket prices for concerts, sports, and the next major event — and get alerts when prices drop.
+            Create a free account to follow concerts, football and the next major event — and hear the moment tickets go on sale, including presales.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
