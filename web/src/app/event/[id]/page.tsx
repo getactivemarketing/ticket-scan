@@ -8,6 +8,7 @@ import api from '@/lib/api';
 import PriceChart from '@/components/PriceChart';
 import BuyRecommendation from '@/components/BuyRecommendation';
 import PriceTrendIndicator from '@/components/PriceTrendIndicator';
+import AffiliateLinks from '@/components/AffiliateLinks';
 
 interface PriceHistoryItem {
   source: string;
@@ -235,6 +236,14 @@ export default function EventDetailPage() {
             />
           </div>
         )}
+
+        {/* Ticket marketplaces (affiliate) */}
+        <AffiliateLinks
+          linkClass="ticket-resale"
+          placement="event"
+          title={eventName ? `Buy tickets for ${eventName}` : 'Compare ticket prices'}
+          className="mb-6"
+        />
 
         {/* Tier Breakdown */}
         {(() => {
