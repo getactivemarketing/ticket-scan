@@ -60,7 +60,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 
   if (pageData.type === 'city') {
     const city = pageData.data;
-    title = `${city.name} Event Tickets - Compare Prices`;
+    title = `${city.name} Event Tickets - Venues, Schedules and Onsales`;
     description = city.description;
     keywords = city.keywords;
   } else {
@@ -436,7 +436,7 @@ export default async function TicketsPage({ params }: PageProps) {
               {pageData.data.description}
             </p>
             <p className="text-gray-600 leading-relaxed">
-              Ticket Scan compares prices from Ticketmaster, SeatGeek, and other major ticket sites to help you find the best deals. Track price trends, set alerts, and know the best time to buy.
+              Ticket Scan searches Ticketmaster, SeatGeek and other major ticket sites from one place, publishes venue guides covering seating and access, and tells you when tickets go on sale - including presale windows that open before the public onsale.
             </p>
           </div>
         </div>

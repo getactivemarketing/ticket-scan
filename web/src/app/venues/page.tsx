@@ -3,21 +3,21 @@ import Link from 'next/link';
 import { venues } from '@/data/venues';
 
 export const metadata: Metadata = {
-  title: 'Venue Ticket Guides - Compare Prices at Top US Arenas & Stadiums',
+  title: 'Venue Ticket Guides - Seating, Access and Onsale Dates',
   description: 'Browse TicketScan venue guides for major US arenas and stadiums. Compare ticket prices, see seating tiers, and track upcoming events at MSG, Crypto.com Arena, Chase Center, and more.',
   keywords: 'venue ticket guides, arena tickets, stadium tickets, compare venue prices, seating charts',
   alternates: {
     canonical: 'https://www.ticketscan.io/venues',
   },
   openGraph: {
-    title: 'Venue Ticket Guides - Compare Prices at Top US Arenas & Stadiums',
+    title: 'Venue Ticket Guides - Seating, Access and Onsale Dates',
     description: 'Browse venue guides for major US arenas and stadiums. Compare ticket prices and track upcoming events.',
     type: 'website',
     url: 'https://www.ticketscan.io/venues',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Venue Ticket Guides - Compare Prices at Top US Arenas & Stadiums',
+    title: 'Venue Ticket Guides - Seating, Access and Onsale Dates',
     description: 'Browse venue guides for major US arenas and stadiums. Compare ticket prices and track upcoming events.',
   },
 };

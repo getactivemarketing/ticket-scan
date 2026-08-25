@@ -99,7 +99,7 @@ export const venues: Record<string, Venue> = {
     capacity: 20789,
     type: 'arena',
     homeTeams: ['New York Knicks', 'New York Rangers'],
-    description: 'The world\'s most famous arena, home to the Knicks and Rangers. TicketScan tracks when tickets for Madison Square Garden events go on sale, including presale windows that open before the public onsale.',
+    description: 'Madison Square Garden sits directly above Pennsylvania Station in Midtown Manhattan, on the site of the original station that was demolished to build it, and has been home to the Knicks and Rangers since it opened in February 1968. The building is essentially circular, with a roof suspended on steel cables from a perimeter compression ring, and the arena floor sits several stories above street level - you ride escalators up from the Seventh Avenue entrance rather than walking in at court level. Seating runs from the lower bowl through suite and club levels to the upper bowl, and a renovation completed in 2013 added the bridge-level walkways suspended over the seating bowl. Because the Garden is built on top of Penn Station, it is one of the easiest arenas in the country to reach without a car: Long Island Rail Road, NJ Transit, Amtrak and several subway lines all arrive underneath it. TicketScan tracks when tickets for Madison Square Garden events go on sale, including presale windows that open before the public onsale.',
     keywords: ['MSG tickets', 'Madison Square Garden tickets', 'Knicks tickets', 'Rangers tickets', 'MSG seating chart', 'NYC concert tickets'],
     sections: [
       { name: 'Floor', tier: 'floor' },
@@ -123,9 +123,9 @@ export const venues: Record<string, Venue> = {
     state: 'CA',
     capacity: 20000,
     type: 'arena',
-    homeTeams: ['Los Angeles Lakers', 'LA Clippers', 'LA Kings'],
-    description: 'Home of the Lakers, Clippers, and Kings. TicketScan tracks when tickets for Crypto.com Arena events go on sale, including presale windows that open before the public onsale.',
-    keywords: ['Crypto.com Arena tickets', 'Lakers tickets', 'Clippers tickets', 'LA Kings tickets', 'Staples Center tickets', 'LA concert tickets'],
+    homeTeams: ['Los Angeles Lakers', 'LA Kings', 'Los Angeles Sparks'],
+    description: 'Crypto.com Arena opened in downtown Los Angeles in October 1999 as Staples Center, the name many Angelenos still use, and was renamed in 2021. Designed by NBBJ, it anchors the L.A. Live complex next to the Los Angeles Convention Center on Figueroa Street. The Lakers, Kings and Sparks all play here; the Clippers shared the building from 1999 until moving to their own arena in 2024, so older seating guides and listings may still describe it as a three-team arena. About two-thirds of the seating is in the lower level, which makes the bowl feel closer to the floor than its capacity suggests. Seating is arranged as a lower level, premium and suite levels, and an upper level. A multi-phase renovation begun in 2022 replaced the video and ribbon displays and reworked the concourses. Downtown parking fills early on event nights, and Metro rail stops within a short walk of the arena. TicketScan tracks when tickets for Crypto.com Arena events go on sale, including presale windows that open before the public onsale.',
+    keywords: ['Crypto.com Arena tickets', 'Lakers tickets', 'LA Kings tickets', 'LA Sparks tickets', 'Staples Center tickets', 'Crypto.com Arena seating chart', 'LA concert tickets'],
     sections: [
       { name: 'Floor', tier: 'floor' },
       { name: '101', tier: 'lower' }, { name: '102', tier: 'lower' }, { name: '103', tier: 'lower' },
@@ -349,14 +349,14 @@ export const venues: Record<string, Venue> = {
   // Phoenix
   'footprint-center': {
     id: 'footprint-center',
-    name: 'Footprint Center',
+    name: 'Mortgage Matchup Center',
     city: 'Phoenix',
     state: 'AZ',
     capacity: 17071,
     type: 'arena',
     homeTeams: ['Phoenix Suns', 'Phoenix Mercury'],
-    description: 'Find tickets at Footprint Center in Phoenix. Home of the Suns, hosting NBA games, WNBA, and events. TicketScan tracks when tickets for Footprint Center events go on sale, including presale windows that open before the public onsale.',
-    keywords: ['Footprint Center tickets', 'Suns tickets', 'Phoenix arena tickets', 'Phoenix Suns'],
+    description: 'The downtown Phoenix arena that opened in 1992 as America West Arena has changed names more than almost any building in the NBA: US Airways Center, Talking Stick Resort Arena, Phoenix Suns Arena, Footprint Center, PHX Arena, and since October 2025 the Mortgage Matchup Center, under a naming agreement with United Wholesale Mortgage. Tickets and listings still surface under several of those names, so it is worth searching the older ones too. The Suns and the Mercury both play here, and a renovation completed in 2020 substantially rebuilt the concourses, entrances and seating areas of what had become one of the league\'s older arenas. Seating runs from the lower bowl through club and suite levels to the upper bowl. The arena sits in the middle of downtown Phoenix within walking distance of Chase Field, and Valley Metro light rail stops a block away on Jefferson and Washington streets. TicketScan tracks when tickets for Mortgage Matchup Center events go on sale, including presale windows that open before the public onsale.',
+    keywords: ['Mortgage Matchup Center tickets', 'Footprint Center tickets', 'PHX Arena tickets', 'Phoenix Suns tickets', 'Phoenix Mercury tickets', 'Talking Stick Resort Arena tickets', 'Phoenix arena seating chart', 'when do Suns tickets go on sale'],
     sections: [
       { name: 'Floor', tier: 'floor' },
       { name: '101', tier: 'lower' }, { name: '102', tier: 'lower' },
@@ -505,7 +505,7 @@ export const venues: Record<string, Venue> = {
     capacity: 17732,
     type: 'arena',
     homeTeams: ['Brooklyn Nets', 'New York Liberty'],
-    description: 'Home of the Nets and Liberty, hosting NBA, WNBA, concerts, and boxing. TicketScan tracks when tickets for Barclays Center events go on sale, including presale windows that open before the public onsale.',
+    description: 'Barclays Center opened in 2012 where Atlantic and Flatbush avenues meet in Brooklyn, built above the Long Island Rail Road\'s Atlantic Terminal as the first piece of the Pacific Park development. SHoP Architects wrapped it in pre-weathered steel panels that have rusted to a deep brown and cantilevered the facade out over the entrance plaza to form a canopy, which gives the building a silhouette unlike any other arena in the league. The Nets and the Liberty both play here, and it carries a heavy concert and boxing calendar alongside them. Seating runs from the lower bowl through suite and club levels to the upper bowl; as at most arenas, sideline seats give the most complete view of play while baseline and corner seats trade that angle for being closer in. Transit is the building\'s real advantage - the Atlantic Avenue-Barclays Center station complex underneath it is among the largest in the subway system. TicketScan tracks when tickets for Barclays Center events go on sale, including presale windows that open before the public onsale.',
     keywords: ['Barclays Center tickets', 'Brooklyn Nets tickets', 'Barclays concerts', 'Brooklyn arena tickets'],
     sections: [
       { name: 'Floor', tier: 'floor' },
@@ -523,7 +523,7 @@ export const venues: Record<string, Venue> = {
     capacity: 20356,
     type: 'arena',
     homeTeams: ['Washington Wizards', 'Washington Capitals'],
-    description: 'Find tickets at Capital One Arena in Washington DC. Home of the Wizards and Capitals, featuring NBA, NHL, and concerts. TicketScan tracks when tickets for Capital One Arena events go on sale, including presale windows that open before the public onsale.',
+    description: 'Capital One Arena opened in December 1997 in Washington\'s Penn Quarter, and is built directly on top of the Gallery Place Metro station. It has carried three names: MCI Center until 2006, Verizon Center until 2017, and Capital One Arena since, so older listings and seating charts circulate under all three. The Wizards and the Capitals share it, which gives it one of the fuller event calendars in either league. Seating runs from the lower bowl through club and suite levels to the upper bowl. The arena is partway through a multi-year renovation that began at the end of 2024 and is scheduled to finish before the 2027-28 seasons, so entrances, concourse layouts and some seating areas change between visits - check the venue\'s own guest information before an event rather than relying on an older map. Arriving by Metro puts you at the door; the surrounding streets are dense and parking is limited. TicketScan tracks when tickets for Capital One Arena events go on sale, including presale windows that open before the public onsale.',
     keywords: ['Capital One Arena tickets', 'Wizards tickets', 'Capitals tickets', 'DC arena tickets', 'Washington DC concerts'],
     sections: [
       { name: 'Floor', tier: 'floor' },
@@ -540,7 +540,7 @@ export const venues: Record<string, Venue> = {
     capacity: 20332,
     type: 'arena',
     homeTeams: ['Detroit Pistons', 'Detroit Red Wings'],
-    description: 'Home of the Pistons and Red Wings, hosting NBA, NHL, and major concerts. TicketScan tracks when tickets for Little Caesars Arena events go on sale, including presale windows that open before the public onsale.',
+    description: 'Little Caesars Arena opened in September 2017 on Woodward Avenue as the centerpiece of The District Detroit, and is shared by the Pistons and the Red Wings. Architects HOK sank the seating bowl below street level and wrapped the surrounding concourse in a glass-roofed via - a covered public street lined with shops and restaurants that stays open on days with no event. Because the bowl is sunk, most entrances put you on an upper concourse and you walk down toward the lower seats rather than climbing up from the floor, which is the opposite of what people expect at an arena of this size. Seating runs from the lower bowl through club and suite levels to the upper bowl, and the building is configured differently for basketball and hockey, so the same section can sit at a noticeably different distance depending on the event. The QLINE streetcar runs along Woodward directly outside. TicketScan tracks when tickets for Little Caesars Arena events go on sale, including presale windows that open before the public onsale.',
     keywords: ['Little Caesars Arena tickets', 'Pistons tickets', 'Red Wings tickets', 'Detroit arena tickets'],
     sections: [
       { name: 'Floor', tier: 'floor' },
@@ -557,7 +557,7 @@ export const venues: Record<string, Venue> = {
     capacity: 17341,
     type: 'arena',
     homeTeams: ['Milwaukee Bucks'],
-    description: 'Get tickets at Fiserv Forum in Milwaukee. Home of the NBA champion Bucks, featuring basketball and world-class entertainment. TicketScan tracks when tickets for Fiserv Forum events go on sale, including presale windows that open before the public onsale.',
+    description: 'Fiserv Forum opened in downtown Milwaukee in August 2018 and is home to the Bucks, who won the NBA title in 2021, and to Marquette University\'s men\'s basketball team. Its most recognizable feature is the roof: a curved, arcing profile clad in zinc that weathers over time, designed by Populous with HNTB and Eppstein Uhen. Seating runs from the lower bowl through club and suite levels to the upper bowl. As at most arenas, sideline seats give the clearest read on play developing across the floor, while baseline and corner seats trade that angle for proximity. The arena opens onto the Deer District, the plaza outside that fills with people on big game nights whether or not they hold tickets - worth knowing when you plan how early to arrive. The Hop streetcar and several high-frequency bus routes serve the immediate area, and downtown Milwaukee is compact enough that most nearby parking is a short walk away. TicketScan tracks when tickets for Fiserv Forum events go on sale, including presale windows that open before the public onsale.',
     keywords: ['Fiserv Forum tickets', 'Bucks tickets', 'Milwaukee arena tickets', 'Milwaukee concerts'],
     sections: [
       { name: 'Floor', tier: 'floor' },
@@ -574,7 +574,7 @@ export const venues: Record<string, Venue> = {
     capacity: 18798,
     type: 'arena',
     homeTeams: ['Minnesota Timberwolves', 'Minnesota Lynx'],
-    description: 'Home of the Timberwolves and Lynx, hosting NBA, WNBA, and concerts. TicketScan tracks when tickets for Target Center events go on sale, including presale windows that open before the public onsale.',
+    description: 'Target Center opened on First Avenue North in downtown Minneapolis in October 1990 and is home to the Timberwolves and the Lynx. It is owned by the City of Minneapolis rather than by either team, and a major renovation during the 2010s rebuilt the main entrance and concourses and tied the building more directly into the surrounding downtown. Its most practical feature in a Minnesota winter is the skyway: Target Center connects to the city\'s enclosed second-level walkway network, so you can reach it from a parking ramp or a nearby hotel without going outside - which matters for a building that hosts events through January and February. Seating runs from the lower bowl through suite and club levels to the upper bowl. Sideline seats give the most complete view of play; baseline and corner seats trade that angle for being closer to the basket. Metro Transit light rail and bus routes stop within a couple of blocks. TicketScan tracks when tickets for Target Center events go on sale, including presale windows that open before the public onsale.',
     keywords: ['Target Center tickets', 'Timberwolves tickets', 'Minneapolis arena tickets', 'Minnesota basketball tickets'],
     sections: [
       { name: 'Floor', tier: 'floor' },
@@ -591,7 +591,7 @@ export const venues: Record<string, Venue> = {
     capacity: 16867,
     type: 'arena',
     homeTeams: ['New Orleans Pelicans'],
-    description: 'Home of the Pelicans, featuring NBA games and major events. TicketScan tracks when tickets for Smoothie King Center events go on sale, including presale windows that open before the public onsale.',
+    description: 'The Smoothie King Center opened in October 1999 as New Orleans Arena and took its current name in 2014; locally it is still often called the Blender. It stands directly beside the Caesars Superdome on the same state-owned campus, and the two buildings share the surrounding lots and approaches - which means event traffic here is shaped as much by whatever is happening next door as by what is happening in the arena, something worth checking before a Saturday or Sunday event. The Pelicans play here alongside concerts and touring shows. Seating runs from the lower bowl through club and suite levels to the upper bowl, and the building is compact enough that there is no genuinely distant seat in it. It is a walk from the New Orleans Union Passenger Terminal and from the Central Business District, and streetcar and bus routes run along Poydras Street nearby. TicketScan tracks when tickets for Smoothie King Center events go on sale, including presale windows that open before the public onsale.',
     keywords: ['Smoothie King Center tickets', 'Pelicans tickets', 'New Orleans arena tickets', 'NOLA concerts'],
     sections: [
       { name: 'Floor', tier: 'floor' },
@@ -638,7 +638,7 @@ export const venues: Record<string, Venue> = {
     capacity: 20000,
     type: 'arena',
     homeTeams: ['Vegas Golden Knights'],
-    description: 'Home of the Golden Knights, featuring NHL, UFC, boxing, and superstar concerts. TicketScan tracks when tickets for T-Mobile Arena events go on sale, including presale windows that open before the public onsale.',
+    description: 'T-Mobile Arena opened in April 2016 on the Las Vegas Strip, set back behind the New York-New York and Park MGM resorts and reached through the Park, an open-air plaza of restaurants and bars that funnels the crowd toward the doors. Built as a joint venture between MGM Resorts and AEG and designed by Populous, it is home to the Golden Knights and carries a heavy schedule of boxing, UFC and touring concerts alongside the hockey season. Seating runs from the lower bowl through club and suite levels to the upper bowl. Configurations change substantially between hockey, an end-stage concert and a boxing card, so the same section can be a very different seat depending on the event - check the chart for the specific event rather than the venue in general. The Las Vegas Monorail stops at MGM Grand nearby, and the arena is walkable from much of the central Strip. TicketScan tracks when tickets for T-Mobile Arena events go on sale, including presale windows that open before the public onsale.',
     keywords: ['T-Mobile Arena tickets', 'Golden Knights tickets', 'Las Vegas arena tickets', 'Vegas concerts', 'UFC tickets'],
     sections: [
       { name: 'Floor', tier: 'floor' },
@@ -655,7 +655,7 @@ export const venues: Record<string, Venue> = {
     capacity: 17100,
     type: 'arena',
     homeTeams: ['Seattle Kraken', 'Seattle Storm'],
-    description: 'Get tickets at Climate Pledge Arena in Seattle. Home of the Kraken and Storm, featuring NHL, WNBA, and world tours. TicketScan tracks when tickets for Climate Pledge Arena events go on sale, including presale windows that open before the public onsale.',
+    description: 'Climate Pledge Arena is one of the newest buildings in the NHL underneath one of the oldest roofs. The original arena opened at Seattle Center in 1962 as a pavilion for the World\'s Fair, and when the site was rebuilt between 2018 and 2021 the 1962 roof and its glass curtain walls - landmarked by the city in 2017 - were held in place on temporary supports while everything beneath them was demolished and the site excavated deeper. The arena that reopened in October 2021 is therefore a modern building sunk well below a historic roofline. The Kraken and the Storm play here. Seating runs from the lower bowl through club and suite levels to the upper bowl, and because the bowl was dug down rather than built up, main entrances lead onto an upper concourse. The Seattle Center Monorail runs from downtown to the arena\'s doorstep, and parking on the campus is limited. TicketScan tracks when tickets for Climate Pledge Arena events go on sale, including presale windows that open before the public onsale.',
     keywords: ['Climate Pledge Arena tickets', 'Kraken tickets', 'Seattle arena tickets', 'Seattle concerts'],
     sections: [
       { name: 'Floor', tier: 'floor' },
@@ -672,7 +672,7 @@ export const venues: Record<string, Venue> = {
     capacity: 16514,
     type: 'arena',
     homeTeams: ['New Jersey Devils'],
-    description: 'Home of the Devils, hosting NHL games, concerts, and major events. TicketScan tracks when tickets for Prudential Center events go on sale, including presale windows that open before the public onsale.',
+    description: 'Prudential Center opened in downtown Newark in October 2007 and is home to the Devils, to Seton Hall\'s men\'s basketball team and to the PWHL\'s New York Sirens. Despite being one of the smaller arenas in the NHL, it ranks among the busiest concert venues in the world, and in most months the touring calendar outnumbers the hockey one. The exterior, by Morris Adjmi, is clad in patterned brick and metal that references Newark\'s industrial architecture rather than the glass curtain wall typical of arenas of its generation. Seating runs from the lower bowl through club and suite levels to the upper bowl, and the compact footprint keeps the upper deck closer to the ice than at most NHL buildings. Newark Penn Station is a short walk away and is served by NJ Transit, PATH, Amtrak and the Newark Light Rail, which makes the arena straightforward to reach from Manhattan without driving. TicketScan tracks when tickets for Prudential Center events go on sale, including presale windows that open before the public onsale.',
     keywords: ['Prudential Center tickets', 'Devils tickets', 'Newark arena tickets', 'New Jersey concerts'],
     sections: [
       { name: 'Floor', tier: 'floor' },

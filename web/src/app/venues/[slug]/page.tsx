@@ -31,8 +31,8 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     return { title: 'Venue Not Found' };
   }
 
-  const title = `${venue.name} Tickets - Compare Prices`;
-  const description = venue.description || `Find cheap tickets for events at ${venue.name} in ${venue.city}, ${venue.state}. Compare prices across Ticketmaster, SeatGeek and more.`;
+  const title = `${venue.name} Tickets - Seating Guide and Onsale Dates`;
+  const description = venue.description || `Events at ${venue.name} in ${venue.city}, ${venue.state} - seating guide, getting there, and when tickets go on sale.`;
 
   return {
     title,
@@ -305,7 +305,7 @@ export default async function VenuePage({ params }: PageProps) {
                   About {venue.name}
                 </h2>
                 <p className="text-gray-600 leading-relaxed">
-                  {venue.description || `${venue.name} is a premier ${venue.type} venue located in ${venue.city}, ${venue.state}. With a capacity of ${venue.capacity.toLocaleString()}, it hosts a variety of events including ${venue.homeTeams ? venue.homeTeams.join(', ') + ' games, ' : ''}concerts, and special events. Use Ticket Scan to compare prices across multiple ticket sites and find the best deals.`}
+                  {venue.description || `${venue.name} is a ${venue.type} in ${venue.city}, ${venue.state} with a capacity of ${venue.capacity.toLocaleString()}, hosting ${venue.homeTeams ? venue.homeTeams.join(', ') + ' games, ' : ''}concerts, and special events. TicketScan tracks when tickets for ${venue.name} events go on sale, including presale windows that open before the public onsale.`}
                 </p>
               </div>
 
