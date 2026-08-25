@@ -71,11 +71,11 @@ export default function Home() {
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-16">
               <div className="flex-1 text-center lg:text-left">
-                <p className="text-teal text-xs font-semibold uppercase tracking-[0.2em] mb-4">Real-time price intelligence</p>
+                <p className="text-teal text-xs font-semibold uppercase tracking-[0.2em] mb-4">Events, venues and onsale dates</p>
                 <h1 className="text-5xl lg:text-6xl font-heading font-bold tracking-tight leading-[1.1] mb-5">
-                  Compare.<br /><span className="text-teal">Track.</span><br />Save.
+                  Find it.<br /><span className="text-teal">Track it.</span><br />Don't miss it.
                 </h1>
-                <p className="text-white/50 text-lg mb-8 max-w-md mx-auto lg:mx-0">Real-time prices from every major ticket platform. Get alerts when prices drop.</p>
+                <p className="text-white/50 text-lg mb-8 max-w-md mx-auto lg:mx-0">Search events across the major ticket platforms, save what you care about, and get told when tickets go on sale — including presales.</p>
                 <div className="flex flex-col sm:flex-row gap-3 justify-center lg:justify-start">
                   <Link href="/register" className="inline-block bg-gradient-to-r from-brand to-teal text-white px-7 py-3 rounded-lg font-semibold transition-opacity hover:opacity-90">Get Started Free</Link>
                   <a href="#how-it-works" className="inline-block border border-white/20 text-white px-7 py-3 rounded-lg font-medium hover:bg-white/5 transition-colors text-center">See How It Works</a>
@@ -83,41 +83,30 @@ export default function Home() {
               </div>
               <div className="flex-shrink-0 w-full max-w-sm">
                 <div className="bg-white rounded-xl shadow-[0_8px_32px_rgba(0,0,0,0.3)] p-5 text-charcoal">
-                  <p className="font-heading font-bold text-sm text-navy mb-4">Price Tracker</p>
+                  <p className="font-heading font-bold text-sm text-navy mb-4">Your Watchlist</p>
                   <div className="bg-gray-50 rounded-lg p-3 mb-3">
                     <div className="flex justify-between items-center mb-2">
-                      <span className="font-semibold text-sm text-navy">NBA Finals G1</span>
-                      <span className="text-xs font-bold bg-success/10 text-success px-2 py-0.5 rounded">BUY</span>
+                      <span className="font-semibold text-sm text-navy">Chiefs vs Bills</span>
+                      <span className="text-xs font-bold bg-success/10 text-success px-2 py-0.5 rounded">ON SALE</span>
                     </div>
                     <svg viewBox="0 0 200 40" className="w-full h-8 mb-1">
                       <polyline points="0,30 25,28 50,32 75,25 100,20 125,22 150,15 175,12 200,8" fill="none" stroke="#1E63FF" strokeWidth="2" />
                       <circle cx="200" cy="8" r="3" fill="#16C784" />
                     </svg>
                     <div className="flex justify-between text-xs text-gray-500">
-                      <span>$340 → <span className="text-success font-bold">$198</span></span>
-                      <span className="text-success">▼ 42%</span>
+                      <span>Tickets available now</span>
+                      <span className="text-success">MetLife</span>
                     </div>
                   </div>
                   <div className="bg-gray-50 rounded-lg p-3">
                     <div className="flex justify-between items-center mb-1">
-                      <span className="font-semibold text-sm text-navy">Kendrick Lamar</span>
-                      <span className="text-xs font-bold bg-amber-100 text-amber-600 px-2 py-0.5 rounded">HOLD</span>
+                      <span className="font-semibold text-sm text-navy">Michigan vs Ohio State</span>
+                      <span className="text-xs font-bold bg-amber-100 text-amber-600 px-2 py-0.5 rounded">PRESALE</span>
                     </div>
-                    <p className="text-xs text-gray-500">$156 avg · trending down</p>
+                    <p className="text-xs text-gray-500">Presale opens Tue 10am</p>
                   </div>
                 </div>
               </div>
-            </div>
-          </div>
-        </div>
-
-        {/* Stats Bar */}
-        <div className="bg-white py-10 border-b border-gray-100">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="flex justify-center gap-16 md:gap-24 text-center">
-              <div><div className="text-3xl font-heading font-bold text-brand">50K+</div><div className="text-gray-500 text-xs mt-1">Events Tracked</div></div>
-              <div><div className="text-3xl font-heading font-bold text-brand">$127</div><div className="text-gray-500 text-xs mt-1">Avg. Savings</div></div>
-              <div><div className="text-3xl font-heading font-bold text-brand">5+</div><div className="text-gray-500 text-xs mt-1">Sites Compared</div></div>
             </div>
           </div>
         </div>
@@ -153,38 +142,6 @@ export default function Home() {
           </div>
         </div>
 
-        {/* Trending Deals */}
-        <div className="bg-white py-12 border-t border-gray-100">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 className="text-2xl font-heading font-bold text-navy mb-8 tracking-tight">Trending Deals</h2>
-            <div className="grid md:grid-cols-3 gap-5">
-              {[
-                { name: 'Lakers vs Celtics', date: 'Fri, Jun 12', venue: 'Crypto.com Arena', price: '$89', change: '▼ 12%', changeColor: 'text-success', sources: ['TM', 'SG', 'SH'] },
-                { name: 'Taylor Swift', date: 'Sat, Jul 5', venue: 'SoFi Stadium', price: '$245', change: '▲ 8%', changeColor: 'text-red-500', sources: ['TM', 'SG'] },
-                { name: 'World Cup — USA vs Mexico', date: 'Jun 15', venue: 'MetLife Stadium', price: '$175', change: '▼ 5%', changeColor: 'text-success', sources: ['TM', 'SG', 'SH'] },
-              ].map((deal) => (
-                <div key={deal.name} className="border border-gray-200 rounded-xl p-5 hover:border-brand/30 transition-colors">
-                  <div className="flex justify-between items-start mb-2">
-                    <div>
-                      <h3 className="font-semibold text-navy text-sm">{deal.name}</h3>
-                      <p className="text-xs text-gray-400 mt-0.5">{deal.date} · {deal.venue}</p>
-                    </div>
-                    <span className={`text-sm font-bold ${deal.changeColor}`}>{deal.change}</span>
-                  </div>
-                  <div className="flex justify-between items-center mt-4">
-                    <span className="text-xl font-heading font-bold text-navy">{deal.price}</span>
-                    <div className="flex gap-1">
-                      {deal.sources.map((s) => (
-                        <span key={s} className="text-[10px] bg-gray-100 text-gray-500 px-1.5 py-0.5 rounded font-medium">{s}</span>
-                      ))}
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-
         {/* Popular Venues */}
         <div className="bg-gray-50 py-12">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -202,45 +159,6 @@ export default function Home() {
 
         {/* Browse Tabs */}
         <BrowseTabsClient cities={cities} categories={categories} />
-
-        {/* World Cup Banner */}
-        <div className="bg-white py-12">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="bg-navy rounded-xl p-8 flex flex-col md:flex-row items-center justify-between gap-6 border-l-4 border-teal">
-              <div>
-                <p className="text-teal text-xs font-semibold uppercase tracking-widest mb-2">June 11 – July 19, 2026</p>
-                <h3 className="text-white text-2xl font-heading font-bold tracking-tight">FIFA World Cup 2026</h3>
-                <p className="text-white/50 text-sm mt-1">16 stadiums · 104 matches · Compare prices across all venues</p>
-              </div>
-              <Link href="/world-cup-2026" className="bg-gradient-to-r from-brand to-teal text-white px-6 py-3 rounded-lg font-semibold hover:opacity-90 transition-opacity whitespace-nowrap">Explore Venues</Link>
-            </div>
-          </div>
-        </div>
-
-        {/* Testimonials */}
-        <div className="bg-navy py-16">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 className="text-2xl font-heading font-bold text-center text-white mb-12 tracking-tight">What Fans Are Saying</h2>
-            <div className="grid md:grid-cols-3 gap-8">
-              {[
-                { quote: 'Saved $200 on Lakers tickets by waiting for the price drop alert. This tool pays for itself!', name: 'Marcus T.', location: 'Los Angeles, CA', initial: 'M', initialBg: 'bg-brand/20 text-brand-light' },
-                { quote: 'Finally, one place to compare all the ticket sites. No more opening 10 tabs to find the best deal.', name: 'Sarah K.', location: 'Chicago, IL', initial: 'S', initialBg: 'bg-teal/20 text-teal-light' },
-                { quote: 'Got floor seats to a concert for less than upper deck prices. The price alerts are a game changer.', name: 'Jason R.', location: 'Miami, FL', initial: 'J', initialBg: 'bg-success/20 text-success' },
-              ].map((t) => (
-                <div key={t.name} className="border border-white/10 rounded-xl p-6">
-                  <p className="text-white/80 text-base leading-relaxed mb-6">&ldquo;{t.quote}&rdquo;</p>
-                  <div className="flex items-center gap-3">
-                    <div className={`w-9 h-9 rounded-full flex items-center justify-center text-sm font-bold ${t.initialBg}`}>{t.initial}</div>
-                    <div>
-                      <div className="font-medium text-white text-sm">{t.name}</div>
-                      <div className="text-xs text-white/40">{t.location}</div>
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
 
         {/* Blog Section */}
         <div className="bg-gray-50 py-12">
