@@ -71,10 +71,6 @@ export default function Navbar() {
                 <Link href="/blog" className="text-white/80 hover:text-white transition-colors text-sm">
                   Tips
                 </Link>
-                <Link href="/world-cup-2026" className="text-white/80 hover:text-white transition-colors text-sm flex items-center gap-1.5">
-                  <span className="w-2 h-2 bg-green-400 rounded-full inline-block"></span>
-                  World Cup 2026
-                </Link>
                 <span className="text-white/50 text-xs hidden lg:inline">{user.email}</span>
                 <button
                   onClick={handleLogout}
@@ -90,10 +86,6 @@ export default function Navbar() {
                 </Link>
                 <Link href="/blog" className="text-white/80 hover:text-white transition-colors text-sm">
                   Blog
-                </Link>
-                <Link href="/world-cup-2026" className="text-white/80 hover:text-white transition-colors text-sm flex items-center gap-1.5">
-                  <span className="w-2 h-2 bg-green-400 rounded-full inline-block"></span>
-                  World Cup 2026
                 </Link>
                 <Link href="/login" className="text-white/80 hover:text-white transition-colors text-sm">
                   Login
@@ -153,10 +145,6 @@ export default function Navbar() {
                 <Link href="/blog" className="block text-white hover:text-white/80 py-2 transition-colors" onClick={closeMenu}>
                   Tips & Guides
                 </Link>
-                <Link href="/world-cup-2026" className="block text-white hover:text-white/80 py-2 transition-colors flex items-center gap-1.5" onClick={closeMenu}>
-                  <span className="w-2 h-2 bg-green-400 rounded-full inline-block"></span>
-                  World Cup 2026
-                </Link>
                 <button
                   onClick={handleLogout}
                   className="w-full mt-2 bg-white/10 hover:bg-white/20 text-white py-3 rounded-lg transition-colors text-center"
@@ -171,10 +159,6 @@ export default function Navbar() {
                 </Link>
                 <Link href="/blog" className="block text-white hover:text-white/80 py-2 transition-colors" onClick={closeMenu}>
                   Blog & Tips
-                </Link>
-                <Link href="/world-cup-2026" className="block text-white hover:text-white/80 py-2 transition-colors flex items-center gap-1.5" onClick={closeMenu}>
-                  <span className="w-2 h-2 bg-green-400 rounded-full inline-block"></span>
-                  World Cup 2026
                 </Link>
                 <Link href="/login" className="block text-white hover:text-white/80 py-2 transition-colors" onClick={closeMenu}>
                   Login

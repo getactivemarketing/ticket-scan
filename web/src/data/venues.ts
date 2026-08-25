@@ -466,7 +466,7 @@ export const venues: Record<string, Venue> = {
     capacity: 18118,
     type: 'arena',
     homeTeams: ['Atlanta Hawks'],
-    description: 'Roughly 150 events run through the building every year. The 100-Level lower bowl (sections 101-126) wraps tight around the court, the renovated courtside and club areas add in-seat service and lounge access, and the 200-Level upper bowl runs sections 201-226. The arena sits a few blocks from Mercedes-Benz Stadium — Atlanta\'s FIFA World Cup 2026 host venue — so summer 2026 visitors can pair a downtown match day with whatever else is on the calendar. TicketScan tracks when tickets for State Farm Arena events go on sale, including presale windows that open before the public onsale.',
+    description: 'Roughly 150 events run through the building every year. The 100-Level lower bowl (sections 101-126) wraps tight around the court, the renovated courtside and club areas add in-seat service and lounge access, and the 200-Level upper bowl runs sections 201-226. The arena sits a few blocks from Mercedes-Benz Stadium, so a downtown event here can be paired with whatever is on at the stadium. TicketScan tracks when tickets for State Farm Arena events go on sale, including presale windows that open before the public onsale.',
     keywords: ['State Farm Arena tickets', 'Hawks tickets', 'Atlanta arena tickets', 'Atlanta concerts', 'State Farm Arena seating chart', 'Atlanta Hawks tickets', 'State Farm Arena events', 'Atlanta concert tickets', 'downtown Atlanta events'],
     sections: [
       // Floor / Courtside
