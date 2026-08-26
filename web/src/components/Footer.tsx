@@ -84,8 +84,8 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
-                <Link href="/world-cup-2026" className="hover:text-white transition-colors">
-                  World Cup 2026
+                <Link href="/onsales" className="hover:text-white transition-colors">
+                  Onsale Calendar
                 </Link>
               </li>
               <li>

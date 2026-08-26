@@ -104,7 +104,18 @@ if [ -n "$(git status --porcelain -- "${COMMIT_PATHS[@]}")" ]; then
     git status --porcelain -- web/src | tee -a "$LOG_FILE"
     git add -- "${COMMIT_PATHS[@]}"
     git commit -m "Weekly analysis agent output — Friday $DATE" | tee -a "$LOG_FILE"
-    git push origin main 2>&1 | tee -a "$LOG_FILE" || echo "Push failed" | tee -a "$LOG_FILE"
+    # Push ONLY from main. `git push origin main` pushes the LOCAL main ref, so
+    # when the tree is on a feature branch it tries to push a stale main, is
+    # rejected non-fast-forward, and the `||` swallows it — output then sits
+    # unpushed for days (observed 2026-08-26). Never push a feature branch to
+    # main implicitly: production deploys from origin/main.
+    BRANCH=$(git rev-parse --abbrev-ref HEAD)
+    if [ "$BRANCH" = "main" ]; then
+        git push origin main 2>&1 | tee -a "$LOG_FILE" || echo "Push failed" | tee -a "$LOG_FILE"
+    else
+        echo "WARNING: on branch '$BRANCH', not main. Output committed locally, NOT pushed." | tee -a "$LOG_FILE"
+        echo "WARNING: production deploys from origin/main, so these changes are NOT live." | tee -a "$LOG_FILE"
+    fi
 fi
 
 # Greppable failure signal. A dead key now surfaces on day one instead of day thirty.

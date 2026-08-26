@@ -131,10 +131,39 @@ else
         git commit -m "Add generated social images — $DATE" 2>&1 | tee -a "$LOG_FILE"
     fi
 
-    # Deploy to Vercel so image URLs are live BEFORE Blotato consumes them
-    cd "$PROJECT_DIR/web"
-    npx vercel --prod --yes 2>&1 | tee -a "$LOG_FILE" || echo "Vercel deploy failed" | tee -a "$LOG_FILE"
-    cd "$PROJECT_DIR"
+    # Deploy to Vercel so image URLs are live BEFORE Blotato consumes them.
+    #
+    # `vercel --prod` uploads a DIRECTORY, not a git ref. Running it from the
+    # shared working tree shipped whichever branch happened to be checked out:
+    # on 2026-08-26 that silently reverted the live site by five commits and
+    # 404'd /onsales, because the tree was sitting on a feature branch. Build
+    # from an explicit ref instead so production is always a known commit.
+    #
+    # Generated social images are overlaid from the working tree because
+    # Blotato consumes them by URL and they may not be committed to the deploy
+    # ref yet. The whole accumulated directory is copied, not just today's, so
+    # posts scheduled on earlier runs keep resolving.
+    deploy_production() {
+        local ref="${DEPLOY_REF:-origin/main}"
+        local dir rc
+        git fetch origin main --quiet || return 1
+        git rev-parse --verify --quiet "$ref" >/dev/null || return 1
+        dir=$(mktemp -d) || return 1
+        git archive "$ref" | tar -x -C "$dir" || { rm -rf "$dir"; return 1; }
+        # .vercel/ is gitignored, so the project link is never in the archive.
+        cp -R "$PROJECT_DIR/web/.vercel" "$dir/web/.vercel" || { rm -rf "$dir"; return 1; }
+        mkdir -p "$dir/web/public/social/generated"
+        if [ -d "$PROJECT_DIR/web/public/social/generated" ]; then
+            cp -R "$PROJECT_DIR/web/public/social/generated/." \
+                  "$dir/web/public/social/generated/" || true
+        fi
+        echo "Deploying $ref ($(git rev-parse --short "$ref")) to production" | tee -a "$LOG_FILE"
+        ( cd "$dir/web" && npx vercel --prod --yes ) 2>&1 | tee -a "$LOG_FILE"
+        rc=${PIPESTATUS[0]}
+        rm -rf "$dir"
+        return "$rc"
+    }
+    deploy_production || echo "Vercel deploy failed" | tee -a "$LOG_FILE"
 
     # Schedule posts via Blotato
     cd "$PROJECT_DIR/marketing-agents"
@@ -168,7 +197,18 @@ elif [ -n "$(git status --porcelain -- "${COMMIT_PATHS[@]}")" ]; then
 Automated daily run of all 8 marketing agents.
 See marketing-agents/output/ for agent deliverables.
 Any web/src changes were made by the agents and are already live." | tee -a "$LOG_FILE"
-    git push origin main 2>&1 | tee -a "$LOG_FILE" || echo "Push failed" | tee -a "$LOG_FILE"
+    # Push ONLY from main. `git push origin main` pushes the LOCAL main ref, so
+    # when the tree is on a feature branch it tries to push a stale main, is
+    # rejected non-fast-forward, and the `||` swallows it — output then sits
+    # unpushed for days (observed 2026-08-26). Never push a feature branch to
+    # main implicitly: production deploys from origin/main.
+    BRANCH=$(git rev-parse --abbrev-ref HEAD)
+    if [ "$BRANCH" = "main" ]; then
+        git push origin main 2>&1 | tee -a "$LOG_FILE" || echo "Push failed" | tee -a "$LOG_FILE"
+    else
+        echo "WARNING: on branch '$BRANCH', not main. Output committed locally, NOT pushed." | tee -a "$LOG_FILE"
+        echo "WARNING: production deploys from origin/main, so these changes are NOT live." | tee -a "$LOG_FILE"
+    fi
 else
     echo "No output changes to commit" | tee -a "$LOG_FILE"
 fi
