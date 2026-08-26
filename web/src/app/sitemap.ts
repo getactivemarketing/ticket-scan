@@ -75,6 +75,18 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: 'monthly',
       priority: 0.4,
     },
+    {
+      url: `${BASE_URL}/compare`,
+      lastModified,
+      changeFrequency: 'daily',
+      priority: 0.8,
+    },
+    {
+      url: `${BASE_URL}/dashboard`,
+      lastModified,
+      changeFrequency: 'daily',
+      priority: 0.8,
+    },
   ];
 
   // Blog post pages

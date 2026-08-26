@@ -1,15 +1,17 @@
-## Today's Content Hook — 2026-08-25
-**Topic:** U.S. Open 2026 ticket prices are drawing attention as the tournament approaches, but individual session prices vary widely. Current coverage reports rising prices overall, while a same-day mixed-doubles session was listed from about $39 including fees.
-**Angle:** The headline price is not the whole market. Help fans compare the exact session across Ticketmaster, SeatGeek, and StubHub, check fees, and look for value in early-round or lower-demand sessions before assuming the tournament is out of reach.
-**Target keyword:** US Open 2026 ticket prices
-**Content type:** Blog post / social snippet
+## Today's Content Hook — August 26, 2026
+
+**Topic:** New York City and the USTA announced 1,000 US Open 2026 tickets priced at $100 for NYC residents, available first-come, first-served beginning August 26 at 10 a.m.
+
+**Angle:** Use the $100 offer as a timely entry point into a broader consumer guide: official discounts are worth checking, but buyers should compare session type, seat location, all-in fees, and resale inventory before assuming the first available ticket is the best value.
+
+**Target keyword:** US Open 2026 $100 tickets
+
+**Content type:** Blog post + social snippet
+
 **Priority:** High
 
-**Source notes:**
-- [The Athletic: U.S. Open ticket prices are rising](https://www.nytimes.com/athletic/7524782/2026/08/20/us-open-ticket-prices-grounds-passes-courtside-live-sports-cost/)
-- [Business Insider: Where to buy 2026 U.S. Open tickets](https://www.businessinsider.com/guides/tickets/where-to-buy-2026-us-open-tennis-tickets)
-- [New York Post: last-minute 2026 U.S. Open ticket listings](https://nypost.com/2026/08/18/ticket-sales/get-last-minute-2026-us-open-tennis-tickets-with-a-discount/)
+**Source notes:** [NYC Mayor’s Office](https://www.nyc.gov/mayors-office/news/2026/08/mayor-mamdani--usta-announce-1-000-discounted-tickets-to-us-open) and [US Open](https://www.usopen.org/en_US/news/articles/2026-08-25/mayor_mamdani_usta_dedicate_1000_discounted_us_open_tickets_to_new_york_city_residents.html).
 
-**Email Agent lead magnet:** Offer a one-page “US Open session value calculator” that asks whether a fan prioritizes a specific player, a full day of tennis, or the lowest total spend, then recommends which session type to track.
+**Email Agent lead-magnet opportunity:** “US Open Session Value Checklist” — a one-page worksheet for comparing reserved seats, grounds passes, session timing, fees, and resale totals.
 
-**SEO request:** Consider a supporting page for “US Open 2026 tickets” linking to this guide, the New York/Queens venue content, and the comparison page.
+**SEO Agent request:** Consider a same-day internal-link refresh from the US Open 2026 landing page to this timely guide and the existing value/session articles.
