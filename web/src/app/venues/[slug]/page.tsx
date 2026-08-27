@@ -2,6 +2,7 @@ import { Metadata } from 'next';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { venues, getVenueBySlug, tierPricing } from '@/data/venues';
+import AffiliateLinks from '@/components/AffiliateLinks';
 
 // Venue guides had no links to each other, so each one was an SEO island. Relate
 // them same-state first, then same-type, so the 25 guides form a crawlable
@@ -367,6 +368,14 @@ export default async function VenuePage({ params }: PageProps) {
                 </p>
               </div>
 
+              {/* Ticket marketplaces (affiliate) */}
+              <AffiliateLinks
+                linkClass="ticket-resale"
+                placement="venue"
+                title={`Buy ${venue.name} tickets`}
+                className="mb-6"
+              />
+
               {/* CTA Box */}
               <div className="bg-gradient-to-br from-brand to-navy rounded-xl shadow-md p-6 text-white">
                 <h3 className="text-lg font-bold font-heading mb-2">
@@ -382,6 +391,25 @@ export default async function VenuePage({ params }: PageProps) {
                   Start Free
                 </Link>
               </div>
+
+              {/* Trip planning (affiliate) */}
+              <AffiliateLinks
+                linkClass="travel-adjacency"
+                placement="venue"
+                title={`Going to ${venue.city}?`}
+                // Only advertisers whose public search-URL format is confirmed get a
+                // deep link. The rest fall back to their homepage until the format is
+                // verified in CJ's deep-link generator post-approval.
+                deepLinks={{
+                  booking: `https://www.booking.com/searchresults.html?ss=${encodeURIComponent(
+                    `${venue.city}, ${venue.state}`
+                  )}`,
+                  getyourguide: `https://www.getyourguide.com/s/?q=${encodeURIComponent(
+                    venue.city
+                  )}`,
+                }}
+                className="mt-6"
+              />
 
               {/* Related Links */}
               <div className="mt-6 bg-white rounded-xl shadow-md p-6">

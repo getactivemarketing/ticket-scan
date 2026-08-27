@@ -4,6 +4,7 @@ import { notFound } from 'next/navigation';
 import { getCityBySlug, getAllCities, City } from '@/data/cities';
 import { getCategoryBySlug, getAllCategories, Category } from '@/data/categories';
 import { venues } from '@/data/venues';
+import AffiliateLinks from '@/components/AffiliateLinks';
 
 interface Event {
   id: string;
@@ -359,6 +360,14 @@ export default async function TicketsPage({ params }: PageProps) {
                 </div>
               )}
 
+              {/* Ticket marketplaces (affiliate) */}
+              <AffiliateLinks
+                linkClass="ticket-resale"
+                placement={isCity ? 'city' : 'category'}
+                title={`Buy ${pageTitle} tickets`}
+                className="mb-6"
+              />
+
               {/* CTA Box */}
               <div className="bg-gradient-to-br from-brand to-navy rounded-xl shadow-md p-6 text-white mb-6">
                 <h3 className="text-lg font-bold font-heading mb-2">
@@ -393,6 +402,24 @@ export default async function TicketsPage({ params }: PageProps) {
                   ))}
                 </div>
               </div>
+
+              {/* Trip planning (affiliate) — city pages only */}
+              {isCity && (
+                <AffiliateLinks
+                  linkClass="travel-adjacency"
+                  placement="city"
+                  title={`Visiting ${pageData.data.name}?`}
+                  deepLinks={{
+                    booking: `https://www.booking.com/searchresults.html?ss=${encodeURIComponent(
+                      `${pageData.data.name}, ${(pageData.data as City).state}`
+                    )}`,
+                    getyourguide: `https://www.getyourguide.com/s/?q=${encodeURIComponent(
+                      pageData.data.name
+                    )}`,
+                  }}
+                  className="mt-6"
+                />
+              )}
 
               {/* Blog Tips */}
               <div className="bg-white rounded-xl shadow-md p-6 mt-6">
