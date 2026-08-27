@@ -5,7 +5,10 @@
 
 set -e
 
-PROJECT_DIR="/Applications/XAMPP/xamppfiles/htdocs/Sites/ticketscan"
+# Derived from this script's own location rather than hardcoded — see the note
+# in run-daily.sh. The old absolute path broke when the volume was renamed.
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+PROJECT_DIR="$(dirname "$(dirname "$SCRIPT_DIR")")"
 PROMPTS_DIR="$PROJECT_DIR/marketing-agents/prompts"
 LOG_DIR="$PROJECT_DIR/marketing-agents/logs"
 CODEX_BIN="/opt/homebrew/bin/codex"

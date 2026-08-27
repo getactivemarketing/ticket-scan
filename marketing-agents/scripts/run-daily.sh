@@ -5,7 +5,13 @@
 set -e
 
 # Config
-PROJECT_DIR="/Applications/XAMPP/xamppfiles/htdocs/Sites/ticketscan"
+# Derived from this script's own location rather than hardcoded. The absolute
+# path was /Applications/XAMPP/... which stopped resolving on 2026-08-27 when
+# the external volume remounted as Samir_Ext; the 6 AM run exited 127 and that
+# day's agent output never ran. Deriving it means a move or rename can't break
+# the schedule again.
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+PROJECT_DIR="$(dirname "$(dirname "$SCRIPT_DIR")")"
 PROMPTS_DIR="$PROJECT_DIR/marketing-agents/prompts"
 OUTPUT_DIR="$PROJECT_DIR/marketing-agents/output"
 LOG_DIR="$PROJECT_DIR/marketing-agents/logs"
