@@ -22,20 +22,27 @@ DATE=$(date +%Y-%m-%d)
 LOG_FILE="$LOG_DIR/daily-$DATE.log"
 DRY_RUN="${DRY_RUN:-0}"
 
+# Credentials live outside the repo, and must stay there. This file is tracked in
+# a PUBLIC GitHub repo: the admin key was pasted straight into SHARED_CONTEXT below
+# on 2026-04-13 (9f04cc4) and was world-readable until it was rotated on 2026-08-27.
+# Never inline a secret here again — read it from the secrets file.
+#
+# Sourced unconditionally, before either consumer needs it: the Codex re-provision
+# below, and ADMIN_KEY in the agent prompt.
+SECRETS_FILE="$HOME/.config/ticketscan/marketing.env"
+if [ -f "$SECRETS_FILE" ]; then
+    # shellcheck disable=SC1090
+    set -a; source "$SECRETS_FILE"; set +a
+fi
+
 # Bill to the metered OpenAI API (NOT a ChatGPT plan).
 # Codex authenticates ONLY from ~/.codex/auth.json — it ignores OPENAI_API_KEY in the
 # environment (verified 2026-07-31: env var set + auth.json absent => 401 Unauthorized).
 # So this guard asserts the LOGIN MODE, not the presence of a variable. The key in the
 # secrets file exists solely to re-provision that login unattended.
 # NOTE: `codex login status` writes to stderr, hence 2>&1 before the pipe.
-SECRETS_FILE="$HOME/.config/ticketscan/marketing.env"
-
 if ! "$CODEX_BIN" login status 2>&1 | grep -q 'using an API key'; then
     echo "WARN: Codex not in API-key mode. Attempting to re-provision from $SECRETS_FILE." >&2
-    if [ -f "$SECRETS_FILE" ]; then
-        # shellcheck disable=SC1090
-        set -a; source "$SECRETS_FILE"; set +a
-    fi
     if [ -z "${OPENAI_API_KEY:-}" ]; then
         echo "FATAL: Codex is not in API-key mode and no OPENAI_API_KEY found in $SECRETS_FILE." >&2
         echo "Aborting to avoid billing a ChatGPT plan instead of metered API credit." >&2
@@ -47,6 +54,16 @@ if ! "$CODEX_BIN" login status 2>&1 | grep -q 'using an API key'; then
         exit 1
     fi
     echo "Codex login re-provisioned in API-key mode." >&2
+fi
+
+# Every posting agent authenticates with this. Assert it up front rather than
+# letting eight agents run for twenty minutes and each fail to publish at the
+# end — the same class of silent failure the PIPESTATUS fix below was written for.
+# Must match ADMIN_SECRET on the Railway service (index.js compares them exactly).
+if [ -z "${ADMIN_KEY:-}" ]; then
+    echo "FATAL: ADMIN_KEY not found in $SECRETS_FILE." >&2
+    echo "Add it there, matching ADMIN_SECRET in the Railway tickethawk-api service." >&2
+    exit 1
 fi
 
 # Ensure directories exist
@@ -73,7 +90,7 @@ Admin API endpoints (use these for posting):
 - POST https://tickethawk-api-production.up.railway.app/api/admin/typefully/daily-tip
 - POST https://tickethawk-api-production.up.railway.app/api/admin/instagram/post
 - POST https://tickethawk-api-production.up.railway.app/api/admin/instagram/daily-tip
-- Admin key: 42031664234009a8214ed6084d72a8627fd4764049023fd83aa495462152a956
+- Admin key: $ADMIN_KEY
 
 "
 

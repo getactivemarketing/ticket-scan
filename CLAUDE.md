@@ -181,7 +181,7 @@ DATABASE_URL=postgresql://user:pass@host:port/tickethawk
 
 # Authentication
 JWT_SECRET=change-in-production
-ADMIN_SECRET=ticketscan-admin-2026
+ADMIN_SECRET=change-in-production
 
 # Email (Gmail SMTP)
 SMTP_HOST=smtp.gmail.com
@@ -283,7 +283,9 @@ const excludePatterns = [/jernigan/i, /hospitality/i, /vip package/i, /suite/i];
 
 ## Admin Dashboard
 
-Access: Add `x-admin-key: ticketscan-admin-2026` header
+Access: Add an `x-admin-key` header. The value is `ADMIN_SECRET` on the Railway
+tickethawk-api service, mirrored to `~/.config/ticketscan/marketing.env` as
+`ADMIN_KEY` for the marketing agents. Never commit it — this repo is public.
 
 **Tabs:**
 - Overview: Key metrics (users, watchlist items, subscribers)

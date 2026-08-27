@@ -231,7 +231,7 @@ Railway auto-deploys from git push. Wait ~1-2 minutes for deploy to complete.
 
 ```bash
 curl -X POST https://tickethawk-api-production.up.railway.app/api/admin/price-track \
-  -H "x-admin-key: ticketscan-admin-2026" \
+  -H "x-admin-key: $ADMIN_KEY" \
   -H "Content-Type: application/json"
 ```
 

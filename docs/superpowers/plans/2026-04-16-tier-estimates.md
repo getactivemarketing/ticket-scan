@@ -1161,7 +1161,7 @@ Co-Authored-By: Claude Opus 4.6 (1M context) <noreply@anthropic.com>"
 
 ```bash
 cd /Applications/XAMPP/xamppfiles/htdocs/Sites/ticketscan && lsof -ti:3000 | xargs -r kill -9 2>/dev/null
-ADMIN_SECRET="ticketscan-admin-2026" PORT=3000 node index.js > /tmp/ticketscan-test.log 2>&1 &
+ADMIN_SECRET="$ADMIN_KEY" PORT=3000 node index.js > /tmp/ticketscan-test.log 2>&1 &
 echo "PID: $!"
 sleep 2
 ```
@@ -1198,7 +1198,7 @@ Expected: at least one known-venue event (e.g. Madison Square Garden) shows a `t
 
 ```bash
 curl -s 'http://localhost:3000/api/admin/price-history?limit=10' \
-  -H 'x-admin-key: ticketscan-admin-2026' | python3 -c "
+  -H 'x-admin-key: $ADMIN_KEY' | python3 -c "
 import sys, json
 d = json.load(sys.stdin)
 ph = d.get('priceHistory', [])

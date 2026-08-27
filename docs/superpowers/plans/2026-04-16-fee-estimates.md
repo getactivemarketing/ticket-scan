@@ -1494,7 +1494,7 @@ Expected: response contains `minPriceWithFees` for both Ticketmaster and SeatGee
 Find an event_id from the watchlist:
 ```bash
 curl 'http://localhost:3000/api/admin/price-history?limit=5' \
-  -H 'x-admin-key: ticketscan-admin-2026' | python3 -m json.tool | head -40
+  -H 'x-admin-key: $ADMIN_KEY' | python3 -m json.tool | head -40
 ```
 
 Expected: each `priceHistory` row includes `min_price_with_fees`, `avg_price_with_fees`, `max_price_with_fees`. Verify a sample row: `min_price_with_fees` should equal `min_price * (1 + fee_for_source)`.
