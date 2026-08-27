@@ -76,16 +76,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.4,
     },
     {
-      url: `${BASE_URL}/compare`,
+      // The onsale calendar. Changes every day and is the one page here whose
+      // answer a search result cannot pre-empt, so it gets the highest priority
+      // and a daily changeFrequency.
+      url: `${BASE_URL}/onsales`,
       lastModified,
       changeFrequency: 'daily',
-      priority: 0.8,
-    },
-    {
-      url: `${BASE_URL}/dashboard`,
-      lastModified,
-      changeFrequency: 'daily',
-      priority: 0.8,
+      priority: 0.9,
     },
   ];
 
