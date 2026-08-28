@@ -132,6 +132,28 @@ const RULES = [
       return null;
     },
   },
+  {
+    name: 'app surface: no light-surface classes remain on the navy pages',
+    check: () => {
+      const pages = [
+        'src/app/dashboard/page.tsx',
+        'src/components/EventCard.tsx',
+        // Task 6 adds watchlist, Task 7 adds event/[id].
+      ];
+      const banned = ['bg-white', 'bg-gray-50', 'text-gray-900', 'text-gray-700', 'text-gray-600', 'text-gray-500', 'text-gray-400', 'text-gray-300', 'text-red-600', 'bg-red-50'];
+      const problems = [];
+      for (const p of pages) {
+        const src = read(p);
+        const found = banned.filter((c) => src.includes(c));
+        if (found.length) problems.push(`${p}: ${found.join(', ')}`);
+        // EventCard is a card, not a page — it sits on the ground rather than setting it.
+        if (p.endsWith('page.tsx') && !src.includes('bg-deep-void')) {
+          problems.push(`${p}: page does not set the Deep Void ground`);
+        }
+      }
+      return problems.length ? problems.join(' | ') : null;
+    },
+  },
 ];
 
 let failed = 0;

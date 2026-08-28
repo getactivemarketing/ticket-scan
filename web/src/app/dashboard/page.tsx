@@ -22,6 +22,29 @@ interface Event {
   source?: string;
 }
 
+// Skeleton card shaped like a real EventCard: image band, category chip,
+// title, two meta lines and a button row — not a generic grey block.
+function EventCardSkeleton() {
+  return (
+    <div className="rounded-[6px] bg-navy-raised overflow-hidden" aria-hidden="true">
+      <div className="h-48 animate-pulse bg-navy motion-reduce:animate-none" />
+      <div className="p-5">
+        <div className="h-5 w-20 animate-pulse rounded-[4px] bg-navy motion-reduce:animate-none" />
+        <div className="mt-3 h-5 w-3/4 animate-pulse rounded-[6px] bg-navy motion-reduce:animate-none" />
+        <div className="mt-4 space-y-2">
+          <div className="h-3 w-1/2 animate-pulse rounded-[6px] bg-navy motion-reduce:animate-none" />
+          <div className="h-3 w-2/3 animate-pulse rounded-[6px] bg-navy motion-reduce:animate-none" />
+          <div className="h-3 w-1/3 animate-pulse rounded-[6px] bg-navy motion-reduce:animate-none" />
+        </div>
+        <div className="mt-4 flex gap-2">
+          <div className="h-9 flex-1 animate-pulse rounded-[6px] bg-navy motion-reduce:animate-none" />
+          <div className="h-9 w-10 animate-pulse rounded-[6px] bg-navy motion-reduce:animate-none" />
+        </div>
+      </div>
+    </div>
+  );
+}
+
 export default function DashboardPage() {
   const { user, loading: authLoading } = useAuth();
   const [city, setCity] = useState('Orlando');
@@ -53,20 +76,25 @@ export default function DashboardPage() {
   // Get today's date in YYYY-MM-DD format for min date
   const today = new Date().toISOString().split('T')[0];
 
+  const inputClass =
+    'w-full px-4 py-3 bg-deep-void border border-navy-hairline rounded-[6px] text-bone outline-none ' +
+    'transition-colors placeholder:font-data placeholder:text-[13px] placeholder:text-deep-muted ' +
+    'focus:border-brand focus:ring-[3px] focus:ring-blue-glow motion-reduce:transition-none';
+
   return (
-    <div className="min-h-screen bg-gray-50 py-8">
+    <div className="min-h-screen bg-deep-void py-8">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Sign up banner for non-logged in users */}
         {!authLoading && !user && (
-          <div className="bg-gradient-to-r from-brand to-navy-light rounded-xl p-4 mb-6 text-white">
+          <div className="bg-gradient-to-r from-brand to-navy-light rounded-[6px] p-4 mb-6 text-bone">
             <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
               <div>
                 <p className="font-medium">Track prices and get alerts when they drop!</p>
-                <p className="text-blue-200 text-sm">Create a free account to save events to your watchlist.</p>
+                <p className="text-beacon text-sm">Create a free account to save events to your watchlist.</p>
               </div>
               <Link
                 href="/register"
-                className="bg-white text-brand px-6 py-2 rounded-lg font-medium hover:bg-blue-50 transition-colors whitespace-nowrap"
+                className="bg-bone text-brand px-6 py-2 rounded-[6px] font-medium transition-opacity hover:opacity-90 whitespace-nowrap"
               >
                 Sign Up Free
               </Link>
@@ -75,13 +103,13 @@ export default function DashboardPage() {
         )}
 
         {/* Search Header */}
-        <div className="bg-white rounded-2xl shadow-md p-6 mb-8">
-          <h1 className="text-2xl font-bold font-heading text-gray-900 mb-6">Search Events</h1>
+        <div className="bg-navy-raised rounded-[6px] p-6 mb-8">
+          <h1 className="text-2xl font-bold font-heading text-bone mb-6">Search Events</h1>
 
           <form onSubmit={handleSearch} className="space-y-4">
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
               <div>
-                <label htmlFor="city" className="block text-sm font-medium text-gray-700 mb-2">
+                <label htmlFor="city" className="block text-sm font-medium text-muted mb-2">
                   City
                 </label>
                 <input
@@ -89,12 +117,12 @@ export default function DashboardPage() {
                   type="text"
                   value={city}
                   onChange={(e) => setCity(e.target.value)}
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-brand focus:border-transparent outline-none text-gray-900"
+                  className={inputClass}
                   placeholder="e.g., Orlando, Miami"
                 />
               </div>
               <div>
-                <label htmlFor="keyword" className="block text-sm font-medium text-gray-700 mb-2">
+                <label htmlFor="keyword" className="block text-sm font-medium text-muted mb-2">
                   Event / Artist / Team
                 </label>
                 <input
@@ -102,12 +130,12 @@ export default function DashboardPage() {
                   type="text"
                   value={keyword}
                   onChange={(e) => setKeyword(e.target.value)}
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-brand focus:border-transparent outline-none text-gray-900"
+                  className={inputClass}
                   placeholder="e.g., Taylor Swift"
                 />
               </div>
               <div>
-                <label htmlFor="startDate" className="block text-sm font-medium text-gray-700 mb-2">
+                <label htmlFor="startDate" className="block text-sm font-medium text-muted mb-2">
                   From Date
                 </label>
                 <input
@@ -116,11 +144,11 @@ export default function DashboardPage() {
                   value={startDate}
                   min={today}
                   onChange={(e) => setStartDate(e.target.value)}
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-brand focus:border-transparent outline-none text-gray-900"
+                  className={inputClass}
                 />
               </div>
               <div>
-                <label htmlFor="endDate" className="block text-sm font-medium text-gray-700 mb-2">
+                <label htmlFor="endDate" className="block text-sm font-medium text-muted mb-2">
                   To Date
                 </label>
                 <input
@@ -129,7 +157,7 @@ export default function DashboardPage() {
                   value={endDate}
                   min={startDate || today}
                   onChange={(e) => setEndDate(e.target.value)}
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-brand focus:border-transparent outline-none text-gray-900"
+                  className={inputClass}
                 />
               </div>
             </div>
@@ -137,7 +165,7 @@ export default function DashboardPage() {
               <button
                 type="submit"
                 disabled={loading}
-                className="bg-brand hover:bg-brand-dark text-white py-3 px-8 rounded-lg font-medium transition-colors disabled:opacity-50"
+                className="bg-brand text-bone py-3.5 px-6 rounded-[6px] font-medium transition-colors hover:shadow-[0_0_24px_var(--color-blue-glow)] active:translate-y-px motion-reduce:transition-none disabled:opacity-50"
               >
                 {loading ? 'Searching...' : 'Search Events'}
               </button>
@@ -147,23 +175,37 @@ export default function DashboardPage() {
 
         {/* Results */}
         {error && (
-          <div className="bg-red-50 text-red-600 p-4 rounded-lg mb-6">
+          <div className="bg-alert/10 text-alert p-4 rounded-[6px] mb-6">
             {error}
           </div>
         )}
 
-        {searched && !loading && events.length === 0 && !error && (
-          <div className="bg-white rounded-2xl shadow-md p-12 text-center">
-            <span className="text-4xl mb-4 block">🔍</span>
-            <h3 className="text-xl font-medium font-heading text-gray-900 mb-2">No events found</h3>
-            <p className="text-gray-600">Try a different city, keyword, or date range</p>
+        {loading && (
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {Array.from({ length: 6 }).map((_, i) => (
+              <EventCardSkeleton key={i} />
+            ))}
           </div>
         )}
 
-        {events.length > 0 && (
+        {searched && !loading && events.length === 0 && !error && (
+          <div className="bg-navy-raised rounded-[6px] p-12 text-center">
+            <span className="text-4xl mb-4 block">🔍</span>
+            <h3 className="text-xl font-medium font-heading text-bone mb-2">No events found</h3>
+            <p className="text-muted">
+              Try a different city, keyword, or date range — or{' '}
+              <Link href="/blog" className="text-beacon hover:text-bone transition-colors">
+                browse our ticket buying tips
+              </Link>
+              .
+            </p>
+          </div>
+        )}
+
+        {!loading && events.length > 0 && (
           <>
             <div className="flex justify-between items-center mb-6">
-              <h2 className="text-xl font-bold font-heading text-gray-900">
+              <h2 className="text-xl font-bold font-heading text-bone">
                 {events.length} events found
               </h2>
             </div>
@@ -177,32 +219,32 @@ export default function DashboardPage() {
 
         {!searched && (
           <>
-            <div className="bg-white rounded-2xl shadow-md p-12 text-center mb-8">
+            <div className="bg-navy-raised rounded-[6px] p-12 text-center mb-8">
               <span className="mb-4 block text-brand"><Logo size={48} /></span>
-              <h3 className="text-xl font-medium font-heading text-gray-900 mb-2">Find your next event</h3>
-              <p className="text-gray-600">Search for concerts, sports, theater, and more</p>
+              <h3 className="text-xl font-medium font-heading text-bone mb-2">Find your next event</h3>
+              <p className="text-muted">Search for concerts, sports, theater, and more</p>
             </div>
 
             {/* Tips Section */}
-            <div className="bg-gradient-to-br from-blue-50 to-gray-light rounded-2xl p-6">
+            <div className="bg-navy rounded-[6px] p-6">
               <div className="flex items-center justify-between mb-4">
-                <h3 className="text-lg font-bold font-heading text-gray-900">Ticket Buying Tips</h3>
-                <Link href="/blog" className="text-brand hover:text-brand-dark text-sm font-medium">
+                <h3 className="text-lg font-bold font-heading text-bone">Ticket Buying Tips</h3>
+                <Link href="/blog" className="text-beacon hover:text-bone text-sm font-medium transition-colors">
                   View All &rarr;
                 </Link>
               </div>
               <div className="grid md:grid-cols-3 gap-4">
-                <Link href="/blog/best-time-to-buy-concert-tickets" className="bg-white rounded-xl p-4 hover:shadow-md transition-shadow">
-                  <h4 className="font-semibold text-gray-900 mb-1">Best Time to Buy</h4>
-                  <p className="text-gray-600 text-sm">Learn when ticket prices drop</p>
+                <Link href="/blog/best-time-to-buy-concert-tickets" className="bg-navy-raised rounded-[6px] p-4 hover:bg-blue-wash transition-colors">
+                  <h4 className="font-semibold text-bone mb-1">Best Time to Buy</h4>
+                  <p className="text-muted text-sm">Learn when ticket prices drop</p>
                 </Link>
-                <Link href="/blog/how-to-find-cheap-nba-tickets" className="bg-white rounded-xl p-4 hover:shadow-md transition-shadow">
-                  <h4 className="font-semibold text-gray-900 mb-1">Cheap NBA Tickets</h4>
-                  <p className="text-gray-600 text-sm">10 strategies that work</p>
+                <Link href="/blog/how-to-find-cheap-nba-tickets" className="bg-navy-raised rounded-[6px] p-4 hover:bg-blue-wash transition-colors">
+                  <h4 className="font-semibold text-bone mb-1">Cheap NBA Tickets</h4>
+                  <p className="text-muted text-sm">10 strategies that work</p>
                 </Link>
-                <Link href="/blog/ticket-buying-mistakes-to-avoid" className="bg-white rounded-xl p-4 hover:shadow-md transition-shadow">
-                  <h4 className="font-semibold text-gray-900 mb-1">Avoid These Mistakes</h4>
-                  <p className="text-gray-600 text-sm">Save money on every purchase</p>
+                <Link href="/blog/ticket-buying-mistakes-to-avoid" className="bg-navy-raised rounded-[6px] p-4 hover:bg-blue-wash transition-colors">
+                  <h4 className="font-semibold text-bone mb-1">Avoid These Mistakes</h4>
+                  <p className="text-muted text-sm">Save money on every purchase</p>
                 </Link>
               </div>
             </div>

@@ -75,26 +75,26 @@ export default function EventCard({ event, isLoggedIn = true, onAddedToWatchlist
   };
 
   return (
-    <div className="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition-shadow relative">
+    <div className="bg-navy-raised rounded-[6px] overflow-hidden hover:bg-blue-wash transition-colors relative motion-reduce:transition-none">
       {/* Sign up prompt overlay */}
       {showSignUpPrompt && (
-        <div className="absolute inset-0 bg-black/70 flex items-center justify-center z-10 rounded-xl">
-          <div className="bg-white rounded-lg p-6 m-4 text-center max-w-xs">
+        <div className="absolute inset-0 bg-black/70 flex items-center justify-center z-10 rounded-[6px]">
+          <div className="bg-navy-raised rounded-[6px] p-6 m-4 text-center max-w-xs">
             <span className="text-3xl block mb-2">🔔</span>
-            <h4 className="font-bold text-gray-900 mb-2">Track This Event</h4>
-            <p className="text-gray-600 text-sm mb-4">
+            <h4 className="font-bold text-bone mb-2">Track This Event</h4>
+            <p className="text-muted text-sm mb-4">
               Create a free account to track prices and get alerts when they drop.
             </p>
             <div className="space-y-2">
               <Link
                 href="/register"
-                className="block w-full bg-brand hover:bg-brand-dark text-white py-2 px-4 rounded-lg font-medium transition-colors"
+                className="block w-full border border-navy-hairline text-beacon hover:bg-blue-wash hover:border-brand py-2 px-4 rounded-[6px] font-medium transition-colors motion-reduce:transition-none"
               >
                 Sign Up Free
               </Link>
               <button
                 onClick={() => setShowSignUpPrompt(false)}
-                className="block w-full text-gray-500 hover:text-gray-700 py-2 text-sm"
+                className="block w-full text-muted hover:text-bone py-2 text-sm transition-colors"
               >
                 Maybe Later
               </button>
@@ -104,6 +104,10 @@ export default function EventCard({ event, isLoggedIn = true, onAddedToWatchlist
       )}
 
       {event.images && (
+        // Pre-existing lint warning (no-img-element): next.config.ts has no
+        // images.remotePatterns configured for the Ticketmaster/SeatGeek/StubHub
+        // image hosts, so next/image would fail at request time. Left as <img>
+        // until those remote hosts are allow-listed.
         <div className="h-48 overflow-hidden">
           <img
             src={event.images}
@@ -115,21 +119,21 @@ export default function EventCard({ event, isLoggedIn = true, onAddedToWatchlist
       <div className="p-5">
         <div className="flex items-start justify-between">
           <div className="flex-1">
-            <span className="inline-block px-2 py-1 text-xs font-medium bg-brand/10 text-brand-dark rounded-full mb-2">
+            <span className="inline-block px-2 py-1 text-xs font-medium bg-brand/10 text-beacon rounded-[4px] mb-2">
               {event.type || 'Event'}
             </span>
-            <h3 className="font-bold text-lg text-gray-900 mb-2 line-clamp-2">
+            <h3 className="text-[17px] font-semibold leading-[1.3] tracking-[-0.015em] text-bone mb-2 line-clamp-2">
               {event.name}
             </h3>
           </div>
         </div>
 
-        <div className="space-y-2 text-sm text-gray-600">
+        <div className="space-y-2 text-[13px] text-muted">
           <div className="flex items-center">
             <span className="mr-2">📅</span>
-            <span>{formatDate(event.date)}</span>
+            <span className="font-data tabular-nums">{formatDate(event.date)}</span>
             <span className="mx-2">•</span>
-            <span>{formatTime(event.time)}</span>
+            <span className="font-data tabular-nums">{formatTime(event.time)}</span>
           </div>
           <div className="flex items-center">
             <span className="mr-2">📍</span>
@@ -140,7 +144,7 @@ export default function EventCard({ event, isLoggedIn = true, onAddedToWatchlist
             <span>{event.city}, {event.state}</span>
           </div>
           {event.priceRanges && (
-            <div className="flex items-center text-green-600 font-medium">
+            <div className="flex items-center font-data tabular-nums font-semibold text-bone">
               <span className="mr-2">💰</span>
               <span>${event.priceRanges.min} - ${event.priceRanges.max}</span>
             </div>
@@ -152,7 +156,7 @@ export default function EventCard({ event, isLoggedIn = true, onAddedToWatchlist
             href={event.url}
             target="_blank"
             rel="noopener noreferrer"
-            className="flex-1 text-center bg-brand hover:bg-brand-dark text-white py-2 px-4 rounded-lg font-medium transition-colors"
+            className="flex-1 text-center border border-navy-hairline text-beacon hover:bg-blue-wash hover:border-brand py-2 px-4 rounded-[6px] font-medium transition-colors motion-reduce:transition-none"
           >
             Buy Tickets
           </a>
@@ -160,16 +164,16 @@ export default function EventCard({ event, isLoggedIn = true, onAddedToWatchlist
             onClick={handleAddToWatchlist}
             disabled={adding || added}
             title={isLoggedIn ? (added ? 'Added to watchlist' : 'Track this event') : 'Sign up to track prices'}
-            className={`px-4 py-2 rounded-lg font-medium transition-colors ${
+            className={`px-4 py-2 rounded-[6px] font-medium transition-colors motion-reduce:transition-none ${
               added
-                ? 'bg-green-100 text-green-700'
-                : 'bg-gray-100 hover:bg-gray-200 text-gray-700'
+                ? 'bg-blue-wash text-beacon'
+                : 'bg-navy hover:bg-navy-hairline text-muted hover:text-bone'
             }`}
           >
             {added ? '✓' : adding ? '...' : '👁️'}
           </button>
         </div>
-        {error && <p className="text-red-500 text-sm mt-2">{error}</p>}
+        {error && <p className="text-alert text-sm mt-2">{error}</p>}
       </div>
     </div>
   );
