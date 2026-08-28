@@ -17,10 +17,15 @@ export default function PriceTrendIndicator({
     lg: 'text-base px-4 py-1.5'
   };
 
+  // Price direction is not status — it is resolved outside DESIGN.md's
+  // status triad. A drop is good news, carried by Signal Blue (the site's
+  // own accent); a rise uses the alert system colour, which sits outside
+  // the on-sale/presale/not-yet-open triad. Gate Green is never used here.
+  // Every state also renders an arrow and the percentage as text so
+  // direction never depends on colour alone.
   const config = {
     up: {
-      bg: 'bg-amber-100',
-      text: 'text-amber-700',
+      text: 'text-alert',
       icon: (
         <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 15l7-7 7 7" />
@@ -28,8 +33,7 @@ export default function PriceTrendIndicator({
       )
     },
     down: {
-      bg: 'bg-green-100',
-      text: 'text-green-700',
+      text: 'text-brand',
       icon: (
         <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
@@ -37,8 +41,7 @@ export default function PriceTrendIndicator({
       )
     },
     stable: {
-      bg: 'bg-gray-100',
-      text: 'text-gray-600',
+      text: 'text-muted',
       icon: (
         <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M20 12H4" />
@@ -47,18 +50,18 @@ export default function PriceTrendIndicator({
     }
   };
 
-  const { bg, text, icon } = config[direction];
+  const { text, icon } = config[direction];
 
   if (percentChange === null) {
     return (
-      <span className={`inline-flex items-center gap-1 rounded-full font-medium bg-gray-100 text-gray-500 ${sizeClasses[size]}`}>
+      <span className={`inline-flex items-center gap-1 rounded-[4px] font-medium font-data tabular-nums text-muted ${sizeClasses[size]}`}>
         <span>--</span>
       </span>
     );
   }
 
   return (
-    <span className={`inline-flex items-center gap-1 rounded-full font-medium ${bg} ${text} ${sizeClasses[size]}`}>
+    <span className={`inline-flex items-center gap-1 rounded-[4px] font-medium font-data tabular-nums ${text} ${sizeClasses[size]}`}>
       {icon}
       <span>{Math.abs(percentChange)}%</span>
     </span>

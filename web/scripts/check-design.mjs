@@ -139,7 +139,7 @@ const RULES = [
         'src/app/dashboard/page.tsx',
         'src/components/EventCard.tsx',
         'src/app/watchlist/page.tsx',
-        // Task 7 adds event/[id].
+        'src/app/event/[id]/page.tsx',
       ];
       const banned = ['bg-white', 'bg-gray-50', 'text-gray-900', 'text-gray-700', 'text-gray-600', 'text-gray-500', 'text-gray-400', 'text-gray-300', 'text-red-600', 'bg-red-50'];
       const problems = [];
@@ -153,6 +153,16 @@ const RULES = [
         }
       }
       return problems.length ? problems.join(' | ') : null;
+    },
+  },
+  {
+    name: 'system colours exist and Gate Green is reserved for status',
+    check: () => {
+      const css = read('src/app/globals.css');
+      if (!css.includes('--color-alert: #FF6369')) return '--color-alert not defined';
+      const trend = read('src/components/PriceTrendIndicator.tsx');
+      if (/text-success|#16C784/.test(trend)) return 'price trend uses Gate Green, which DESIGN.md reserves for on-sale status';
+      return null;
     },
   },
 ];
