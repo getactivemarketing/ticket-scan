@@ -13,10 +13,10 @@ import { FeedEvent, saleStatus, formatEtTime, formatEventDayParts } from '@/lib/
 // are nauseating; the row lifts one tonal step instead.
 
 const STATUS_CLASS: Record<string, string> = {
-  onsale: 'bg-success/15 text-success',
-  presale: 'bg-teal/15 text-teal',
-  upcoming: 'bg-muted/15 text-muted',
-  unknown: 'bg-muted/15 text-muted',
+  onsale: 'bg-success/14 text-success',
+  presale: 'bg-teal/14 text-teal',
+  upcoming: 'bg-muted/14 text-muted',
+  unknown: 'bg-muted/14 text-muted',
 };
 
 export default function OnsaleRow({ event }: { event: FeedEvent }) {
@@ -32,7 +32,7 @@ export default function OnsaleRow({ event }: { event: FeedEvent }) {
       {/* Date block — day numeral over uppercase month, monospaced and
           tabular so the column aligns down a list of twenty. */}
       <div className="w-14 flex-none text-center font-data">
-        <p className="text-[21px] leading-none font-semibold tabular-nums text-bone">
+        <p className="text-[21px] leading-[1.2] font-semibold tracking-[0.02em] tabular-nums text-bone">
           {when ? when.day : '—'}
         </p>
         <p className="mt-1 text-[10px] uppercase tracking-[0.16em] text-muted">
