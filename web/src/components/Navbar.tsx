@@ -127,7 +127,7 @@ export default function Navbar() {
                 </Link>
                 <Link
                   href="/register"
-                  className={`bg-brand text-bone hover:shadow-[0_0_24px_var(--color-blue-glow)] px-4 py-1.5 rounded-[6px] font-medium text-sm transition-all duration-200 motion-reduce:transition-none ${FOCUS_RING}`}
+                  className={`border border-navy-hairline bg-transparent text-bone hover:border-brand px-4 py-1.5 rounded-[6px] font-medium text-sm ${TRANSITION} ${FOCUS_RING}`}
                 >
                   Sign Up
                 </Link>
@@ -215,7 +215,7 @@ export default function Navbar() {
                 </Link>
                 <Link
                   href="/register"
-                  className={`block bg-brand text-bone hover:shadow-[0_0_24px_var(--color-blue-glow)] py-3 rounded-[6px] font-medium text-center mt-2 transition-all duration-200 motion-reduce:transition-none ${FOCUS_RING}`}
+                  className={`block border border-navy-hairline bg-transparent text-bone hover:border-brand py-3 rounded-[6px] font-medium text-center mt-2 ${TRANSITION} ${FOCUS_RING}`}
                   onClick={closeMenu}
                 >
                   Sign Up Free
