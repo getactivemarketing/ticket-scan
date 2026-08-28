@@ -138,7 +138,8 @@ const RULES = [
       const pages = [
         'src/app/dashboard/page.tsx',
         'src/components/EventCard.tsx',
-        // Task 6 adds watchlist, Task 7 adds event/[id].
+        'src/app/watchlist/page.tsx',
+        // Task 7 adds event/[id].
       ];
       const banned = ['bg-white', 'bg-gray-50', 'text-gray-900', 'text-gray-700', 'text-gray-600', 'text-gray-500', 'text-gray-400', 'text-gray-300', 'text-red-600', 'bg-red-50'];
       const problems = [];

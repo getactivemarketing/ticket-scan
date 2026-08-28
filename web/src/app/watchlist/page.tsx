@@ -6,6 +6,7 @@ import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import api from '@/lib/api';
 import PriceTrendIndicator from '@/components/PriceTrendIndicator';
+import { formatEventDayParts } from '@/lib/events';
 
 interface WatchlistItem {
   id: number;
@@ -24,12 +25,46 @@ interface WatchlistItem {
   trend_direction: 'up' | 'down' | 'stable';
 }
 
+const PRIMARY_BUTTON =
+  'inline-flex items-center gap-1.5 bg-brand text-bone py-2 px-4 rounded-[6px] font-medium ' +
+  'transition-colors hover:shadow-[0_0_24px_var(--color-blue-glow)] active:translate-y-px ' +
+  'motion-reduce:transition-none';
+
+const SECONDARY_BUTTON =
+  'inline-flex items-center justify-center border border-navy-hairline text-bone py-2 px-4 ' +
+  'rounded-[6px] font-medium text-sm transition-colors hover:border-brand motion-reduce:transition-none';
+
+const REMOVE_BUTTON =
+  'text-alert hover:bg-alert/10 py-2 px-4 rounded-[6px] font-medium text-sm transition-colors ' +
+  'motion-reduce:transition-none';
+
+// Skeleton row shaped like a real watchlist row — date block, title, meta
+// lines and an action slot — not a bare spinner.
+function WatchlistRowSkeleton() {
+  return (
+    <div className="flex items-center gap-5 rounded-[6px] bg-navy-raised px-5 py-4" aria-hidden="true">
+      <div className="w-14 flex-none space-y-2">
+        <div className="mx-auto h-5 w-8 animate-pulse rounded-[4px] bg-navy motion-reduce:animate-none" />
+        <div className="mx-auto h-2.5 w-6 animate-pulse rounded-[4px] bg-navy motion-reduce:animate-none" />
+      </div>
+      <div className="min-w-0 flex-1 space-y-2">
+        <div className="h-4 w-2/3 animate-pulse rounded-[6px] bg-navy motion-reduce:animate-none" />
+        <div className="h-3 w-1/3 animate-pulse rounded-[6px] bg-navy motion-reduce:animate-none" />
+        <div className="h-3 w-1/4 animate-pulse rounded-[6px] bg-navy motion-reduce:animate-none" />
+      </div>
+      <div className="h-9 w-24 flex-none animate-pulse rounded-[6px] bg-navy motion-reduce:animate-none" />
+    </div>
+  );
+}
+
 export default function WatchlistPage() {
   const { user, loading: authLoading } = useAuth();
   const router = useRouter();
   const [watchlist, setWatchlist] = useState<WatchlistItem[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
+  const [removeErrorId, setRemoveErrorId] = useState<number | null>(null);
+  const [removeErrorMsg, setRemoveErrorMsg] = useState('');
 
   useEffect(() => {
     if (!authLoading && user) {
@@ -69,11 +104,13 @@ export default function WatchlistPage() {
   };
 
   const handleRemove = async (id: number) => {
+    setRemoveErrorId(null);
     try {
       await api.removeFromWatchlist(id);
-      setWatchlist(watchlist.filter((item) => item.id !== id));
-    } catch (err) {
-      setError(err instanceof Error ? err.message : 'Failed to remove item');
+      setWatchlist((prev) => prev.filter((item) => item.id !== id));
+    } catch {
+      setRemoveErrorId(id);
+      setRemoveErrorMsg("Couldn't remove that event. Try again.");
     }
   };
 
@@ -107,102 +144,118 @@ export default function WatchlistPage() {
     return parseFloat(item.current_min_price) <= parseFloat(item.target_price);
   };
 
-  if (authLoading || loading) {
-    return (
-      <div className="min-h-screen flex items-center justify-center">
-        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-brand"></div>
-      </div>
-    );
-  }
+  const showLoading = authLoading || loading;
 
   return (
-    <div className="min-h-screen bg-gray-50 py-8">
+    <div className="min-h-screen bg-deep-void py-8">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center mb-8">
           <div>
-            <h1 className="text-3xl font-bold font-heading text-gray-900">My Watchlist</h1>
-            <p className="text-gray-600 mt-1">Track prices and get recommendations</p>
+            <h1 className="text-3xl font-bold font-heading text-bone">My Watchlist</h1>
+            <p className="text-muted mt-1">Track prices and get recommendations</p>
           </div>
-          <Link
-            href="/dashboard"
-            className="bg-brand hover:bg-brand-dark text-white py-2 px-4 rounded-lg font-medium transition-colors"
-          >
+          <Link href="/dashboard" className={PRIMARY_BUTTON}>
             + Add Events
           </Link>
         </div>
 
         {error && (
-          <div className="bg-red-50 text-red-600 p-4 rounded-lg mb-6">
+          <div className="bg-alert/10 text-alert p-4 rounded-[6px] mb-6">
             {error}
           </div>
         )}
 
-        {watchlist.length === 0 ? (
-          <div className="bg-white rounded-2xl shadow-md p-12 text-center">
-            <span className="text-4xl mb-4 block">👁️</span>
-            <h3 className="text-xl font-medium font-heading text-gray-900 mb-2">
+        {showLoading ? (
+          <div className="space-y-4">
+            {Array.from({ length: 4 }).map((_, i) => (
+              <WatchlistRowSkeleton key={i} />
+            ))}
+          </div>
+        ) : watchlist.length === 0 ? (
+          <div className="bg-navy-raised rounded-[6px] p-12 text-center">
+            <span className="text-4xl mb-4 block" aria-hidden="true">👁️</span>
+            <h3 className="text-xl font-semibold font-heading text-bone mb-2">
               Your watchlist is empty
             </h3>
-            <p className="text-gray-600 mb-6">
-              Start tracking events to get price alerts and recommendations
+            <p className="text-muted mb-8 max-w-md mx-auto">
+              Track any event&rsquo;s price and we&rsquo;ll tell you the moment it drops.
             </p>
-            <Link
-              href="/dashboard"
-              className="inline-block bg-brand hover:bg-brand-dark text-white py-3 px-6 rounded-lg font-medium transition-colors"
-            >
+
+            <div className="grid sm:grid-cols-3 gap-6 max-w-2xl mx-auto mb-8 text-left">
+              <div>
+                <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-beacon mb-1">
+                  Step 1
+                </p>
+                <p className="text-[13px] text-muted">Search for an event on the dashboard</p>
+              </div>
+              <div>
+                <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-beacon mb-1">
+                  Step 2
+                </p>
+                <p className="text-[13px] text-muted">Add it here and set a target price</p>
+              </div>
+              <div>
+                <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-beacon mb-1">
+                  Step 3
+                </p>
+                <p className="text-[13px] text-muted">Get notified the moment it drops</p>
+              </div>
+            </div>
+
+            <Link href="/dashboard" className={SECONDARY_BUTTON}>
               Search Events
             </Link>
           </div>
         ) : (
           <div className="space-y-4">
-            {watchlist.map((item) => (
-              <div
-                key={item.id}
-                className={`bg-white rounded-xl shadow-md p-6 border-2 ${
-                  isAtTarget(item) ? 'border-green-400 bg-green-50' : 'border-transparent'
-                }`}
-              >
-                <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4">
-                  <div className="flex-1">
-                    <div className="flex items-start gap-3 mb-2">
-                      <h3 className="font-bold text-lg text-gray-900">
+            {watchlist.map((item) => {
+              const when = formatEventDayParts(item.event_date);
+              const place = [item.venue, item.city].filter(Boolean).join(' · ');
+              const atTarget = isAtTarget(item);
+
+              return (
+                <div
+                  key={item.id}
+                  className={`flex flex-col lg:flex-row lg:items-center gap-5 rounded-[6px] px-5 py-4 transition-colors motion-reduce:transition-none ${
+                    atTarget ? 'bg-blue-wash' : 'bg-navy-raised hover:bg-blue-wash'
+                  }`}
+                >
+                  {/* Date block — matches OnsaleRow's mono day-numeral-over-month. */}
+                  <div className="w-14 flex-none text-center font-data">
+                    <p className="text-[21px] leading-[1.2] font-semibold tracking-[0.02em] tabular-nums text-bone">
+                      {when ? when.day : '—'}
+                    </p>
+                    <p className="mt-1 text-[10px] uppercase tracking-[0.16em] text-muted">
+                      {when ? when.month : ''}
+                    </p>
+                  </div>
+
+                  <div className="min-w-0 flex-1">
+                    <div className="flex flex-wrap items-center gap-2 mb-0.5">
+                      <h3 className="text-[17px] font-semibold leading-[1.3] tracking-[-0.015em] text-bone">
                         {item.event_name}
                       </h3>
-                      {isAtTarget(item) && (
-                        <span className="bg-green-500 text-white text-xs px-2 py-1 rounded-full font-medium">
-                          AT TARGET!
+                      {atTarget && (
+                        <span className="flex-none rounded-[4px] bg-brand/14 px-2.5 py-[5px] text-[11px] font-semibold uppercase leading-none tracking-[0.16em] text-brand">
+                          Target met
                         </span>
                       )}
                     </div>
 
-                    <div className="flex flex-wrap gap-4 text-sm text-gray-600 mb-3">
-                      <span className="flex items-center">
-                        <span className="mr-1">📅</span>
-                        {formatDate(item.event_date)}
-                      </span>
-                      {item.venue && (
-                        <span className="flex items-center">
-                          <span className="mr-1">📍</span>
-                          {item.venue}
-                        </span>
-                      )}
-                      {item.city && (
-                        <span className="flex items-center">
-                          <span className="mr-1">🏙️</span>
-                          {item.city}
-                        </span>
-                      )}
-                    </div>
+                    {place && <p className="text-[13px] text-muted">{place}</p>}
+                    <p className="mt-0.5 font-data text-[13px] tracking-[0.02em] tabular-nums text-deep-muted">
+                      {formatDate(item.event_date)}
+                    </p>
 
                     {/* Price info row */}
-                    <div className="flex flex-wrap items-center gap-4">
+                    <div className="mt-3 flex flex-wrap items-center gap-4">
                       {item.current_min_price ? (
                         <div className="flex items-center gap-2">
-                          <span className="text-2xl font-bold text-gray-900">
+                          <span className="font-data text-[21px] font-semibold tracking-[0.02em] tabular-nums text-bone">
                             ${parseFloat(item.current_min_price).toFixed(0)}
                           </span>
                           {item.current_max_price && (
-                            <span className="text-gray-500">
+                            <span className="font-data text-[15px] tracking-[0.02em] tabular-nums text-muted">
                               - ${parseFloat(item.current_max_price).toFixed(0)}
                             </span>
                           )}
@@ -213,58 +266,62 @@ export default function WatchlistPage() {
                           />
                         </div>
                       ) : (
-                        <span className="text-gray-500 text-sm">
+                        <span className="text-muted text-[13px]">
                           Tracking started - prices coming soon
                         </span>
                       )}
 
                       {item.target_price && (
-                        <span className="text-sm text-gray-600">
-                          Target: <span className="font-semibold text-green-600">${item.target_price}</span>
+                        <span className="text-[13px] text-muted">
+                          Target:{' '}
+                          <span className="font-data font-semibold tabular-nums text-brand">
+                            ${item.target_price}
+                          </span>
                         </span>
                       )}
 
                       {item.last_checked && (
-                        <span className="text-xs text-gray-400">
+                        <span className="font-data text-[13px] tabular-nums text-deep-muted">
                           Updated {formatTimeAgo(item.last_checked)}
                         </span>
                       )}
                     </div>
                   </div>
 
-                  <div className="flex items-center gap-2">
-                    <Link
-                      href={`/event/${item.event_id}`}
-                      className="bg-brand/10 hover:bg-blue-100 text-brand-dark py-2 px-4 rounded-lg font-medium transition-colors text-sm"
-                    >
-                      View Details
-                    </Link>
-                    <button
-                      onClick={() => handleRemove(item.id)}
-                      className="bg-red-50 hover:bg-red-100 text-red-600 py-2 px-4 rounded-lg font-medium transition-colors text-sm"
-                    >
-                      Remove
-                    </button>
+                  <div className="flex flex-col items-end gap-2 flex-none">
+                    <div className="flex items-center gap-2">
+                      <Link href={`/event/${item.event_id}`} className={SECONDARY_BUTTON}>
+                        View Details
+                      </Link>
+                      <button onClick={() => handleRemove(item.id)} className={REMOVE_BUTTON}>
+                        Remove
+                      </button>
+                    </div>
+                    {removeErrorId === item.id && (
+                      <p className="text-alert text-[13px]">{removeErrorMsg}</p>
+                    )}
                   </div>
                 </div>
-              </div>
-            ))}
+              );
+            })}
           </div>
         )}
 
         {/* Info box */}
-        <div className="mt-8 bg-blue-50 border border-blue-200 rounded-xl p-4">
-          <div className="flex items-start gap-3">
-            <span className="text-xl">💡</span>
-            <div>
-              <h4 className="font-semibold text-blue-900">Price Tracking Active</h4>
-              <p className="text-sm text-blue-700">
-                We check prices every 4 hours and will show you trends and recommendations.
-                Click &quot;View Details&quot; on any event to see the full price history and buy recommendation.
-              </p>
+        {!showLoading && (
+          <div className="mt-8 bg-navy rounded-[6px] p-4">
+            <div className="flex items-start gap-3">
+              <span className="text-xl" aria-hidden="true">💡</span>
+              <div>
+                <h4 className="font-semibold text-beacon">Price Tracking Active</h4>
+                <p className="text-[13px] text-muted mt-1">
+                  We check prices every 4 hours and will show you trends and recommendations.
+                  Click &quot;View Details&quot; on any event to see the full price history and buy recommendation.
+                </p>
+              </div>
             </div>
           </div>
-        </div>
+        )}
       </div>
     </div>
   );
