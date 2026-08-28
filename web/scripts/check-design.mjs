@@ -104,6 +104,20 @@ const RULES = [
       return null;
     },
   },
+  {
+    name: 'OnsaleRow: built on Raised Navy, no border, no light-surface classes',
+    check: () => {
+      const src = read('src/components/OnsaleRow.tsx');
+      const banned = ['bg-white', 'border-gray-200', 'rounded-xl', 'text-gray-500', 'text-gray-400', 'bg-gray-100'];
+      const found = banned.filter((c) => src.includes(c));
+      if (found.length) return `light-surface classes remain: ${found.join(', ')}`;
+      if (!src.includes('bg-navy-raised')) return 'not on Raised Navy';
+      if (!src.includes('font-data')) return 'date block is not monospaced';
+      if (!src.includes('tabular-nums')) return 'numerals are not tabular';
+      if (/scale-|translate-y/.test(src)) return 'row uses a transform; DESIGN.md forbids it on this component';
+      return null;
+    },
+  },
 ];
 
 let failed = 0;

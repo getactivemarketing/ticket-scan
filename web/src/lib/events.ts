@@ -140,3 +140,18 @@ export function capPerVenue<T extends FeedEvent>(events: T[], max = 2): T[] {
     return true;
   });
 }
+
+/**
+ * Split an ISO date into the two pieces the OnsaleRow date block renders —
+ * a large day numeral above a small uppercase month. Eastern time, to match
+ * formatEtDate and formatEtTime; a date rendered in the viewer's own zone
+ * would be wrong for most of the country.
+ */
+export function formatEventDayParts(iso?: string | null): { day: string; month: string } | null {
+  if (!iso) return null;
+  const d = new Date(iso);
+  if (Number.isNaN(d.getTime())) return null;
+  const day = d.toLocaleDateString('en-US', { timeZone: ET, day: 'numeric' });
+  const month = d.toLocaleDateString('en-US', { timeZone: ET, month: 'short' }).toUpperCase();
+  return { day, month };
+}

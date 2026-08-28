@@ -1,22 +1,27 @@
 import Link from 'next/link';
-import { FeedEvent, saleStatus, formatEtTime } from '@/lib/events';
+import { FeedEvent, saleStatus, formatEtTime, formatEventDayParts } from '@/lib/events';
 
-// The workhorse component from DESIGN.md. It appears on the onsale calendar,
-// and is intended for the homepage, venue guides, watchlist and the weekly
-// email too, so that all five render status identically.
+// The workhorse component from DESIGN.md §4. It is the single most important
+// component on the site and must be recognisable in all five places it
+// appears — the onsale calendar, the homepage, venue guides, the watchlist
+// and the weekly email.
 //
 // Colour follows the DESIGN.md status triad — green on sale, teal presale,
 // muted not yet open — and is always paired with a word, never used alone.
+//
+// Deliberately no transform on hover. This is a dense list and jumping rows
+// are nauseating; the row lifts one tonal step instead.
 
 const STATUS_CLASS: Record<string, string> = {
-  onsale: 'bg-success/10 text-success',
-  presale: 'bg-teal/10 text-teal',
-  upcoming: 'bg-gray-100 text-gray-500',
-  unknown: 'bg-gray-100 text-gray-500',
+  onsale: 'bg-success/15 text-success',
+  presale: 'bg-teal/15 text-teal',
+  upcoming: 'bg-muted/15 text-muted',
+  unknown: 'bg-muted/15 text-muted',
 };
 
 export default function OnsaleRow({ event }: { event: FeedEvent }) {
   const status = saleStatus(event);
+  const when = formatEventDayParts(event.date);
   const time = event.onsaleStart ? formatEtTime(event.onsaleStart) : '';
   const place = [event.venue, event.city && event.state ? `${event.city}, ${event.state}` : event.city]
     .filter(Boolean)
@@ -24,17 +29,33 @@ export default function OnsaleRow({ event }: { event: FeedEvent }) {
 
   const body = (
     <>
-      <div className="w-20 flex-none">
-        <p className="text-xs font-medium text-gray-500 tabular-nums">{time || '—'}</p>
+      {/* Date block — day numeral over uppercase month, monospaced and
+          tabular so the column aligns down a list of twenty. */}
+      <div className="w-14 flex-none text-center font-data">
+        <p className="text-[21px] leading-none font-semibold tabular-nums text-bone">
+          {when ? when.day : '—'}
+        </p>
+        <p className="mt-1 text-[10px] uppercase tracking-[0.16em] text-muted">
+          {when ? when.month : ''}
+        </p>
       </div>
+
       <div className="min-w-0 flex-1">
-        <p className="font-medium text-navy text-sm leading-snug line-clamp-2 group-hover:text-brand transition-colors">
+        <p className="text-[17px] font-semibold leading-[1.3] tracking-[-0.015em] text-bone line-clamp-2">
           {event.name}
         </p>
-        {place && <p className="text-xs text-gray-400 mt-0.5 truncate">{place}</p>}
+        {place && <p className="mt-0.5 truncate text-[13px] text-muted">{place}</p>}
+        {time && (
+          <p className="mt-0.5 font-data text-[13px] tracking-[0.02em] tabular-nums text-deep-muted">
+            On sale {time}
+          </p>
+        )}
       </div>
+
+      {/* Status pill — colour at 15% behind colour at full strength, so it
+          reads illuminated rather than painted. Colour plus word, always. */}
       <span
-        className={`flex-none text-[11px] font-semibold uppercase tracking-wide px-2.5 py-1 rounded ${
+        className={`flex-none rounded-[4px] px-2.5 py-[5px] text-[11px] font-semibold uppercase leading-none tracking-[0.16em] transition-shadow group-hover:shadow-[0_0_12px_currentColor] ${
           STATUS_CLASS[status.kind]
         }`}
       >
@@ -43,11 +64,16 @@ export default function OnsaleRow({ event }: { event: FeedEvent }) {
     </>
   );
 
-  const shell = 'flex items-center gap-4 bg-white border border-gray-200 p-4 rounded-xl transition-colors';
+  const shell =
+    'flex items-center gap-5 rounded-[6px] bg-navy-raised px-5 py-4 transition-colors ' +
+    'motion-reduce:transition-none';
 
   // Only link when there is somewhere real to go.
   return event.id ? (
-    <Link href={`/event/${event.id}`} className={`${shell} hover:border-brand/40 group`}>
+    <Link
+      href={`/event/${event.id}`}
+      className={`${shell} group hover:bg-blue-wash focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2 focus-visible:ring-offset-deep-void`}
+    >
       {body}
     </Link>
   ) : (
