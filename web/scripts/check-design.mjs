@@ -118,6 +118,20 @@ const RULES = [
       return null;
     },
   },
+  {
+    name: 'Navbar: navy ground, active state, no border-bottom',
+    check: () => {
+      const src = read('src/components/Navbar.tsx');
+      if (/border-b(?![-\w])/.test(src)) return 'border-bottom still present; separation comes from the page beneath';
+      // usePathname is ALREADY imported in Navbar.tsx for unrelated reasons, so its
+      // presence proves nothing. Require the actual active-state markers instead.
+      if (!/isActive/.test(src)) return 'no isActive helper marking the current page';
+      if (!/after:bg-brand/.test(src)) return 'active item has no Signal Blue underline';
+      if (!/focus-visible:ring-brand/.test(src)) return 'no visible focus ring';
+      if (/text-white\//.test(src)) return 'text-white/NN opacity classes remain; use text-bone and text-muted';
+      return null;
+    },
+  },
 ];
 
 let failed = 0;

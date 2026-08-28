@@ -2,22 +2,32 @@ import Link from 'next/link';
 import Logo from '@/components/Logo';
 import NewsletterSignup from '@/components/NewsletterSignup';
 
+// Focus + colour treatment shared by every link in the footer. DESIGN.md §4:
+// Concourse Navy ground, text-muted links hovering to text-bone, no drop
+// shadows on navy.
+const FOCUS_RING =
+  'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2 focus-visible:ring-offset-navy rounded-sm';
+const TRANSITION = 'transition-colors duration-200 motion-reduce:transition-none';
+const LINK = `text-muted hover:text-bone ${TRANSITION} ${FOCUS_RING}`;
+
 export default function Footer() {
   return (
-    <footer className="bg-gray-900 text-gray-300">
+    <footer className="bg-navy text-muted">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        {/* Newsletter capture — present on every page */}
-        <div className="border-b border-gray-800 pb-10 mb-10 max-w-xl">
+        {/* Newsletter capture — present on every page. DESIGN.md §5: a 1px
+            divider is a last resort and never a section boundary, so this
+            separates from the columns below with space alone. */}
+        <div className="pb-12 mb-10 max-w-xl">
           <NewsletterSignup source="site-footer" variant="footer" />
         </div>
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           {/* Brand */}
           <div className="col-span-1 md:col-span-2">
-            <Link href="/" className="flex items-center space-x-2 mb-4">
-              <Logo size={28} className="text-white" />
-              <span className="text-white font-heading font-bold text-xl">TicketScan</span>
+            <Link href="/" className={`flex items-center space-x-2 mb-4 ${FOCUS_RING}`}>
+              <Logo size={28} className="text-bone" />
+              <span className="text-bone font-heading font-bold text-xl">TicketScan</span>
             </Link>
-            <p className="text-gray-400 text-sm max-w-md">
+            <p className="text-muted text-sm max-w-md">
               Compare ticket prices across Ticketmaster, SeatGeek, StubHub, and more.
               Never overpay for concerts, sports, or events again.
             </p>
@@ -27,7 +37,7 @@ export default function Footer() {
                 href="https://x.com/ticketscan_io"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-gray-400 hover:text-white transition-colors"
+                className={`text-muted hover:text-bone ${TRANSITION} ${FOCUS_RING}`}
                 aria-label="Follow us on X (Twitter)"
               >
                 <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
@@ -38,7 +48,7 @@ export default function Footer() {
                 href="https://instagram.com/ticketscan_io"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-gray-400 hover:text-white transition-colors"
+                className={`text-muted hover:text-bone ${TRANSITION} ${FOCUS_RING}`}
                 aria-label="Follow us on Instagram"
               >
                 <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
@@ -49,7 +59,7 @@ export default function Footer() {
                 href="https://tiktok.com/@ticketscan_io"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-gray-400 hover:text-white transition-colors"
+                className={`text-muted hover:text-bone ${TRANSITION} ${FOCUS_RING}`}
                 aria-label="Follow us on TikTok"
               >
                 <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
@@ -61,35 +71,35 @@ export default function Footer() {
 
           {/* Quick Links */}
           <div>
-            <h3 className="text-white font-semibold mb-4">Quick Links</h3>
+            <h3 className="text-bone font-semibold mb-4">Quick Links</h3>
             <ul className="space-y-2 text-sm">
               <li>
-                <Link href="/dashboard" className="hover:text-white transition-colors">
+                <Link href="/dashboard" className={LINK}>
                   Search Events
                 </Link>
               </li>
               <li>
-                <Link href="/compare" className="hover:text-white transition-colors">
+                <Link href="/compare" className={LINK}>
                   Compare Prices
                 </Link>
               </li>
               <li>
-                <Link href="/venues" className="hover:text-white transition-colors">
+                <Link href="/venues" className={LINK}>
                   Venue Guides
                 </Link>
               </li>
               <li>
-                <Link href="/tickets" className="hover:text-white transition-colors">
+                <Link href="/tickets" className={LINK}>
                   Ticket Guides
                 </Link>
               </li>
               <li>
-                <Link href="/onsales" className="hover:text-white transition-colors">
+                <Link href="/onsales" className={LINK}>
                   Onsale Calendar
                 </Link>
               </li>
               <li>
-                <Link href="/blog" className="hover:text-white transition-colors">
+                <Link href="/blog" className={LINK}>
                   Tips & Guides
                 </Link>
               </li>
@@ -98,20 +108,20 @@ export default function Footer() {
 
           {/* Legal */}
           <div>
-            <h3 className="text-white font-semibold mb-4">Legal</h3>
+            <h3 className="text-bone font-semibold mb-4">Legal</h3>
             <ul className="space-y-2 text-sm">
               <li>
-                <Link href="/privacy" className="hover:text-white transition-colors">
+                <Link href="/privacy" className={LINK}>
                   Privacy Policy
                 </Link>
               </li>
               <li>
-                <Link href="/terms" className="hover:text-white transition-colors">
+                <Link href="/terms" className={LINK}>
                   Terms of Service
                 </Link>
               </li>
               <li>
-                <Link href="/contact" className="hover:text-white transition-colors">
+                <Link href="/contact" className={LINK}>
                   Contact Us
                 </Link>
               </li>
@@ -119,8 +129,8 @@ export default function Footer() {
           </div>
         </div>
 
-        {/* Bottom Bar */}
-        <div className="border-t border-gray-800 mt-8 pt-8 text-sm text-gray-400 text-center">
+        {/* Bottom Bar — space, not a rule, separates it from the columns above. */}
+        <div className="mt-12 pt-4 text-sm text-muted text-center">
           <p>&copy; {new Date().getFullYear()} TicketScan. All rights reserved.</p>
           <p className="mt-2 text-xs">
             TicketScan is not a ticket seller. We compare prices from third-party sites.
