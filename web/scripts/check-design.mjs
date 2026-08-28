@@ -39,9 +39,23 @@ const RULES = [
     name: 'globals: 2.0 aliases have not drifted from their 1.0 twins',
     check: () => {
       const css = read('src/app/globals.css');
-      const hex = (name) => (css.match(new RegExp(`${name}:\\s*(#[0-9A-Fa-f]{6})`)) || [])[1];
-      if (hex('--color-navy-raised') !== hex('--color-navy-light')) return 'navy-raised != navy-light';
-      if (hex('--color-beacon') !== hex('--color-brand-light')) return 'beacon != brand-light';
+      const hex = (name) => {
+        const m = css.match(new RegExp(`${name}:\\s*(#[0-9A-Fa-f]{6})`));
+        return m ? m[1].toUpperCase() : null;
+      };
+      const pairs = [
+        ['--color-navy-raised', '--color-navy-light'],
+        ['--color-beacon', '--color-brand-light'],
+      ];
+      for (const [a, b] of pairs) {
+        const va = hex(a);
+        const vb = hex(b);
+        // An unreadable value must fail loudly. Returning undefined for both
+        // sides would make the comparison pass and silently retire the guard.
+        if (!va) return `${a} is not a literal hex — the drift guard cannot run`;
+        if (!vb) return `${b} is not a literal hex — the drift guard cannot run`;
+        if (va !== vb) return `${a} ${va} != ${b} ${vb}`;
+      }
       return null;
     },
   },
