@@ -33,7 +33,17 @@ export default function PriceTrendIndicator({
       )
     },
     down: {
-      text: 'text-brand',
+      // DESIGN.md's Signal Blue (text-brand) measures 2.75:1 on Raised Navy
+      // as a foreground — fails WCAG AA. Beacon (#6192FF) exists precisely
+      // for this: 4.54:1 on Raised Navy. The watchlist renders this
+      // component directly on a row's own background (no pill behind it),
+      // and that row's background lightens to navy-raised-hover on hover —
+      // against which Beacon drops to 4.03:1, under AA. group-hover:text-bone
+      // covers that one case: the watchlist row carries `group`, so this
+      // only fires while an ancestor row is actually hovered; everywhere
+      // else (e.g. the static bg-navy-raised header on the event detail
+      // page) there is no hovering `group` ancestor and it never applies.
+      text: 'text-beacon group-hover:text-bone',
       icon: (
         <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />

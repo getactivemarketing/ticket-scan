@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { FeedEvent, saleStatus, formatEtTime, formatEventDayParts } from '@/lib/events';
+import { FOCUS_RING_ON_DEEP_VOID } from '@/lib/a11y';
 
 // The workhorse component from DESIGN.md §4. It is the single most important
 // component on the site and must be recognisable in all five places it
@@ -13,10 +14,26 @@ import { FeedEvent, saleStatus, formatEtTime, formatEventDayParts } from '@/lib/
 // are nauseating; the row lifts one tonal step instead.
 
 const STATUS_CLASS: Record<string, string> = {
-  onsale: 'bg-success/14 text-success',
-  presale: 'bg-teal/14 text-teal',
-  upcoming: 'bg-muted/14 text-muted',
-  unknown: 'bg-muted/14 text-muted',
+  // On-sale and presale keep full-strength status text (4.75:1 / 4.69:1 on
+  // Raised Navy — the figures this task's own audit measured), but the pill
+  // background is now an opaque value pre-composited from the DESIGN.md
+  // formula (status colour at 14% over Raised Navy: #164360 / #184269)
+  // instead of the live translucent bg-success/14 / bg-teal/14 utility. A
+  // translucent background composites with whatever is directly behind it,
+  // and the row itself now lifts to navy-raised-hover on hover (the C2
+  // fix) — a live /14 utility would brighten right along with it and drop
+  // to 4.29:1 / 4.22:1, under AA. Freezing the pill's own background
+  // decouples its contrast from the row's hover state, so it renders at
+  // 4.75:1 / 4.69:1 in every row state, not just at rest.
+  onsale: 'bg-[#164360] text-success',
+  presale: 'bg-[#184269] text-teal',
+  // Signal Muted text on its own 14% wash measures 4.16:1 on Raised Navy —
+  // fails WCAG AA (4.5:1). The wash stays (it's still the "not yet open"
+  // signal colour behind the pill); the text lifts to Bone, which clears
+  // AA regardless of the row's hover state (8.4:1 / 7.6:1), so this one
+  // doesn't need the same opaque-freeze treatment.
+  upcoming: 'bg-muted/14 text-bone',
+  unknown: 'bg-muted/14 text-bone',
 };
 
 export default function OnsaleRow({ event }: { event: FeedEvent }) {
@@ -72,7 +89,7 @@ export default function OnsaleRow({ event }: { event: FeedEvent }) {
   return event.id ? (
     <Link
       href={`/event/${event.id}`}
-      className={`${shell} group hover:bg-blue-wash focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2 focus-visible:ring-offset-deep-void`}
+      className={`${shell} group hover:bg-navy-raised-hover ${FOCUS_RING_ON_DEEP_VOID}`}
     >
       {body}
     </Link>

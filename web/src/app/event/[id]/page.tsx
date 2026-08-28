@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { useParams, useRouter } from 'next/navigation';
 import { useAuth } from '@/context/AuthContext';
 import Link from 'next/link';
@@ -8,6 +8,7 @@ import api from '@/lib/api';
 import PriceChart from '@/components/PriceChart';
 import BuyRecommendation from '@/components/BuyRecommendation';
 import PriceTrendIndicator from '@/components/PriceTrendIndicator';
+import { FOCUS_RING_ON_DEEP_VOID } from '@/lib/a11y';
 
 interface PriceHistoryItem {
   source: string;
@@ -123,19 +124,12 @@ export default function EventDetailPage() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
 
-  useEffect(() => {
-    if (!authLoading && user && eventId) {
-      loadEventData();
-    }
-  }, [authLoading, user, eventId]);
-
-  // Redirect if not logged in
-  if (!authLoading && !user) {
-    router.push('/login');
-    return null;
-  }
-
-  const loadEventData = async () => {
+  // Pre-existing exhaustive-deps warning (baseline, see constraints.md) fixed
+  // while this file was already open for this wave: wrapped in useCallback,
+  // keyed only on eventId, so the effect below can depend on it without
+  // re-running on every render — its identity now only changes when eventId
+  // does, which is the same condition the effect already gated on.
+  const loadEventData = useCallback(async () => {
     try {
       setLoading(true);
       setError('');
@@ -163,7 +157,19 @@ export default function EventDetailPage() {
     } finally {
       setLoading(false);
     }
-  };
+  }, [eventId]);
+
+  useEffect(() => {
+    if (!authLoading && user && eventId) {
+      loadEventData();
+    }
+  }, [authLoading, user, eventId, loadEventData]);
+
+  // Redirect if not logged in
+  if (!authLoading && !user) {
+    router.push('/login');
+    return null;
+  }
 
   const transformToChartData = (history: PriceHistoryItem[]): ChartDataPoint[] => {
     // Group by timestamp and source
@@ -196,7 +202,7 @@ export default function EventDetailPage() {
 
   if (authLoading || loading) {
     return (
-      <div className="min-h-screen bg-deep-void py-8">
+      <div className="min-h-screen bg-deep-void py-8" aria-busy="true">
         <EventDetailSkeleton />
       </div>
     );
@@ -208,7 +214,7 @@ export default function EventDetailPage() {
         {/* Back link — tertiary, no chrome */}
         <Link
           href="/watchlist"
-          className="inline-flex items-center text-beacon hover:text-bone transition-colors mb-6"
+          className={`inline-flex items-center text-beacon hover:text-bone transition-colors mb-6 ${FOCUS_RING_ON_DEEP_VOID}`}
         >
           <svg className="w-4 h-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
@@ -217,14 +223,14 @@ export default function EventDetailPage() {
         </Link>
 
         {error && (
-          <div className="bg-alert/10 text-alert p-4 rounded-[6px] mb-6">
+          <div role="alert" className="bg-alert/10 text-alert p-4 rounded-[6px] mb-6">
             {error}
           </div>
         )}
 
         {/* Header */}
         <div className="bg-navy-raised rounded-[6px] p-6 mb-6">
-          <h1 className="text-2xl font-bold font-heading text-bone mb-2">
+          <h1 className="text-[26px] font-bold leading-[1.2] tracking-[-0.025em] font-heading text-bone mb-2">
             {eventName || 'Event Details'}
           </h1>
 

@@ -6,6 +6,7 @@ import api from '@/lib/api';
 import Logo from '@/components/Logo';
 import EventCard from '@/components/EventCard';
 import Link from 'next/link';
+import { FOCUS_RING_ON_DEEP_VOID } from '@/lib/a11y';
 
 interface Event {
   id: string;
@@ -86,7 +87,7 @@ export default function DashboardPage() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Sign up banner for non-logged in users */}
         {!authLoading && !user && (
-          <div className="bg-gradient-to-r from-brand to-navy-light rounded-[6px] p-4 mb-6 text-bone">
+          <div className="bg-navy-raised rounded-[6px] p-4 mb-6 text-bone">
             <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
               <div>
                 <p className="font-medium">Track prices and get alerts when they drop!</p>
@@ -94,7 +95,7 @@ export default function DashboardPage() {
               </div>
               <Link
                 href="/register"
-                className="bg-bone text-brand px-6 py-2 rounded-[6px] font-medium transition-opacity hover:opacity-90 whitespace-nowrap"
+                className={`bg-bone text-brand px-6 py-2 rounded-[6px] font-medium transition-opacity hover:opacity-90 whitespace-nowrap ${FOCUS_RING_ON_DEEP_VOID}`}
               >
                 Sign Up Free
               </Link>
@@ -104,7 +105,7 @@ export default function DashboardPage() {
 
         {/* Search Header */}
         <div className="bg-navy-raised rounded-[6px] p-6 mb-8">
-          <h1 className="text-2xl font-bold font-heading text-bone mb-6">Search Events</h1>
+          <h1 className="text-[26px] font-bold leading-[1.2] tracking-[-0.025em] font-heading text-bone mb-6">Search Events</h1>
 
           <form onSubmit={handleSearch} className="space-y-4">
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
@@ -165,7 +166,7 @@ export default function DashboardPage() {
               <button
                 type="submit"
                 disabled={loading}
-                className="bg-brand text-bone py-3.5 px-6 rounded-[6px] font-medium transition-colors hover:shadow-[0_0_24px_var(--color-blue-glow)] active:translate-y-px motion-reduce:transition-none disabled:opacity-50"
+                className={`bg-brand text-bone py-3.5 px-6 rounded-[6px] font-medium transition-colors hover:shadow-[0_0_24px_var(--color-blue-glow)] active:translate-y-px motion-reduce:transition-none disabled:opacity-50 ${FOCUS_RING_ON_DEEP_VOID}`}
               >
                 {loading ? 'Searching...' : 'Search Events'}
               </button>
@@ -175,13 +176,13 @@ export default function DashboardPage() {
 
         {/* Results */}
         {error && (
-          <div className="bg-alert/10 text-alert p-4 rounded-[6px] mb-6">
+          <div role="alert" className="bg-alert/10 text-alert p-4 rounded-[6px] mb-6">
             {error}
           </div>
         )}
 
         {loading && (
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6" aria-busy="true">
             {Array.from({ length: 6 }).map((_, i) => (
               <EventCardSkeleton key={i} />
             ))}
@@ -190,11 +191,11 @@ export default function DashboardPage() {
 
         {searched && !loading && events.length === 0 && !error && (
           <div className="bg-navy-raised rounded-[6px] p-12 text-center">
-            <span className="text-4xl mb-4 block">🔍</span>
+            <span className="text-4xl mb-4 block" aria-hidden="true">🔍</span>
             <h3 className="text-xl font-medium font-heading text-bone mb-2">No events found</h3>
             <p className="text-muted">
               Try a different city, keyword, or date range — or{' '}
-              <Link href="/blog" className="text-beacon hover:text-bone transition-colors">
+              <Link href="/blog" className={`text-beacon hover:text-bone transition-colors ${FOCUS_RING_ON_DEEP_VOID}`}>
                 browse our ticket buying tips
               </Link>
               .
@@ -229,20 +230,20 @@ export default function DashboardPage() {
             <div className="bg-navy rounded-[6px] p-6">
               <div className="flex items-center justify-between mb-4">
                 <h3 className="text-lg font-bold font-heading text-bone">Ticket Buying Tips</h3>
-                <Link href="/blog" className="text-beacon hover:text-bone text-sm font-medium transition-colors">
+                <Link href="/blog" className={`text-beacon hover:text-bone text-sm font-medium transition-colors ${FOCUS_RING_ON_DEEP_VOID}`}>
                   View All &rarr;
                 </Link>
               </div>
               <div className="grid md:grid-cols-3 gap-4">
-                <Link href="/blog/best-time-to-buy-concert-tickets" className="bg-navy-raised rounded-[6px] p-4 hover:bg-blue-wash transition-colors">
+                <Link href="/blog/best-time-to-buy-concert-tickets" className={`bg-navy-raised rounded-[6px] p-4 hover:bg-navy-raised-hover transition-colors ${FOCUS_RING_ON_DEEP_VOID}`}>
                   <h4 className="font-semibold text-bone mb-1">Best Time to Buy</h4>
                   <p className="text-muted text-sm">Learn when ticket prices drop</p>
                 </Link>
-                <Link href="/blog/how-to-find-cheap-nba-tickets" className="bg-navy-raised rounded-[6px] p-4 hover:bg-blue-wash transition-colors">
+                <Link href="/blog/how-to-find-cheap-nba-tickets" className={`bg-navy-raised rounded-[6px] p-4 hover:bg-navy-raised-hover transition-colors ${FOCUS_RING_ON_DEEP_VOID}`}>
                   <h4 className="font-semibold text-bone mb-1">Cheap NBA Tickets</h4>
                   <p className="text-muted text-sm">10 strategies that work</p>
                 </Link>
-                <Link href="/blog/ticket-buying-mistakes-to-avoid" className="bg-navy-raised rounded-[6px] p-4 hover:bg-blue-wash transition-colors">
+                <Link href="/blog/ticket-buying-mistakes-to-avoid" className={`bg-navy-raised rounded-[6px] p-4 hover:bg-navy-raised-hover transition-colors ${FOCUS_RING_ON_DEEP_VOID}`}>
                   <h4 className="font-semibold text-bone mb-1">Avoid These Mistakes</h4>
                   <p className="text-muted text-sm">Save money on every purchase</p>
                 </Link>

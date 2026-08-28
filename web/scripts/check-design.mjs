@@ -95,13 +95,22 @@ const RULES = [
     },
   },
   {
-    name: 'globals: the input colour override no longer uses !important',
+    name: 'globals: the input colour override lives in @layer base, not !important',
     check: () => {
       const css = read('src/app/globals.css');
-      const block = (css.match(/input,\s*select,\s*textarea\s*\{[^}]*\}/) || [])[0] || '';
-      if (!block) return 'input colour rule missing entirely';
-      if (/!important/.test(block)) return '!important still present; navy utilities cannot override it';
-      const ph = (css.match(/input::placeholder\s*\{[^}]*\}/) || [])[0] || '';
+      // Tailwind v4 emits real cascade layers (theme, base, components,
+      // utilities). An unlayered normal declaration beats a normal
+      // declaration in ANY layer regardless of specificity, so dropping
+      // !important alone does NOT let a navy page's text-bone utility win —
+      // the rule must be inside @layer base so the later `utilities` layer
+      // outranks it.
+      const layerMatch = css.match(/@layer base \{([\s\S]*?)\n\}/);
+      const layerBody = layerMatch ? layerMatch[1] : '';
+      const block = (layerBody.match(/input,\s*select,\s*textarea\s*\{[^}]*\}/) || [])[0] || '';
+      if (!block) return 'input colour rule is not inside @layer base';
+      if (/!important/.test(block)) return '!important still present; unnecessary now that the rule is layered';
+      const ph = (layerBody.match(/input::placeholder\s*\{[^}]*\}/) || [])[0] || '';
+      if (!ph) return 'input::placeholder rule is not inside @layer base';
       if (/!important/.test(ph)) return '!important still present on the placeholder rule';
       return null;
     },

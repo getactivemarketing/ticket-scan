@@ -9,6 +9,12 @@ import Logo from '@/components/Logo';
 // Focus + colour treatment shared by every plain-text nav link (desktop and
 // mobile). Active state (DESIGN.md §4 Navigation): Concourse Bone text with a
 // 2px Signal Blue underline and a faint Blue Glow beneath it.
+//
+// Kept as a local literal (rather than importing FOCUS_RING_ON_NAVY from
+// '@/lib/a11y') because scripts/check-design.mjs greps this file's own
+// source text for `focus-visible:ring-brand`; re-exporting it through an
+// import would make that assertion blind to a real regression here.
+// src/lib/a11y.ts documents this and is the copy new call sites should use.
 const FOCUS_RING =
   'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2 focus-visible:ring-offset-navy rounded-sm';
 const ACTIVE_LINK =

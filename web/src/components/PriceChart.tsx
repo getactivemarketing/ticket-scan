@@ -22,6 +22,32 @@ interface PriceChartProps {
   height?: number;
 }
 
+// The two data-series colours. CustomTooltip renders these directly as
+// tooltip TEXT (style={{ color: entry.color }}), not just as strokes, so
+// each has to clear WCAG AA (4.5:1) as text on the tooltip's own
+// background (#162D5A / --color-navy-raised) — a bar a stroke alone
+// wouldn't have to clear. Both must also stay within the fixed Signal Blue
+// hue family: DESIGN.md reserves Marquee Teal and Gate Green for the status
+// triad and nothing else, so neither is available here even though a
+// teal/blue pairing would separate more easily.
+//
+//   Ticketmaster -> --color-beacon #6192FF, hue 221° (same hue as Signal
+//     Blue, just lighter). Measured 4.54:1 on Raised Navy. Already an
+//     existing DESIGN.md token, added in an earlier task for exactly this
+//     kind of AA failure.
+//   SeatGeek -> #7FBFFF, hue 210° — a cooler, more cyan-leaning tint of the
+//     same blue family, kept clear of Marquee Teal's 181° hue by a 30°
+//     margin so it still reads as "blue," not "teal." Measured 6.94:1 on
+//     Raised Navy.
+//
+// The rejected 1.0 value, brand-light #4A82FF (hue 222°, 3.81:1 on Raised
+// Navy), is NOT used for either series — that was the value this task was
+// filed to remove.
+const SERIES_COLOR = {
+  ticketmaster: 'var(--color-beacon)', // #6192FF, 4.54:1 on Raised Navy
+  seatgeek: '#7FBFFF', // 6.94:1 on Raised Navy
+} as const;
+
 // Hoisted out of PriceChart's render so it isn't recreated on every render —
 // a component declared inline resets its own state each time its parent
 // re-renders.
@@ -34,7 +60,11 @@ function CustomTooltip({ active, payload, label }: {
     return (
       <div
         className="rounded-[6px] p-3"
-        style={{ background: '#162D5A', border: '1px solid #1F3A6B', color: '#F7F9FC' }}
+        style={{
+          background: 'var(--color-navy-raised)',
+          border: '1px solid var(--color-navy-hairline)',
+          color: 'var(--color-bone)',
+        }}
       >
         <p className="text-sm font-medium mb-1">{label}</p>
         {payload.map((entry, index) => (
@@ -72,16 +102,16 @@ export default function PriceChart({ data, height = 300 }: PriceChartProps) {
       <h3 className="text-lg font-bold font-heading text-bone mb-4">Price History</h3>
       <ResponsiveContainer width="100%" height={height}>
         <LineChart data={data} margin={{ top: 5, right: 20, left: 10, bottom: 5 }}>
-          <CartesianGrid strokeDasharray="3 3" stroke="#1F3A6B" />
+          <CartesianGrid strokeDasharray="3 3" stroke="var(--color-navy-hairline)" />
           <XAxis
             dataKey="date"
-            tick={{ fontSize: 11, fill: '#8FA3C8' }}
-            tickLine={{ stroke: '#1F3A6B' }}
+            tick={{ fontSize: 11, fill: 'var(--color-muted)' }}
+            tickLine={{ stroke: 'var(--color-navy-hairline)' }}
           />
           <YAxis
-            tick={{ fontSize: 11, fill: '#8FA3C8' }}
+            tick={{ fontSize: 11, fill: 'var(--color-muted)' }}
             tickFormatter={(v) => `$${v}`}
-            tickLine={{ stroke: '#1F3A6B' }}
+            tickLine={{ stroke: 'var(--color-navy-hairline)' }}
             width={60}
           />
           <Tooltip content={<CustomTooltip />} />
@@ -96,18 +126,18 @@ export default function PriceChart({ data, height = 300 }: PriceChartProps) {
           <Line
             type="monotone"
             dataKey="ticketmaster"
-            stroke="#1E63FF"
+            stroke={SERIES_COLOR.ticketmaster}
             strokeWidth={2}
-            dot={{ fill: '#1E63FF', r: 4 }}
+            dot={{ fill: SERIES_COLOR.ticketmaster, r: 4 }}
             activeDot={{ r: 6 }}
             connectNulls
           />
           <Line
             type="monotone"
             dataKey="seatgeek"
-            stroke="#4A82FF"
+            stroke={SERIES_COLOR.seatgeek}
             strokeWidth={2}
-            dot={{ fill: '#4A82FF', r: 4 }}
+            dot={{ fill: SERIES_COLOR.seatgeek, r: 4 }}
             activeDot={{ r: 6 }}
             connectNulls
           />

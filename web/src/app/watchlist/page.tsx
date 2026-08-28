@@ -7,6 +7,7 @@ import Link from 'next/link';
 import api from '@/lib/api';
 import PriceTrendIndicator from '@/components/PriceTrendIndicator';
 import { formatEventDayParts } from '@/lib/events';
+import { FOCUS_RING_ON_DEEP_VOID } from '@/lib/a11y';
 
 interface WatchlistItem {
   id: number;
@@ -26,17 +27,17 @@ interface WatchlistItem {
 }
 
 const PRIMARY_BUTTON =
-  'inline-flex items-center gap-1.5 bg-brand text-bone py-2 px-4 rounded-[6px] font-medium ' +
+  'inline-flex items-center gap-1.5 bg-brand text-bone py-3.5 px-6 rounded-[6px] font-medium ' +
   'transition-colors hover:shadow-[0_0_24px_var(--color-blue-glow)] active:translate-y-px ' +
-  'motion-reduce:transition-none';
+  `motion-reduce:transition-none ${FOCUS_RING_ON_DEEP_VOID}`;
 
 const SECONDARY_BUTTON =
   'inline-flex items-center justify-center border border-navy-hairline text-bone py-2 px-4 ' +
-  'rounded-[6px] font-medium text-sm transition-colors hover:border-brand motion-reduce:transition-none';
+  `rounded-[6px] font-medium text-sm transition-colors hover:border-brand motion-reduce:transition-none ${FOCUS_RING_ON_DEEP_VOID}`;
 
 const REMOVE_BUTTON =
   'text-alert hover:bg-alert/10 py-2 px-4 rounded-[6px] font-medium text-sm transition-colors ' +
-  'motion-reduce:transition-none';
+  `motion-reduce:transition-none ${FOCUS_RING_ON_DEEP_VOID}`;
 
 // Skeleton row shaped like a real watchlist row — date block, title, meta
 // lines and an action slot — not a bare spinner.
@@ -122,7 +123,12 @@ export default function WatchlistPage() {
 
   const formatDate = (dateStr: string) => {
     if (!dateStr) return 'TBA';
+    // event_date arrives as UTC midnight. Rendered in the viewer's own zone
+    // this can print a different calendar day than the mono date block
+    // above (formatEventDayParts, which is fixed to Eastern) — pin this to
+    // the same zone so the two never disagree.
     return new Date(dateStr).toLocaleDateString('en-US', {
+      timeZone: 'America/New_York',
       weekday: 'short',
       month: 'short',
       day: 'numeric',
@@ -157,7 +163,7 @@ export default function WatchlistPage() {
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center mb-8">
           <div>
-            <h1 className="text-3xl font-bold font-heading text-bone">My Watchlist</h1>
+            <h1 className="text-[26px] font-bold leading-[1.2] tracking-[-0.025em] font-heading text-bone">My Watchlist</h1>
             <p className="text-muted mt-1">Track prices and get recommendations</p>
           </div>
           <Link href="/dashboard" className={PRIMARY_BUTTON}>
@@ -166,13 +172,13 @@ export default function WatchlistPage() {
         </div>
 
         {error && (
-          <div className="bg-alert/10 text-alert p-4 rounded-[6px] mb-6">
+          <div role="alert" className="bg-alert/10 text-alert p-4 rounded-[6px] mb-6">
             {error}
           </div>
         )}
 
         {showLoading ? (
-          <div className="space-y-4">
+          <div className="space-y-4" aria-busy="true">
             {Array.from({ length: 4 }).map((_, i) => (
               <WatchlistRowSkeleton key={i} />
             ))}
@@ -222,8 +228,27 @@ export default function WatchlistPage() {
               return (
                 <div
                   key={item.id}
-                  className={`flex flex-col lg:flex-row lg:items-center gap-5 rounded-[6px] px-5 py-4 transition-colors motion-reduce:transition-none ${
-                    atTarget ? 'bg-blue-wash' : 'bg-navy-raised hover:bg-blue-wash'
+                  className={`group flex flex-col lg:flex-row lg:items-center gap-5 rounded-[6px] px-5 py-4 transition-[background-color,box-shadow] motion-reduce:transition-none ${
+                    atTarget
+                      // Target-met rows stand out via a permanent ambient glow
+                      // (DESIGN.md's "glow, not shade" elevation language)
+                      // rather than a permanently lighter background. Tried
+                      // bg-navy-raised-hover as the resting colour first, but
+                      // several children render blue-family text directly on
+                      // the row's own background with no pill behind it
+                      // (PriceTrendIndicator's "down" state, the target-price
+                      // value) — measured against navy-raised-hover (#17356A)
+                      // those drop to 4.03:1, under the 4.5:1 AA text
+                      // threshold, even though the same colours clear 4.5:1+
+                      // on the ordinary bg-navy-raised every other row uses.
+                      // Keeping the resting paint at bg-navy-raised keeps
+                      // every child at the contrast figure it was already
+                      // verified against, and the glow still reads as
+                      // "elevated" without touching text contrast at all.
+                      // Hover still lifts to the opaque token, same as an
+                      // ordinary row, so the two states stay distinct.
+                      ? 'bg-navy-raised shadow-[0_0_20px_var(--color-blue-glow)] hover:bg-navy-raised-hover'
+                      : 'bg-navy-raised hover:bg-navy-raised-hover'
                   }`}
                 >
                   {/* Date block — matches OnsaleRow's mono day-numeral-over-month. */}
@@ -242,7 +267,14 @@ export default function WatchlistPage() {
                         {item.event_name}
                       </h3>
                       {atTarget && (
-                        <span className="flex-none rounded-[4px] bg-brand/14 px-2.5 py-[5px] text-[11px] font-semibold uppercase leading-none tracking-[0.16em] text-brand">
+                        // text-bone, not text-beacon: this pill's own bg-brand/14
+                        // composites with whatever sits behind it (this row's
+                        // resting bg-navy-raised-hover, or the glow on top of it
+                        // on hover), and beacon measures only 3.57–3.98:1 against
+                        // that composite either way — below the 4.5:1 AA text
+                        // threshold despite passing against raw Raised Navy.
+                        // Bone clears it outright (>11:1) in both states.
+                        <span className="flex-none rounded-[4px] bg-brand/14 px-2.5 py-[5px] text-[11px] font-semibold uppercase leading-none tracking-[0.16em] text-bone">
                           Target met
                         </span>
                       )}
@@ -280,7 +312,15 @@ export default function WatchlistPage() {
                       {item.target_price && (
                         <span className="text-[13px] text-muted">
                           Target:{' '}
-                          <span className="font-data font-semibold tracking-[0.02em] tabular-nums text-brand">
+                          {/* text-bone, not text-beacon: this renders directly on
+                              the row's own background with no pill behind it, and
+                              for an at-target row that background is
+                              bg-navy-raised-hover, where beacon measures 4.03:1 —
+                              just under the 4.5:1 AA text threshold (it passes at
+                              4.54:1 on the plain bg-navy-raised of an ordinary
+                              row, which is what the original review measured
+                              against). Bone passes unconditionally on both. */}
+                          <span className="font-data font-semibold tracking-[0.02em] tabular-nums text-bone">
                             ${item.target_price}
                           </span>
                         </span>
@@ -304,7 +344,7 @@ export default function WatchlistPage() {
                       </button>
                     </div>
                     {removeErrors[item.id] && (
-                      <p className="text-alert text-[13px]">{removeErrors[item.id]}</p>
+                      <p role="alert" className="text-alert text-[13px]">{removeErrors[item.id]}</p>
                     )}
                   </div>
                 </div>

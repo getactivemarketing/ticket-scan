@@ -1,12 +1,11 @@
 import Link from 'next/link';
 import Logo from '@/components/Logo';
 import NewsletterSignup from '@/components/NewsletterSignup';
+import { FOCUS_RING_ON_NAVY as FOCUS_RING } from '@/lib/a11y';
 
 // Focus + colour treatment shared by every link in the footer. DESIGN.md §4:
 // Concourse Navy ground, text-muted links hovering to text-bone, no drop
 // shadows on navy.
-const FOCUS_RING =
-  'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2 focus-visible:ring-offset-navy rounded-sm';
 const TRANSITION = 'transition-colors duration-200 motion-reduce:transition-none';
 const LINK = `text-muted hover:text-bone ${TRANSITION} ${FOCUS_RING}`;
 
