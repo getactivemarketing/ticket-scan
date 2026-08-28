@@ -67,6 +67,17 @@ Tight negative tracking on large display type is non-negotiable. Body text keeps
 **Out of scope — do not modify these files in any task:**
 `app/page.tsx` (homepage), `app/venues/**`, `app/tickets/**`, `app/blog/**`, `app/world-cup-2026/**`, `app/faq`, `app/how-it-works`, `app/contact`, `app/privacy`, `app/terms`, `src/data/**`, and the backend `index.js`. Navigation **links** and site structure are unchanged even where a task edits `Navbar.tsx`.
 
+**`npm run lint` is a comparison, not a pass/fail gate.** The repo carries **16 pre-existing
+lint problems (7 errors, 9 warnings)** on `main`, in files this plan does not touch —
+`compare/page.tsx`, `favorites/page.tsx`, `event/[id]/page.tsx`, `world-cup-2026/**`,
+`EventCard.tsx`, `Navbar.tsx`, `PriceChart.tsx`, `AuthContext.tsx`, `lib/api.ts`,
+`app/page.tsx`, `scripts/venue-cleanup.js`, and two in `layout.tsx` (a `@ts-ignore`
+comment and a Google Tag Manager warning). A task therefore must **introduce no new lint
+problems**; requiring a clean exit is impossible and any task that appears to achieve one
+has probably linted only its own files. Note that Tasks 5 and 7 do touch `EventCard.tsx`,
+`Navbar.tsx`, `event/[id]/page.tsx` and `PriceChart.tsx` — fix the pre-existing problems
+in those files when you are already editing them, and say so; leave the rest alone.
+
 **Do not break functionality.** Auth, search, watchlist CRUD, the events API and the price chart all keep working. Verify after every task.
 
 **Commit after every task.** Do not push.
@@ -547,10 +558,10 @@ import { FeedEvent, saleStatus, formatEtTime, formatEventDayParts } from '@/lib/
 // are nauseating; the row lifts one tonal step instead.
 
 const STATUS_CLASS: Record<string, string> = {
-  onsale: 'bg-success/15 text-success',
-  presale: 'bg-teal/15 text-teal',
-  upcoming: 'bg-muted/15 text-muted',
-  unknown: 'bg-muted/15 text-muted',
+  onsale: 'bg-success/14 text-success',
+  presale: 'bg-teal/14 text-teal',
+  upcoming: 'bg-muted/14 text-muted',
+  unknown: 'bg-muted/14 text-muted',
 };
 
 export default function OnsaleRow({ event }: { event: FeedEvent }) {
@@ -566,7 +577,7 @@ export default function OnsaleRow({ event }: { event: FeedEvent }) {
       {/* Date block — day numeral over uppercase month, monospaced and
           tabular so the column aligns down a list of twenty. */}
       <div className="w-14 flex-none text-center font-data">
-        <p className="text-[21px] leading-none font-semibold tabular-nums text-bone">
+        <p className="text-[21px] leading-[1.2] font-semibold tracking-[0.02em] tabular-nums text-bone">
           {when ? when.day : '—'}
         </p>
         <p className="mt-1 text-[10px] uppercase tracking-[0.16em] text-muted">
