@@ -10,7 +10,8 @@
   --color-background: var(--background);
   --color-foreground: var(--foreground);
 
-  /* Brand Colors */
+  /* Brand Colors — 1.0. Retained until the content surface migrates to 2.0.
+     Do not introduce NEW usage of these; see docs/superpowers/plans. */
   --color-brand: #1E63FF;
   --color-brand-dark: #1854D9;
   --color-brand-light: #4A82FF;
@@ -22,17 +23,39 @@
   --color-gray-light: #E6ECF2;
   --color-charcoal: #2B2F38;
 
+  /* ===== DESIGN.md 2.0 ===== */
+
+  /* Navy family — surface hierarchy. Depth is a tonal step, never a border.
+     navy-raised repeats navy-light's hex rather than aliasing it with var(),
+     because Tailwind v4 opacity modifiers (bg-navy-raised/50) are more
+     reliable against a literal. check-design.mjs asserts the two stay equal. */
+  --color-deep-void: #070F26;
+  --color-navy-raised: #162D5A;
+  --color-navy-hairline: #1F3A6B;
+
+  /* Blue family — the light source. Glow replaces drop shadow on dark. */
+  --color-beacon: #4A82FF;
+  --color-blue-glow: rgba(30, 99, 255, 0.18);
+  --color-blue-wash: rgba(30, 99, 255, 0.10);
+
+  /* Neutrals — every one carries a blue bias. Pure grey next to navy
+     reads as dirty. */
+  --color-bone: #F7F9FC;
+  --color-muted: #8FA3C8;
+  --color-deep-muted: #5A6B8C;
+  --color-paper: #FFFFFF;
+  --color-paper-line: #E1E7F0;
+
+  /* System colours — deliberately NOT part of the status triad. Gate Green,
+     Marquee Teal and Signal Muted mean on-sale, presale and not-yet-open and
+     nothing else. Alert is a lighter red than the usual #DC2626 because it
+     has to read on Deep Void, and desaturated enough not to shout. */
+  --color-alert: #FF6369;
+
   /* Fonts */
   --font-sans: var(--font-inter);
   --font-heading: var(--font-poppins);
   --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
 }
 
 body {
@@ -41,13 +64,20 @@ body {
   font-family: var(--font-inter), Inter, sans-serif;
 }
 
-/* Form inputs - ensure dark text */
-input, select, textarea {
-  color: #2B2F38 !important;
+/* Light-surface default for inputs. The !important is what actually had to go:
+   a Tailwind utility class (specificity 0,1,0) outranks this element selector
+   (0,0,3), so navy inputs on the app surface override it with text-bone and no
+   scoping is needed. Scoping it to a .surface-content class instead would make
+   the rule dead — nothing in the codebase carries that class — and would
+   silently drop every content-page input to the UA default. */
+input,
+select,
+textarea {
+  color: #2B2F38;
 }
 
 input::placeholder {
-  color: #9ca3af !important;
+  color: #9ca3af;
 }
 
 /* Navbar scroll behavior */
@@ -57,5 +87,4 @@ input::placeholder {
 
 .navbar-solid {
   background: #0D1B3D !important;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
 }

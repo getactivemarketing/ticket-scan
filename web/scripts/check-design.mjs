@@ -1,0 +1,87 @@
+// Design invariants from DESIGN.md. There is no test runner in this project,
+// so this is the red/green cycle for the 2.0 rollout: every rule below is a
+// statement DESIGN.md makes, expressed as something greppable.
+import { readFileSync } from 'node:fs';
+
+const read = (p) => readFileSync(new URL(`../${p}`, import.meta.url), 'utf8');
+
+const RULES = [
+  {
+    name: 'globals: 2.0 colour tokens are defined',
+    check: () => {
+      const css = read('src/app/globals.css');
+      const required = [
+        ['--color-deep-void', '#070F26'],
+        ['--color-navy-raised', '#162D5A'],
+        ['--color-navy-hairline', '#1F3A6B'],
+        ['--color-beacon', '#4A82FF'],
+        ['--color-bone', '#F7F9FC'],
+        ['--color-muted', '#8FA3C8'],
+        ['--color-deep-muted', '#5A6B8C'],
+        ['--color-paper', '#FFFFFF'],
+        ['--color-paper-line', '#E1E7F0'],
+        ['--color-alert', '#FF6369'],
+      ];
+      const missing = required.filter(([k, v]) => !css.includes(`${k}: ${v}`));
+      return missing.length ? `missing or wrong: ${missing.map((m) => m[0]).join(', ')}` : null;
+    },
+  },
+  {
+    name: 'globals: blue glow and wash are defined at the DESIGN.md opacities',
+    check: () => {
+      const css = read('src/app/globals.css');
+      if (!css.includes('--color-blue-glow: rgba(30, 99, 255, 0.18)')) return 'blue-glow wrong';
+      if (!css.includes('--color-blue-wash: rgba(30, 99, 255, 0.10)')) return 'blue-wash wrong';
+      return null;
+    },
+  },
+  {
+    name: 'globals: 2.0 aliases have not drifted from their 1.0 twins',
+    check: () => {
+      const css = read('src/app/globals.css');
+      const hex = (name) => (css.match(new RegExp(`${name}:\\s*(#[0-9A-Fa-f]{6})`)) || [])[1];
+      if (hex('--color-navy-raised') !== hex('--color-navy-light')) return 'navy-raised != navy-light';
+      if (hex('--color-beacon') !== hex('--color-brand-light')) return 'beacon != brand-light';
+      return null;
+    },
+  },
+  {
+    name: 'globals: no OS dark-mode override (DESIGN.md forbids near-black)',
+    check: () => {
+      const css = read('src/app/globals.css');
+      if (css.includes('prefers-color-scheme')) return 'prefers-color-scheme block still present';
+      if (/#0a0a0a/i.test(css)) return '#0a0a0a still present';
+      return null;
+    },
+  },
+  {
+    name: 'globals: the input colour override no longer uses !important',
+    check: () => {
+      const css = read('src/app/globals.css');
+      const block = (css.match(/input,\s*select,\s*textarea\s*\{[^}]*\}/) || [])[0] || '';
+      if (!block) return 'input colour rule missing entirely';
+      if (/!important/.test(block)) return '!important still present; navy utilities cannot override it';
+      const ph = (css.match(/input::placeholder\s*\{[^}]*\}/) || [])[0] || '';
+      if (/!important/.test(ph)) return '!important still present on the placeholder rule';
+      return null;
+    },
+  },
+];
+
+let failed = 0;
+for (const rule of RULES) {
+  let result;
+  try {
+    result = rule.check();
+  } catch (err) {
+    result = `threw: ${err.message}`;
+  }
+  if (result) {
+    failed++;
+    console.error(`FAIL  ${rule.name}\n      ${result}`);
+  } else {
+    console.log(`ok    ${rule.name}`);
+  }
+}
+console.log(`\n${RULES.length - failed}/${RULES.length} design invariants hold`);
+process.exit(failed ? 1 : 0);
