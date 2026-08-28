@@ -183,8 +183,16 @@ important component on the site and must be recognisable everywhere it appears.
 Marquee Teal `#22C1C3` = presale open or scheduled; Signal Muted `#8FA3C8` = not yet
 open. Colour always paired with a word.
 
-**Wired into (this pass):** onsale calendar, watchlist, dashboard.
-**Deferred:** homepage, venue guides, weekly email.
+**Rendered by (this pass):** the onsale calendar only. The dashboard's `EventCard`
+and the watchlist row match `OnsaleRow`'s construction but do not reuse the
+component: the dashboard `Event` and `WatchlistItem` shapes are not `FeedEvent`,
+neither carries onsale or presale data to drive the status pill, and both carry
+price information `OnsaleRow` has no slot for. Forcing them through it would
+render "Check listing" on every watchlist row and drop the target-versus-current
+comparison the page exists for.
+
+**Deferred:** homepage, venue guides, the watchlist, and the weekly email — plus a
+shared row primitive to unify the three constructions once one row shape is agreed.
 
 ---
 

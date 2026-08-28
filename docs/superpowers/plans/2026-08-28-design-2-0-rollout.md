@@ -148,11 +148,15 @@ const RULES = [
     },
   },
   {
-    name: 'globals: the input colour override is scoped, not global',
+    name: 'globals: the input colour override no longer uses !important',
     check: () => {
       const css = read('src/app/globals.css');
-      const m = css.match(/^\s*input,\s*select,\s*textarea\s*\{/m);
-      return m ? 'unscoped input/select/textarea rule still present' : null;
+      const block = (css.match(/input,\s*select,\s*textarea\s*\{[^}]*\}/) || [])[0] || '';
+      if (!block) return 'input colour rule missing entirely';
+      if (/!important/.test(block)) return '!important still present; navy utilities cannot override it';
+      const ph = (css.match(/input::placeholder\s*\{[^}]*\}/) || [])[0] || '';
+      if (/!important/.test(ph)) return '!important still present on the placeholder rule';
+      return null;
     },
   },
 ];
@@ -258,17 +262,19 @@ body {
   font-family: var(--font-inter), Inter, sans-serif;
 }
 
-/* Light content surface only. This was global and !important, which meant it
-   overrode any navy input on the app surface. DESIGN.md §4 puts app inputs on
-   a Deep Void fill with bone text, so the override is scoped to the surface it
-   was actually written for. */
-.surface-content input,
-.surface-content select,
-.surface-content textarea {
+/* Light-surface default for inputs. The !important is what actually had to go:
+   a Tailwind utility class (specificity 0,1,0) outranks this element selector
+   (0,0,3), so navy inputs on the app surface override it with text-bone and no
+   scoping is needed. Scoping it to a .surface-content class instead would make
+   the rule dead — nothing in the codebase carries that class — and would
+   silently drop every content-page input to the UA default. */
+input,
+select,
+textarea {
   color: #2B2F38;
 }
 
-.surface-content input::placeholder {
+input::placeholder {
   color: #9ca3af;
 }
 
@@ -284,7 +290,7 @@ body {
 
 Three deliberate removals, each recorded in the spec:
 - the `@media (prefers-color-scheme: dark)` block, which was forcing `#0a0a0a` onto every light content page for dark-mode visitors;
-- the `!important` on the input colour rules, now scoped to `.surface-content`;
+- the `!important` on the input colour rules, which was what blocked navy inputs; the rules themselves stay global so content-page inputs are untouched;
 - the `box-shadow` on `.navbar-solid` — a drop shadow on navy reads as smudge.
 
 - [ ] **Step 4: Run the check and verify it passes**
@@ -649,7 +655,7 @@ Append to the `RULES` array in `web/scripts/check-design.mjs`:
     name: 'Navbar: navy ground, active state, no border-bottom',
     check: () => {
       const src = read('src/components/Navbar.tsx');
-      if (/border-b(?!-0)/.test(src)) return 'border-bottom still present; separation comes from the page beneath';
+      if (/border-b(?![-\w])/.test(src)) return 'border-bottom still present; separation comes from the page beneath';
       if (!/usePathname/.test(src)) return 'no active-page detection';
       if (!/ring-brand|outline-brand/.test(src)) return 'no visible focus ring';
       return null;
@@ -721,7 +727,10 @@ calls for alters site-wide internal linking and is deferred."
 
 **Files:**
 - Modify: `web/src/app/dashboard/page.tsx` (214 lines)
+- Modify: `web/src/components/EventCard.tsx` (176 lines)
 - Modify: `web/scripts/check-design.mjs` (append the app-surface rule)
+
+**`EventCard` is in scope for this task.** It is imported by `dashboard/page.tsx` and by nothing else in the codebase — verified with `grep -rl EventCard src --include='*.tsx'` — so restyling it changes no out-of-scope page. It must be restyled here: the dashboard renders its results as `EventCard`, and a `bg-white` card on a Deep Void ground is the single most visible way this task can go wrong.
 
 **Interfaces:**
 - Consumes: colour tokens (Task 1), fonts (Task 2), `OnsaleRow` (Task 3).
@@ -737,6 +746,7 @@ Append to the `RULES` array in `web/scripts/check-design.mjs`. This rule is writ
     check: () => {
       const pages = [
         'src/app/dashboard/page.tsx',
+        'src/components/EventCard.tsx',
         // Task 6 adds watchlist, Task 7 adds event/[id].
       ];
       const banned = ['bg-white', 'bg-gray-50', 'text-gray-900', 'text-gray-700', 'text-gray-600', 'text-gray-500', 'text-gray-400', 'text-gray-300', 'text-red-600', 'bg-red-50'];
@@ -745,7 +755,10 @@ Append to the `RULES` array in `web/scripts/check-design.mjs`. This rule is writ
         const src = read(p);
         const found = banned.filter((c) => src.includes(c));
         if (found.length) problems.push(`${p}: ${found.join(', ')}`);
-        if (!src.includes('bg-deep-void')) problems.push(`${p}: page does not set the Deep Void ground`);
+        // EventCard is a card, not a page — it sits on the ground rather than setting it.
+        if (p.endsWith('page.tsx') && !src.includes('bg-deep-void')) {
+          problems.push(`${p}: page does not set the Deep Void ground`);
+        }
       }
       return problems.length ? problems.join(' | ') : null;
     },
@@ -765,7 +778,7 @@ Read `web/src/app/dashboard/page.tsx` in full, then apply the class translation 
 2. **Panels and cards:** `bg-white` → `bg-navy-raised` with `rounded-[6px]`, and **delete the border and any shadow** — the tonal step is the boundary.
 3. **Search input:** Deep Void fill, `border border-navy-hairline`, `rounded-[6px]`, placeholder in `font-data text-[13px] text-deep-muted`. Focus becomes `focus:border-brand focus:ring-[3px] focus:ring-blue-glow`. DESIGN.md §4 calls this the one place the glow is functional rather than atmospheric, so it must be unmistakable.
 4. **Filter chips / category buttons:** the existing `ring-2 ring-brand` selected state becomes `bg-blue-wash text-bone` with the ring kept for focus only.
-5. **Results:** where the page renders a list of events, use `OnsaleRow` from `@/components/OnsaleRow` rather than the page's own row markup. If the results are card-shaped rather than a list, leave `EventCard` in place — do not restyle `EventCard` in this task, it is also used by out-of-scope pages.
+5. **Results — restyle `EventCard`, do not swap it for `OnsaleRow`.** The dashboard renders `<EventCard key={event.id} event={event} isLoggedIn={!!user} />` at `dashboard/page.tsx:172`. `EventCard` carries price and a logged-in affordance that `OnsaleRow` has no slot for, and the dashboard's `Event` shape is not `FeedEvent`. Restyle the card to the 2.0 construction instead: `bg-navy-raised`, `rounded-[6px]`, no border and no shadow, title at 17px/600 `text-bone` with `tracking-[-0.015em]`, metadata at 13px `text-muted`, every price and date in `font-data tabular-nums`, and a hover that shifts the ground to `bg-blue-wash` rather than lifting a shadow.
 6. **Primary button:** exactly one on the page. Signal Blue fill, `text-bone`, `rounded-[6px]`, `px-6 py-3.5`, and on hover a glow behind rather than a darker fill: `hover:shadow-[0_0_24px_var(--color-blue-glow)]`. Add `active:translate-y-px` and `motion-reduce:transition-none`.
 7. **Loading state:** replace any spinner with skeleton blocks shaped like the rows they stand in for — `animate-pulse rounded-[6px] bg-navy-raised` at the height of a real row, `motion-reduce:animate-none`.
 8. **Empty state:** where a search returns nothing, render a composed panel — a short line in `text-bone` plus a `text-muted` suggestion — not a blank area.
@@ -791,7 +804,7 @@ Run `cd web && npm run dev`, open `http://localhost:3000/dashboard`, and confirm
 - [ ] **Step 6: Commit**
 
 ```bash
-git add web/src/app/dashboard/page.tsx web/scripts/check-design.mjs
+git add web/src/app/dashboard/page.tsx web/src/components/EventCard.tsx web/scripts/check-design.mjs
 git commit -m "Invert the dashboard to the navy app surface
 
 Deep Void ground with Raised Navy panels, borderless and shadowless so
@@ -818,6 +831,7 @@ In `web/scripts/check-design.mjs`, in the `app surface` rule, change the `pages`
 ```js
       const pages = [
         'src/app/dashboard/page.tsx',
+        'src/components/EventCard.tsx',
         'src/app/watchlist/page.tsx',
         // Task 7 adds event/[id].
       ];
@@ -833,13 +847,13 @@ Expected: exit 1, listing the light-surface classes in `watchlist/page.tsx`.
 Read `web/src/app/watchlist/page.tsx` in full, then apply the class translation table. Specifics for this page:
 
 1. **Ground:** outermost wrapper gets `min-h-screen bg-deep-void`.
-2. **Tracked events:** render each with `OnsaleRow` where the shape allows, so the watchlist and the calendar are recognisably the same component. Where a row needs the extra target-price control, wrap `OnsaleRow` rather than duplicating its markup.
+2. **Tracked events — match `OnsaleRow`'s construction, do not reuse the component.** The watchlist's own `WatchlistItem` shape (`event_name`, `event_date`, `target_price`, `current_min_price`, declared at `watchlist/page.tsx:10`) is not `FeedEvent`, and it carries no `onsaleStart` or `presales`. Forcing it through `OnsaleRow` would render "Check listing" on every row and would drop the target-versus-current price comparison, which is the entire point of the page. Restyle the existing rows to the same construction instead — Raised Navy ground, `rounded-[6px]`, `px-5 py-4`, the same mono day-numeral-over-month date block, the same 17px/600 title and 13px `text-muted` metadata, the same `hover:bg-blue-wash` with no transform — so the two read as the same component even though they do not yet share code. Unifying them behind a shared row primitive is on the deferred list.
 3. **Target-price inputs:** navy input spec — Deep Void fill, `border-navy-hairline`, `rounded-[6px]`, `font-data tabular-nums` for the value, `focus:border-brand focus:ring-[3px] focus:ring-blue-glow`.
 4. **The destructive action:** the existing `bg-red-50` / `text-red-600` remove control becomes `text-alert hover:bg-alert/10`. This page is the reason `--color-alert` exists.
 5. **Errors:** replace any `window.alert()` or `alert()` call with an inline message rendered next to the control that failed — `text-alert text-[13px]`, active voice, no exclamation mark, e.g. "Couldn't remove that event. Try again." Search the file for `alert(` before assuming there is none.
 6. **Empty state:** an empty watchlist gets a composed "getting started" panel pointing at the dashboard search, not a bare line of text.
 7. **Prices and dates:** every numeral gets `font-data tabular-nums`.
-8. **Green usage:** if the page uses `text-green-600` for anything that is *not* on-sale status, it must not stay green — DESIGN.md reserves Gate Green for on-sale status alone. Route it through the price-direction decision recorded in Task 7.
+8. **Green usage:** `watchlist/page.tsx:223` renders `Target: $X` in `text-green-600`. A target price is not on-sale status, and DESIGN.md reserves Gate Green for on-sale status alone. Use `text-brand` (Signal Blue), consistent with the price-direction decision in Task 7 — a price in the user's favour is blue, not green. Check the file for any other non-status green and move it the same way.
 
 - [ ] **Step 4: Run the check and verify it passes**
 
@@ -1056,6 +1070,7 @@ Recorded so they are not lost, and so no task quietly pulls them in:
 
 1. **Content surface migration** — venue guides, city and category pages, blog. Navy for chrome, hero and interstitial bands; the reading column stays light, capped at a 68-character measure. DESIGN.md §7.6 is explicit: do not put 170 words of venue guide on navy.
 2. **Homepage rebuild** around The Concourse.
-3. **`OnsaleRow` into the homepage, venue guides and the weekly email** — the remaining two of the five places it must be identical. The email lives in the backend `index.js`.
+3. **`OnsaleRow` into the homepage, venue guides, the watchlist and the weekly email** — the remaining four of the five places it must be identical. Only the onsale calendar renders the component itself after this plan; the dashboard card and the watchlist row match its construction without sharing its code, for the shape reasons recorded in Tasks 5 and 6. The email lives in the backend `index.js`.
 4. **Nav IA reduction** to Events · Venues · Onsales · Blog, dropping Compare and World Cup, measured for SEO impact.
-5. **Retiring the 1.0 tokens** once no file references them, and adding a check rule that fails if they reappear.
+5. **A shared row primitive** behind `OnsaleRow`, the restyled `EventCard` and the watchlist row. All three render the same construction after this plan but do not share code, because their data shapes differ (`FeedEvent` vs the dashboard `Event` vs `WatchlistItem`). Unifying them means agreeing one row shape first.
+6. **Retiring the 1.0 tokens** once no file references them, and adding a check rule that fails if they reappear.
