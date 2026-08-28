@@ -80,6 +80,30 @@ const RULES = [
       return null;
     },
   },
+  {
+    name: 'layout: Archivo and IBM Plex Mono replace Poppins and Geist Mono',
+    check: () => {
+      const src = read('src/app/layout.tsx');
+      if (/Poppins/.test(src)) return 'Poppins still imported';
+      if (/Geist_Mono|geist-mono/.test(src)) return 'Geist Mono still imported';
+      if (!/Archivo/.test(src)) return 'Archivo not imported';
+      if (!/IBM_Plex_Mono/.test(src)) return 'IBM Plex Mono not imported';
+      return null;
+    },
+  },
+  {
+    name: 'layout: Inter loads weight 600, which the 2.0 scale requires',
+    check: () => {
+      const src = read('src/app/layout.tsx');
+      const block = (src.match(/const inter = Inter\(\{[\s\S]*?\}\);/) || [])[0] || '';
+      if (!block) return 'Inter declaration not found';
+      if (!/"600"/.test(block)) return 'Inter is missing weight 600';
+      const css = read('src/app/globals.css');
+      if (!css.includes('--font-heading: var(--font-archivo)')) return 'font-heading not pointed at Archivo';
+      if (!css.includes('--font-data: var(--font-plex-mono)')) return 'font-data not defined';
+      return null;
+    },
+  },
 ];
 
 let failed = 0;

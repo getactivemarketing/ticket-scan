@@ -54,8 +54,9 @@
 
   /* Fonts */
   --font-sans: var(--font-inter);
-  --font-heading: var(--font-poppins);
-  --font-mono: var(--font-geist-mono);
+  --font-heading: var(--font-archivo);
+  --font-data: var(--font-plex-mono);
+  --font-mono: var(--font-plex-mono);
 }
 
 body {

@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Inter, Poppins, Geist_Mono } from "next/font/google";
+import { Inter, Archivo, IBM_Plex_Mono } from "next/font/google";
 import "./globals.css";
 import { AuthProvider } from "@/context/AuthContext";
 import Navbar from "@/components/Navbar";
@@ -8,18 +8,27 @@ import Footer from "@/components/Footer";
 const inter = Inter({
   variable: "--font-inter",
   subsets: ["latin"],
-  weight: ["400", "500"],
+  // 600 is required by the 2.0 scale — card titles (17px/600) and caps
+  // labels (11px/600). Without it those silently render as 500 and the
+  // hierarchy the scale depends on never appears.
+  weight: ["400", "500", "600"],
 });
 
-const poppins = Poppins({
-  variable: "--font-poppins",
+// Display typeface. A grotesque that tightens properly, unlike the prior
+// friendly geometric. Displays soft and generic at large sizes damage the
+// brand; Archivo reads confident and tightly fitted where it matters most.
+const archivo = Archivo({
+  variable: "--font-archivo",
   subsets: ["latin"],
-  weight: ["600", "700"],
+  weight: ["700", "800"],
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+// Dates, times, capacities and section numbers are the substance of this
+// site, so they are monospaced and tabular.
+const plexMono = IBM_Plex_Mono({
+  variable: "--font-plex-mono",
   subsets: ["latin"],
+  weight: ["400", "600"],
 });
 
 export const viewport: Viewport = {
@@ -139,7 +148,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         />
       </head>
       <body
-        className={`${inter.variable} ${poppins.variable} ${geistMono.variable} antialiased bg-gray-50`}
+        className={`${inter.variable} ${archivo.variable} ${plexMono.variable} antialiased bg-gray-50`}
       >
         {/* Google Tag Manager (noscript) */}
         <noscript>
