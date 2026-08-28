@@ -57,12 +57,16 @@ Tight negative tracking on large display type is non-negotiable. Body text keeps
 | `text-gray-900` | `text-bone` | Primary text |
 | `text-gray-700`, `text-gray-600`, `text-gray-500` | `text-muted` | Secondary text and metadata |
 | `text-gray-400`, `text-gray-300` | `text-deep-muted` | Tertiary, disabled, placeholder |
-| `border-gray-100`, `border-gray-200`, `border-gray-300` | `border-navy-hairline` | **Only** on inputs and data tables — delete the border elsewhere and let the tonal step do the work |
+| `border-gray-100`, `border-gray-200`, `border-gray-300` | `border-navy-hairline` | On inputs, data tables, **and secondary buttons** (DESIGN.md §4 line 117 defines a secondary button as transparent fill + 1px Hairline Navy border + bone text, hover lifting the border to Signal Blue). Delete the border anywhere else and let the tonal step do the work — never a section divider. |
 | `text-red-600`, `bg-red-50` | `text-alert`, `bg-alert/10` | Errors and destructive actions |
 | `text-blue-200`, `text-blue-700`, `text-blue-900` | `text-beacon` | Informational text on navy |
 | `ring-brand` | `ring-brand` + `ring-offset-deep-void` | Focus ring stays Signal Blue |
 | `rounded-xl`, `rounded-lg` | `rounded-[6px]` | Pills are `rounded-[4px]` |
 | shadow utilities on navy | delete, or `shadow-[0_0_24px_var(--color-blue-glow)]` | Light, not shade |
+| `text-white` | `text-bone` | `Navbar` and `Footer` use these rather than the gray scale |
+| `text-white/80`, `text-white/70` | `text-muted` | Opacity-on-white is not a 2.0 neutral — the blue-biased tokens replace it |
+| `text-white/50`, `text-white/40` | `text-deep-muted` | Same |
+| `border-white/10` | delete it, or `border-navy-hairline` if a rule is genuinely required | |
 
 **Out of scope — do not modify these files in any task:**
 `app/page.tsx` (homepage), `app/venues/**`, `app/tickets/**`, `app/blog/**`, `app/world-cup-2026/**`, `app/faq`, `app/how-it-works`, `app/contact`, `app/privacy`, `app/terms`, `src/data/**`, and the backend `index.js`. Navigation **links** and site structure are unchanged even where a task edits `Navbar.tsx`.
@@ -681,8 +685,12 @@ Append to the `RULES` array in `web/scripts/check-design.mjs`:
     check: () => {
       const src = read('src/components/Navbar.tsx');
       if (/border-b(?![-\w])/.test(src)) return 'border-bottom still present; separation comes from the page beneath';
-      if (!/usePathname/.test(src)) return 'no active-page detection';
-      if (!/ring-brand|outline-brand/.test(src)) return 'no visible focus ring';
+      // usePathname is ALREADY imported in Navbar.tsx for unrelated reasons, so its
+      // presence proves nothing. Require the actual active-state markers instead.
+      if (!/isActive/.test(src)) return 'no isActive helper marking the current page';
+      if (!/after:bg-brand/.test(src)) return 'active item has no Signal Blue underline';
+      if (!/focus-visible:ring-brand/.test(src)) return 'no visible focus ring';
+      if (/text-white\//.test(src)) return 'text-white/NN opacity classes remain; use text-bone and text-muted';
       return null;
     },
   },
