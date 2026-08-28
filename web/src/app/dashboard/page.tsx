@@ -78,7 +78,7 @@ export default function DashboardPage() {
 
   const inputClass =
     'w-full px-4 py-3 bg-deep-void border border-navy-hairline rounded-[6px] text-bone outline-none ' +
-    'transition-colors placeholder:font-data placeholder:text-[13px] placeholder:text-deep-muted ' +
+    'transition-colors placeholder:font-data placeholder:text-[13px] placeholder:text-muted ' +
     'focus:border-brand focus:ring-[3px] focus:ring-blue-glow motion-reduce:transition-none';
 
   return (
@@ -206,7 +206,7 @@ export default function DashboardPage() {
           <>
             <div className="flex justify-between items-center mb-6">
               <h2 className="text-xl font-bold font-heading text-bone">
-                {events.length} events found
+                <span className="font-data tabular-nums">{events.length}</span> events found
               </h2>
             </div>
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">

@@ -63,8 +63,10 @@ export default function WatchlistPage() {
   const [watchlist, setWatchlist] = useState<WatchlistItem[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
-  const [removeErrorId, setRemoveErrorId] = useState<number | null>(null);
-  const [removeErrorMsg, setRemoveErrorMsg] = useState('');
+  // Per-row remove errors. A single shared id/message pair would clear row
+  // A's error the moment the user clicks Remove on row B, so this is keyed
+  // by watchlist item id and each row reads (and clears) only its own key.
+  const [removeErrors, setRemoveErrors] = useState<Record<number, string>>({});
 
   useEffect(() => {
     if (!authLoading && user) {
@@ -104,13 +106,17 @@ export default function WatchlistPage() {
   };
 
   const handleRemove = async (id: number) => {
-    setRemoveErrorId(null);
+    setRemoveErrors((prev) => {
+      if (!(id in prev)) return prev;
+      const next = { ...prev };
+      delete next[id];
+      return next;
+    });
     try {
       await api.removeFromWatchlist(id);
       setWatchlist((prev) => prev.filter((item) => item.id !== id));
     } catch {
-      setRemoveErrorId(id);
-      setRemoveErrorMsg("Couldn't remove that event. Try again.");
+      setRemoveErrors((prev) => ({ ...prev, [id]: "Couldn't remove that event. Try again." }));
     }
   };
 
@@ -243,7 +249,7 @@ export default function WatchlistPage() {
                     </div>
 
                     {place && <p className="text-[13px] text-muted">{place}</p>}
-                    <p className="mt-0.5 font-data text-[13px] tracking-[0.02em] tabular-nums text-deep-muted">
+                    <p className="mt-0.5 font-data text-[13px] tracking-[0.02em] tabular-nums text-muted">
                       {formatDate(item.event_date)}
                     </p>
 
@@ -274,14 +280,14 @@ export default function WatchlistPage() {
                       {item.target_price && (
                         <span className="text-[13px] text-muted">
                           Target:{' '}
-                          <span className="font-data font-semibold tabular-nums text-brand">
+                          <span className="font-data font-semibold tracking-[0.02em] tabular-nums text-brand">
                             ${item.target_price}
                           </span>
                         </span>
                       )}
 
                       {item.last_checked && (
-                        <span className="font-data text-[13px] tabular-nums text-deep-muted">
+                        <span className="font-data text-[13px] tracking-[0.02em] tabular-nums text-muted">
                           Updated {formatTimeAgo(item.last_checked)}
                         </span>
                       )}
@@ -297,8 +303,8 @@ export default function WatchlistPage() {
                         Remove
                       </button>
                     </div>
-                    {removeErrorId === item.id && (
-                      <p className="text-alert text-[13px]">{removeErrorMsg}</p>
+                    {removeErrors[item.id] && (
+                      <p className="text-alert text-[13px]">{removeErrors[item.id]}</p>
                     )}
                   </div>
                 </div>

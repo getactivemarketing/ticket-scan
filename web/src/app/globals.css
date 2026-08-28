@@ -33,13 +33,27 @@
   --color-navy-raised: #162D5A;
   --color-navy-hairline: #1F3A6B;
 
-  /* Blue family — the light source. Glow replaces drop shadow on dark. */
-  --color-beacon: #4A82FF;
+  /* Blue family — the light source. Glow replaces drop shadow on dark.
+     Beacon is #6192FF, not the #4A82FF of --color-brand-light: measured
+     against Raised Navy, #4A82FF is 3.81:1 (fails AA text at 4.5:1).
+     #6192FF preserves the 221° hue and clears 4.5:1 everywhere it is used
+     (4.54 on Raised Navy, 5.69 on Concourse Navy, 6.39 on Deep Void).
+     --color-brand-light stays at #4A82FF on purpose — it is a 1.0 token
+     consumed by out-of-scope light content pages and must not move. */
+  --color-beacon: #6192FF;
   --color-blue-glow: rgba(30, 99, 255, 0.18);
   --color-blue-wash: rgba(30, 99, 255, 0.10);
 
   /* Neutrals — every one carries a blue bias. Pure grey next to navy
-     reads as dirty. */
+     reads as dirty.
+     Deep Muted is #5A6B8C on purpose, not lightened: hue-preserving
+     lightening lands at #8796B2, almost on top of Signal Muted (#8FA3C8),
+     which destroys the hierarchy the tier exists to create. Measured, Deep
+     Muted is 3.54:1 on Deep Void and 2.52:1 on Raised Navy — below the
+     4.5:1 body-text threshold. Its role is therefore restricted to disabled
+     states (WCAG 1.4.3 exempts disabled components) and decorative icons
+     paired with adjacent text (which only need 3:1). It must NOT be used
+     for tertiary text or placeholder copy — those use --color-muted. */
   --color-bone: #F7F9FC;
   --color-muted: #8FA3C8;
   --color-deep-muted: #5A6B8C;

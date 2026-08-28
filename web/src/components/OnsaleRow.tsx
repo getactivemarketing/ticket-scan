@@ -46,7 +46,7 @@ export default function OnsaleRow({ event }: { event: FeedEvent }) {
         </p>
         {place && <p className="mt-0.5 truncate text-[13px] text-muted">{place}</p>}
         {time && (
-          <p className="mt-0.5 font-data text-[13px] tracking-[0.02em] tabular-nums text-deep-muted">
+          <p className="mt-0.5 font-data text-[13px] tracking-[0.02em] tabular-nums text-muted">
             On sale {time}
           </p>
         )}

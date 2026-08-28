@@ -14,7 +14,7 @@ const RULES = [
         ['--color-deep-void', '#070F26'],
         ['--color-navy-raised', '#162D5A'],
         ['--color-navy-hairline', '#1F3A6B'],
-        ['--color-beacon', '#4A82FF'],
+        ['--color-beacon', '#6192FF'],
         ['--color-bone', '#F7F9FC'],
         ['--color-muted', '#8FA3C8'],
         ['--color-deep-muted', '#5A6B8C'],
@@ -43,9 +43,13 @@ const RULES = [
         const m = css.match(new RegExp(`${name}:\\s*(#[0-9A-Fa-f]{6})`));
         return m ? m[1].toUpperCase() : null;
       };
+      // Only navy-raised/navy-light still needs to match: Beacon deliberately
+      // diverged from brand-light in Task 8 to clear AA contrast (4.5:1) on
+      // Raised Navy — #4A82FF measured 3.81. brand-light stays at #4A82FF
+      // because it is a 1.0 token consumed by out-of-scope light content
+      // pages, so the two can no longer be the same value.
       const pairs = [
         ['--color-navy-raised', '--color-navy-light'],
-        ['--color-beacon', '--color-brand-light'],
       ];
       for (const [a, b] of pairs) {
         const va = hex(a);
@@ -57,6 +61,18 @@ const RULES = [
         if (va !== vb) return `${a} ${va} != ${b} ${vb}`;
       }
       return null;
+    },
+  },
+  {
+    name: 'globals: Beacon and Deep Muted hold their Task 8 AA-contrast values',
+    check: () => {
+      const css = read('src/app/globals.css');
+      const required = [
+        ['--color-beacon', '#6192FF'],
+        ['--color-deep-muted', '#5A6B8C'],
+      ];
+      const wrong = required.filter(([k, v]) => !css.includes(`${k}: ${v}`));
+      return wrong.length ? `missing or wrong: ${wrong.map((w) => w[0]).join(', ')}` : null;
     },
   },
   {
