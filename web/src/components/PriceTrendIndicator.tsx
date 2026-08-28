@@ -54,14 +54,14 @@ export default function PriceTrendIndicator({
 
   if (percentChange === null) {
     return (
-      <span className={`inline-flex items-center gap-1 rounded-[4px] font-medium font-data tabular-nums text-muted ${sizeClasses[size]}`}>
+      <span className={`inline-flex items-center gap-1 font-medium font-data tabular-nums text-muted ${sizeClasses[size]}`}>
         <span>--</span>
       </span>
     );
   }
 
   return (
-    <span className={`inline-flex items-center gap-1 rounded-[4px] font-medium font-data tabular-nums ${text} ${sizeClasses[size]}`}>
+    <span className={`inline-flex items-center gap-1 font-medium font-data tabular-nums ${text} ${sizeClasses[size]}`}>
       {icon}
       <span>{Math.abs(percentChange)}%</span>
     </span>

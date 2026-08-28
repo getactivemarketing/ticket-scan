@@ -307,7 +307,7 @@ export default function EventDetailPage() {
                 </thead>
                 <tbody>
                   {priceHistory.slice(-10).reverse().map((item, index) => (
-                    <tr key={index} className="border-b border-navy-hairline hover:bg-blue-wash transition-colors motion-reduce:transition-none">
+                    <tr key={index} className="border-b border-navy-hairline">
                       <td className="py-3 px-2 text-sm font-data tabular-nums text-muted">
                         {new Date(item.checked_at).toLocaleString('en-US', {
                           month: 'short',
