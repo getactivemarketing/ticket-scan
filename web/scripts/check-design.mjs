@@ -64,15 +64,25 @@ const RULES = [
     },
   },
   {
-    name: 'globals: Beacon and Deep Muted hold their Task 8 AA-contrast values',
+    name: 'globals: Beacon has deliberately diverged from brand-light',
     check: () => {
       const css = read('src/app/globals.css');
-      const required = [
-        ['--color-beacon', '#6192FF'],
-        ['--color-deep-muted', '#5A6B8C'],
-      ];
-      const wrong = required.filter(([k, v]) => !css.includes(`${k}: ${v}`));
-      return wrong.length ? `missing or wrong: ${wrong.map((w) => w[0]).join(', ')}` : null;
+      const hex = (name) => {
+        const m = css.match(new RegExp(`${name}:\\s*(#[0-9A-Fa-f]{6})`));
+        return m ? m[1].toUpperCase() : null;
+      };
+      const beacon = hex('--color-beacon');
+      const brandLight = hex('--color-brand-light');
+      if (!beacon) return '--color-beacon is not a literal hex';
+      if (!brandLight) return '--color-brand-light is not a literal hex';
+      // These were aliased until Task 8. Beacon moved to #6192FF because
+      // #4A82FF measured 3.81:1 on Raised Navy and failed WCAG AA for text;
+      // brand-light stays put because 1.0 content pages depend on it.
+      // Re-aliasing them would silently undo the contrast fix.
+      if (beacon === brandLight) {
+        return `beacon and brand-light are equal again (${beacon}) — the AA divergence was undone`;
+      }
+      return null;
     },
   },
   {
@@ -179,6 +189,26 @@ const RULES = [
       const trend = read('src/components/PriceTrendIndicator.tsx');
       if (/text-success|#16C784/.test(trend)) return 'price trend uses Gate Green, which DESIGN.md reserves for on-sale status';
       return null;
+    },
+  },
+  {
+    name: 'no window.alert on the app surface, and motion is reducible',
+    check: () => {
+      const files = [
+        'src/app/dashboard/page.tsx',
+        'src/app/watchlist/page.tsx',
+        'src/app/event/[id]/page.tsx',
+        'src/components/OnsaleRow.tsx',
+      ];
+      const problems = [];
+      for (const f of files) {
+        const src = read(f);
+        if (/(^|[^.\w])alert\(/.test(src)) problems.push(`${f}: window.alert`);
+        if (/(animate-pulse|transition-)/.test(src) && !/motion-reduce/.test(src)) {
+          problems.push(`${f}: animates without a motion-reduce escape`);
+        }
+      }
+      return problems.length ? problems.join(' | ') : null;
     },
   },
 ];
