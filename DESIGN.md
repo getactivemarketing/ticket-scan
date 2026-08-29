@@ -1,7 +1,7 @@
 # Design System: TicketScan
 
 **Project:** ticketscan.io
-**Status:** 2.0 direction — proposed, not yet implemented
+**Status:** 2.0 — foundation and app surface **implemented** 2026-08-28 (tokens, type, `OnsaleRow`, shared chrome, dashboard, watchlist, event detail). The content and SEO pages, the homepage and the nav IA are **not yet migrated** — see `docs/superpowers/plans/2026-08-28-design-2-0-followups.md`. Three colour roles below were corrected during implementation after measuring contrast; those corrections are marked **[amended 2026-08-28]**.
 **Hard constraint:** the brand hues are fixed. They match the logo and do not change. Everything below adds tints, shades and usage rules *within* those hues; it introduces no new colour families.
 
 ---
@@ -45,6 +45,7 @@ Depth comes from stacked tonal layers, not from borders or drop shadows.
 | **Deep Void** | `#070F26` | Page background behind everything. Darker than the brand navy so that navy itself can read as a raised surface. |
 | **Concourse Navy** | `#0D1B3D` | Level 1 — content sections, page headers, nav. |
 | **Raised Navy** | `#162D5A` | Level 2 — cards, rows, modular widgets sitting on Level 1. |
+| **Raised Navy Hover** | `#17356A` | **[added 2026-08-28]** The opaque hover ground for a Raised Navy row — Raised Navy with 10% Signal Blue already composited in. Must be opaque: a translucent `background-color` *replaces* the row's ground rather than layering on it, so on a light page the row's text disappears. |
 | **Hairline Navy** | `#1F3A6B` | Borders where a border is genuinely required (inputs, table rules). Never a section divider. |
 
 ### Blue family — the light source
@@ -52,9 +53,9 @@ Depth comes from stacked tonal layers, not from borders or drop shadows.
 | Descriptive name | Hex | Functional role |
 |---|---|---|
 | **Signal Blue** | `#1E63FF` | Primary buttons, focus rings, active nav, link colour on dark. |
-| **Beacon Blue** | `#4A82FF` | Hover and pressed states; link colour on light grounds where `#1E63FF` is too heavy. |
+| **Beacon Blue** | `#6192FF` | **[amended 2026-08-28]** Link and accent text on dark grounds; hover and pressed states. Was `#4A82FF`, which measured **3.81:1 on Raised Navy** and failed WCAG AA for text. `#6192FF` preserves the 221° hue and clears 4.5:1 on every navy ground (4.54 Raised, 5.69 Concourse, 6.39 Deep Void). It is no longer the same value as the 1.0 `--color-brand-light`, which stays `#4A82FF` for the light content surface; a checker rule asserts the two must differ. Note Signal Blue itself is only 2.75:1 on Raised Navy and must not be used as text there. |
 | **Blue Glow** | `rgba(30, 99, 255, 0.18)` | Ambient glow behind primary CTAs and beneath the active nav item. This is what replaces drop shadows on dark surfaces. |
-| **Blue Wash** | `rgba(30, 99, 255, 0.10)` | Tinted backgrounds for selected rows and active filter chips. |
+| **Blue Wash** | `rgba(30, 99, 255, 0.10)` | Tinted backgrounds for selected rows and active filter chips, on a ground known to be navy. **Not** a row-hover ground and never a button fill — use Raised Navy Hover for the former, and DESIGN.md's three button levels for the latter. |
 
 ### Neutrals — drawn from the navy hue, not pure grey
 
@@ -64,9 +65,17 @@ Pure grey next to navy reads as dirty. Every neutral carries a blue bias.
 |---|---|---|
 | **Concourse Bone** | `#F7F9FC` | Primary text on dark; page ground on the content surface. |
 | **Signal Muted** | `#8FA3C8` | Secondary text, metadata, venue and city lines. |
-| **Deep Muted** | `#5A6B8C` | Tertiary text, disabled states, placeholder copy. |
+| **Deep Muted** | `#5A6B8C` | **[amended 2026-08-28]** Disabled states and decorative icons only. It measures **2.52:1 on Raised Navy and 3.54:1 on Deep Void**, so it fails AA as text; WCAG 1.4.3 exempts disabled controls, and 3.54 clears the 3:1 graphics threshold for icons. Tertiary text and placeholder copy use Signal Muted instead. The value is deliberately unchanged: lightening it to pass would land on `#8796B2`, effectively Signal Muted, collapsing the tier it exists to create. Navy sustains two legible text tiers at AA, not three. |
 | **Paper** | `#FFFFFF` | The reading column on content pages only. |
 | **Paper Line** | `#E1E7F0` | Rules and card borders on the light reading surface. |
+
+### System colours — outside the palette, outside the triad
+
+| Descriptive name | Hex | Functional role |
+|---|---|---|
+| **Alert** | `#FF6369` | **[added 2026-08-28]** Errors and destructive actions, and the "price rose" direction. Deliberately not part of the status triad. A lighter red than the usual `#DC2626` because it has to read on Deep Void (6.55:1) and Raised Navy (4.65:1). |
+
+**Price direction is not status.** A price drop uses Signal Blue, a rise uses Alert, and both always carry an arrow and the percentage as text. Gate Green is never used for price movement — the moment green means two things it means nothing.
 
 ### The status triad — the most important colour rule on the site
 
@@ -126,7 +135,7 @@ The single most important component on the site. It appears on the homepage, eve
 - **Left:** date block in IBM Plex Mono, tabular — day numeral at 21px above a 10px uppercase month.
 - **Centre:** event name at card-title scale; venue and city beneath in Signal Muted at 13px.
 - **Right:** status pill from the triad, colour plus word.
-- **Interactive state:** the row lifts one tonal step (Raised Navy → a 6% Blue Wash overlay) and the status pill gains a soft glow of its own colour. No transform, no scale — this is a dense list and jumping rows are nauseating.
+- **Interactive state:** the row lifts one tonal step (Raised Navy → the opaque Raised Navy Hover) and the status pill gains a soft glow of its own colour. No transform, no scale — this is a dense list and jumping rows are nauseating.
 
 ### Cards and containers
 
@@ -142,7 +151,8 @@ The single most important component on the site. It appears on the homepage, eve
 ### Inputs and forms
 
 - Deep Void fill — inputs sit *below* the surface, not on it.
-- 1px Hairline Navy border, 6px radius, 13px Plex Mono placeholder in Deep Muted.
+- 1px Hairline Navy border, 6px radius, 13px Plex Mono placeholder in **Signal Muted** (Deep Muted fails AA as text — see the neutrals table).
+- Project-level input rules must live in `@layer base`. Tailwind v4 emits real cascade layers, and an unlayered rule beats a layered utility regardless of specificity — an unlayered `input { color: … }` silently overrode `text-bone` and rendered the search field's text at 1.42:1.
 - **Focus:** border becomes Signal Blue plus a 3px Blue Glow ring. Focus must be unmistakable; this is the one place where the glow is functional rather than atmospheric.
 
 ### Navigation
@@ -186,11 +196,39 @@ The single most important component on the site. It appears on the homepage, eve
 
 ## 7. Migration Notes
 
-The palette does not change, so this is additive rather than a rewrite.
+The palette does not change, so this is additive rather than a rewrite. Steps 1–3 and 5 are
+**done** as of 2026-08-28; step 4 is partly done and steps 6 onward are the next pass.
 
-1. **Extend the tokens** in `src/app/globals.css` — add the navy family, blue glow/wash and blue-biased neutrals alongside the existing four brand variables. Nothing existing is removed.
-2. **Swap the display face.** Replace Poppins with Archivo in the `next/font` setup; `--font-heading` already abstracts this, so it is a one-line change.
-3. **Add IBM Plex Mono** as `--font-data` and apply it to every date, time, capacity and section number.
-4. **Build the Onsale Row once** as a shared component and use it in all five places. Today the homepage, venue pages and calendar would each invent their own.
-5. **Invert the app surface** — dashboard, watchlist and event detail move to navy grounds. Do this before the content pages; it is where density pays off and where the fewest SEO pages are at risk.
-6. **Leave the reading column light.** Do not put 170 words of venue guide on navy.
+1. ~~**Extend the tokens**~~ **Done.** The navy family, blue glow/wash and blue-biased
+   neutrals sit alongside the four brand variables in `src/app/globals.css`. Nothing existing
+   was removed — the 1.0 tokens stay until the content surface migrates.
+2. ~~**Swap the display face.**~~ **Done.** Archivo replaces Poppins. Note Inter also had to
+   gain weight 600: the scale calls for it on card titles and caps labels, and Inter was
+   loading 400/500 only, so every SemiBold was silently rendering as Medium.
+3. ~~**Add IBM Plex Mono**~~ **Done**, as `--font-data`, on every date, time, capacity and
+   section number, with `tabular-nums`.
+4. **Build the Onsale Row once** — *partly done.* The component is built to spec and renders
+   on the onsale calendar. The dashboard card and the watchlist row match its construction
+   but do **not** share its code: their data shapes differ (`FeedEvent` vs the dashboard
+   `Event` vs `WatchlistItem`), and both carry price information the component has no slot
+   for. Unifying them behind one row primitive means agreeing a single shape first.
+5. ~~**Invert the app surface**~~ **Done.** Dashboard, watchlist and event detail are on navy
+   grounds. Shared chrome (`Navbar`, `Footer`) took the 2.0 visual treatment at the same
+   time, with links and site structure deliberately untouched.
+6. **Leave the reading column light.** Do not put 170 words of venue guide on navy. Still the
+   governing rule for the content pass, which has not started.
+
+### What implementation taught us
+
+Two CSS mechanisms caused Critical defects during the rollout, and neither is obvious:
+
+- **Tailwind v4 uses real cascade layers.** An unlayered declaration beats a layered one no
+  matter the specificity, so "a utility class outranks an element selector" is v3 reasoning
+  and is wrong here. Project CSS that must lose to utilities belongs in `@layer base`.
+- **A `background-color` replaces a ground, it does not overlay one.** A translucent hover
+  token on an opaque row lets the *page* show through instead of the row, which inverts the
+  intended tonal lift — and on a light page drops the row's text to 1.14:1.
+
+The design system is enforced mechanically by `web/scripts/check-design.mjs`
+(`npm run check:design`), which expresses these rules as greppable assertions. Add a rule
+when you add a rule here.
