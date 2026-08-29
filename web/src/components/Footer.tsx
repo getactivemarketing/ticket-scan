@@ -30,7 +30,12 @@ export default function Footer() {
               Compare ticket prices across Ticketmaster, SeatGeek, StubHub, and more.
               Never overpay for concerts, sports, or events again.
             </p>
-            {/* Social Links */}
+            {/* Social Links. Handles come from marketing-agents/blotato-accounts.json,
+                which records the accounts the posting automation is actually connected
+                to — Instagram and Threads are `ticketscanapp`, X is `ticketscan_io`.
+                The homepage's old inline footer linked instagram.com/ticketscan and
+                the shared footer linked instagram.com/ticketscan_io; neither matched a
+                connected account. TikTok is not in Blotato, so it is left as-is. */}
             <div className="flex space-x-4 mt-6">
               <a
                 href="https://x.com/ticketscan_io"
@@ -44,7 +49,7 @@ export default function Footer() {
                 </svg>
               </a>
               <a
-                href="https://instagram.com/ticketscan_io"
+                href="https://instagram.com/ticketscanapp"
                 target="_blank"
                 rel="noopener noreferrer"
                 className={`text-muted hover:text-bone ${TRANSITION} ${FOCUS_RING}`}
@@ -63,6 +68,17 @@ export default function Footer() {
               >
                 <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
                   <path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-5.2 1.74 2.89 2.89 0 012.31-4.64 2.93 2.93 0 01.88.13V9.4a6.84 6.84 0 00-1-.05A6.33 6.33 0 005 20.1a6.34 6.34 0 0010.86-4.43v-7a8.16 8.16 0 004.77 1.52v-3.4a4.85 4.85 0 01-1-.1z" />
+                </svg>
+              </a>
+              <a
+                href="https://threads.net/@ticketscanapp"
+                target="_blank"
+                rel="noopener noreferrer"
+                className={`text-muted hover:text-bone ${TRANSITION} ${FOCUS_RING}`}
+                aria-label="Follow us on Threads"
+              >
+                <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M12.186 24h-.007c-3.581-.024-6.334-1.205-8.184-3.509C2.35 18.44 1.5 15.586 1.472 12.01v-.017c.03-3.579.879-6.43 2.525-8.482C5.845 1.205 8.6.024 12.18 0h.014c2.746.02 5.043.725 6.826 2.098 1.677 1.29 2.858 3.13 3.509 5.467l-2.04.569c-1.104-3.96-3.898-5.984-8.304-6.015-2.91.022-5.11.936-6.54 2.717C4.307 6.504 3.616 8.914 3.59 12c.025 3.086.718 5.496 2.057 7.164 1.432 1.781 3.632 2.695 6.54 2.717 2.227-.017 4.074-.638 5.49-1.846 1.385-1.18 2.17-2.8 2.33-4.83h.003c.088-1.074-.057-2.118-.432-3.108a5.675 5.675 0 00-1.774-2.38c-.81-.63-1.79-1.042-2.876-1.2a8.536 8.536 0 00-.084-.003 5.39 5.39 0 00-1.7.262 4.127 4.127 0 00-1.47.82c-.41.375-.733.839-.948 1.362-.217.53-.328 1.114-.328 1.735 0 .616.11 1.186.328 1.693.214.497.535.936.944 1.298a4.03 4.03 0 001.45.826c.555.194 1.162.291 1.803.291.563 0 1.097-.076 1.588-.226a3.665 3.665 0 001.277-.672l1.327 1.572c-.56.474-1.235.842-2.01 1.095a7.793 7.793 0 01-2.182.31 7.37 7.37 0 01-2.703-.489 6.098 6.098 0 01-2.168-1.378 6.242 6.242 0 01-1.422-2.094 6.718 6.718 0 01-.506-2.601c0-.932.17-1.8.506-2.584a6.06 6.06 0 011.422-2.07 6.233 6.233 0 012.168-1.39 7.218 7.218 0 012.703-.503c.104 0 .21.002.315.007 1.525.065 2.883.473 4.041 1.21a7.673 7.673 0 012.726 3.135c.576 1.296.808 2.7.69 4.174l-.003.035c-.21 2.645-1.266 4.82-3.144 6.422C17.395 23.18 15.073 23.98 12.186 24z" />
                 </svg>
               </a>
             </div>
