@@ -19,8 +19,14 @@
 // - FOCUS_RING_ON_DEEP_VOID: for elements on the Deep Void page ground —
 //   the app surface pages (dashboard, watchlist, event detail) and
 //   OnsaleRow, which sits directly on that ground with no wrapping border.
+// These carry NO border-radius of their own, deliberately. An unconditional
+// `rounded-sm` here silently overrode every element that declared its own
+// radius: Tailwind v4 emits `.rounded-sm` after `.rounded-[6px]` in the
+// stylesheet, and at equal specificity the later rule wins — so elements
+// mandated at 6px rendered at 4px permanently, not just while focused.
+// Elements with no radius of their own add `rounded-sm` at the call site.
 export const FOCUS_RING_ON_NAVY =
-  'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2 focus-visible:ring-offset-navy rounded-sm';
+  'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2 focus-visible:ring-offset-navy';
 
 export const FOCUS_RING_ON_DEEP_VOID =
-  'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2 focus-visible:ring-offset-deep-void rounded-sm';
+  'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2 focus-visible:ring-offset-deep-void';

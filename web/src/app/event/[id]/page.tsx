@@ -214,7 +214,7 @@ export default function EventDetailPage() {
         {/* Back link — tertiary, no chrome */}
         <Link
           href="/watchlist"
-          className={`inline-flex items-center text-beacon hover:text-bone transition-colors mb-6 ${FOCUS_RING_ON_DEEP_VOID}`}
+          className={`inline-flex items-center text-beacon hover:text-bone transition-colors mb-6 rounded-sm ${FOCUS_RING_ON_DEEP_VOID}`}
         >
           <svg className="w-4 h-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />

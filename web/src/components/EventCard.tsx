@@ -114,7 +114,7 @@ export default function EventCard({ event, isLoggedIn = true, onAddedToWatchlist
               </Link>
               <button
                 onClick={() => setShowSignUpPrompt(false)}
-                className={`block w-full text-muted hover:text-bone py-2 text-sm transition-colors ${FOCUS_RING_ON_DEEP_VOID}`}
+                className={`block w-full text-muted hover:text-bone py-2 text-sm transition-colors rounded-sm ${FOCUS_RING_ON_DEEP_VOID}`}
               >
                 Maybe Later
               </button>

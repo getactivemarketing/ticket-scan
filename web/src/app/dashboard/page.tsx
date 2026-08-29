@@ -195,7 +195,7 @@ export default function DashboardPage() {
             <h3 className="text-xl font-medium font-heading text-bone mb-2">No events found</h3>
             <p className="text-muted">
               Try a different city, keyword, or date range — or{' '}
-              <Link href="/blog" className={`text-beacon hover:text-bone transition-colors ${FOCUS_RING_ON_DEEP_VOID}`}>
+              <Link href="/blog" className={`text-beacon hover:text-bone transition-colors rounded-sm ${FOCUS_RING_ON_DEEP_VOID}`}>
                 browse our ticket buying tips
               </Link>
               .
@@ -230,7 +230,7 @@ export default function DashboardPage() {
             <div className="bg-navy rounded-[6px] p-6">
               <div className="flex items-center justify-between mb-4">
                 <h3 className="text-lg font-bold font-heading text-bone">Ticket Buying Tips</h3>
-                <Link href="/blog" className={`text-beacon hover:text-bone text-sm font-medium transition-colors ${FOCUS_RING_ON_DEEP_VOID}`}>
+                <Link href="/blog" className={`text-beacon hover:text-bone text-sm font-medium transition-colors rounded-sm ${FOCUS_RING_ON_DEEP_VOID}`}>
                   View All &rarr;
                 </Link>
               </div>
