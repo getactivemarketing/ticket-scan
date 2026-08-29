@@ -91,9 +91,14 @@ const organizationJsonLd = {
       url: "https://www.ticketscan.io",
       logo: "https://www.ticketscan.io/logo.png",
       description: "Compare ticket prices across multiple platforms. Find the best deals on concerts, sports, and theater events.",
+      // Handles verified against marketing-agents/blotato-accounts.json, which
+      // records the accounts the posting automation is connected to. sameAs is
+      // how search engines tie these profiles to the brand entity, so a wrong
+      // handle here misattributes the brand, not just a dead link.
       sameAs: [
         "https://x.com/ticketscan_io",
-        "https://instagram.com/ticketscan_io",
+        "https://instagram.com/ticketscanapp",
+        "https://threads.net/@ticketscanapp",
         "https://tiktok.com/@ticketscan_io",
       ],
     },

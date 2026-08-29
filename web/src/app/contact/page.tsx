@@ -39,7 +39,8 @@ const contactJsonLd = {
     email: SUPPORT_EMAIL,
     sameAs: [
       'https://x.com/ticketscan_io',
-      'https://instagram.com/ticketscan_io',
+      'https://instagram.com/ticketscanapp',
+      'https://threads.net/@ticketscanapp',
       'https://tiktok.com/@ticketscan_io',
     ],
     contactPoint: [
@@ -135,7 +136,7 @@ export default function ContactPage() {
                 <a href="https://x.com/ticketscan_io" target="_blank" rel="noopener noreferrer" className="hover:text-brand-dark transition-colors">
                   X (Twitter) → @ticketscan_io
                 </a>
-                <a href="https://instagram.com/ticketscan_io" target="_blank" rel="noopener noreferrer" className="hover:text-brand-dark transition-colors">
+                <a href="https://instagram.com/ticketscanapp" target="_blank" rel="noopener noreferrer" className="hover:text-brand-dark transition-colors">
                   Instagram → @ticketscan_io
                 </a>
                 <a href="https://tiktok.com/@ticketscan_io" target="_blank" rel="noopener noreferrer" className="hover:text-brand-dark transition-colors">
