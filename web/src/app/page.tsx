@@ -2,8 +2,6 @@ import Link from 'next/link';
 import { Metadata } from 'next';
 import HomeHeroButtons from '@/components/HomeHeroButtons';
 import NewsletterSignup from '@/components/NewsletterSignup';
-import Logo from '@/components/Logo';
-import { TwitterIcon, TikTokIcon, InstagramIcon, ThreadsIcon } from '@/components/SocialIcons';
 import { getAllVenues } from '@/data/venues';
 import { getAllCities } from '@/data/cities';
 import { getAllCategories } from '@/data/categories';
@@ -214,24 +212,16 @@ export default async function Home() {
           </div>
         </div>
 
-        {/* Footer */}
-        <footer className="bg-navy text-gray-400 py-12">
+        {/* Browse directory. This was a second <footer>, duplicating the shared
+            Footer's brand, social links, newsletter form, copyright and legal
+            links — the homepage rendered all of those twice. Those blocks are
+            gone; the venue, city and category columns stay, because they are the
+            homepage's internal-linking surface and exist nowhere else.
+            Still on 1.0 tokens: the homepage has not migrated to 2.0 yet. */}
+        <section aria-labelledby="browse-directory" className="bg-navy text-gray-400 py-12">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="grid md:grid-cols-5 gap-8 mb-8">
-              <div className="md:col-span-2">
-                <div className="flex items-center space-x-2 mb-4">
-                  <Logo size={28} className="text-white" />
-                  <span className="text-white font-heading font-bold text-xl tracking-tight">TicketScan</span>
-                </div>
-                <p className="text-sm mb-4">Search concerts, sports and theater events across the major ticket platforms, browse venue guides, and know when tickets go on sale.</p>
-                <div className="flex gap-3 mb-6">
-                  <a href="https://twitter.com/ticketscan" target="_blank" rel="noopener noreferrer" className="text-gray-500 hover:text-white transition-colors"><TwitterIcon /></a>
-                  <a href="https://tiktok.com/@ticketscan" target="_blank" rel="noopener noreferrer" className="text-gray-500 hover:text-white transition-colors"><TikTokIcon /></a>
-                  <a href="https://instagram.com/ticketscan" target="_blank" rel="noopener noreferrer" className="text-gray-500 hover:text-white transition-colors"><InstagramIcon /></a>
-                  <a href="https://threads.net/@ticketscan" target="_blank" rel="noopener noreferrer" className="text-gray-500 hover:text-white transition-colors"><ThreadsIcon /></a>
-                </div>
-                <NewsletterSignup source="footer" variant="footer" />
-              </div>
+            <h2 id="browse-directory" className="sr-only">Browse venues, cities and categories</h2>
+            <div className="grid md:grid-cols-3 gap-8">
               <div>
                 <h3 className="font-semibold text-white mb-4 text-sm">Popular Venues</h3>
                 <ul className="space-y-2 text-sm">
@@ -252,20 +242,13 @@ export default async function Home() {
                 <h3 className="font-semibold text-white mb-4 text-sm">Categories</h3>
                 <ul className="space-y-2 text-sm">
                   {categories.map((category) => (
-                    <li key={category.slug}><Link href={`/tickets/${category.slug}`} className="hover:text-brand-light transition-colors">{category.icon} {category.name}</Link></li>
+                    <li key={category.slug}><Link href={`/tickets/${category.slug}`} className="hover:text-brand-light transition-colors"><span aria-hidden="true">{category.icon}</span> {category.name}</Link></li>
                   ))}
                 </ul>
               </div>
             </div>
-            <div className="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
-              <p className="text-sm">&copy; 2026 TicketScan. All rights reserved.</p>
-              <div className="flex gap-6 text-sm">
-                <Link href="/privacy" className="hover:text-brand-light transition-colors">Privacy Policy</Link>
-                <Link href="/terms" className="hover:text-brand-light transition-colors">Terms of Service</Link>
-              </div>
-            </div>
           </div>
-        </footer>
+        </section>
       </div>
     </>
   );
