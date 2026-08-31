@@ -1,15 +1,25 @@
 {
-  "generatedAt": "2026-08-31T03:31:24.802Z",
+  "generatedAt": "2026-08-31T03:43:53.210Z",
   "threshold": 5,
   "combos": [
+    {
+      "city": "atlanta",
+      "category": "comedy",
+      "eventCount": 50
+    },
     {
       "city": "atlanta",
       "category": "mlb",
       "eventCount": 50
     },
     {
-      "city": "atlanta",
+      "city": "boston",
       "category": "comedy",
+      "eventCount": 50
+    },
+    {
+      "city": "boston",
+      "category": "mlb",
       "eventCount": 50
     },
     {
@@ -18,12 +28,7 @@
       "eventCount": 50
     },
     {
-      "city": "boston",
-      "category": "mlb",
-      "eventCount": 50
-    },
-    {
-      "city": "boston",
+      "city": "brooklyn",
       "category": "comedy",
       "eventCount": 50
     },
@@ -38,18 +43,13 @@
       "eventCount": 50
     },
     {
-      "city": "brooklyn",
+      "city": "chicago",
       "category": "comedy",
       "eventCount": 50
     },
     {
       "city": "chicago",
       "category": "mlb",
-      "eventCount": 50
-    },
-    {
-      "city": "chicago",
-      "category": "comedy",
       "eventCount": 50
     },
     {
@@ -74,12 +74,12 @@
     },
     {
       "city": "houston",
-      "category": "concerts",
+      "category": "comedy",
       "eventCount": 50
     },
     {
       "city": "houston",
-      "category": "theater",
+      "category": "concerts",
       "eventCount": 50
     },
     {
@@ -89,17 +89,17 @@
     },
     {
       "city": "houston",
+      "category": "theater",
+      "eventCount": 50
+    },
+    {
+      "city": "las-vegas",
       "category": "comedy",
       "eventCount": 50
     },
     {
       "city": "las-vegas",
       "category": "concerts",
-      "eventCount": 50
-    },
-    {
-      "city": "las-vegas",
-      "category": "comedy",
       "eventCount": 50
     },
     {
@@ -114,12 +114,12 @@
     },
     {
       "city": "los-angeles",
-      "category": "theater",
+      "category": "mlb",
       "eventCount": 50
     },
     {
       "city": "los-angeles",
-      "category": "mlb",
+      "category": "theater",
       "eventCount": 50
     },
     {
@@ -134,32 +134,32 @@
     },
     {
       "city": "milwaukee",
-      "category": "theater",
+      "category": "mlb",
       "eventCount": 50
     },
     {
       "city": "milwaukee",
-      "category": "mlb",
-      "eventCount": 50
-    },
-    {
-      "city": "minneapolis",
-      "category": "concerts",
-      "eventCount": 50
-    },
-    {
-      "city": "minneapolis",
       "category": "theater",
-      "eventCount": 50
-    },
-    {
-      "city": "minneapolis",
-      "category": "mlb",
       "eventCount": 50
     },
     {
       "city": "minneapolis",
       "category": "comedy",
+      "eventCount": 50
+    },
+    {
+      "city": "minneapolis",
+      "category": "concerts",
+      "eventCount": 50
+    },
+    {
+      "city": "minneapolis",
+      "category": "mlb",
+      "eventCount": 50
+    },
+    {
+      "city": "minneapolis",
+      "category": "theater",
       "eventCount": 50
     },
     {
@@ -189,32 +189,32 @@
     },
     {
       "city": "orlando",
-      "category": "concerts",
-      "eventCount": 50
-    },
-    {
-      "city": "orlando",
-      "category": "theater",
-      "eventCount": 50
-    },
-    {
-      "city": "orlando",
       "category": "comedy",
       "eventCount": 50
     },
     {
-      "city": "philadelphia",
+      "city": "orlando",
       "category": "concerts",
       "eventCount": 50
     },
     {
-      "city": "philadelphia",
+      "city": "orlando",
       "category": "theater",
+      "eventCount": 50
+    },
+    {
+      "city": "philadelphia",
+      "category": "concerts",
       "eventCount": 50
     },
     {
       "city": "philadelphia",
       "category": "mlb",
+      "eventCount": 50
+    },
+    {
+      "city": "philadelphia",
+      "category": "theater",
       "eventCount": 50
     },
     {
@@ -229,6 +229,11 @@
     },
     {
       "city": "sacramento",
+      "category": "comedy",
+      "eventCount": 50
+    },
+    {
+      "city": "sacramento",
       "category": "concerts",
       "eventCount": 50
     },
@@ -238,18 +243,13 @@
       "eventCount": 50
     },
     {
-      "city": "sacramento",
+      "city": "san-francisco",
       "category": "comedy",
       "eventCount": 50
     },
     {
       "city": "san-francisco",
       "category": "concerts",
-      "eventCount": 50
-    },
-    {
-      "city": "san-francisco",
-      "category": "theater",
       "eventCount": 50
     },
     {
@@ -259,7 +259,7 @@
     },
     {
       "city": "san-francisco",
-      "category": "comedy",
+      "category": "theater",
       "eventCount": 50
     },
     {
@@ -274,17 +274,17 @@
     },
     {
       "city": "toronto",
-      "category": "theater",
-      "eventCount": 50
-    },
-    {
-      "city": "toronto",
       "category": "comedy",
       "eventCount": 50
     },
     {
-      "city": "washington-dc",
+      "city": "toronto",
       "category": "theater",
+      "eventCount": 50
+    },
+    {
+      "city": "washington-dc",
+      "category": "comedy",
       "eventCount": 50
     },
     {
@@ -294,7 +294,7 @@
     },
     {
       "city": "washington-dc",
-      "category": "comedy",
+      "category": "theater",
       "eventCount": 50
     },
     {
@@ -344,12 +344,12 @@
     },
     {
       "city": "denver",
-      "category": "theater",
+      "category": "comedy",
       "eventCount": 47
     },
     {
       "city": "denver",
-      "category": "comedy",
+      "category": "theater",
       "eventCount": 47
     },
     {
@@ -649,12 +649,12 @@
     },
     {
       "city": "chicago",
-      "category": "theater",
+      "category": "nfl",
       "eventCount": 9
     },
     {
       "city": "chicago",
-      "category": "nfl",
+      "category": "theater",
       "eventCount": 9
     },
     {
@@ -679,7 +679,12 @@
     },
     {
       "city": "miami",
-      "category": "theater",
+      "category": "comedy",
+      "eventCount": 8
+    },
+    {
+      "city": "miami",
+      "category": "family",
       "eventCount": 8
     },
     {
@@ -689,17 +694,12 @@
     },
     {
       "city": "miami",
-      "category": "comedy",
-      "eventCount": 8
-    },
-    {
-      "city": "miami",
       "category": "soccer",
       "eventCount": 8
     },
     {
       "city": "miami",
-      "category": "family",
+      "category": "theater",
       "eventCount": 8
     },
     {
@@ -714,12 +714,12 @@
     },
     {
       "city": "atlanta",
-      "category": "nfl",
+      "category": "festivals",
       "eventCount": 7
     },
     {
       "city": "atlanta",
-      "category": "festivals",
+      "category": "nfl",
       "eventCount": 7
     },
     {

@@ -22,7 +22,13 @@ async function countEvents(city, category) {
   const res = await fetch(`${API}/api/public/events?city=${city}&category=${category}&limit=50`);
   if (!res.ok) throw new Error(`HTTP ${res.status} for ${city}/${category}`);
   const data = await res.json();
-  return (data.events || []).length;
+  // A 200 whose body is the wrong shape must count as an error, not as zero
+  // events. Coercing it to zero would silently drop a real combo from the
+  // index without ever tripping the error guard below.
+  if (!Array.isArray(data.events)) {
+    throw new Error(`malformed body for ${city}/${category}: events is ${typeof data.events}`);
+  }
+  return data.events.length;
 }
 
 const cities = slugsFrom('cities.ts');
@@ -58,6 +64,11 @@ if (combos.length === 0) {
   process.exit(1);
 }
 
-combos.sort((a, b) => b.eventCount - a.eventCount || a.city.localeCompare(b.city));
+combos.sort(
+  (a, b) =>
+    b.eventCount - a.eventCount ||
+    a.city.localeCompare(b.city) ||
+    a.category.localeCompare(b.category)
+);
 writeFileSync(OUT, JSON.stringify({ generatedAt: new Date().toISOString(), threshold: THRESHOLD, combos }, null, 2) + '\n');
 console.log(`Wrote ${combos.length} qualifying combos (${errors} probe errors) to ${OUT.pathname}`);
