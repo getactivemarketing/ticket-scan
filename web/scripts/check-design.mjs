@@ -271,6 +271,20 @@ const RULES = [
       return null;
     },
   },
+  {
+    name: 'combo pages are reachable from their city and category parents',
+    check: () => {
+      const src = read('src/app/tickets/[slug]/page.tsx');
+      if (!/combosForCity/.test(src)) return 'city pages do not link to their combos';
+      if (!/combosForCategory/.test(src)) return 'category pages do not link to their combos';
+      // Orphaned pages are the classic programmatic-SEO failure: in the sitemap,
+      // reachable by nobody. The links must be real hrefs, not just imports.
+      if (!/tickets\/\$\{[a-zA-Z.]+\}\/\$\{/.test(src)) {
+        return 'no nested /tickets/{city}/{category} href is constructed';
+      }
+      return null;
+    },
+  },
 ];
 
 let failed = 0;

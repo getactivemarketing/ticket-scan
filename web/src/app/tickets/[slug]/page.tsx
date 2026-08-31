@@ -4,6 +4,7 @@ import { notFound } from 'next/navigation';
 import { getCityBySlug, getAllCities, City } from '@/data/cities';
 import { getCategoryBySlug, getAllCategories, Category } from '@/data/categories';
 import { venues } from '@/data/venues';
+import { combosForCity, combosForCategory } from '@/data/combos';
 
 interface Event {
   id: string;
@@ -146,6 +147,21 @@ export default async function TicketsPage({ params }: PageProps) {
   });
 
   const isCity = pageData.type === 'city';
+
+  // Combos that actually qualified. On a city page these are the categories with
+  // real inventory there; on a category page, the cities with real inventory.
+  const comboLinks = isCity
+    ? combosForCity(slug).map((c) => ({
+        href: `/tickets/${slug}/${c.category}`,
+        label: getCategoryBySlug(c.category)?.name ?? c.category,
+        count: c.eventCount,
+      }))
+    : combosForCategory(slug).map((c) => ({
+        href: `/tickets/${c.city}/${slug}`,
+        label: getCityBySlug(c.city)?.name ?? c.city,
+        count: c.eventCount,
+      }));
+
   const pageTitle = isCity
     ? `${pageData.data.name} Events`
     : (pageData.data as Category).name;
@@ -374,6 +390,28 @@ export default async function TicketsPage({ params }: PageProps) {
                   Start Free
                 </Link>
               </div>
+
+              {comboLinks.length > 0 && (
+                <section className="mt-10">
+                  <h2 className="text-xl font-semibold font-heading text-gray-900 mb-4">
+                    {isCity
+                      ? `What's on in ${pageData.data.name}`
+                      : `${pageData.data.name} by city`}
+                  </h2>
+                  <div className="flex flex-wrap gap-2">
+                    {comboLinks.map((l) => (
+                      <Link
+                        key={l.href}
+                        href={l.href}
+                        className="bg-white rounded-lg px-4 py-2 text-sm text-gray-700 hover:text-brand transition-colors"
+                      >
+                        {l.label}
+                        <span className="text-gray-400 ml-2">{l.count}</span>
+                      </Link>
+                    ))}
+                  </div>
+                </section>
+              )}
 
               {/* Related Categories/Cities */}
               <div className="bg-white rounded-xl shadow-md p-6">
