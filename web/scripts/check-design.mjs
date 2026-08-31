@@ -220,6 +220,32 @@ const RULES = [
       return problems.length ? problems.join(' | ') : null;
     },
   },
+  {
+    name: 'combos: the generated index exists and is well-formed',
+    check: () => {
+      let raw;
+      try {
+        raw = read('src/data/combos.generated.json');
+      } catch {
+        return 'src/data/combos.generated.json is missing — run npm run build:combos';
+      }
+      let idx;
+      try {
+        idx = JSON.parse(raw);
+      } catch (err) {
+        return `combos.generated.json is not valid JSON: ${err.message}`;
+      }
+      if (idx.threshold !== 5) return `threshold is ${idx.threshold}, expected 5`;
+      if (!Array.isArray(idx.combos) || idx.combos.length === 0) {
+        return 'combos array is empty — an empty index would deindex every combo page';
+      }
+      const bad = idx.combos.find(
+        (c) => typeof c.city !== 'string' || typeof c.category !== 'string' || !(c.eventCount >= 5)
+      );
+      if (bad) return `malformed or below-threshold entry: ${JSON.stringify(bad)}`;
+      return null;
+    },
+  },
 ];
 
 let failed = 0;
