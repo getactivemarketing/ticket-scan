@@ -285,6 +285,25 @@ const RULES = [
       return null;
     },
   },
+  {
+    name: 'sitemap lists the combo pages below their city parents',
+    check: () => {
+      const src = read('src/app/sitemap.ts');
+      if (!/getComboList/.test(src)) return 'sitemap does not include combo pages';
+      // Scope the assertions to the comboPages block. `priority: 0.6` already
+      // appears elsewhere in this file (the /faq entry), so a whole-file test
+      // would pass before the combo block existed and prove nothing.
+      const block = (src.match(/const comboPages[\s\S]*?\}\)\);/) || [])[0] || '';
+      if (!block) return 'no comboPages block in the sitemap';
+      if (!/priority: 0\.6/.test(block)) {
+        return 'combo pages must sit at priority 0.6, below the 0.7 city and category pages';
+      }
+      if (!/tickets\/\$\{c\.city\}\/\$\{c\.category\}/.test(block)) {
+        return 'combo sitemap URLs are not nested /tickets/{city}/{category}';
+      }
+      return null;
+    },
+  },
 ];
 
 let failed = 0;
