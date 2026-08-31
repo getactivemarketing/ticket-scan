@@ -18,6 +18,20 @@ const slugsFrom = (file) => {
 
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 
+// Load the previous index so a transient probe error doesn't deindex a page
+// that was live yesterday and would be live again tomorrow. page.tsx calls
+// notFound() for anything outside this index, so simply omitting an errored
+// combo — the previous behaviour — 404s a real page for up to a day.
+let previousCombos = new Map();
+try {
+  const prev = JSON.parse(readFileSync(OUT, 'utf8'));
+  for (const c of prev.combos || []) {
+    previousCombos.set(`${c.city}/${c.category}`, c);
+  }
+} catch {
+  // No previous index yet (first run) — nothing to carry forward.
+}
+
 async function countEvents(city, category) {
   const res = await fetch(`${API}/api/public/events?city=${city}&category=${category}&limit=50`);
   if (!res.ok) throw new Error(`HTTP ${res.status} for ${city}/${category}`);
@@ -43,9 +57,17 @@ for (const city of cities) {
       const eventCount = await countEvents(city, category);
       if (eventCount >= THRESHOLD) combos.push({ city, category, eventCount });
       process.stdout.write(eventCount >= THRESHOLD ? '.' : '-');
-    } catch (err) {
+    } catch {
       errors++;
-      process.stdout.write('!');
+      const prev = previousCombos.get(`${city}/${category}`);
+      if (prev) {
+        // Carry the previous entry forward rather than dropping it — an
+        // errored probe is not evidence the combo stopped qualifying.
+        combos.push(prev);
+        process.stdout.write('c');
+      } else {
+        process.stdout.write('!');
+      }
     }
     await sleep(120); // stay well inside the upstream rate limit
   }

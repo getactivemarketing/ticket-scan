@@ -278,9 +278,14 @@ const RULES = [
       if (!/combosForCity/.test(src)) return 'city pages do not link to their combos';
       if (!/combosForCategory/.test(src)) return 'category pages do not link to their combos';
       // Orphaned pages are the classic programmatic-SEO failure: in the sitemap,
-      // reachable by nobody. The links must be real hrefs, not just imports.
-      if (!/tickets\/\$\{[a-zA-Z.]+\}\/\$\{/.test(src)) {
-        return 'no nested /tickets/{city}/{category} href is constructed';
+      // reachable by nobody. Assert BOTH literal hrefs — the city-page branch
+      // and the category-page branch — so deleting either one still fails.
+      // A single shared regex would keep passing if only one branch survived.
+      if (!src.includes('tickets/${slug}/${')) {
+        return 'no nested /tickets/{city}/{category} href is constructed from a city page';
+      }
+      if (!src.includes('tickets/${c.city}/${slug}')) {
+        return 'no nested /tickets/{city}/{category} href is constructed from a category page';
       }
       return null;
     },

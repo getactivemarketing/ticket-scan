@@ -4,7 +4,7 @@ import { notFound } from 'next/navigation';
 import { getCityBySlug } from '@/data/cities';
 import { getCategoryBySlug } from '@/data/categories';
 import { findVenue, Venue } from '@/data/venues';
-import { getComboList, isCombo, combosForCity } from '@/data/combos';
+import { getComboList, isCombo, combosForCity, combosForCategory } from '@/data/combos';
 import { FeedEvent, formatEtDate, cleanEvents } from '@/lib/events';
 import OnsaleRow from '@/components/OnsaleRow';
 
@@ -23,12 +23,29 @@ export async function generateStaticParams() {
 
 const API_URL = process.env.NEXT_PUBLIC_API_URL || 'https://tickethawk-api-production.up.railway.app';
 
+// Prerendering 160 pages hammers a feed with a 5 req/s spike arrest. Serialise
+// the fetches and space them, the same way UpcomingEvents does, so a deploy
+// cannot rate-limit itself into a failed build.
+let gate: Promise<void> = Promise.resolve();
+function paced<T>(fn: () => Promise<T>): Promise<T> {
+  const run = gate.then(fn);
+  const cool = () => new Promise<void>((r) => setTimeout(r, 220));
+  gate = run.then(cool, cool);
+  return run;
+}
+
 async function getEvents(city: string, category: string): Promise<FeedEvent[]> {
   const url = `${API_URL}/api/public/events?city=${city}&category=${category}&limit=24`;
   let lastError: unknown;
-  for (let attempt = 0; attempt < 2; attempt++) {
+  for (let attempt = 0; attempt < 4; attempt++) {
+    if (attempt > 0) {
+      // 500ms, 1s, 2s, plus jitter so retries across the 160 prerenders don't
+      // resynchronize and hit the spike arrest together.
+      const wait = 500 * 2 ** (attempt - 1) + Math.random() * 250;
+      await new Promise((r) => setTimeout(r, wait));
+    }
     try {
-      const res = await fetch(url, { next: { revalidate: 21600 } });
+      const res = await paced(() => fetch(url, { next: { revalidate: 21600 } }));
       if (!res.ok) throw new Error(`HTTP ${res.status} for ${city}/${category}`);
       const data = await res.json();
       if (!Array.isArray(data.events)) {
@@ -52,6 +69,26 @@ interface DerivedVenue {
   count: number;
 }
 
+const squash = (v: string) => v.toLowerCase().replace(/[^a-z0-9]/g, '');
+
+/**
+ * findVenue does a loose bidirectional substring search, which is fine for
+ * discovering a candidate but wrong for confirming one: "The Theater at
+ * Madison Square Garden" is a genuine substring match for the msg guide even
+ * though it is a distinct, ~5,600-seat room inside the same complex. Only
+ * attach a guide when the feed's venue string and the guide's name are the
+ * same string, modulo case and punctuation — anything looser risks printing
+ * the wrong capacity and tier list under the right link. See
+ * UpcomingEvents.tsx's venueMatches for the same squash-and-compare idea,
+ * tightened to equality here because the candidate is already the product of
+ * a loose search.
+ */
+function matchingGuide(feedVenueName: string): Venue | null {
+  const candidate = findVenue(feedVenueName);
+  if (!candidate) return null;
+  return squash(candidate.name) === squash(feedVenueName) ? candidate : null;
+}
+
 /**
  * Which venues host this category in this city — read off the events the feed
  * actually returned, never inferred from a venue's roster of home teams.
@@ -59,19 +96,34 @@ interface DerivedVenue {
  * is renamed, which has already happened twice in this dataset.
  */
 function derivedVenues(events: FeedEvent[]): DerivedVenue[] {
-  const byName = new Map<string, DerivedVenue>();
+  const byKey = new Map<string, DerivedVenue>();
   for (const e of events) {
     if (!e.venue) continue;
-    const key = e.venue.toLowerCase();
-    const seen = byName.get(key);
+    const guide = matchingGuide(e.venue);
+    // Group by guide id when a guide matched, so two feed-name variants of
+    // the same physical venue collapse into one row instead of splitting the
+    // count across duplicate list items with the same link.
+    const key = guide ? `guide:${guide.id}` : `name:${e.venue.toLowerCase()}`;
+    const seen = byKey.get(key);
     if (seen) {
       seen.count++;
       continue;
     }
-    byName.set(key, { name: e.venue, guide: findVenue(e.venue), count: 1 });
+    byKey.set(key, { name: e.venue, guide, count: 1 });
   }
-  return [...byName.values()].sort((a, b) => b.count - a.count);
+  return [...byKey.values()].sort((a, b) => b.count - a.count);
 }
+
+// Fixed display order and label for each seating tier, independent of enum
+// declaration order — the feed/venue data has no natural ordering.
+const TIER_ORDER: Venue['sections'][number]['tier'][] = ['floor', 'lower', 'club', 'upper', 'suite'];
+const TIER_LABELS: Record<Venue['sections'][number]['tier'], string> = {
+  floor: 'floor',
+  lower: 'lower bowl',
+  club: 'club',
+  upper: 'upper bowl',
+  suite: 'suite',
+};
 
 /** The next event whose public onsale has not opened yet, if any. */
 function nextOnsale(events: FeedEvent[]): FeedEvent | null {
@@ -91,7 +143,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     return { title: 'Page Not Found' };
   }
   const title = `${category.name} in ${city.name} — Schedules and Onsale Dates`;
-  const description = `Upcoming ${category.name} events in ${city.name}, ${city.state}, with venue guides and the dates tickets go on sale, including presales.`;
+  const description = `Upcoming ${category.name} events in ${city.name}, ${city.state}, with venues and the dates tickets go on sale, including presales.`;
   return {
     title,
     description,
@@ -113,20 +165,72 @@ export default async function ComboPage({ params }: PageProps) {
   const venuesHere = derivedVenues(events);
   const upcoming = nextOnsale(events);
   const otherCategories = combosForCity(citySlug).filter((c) => c.category !== categorySlug);
+  const otherCities = combosForCategory(categorySlug).filter((c) => c.city !== citySlug);
 
-  const breadcrumb = {
+  const pageUrl = `https://www.ticketscan.io/tickets/${citySlug}/${categorySlug}`;
+
+  // Mirrors the @graph structure the parent city/category page emits
+  // (web/src/app/tickets/[slug]/page.tsx) so these 160 pages carry the same
+  // ItemList event structured data, plus the breadcrumb.
+  const itemListElement = events.slice(0, 5).map((event, index) => ({
+    '@type': 'ListItem',
+    position: index + 1,
+    item: {
+      '@type': 'Event',
+      name: event.name as string,
+      startDate: event.date,
+      eventStatus: 'https://schema.org/EventScheduled',
+      eventAttendanceMode: 'https://schema.org/OfflineEventAttendanceMode',
+      ...(event.image ? { image: event.image } : {}),
+      ...(event.url ? { url: event.url } : {}),
+      location: {
+        '@type': 'Place',
+        name: event.venue,
+        address: {
+          '@type': 'PostalAddress',
+          addressLocality: city.name,
+          addressRegion: city.state,
+        },
+      },
+      offers: event.minPrice
+        ? {
+            '@type': 'AggregateOffer',
+            lowPrice: event.minPrice,
+            priceCurrency: 'USD',
+            availability: 'https://schema.org/InStock',
+            ...(event.url ? { url: event.url } : {}),
+          }
+        : undefined,
+    },
+  }));
+
+  const jsonLd = {
     '@context': 'https://schema.org',
-    '@type': 'BreadcrumbList',
-    itemListElement: [
-      { '@type': 'ListItem', position: 1, name: 'Tickets', item: 'https://www.ticketscan.io/tickets' },
-      { '@type': 'ListItem', position: 2, name: city.name, item: `https://www.ticketscan.io/tickets/${citySlug}` },
-      { '@type': 'ListItem', position: 3, name: category.name, item: `https://www.ticketscan.io/tickets/${citySlug}/${categorySlug}` },
+    '@graph': [
+      {
+        '@type': 'ItemList',
+        '@id': `${pageUrl}#itemlist`,
+        name: `${category.name} in ${city.name}`,
+        description: `Upcoming ${category.name} events in ${city.name}, ${city.state}`,
+        numberOfItems: itemListElement.length,
+        itemListElement,
+      },
+      {
+        '@type': 'BreadcrumbList',
+        '@id': `${pageUrl}#breadcrumbs`,
+        itemListElement: [
+          { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://www.ticketscan.io' },
+          { '@type': 'ListItem', position: 2, name: 'Tickets', item: 'https://www.ticketscan.io/tickets' },
+          { '@type': 'ListItem', position: 3, name: city.name, item: `https://www.ticketscan.io/tickets/${citySlug}` },
+          { '@type': 'ListItem', position: 4, name: category.name, item: pageUrl },
+        ],
+      },
     ],
   };
 
   return (
     <div className="min-h-screen bg-gray-50">
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumb) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
 
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
         <nav className="text-sm text-gray-500 mb-4">
@@ -134,7 +238,7 @@ export default async function ComboPage({ params }: PageProps) {
           <span className="mx-2">/</span>
           <Link href={`/tickets/${citySlug}`} className="hover:text-brand">{city.name}</Link>
           <span className="mx-2">/</span>
-          <span className="text-gray-900">{category.name}</span>
+          <Link href={`/tickets/${categorySlug}`} className="hover:text-brand">{category.name}</Link>
         </nav>
 
         <h1 className="text-3xl font-bold font-heading text-gray-900">
@@ -145,8 +249,7 @@ export default async function ComboPage({ params }: PageProps) {
         <p className="mt-3 text-gray-600 max-w-2xl">
           {events.length > 0 ? (
             <>
-              {events.length} upcoming {category.name.toLowerCase()} {events.length === 1 ? 'event' : 'events'} in{' '}
-              {city.name}
+              Showing the next {events.length} {category.noun} in {city.name}
               {venuesHere.length > 0 && (
                 <>
                   , at {venuesHere.slice(0, 3).map((v) => v.name).join(', ')}
@@ -156,10 +259,10 @@ export default async function ComboPage({ params }: PageProps) {
               .
             </>
           ) : (
-            <>No {category.name.toLowerCase()} events are currently listed in {city.name}. Check back — this page updates as the feed does.</>
+            <>No {category.noun} are currently listed in {city.name}. Check back — this page updates as the feed does.</>
           )}
           {upcoming?.onsaleStart && (
-            <> The next public onsale is {formatEtDate(upcoming.onsaleStart)}.</>
+            <> One of these opens {formatEtDate(upcoming.onsaleStart)}.</>
           )}
         </p>
 
@@ -177,14 +280,14 @@ export default async function ComboPage({ params }: PageProps) {
         {venuesHere.length > 0 && (
           <section className="mt-10">
             <h2 className="text-xl font-semibold font-heading text-gray-900 mb-4">
-              Where {category.name.toLowerCase()} happens in {city.name}
+              Where {category.noun} happen in {city.name}
             </h2>
             <ul className="space-y-3">
               {venuesHere.map((v) => (
                 <li key={v.name} className="bg-white rounded-lg p-4">
                   {v.guide ? (
                     <Link href={`/venues/${v.guide.id}`} className="font-medium text-brand hover:underline">
-                      {v.guide.name}
+                      {v.name}
                     </Link>
                   ) : (
                     <span className="font-medium text-gray-900">{v.name}</span>
@@ -195,7 +298,10 @@ export default async function ComboPage({ params }: PageProps) {
                   {v.guide && (
                     <p className="text-sm text-gray-600 mt-1">
                       {v.guide.capacity.toLocaleString()} capacity ·{' '}
-                      {[...new Set(v.guide.sections.map((s) => s.tier))].join(', ')} seating
+                      {TIER_ORDER.filter((t) => v.guide!.sections.some((s) => s.tier === t))
+                        .map((t) => TIER_LABELS[t])
+                        .join(', ')}{' '}
+                      seating
                     </p>
                   )}
                 </li>
@@ -220,6 +326,29 @@ export default async function ComboPage({ params }: PageProps) {
                     className="bg-white rounded-lg px-4 py-2 text-sm text-gray-700 hover:text-brand transition-colors"
                   >
                     <span aria-hidden="true">{cat.icon}</span> {cat.name}
+                  </Link>
+                );
+              })}
+            </div>
+          </section>
+        )}
+
+        {otherCities.length > 0 && (
+          <section className="mt-10">
+            <h2 className="text-xl font-semibold font-heading text-gray-900 mb-4">
+              {category.name} in other cities
+            </h2>
+            <div className="flex flex-wrap gap-2">
+              {otherCities.map((c) => {
+                const cty = getCityBySlug(c.city);
+                if (!cty) return null;
+                return (
+                  <Link
+                    key={c.city}
+                    href={`/tickets/${c.city}/${categorySlug}`}
+                    className="bg-white rounded-lg px-4 py-2 text-sm text-gray-700 hover:text-brand transition-colors"
+                  >
+                    {cty.name}
                   </Link>
                 );
               })}

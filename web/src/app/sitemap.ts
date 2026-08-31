@@ -4,7 +4,7 @@ import { cities } from '@/data/cities';
 import { categories } from '@/data/categories';
 import { getAllBlogPosts } from '@/data/blog';
 import { worldCupVenues } from '@/data/worldcup';
-import { getComboList } from '@/data/combos';
+import { getComboList, comboIndexGeneratedAt } from '@/data/combos';
 
 const BASE_URL = 'https://www.ticketscan.io';
 
@@ -120,11 +120,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
   }));
 
   // Combo pages sit below their city and category parents (0.7) so the
-  // hierarchy is explicit to crawlers. lastModified uses the same content
-  // revision stamp as the other programmatic pages — see the note above.
+  // hierarchy is explicit to crawlers. Unlike the other programmatic blocks,
+  // this one has a real per-build date — comboIndexGeneratedAt is when the
+  // qualifying combo set was last refreshed — so use that instead of the
+  // shared content-revision stamp.
+  const comboLastModified = new Date(comboIndexGeneratedAt);
   const comboPages: MetadataRoute.Sitemap = getComboList().map((c) => ({
     url: `${BASE_URL}/tickets/${c.city}/${c.category}`,
-    lastModified,
+    lastModified: comboLastModified,
     changeFrequency: 'daily' as const,
     priority: 0.6,
   }));

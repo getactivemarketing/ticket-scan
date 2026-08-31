@@ -406,7 +406,9 @@ export default async function TicketsPage({ params }: PageProps) {
                         className="bg-white rounded-lg px-4 py-2 text-sm text-gray-700 hover:text-brand transition-colors"
                       >
                         {l.label}
-                        <span className="text-gray-400 ml-2">{l.count}</span>
+                        <span className="text-gray-400 ml-2">
+                          {l.count === 50 ? '50+' : l.count} upcoming
+                        </span>
                       </Link>
                     ))}
                   </div>

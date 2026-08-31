@@ -159,11 +159,16 @@ else
     # pages exist. Deliberately placed before the deploy block and independent
     # of it: that block is stale (it deploys the `web` Vercel project, which no
     # longer owns the live domain) and will be reworked or removed.
+    #
+    # Deliberately NOT committed here. A standalone commit at this point makes
+    # `git status --porcelain` clean again before the push gate further down
+    # ever sees it, so the refreshed index only reached production as a side
+    # effect of some other agent's output changing that day — and a day late,
+    # because deploy_production (above) runs before that push. Leave the file
+    # uncommitted so it flows through the COMMIT_PATHS block below instead,
+    # inheriting that block's guard and push.
     ( cd "$PROJECT_DIR/web" && npm run build:combos ) 2>&1 | tee -a "$LOG_FILE"
-    if [ -n "$(git -C "$PROJECT_DIR" status --porcelain web/src/data/combos.generated.json)" ]; then
-        git -C "$PROJECT_DIR" add web/src/data/combos.generated.json
-        git -C "$PROJECT_DIR" commit -m "Refresh the combo index — $DATE" 2>&1 | tee -a "$LOG_FILE"
-    fi
+    if [ "${PIPESTATUS[0]}" -ne 0 ]; then echo "WARNING: combo index refresh failed; previous index left intact" | tee -a "$LOG_FILE"; fi
 
     # Deploy to Vercel so image URLs are live BEFORE Blotato consumes them.
     #
@@ -219,7 +224,7 @@ cd "$PROJECT_DIR"
 # production whether or not it is committed. Leaving it untracked let prod
 # drift from git silently for days. Recording it here means `git log` is an
 # accurate account of what is live, and a bad edit can be found and reverted.
-COMMIT_PATHS=(marketing-agents/output web/src)
+COMMIT_PATHS=(marketing-agents/output web/src web/src/data/combos.generated.json)
 if [ "$DRY_RUN" = "1" ]; then
     echo "[DRY_RUN] Skipping output commit and push" | tee -a "$LOG_FILE"
 elif [ -n "$(git status --porcelain -- "${COMMIT_PATHS[@]}")" ]; then

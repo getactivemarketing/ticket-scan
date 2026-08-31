@@ -20,6 +20,8 @@ export interface FeedEvent {
   onsaleStart?: string | null;
   onsaleEnd?: string | null;
   presales?: { name: string | null; start: string | null; end: string | null }[];
+  minPrice?: number | null;
+  image?: string;
 }
 
 const EXCLUDE = [
