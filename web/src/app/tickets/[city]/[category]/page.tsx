@@ -5,10 +5,10 @@ import { getCityBySlug } from '@/data/cities';
 import { getCategoryBySlug } from '@/data/categories';
 import { findVenue, Venue } from '@/data/venues';
 import { getComboList, isCombo, combosForCity } from '@/data/combos';
-import { FeedEvent, formatEtDate } from '@/lib/events';
+import { FeedEvent, formatEtDate, cleanEvents } from '@/lib/events';
 import OnsaleRow from '@/components/OnsaleRow';
 
-// Six hours, not one. ~200 combo pages on a 1-hour window would push daily
+// Six hours, not one. 160 combo pages on a 1-hour window would push daily
 // Ticketmaster calls to ~6,300 against a 5,000 limit. Combo listings change
 // slowly; hourly freshness buys nothing here.
 export const revalidate = 21600;
@@ -24,17 +24,26 @@ export async function generateStaticParams() {
 const API_URL = process.env.NEXT_PUBLIC_API_URL || 'https://tickethawk-api-production.up.railway.app';
 
 async function getEvents(city: string, category: string): Promise<FeedEvent[]> {
-  try {
-    const res = await fetch(
-      `${API_URL}/api/public/events?city=${city}&category=${category}&limit=24`,
-      { next: { revalidate: 21600 } }
-    );
-    if (!res.ok) return [];
-    const data = await res.json();
-    return (data.events || []) as FeedEvent[];
-  } catch {
-    return [];
+  const url = `${API_URL}/api/public/events?city=${city}&category=${category}&limit=24`;
+  let lastError: unknown;
+  for (let attempt = 0; attempt < 2; attempt++) {
+    try {
+      const res = await fetch(url, { next: { revalidate: 21600 } });
+      if (!res.ok) throw new Error(`HTTP ${res.status} for ${city}/${category}`);
+      const data = await res.json();
+      if (!Array.isArray(data.events)) {
+        throw new Error(`malformed body for ${city}/${category}`);
+      }
+      return data.events as FeedEvent[];
+    } catch (err) {
+      lastError = err;
+    }
   }
+  // Rethrow rather than returning []. Swallowing this would cache a page
+  // claiming no events exist for a combo the index says has at least five —
+  // and ISR would serve that for six hours. Throwing lets Next keep the last
+  // good page instead.
+  throw lastError;
 }
 
 interface DerivedVenue {
@@ -100,7 +109,7 @@ export default async function ComboPage({ params }: PageProps) {
   // Only combos in the committed index exist. Everything else is a 404.
   if (!city || !category || !isCombo(citySlug, categorySlug)) notFound();
 
-  const events = await getEvents(citySlug, categorySlug);
+  const events = cleanEvents(await getEvents(citySlug, categorySlug));
   const venuesHere = derivedVenues(events);
   const upcoming = nextOnsale(events);
   const otherCategories = combosForCity(citySlug).filter((c) => c.category !== categorySlug);
@@ -134,11 +143,17 @@ export default async function ComboPage({ params }: PageProps) {
 
         {/* Every clause below is derived. Nothing is asserted. */}
         <p className="mt-3 text-gray-600 max-w-2xl">
-          {venuesHere.length > 0 ? (
+          {events.length > 0 ? (
             <>
               {events.length} upcoming {category.name.toLowerCase()} {events.length === 1 ? 'event' : 'events'} in{' '}
-              {city.name}, at {venuesHere.slice(0, 3).map((v) => v.name).join(', ')}
-              {venuesHere.length > 3 ? ` and ${venuesHere.length - 3} more` : ''}.
+              {city.name}
+              {venuesHere.length > 0 && (
+                <>
+                  , at {venuesHere.slice(0, 3).map((v) => v.name).join(', ')}
+                  {venuesHere.length > 3 ? ` and ${venuesHere.length - 3} more` : ''}
+                </>
+              )}
+              .
             </>
           ) : (
             <>No {category.name.toLowerCase()} events are currently listed in {city.name}. Check back — this page updates as the feed does.</>
