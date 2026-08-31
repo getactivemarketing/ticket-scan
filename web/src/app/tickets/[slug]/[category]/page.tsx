@@ -14,11 +14,11 @@ import OnsaleRow from '@/components/OnsaleRow';
 export const revalidate = 21600;
 
 interface PageProps {
-  params: Promise<{ city: string; category: string }>;
+  params: Promise<{ slug: string; category: string }>;
 }
 
 export async function generateStaticParams() {
-  return getComboList().map((c) => ({ city: c.city, category: c.category }));
+  return getComboList().map((c) => ({ slug: c.city, category: c.category }));
 }
 
 const API_URL = process.env.NEXT_PUBLIC_API_URL || 'https://tickethawk-api-production.up.railway.app';
@@ -84,7 +84,7 @@ function nextOnsale(events: FeedEvent[]): FeedEvent | null {
 }
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
-  const { city: citySlug, category: categorySlug } = await params;
+  const { slug: citySlug, category: categorySlug } = await params;
   const city = getCityBySlug(citySlug);
   const category = getCategoryBySlug(categorySlug);
   if (!city || !category || !isCombo(citySlug, categorySlug)) {
@@ -102,7 +102,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 }
 
 export default async function ComboPage({ params }: PageProps) {
-  const { city: citySlug, category: categorySlug } = await params;
+  const { slug: citySlug, category: categorySlug } = await params;
   const city = getCityBySlug(citySlug);
   const category = getCategoryBySlug(categorySlug);
 

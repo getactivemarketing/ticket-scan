@@ -251,7 +251,7 @@ const RULES = [
     check: () => {
       let src;
       try {
-        src = read('src/app/tickets/[city]/[category]/page.tsx');
+        src = read('src/app/tickets/[slug]/[category]/page.tsx');
       } catch {
         return 'the combo route does not exist';
       }
