@@ -278,7 +278,11 @@ const excludePatterns = [/jernigan/i, /hospitality/i, /vip package/i, /suite/i];
 ## SEO Pages
 
 - **Venue pages** (24): MSG, Crypto.com Arena, Chase Center, etc.
-- **City pages** (37): Orlando concerts, NYC sports, etc.
+- **City pages** (24): Orlando, Miami, New York, etc.
+- **Category pages** (13): NBA, NHL, concerts, theater, etc.
+- **City × category** (generated): e.g. /tickets/chicago/nba — only where the
+  events feed shows 5+ upcoming events. The qualifying set lives in
+  web/src/data/combos.generated.json, refreshed by the daily marketing agent.
 - **World Cup** (17): Tournament + stadium-specific guides
 
 ## Admin Dashboard

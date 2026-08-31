@@ -154,6 +154,17 @@ else
         git commit -m "Add generated social images — $DATE" 2>&1 | tee -a "$LOG_FILE"
     fi
 
+    # Refresh the city x category combo index. Committed as a generated artifact
+    # so the Next.js build never has to call the events API to decide which
+    # pages exist. Deliberately placed before the deploy block and independent
+    # of it: that block is stale (it deploys the `web` Vercel project, which no
+    # longer owns the live domain) and will be reworked or removed.
+    ( cd "$PROJECT_DIR/web" && npm run build:combos ) 2>&1 | tee -a "$LOG_FILE"
+    if [ -n "$(git -C "$PROJECT_DIR" status --porcelain web/src/data/combos.generated.json)" ]; then
+        git -C "$PROJECT_DIR" add web/src/data/combos.generated.json
+        git -C "$PROJECT_DIR" commit -m "Refresh the combo index — $DATE" 2>&1 | tee -a "$LOG_FILE"
+    fi
+
     # Deploy to Vercel so image URLs are live BEFORE Blotato consumes them.
     #
     # `vercel --prod` uploads a DIRECTORY, not a git ref. Running it from the
