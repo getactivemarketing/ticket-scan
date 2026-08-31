@@ -246,6 +246,31 @@ const RULES = [
       return null;
     },
   },
+  {
+    name: 'combo page: derives its facts, and cannot ship an empty shell',
+    check: () => {
+      let src;
+      try {
+        src = read('src/app/tickets/[city]/[category]/page.tsx');
+      } catch {
+        return 'the combo route does not exist';
+      }
+      if (!/export const revalidate = 21600/.test(src)) {
+        return 'combo pages must use a 6-hour ISR window (revalidate = 21600) to stay inside the API budget';
+      }
+      if (!/generateStaticParams/.test(src)) return 'no generateStaticParams';
+      if (!/getComboList/.test(src)) return 'params are not read from the committed combo index';
+      if (!/findVenue/.test(src)) return 'venues are not matched against the venue guides';
+      // The spec forbids inferring venue-category association from homeTeams.
+      if (/homeTeams/.test(src)) {
+        return 'page references homeTeams — venue association must be read off the returned events, not inferred';
+      }
+      if (!/OnsaleRow/.test(src)) return 'events are not rendered with the shared OnsaleRow';
+      // No-empty-shell guard: the page must bail when it has nothing real to show.
+      if (!/notFound\(\)/.test(src)) return 'page does not call notFound() for non-qualifying combos';
+      return null;
+    },
+  },
 ];
 
 let failed = 0;
