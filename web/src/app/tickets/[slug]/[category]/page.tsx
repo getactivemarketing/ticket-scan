@@ -143,7 +143,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     return { title: 'Page Not Found' };
   }
   const title = `${category.name} in ${city.name} — Schedules and Onsale Dates`;
-  const description = `Upcoming ${category.name} events in ${city.name}, ${city.state}, with venues and the dates tickets go on sale, including presales.`;
+  const description = `Upcoming ${category.noun} in ${city.name}, ${city.state}, with venues and the dates tickets go on sale, including presales.`;
   return {
     title,
     description,
@@ -211,7 +211,7 @@ export default async function ComboPage({ params }: PageProps) {
         '@type': 'ItemList',
         '@id': `${pageUrl}#itemlist`,
         name: `${category.name} in ${city.name}`,
-        description: `Upcoming ${category.name} events in ${city.name}, ${city.state}`,
+        description: `Upcoming ${category.noun} in ${city.name}, ${city.state}`,
         numberOfItems: itemListElement.length,
         itemListElement,
       },
@@ -249,7 +249,8 @@ export default async function ComboPage({ params }: PageProps) {
         <p className="mt-3 text-gray-600 max-w-2xl">
           {events.length > 0 ? (
             <>
-              Showing the next {events.length} {category.noun} in {city.name}
+              Showing the next{events.length === 1 ? '' : ` ${events.length}`}{' '}
+              {events.length === 1 ? category.nounSingular : category.noun} in {city.name}
               {venuesHere.length > 0 && (
                 <>
                   , at {venuesHere.slice(0, 3).map((v) => v.name).join(', ')}

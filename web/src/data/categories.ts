@@ -11,6 +11,8 @@ export interface Category {
   // and appending "events" produces ungrammatical combos like "comedy shows
   // events" or "concerts events happens".
   noun: string;
+  /** Singular of `noun`, for the rare page showing exactly one event. */
+  nounSingular: string;
 }
 
 export const categories: Record<string, Category> = {
@@ -22,6 +24,7 @@ export const categories: Record<string, Category> = {
     keywords: ['NBA tickets', 'basketball tickets', 'Lakers tickets', 'Knicks tickets'],
     icon: '🏀',
     noun: 'NBA games',
+    nounSingular: 'NBA game',
   },
   'nhl': {
     slug: 'nhl',
@@ -31,6 +34,7 @@ export const categories: Record<string, Category> = {
     keywords: ['NHL tickets', 'hockey tickets', 'Rangers tickets', 'Blackhawks tickets'],
     icon: '🏒',
     noun: 'NHL games',
+    nounSingular: 'NHL game',
   },
   'concerts': {
     slug: 'concerts',
@@ -40,6 +44,7 @@ export const categories: Record<string, Category> = {
     keywords: ['concert tickets', 'live music tickets', 'tour tickets'],
     icon: '🎵',
     noun: 'concerts',
+    nounSingular: 'concert',
   },
   'theater': {
     slug: 'theater',
@@ -49,6 +54,7 @@ export const categories: Record<string, Category> = {
     keywords: ['Broadway tickets', 'theater tickets', 'musical tickets', 'show tickets'],
     icon: '🎭',
     noun: 'Broadway and theater shows',
+    nounSingular: 'Broadway or theater show',
   },
   'mlb': {
     slug: 'mlb',
@@ -58,6 +64,7 @@ export const categories: Record<string, Category> = {
     keywords: ['MLB tickets', 'baseball tickets', 'Yankees tickets', 'Dodgers tickets'],
     icon: '⚾',
     noun: 'MLB games',
+    nounSingular: 'MLB game',
   },
   'nfl': {
     slug: 'nfl',
@@ -67,6 +74,7 @@ export const categories: Record<string, Category> = {
     keywords: ['NFL tickets', 'football tickets', 'Super Bowl tickets'],
     icon: '🏈',
     noun: 'NFL games',
+    nounSingular: 'NFL game',
   },
   'ufc': {
     slug: 'ufc',
@@ -76,6 +84,7 @@ export const categories: Record<string, Category> = {
     keywords: ['UFC tickets', 'MMA tickets', 'fight tickets', 'UFC fight night', 'championship fight tickets'],
     icon: '🥊',
     noun: 'UFC events',
+    nounSingular: 'UFC event',
   },
   'wwe': {
     slug: 'wwe',
@@ -85,6 +94,7 @@ export const categories: Record<string, Category> = {
     keywords: ['WWE tickets', 'wrestling tickets', 'Raw tickets', 'SmackDown tickets', 'WrestleMania tickets'],
     icon: '🤼',
     noun: 'WWE events',
+    nounSingular: 'WWE event',
   },
   'comedy': {
     slug: 'comedy',
@@ -94,6 +104,7 @@ export const categories: Record<string, Category> = {
     keywords: ['comedy tickets', 'stand-up tickets', 'comedian tickets', 'live comedy shows'],
     icon: '😂',
     noun: 'comedy shows',
+    nounSingular: 'comedy show',
   },
   'festivals': {
     slug: 'festivals',
@@ -103,6 +114,7 @@ export const categories: Record<string, Category> = {
     keywords: ['festival tickets', 'Coachella tickets', 'Lollapalooza tickets', 'music festival passes'],
     icon: '🎪',
     noun: 'music festivals',
+    nounSingular: 'music festival',
   },
   'soccer': {
     slug: 'soccer',
@@ -112,6 +124,7 @@ export const categories: Record<string, Category> = {
     keywords: ['MLS tickets', 'soccer tickets', 'football tickets', 'LAFC tickets', 'Inter Miami tickets'],
     icon: '⚽',
     noun: 'soccer matches',
+    nounSingular: 'soccer match',
   },
   'tennis': {
     slug: 'tennis',
@@ -121,6 +134,7 @@ export const categories: Record<string, Category> = {
     keywords: ['tennis tickets', 'US Open tickets', 'Wimbledon tickets', 'ATP tickets'],
     icon: '🎾',
     noun: 'tennis events',
+    nounSingular: 'tennis event',
   },
   'family': {
     slug: 'family',
@@ -130,6 +144,7 @@ export const categories: Record<string, Category> = {
     keywords: ['family show tickets', 'Disney on Ice tickets', 'Cirque du Soleil tickets', 'kids events'],
     icon: '👨‍👩‍👧‍👦',
     noun: 'family shows',
+    nounSingular: 'family show',
   },
 };
 

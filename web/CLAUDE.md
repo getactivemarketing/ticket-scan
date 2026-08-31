@@ -145,7 +145,8 @@ tickethawk/
         │   │   ├── watchlist/         # Tracked events
         │   │   ├── event/[id]/        # Event detail
         │   │   ├── venues/[slug]/     # 24 venue pages
-        │   │   ├── tickets/[slug]/    # 37 city/category pages
+        │   │   ├── tickets/[slug]/    # 24 city + 13 category pages
+        │   │   ├── tickets/[slug]/[category]/  # 160 generated combo pages
         │   │   ├── world-cup-2026/    # World Cup landing
         │   │   ├── blog/              # Blog posts
         │   │   └── admin/             # Admin dashboard
