@@ -278,6 +278,28 @@ export default async function ComboPage({ params }: PageProps) {
           </section>
         )}
 
+        {/* The only conversion path on this page. Combo pages render OnsaleRow, which
+            links to event detail rather than signup, so without this the nav button is
+            the sole CTA. Promises only what the product actually does — a watchlist and
+            onsale timing — not price alerts, which have never fired. */}
+        {events.length > 0 && (
+          <section className="mt-10 bg-white rounded-lg p-6 text-center">
+            <h2 className="text-lg font-semibold font-heading text-gray-900">
+              Know before these go on sale
+            </h2>
+            <p className="mt-2 text-gray-600 text-sm max-w-lg mx-auto">
+              Save {category.noun} in {city.name} to a watchlist and we&apos;ll tell you when
+              tickets go on sale, including presales.
+            </p>
+            <Link
+              href="/register"
+              className="inline-block mt-4 bg-brand text-white px-6 py-3 rounded-lg font-semibold hover:bg-brand-dark transition-colors"
+            >
+              Create a free account
+            </Link>
+          </section>
+        )}
+
         {venuesHere.length > 0 && (
           <section className="mt-10">
             <h2 className="text-xl font-semibold font-heading text-gray-900 mb-4">

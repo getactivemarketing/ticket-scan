@@ -132,8 +132,13 @@ export default function Navbar() {
                   Login
                 </Link>
                 <Link
+                  /* DESIGN.md's scarcity rule is "one primary action per view", not
+                     "no primary in chrome". On the 160 combo pages and the blog this is
+                     the ONLY signup path on the page, and as an outline it measured
+                     1.51:1 against the navy nav — effectively invisible. An 86x34 button
+                     is also not the "large flat fill" §6 forbids. Filled, deliberately. */
                   href="/register"
-                  className={`border border-navy-hairline bg-transparent text-bone hover:border-brand px-4 py-1.5 rounded-[6px] font-medium text-sm ${TRANSITION} ${FOCUS_RING}`}
+                  className={`bg-brand text-bone hover:shadow-[0_0_24px_var(--color-blue-glow)] active:translate-y-px px-4 py-1.5 rounded-[6px] font-medium text-sm ${TRANSITION} ${FOCUS_RING}`}
                 >
                   Sign Up
                 </Link>
@@ -221,7 +226,7 @@ export default function Navbar() {
                 </Link>
                 <Link
                   href="/register"
-                  className={`block border border-navy-hairline bg-transparent text-bone hover:border-brand py-3 rounded-[6px] font-medium text-center mt-2 ${TRANSITION} ${FOCUS_RING}`}
+                  className={`block bg-brand text-bone hover:shadow-[0_0_24px_var(--color-blue-glow)] active:translate-y-px py-3 rounded-[6px] font-medium text-center mt-2 ${TRANSITION} ${FOCUS_RING}`}
                   onClick={closeMenu}
                 >
                   Sign Up Free
