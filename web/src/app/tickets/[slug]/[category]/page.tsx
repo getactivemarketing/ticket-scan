@@ -273,7 +273,7 @@ export default async function ComboPage({ params }: PageProps) {
           <section className="mt-8">
             <h2 className="text-xl font-semibold font-heading text-gray-900 mb-4">Upcoming events</h2>
             <div className="mb-4">
-              <AffiliateDisclosure surface="navy" />
+              <AffiliateDisclosure />
             </div>
             <div className="space-y-2">
               {events.map((event) => (
