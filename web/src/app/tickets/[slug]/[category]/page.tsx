@@ -7,6 +7,8 @@ import { findVenue, Venue } from '@/data/venues';
 import { getComboList, isCombo, combosForCity, combosForCategory } from '@/data/combos';
 import { FeedEvent, formatEtDate, cleanEvents } from '@/lib/events';
 import OnsaleRow from '@/components/OnsaleRow';
+import TicketNetworkLink from '@/components/TicketNetworkLink';
+import AffiliateDisclosure from '@/components/AffiliateDisclosure';
 
 // Six hours, not one. 160 combo pages on a 1-hour window would push daily
 // Ticketmaster calls to ~6,300 against a 5,000 limit. Combo listings change
@@ -270,9 +272,24 @@ export default async function ComboPage({ params }: PageProps) {
         {events.length > 0 && (
           <section className="mt-8">
             <h2 className="text-xl font-semibold font-heading text-gray-900 mb-4">Upcoming events</h2>
+            <div className="mb-4">
+              <AffiliateDisclosure surface="navy" />
+            </div>
             <div className="space-y-2">
               {events.map((event) => (
-                <OnsaleRow key={event.id} event={event} />
+                <OnsaleRow
+                  key={event.id}
+                  event={event}
+                  action={
+                    <TicketNetworkLink
+                      name={event.name}
+                      venue={event.venue}
+                      category={categorySlug}
+                      sid={`combo-${citySlug}-${categorySlug}`}
+                      surface="navy"
+                    />
+                  }
+                />
               ))}
             </div>
           </section>

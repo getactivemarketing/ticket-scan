@@ -36,7 +36,13 @@ const STATUS_CLASS: Record<string, string> = {
   unknown: 'bg-muted/14 text-bone',
 };
 
-export default function OnsaleRow({ event }: { event: FeedEvent }) {
+export default function OnsaleRow({
+  event,
+  action,
+}: {
+  event: FeedEvent;
+  action?: React.ReactNode;
+}) {
   const status = saleStatus(event);
   const when = formatEventDayParts(event.date);
   const time = event.onsaleStart ? formatEtTime(event.onsaleStart) : '';
@@ -85,15 +91,27 @@ export default function OnsaleRow({ event }: { event: FeedEvent }) {
     'flex items-center gap-5 rounded-[6px] bg-navy-raised px-5 py-4 transition-colors ' +
     'motion-reduce:transition-none';
 
-  // Only link when there is somewhere real to go.
-  return event.id ? (
-    <Link
-      href={`/event/${event.id}`}
-      className={`${shell} group hover:bg-navy-raised-hover ${FOCUS_RING_ON_DEEP_VOID}`}
-    >
+  // The row used to BE the anchor. It cannot stay one: an anchor may not
+  // contain an anchor, and the resale link is an anchor. The internal
+  // navigation becomes a stretched overlay instead — the whole row is still
+  // clickable — and the action sits above it at z-10 so it wins the click on
+  // its own area. With no action passed, the rendered result is unchanged,
+  // which is what keeps /onsales identical.
+  if (!event.id) {
+    return <div className={shell}>{body}</div>;
+  }
+
+  return (
+    <div className={`${shell} group relative hover:bg-navy-raised-hover`}>
+      <Link
+        href={`/event/${event.id}`}
+        className={`absolute inset-0 rounded-[6px] ${FOCUS_RING_ON_DEEP_VOID}`}
+        aria-label={event.name ? `${event.name} details` : 'Event details'}
+      >
+        <span className="sr-only">{event.name ?? 'Event'}</span>
+      </Link>
       {body}
-    </Link>
-  ) : (
-    <div className={shell}>{body}</div>
+      {action && <div className="relative z-10 flex-none">{action}</div>}
+    </div>
   );
 }
