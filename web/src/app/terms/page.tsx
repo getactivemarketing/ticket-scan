@@ -126,8 +126,20 @@ export default function TermsPage() {
               </p>
             </section>
 
+            <section className="mb-8">
+              <h2 className="font-heading text-xl font-bold text-gray-900 mb-4">13. Affiliate Disclosure</h2>
+              <p className="text-gray-600">
+                Some links on Ticket Scan are affiliate links, including links to TicketNetwork, a
+                resale marketplace. If you buy tickets after following one of these links we may
+                earn a commission. This costs you nothing extra, and it does not affect which
+                events we list, how we rank them, or the prices and price history we show.
+                Affiliate links are labelled &quot;Resale tickets&quot; and marked as sponsored in
+                the page markup.
+              </p>
+            </section>
+
             <section>
-              <h2 className="font-heading text-xl font-bold text-gray-900 mb-4">13. Contact Us</h2>
+              <h2 className="font-heading text-xl font-bold text-gray-900 mb-4">14. Contact Us</h2>
               <p className="text-gray-600">
                 If you have questions about these Terms of Service, please contact us at legal@ticketscan.io.
               </p>

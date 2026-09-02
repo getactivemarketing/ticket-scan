@@ -1,6 +1,8 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
 import { venues } from '@/data/venues';
+import TicketNetworkLink from '@/components/TicketNetworkLink';
+import AffiliateDisclosure from '@/components/AffiliateDisclosure';
 
 export const metadata: Metadata = {
   title: 'Venue Ticket Guides - Seating, Access and Onsale Dates',
@@ -72,7 +74,11 @@ export default function VenuesIndexPage() {
             <h1 className="font-heading text-4xl md:text-5xl font-bold mb-4">
               Venue Ticket Guides
             </h1>
-            <p className="text-xl text-blue-100 max-w-2xl mx-auto">
+            <div className="mt-4 flex flex-wrap items-center justify-center gap-3">
+              <TicketNetworkLink category="concerts" sid="index-venues" label="Browse resale tickets" />
+              <AffiliateDisclosure />
+            </div>
+            <p className="text-xl text-blue-100 max-w-2xl mx-auto mt-4">
               Compare ticket prices, explore seating tiers, and track upcoming events at
               {' '}{venueList.length} major US arenas and stadiums.
             </p>

@@ -2,6 +2,8 @@ import { Metadata } from 'next';
 import Link from 'next/link';
 import { cities } from '@/data/cities';
 import { categories } from '@/data/categories';
+import TicketNetworkLink from '@/components/TicketNetworkLink';
+import AffiliateDisclosure from '@/components/AffiliateDisclosure';
 
 export const metadata: Metadata = {
   title: 'Ticket Guides by City & Category - Compare Prices | TicketScan',
@@ -66,7 +68,11 @@ export default function TicketsIndexPage() {
             <h1 className="font-heading text-4xl md:text-5xl font-bold mb-4">
               Ticket Guides
             </h1>
-            <p className="text-xl text-blue-100 max-w-2xl mx-auto">
+            <div className="mt-4 flex flex-wrap items-center justify-center gap-3">
+              <TicketNetworkLink category="concerts" sid="index-tickets" label="Browse resale tickets" />
+              <AffiliateDisclosure />
+            </div>
+            <p className="text-xl text-blue-100 max-w-2xl mx-auto mt-4">
               Compare ticket prices across every major platform. Browse by event type or by city.
             </p>
           </div>
