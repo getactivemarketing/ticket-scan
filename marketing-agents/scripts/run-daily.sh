@@ -170,6 +170,12 @@ else
     ( cd "$PROJECT_DIR/web" && npm run build:combos ) 2>&1 | tee -a "$LOG_FILE"
     if [ "${PIPESTATUS[0]}" -ne 0 ]; then echo "WARNING: combo index refresh failed; previous index left intact" | tee -a "$LOG_FILE"; fi
 
+    # Same scheduling rationale as the combo index above: refreshed daily, left
+    # uncommitted here so it flows through the COMMIT_PATHS block and inherits
+    # its branch guard and push.
+    ( cd "$PROJECT_DIR/web" && npm run build:tn-index ) 2>&1 | tee -a "$LOG_FILE"
+    if [ "${PIPESTATUS[0]}" -ne 0 ]; then echo "WARNING: TicketNetwork index refresh failed; previous index left intact" | tee -a "$LOG_FILE"; fi
+
     # Deploy to Vercel so image URLs are live BEFORE Blotato consumes them.
     #
     # `vercel --prod` uploads a DIRECTORY, not a git ref. Running it from the
@@ -224,7 +230,7 @@ cd "$PROJECT_DIR"
 # production whether or not it is committed. Leaving it untracked let prod
 # drift from git silently for days. Recording it here means `git log` is an
 # accurate account of what is live, and a bad edit can be found and reverted.
-COMMIT_PATHS=(marketing-agents/output web/src web/src/data/combos.generated.json)
+COMMIT_PATHS=(marketing-agents/output web/src web/src/data/combos.generated.json web/src/data/ticketnetwork.generated.json)
 if [ "$DRY_RUN" = "1" ]; then
     echo "[DRY_RUN] Skipping output commit and push" | tee -a "$LOG_FILE"
 elif [ -n "$(git status --porcelain -- "${COMMIT_PATHS[@]}")" ]; then

@@ -10,7 +10,8 @@
     "test": "node --test",
     "check:design": "node scripts/check-design.mjs",
     "build:combos": "node scripts/build-combo-index.mjs",
-    "build:tn-index": "node scripts/build-tn-index.mjs"
+    "build:tn-index": "node scripts/build-tn-index.mjs",
+    "smoke:tn": "node scripts/smoke-tn-links.mjs"
   },
   "dependencies": {
     "@next/third-parties": "^16.1.6",
