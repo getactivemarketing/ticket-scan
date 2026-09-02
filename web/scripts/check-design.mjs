@@ -1,9 +1,24 @@
-// Design invariants from DESIGN.md. There is no test runner in this project,
-// so this is the red/green cycle for the 2.0 rollout: every rule below is a
-// statement DESIGN.md makes, expressed as something greppable.
-import { readFileSync } from 'node:fs';
+// Design and affiliate-compliance invariants. `npm test` (Node's built-in
+// test runner, added in Task 1) covers how functions BEHAVE. This script
+// covers how files are WRITTEN — literal tokens, class names, directive
+// placement, which components a page renders together — things a unit test
+// can't see because it only exercises exported functions, not source text.
+// Every rule below is a statement DESIGN.md (or the affiliate plan) makes,
+// expressed as something greppable.
+import { readFileSync, readdirSync, statSync } from 'node:fs';
 
 const read = (p) => readFileSync(new URL(`../${p}`, import.meta.url), 'utf8');
+
+function walk(dir) {
+  const out = [];
+  for (const entry of readdirSync(new URL(`../${dir}/`, import.meta.url))) {
+    const rel = `${dir}/${entry}`;
+    const path = new URL(`../${rel}`, import.meta.url);
+    if (statSync(path).isDirectory()) out.push(...walk(rel));
+    else out.push(rel);
+  }
+  return out;
+}
 
 const RULES = [
   {
@@ -307,6 +322,84 @@ const RULES = [
         return 'combo sitemap URLs are not nested /tickets/{city}/{category}';
       }
       return null;
+    },
+  },
+  {
+    name: 'affiliate: no CJ click domain appears in rendered page markup',
+    check: () => {
+      const domains = ['anrdoezrs.net', 'tkqlhce.com', 'jdoqocy.com', 'dpbolvw.net', 'kqzyfj.com'];
+      const problems = [];
+      // RULING R2: this is deliberately scoped to src/app (minus src/app/go/)
+      // and src/components, not all of src/ — and it skips *.test.* files.
+      // Walking all of src/ fails on three legitimate files: tn-click.mjs
+      // (the builder that names its click domain as a default parameter),
+      // src/app/go/tn/[kind]/[slug]/route.ts (the same literal as an env
+      // fallback), and tn-click.test.mjs (asserts on a domain to prove the
+      // builder works). None of those emit rendered markup. The risk this
+      // rule exists to catch is a CJ domain baked into RENDERED PAGE MARKUP
+      // — prerendered HTML served to a browser — not one named by the
+      // server-side click-URL builder or asserted by its own tests. Do not
+      // "fix" this scope back to all of src/; that reintroduces those three
+      // false failures without catching anything the narrower scope misses.
+      const files = [...walk('src/app').filter((f) => !f.startsWith('src/app/go/')), ...walk('src/components')];
+      for (const file of files) {
+        if (!/\.(ts|tsx|mjs|js)$/.test(file)) continue;
+        if (file.includes('.test.')) continue;
+        const src = read(file);
+        const found = domains.filter((d) => src.includes(d));
+        if (found.length) problems.push(`${file}: ${found.join(', ')}`);
+      }
+      return problems.length ? problems.join(' | ') : null;
+    },
+  },
+  {
+    name: 'affiliate: the resale link is sponsored, nofollow and opens safely',
+    check: () => {
+      const src = read('src/components/TicketNetworkLink.tsx');
+      if (!src.includes('rel="sponsored nofollow noopener"')) {
+        return 'TicketNetworkLink must carry rel="sponsored nofollow noopener"';
+      }
+      if (!src.includes('target="_blank"')) return 'TicketNetworkLink must open in a new tab';
+      if (src.includes('Buy tickets') || src.includes('Buy Tickets')) {
+        return 'TicketNetwork is a resale marketplace; the label must say Resale, not Buy';
+      }
+      return null;
+    },
+  },
+  {
+    name: 'affiliate: every page with resale links also discloses them',
+    check: () => {
+      const problems = [];
+      for (const file of walk('src/app')) {
+        if (!file.endsWith('page.tsx')) continue;
+        const src = read(file);
+        if (src.includes('TicketNetworkLink') && !src.includes('AffiliateDisclosure')) {
+          problems.push(`${file}: renders affiliate links with no FTC disclosure`);
+        }
+      }
+      return problems.length ? problems.join(' | ') : null;
+    },
+  },
+  {
+    name: 'affiliate: the resolver never reaches a client bundle',
+    check: () => {
+      // RULING R5: src/lib/ticketnetwork.ts statically imports a 2.1MB
+      // generated JSON index (src/data/ticketnetwork.generated.json). It
+      // has no `import 'server-only'` guard, because that package is not
+      // installed and this plan forbids adding dependencies. This rule
+      // carries the guarantee `server-only` would normally provide: if a
+      // file marked 'use client' ever imports @/lib/ticketnetwork — named,
+      // default, namespace, or dynamic import — that 2.1MB index ships to
+      // the browser bundle. Do not delete this rule if `server-only` is
+      // ever added; delete it only after confirming the package is in use.
+      const problems = [];
+      for (const file of walk('src')) {
+        if (!/\.(ts|tsx)$/.test(file)) continue;
+        const src = read(file);
+        if (!/(^|\n)\s*['"]use client['"]/.test(src)) continue;
+        if (src.includes('@/lib/ticketnetwork')) problems.push(file);
+      }
+      return problems.length ? `client components import the server-only resolver: ${problems.join(', ')}` : null;
     },
   },
 ];
