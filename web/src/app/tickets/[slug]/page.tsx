@@ -5,6 +5,8 @@ import { getCityBySlug, getAllCities, City } from '@/data/cities';
 import { getCategoryBySlug, getAllCategories, Category } from '@/data/categories';
 import { venues } from '@/data/venues';
 import { combosForCity, combosForCategory } from '@/data/combos';
+import TicketNetworkLink from '@/components/TicketNetworkLink';
+import AffiliateDisclosure from '@/components/AffiliateDisclosure';
 
 interface Event {
   id: string;
@@ -285,6 +287,9 @@ export default async function TicketsPage({ params }: PageProps) {
               <h2 className="text-2xl font-bold font-heading text-gray-900 mb-6">
                 {isCity ? `Upcoming Events in ${pageData.data.name}` : `Upcoming ${pageTitle} Events`}
               </h2>
+              <div className="mb-4">
+                <AffiliateDisclosure />
+              </div>
 
               {events.length > 0 ? (
                 <div className="space-y-4">
@@ -316,6 +321,11 @@ export default async function TicketsPage({ params }: PageProps) {
                           ) : (
                             <span className="text-gray-500">Price TBA</span>
                           )}
+                          <TicketNetworkLink
+                            name={event.name}
+                            venue={event.venue}
+                            sid={`city-${slug}`}
+                          />
                           <Link
                             href="/register"
                             className="bg-brand hover:bg-brand-dark text-white px-4 py-2 rounded-lg font-medium transition-colors"
