@@ -68,10 +68,6 @@ export default function TicketsIndexPage() {
             <h1 className="font-heading text-4xl md:text-5xl font-bold mb-4">
               Ticket Guides
             </h1>
-            <div className="mt-4 flex flex-wrap items-center justify-center gap-3">
-              <TicketNetworkLink category="concerts" sid="index-tickets" label="Browse resale tickets" />
-              <AffiliateDisclosure />
-            </div>
             <p className="text-xl text-blue-100 max-w-2xl mx-auto mt-4">
               Compare ticket prices across every major platform. Browse by event type or by city.
             </p>
@@ -79,6 +75,13 @@ export default function TicketsIndexPage() {
         </div>
 
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+          {/* Resale CTA + FTC disclosure — on the body ground, not the gradient
+              hero above, where the legacy surface colors fail contrast. */}
+          <div className="mb-10 flex flex-wrap items-center gap-3">
+            <TicketNetworkLink category="concerts" sid="index-tickets" label="Browse resale tickets" />
+            <AffiliateDisclosure />
+          </div>
+
           {/* By category */}
           <section className="mb-14">
             <h2 className="font-heading text-2xl font-bold text-gray-900 mb-6">Browse by Category</h2>

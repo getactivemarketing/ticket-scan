@@ -64,7 +64,7 @@ Three pieces, each independently testable.
 ### 1. The slug index — `scripts/build-tn-index.mjs`
 
 Fetches the TicketNetwork performers, venues and category sitemaps, normalizes each name into a
-lookup key, and writes `web/src/data/ticketnetwork-index.json` — roughly 2MB across ~37,800
+lookup key, and writes `web/src/data/ticketnetwork.generated.json` — roughly 2MB across ~37,800
 entries, storing the key and the slug only, not the full URL or the `-tickets` suffix.
 
 The file is **committed** and refreshed by the existing daily agent run. It is never fetched

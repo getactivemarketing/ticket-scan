@@ -242,14 +242,6 @@ export default async function VenuePage({ params }: PageProps) {
               {venue.city}, {venue.state} - Capacity: {venue.capacity.toLocaleString()}
             </p>
 
-            <div className="mb-6">
-              <TicketNetworkLink
-                venue={venue.name}
-                sid={`venue-${slug}`}
-                label={`Resale tickets for ${venue.name}`}
-              />
-            </div>
-
             {venue.homeTeams && venue.homeTeams.length > 0 && (
               <div className="flex flex-wrap gap-2">
                 {venue.homeTeams.map((team) => (
@@ -269,7 +261,12 @@ export default async function VenuePage({ params }: PageProps) {
               <h2 className="text-2xl font-bold font-heading text-gray-900 mb-2">
                 Upcoming Events at {venue.name}
               </h2>
-              <div className="mb-6">
+              <div className="mb-6 flex flex-wrap items-center gap-3">
+                <TicketNetworkLink
+                  venue={venue.name}
+                  sid={`venue-${slug}`}
+                  label={`Resale tickets for ${venue.name}`}
+                />
                 <AffiliateDisclosure />
               </div>
 
@@ -291,7 +288,7 @@ export default async function VenuePage({ params }: PageProps) {
                             <span className="text-brand font-medium">{event.type}</span>
                           </div>
                         </div>
-                        <div className="flex items-center gap-4">
+                        <div className="flex flex-wrap items-center justify-end gap-4">
                           {event.minPrice ? (
                             <div className="text-right">
                               <span className="text-sm text-gray-500">From</span>

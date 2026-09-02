@@ -310,7 +310,7 @@ export default async function TicketsPage({ params }: PageProps) {
                             <span className="text-brand font-medium">{event.type}</span>
                           </div>
                         </div>
-                        <div className="flex items-center gap-4">
+                        <div className="flex flex-wrap items-center justify-end gap-4">
                           {event.minPrice ? (
                             <div className="text-right">
                               <span className="text-sm text-gray-500">From</span>

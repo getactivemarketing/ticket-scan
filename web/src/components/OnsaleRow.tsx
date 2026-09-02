@@ -107,9 +107,7 @@ export default function OnsaleRow({
         href={`/event/${event.id}`}
         className={`absolute inset-0 rounded-[6px] ${FOCUS_RING_ON_DEEP_VOID}`}
         aria-label={event.name ? `${event.name} details` : 'Event details'}
-      >
-        <span className="sr-only">{event.name ?? 'Event'}</span>
-      </Link>
+      />
       {body}
       {action && <div className="relative z-10 flex-none">{action}</div>}
     </div>
