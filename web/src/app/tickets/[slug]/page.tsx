@@ -324,7 +324,8 @@ export default async function TicketsPage({ params }: PageProps) {
                           <TicketNetworkLink
                             name={event.name}
                             venue={event.venue}
-                            sid={`city-${slug}`}
+                            category={isCity ? undefined : slug}
+                            sid={isCity ? `city-${slug}` : `category-${slug}`}
                           />
                           <Link
                             href="/register"
