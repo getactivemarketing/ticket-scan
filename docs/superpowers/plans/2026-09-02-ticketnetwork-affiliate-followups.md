@@ -64,3 +64,27 @@
 The CJ **data feed**: real TicketNetwork inventory and prices, event-level deep links instead of
 performer-level, and the path to TicketNetwork as a fourth priced source in compare. Explicitly
 out of scope for this pass.
+
+## Reviewed, deliberately not fixed
+
+Each of these was raised by a code review during implementation, judged, and left alone on
+purpose. Recorded so nobody "fixes" one by accident, and so the reasoning is not lost.
+
+- **The combo-page resale link drops to 4.03:1 on row hover.** `TicketNetworkLink`'s navy
+  surface is Beacon Blue, which measures 4.54:1 on Raised Navy and 4.03:1 on Raised Navy Hover
+  (the row lifts whenever the link itself is hovered). Left as-is because the site's existing
+  hero body copy sits at 4.02:1, so fixing only this one link would impose a standard the rest
+  of the site does not meet. Worth solving site-wide in the Design 2.0 content pass, not here.
+- **`build-tn-index.mjs` writes non-atomically** (no temp file plus rename). Inherited unchanged
+  from `build-combo-index.mjs`, which has the same pattern. The narrow risk is a process death
+  mid-write truncating a good index; since the JSON is a static import, a truncated file breaks
+  every build. A cheaper guard than temp+rename would be a `JSON.parse` sanity check in
+  `run-daily.sh` before the commit block.
+- **Both index pages link to `category="concerts"`.** Defensible on `/tickets`, arbitrary on
+  `/venues` — TicketNetwork has no all-venues landing page. The visible label is generic
+  ("Browse resale tickets"), so the choice is invisible to visitors.
+- **`/terms` §13 renders even while the feature is dark.** It states the site uses affiliate
+  links, which is not yet true with no credentials set. Harmless, and arguably better to state
+  early than late.
+- **`smoke-tn-links.mjs` samples with replacement**, so a 50-sample run may test fewer than 50
+  distinct slugs. Immaterial for a health check.
