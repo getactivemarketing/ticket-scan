@@ -2,6 +2,8 @@ import { Metadata } from 'next';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { venues, getVenueBySlug, tierPricing } from '@/data/venues';
+import TicketNetworkLink from '@/components/TicketNetworkLink';
+import AffiliateDisclosure from '@/components/AffiliateDisclosure';
 
 // Venue guides had no links to each other, so each one was an SEO island. Relate
 // them same-state first, then same-type, so the 25 guides form a crawlable
@@ -240,6 +242,14 @@ export default async function VenuePage({ params }: PageProps) {
               {venue.city}, {venue.state} - Capacity: {venue.capacity.toLocaleString()}
             </p>
 
+            <div className="mb-6">
+              <TicketNetworkLink
+                venue={venue.name}
+                sid={`venue-${slug}`}
+                label={`Resale tickets for ${venue.name}`}
+              />
+            </div>
+
             {venue.homeTeams && venue.homeTeams.length > 0 && (
               <div className="flex flex-wrap gap-2">
                 {venue.homeTeams.map((team) => (
@@ -256,9 +266,12 @@ export default async function VenuePage({ params }: PageProps) {
           <div className="grid lg:grid-cols-3 gap-8">
             {/* Main Content - Events */}
             <div className="lg:col-span-2">
-              <h2 className="text-2xl font-bold font-heading text-gray-900 mb-6">
+              <h2 className="text-2xl font-bold font-heading text-gray-900 mb-2">
                 Upcoming Events at {venue.name}
               </h2>
+              <div className="mb-6">
+                <AffiliateDisclosure />
+              </div>
 
               {events.length > 0 ? (
                 <div className="space-y-4">
@@ -289,6 +302,11 @@ export default async function VenuePage({ params }: PageProps) {
                           ) : (
                             <span className="text-gray-500">Price TBA</span>
                           )}
+                          <TicketNetworkLink
+                            name={event.name}
+                            venue={venue.name}
+                            sid={`venue-${slug}`}
+                          />
                           <Link
                             href="/register"
                             className="bg-brand hover:bg-brand-dark text-white px-4 py-2 rounded-lg font-medium transition-colors"
