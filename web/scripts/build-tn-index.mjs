@@ -8,7 +8,7 @@
 // On any failure the previous index is left exactly as it was: a stale index
 // links to pages that mostly still exist, while a truncated one silently
 // deletes revenue from every page that no longer resolves.
-import { readFileSync, writeFileSync } from 'node:fs';
+import { writeFileSync } from 'node:fs';
 import { keyFromSlug } from '../src/lib/tn-slug.mjs';
 
 const OUT = new URL('../src/data/ticketnetwork.generated.json', import.meta.url);
@@ -21,9 +21,17 @@ const SOURCES = [
 
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 
+/**
+ * Fetches `url` with retry/backoff on transient failures (5xx, 429), so a
+ * single flaky response from TicketNetwork does not abort an unattended
+ * scheduled run. A 404 is not transient — it means "page missing" — so it is
+ * returned as `null` immediately rather than retried; every other non-OK
+ * status is treated as permanent and thrown.
+ */
 async function fetchText(url) {
   for (let attempt = 0; attempt < 4; attempt += 1) {
     const res = await fetch(url, { headers: { 'user-agent': UA } });
+    if (res.status === 404) return null;
     if (res.ok) return res.text();
     if (res.status < 500 && res.status !== 429) throw new Error(`HTTP ${res.status} for ${url}`);
     await sleep(500 * 2 ** attempt + Math.random() * 250);
@@ -55,11 +63,9 @@ function slugsFrom(xml, prefix) {
 async function allPages(name, prefix) {
   const pages = [];
   for (let page = 1; page <= 50; page += 1) {
-    const res = await fetch(`https://www.ticketnetwork.com/sitemap/${name}/${page}`, { headers: { 'user-agent': UA } });
-    if (res.status === 404) break;
-    if (!res.ok) throw new Error(`HTTP ${res.status} for sitemap ${name}/${page}`);
-    const xml = await res.text();
-    if (slugsFrom(xml, prefix).length === 0) break;
+    const xml = await fetchText(`https://www.ticketnetwork.com/sitemap/${name}/${page}`);
+    if (xml === null) break; // 404: page missing
+    if (slugsFrom(xml, prefix).length === 0) break; // R4: empty page, not a 404
     pages.push(xml);
     await sleep(250);
   }
