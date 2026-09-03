@@ -75,6 +75,7 @@ export const CATEGORY_MAP = {
   nhl: { kind: 'category', slug: 'sports-hockey-nhl-tickets' },
   mlb: { kind: 'category', slug: 'sports-baseball-mlb-tickets' },
   nfl: { kind: 'category', slug: 'sports-football-nfl-tickets' },
+  'college-football': { kind: 'category', slug: 'college-football-tickets' },
   ufc: { kind: 'category', slug: 'ufc-tickets' },
   wwe: { kind: 'category', slug: 'wwe-tickets' },
   tennis: { kind: 'category', slug: 'tennis-tickets' },

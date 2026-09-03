@@ -83,7 +83,7 @@ test('resolveFromIndex returns null rather than inventing a slug', () => {
 });
 
 test('every category on the site maps to a TicketNetwork page', () => {
-  const ours = ['nba', 'nhl', 'concerts', 'theater', 'mlb', 'nfl', 'ufc', 'wwe', 'comedy', 'festivals', 'soccer', 'tennis', 'family'];
+  const ours = ['nba', 'nhl', 'concerts', 'theater', 'mlb', 'nfl', 'college-football', 'ufc', 'wwe', 'comedy', 'festivals', 'soccer', 'tennis', 'family'];
   for (const slug of ours) {
     assert.ok(CATEGORY_MAP[slug], `no TicketNetwork mapping for category "${slug}"`);
     assert.match(CATEGORY_MAP[slug].slug, /^[a-z0-9][a-z0-9-]*$/);

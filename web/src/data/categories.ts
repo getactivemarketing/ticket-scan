@@ -76,6 +76,19 @@ export const categories: Record<string, Category> = {
     noun: 'NFL games',
     nounSingular: 'NFL game',
   },
+  'college-football': {
+    slug: 'college-football',
+    name: 'College Football',
+    description: 'Browse college football games by city. Stadium guides, rivalry weekends, and onsale and presale dates.',
+    // Sports > Football > College. The subgenre id, not a keyword: college
+    // event names are "Georgia Tech Yellow Jackets Football", so filtering on
+    // the word "NCAA" matched nothing and hid the whole category.
+    ticketmasterClassificationId: 'KZazBEonSMnZfZ7vFE6',
+    keywords: ['college football tickets', 'NCAA football tickets', 'bowl game tickets'],
+    icon: '\u{1F3C8}',
+    noun: 'college football games',
+    nounSingular: 'college football game',
+  },
   'ufc': {
     slug: 'ufc',
     name: 'UFC & MMA',

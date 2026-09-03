@@ -1999,7 +1999,11 @@ app.get('/api/public/events', async (req, res) => {
       'music': { segmentName: 'Music' },
       'arts-theater': { segmentName: 'Arts & Theatre' },
       'football': { classificationName: 'Football' },
-      'college-football': { classificationName: 'Football', keyword: 'NCAA' },
+      // Sports > Football > College, by subgenre id. The previous
+      // { classificationName: 'Football', keyword: 'NCAA' } matched nothing:
+      // college events are named "Georgia Tech Yellow Jackets Football", so
+      // the keyword filtered out the entire category rather than narrowing it.
+      'college-football': { classificationId: 'KZazBEonSMnZfZ7vFE6' },
       'basketball': { classificationName: 'Basketball' },
       'hockey': { classificationName: 'Hockey' },
       'baseball': { classificationName: 'Baseball' }
@@ -2042,6 +2046,9 @@ app.get('/api/public/events', async (req, res) => {
       if (cat) {
         if (cat.classificationName) tmParams.classificationName = cat.classificationName;
         if (cat.segmentName) tmParams.segmentName = cat.segmentName;
+        // A subgenre id, where a name is too coarse to separate two things that
+        // share one genre — college football and the NFL are both "Football".
+        if (cat.classificationId) tmParams.classificationId = cat.classificationId;
         // Only apply a category keyword when the venue hasn't already claimed
         // the search: combining them would over-narrow to near-zero results.
         if (cat.keyword && !tmParams.venueId) tmParams.keyword = cat.keyword;
