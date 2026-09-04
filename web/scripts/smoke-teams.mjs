@@ -27,6 +27,14 @@
 // A wrong attraction id renders a working page listing someone else's
 // events. No test or type check catches that — this does.
 //
+// Every network call is wrapped so a single failure (timeout, non-2xx,
+// malformed body) is reported as an API ERROR and skipped, never left to
+// throw and kill the run mid-sample, and never allowed to silently read as a
+// WRONG TEAM/WRONG CLASS finding — an API hiccup and a real defect must
+// never look the same in the output. A slug present in
+// teams.generated.json but missing from teams.ts (the two files having
+// drifted apart) is reported the same way: named and skipped, not fatal.
+//
 // Not wired into any gate: Ticketmaster being slow is not a reason to fail a
 // deploy.
 import { readFileSync } from 'node:fs';
@@ -48,46 +56,83 @@ const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 
 let wrongTeam = 0;
 let wrongClass = 0;
+let apiErrors = 0;
+let missingFromTeamsTs = 0;
+
 for (const slug of slugs) {
   const { attractionId } = index.teams[slug];
   const team = teamOf[slug];
+
+  // teams.generated.json and teams.ts are supposed to agree 1:1. A slug
+  // present in the index but absent from teams.ts is the two files having
+  // drifted apart — a real defect worth naming, not a crash.
+  if (!team) {
+    missingFromTeamsTs += 1;
+    console.log(`  MISSING FROM teams.ts  ${slug} (${attractionId}) — index and teams.ts have drifted apart`);
+    continue;
+  }
   const want = LEAGUE_CLASSIFICATION[team.league];
 
-  // 1. Name agreement — fetch the attraction itself.
-  const attrRes = await fetch(
-    `https://app.ticketmaster.com/discovery/v2/attractions/${attractionId}.json?apikey=${KEY}`,
-  );
-  const attr = await attrRes.json();
-  const attrName = String(attr && attr.name || '').trim();
-  if (attrName !== team.name.trim()) {
-    wrongTeam += 1;
-    console.log(`  WRONG TEAM  ${slug} (${attractionId}) -> "${attrName}" (expected "${team.name}")`);
+  // 1. Name agreement — fetch the attraction itself. Any network failure or
+  // malformed body is reported and skipped, never allowed to crash the run
+  // or masquerade as a WRONG TEAM finding.
+  try {
+    const attrRes = await fetch(
+      `https://app.ticketmaster.com/discovery/v2/attractions/${attractionId}.json?apikey=${KEY}`,
+    );
+    const attr = await attrRes.json().catch(() => null);
+    if (!attrRes.ok || !attr || typeof attr.name !== 'string') {
+      apiErrors += 1;
+      console.log(`  API ERROR  ${slug} (${attractionId}) — attraction fetch failed (status ${attrRes.status})`);
+    } else {
+      const attrName = attr.name.trim();
+      if (attrName !== team.name.trim()) {
+        wrongTeam += 1;
+        console.log(`  WRONG TEAM  ${slug} (${attractionId}) -> "${attrName}" (expected "${team.name}")`);
+      }
+    }
+  } catch (err) {
+    apiErrors += 1;
+    console.log(`  API ERROR  ${slug} (${attractionId}) — ${err.message}`);
   }
   await sleep(250);
 
-  // 2. Classification agreement — sample the attraction's events.
-  const res = await fetch(
-    `https://app.ticketmaster.com/discovery/v2/events.json?apikey=${KEY}&attractionId=${attractionId}&size=3`,
-  );
-  const json = await res.json();
-  const events = (json._embedded && json._embedded.events) || [];
-  if (!events.length) {
-    console.log(`  no events  ${slug} (${attractionId}) — offseason or stale id`);
-  } else {
-    const wrong = events.filter((e) => {
-      const c = (e.classifications || [])[0] || {};
-      return !(c.genre && c.genre.name === want.genre && c.subGenre && c.subGenre.name === want.subGenre);
-    });
-    if (wrong.length) {
-      wrongClass += 1;
-      console.log(`  WRONG CLASS  ${slug} (${attractionId}) -> ${wrong[0].name}`);
+  // 2. Classification agreement — sample the attraction's events. Same
+  // failure handling: report and move on.
+  try {
+    const res = await fetch(
+      `https://app.ticketmaster.com/discovery/v2/events.json?apikey=${KEY}&attractionId=${attractionId}&size=3`,
+    );
+    const json = await res.json().catch(() => null);
+    if (!res.ok || !json) {
+      apiErrors += 1;
+      console.log(`  API ERROR  ${slug} (${attractionId}) — events fetch failed (status ${res.status})`);
+    } else {
+      const events = (json._embedded && json._embedded.events) || [];
+      if (!events.length) {
+        console.log(`  no events  ${slug} (${attractionId}) — offseason or stale id`);
+      } else {
+        const wrong = events.filter((e) => {
+          const c = (e.classifications || [])[0] || {};
+          return !(c.genre && c.genre.name === want.genre && c.subGenre && c.subGenre.name === want.subGenre);
+        });
+        if (wrong.length) {
+          wrongClass += 1;
+          console.log(`  WRONG CLASS  ${slug} (${attractionId}) -> ${wrong[0].name}`);
+        }
+      }
     }
+  } catch (err) {
+    apiErrors += 1;
+    console.log(`  API ERROR  ${slug} (${attractionId}) — ${err.message}`);
   }
   await sleep(250);
 }
 
 console.log(
-  `\nTEAM SMOKE: ${slugs.length} sampled — ${slugs.length - wrongTeam} name matches, ${slugs.length - wrongClass} class matches`,
+  `\nTEAM SMOKE: ${slugs.length} sampled — ${wrongTeam} wrong team, ${wrongClass} wrong class, ${apiErrors} api errors, ${missingFromTeamsTs} missing from teams.ts`,
 );
 if (wrongTeam) console.log('Any WRONG TEAM line is a real defect: the attraction id points at a different team or program entirely.');
 if (wrongClass) console.log('Any WRONG CLASS line is a real defect: that page lists another entity’s events.');
+if (apiErrors) console.log('API ERROR lines mean those teams could not be checked this run — not that they passed.');
+if (missingFromTeamsTs) console.log('MISSING FROM teams.ts lines mean teams.generated.json and teams.ts have drifted apart.');
