@@ -51,7 +51,23 @@ for (const m of src.matchAll(/^\s*'([a-z0-9-]+)': \{ slug: '[a-z0-9-]+', name: "
 }
 
 const SAMPLE = Number(process.env.SAMPLE || 25);
-const slugs = Object.keys(index.teams).sort(() => Math.random() - 0.5).slice(0, SAMPLE);
+
+// A real Fisher-Yates shuffle. `sort(() => Math.random() - 0.5)` is not a
+// shuffle: the comparator is inconsistent, and the result is heavily biased
+// toward the array's original head. The index is ordered NFL ->
+// college-football -> nba -> nhl -> mlb, so that bias made this check —
+// the branch's main defence against a wrong attraction id — barely sample
+// MLB and NHL at all.
+function shuffle(items) {
+  const out = [...items];
+  for (let i = out.length - 1; i > 0; i -= 1) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [out[i], out[j]] = [out[j], out[i]];
+  }
+  return out;
+}
+
+const slugs = shuffle(Object.keys(index.teams)).slice(0, SAMPLE);
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 
 let wrongTeam = 0;
