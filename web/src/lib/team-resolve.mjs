@@ -20,7 +20,10 @@ export const LEAGUE_CLASSIFICATION = {
 const upcoming = (a) => (a && a.upcomingEvents && Number(a.upcomingEvents._total)) || 0;
 
 function matchesClass(attraction, want) {
-  const list = (attraction && attraction.classifications) || [];
+  // Array.isArray, not a truthiness check: a truthy non-array
+  // `classifications` would throw on .some() and kill the whole nightly
+  // index build, not just this one candidate.
+  const list = attraction && Array.isArray(attraction.classifications) ? attraction.classifications : [];
   return list.some((c) => {
     const genre = c && c.genre && c.genre.name;
     const subGenre = c && c.subGenre && c.subGenre.name;
@@ -56,6 +59,26 @@ export function nameAgrees(expectedName, candidateName) {
 }
 
 /**
+ * How many distinctive tokens `candidateName` carries that `expectedName` does
+ * not. Zero means the candidate says nothing beyond the expected name.
+ *
+ * nameAgrees is containment, so a seed name whose only distinctive token is
+ * "utah" qualifies every Football/College attraction containing "utah" —
+ * "Utah Football", "Utah Tech Trailblazers Football", "Southern Utah
+ * Thunderbirds Football" and "Utah State University Aggies Football" all pass,
+ * and they were tied on upcoming-event count too. Ranking by extras first
+ * makes the right one win on merit instead of on an id tiebreak that one extra
+ * Utah Tech game would flip, on an index that rebuilds and deploys nightly.
+ */
+export function extraDistinctiveTokens(expectedName, candidateName) {
+  const expected = new Set(nameTokens(expectedName).filter((t) => !GENERIC_NAME_TOKENS.has(t)));
+  const extras = new Set(
+    nameTokens(candidateName).filter((t) => !GENERIC_NAME_TOKENS.has(t) && !expected.has(t)),
+  );
+  return extras.size;
+}
+
+/**
  * Returns the best attraction for `league`, or null when none qualifies.
  * Never falls back to "the first result" — that is how a band becomes a team.
  *
@@ -76,8 +99,22 @@ export function pickAttraction(candidates, league, expectedName) {
   }
   if (!qualified.length) return null;
 
-  // Ties broken by id so a rebuild picks the same one every time.
-  qualified.sort((a, b) => upcoming(b) - upcoming(a) || String(a.id).localeCompare(String(b.id)));
+  // Rank: fewest extra distinctive tokens, then busiest, then id.
+  //
+  // Extras first because containment alone gives near-zero protection to a
+  // single-token name (see extraDistinctiveTokens). Extras are all zero when
+  // no expectedName was supplied, so the two-argument call still ranks by
+  // event count exactly as before. Ties still broken by id so a rebuild picks
+  // the same attraction every time.
+  const extras = new Map(
+    qualified.map((c) => [c, expectedName ? extraDistinctiveTokens(expectedName, c && c.name) : 0]),
+  );
+  qualified.sort(
+    (a, b) =>
+      extras.get(a) - extras.get(b) ||
+      upcoming(b) - upcoming(a) ||
+      String(a.id).localeCompare(String(b.id)),
+  );
   return qualified[0];
 }
 

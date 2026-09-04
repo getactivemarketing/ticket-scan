@@ -134,6 +134,70 @@ test('omitting expectedName preserves prior two-argument behaviour', () => {
   assert.equal(pickAttraction(candidates, 'college-football').id, 'HOUSTON');
 });
 
+test('a single-token name prefers the candidate carrying no extra tokens (Utah)', () => {
+  // Live candidates for utah-football, all Football/College, all containing
+  // "utah", and tied at 11-12 upcoming events. Containment alone qualifies
+  // every one of them; before this ranking we held the right attraction only
+  // because "K8vZ917Bt0" sorts before "K8vZ917r-o7" and "K8vZ917uo7f".
+  const candidates = [
+    att('Utah Tech Trailblazers Football', 'Football', 'College', 12, 'K8vZ917r-o7'),
+    att('Southern Utah Thunderbirds Football', 'Football', 'College', 12, 'K8vZ917uo7f'),
+    att('Utah State University Aggies Football', 'Football', 'College', 11, 'K8vZ9171zq7'),
+    att('Utah Football', 'Football', 'College', 12, 'K8vZ917Bt0'),
+  ];
+  assert.equal(pickAttraction(candidates, 'college-football', 'Utah Football').id, 'K8vZ917Bt0');
+});
+
+test('extras outrank event count, so a busier decoy cannot win on a single-token name (Utah)', () => {
+  // The failure mode that made this urgent: the index rebuilds nightly, so one
+  // extra Utah Tech game used to be enough to flip the page.
+  const candidates = [
+    att('Utah Tech Trailblazers Football', 'Football', 'College', 99, 'TECH'),
+    att('Utah Football', 'Football', 'College', 1, 'UTAH'),
+  ];
+  assert.equal(pickAttraction(candidates, 'college-football', 'Utah Football').id, 'UTAH');
+});
+
+test('a second single-token name resolves the same way (Tulane / UMass)', () => {
+  const tulane = [
+    att('Tulane Green Wave Football', 'Football', 'College', 20, 'GREENWAVE'),
+    att('Tulane University Football', 'Football', 'College', 6, 'TULANE'),
+  ];
+  assert.equal(
+    pickAttraction(tulane, 'college-football', 'Tulane University Football').id,
+    'TULANE',
+  );
+
+  const umass = [
+    att('UMass Minutemen Football', 'Football', 'College', 30, 'MINUTEMEN'),
+    att('UMass Football', 'Football', 'College', 5, 'UMASS'),
+  ];
+  assert.equal(pickAttraction(umass, 'college-football', 'UMass Football').id, 'UMASS');
+});
+
+test('extras never override classification or name agreement', () => {
+  // A zero-extras candidate in the wrong classification still loses to a
+  // correctly-classified one, and a non-agreeing name still cannot qualify.
+  const candidates = [
+    att('Utah Football', 'Basketball', 'NBA', 40, 'WRONGCLASS'),
+    att('Utah Utes Football', 'Football', 'College', 3, 'RIGHTCLASS'),
+  ];
+  assert.equal(
+    pickAttraction(candidates, 'college-football', 'Utah Utes Football').id,
+    'RIGHTCLASS',
+  );
+  assert.equal(pickAttraction(candidates, 'college-football', 'Ohio State Buckeyes'), null);
+});
+
+test('matchesClass survives a truthy non-array classifications field', () => {
+  // A malformed row must not throw and kill the whole nightly index build.
+  const candidates = [
+    { id: 'BAD', name: 'Broken', classifications: 'nope', upcomingEvents: { _total: 9 } },
+    att('Dallas Cowboys', 'Football', 'NFL', 16, 'GOOD'),
+  ];
+  assert.equal(pickAttraction(candidates, 'nfl').id, 'GOOD');
+});
+
 test('teamSlug produces stable url-safe slugs', () => {
   assert.equal(teamSlug('Dallas Cowboys'), 'dallas-cowboys');
   assert.equal(teamSlug('Texas A&M Aggies'), 'texas-am-aggies');
