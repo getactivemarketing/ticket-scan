@@ -10,6 +10,15 @@ const nodemailer = require('nodemailer');
 const { Resend } = require('resend');
 const rateLimit = require('express-rate-limit');
 
+// Resolved by web/scripts/build-venue-ids.mjs and committed. Read here so a
+// venue added to the frontend data cannot silently 400 this endpoint.
+//
+// NOTE: two slugs are deliberately stale, because the published URL must
+// keep working after the building was renamed:
+//   footprint-center   -> Mortgage Matchup Center (renamed Oct 2025)
+//   wells-fargo-center -> Xfinity Mobile Arena    (renamed Sep 2025)
+// They are pinned in the builder's PINNED map, not re-resolved.
+const venueIds = require('./data/venue-ids.json').ids;
 
 // Rate limiters for security
 const authLimiter = rateLimit({
@@ -1908,46 +1917,8 @@ app.get('/api/public/events', async (req, res) => {
       sort: 'date,asc'
     };
 
-    // Venue slug -> Ticketmaster venueId.
-    //
-    // These were keyword searches until now, which is why several venues were
-    // broken: `keyword: 'United Center'` is a full-text match, so it returned
-    // events at Arthur Ashe Stadium and a venue in Belfast, and it returned
-    // nothing at all for venues Ticketmaster lists under a newer name. venueId
-    // is exact. IDs resolved from /discovery/v2/venues.json and each verified
-    // to return correctly-attributed events.
-    //
-    // NOTE: two slugs are deliberately stale, because the published URL must
-    // keep working after the building was renamed:
-    //   footprint-center   -> Mortgage Matchup Center (renamed Oct 2025)
-    //   wells-fargo-center -> Xfinity Mobile Arena    (renamed Sep 2025)
-    const venueIds = {
-      'kia-center': 'KovZpZAEvEEA',
-      'kaseya-center': 'KovZpZAJtFaA',
-      'msg': 'KovZpZA7AAEA',
-      'crypto-arena': 'KovZpZAEdntA',
-      'united-center': 'KovZpa2M7e',
-      'td-garden': 'KovZpa2gne',
-      'wells-fargo-center': 'KovZ917AiMF',
-      'american-airlines-center': 'KovZpZAJ67eA',
-      'toyota-center': 'KovZpZAJJIIA',
-      'footprint-center': 'KovZpZAE617A',
-      'chase-center': 'KovZ917Ah1H',
-      'ball-arena': 'KovZpZAFaJeA',
-      'state-farm-arena': 'KovZpa2Xke',
-      'barclays-center': 'KovZ917AtP3',
-      'capital-one-arena': 'KovZpaKuJe',
-      'little-caesars-arena': 'KovZ917A25V',
-      'fiserv-forum': 'KovZ917A_fV',
-      'target-center': 'KovZpZAE7evA',
-      'smoothie-king-center': 'KovZpZAJAJAA',
-      'scotiabank-arena': 'KovZpZAFFE1A',
-      't-mobile-arena': 'KovZpZAIIIdA',
-      'climate-pledge-arena': 'KovZ917Ahkk',
-      'prudential-center': 'KovZpZAE7vaA',
-      'wrigley-field': 'KovZpZAFlktA',
-      'golden-1-center': 'KovZpZAEF76A'
-    };
+    // venueIds is resolved by web/scripts/build-venue-ids.mjs and required at
+    // the top of this file, so it is loaded once from data/venue-ids.json.
 
     // City mapping
     const cityNames = {

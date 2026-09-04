@@ -1,0 +1,34 @@
+{
+  "builtAt": "2026-09-04T17:49:51.014Z",
+  "counts": {
+    "resolved": 25,
+    "unresolved": 0
+  },
+  "ids": {
+    "kia-center": "KovZpZAEvEEA",
+    "kaseya-center": "KovZpZAJtFaA",
+    "msg": "KovZpZA7AAEA",
+    "crypto-arena": "KovZpZAEdntA",
+    "united-center": "KovZpa2M7e",
+    "td-garden": "KovZpa2gne",
+    "wells-fargo-center": "KovZ917AiMF",
+    "american-airlines-center": "KovZpZAJ67eA",
+    "toyota-center": "KovZpZAJJIIA",
+    "footprint-center": "KovZpZAE617A",
+    "chase-center": "KovZ917Ah1H",
+    "ball-arena": "KovZpZAFaJeA",
+    "state-farm-arena": "KovZpa2Xke",
+    "barclays-center": "KovZ917AtP3",
+    "capital-one-arena": "KovZpaKuJe",
+    "little-caesars-arena": "KovZ917A25V",
+    "fiserv-forum": "KovZ917A_fV",
+    "target-center": "KovZpZAE7evA",
+    "smoothie-king-center": "KovZpZAJAJAA",
+    "scotiabank-arena": "KovZpZAFFE1A",
+    "t-mobile-arena": "KovZpZAIIIdA",
+    "climate-pledge-arena": "KovZ917Ahkk",
+    "prudential-center": "KovZpZAE7vaA",
+    "wrigley-field": "KovZpZAFlktA",
+    "golden-1-center": "KovZpZAEF76A"
+  }
+}

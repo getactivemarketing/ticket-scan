@@ -12,6 +12,7 @@
     "build:combos": "node scripts/build-combo-index.mjs",
     "build:tn-index": "node scripts/build-tn-index.mjs",
     "build:teams": "node scripts/build-team-index.mjs",
+    "build:venue-ids": "node scripts/build-venue-ids.mjs",
     "smoke:tn": "node scripts/smoke-tn-links.mjs",
     "smoke:teams": "node scripts/smoke-teams.mjs"
   },
