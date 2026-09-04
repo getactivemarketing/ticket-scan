@@ -1,0 +1,978 @@
+{
+  "builtAt": "2026-09-04T16:07:27.735Z",
+  "counts": {
+    "resolved": 261,
+    "unresolved": 0
+  },
+  "teams": {
+    "arizona-cardinals": {
+      "attractionId": "K8vZ917198f",
+      "tnSlug": "arizona-cardinals-tickets"
+    },
+    "atlanta-falcons": {
+      "attractionId": "K8vZ9171ou0",
+      "tnSlug": "atlanta-falcons-tickets"
+    },
+    "baltimore-ravens": {
+      "attractionId": "K8vZ91719eV",
+      "tnSlug": "baltimore-ravens-tickets"
+    },
+    "buffalo-bills": {
+      "attractionId": "K8vZ9171oGf",
+      "tnSlug": "buffalo-bills-tickets"
+    },
+    "carolina-panthers": {
+      "attractionId": "K8vZ9171oPf",
+      "tnSlug": "carolina-panthers-tickets"
+    },
+    "chicago-bears": {
+      "attractionId": "K8vZ9171ou7",
+      "tnSlug": "chicago-bears-tickets"
+    },
+    "cincinnati-bengals": {
+      "attractionId": "K8vZ9171ovV",
+      "tnSlug": "cincinnati-bengals-tickets"
+    },
+    "cleveland-browns": {
+      "attractionId": "K8vZ9171oV7",
+      "tnSlug": "cleveland-browns-tickets"
+    },
+    "dallas-cowboys": {
+      "attractionId": "K8vZ9171oG0",
+      "tnSlug": "dallas-cowboys-tickets"
+    },
+    "denver-broncos": {
+      "attractionId": "K8vZ9171og7",
+      "tnSlug": "denver-broncos-tickets"
+    },
+    "detroit-lions": {
+      "attractionId": "K8vZ9171oUf",
+      "tnSlug": "detroit-lions-tickets"
+    },
+    "green-bay-packers": {
+      "attractionId": "K8vZ9171oC7",
+      "tnSlug": "green-bay-packers-tickets"
+    },
+    "houston-texans": {
+      "attractionId": "K8vZ91756Kf",
+      "tnSlug": "houston-texans-tickets"
+    },
+    "indianapolis-colts": {
+      "attractionId": "K8vZ9171oV0",
+      "tnSlug": "indianapolis-colts-tickets"
+    },
+    "jacksonville-jaguars": {
+      "attractionId": "K8vZ9171poV",
+      "tnSlug": "jacksonville-jaguars-tickets"
+    },
+    "kansas-city-chiefs": {
+      "attractionId": "K8vZ9171oMf",
+      "tnSlug": "kansas-city-chiefs-tickets"
+    },
+    "las-vegas-raiders": {
+      "attractionId": "K8vZ9171oVV",
+      "tnSlug": "las-vegas-raiders-tickets"
+    },
+    "los-angeles-chargers": {
+      "attractionId": "K8vZ9171og0",
+      "tnSlug": "los-angeles-chargers-tickets"
+    },
+    "los-angeles-rams": {
+      "attractionId": "K8vZ91719t0",
+      "tnSlug": "los-angeles-rams-tickets"
+    },
+    "miami-dolphins": {
+      "attractionId": "K8vZ9171ogf",
+      "tnSlug": "miami-dolphins-tickets"
+    },
+    "minnesota-vikings": {
+      "attractionId": "K8vZ9171oM7",
+      "tnSlug": "minnesota-vikings-tickets"
+    },
+    "new-england-patriots": {
+      "attractionId": "K8vZ9171ouf",
+      "tnSlug": "new-england-patriots-tickets"
+    },
+    "new-orleans-saints": {
+      "attractionId": "K8vZ9171ouV",
+      "tnSlug": "new-orleans-saints-tickets"
+    },
+    "new-york-giants": {
+      "attractionId": "K8vZ9171oCf",
+      "tnSlug": "new-york-giants-tickets"
+    },
+    "new-york-jets": {
+      "attractionId": "K8vZ9171oGV",
+      "tnSlug": "new-york-jets-tickets"
+    },
+    "philadelphia-eagles": {
+      "attractionId": "K8vZ9171oU0",
+      "tnSlug": "philadelphia-eagles-tickets"
+    },
+    "pittsburgh-steelers": {
+      "attractionId": "K8vZ9171ogV",
+      "tnSlug": "pittsburgh-steelers-tickets"
+    },
+    "san-francisco-49ers": {
+      "attractionId": "K8vZ9171oMV",
+      "tnSlug": "san-francisco-49ers-tickets"
+    },
+    "seattle-seahawks": {
+      "attractionId": "K8vZ9171oU7",
+      "tnSlug": "seattle-seahawks-tickets"
+    },
+    "tampa-bay-buccaneers": {
+      "attractionId": "K8vZ9171oCV",
+      "tnSlug": "tampa-bay-buccaneers-tickets"
+    },
+    "tennessee-titans": {
+      "attractionId": "K8vZ91719u7",
+      "tnSlug": "tennessee-titans-tickets"
+    },
+    "washington-commanders": {
+      "attractionId": "K8vZ9171oM0",
+      "tnSlug": "washington-commanders-tickets"
+    },
+    "air-force-academy-falcons-football": {
+      "attractionId": "K8vZ91758IV"
+    },
+    "alabama-crimson-tide-football": {
+      "attractionId": "K8vZ9175o60",
+      "tnSlug": "alabama-crimson-tide-football-tickets"
+    },
+    "appalachian-state-university-mountaineer-football": {
+      "attractionId": "K8vZ9171zH0"
+    },
+    "arizona-state-sun-devils-football": {
+      "attractionId": "K8vZ9171q30",
+      "tnSlug": "arizona-state-sun-devils-football-tickets"
+    },
+    "arizona-wildcats-football": {
+      "attractionId": "K8vZ9171_37",
+      "tnSlug": "arizona-wildcats-football-tickets"
+    },
+    "arkansas-razorbacks-football": {
+      "attractionId": "K8vZ917GCxf",
+      "tnSlug": "arkansas-razorbacks-football-tickets"
+    },
+    "arkansas-state-red-wolves-football": {
+      "attractionId": "K8vZ9171PW0",
+      "tnSlug": "arkansas-state-red-wolves-football-tickets"
+    },
+    "army-black-knights-football": {
+      "attractionId": "K8vZ9175o50"
+    },
+    "auburn-university-tigers-football": {
+      "attractionId": "K8vZ9175oGf"
+    },
+    "ball-state-university-cardinals-football": {
+      "attractionId": "K8vZ9171zTf"
+    },
+    "baylor-university-bears-football": {
+      "attractionId": "K8vZ9171SB0"
+    },
+    "boise-state-broncos-football": {
+      "attractionId": "K8vZ917GCi0",
+      "tnSlug": "boise-state-broncos-football-tickets"
+    },
+    "boston-college": {
+      "attractionId": "K8vZ9171qs0"
+    },
+    "bowling-green-falcons-football": {
+      "attractionId": "K8vZ9175Bv7",
+      "tnSlug": "bowling-green-falcons-football-tickets"
+    },
+    "byu-cougars-football": {
+      "attractionId": "K8vZ917Guqf",
+      "tnSlug": "byu-cougars-football-tickets"
+    },
+    "california-golden-bears-football": {
+      "attractionId": "K8vZ917KBqf",
+      "tnSlug": "california-golden-bears-football-tickets"
+    },
+    "central-michigan-university-chippewas-football": {
+      "attractionId": "K8vZ9171zc7"
+    },
+    "charlotte-49ers-football": {
+      "attractionId": "K8vZ917KNy7",
+      "tnSlug": "charlotte-49ers-football-tickets"
+    },
+    "cincinnati-bearcats-college-football": {
+      "attractionId": "K8vZ91756D7"
+    },
+    "clemson-university-tigers-football": {
+      "attractionId": "K8vZ9171zT0"
+    },
+    "coastal-carolina-chanticleers-football": {
+      "attractionId": "K8vZ917GpA0",
+      "tnSlug": "coastal-carolina-chanticleers-football-tickets"
+    },
+    "colorado-state-rams-football": {
+      "attractionId": "K8vZ9171jnf",
+      "tnSlug": "colorado-state-rams-football-tickets"
+    },
+    "duke-university-blue-devils-football": {
+      "attractionId": "K8vZ917Gutf"
+    },
+    "east-carolina-pirates-college-football": {
+      "attractionId": "K8vZ9171Jxf"
+    },
+    "eastern-michigan-university-eagles-football": {
+      "attractionId": "K8vZ917Gue7"
+    },
+    "florida-atlantic-university-owls-football": {
+      "attractionId": "K8vZ9171UX0"
+    },
+    "florida-gators-football": {
+      "attractionId": "K8vZ917GCxV",
+      "tnSlug": "florida-gators-football-tickets"
+    },
+    "florida-international-university-football": {
+      "attractionId": "K8vZ9172yy0"
+    },
+    "florida-state-seminoles-football": {
+      "attractionId": "K8vZ9171qu0",
+      "tnSlug": "florida-state-seminoles-football-tickets"
+    },
+    "fresno-state-bulldogs-football": {
+      "attractionId": "K8vZ9171_Df",
+      "tnSlug": "fresno-state-bulldogs-football-tickets"
+    },
+    "georgia-southern-eagles-football": {
+      "attractionId": "K8vZ91751gf",
+      "tnSlug": "georgia-southern-eagles-football-tickets"
+    },
+    "georgia-state-panthers-football": {
+      "attractionId": "K8vZ917Grm0",
+      "tnSlug": "georgia-state-panthers-football-tickets"
+    },
+    "georgia-tech-yellow-jackets-football": {
+      "attractionId": "K8vZ9171zR0",
+      "tnSlug": "georgia-tech-yellow-jackets-football-tickets"
+    },
+    "hawaii-warriors": {
+      "attractionId": "K8vZ9171_D7"
+    },
+    "indiana-hoosiers-football": {
+      "attractionId": "K8vZ91755hf",
+      "tnSlug": "indiana-hoosiers-football-tickets"
+    },
+    "iowa-hawkeyes-football": {
+      "attractionId": "K8vZ9175u6f",
+      "tnSlug": "iowa-hawkeyes-football-tickets"
+    },
+    "iowa-state-cyclones-football": {
+      "attractionId": "K8vZ91719k0",
+      "tnSlug": "iowa-state-cyclones-football-tickets"
+    },
+    "jacksonville-state-gamecocks-football": {
+      "attractionId": "K8vZ9175sl7",
+      "tnSlug": "jacksonville-state-gamecocks-football-tickets"
+    },
+    "james-madison-dukes-college-football": {
+      "attractionId": "K8vZ9171JNf"
+    },
+    "kansas-jayhawks-football": {
+      "attractionId": "K8vZ9171N0f",
+      "tnSlug": "kansas-jayhawks-football-tickets"
+    },
+    "kansas-state-football": {
+      "attractionId": "K8vZ9171STV"
+    },
+    "kennesaw-state-university-owls-football": {
+      "attractionId": "K8vZ917KL3f"
+    },
+    "kent-state-university-golden-flashes-football": {
+      "attractionId": "K8vZ9171yef"
+    },
+    "kentucky-wildcats-football": {
+      "attractionId": "K8vZ9175ECV",
+      "tnSlug": "kentucky-wildcats-football-tickets"
+    },
+    "liberty-university-flames-football": {
+      "attractionId": "K8vZ9171zKf"
+    },
+    "louisiana-monroe-warhawks-football": {
+      "attractionId": "K8vZ917GUL7",
+      "tnSlug": "louisiana-monroe-warhawks-football-tickets"
+    },
+    "louisiana-ragin-cajuns-football": {
+      "attractionId": "K8vZ9171p9f"
+    },
+    "louisiana-state-university-football": {
+      "attractionId": "K8vZ9171pp7"
+    },
+    "louisiana-tech-bulldogs-football": {
+      "attractionId": "K8vZ9171qp7",
+      "tnSlug": "louisiana-tech-bulldogs-football-tickets"
+    },
+    "louisville-cardinals-football": {
+      "attractionId": "K8vZ9171JPV",
+      "tnSlug": "louisville-cardinals-football-tickets"
+    },
+    "marshall-university-thundering-herd": {
+      "attractionId": "K8vZ91758af"
+    },
+    "memphis-tigers-college-football": {
+      "attractionId": "K8vZ9171JP7"
+    },
+    "miami-hurricanes-football": {
+      "attractionId": "K8vZ9171po7",
+      "tnSlug": "miami-hurricanes-football-tickets"
+    },
+    "miami-university-of-ohio-red-hawks-football": {
+      "attractionId": "K8vZ9171y70"
+    },
+    "michigan-state-university-football": {
+      "attractionId": "K8vZ9171-97"
+    },
+    "middle-tennessee-blue-raiders-football": {
+      "attractionId": "K8vZ917Gpgf"
+    },
+    "mississippi-state-bulldogs-football": {
+      "attractionId": "K8vZ917G2C7",
+      "tnSlug": "mississippi-state-bulldogs-football-tickets"
+    },
+    "missouri-state-football": {
+      "attractionId": "K8vZ9175j00"
+    },
+    "mizzou-tigers-football": {
+      "attractionId": "K8vZ9171N07"
+    },
+    "navy-midshipmen-football": {
+      "attractionId": "K8vZ91710g0",
+      "tnSlug": "navy-midshipmen-football-tickets"
+    },
+    "nebraska-cornhusker-football": {
+      "attractionId": "K8vZ917100f"
+    },
+    "nevada-wolf-pack-football": {
+      "attractionId": "K8vZ9171yAV",
+      "tnSlug": "nevada-wolf-pack-football-tickets"
+    },
+    "new-mexico-state-univ-nmsu-aggies-football": {
+      "attractionId": "K8vZ9171zJV"
+    },
+    "north-carolina-state-university-wolfpack-football": {
+      "attractionId": "K8vZ9171yk0"
+    },
+    "north-dakota-state-bison": {
+      "attractionId": "K8vZ9171-Qf",
+      "tnSlug": "north-dakota-state-bison-tickets"
+    },
+    "northern-illinois-huskies-football": {
+      "attractionId": "K8vZ9171y6f",
+      "tnSlug": "northern-illinois-huskies-football-tickets"
+    },
+    "northwestern-wildcats-football": {
+      "attractionId": "K8vZ9171pF0",
+      "tnSlug": "northwestern-wildcats-football-tickets"
+    },
+    "notre-dame-fighting-irish-football": {
+      "attractionId": "K8vZ91710K7",
+      "tnSlug": "notre-dame-fighting-irish-football-tickets"
+    },
+    "ohio-state-buckeyes-football": {
+      "attractionId": "K8vZ917Gun0",
+      "tnSlug": "ohio-state-buckeyes-football-tickets"
+    },
+    "ohio-university-bobcats-football": {
+      "attractionId": "K8vZ9171NS7"
+    },
+    "oklahoma-sooners-football": {
+      "attractionId": "K8vZ9175uI7",
+      "tnSlug": "oklahoma-sooners-football-tickets"
+    },
+    "oklahoma-state-cowboys-football": {
+      "attractionId": "K8vZ9175Vf0",
+      "tnSlug": "oklahoma-state-cowboys-football-tickets"
+    },
+    "old-dominion-monarchs-football": {
+      "attractionId": "K8vZ917Cn67",
+      "tnSlug": "old-dominion-monarchs-football-tickets"
+    },
+    "ole-miss-rebels-football": {
+      "attractionId": "K8vZ917GuX0"
+    },
+    "oregon-ducks-football": {
+      "attractionId": "K8vZ9171hh7",
+      "tnSlug": "oregon-ducks-football-tickets"
+    },
+    "oregon-state-football": {
+      "attractionId": "K8vZ9171hj0"
+    },
+    "penn-state-nittany-lions": {
+      "attractionId": "K8vZ9171Mdf",
+      "tnSlug": "penn-state-nittany-lions-tickets"
+    },
+    "pittsburgh-panthers-college-football": {
+      "attractionId": "K8vZ9171JEf"
+    },
+    "purdue-boilermakers-football": {
+      "attractionId": "K8vZ91755L7",
+      "tnSlug": "purdue-boilermakers-football-tickets"
+    },
+    "rice-owls-football": {
+      "attractionId": "K8vZ9171JEV",
+      "tnSlug": "rice-owls-football-tickets"
+    },
+    "rutgers-scarlet-knights-college-football": {
+      "attractionId": "K8vZ9171w0V"
+    },
+    "sacramento-state-football": {
+      "attractionId": "K8vZ9175FC0"
+    },
+    "sam-houston-state-football": {
+      "attractionId": "K8vZ91756Pf"
+    },
+    "san-jose-state-spartans-football": {
+      "attractionId": "K8vZ9171TD0",
+      "tnSlug": "san-jose-state-spartans-football-tickets"
+    },
+    "sdsu-aztec-football": {
+      "attractionId": "K8vZ9171_30"
+    },
+    "smu-mustangs-football": {
+      "attractionId": "K8vZ9171JA0"
+    },
+    "south-florida-bulls-football": {
+      "attractionId": "K8vZ9171hD0",
+      "tnSlug": "south-florida-bulls-football-tickets"
+    },
+    "southern-mississippi-football": {
+      "attractionId": "K8vZ9171nC7"
+    },
+    "stanford-cardinal-football": {
+      "attractionId": "K8vZ9171qb7",
+      "tnSlug": "stanford-cardinal-football-tickets"
+    },
+    "syracuse-orange-football": {
+      "attractionId": "K8vZ9171MMV",
+      "tnSlug": "syracuse-orange-football-tickets"
+    },
+    "tcu-horned-frogs-football": {
+      "attractionId": "K8vZ9171Jk7",
+      "tnSlug": "tcu-horned-frogs-football-tickets"
+    },
+    "temple-university-owls-football": {
+      "attractionId": "K8vZ9175j7f"
+    },
+    "tennessee-volunteers-football": {
+      "attractionId": "K8vZ9171lh0",
+      "tnSlug": "tennessee-volunteers-football-tickets"
+    },
+    "texas-am-aggies-football": {
+      "attractionId": "K8vZ9171NSV"
+    },
+    "texas-state-bobcats-football": {
+      "attractionId": "K8vZ917GpA7",
+      "tnSlug": "texas-state-bobcats-football-tickets"
+    },
+    "texas-tech-red-raiders-football": {
+      "attractionId": "K8vZ9175V6f",
+      "tnSlug": "texas-tech-red-raiders-football-tickets"
+    },
+    "toledo-rockets-college-football": {
+      "attractionId": "K8vZ9171wP0"
+    },
+    "troy-university-trojans-football": {
+      "attractionId": "K8vZ9172cr7"
+    },
+    "tulane-university-football": {
+      "attractionId": "K8vZ9171ppV"
+    },
+    "tulsa-golden-hurricane-football": {
+      "attractionId": "K8vZ9171JnV",
+      "tnSlug": "tulsa-golden-hurricane-football-tickets"
+    },
+    "uab-blazers-football": {
+      "attractionId": "K8vZ9175CyV",
+      "tnSlug": "uab-blazers-football-tickets"
+    },
+    "ucf-knights-football": {
+      "attractionId": "K8vZ9171jpf",
+      "tnSlug": "ucf-knights-football-tickets"
+    },
+    "ucla-bruins-football": {
+      "attractionId": "K8vZ9171qJV",
+      "tnSlug": "ucla-bruins-football-tickets"
+    },
+    "uconn-huskies-college-football": {
+      "attractionId": "K8vZ9171E2f"
+    },
+    "umass-football": {
+      "attractionId": "K8vZ9171E1V"
+    },
+    "univ-of-south-carolina-gamecocks-football": {
+      "attractionId": "K8vZ9175hp7"
+    },
+    "university-at-buffalo-bulls-football": {
+      "attractionId": "K8vZ917G2uV"
+    },
+    "university-of-colorado-buffaloes-football": {
+      "attractionId": "K8vZ917Gui0"
+    },
+    "university-of-delaware-blue-hens-football": {
+      "attractionId": "K8vZ9171JxV"
+    },
+    "university-of-georgia-bulldogs-football": {
+      "attractionId": "K8vZ917Gpn0"
+    },
+    "university-of-houston-cougars-football": {
+      "attractionId": "K8vZ9171MWf"
+    },
+    "university-of-illinois-fighting-illini-football": {
+      "attractionId": "K8vZ9171pD7"
+    },
+    "university-of-maryland-terrapins-football": {
+      "attractionId": "K8vZ917532f"
+    },
+    "university-of-michigan-wolverines-football": {
+      "attractionId": "K8vZ917GCv7"
+    },
+    "university-of-minnesota-golden-gophers-football": {
+      "attractionId": "K8vZ9171990"
+    },
+    "university-of-new-mexico-lobos-football": {
+      "attractionId": "K8vZ9174hPV"
+    },
+    "university-of-north-carolina-tar-heels-football": {
+      "attractionId": "K8vZ917Gus7"
+    },
+    "university-of-north-texas-mean-green-football": {
+      "attractionId": "K8vZ9171zr7"
+    },
+    "university-of-south-alabama-jaguar-football": {
+      "attractionId": "K8vZ917G9v7"
+    },
+    "university-of-texas-longhorns-football": {
+      "attractionId": "K8vZ9171MW7"
+    },
+    "university-of-virginia-cavaliers-football": {
+      "attractionId": "K8vZ9175ujV"
+    },
+    "university-of-washington-huskies-football": {
+      "attractionId": "K8vZ9171_P0"
+    },
+    "unlv-running-rebels-football": {
+      "attractionId": "K8vZ9171NSf"
+    },
+    "usc-trojans-football": {
+      "attractionId": "K8vZ9171qJ0",
+      "tnSlug": "usc-trojans-football-tickets"
+    },
+    "utah-football": {
+      "attractionId": "K8vZ917bDt0"
+    },
+    "utah-state-university-aggies-football": {
+      "attractionId": "K8vZ9171zq7"
+    },
+    "utep-miner-football": {
+      "attractionId": "K8vZ9171_D0"
+    },
+    "utsa-roadrunners-football": {
+      "attractionId": "K8vZ917Cm20",
+      "tnSlug": "utsa-roadrunners-football-tickets"
+    },
+    "vanderbilt-commodores-football": {
+      "attractionId": "K8vZ9171lhf",
+      "tnSlug": "vanderbilt-commodores-football-tickets"
+    },
+    "virginia-tech-hokies-college-football": {
+      "attractionId": "K8vZ9171Jn7"
+    },
+    "wake-forest-demon-deacons-football": {
+      "attractionId": "K8vZ9171y57",
+      "tnSlug": "wake-forest-demon-deacons-football-tickets"
+    },
+    "washington-state-cougars-football": {
+      "attractionId": "K8vZ9171MWf",
+      "tnSlug": "washington-state-cougars-football-tickets"
+    },
+    "west-virginia-mountaineers": {
+      "attractionId": "K8vZ9171MHf",
+      "tnSlug": "west-virginia-mountaineers-tickets"
+    },
+    "western-kentucky-university-hilltopper-football": {
+      "attractionId": "K8vZ91710jV"
+    },
+    "western-michigan-university-football": {
+      "attractionId": "K8vZ917GuWf"
+    },
+    "wisconsin-badgers-football": {
+      "attractionId": "K8vZ917GCdV",
+      "tnSlug": "wisconsin-badgers-football-tickets"
+    },
+    "wyoming-cowboys-football": {
+      "attractionId": "K8vZ9171zi7",
+      "tnSlug": "wyoming-cowboys-football-tickets"
+    },
+    "atlanta-hawks": {
+      "attractionId": "K8vZ91718XV",
+      "tnSlug": "atlanta-hawks-tickets"
+    },
+    "boston-celtics": {
+      "attractionId": "K8vZ91718Xf",
+      "tnSlug": "boston-celtics-tickets"
+    },
+    "brooklyn-nets": {
+      "attractionId": "K8vZ9171o5f",
+      "tnSlug": "brooklyn-nets-tickets"
+    },
+    "charlotte-hornets": {
+      "attractionId": "K8vZ9171oaV",
+      "tnSlug": "charlotte-hornets-tickets"
+    },
+    "chicago-bulls": {
+      "attractionId": "K8vZ91718X0",
+      "tnSlug": "chicago-bulls-tickets"
+    },
+    "cleveland-cavaliers": {
+      "attractionId": "K8vZ9171oa7",
+      "tnSlug": "cleveland-cavaliers-tickets"
+    },
+    "dallas-mavericks": {
+      "attractionId": "K8vZ9171o17",
+      "tnSlug": "dallas-mavericks-tickets"
+    },
+    "denver-nuggets": {
+      "attractionId": "K8vZ9171oaf",
+      "tnSlug": "denver-nuggets-tickets"
+    },
+    "detroit-pistons": {
+      "attractionId": "K8vZ91718T7",
+      "tnSlug": "detroit-pistons-tickets"
+    },
+    "golden-state-warriors": {
+      "attractionId": "K8vZ9171oa0",
+      "tnSlug": "golden-state-warriors-tickets"
+    },
+    "houston-rockets": {
+      "attractionId": "K8vZ91718Tf",
+      "tnSlug": "houston-rockets-tickets"
+    },
+    "indiana-pacers": {
+      "attractionId": "K8vZ9171o1f",
+      "tnSlug": "indiana-pacers-tickets"
+    },
+    "la-clippers": {
+      "attractionId": "K8vZ9171o1V"
+    },
+    "los-angeles-lakers": {
+      "attractionId": "K8vZ91718T0",
+      "tnSlug": "los-angeles-lakers-tickets"
+    },
+    "memphis-grizzlies": {
+      "attractionId": "K8vZ9171Kg7",
+      "tnSlug": "memphis-grizzlies-tickets"
+    },
+    "miami-heat": {
+      "attractionId": "K8vZ9171oZ7",
+      "tnSlug": "miami-heat-tickets"
+    },
+    "milwaukee-bucks": {
+      "attractionId": "K8vZ91718TV",
+      "tnSlug": "milwaukee-bucks-tickets"
+    },
+    "minnesota-timberwolves": {
+      "attractionId": "K8vZ9171o10",
+      "tnSlug": "minnesota-timberwolves-tickets"
+    },
+    "new-orleans-pelicans": {
+      "attractionId": "K8vZ9171oaV",
+      "tnSlug": "new-orleans-pelicans-tickets"
+    },
+    "new-york-knicks": {
+      "attractionId": "K8vZ9171o57",
+      "tnSlug": "new-york-knicks-tickets"
+    },
+    "oklahoma-city-thunder": {
+      "attractionId": "K8vZ917GCg7",
+      "tnSlug": "oklahoma-city-thunder-tickets"
+    },
+    "orlando-magic": {
+      "attractionId": "K8vZ9171ov7",
+      "tnSlug": "orlando-magic-tickets"
+    },
+    "philadelphia-76ers": {
+      "attractionId": "K8vZ9171oZ0",
+      "tnSlug": "philadelphia-76ers-tickets"
+    },
+    "phoenix-suns": {
+      "attractionId": "K8vZ9171oZf",
+      "tnSlug": "phoenix-suns-tickets"
+    },
+    "portland-trail-blazers": {
+      "attractionId": "K8vZ9171oZV",
+      "tnSlug": "portland-trail-blazers-tickets"
+    },
+    "sacramento-kings": {
+      "attractionId": "K8vZ9171o50",
+      "tnSlug": "sacramento-kings-tickets"
+    },
+    "san-antonio-spurs": {
+      "attractionId": "K8vZ9171ov0",
+      "tnSlug": "san-antonio-spurs-tickets"
+    },
+    "toronto-raptors": {
+      "attractionId": "K8vZ9171KC0",
+      "tnSlug": "toronto-raptors-tickets"
+    },
+    "utah-jazz": {
+      "attractionId": "K8vZ9171o5V",
+      "tnSlug": "utah-jazz-tickets"
+    },
+    "washington-wizards": {
+      "attractionId": "K8vZ9171oVf",
+      "tnSlug": "washington-wizards-tickets"
+    },
+    "anaheim-ducks": {
+      "attractionId": "K8vZ91713ef",
+      "tnSlug": "anaheim-ducks-tickets"
+    },
+    "boston-bruins": {
+      "attractionId": "K8vZ9171o27",
+      "tnSlug": "boston-bruins-tickets"
+    },
+    "buffalo-sabres": {
+      "attractionId": "K8vZ9171oz7",
+      "tnSlug": "buffalo-sabres-tickets"
+    },
+    "calgary-flames": {
+      "attractionId": "K8vZ9171oB7",
+      "tnSlug": "calgary-flames-tickets"
+    },
+    "carolina-hurricanes": {
+      "attractionId": "K8vZ9171o2f",
+      "tnSlug": "carolina-hurricanes-tickets"
+    },
+    "chicago-blackhawks": {
+      "attractionId": "K8vZ9171oz0",
+      "tnSlug": "chicago-blackhawks-tickets"
+    },
+    "colorado-avalanche": {
+      "attractionId": "K8vZ9171KM7",
+      "tnSlug": "colorado-avalanche-tickets"
+    },
+    "columbus-blue-jackets": {
+      "attractionId": "K8vZ9171-C0",
+      "tnSlug": "columbus-blue-jackets-tickets"
+    },
+    "dallas-stars": {
+      "attractionId": "K8vZ9171ozV",
+      "tnSlug": "dallas-stars-tickets"
+    },
+    "detroit-red-wings": {
+      "attractionId": "K8vZ9171o20",
+      "tnSlug": "detroit-red-wings-tickets"
+    },
+    "edmonton-oilers": {
+      "attractionId": "K8vZ9171oy7",
+      "tnSlug": "edmonton-oilers-tickets"
+    },
+    "florida-panthers": {
+      "attractionId": "K8vZ9171pMf",
+      "tnSlug": "florida-panthers-tickets"
+    },
+    "los-angeles-kings": {
+      "attractionId": "K8vZ9171ozf",
+      "tnSlug": "los-angeles-kings-tickets"
+    },
+    "minnesota-wild": {
+      "attractionId": "K8vZ9171-9f",
+      "tnSlug": "minnesota-wild-tickets"
+    },
+    "montreal-canadiens": {
+      "attractionId": "K8vZ9171oyf",
+      "tnSlug": "montreal-canadiens-tickets"
+    },
+    "nashville-predators": {
+      "attractionId": "K8vZ9171_Y7",
+      "tnSlug": "nashville-predators-tickets"
+    },
+    "new-jersey-devils": {
+      "attractionId": "K8vZ9171oyV",
+      "tnSlug": "new-jersey-devils-tickets"
+    },
+    "new-york-islanders": {
+      "attractionId": "K8vZ9171o_0",
+      "tnSlug": "new-york-islanders-tickets"
+    },
+    "new-york-rangers": {
+      "attractionId": "K8vZ9171o87",
+      "tnSlug": "new-york-rangers-tickets"
+    },
+    "ottawa-senators": {
+      "attractionId": "K8vZ9171oB0",
+      "tnSlug": "ottawa-senators-tickets"
+    },
+    "philadelphia-flyers": {
+      "attractionId": "K8vZ9171oy0",
+      "tnSlug": "philadelphia-flyers-tickets"
+    },
+    "pittsburgh-penguins": {
+      "attractionId": "K8vZ9171o8f",
+      "tnSlug": "pittsburgh-penguins-tickets"
+    },
+    "san-jose-sharks": {
+      "attractionId": "K8vZ9171oBf",
+      "tnSlug": "san-jose-sharks-tickets"
+    },
+    "seattle-kraken": {
+      "attractionId": "K8vZ917_vgV",
+      "tnSlug": "seattle-kraken-tickets"
+    },
+    "st-louis-blues": {
+      "attractionId": "K8vZ9171o2V",
+      "tnSlug": "st-louis-blues-tickets"
+    },
+    "tampa-bay-lightning": {
+      "attractionId": "K8vZ9171oBV",
+      "tnSlug": "tampa-bay-lightning-tickets"
+    },
+    "toronto-maple-leafs": {
+      "attractionId": "K8vZ9171o80",
+      "tnSlug": "toronto-maple-leafs-tickets"
+    },
+    "utah-mammoth": {
+      "attractionId": "K8vZ917jBRf",
+      "tnSlug": "utah-mammoth-tickets"
+    },
+    "vancouver-canucks": {
+      "attractionId": "K8vZ9171oH7",
+      "tnSlug": "vancouver-canucks-tickets"
+    },
+    "vegas-golden-knights": {
+      "attractionId": "K8vZ917pkPf",
+      "tnSlug": "vegas-golden-knights-tickets"
+    },
+    "washington-capitals": {
+      "attractionId": "K8vZ9171o8V",
+      "tnSlug": "washington-capitals-tickets"
+    },
+    "winnipeg-jets": {
+      "attractionId": "K8vZ917Cly7",
+      "tnSlug": "winnipeg-jets-tickets"
+    },
+    "arizona-diamondbacks": {
+      "attractionId": "K8vZ9171bp7",
+      "tnSlug": "arizona-diamondbacks-tickets"
+    },
+    "athletics": {
+      "attractionId": "K8vZ9171o60",
+      "tnSlug": "athletics-tickets"
+    },
+    "atlanta-braves": {
+      "attractionId": "K8vZ9171oA7",
+      "tnSlug": "atlanta-braves-tickets"
+    },
+    "baltimore-orioles": {
+      "attractionId": "K8vZ91718D7",
+      "tnSlug": "baltimore-orioles-tickets"
+    },
+    "boston-red-sox": {
+      "attractionId": "K8vZ9171okf",
+      "tnSlug": "boston-red-sox-tickets"
+    },
+    "chicago-cubs": {
+      "attractionId": "K8vZ9171oAf",
+      "tnSlug": "chicago-cubs-tickets"
+    },
+    "chicago-white-sox": {
+      "attractionId": "K8vZ9171ok0",
+      "tnSlug": "chicago-white-sox-tickets"
+    },
+    "cincinnati-reds": {
+      "attractionId": "K8vZ9171ok7",
+      "tnSlug": "cincinnati-reds-tickets"
+    },
+    "cleveland-guardians": {
+      "attractionId": "K8vZ91718DV",
+      "tnSlug": "cleveland-guardians-tickets"
+    },
+    "colorado-rockies": {
+      "attractionId": "K8vZ91718y0",
+      "tnSlug": "colorado-rockies-tickets"
+    },
+    "detroit-tigers": {
+      "attractionId": "K8vZ9171o67",
+      "tnSlug": "detroit-tigers-tickets"
+    },
+    "houston-astros": {
+      "attractionId": "K8vZ91718zV",
+      "tnSlug": "houston-astros-tickets"
+    },
+    "kansas-city-royals": {
+      "attractionId": "K8vZ9171oF7",
+      "tnSlug": "kansas-city-royals-tickets"
+    },
+    "los-angeles-angels": {
+      "attractionId": "K8vZ91718D0",
+      "tnSlug": "los-angeles-angels-tickets"
+    },
+    "los-angeles-dodgers": {
+      "attractionId": "K8vZ9171oA0",
+      "tnSlug": "los-angeles-dodgers-tickets"
+    },
+    "miami-marlins": {
+      "attractionId": "K8vZ91718yf",
+      "tnSlug": "miami-marlins-tickets"
+    },
+    "milwaukee-brewers": {
+      "attractionId": "K8vZ91718H7",
+      "tnSlug": "milwaukee-brewers-tickets"
+    },
+    "minnesota-twins": {
+      "attractionId": "K8vZ91718Hf",
+      "tnSlug": "minnesota-twins-tickets"
+    },
+    "new-york-mets": {
+      "attractionId": "K8vZ91718B7",
+      "tnSlug": "new-york-mets-tickets"
+    },
+    "new-york-yankees": {
+      "attractionId": "K8vZ9171okV",
+      "tnSlug": "new-york-yankees-tickets"
+    },
+    "philadelphia-phillies": {
+      "attractionId": "K8vZ91718B0",
+      "tnSlug": "philadelphia-phillies-tickets"
+    },
+    "pittsburgh-pirates": {
+      "attractionId": "K8vZ9171oAV",
+      "tnSlug": "pittsburgh-pirates-tickets"
+    },
+    "san-diego-padres": {
+      "attractionId": "K8vZ91718BV",
+      "tnSlug": "san-diego-padres-tickets"
+    },
+    "san-francisco-giants": {
+      "attractionId": "K8vZ91718Df",
+      "tnSlug": "san-francisco-giants-tickets"
+    },
+    "seattle-mariners": {
+      "attractionId": "K8vZ9171o6f",
+      "tnSlug": "seattle-mariners-tickets"
+    },
+    "st-louis-cardinals": {
+      "attractionId": "K8vZ91718Bf",
+      "tnSlug": "st-louis-cardinals-tickets"
+    },
+    "tampa-bay-rays": {
+      "attractionId": "K8vZ9171b17",
+      "tnSlug": "tampa-bay-rays-tickets"
+    },
+    "texas-rangers": {
+      "attractionId": "K8vZ9171oF0",
+      "tnSlug": "texas-rangers-tickets"
+    },
+    "toronto-blue-jays": {
+      "attractionId": "K8vZ91718W0",
+      "tnSlug": "toronto-blue-jays-tickets"
+    },
+    "washington-nationals": {
+      "attractionId": "K8vZ9175lJ0",
+      "tnSlug": "washington-nationals-tickets"
+    }
+  }
+}
