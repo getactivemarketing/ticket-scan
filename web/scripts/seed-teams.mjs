@@ -4,7 +4,7 @@
 //
 // Deliberately NOT scheduled: regenerating rosters on every run is what makes
 // resolution depend on whatever the attractions endpoint ranks highest today.
-import { writeFileSync } from 'node:fs';
+import { existsSync, writeFileSync } from 'node:fs';
 import { LEAGUE_CLASSIFICATION, teamSlug } from '../src/lib/team-resolve.mjs';
 
 const KEY = process.env.TICKETMASTER_API_KEY;
@@ -14,6 +14,20 @@ if (!KEY) {
 }
 
 const OUT = new URL('../src/data/teams.ts', import.meta.url);
+
+// teams.ts is hand-owned source, not generated output. It carries reviewed
+// names and hand-added homeVenueSlug values that exist nowhere else; one
+// accidental rerun of this script would overwrite all of them with whatever
+// Ticketmaster's attractions endpoint ranks highest today. Seeding is a
+// once-ever act, so refuse rather than clobber.
+if (existsSync(OUT)) {
+  console.error(`Refusing to run: ${OUT.pathname} already exists.`);
+  console.error('teams.ts is HAND-OWNED source, not generated output — it holds reviewed names');
+  console.error('and hand-added homeVenueSlug values this script cannot reproduce. Only');
+  console.error('teams.generated.json refreshes on a schedule (scripts/build-team-index.mjs).');
+  console.error('If you really mean to re-seed from scratch, delete teams.ts deliberately first.');
+  process.exit(1);
+}
 const COLLEGE_MIN_EVENTS = 3;
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 
