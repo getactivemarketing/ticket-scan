@@ -62,6 +62,37 @@ export function cleanEvents(events: FeedEvent[]): FeedEvent[] {
   });
 }
 
+/**
+ * The single-team variant of cleanEvents. Drops the same non-events, but
+ * dedupes by `event.id` instead of by name.
+ *
+ * Which one applies is decided by what a repeated title MEANS on the page:
+ *
+ * - cleanEvents  — mixed listings (a city page, a city+category combo). A
+ *   repeated title there is one act's multi-night residency, and keeping every
+ *   night crowds every other act off the page. Dedupe by name.
+ * - cleanTeamEvents — one team's schedule (/teams/[slug]). A repeated title
+ *   there is a three-game series or a home-and-away pair; those repeats ARE
+ *   the schedule. Name-dedupe silently deleted two of every three-game series:
+ *   the Cardinals' 40-event feed collapsed to 18 rows while the heading still
+ *   read "Upcoming games". Dedupe by id, which only ever removes a true
+ *   duplicate row.
+ *
+ * Do not merge the two. The city and combo pages depend on name-dedup.
+ */
+export function cleanTeamEvents(events: FeedEvent[]): FeedEvent[] {
+  const seen = new Set<string>();
+  return events.filter((e) => {
+    if (!isRealEvent(e.name)) return false;
+    // A row with no id can't be deduped, so it is kept rather than dropped —
+    // this helper exists because silently dropping real games is the bug.
+    if (!e.id) return true;
+    if (seen.has(e.id)) return false;
+    seen.add(e.id);
+    return true;
+  });
+}
+
 export type SaleStatus =
   | { kind: 'onsale'; label: string }
   | { kind: 'presale'; label: string }

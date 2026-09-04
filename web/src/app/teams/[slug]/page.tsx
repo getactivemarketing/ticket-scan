@@ -3,7 +3,7 @@ import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { getTeamBySlug } from '@/data/teams';
 import { venues } from '@/data/venues';
-import { FeedEvent, cleanEvents } from '@/lib/events';
+import { FeedEvent, cleanTeamEvents } from '@/lib/events';
 import { paced } from '@/lib/paced';
 import teamIndex from '@/data/teams.generated.json';
 import OnsaleRow from '@/components/OnsaleRow';
@@ -58,7 +58,10 @@ async function getEvents(attractionId: string): Promise<FeedEvent[]> {
       const res = await paced(() => fetch(url, { next: { revalidate } }));
       if (!res.ok) throw new Error(`HTTP ${res.status} for attraction ${attractionId}`);
       const data = await res.json();
-      return cleanEvents(data.events || []);
+      // cleanTeamEvents, NOT cleanEvents: this is one team's schedule, where
+      // repeated matchups are the data. See src/lib/events.ts for why the two
+      // helpers differ.
+      return cleanTeamEvents(data.events || []);
     } catch (err) {
       lastError = err;
     }
