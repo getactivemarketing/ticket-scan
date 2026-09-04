@@ -28,7 +28,7 @@ export const nflStadiums: Record<string, Venue> = {
     state: 'PA',
     capacity: 68400,
     type: 'stadium',
-    homeTeams: ['Pittsburgh Steelers'],
+    homeTeams: ['Pittsburgh Steelers', 'Pittsburgh Panthers College Football'],
     description: 'Acrisure Stadium seats 68,400 for Pittsburgh Steelers home games on the North Shore, an open-air natural-grass bowl that opened in 2001 and also hosts Pitt football. The 100 level wraps the field, and its sideline sections carry the highest prices in the building. The club ring is split into two named halves, the UPMC East Club in sections 205-216 and the West Club in 229-240, and a club ticket admits you to either lounge. The 500 level upper deck is where the value sits. TicketScan tracks when tickets for Acrisure Stadium events go on sale, including presale windows that open before the public onsale.',
     keywords: ['Acrisure Stadium tickets', 'Pittsburgh Steelers tickets', 'Acrisure Stadium seating chart', 'Acrisure Stadium events 2026', 'Pittsburgh football tickets'],
     faqs: [
@@ -55,8 +55,8 @@ export const nflStadiums: Record<string, Venue> = {
     state: 'NV',
     capacity: 65000,
     type: 'stadium',
-    homeTeams: ['Las Vegas Raiders'],
-    description: 'Allegiant Stadium seats 65,000 for Las Vegas Raiders games and is fully enclosed and climate-controlled, with a translucent roof and the Al Davis Memorial Torch behind the north end zone. Sections marked with a C on the 100 level sideline are club seats served by the Modelo Cantina Club on the visitor side and the Twitch Lounge on the Raiders side. The 200 level carries general seating only in the corners and end zones because the sidelines there are suites and loge boxes. The 300 and 400 levels hold the least expensive seats. TicketScan tracks Allegiant Stadium onsales and presale windows.',
+    homeTeams: ['Las Vegas Raiders', 'UNLV Running Rebels Football'],
+    description: 'Allegiant Stadium seats 65,000 for Las Vegas Raiders and UNLV Rebels football games and is fully enclosed and climate-controlled, with a translucent roof and the Al Davis Memorial Torch behind the north end zone. Sections marked with a C on the 100 level sideline are club seats served by the Modelo Cantina Club on the visitor side and the Twitch Lounge on the Raiders side. The 200 level carries general seating only in the corners and end zones because the sidelines there are suites and loge boxes. The 300 and 400 levels hold the least expensive seats. TicketScan tracks Allegiant Stadium onsales and presale windows.',
     keywords: ['Allegiant Stadium tickets', 'Las Vegas Raiders tickets', 'Allegiant Stadium seating chart', 'Allegiant Stadium events 2026', 'Las Vegas football tickets'],
     faqs: [
       { question: 'Why are there no 200 level sideline seats at Allegiant Stadium?', answer: 'Both 200 level sidelines are given over to suites and loge boxes, so general 200 level seating exists only in the corners and behind the end zones, in sections 201-208, 218-232 and 242-248.' },
@@ -294,8 +294,8 @@ export const nflStadiums: Record<string, Venue> = {
     state: 'FL',
     capacity: 64767,
     type: 'stadium',
-    homeTeams: ['Miami Dolphins'],
-    description: 'Hard Rock Stadium seats 64,767 for Miami Dolphins games in Miami Gardens, an open-air Bermuda-grass field that opened in 1987 and gained a canopy roof over the seating bowl in the 2016 renovation. The canopy covers the stands but leaves the field open, so shade rather than rain is what the seat map buys you. The 100 level sidelines are sections 105-115 and 142-152, the Hyundai Club rings the 200 level, and the 400 level is the upper deck. TicketScan tracks Hard Rock Stadium onsales and presale windows.',
+    homeTeams: ['Miami Dolphins', 'Miami Hurricanes Football'],
+    description: 'Hard Rock Stadium seats 64,767 for Miami Dolphins and Miami Hurricanes football games in Miami Gardens, an open-air Bermuda-grass field that opened in 1987 and gained a canopy roof over the seating bowl in the 2016 renovation. The canopy covers the stands but leaves the field open, so shade rather than rain is what the seat map buys you. The 100 level sidelines are sections 105-115 and 142-152, the Hyundai Club rings the 200 level, and the 400 level is the upper deck. TicketScan tracks Hard Rock Stadium onsales and presale windows.',
     keywords: ['Hard Rock Stadium tickets', 'Miami Dolphins tickets', 'Hard Rock Stadium seating chart', 'Hard Rock Stadium events 2026', 'Miami football tickets'],
     faqs: [
       { question: 'Does the Hard Rock Stadium canopy cover every seat?', answer: 'The canopy covers the seating bowl but not the field. Most seats are shaded, though low rows near the open field edge can still catch sun and blowing rain.' },
@@ -426,8 +426,8 @@ export const nflStadiums: Record<string, Venue> = {
     state: 'PA',
     capacity: 67594,
     type: 'stadium',
-    homeTeams: ['Philadelphia Eagles'],
-    description: 'Lincoln Financial Field seats 67,594 for Philadelphia Eagles games in the South Philadelphia sports complex, an open-air GrassMaster field that opened in 2003. The 100 level sidelines are sections 101-114 and 130-143, with the end zones at 119-125 and 148-150. The Touchdown Club and Hyundai Club form the 200 level premium ring, and the 300 level upper deck holds the least expensive seats. The stadium runs on rooftop solar and wind and shares its parking with the neighboring arena and ballpark. TicketScan tracks Lincoln Financial Field onsales and presale windows.',
+    homeTeams: ['Philadelphia Eagles', 'Temple University Owls Football'],
+    description: 'Lincoln Financial Field seats 67,594 for Philadelphia Eagles and Temple Owls football games in the South Philadelphia sports complex, an open-air GrassMaster field that opened in 2003. The 100 level sidelines are sections 101-114 and 130-143, with the end zones at 119-125 and 148-150. The Touchdown Club and Hyundai Club form the 200 level premium ring, and the 300 level upper deck holds the least expensive seats. The stadium runs on rooftop solar and wind and shares its parking with the neighboring arena and ballpark. TicketScan tracks Lincoln Financial Field onsales and presale windows.',
     keywords: ['Lincoln Financial Field tickets', 'Philadelphia Eagles tickets', 'Lincoln Financial Field seating chart', 'Lincoln Financial Field events 2026', 'Philadelphia football tickets'],
     faqs: [
       { question: 'What are the club options at Lincoln Financial Field?', answer: 'The Touchdown Club and the Hyundai Club sit on the 200 level ring above the lower bowl, both with indoor lounge access. Everything else on that level is standard mezzanine seating.' },
@@ -688,8 +688,8 @@ export const nflStadiums: Record<string, Venue> = {
     state: 'FL',
     capacity: 69218,
     type: 'stadium',
-    homeTeams: ['Tampa Bay Buccaneers'],
-    description: 'Raymond James Stadium seats 69,218 for Tampa Bay Buccaneers games and is built around a full-size pirate ship in Buccaneer Cove above the north end zone, which fires its cannons after Tampa Bay scores. The upper deck runs sidelines and corners only, in sections 302-319 and 327-344, with no seating behind either end zone. Club seating occupies the 200 level sidelines, and the Krewe’s Nest sections 1-8 sit above the south end zone in shade from the video board. TicketScan tracks Raymond James Stadium onsales and presale windows.',
+    homeTeams: ['Tampa Bay Buccaneers', 'South Florida Bulls Football'],
+    description: 'Raymond James Stadium seats 69,218 for Tampa Bay Buccaneers and South Florida Bulls football games and is built around a full-size pirate ship in Buccaneer Cove above the north end zone, which fires its cannons after Tampa Bay scores. The upper deck runs sidelines and corners only, in sections 302-319 and 327-344, with no seating behind either end zone. Club seating occupies the 200 level sidelines, and the Krewe’s Nest sections 1-8 sit above the south end zone in shade from the video board. TicketScan tracks Raymond James Stadium onsales and presale windows.',
     keywords: ['Raymond James Stadium tickets', 'Tampa Bay Buccaneers tickets', 'Raymond James Stadium seating chart', 'Raymond James Stadium events 2026', 'Tampa football tickets'],
     faqs: [
       { question: 'Which seats at Raymond James Stadium are near the pirate ship?', answer: 'Buccaneer Cove sits above lower-level sections 145-151 in the north end zone. Seats in 146-150 put you directly below it, and the 200 level corner section 245 is close to it as well.' },
