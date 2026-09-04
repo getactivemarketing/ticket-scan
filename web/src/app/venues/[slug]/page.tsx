@@ -4,6 +4,7 @@ import { notFound } from 'next/navigation';
 import { venues, getVenueBySlug, tierPricing } from '@/data/venues';
 import TicketNetworkLink from '@/components/TicketNetworkLink';
 import AffiliateDisclosure from '@/components/AffiliateDisclosure';
+import { paced } from '@/lib/paced';
 
 // Venue guides had no links to each other, so each one was an SEO island. Relate
 // them same-state first, then same-type, so the 25 guides form a crawlable
@@ -74,9 +75,14 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 async function getVenueEvents(slug: string): Promise<Event[]> {
   try {
     const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'https://tickethawk-api-production.up.railway.app';
-    const response = await fetch(`${apiUrl}/api/public/events?venue=${slug}&limit=10`, {
-      next: { revalidate: 3600 } // Revalidate every hour
-    });
+    // Through the SHARED pacer (src/lib/paced.ts). These 25 pages prerender in
+    // the same build as the combo and team pages; unpaced, they land on top of
+    // the paced stream and push it over Ticketmaster's 5 req/s spike arrest.
+    const response = await paced(() =>
+      fetch(`${apiUrl}/api/public/events?venue=${slug}&limit=10`, {
+        next: { revalidate: 3600 }, // Revalidate every hour
+      }),
+    );
 
     if (!response.ok) return [];
 

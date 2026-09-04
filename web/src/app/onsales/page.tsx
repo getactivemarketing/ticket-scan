@@ -3,6 +3,7 @@ import Link from 'next/link';
 import OnsaleRow from '@/components/OnsaleRow';
 import NewsletterSignup from '@/components/NewsletterSignup';
 import { FeedEvent, cleanEvents, capPerVenue } from '@/lib/events';
+import { paced } from '@/lib/paced';
 
 export const metadata: Metadata = {
   title: 'Ticket Onsale Calendar - What Goes On Sale This Week',
@@ -41,9 +42,14 @@ function isoDay(d: Date) {
 
 async function getOnsalesForDay(iso: string): Promise<FeedEvent[]> {
   try {
-    const res = await fetch(`${API_URL}/api/public/events?onsaleDate=${iso}&country=US&sort=relevance&limit=50`, {
-      next: { revalidate: 3600 },
-    });
+    // Through the SHARED pacer (src/lib/paced.ts). Sequential is not the same
+    // as paced: seven back-to-back calls still burst, and they land in the same
+    // build as the combo and team pages.
+    const res = await paced(() =>
+      fetch(`${API_URL}/api/public/events?onsaleDate=${iso}&country=US&sort=relevance&limit=50`, {
+        next: { revalidate: 3600 },
+      }),
+    );
     if (!res.ok) return [];
     const data = await res.json();
     return capPerVenue(cleanEvents(data.events || []), 2).slice(0, PER_DAY);

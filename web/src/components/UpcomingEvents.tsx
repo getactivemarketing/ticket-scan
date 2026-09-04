@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { getVenueBySlug } from '@/data/venues';
 import { isRealEvent, normalizeName } from '@/lib/events';
+import { paced } from '@/lib/paced';
 
 // Venues we publish guides for, chosen for geographic spread. Two constraints
 // shaped this list. The API's `city` and `category` params are accepted but not
@@ -57,9 +58,15 @@ async function getVenueEvents(slug: string): Promise<UpcomingEvent[]> {
   if (!venue) return [];
 
   try {
-    const res = await fetch(`${API_URL}/api/public/events?venue=${slug}&limit=6`, {
-      next: { revalidate: 3600 },
-    });
+    // Through the SHARED pacer (src/lib/paced.ts). This runs once per featured
+    // venue at build time, in the same build as the combo and team pages;
+    // unpaced, those fetches land on top of the paced stream and push it over
+    // Ticketmaster's 5 req/s spike arrest.
+    const res = await paced(() =>
+      fetch(`${API_URL}/api/public/events?venue=${slug}&limit=6`, {
+        next: { revalidate: 3600 },
+      }),
+    );
     if (!res.ok) return [];
 
     const data = await res.json();

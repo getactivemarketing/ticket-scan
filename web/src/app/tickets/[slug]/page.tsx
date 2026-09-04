@@ -5,6 +5,7 @@ import { getCityBySlug, getAllCities, City } from '@/data/cities';
 import { getCategoryBySlug, getAllCategories, Category } from '@/data/categories';
 import { venues } from '@/data/venues';
 import { combosForCity, combosForCategory } from '@/data/combos';
+import { paced } from '@/lib/paced';
 import TicketNetworkLink from '@/components/TicketNetworkLink';
 import AffiliateDisclosure from '@/components/AffiliateDisclosure';
 
@@ -99,9 +100,14 @@ async function getEvents(slug: string, type: 'city' | 'category'): Promise<Event
   try {
     const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'https://tickethawk-api-production.up.railway.app';
     const queryParam = type === 'city' ? `city=${slug}` : `category=${slug}`;
-    const response = await fetch(`${apiUrl}/api/public/events?${queryParam}&limit=12`, {
-      next: { revalidate: 3600 } // Revalidate every hour
-    });
+    // Through the SHARED pacer (src/lib/paced.ts). These 38 pages prerender in
+    // the same build as the combo and team pages; unpaced, they land on top of
+    // the paced stream and push it over Ticketmaster's 5 req/s spike arrest.
+    const response = await paced(() =>
+      fetch(`${apiUrl}/api/public/events?${queryParam}&limit=12`, {
+        next: { revalidate: 3600 }, // Revalidate every hour
+      }),
+    );
 
     if (!response.ok) return [];
 
