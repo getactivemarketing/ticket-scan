@@ -1,6 +1,6 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { pickVenue, normalizeVenueName } from './venue-resolve.mjs';
+import { pickVenue, pickVenueDetailed, normalizeVenueName } from './venue-resolve.mjs';
 
 const v = (name, city, state, upcoming, id) => ({
   id,
@@ -53,4 +53,53 @@ test('ties break deterministically', () => {
     v('Kyle Field', 'College Station', 'TX', 5, 'AAA'),
   ];
   assert.equal(pickVenue(candidates, { name: 'Kyle Field', city: 'College Station', state: 'TX' }).id, 'AAA');
+});
+
+test('pickVenueDetailed reports ambiguity when a differently-named candidate also qualifies', () => {
+  // Both are in the right city/state and both satisfy the containment rule,
+  // but only one is an exact normalized-name match. The exact match should
+  // win the pick, and the other name should surface as a judgement call for
+  // a human to double check — a resolver that stays silent here would be
+  // exactly the "confidently wrong" failure this diagnostic exists to catch.
+  const candidates = [
+    v('Kyle Field', 'College Station', 'TX', 5, 'EXACT'),
+    v('Kyle Field Annex', 'College Station', 'TX', 3, 'OTHER'),
+  ];
+  const { picked, ambiguousWith } = pickVenueDetailed(candidates, {
+    name: 'Kyle Field',
+    city: 'College Station',
+    state: 'TX',
+  });
+  assert.equal(picked.id, 'EXACT');
+  assert.deepEqual(ambiguousWith, ['Kyle Field Annex']);
+});
+
+test('pickVenueDetailed reports no ambiguity when only one candidate qualifies', () => {
+  // The inverse failure mode is just as dangerous: a reporter that cries
+  // wolf on every venue trains a human to stop reading it.
+  const candidates = [v('Kyle Field', 'College Station', 'TX', 5, 'ONLY')];
+  const { picked, ambiguousWith } = pickVenueDetailed(candidates, {
+    name: 'Kyle Field',
+    city: 'College Station',
+    state: 'TX',
+  });
+  assert.equal(picked.id, 'ONLY');
+  assert.deepEqual(ambiguousWith, []);
+});
+
+test('pickVenueDetailed does not flag two listings of the same normalized name as ambiguous', () => {
+  // Two Ticketmaster listings for the same building are not a judgement
+  // call — they're a duplicate, and reporting them as ambiguous would bury
+  // the genuinely suspicious picks in noise.
+  const candidates = [
+    v('Kyle Field', 'College Station', 'TX', 5, 'AAA'),
+    v('Kyle Field', 'College Station', 'TX', 5, 'BBB'),
+  ];
+  const { picked, ambiguousWith } = pickVenueDetailed(candidates, {
+    name: 'Kyle Field',
+    city: 'College Station',
+    state: 'TX',
+  });
+  assert.equal(picked.id, 'AAA');
+  assert.deepEqual(ambiguousWith, []);
 });
