@@ -5,7 +5,7 @@ import assert from 'node:assert/strict';
 // rather than a regex over the source. Relative path: `@/` is a Next alias
 // the test runner does not resolve.
 const { venues } = await import('../data/venues.ts');
-const { stadiums } = await import('../data/stadiums/index.ts');
+const { stadiums, batches } = await import('../data/stadiums/index.ts');
 
 const TIERS = new Set(['floor', 'lower', 'club', 'upper', 'suite']);
 
@@ -39,11 +39,27 @@ test('stadiums compose into venues without collisions', () => {
   for (const key of Object.keys(stadiums)) {
     assert.ok(venues[key], `stadium "${key}" is missing from the composed venues record`);
   }
-  assert.equal(
-    Object.keys(venues).length,
-    new Set(Object.keys(venues)).size,
-    'duplicate venue slugs',
-  );
+});
+
+// A slug collision between two batches is invisible in `stadiums` (and in
+// `venues`) by definition: object keys are unique, so the spread that
+// composes the batches together silently keeps one school's venue and
+// drops the other's, with no error and no failing assertion. The only place
+// a collision can be seen is by comparing the batches pairwise, before
+// they're composed. Do not "simplify" this back into a check on the
+// composed record.
+test('no two batches define the same slug', () => {
+  const seen = new Map();
+  for (const [batchName, record] of Object.entries(batches)) {
+    for (const slug of Object.keys(record)) {
+      const prior = seen.get(slug);
+      assert.ok(
+        !prior,
+        `slug "${slug}" is defined in both ${prior} and ${batchName} — one silently overwrites the other`,
+      );
+      seen.set(slug, batchName);
+    }
+  }
 });
 
 test('football stadiums do not use the floor tier', () => {
