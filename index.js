@@ -13,12 +13,30 @@ const rateLimit = require('express-rate-limit');
 // Resolved by web/scripts/build-venue-ids.mjs and committed. Read here so a
 // venue added to the frontend data cannot silently 400 this endpoint.
 //
-// NOTE: two slugs are deliberately stale, because the published URL must
-// keep working after the building was renamed:
+// NOTE: three slugs are deliberately pinned in the builder's PINNED map
+// rather than re-resolved from the name, for two different reasons:
 //   footprint-center   -> Mortgage Matchup Center (renamed Oct 2025)
 //   wells-fargo-center -> Xfinity Mobile Arena    (renamed Sep 2025)
-// They are pinned in the builder's PINNED map, not re-resolved.
-const venueIds = require('./data/venue-ids.json').ids;
+//     Both were renamed after their URL was published; the slug must keep
+//     working, so the id is pinned to the old, still-correct venue.
+//   scotiabank-arena   -> Toronto, ON
+//     The builder scopes every Ticketmaster search to countryCode=US, so a
+//     Canadian venue can never appear in its candidate list no matter how
+//     well the resolver would otherwise match it. Pinned to its
+//     hand-verified id rather than silently dropping out of the map.
+//
+// Loaded defensively: this file is rewritten by a scheduled job, and a
+// missing file or a JSON syntax error here must never take the whole API
+// down with it — only /api/public/events's venue filter should degrade.
+let venueIds = {};
+try {
+  venueIds = require('./data/venue-ids.json').ids || {};
+} catch (err) {
+  console.error(
+    '\n*** venue-ids.json failed to load: venue filtering is DISABLED until it is restored. ***\n' +
+    `*** Reason: ${err.message} ***\n`
+  );
+}
 
 // Rate limiters for security
 const authLimiter = rateLimit({

@@ -11,12 +11,15 @@ const v = (name, city, state, upcoming, id) => ({
 });
 
 test('requires the city to match, not just the name', () => {
-  // Real hazard: many stadiums share a name fragment across states.
+  // Real hazard: same name, same state — only the city can disambiguate.
+  // (Both candidates share stateCode 'TX', so a regression that dropped the
+  // city check but kept the state check would still pass unless this fixture
+  // forces the state check alone to be insufficient.)
   const candidates = [
-    v('Memorial Stadium', 'Lincoln', 'NE', 8, 'NEBRASKA'),
-    v('Memorial Stadium', 'Champaign', 'IL', 6, 'ILLINOIS'),
+    v('Memorial Stadium', 'Houston', 'TX', 8, 'HOUSTON'),
+    v('Memorial Stadium', 'Austin', 'TX', 6, 'AUSTIN'),
   ];
-  assert.equal(pickVenue(candidates, { name: 'Memorial Stadium', city: 'Champaign', state: 'IL' }).id, 'ILLINOIS');
+  assert.equal(pickVenue(candidates, { name: 'Memorial Stadium', city: 'Austin', state: 'TX' }).id, 'AUSTIN');
 });
 
 test('prefers the busier candidate when city and name both match', () => {

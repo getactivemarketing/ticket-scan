@@ -7,7 +7,7 @@
 import { mkdirSync, writeFileSync } from 'node:fs';
 import { dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { pickVenue } from '../src/lib/venue-resolve.mjs';
+import { pickVenueDetailed } from '../src/lib/venue-resolve.mjs';
 
 const KEY = process.env.TICKETMASTER_API_KEY;
 if (!KEY) {
@@ -54,8 +54,9 @@ async function fetchCandidates(name, state) {
   throw new Error(`giving up on ${name}`);
 }
 
-const out = { builtAt: new Date().toISOString(), counts: { resolved: 0, unresolved: 0 }, ids: {} };
+const out = { builtAt: new Date().toISOString(), counts: { resolved: 0, unresolved: 0, ambiguous: 0 }, ids: {} };
 const unresolved = [];
+const ambiguous = [];
 
 for (const [slug, v] of Object.entries(venues)) {
   if (PINNED[slug]) {
@@ -63,7 +64,7 @@ for (const [slug, v] of Object.entries(venues)) {
     out.counts.resolved += 1;
     continue;
   }
-  const picked = pickVenue(await fetchCandidates(v.name, v.state), {
+  const { picked, ambiguousWith } = pickVenueDetailed(await fetchCandidates(v.name, v.state), {
     name: v.name,
     city: v.city,
     state: v.state,
@@ -71,6 +72,13 @@ for (const [slug, v] of Object.entries(venues)) {
   if (picked) {
     out.ids[slug] = picked.id;
     out.counts.resolved += 1;
+    // Not fatal — the pick still stands — but the qualifying set had more
+    // than one distinct venue name, so this was a judgement call worth a
+    // human's eyes before ~167 more unverified venues run through it.
+    if (ambiguousWith.length) {
+      out.counts.ambiguous += 1;
+      ambiguous.push(`AMBIGUOUS ${slug} — picked "${picked.name}" over: ${ambiguousWith.join(', ')}`);
+    }
   } else {
     unresolved.push(`${slug} (${v.name}, ${v.city} ${v.state})`);
     out.counts.unresolved += 1;
@@ -81,5 +89,6 @@ for (const [slug, v] of Object.entries(venues)) {
 if (out.counts.resolved === 0) throw new Error('resolved zero venues; refusing to write an empty map');
 
 writeFileSync(OUT, `${JSON.stringify(out, null, 2)}\n`);
-console.log(`Resolved ${out.counts.resolved}, unresolved ${out.counts.unresolved}`);
+console.log(`Resolved ${out.counts.resolved}, unresolved ${out.counts.unresolved}, ambiguous ${out.counts.ambiguous}`);
 if (unresolved.length) console.log(`Unresolved:\n  ${unresolved.join('\n  ')}`);
+if (ambiguous.length) console.log(`${ambiguous.join('\n')}`);
