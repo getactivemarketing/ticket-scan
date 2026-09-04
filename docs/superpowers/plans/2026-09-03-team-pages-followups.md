@@ -108,29 +108,66 @@ touched by this plan and still use the older logic. City pages therefore continu
 under-report NFL inventory the same way they did before team pages existed. Fixing that is a
 separate, not-yet-scoped piece of work.
 
-## Ticketmaster daily call budget — recomputed with real numbers
+## The real constraint isn't Ticketmaster's daily quota — it's the API's own per-minute limiter
 
 The plan's own math (`docs/superpowers/plans/2026-09-03-team-pages.md`, line 21) assumed
 **~250** team pages adding **~1,000** calls/day for a **~2,900** total, against a 5,000/day
-Ticketmaster limit. The actual roster is **261** teams (not 250), and the revalidate window
-(`export const revalidate = 21600` — 6 hours, `web/src/app/teams/[slug]/page.tsx`) applies to
-**every resolved team**, not just the 169 prerendered football ones, since the other 92
-(NBA/NHL/MLB) share the same route and the same `revalidate` constant once requested.
+Ticketmaster limit. That baseline was under-counted three ways, and — more importantly — the
+Ticketmaster daily quota was never the binding constraint on a build in the first place. The
+site's own API rate-limits itself far more tightly. Both are worth knowing; they bind at
+different scales.
+
+**The Ticketmaster daily arithmetic, corrected.** The actual roster is **261** teams (not 250),
+and the revalidate window (`export const revalidate = 21600` — 6 hours,
+`web/src/app/teams/[slug]/page.tsx`) applies to **every resolved team**, not just the 169
+prerendered football ones, since the other 92 (NBA/NHL/MLB) share the same route and the same
+`revalidate` constant once requested. The plan's baseline also missed three things a whole-branch
+review identified:
+
+- the nightly `build-team-index.mjs` run itself, one attraction call per team = **+261/day**;
+- the daily deploy build, roughly 390 calls in a two-minute burst;
+- the baseline's "24 city pages hourly" ignored the 14 category pages sharing that same route —
+  38 × 24 = **912/day, not 576**.
 
 Recomputed:
-- Non-team baseline (unchanged from the plan): ~1,920/day (24 city pages hourly, 180 combos
-  6-hourly, 25 venue pages hourly, onsales hourly).
+- Non-team baseline: ~2,256/day (38 city+category pages hourly = 912, 180 combos 6-hourly = 720,
+  25 venue pages hourly = 600, onsales hourly folded into the above where applicable — corrected
+  from the plan's ~1,920).
 - Team pages: 261 teams × 4 revalidations/day (24h ÷ 6h) = **1,044/day** worst case (i.e. every
   team page gets at least one visitor in every 6-hour window).
-- **Real worst-case total: ~2,964/day**, against the 5,000/day limit — **~59% utilization**,
-  comfortably under budget and close to the plan's original ~2,900 estimate despite the roster
-  being larger than assumed. Do not shorten the 6-hour window; there is no pressure to.
-- Headroom for the 92 non-prerendered leagues to also prerender exists in principle (would add
-  no *new* calls at this revalidate window, since they already count toward the 1,044 above
-  once visited) — the real cost of prerendering them would be at **build time**: a cold build
-  already burns through a real Ticketmaster rate-limit budget fetching 169 team pages plus 160
-  combo pages in one run (see below), and doubling the prerendered set would roughly double that
-  burst, not the steady-state daily total.
+- Nightly index build: **+261/day**. Daily deploy build: **+390** in a two-minute burst.
+- **Corrected worst-case total: ~3,950/day**, against the 5,000/day limit — **~79% utilization**.
+  Still fits, but with much less headroom than the note originally documented. Do not shorten the
+  6-hour window on the strength of the old ~59% figure.
+
+**But the Ticketmaster quota is not what actually gates a build.** `index.js:23-29` defines
+`generalLimiter` at `max: 100, windowMs: 60000`, and `index.js:933` applies it to **all**
+`/api/` routes: `app.use('/api/', generalLimiter)`. That's 100 requests per minute per IP — one
+per 600ms — which is **five times stricter** than the Ticketmaster 5 req/s spike arrest that
+`next.config.ts`, the shared pacer, and the original design were all written against. This
+matters more than the daily arithmetic above:
+
+- `generalLimiter` returns a bare 429 that the API never logs, so it is indistinguishable from an
+  upstream Ticketmaster throttle — which is why it was misdiagnosed for so long, and it is the
+  likely cause of the deploy failure `next.config.ts` records;
+- it applies to **production Vercel builds**, not just local ones;
+- the build-time pacer in `web/src/lib/paced.ts` is now set to **650ms** (up from the value the
+  plan assumed), measured at a worst 60-second window of 92 requests against the 100 cap — an 8%
+  margin. Static generation now takes about 6.4 minutes.
+
+So: the Ticketmaster daily quota (~79% worst case) and the site's own per-minute limiter (~92%
+of cap during a build) are both real constraints, but they bind at different scales — one across
+a day of ISR revalidation, the other within any single 60-second window of a build. The one with
+the least slack, and the one to watch first when a build fails with 429s, is `generalLimiter`,
+not Ticketmaster.
+
+Headroom for the 92 non-prerendered leagues to also prerender exists in principle at the daily
+level (would add no *new* daily calls at this revalidate window, since they already count toward
+the 1,044 above once visited) — but the real cost of prerendering them would be at **build
+time**, against the 650ms pacer and its 8% margin, not against the Ticketmaster daily quota. A
+cold build already burns through the per-minute budget fetching 169 team pages plus 160 combo
+pages in one run (see below), and doubling the prerendered set would roughly double that
+per-minute pressure, not the steady-state daily total.
 
 ## `TICKETMASTER_API_KEY` is not available to `run-daily.sh` — the nightly team refresh will fail
 
@@ -159,18 +196,65 @@ which is why the gap wasn't visible before this task.
 ## What the build is sensitive to
 
 A cold local build prerenders 169 team pages and 160 combo pages in the same run, both sharing
-the single module-level `paced()` gate (`web/src/lib/paced.ts`, 220ms spacing, ~4.5 req/s) meant
-to stay under Ticketmaster's ~5 req/s spike arrest. Verified at merge, running the build locally
-against a freshly booted API with **no response caching** (see Task 8 report for the exact
-setup): the first three attempts each failed partway through with `HTTP 429`, on both team pages
-and combo pages, most likely from a second, already-running local instance of the API
-(`node index.js`, observed via `ps aux`, started independently of this task) sharing the same
-`TICKETMASTER_API_KEY` and therefore the same real Ticketmaster rate-limit budget. The fourth
-attempt completed cleanly with zero 429s. The pacer and retry/backoff logic are working as
+the single module-level `paced()` gate (`web/src/lib/paced.ts`, now 650ms spacing, measured at a
+worst 60-second window of 92 requests against `generalLimiter`'s 100/min cap — an 8% margin).
+That gate is now sized against the site's own `index.js` rate limiter, not Ticketmaster's ~5
+req/s spike arrest — `generalLimiter` (`index.js:23-29`, `max: 100` per `windowMs: 60000`,
+applied to all of `/api/` at `index.js:933`) is five times stricter and is the real thing a
+build must stay under. Static generation now takes about 6.4 minutes.
+
+Verified at merge, running the build locally against a freshly booted API with **no response
+caching** (see Task 8 report for the exact setup): the first three attempts each failed partway
+through with `HTTP 429`, on both team pages and combo pages, most likely from a second,
+already-running local instance of the API (`node index.js`, observed via `ps aux`, started
+independently of this task) sharing the same key's request budget against `generalLimiter`. The
+fourth attempt completed cleanly with zero 429s. The pacer and retry/backoff logic are working as
 designed; they just cannot protect against a *second, independent* process consuming the same
-key's budget concurrently. Do not shorten the revalidate window or loosen the pacer to
+per-IP budget concurrently. Do not shorten the revalidate window or loosen the pacer to
 compensate for that — it is not this feature's bug, and a production deploy build should not
-have a second local dev process competing for the same key.
+have a second local dev process competing for the same limiter window. Note also that
+`generalLimiter` returns a bare, unlogged 429 — a 429 during a build is as likely to be this
+limiter as it is Ticketmaster's, and the API gives no way to tell them apart after the fact.
+
+## A parked residual in attraction ranking
+
+`pickAttraction`'s current logic filters candidates by name containment, then ranks by fewest
+*extra* distinctive tokens, then upcoming-event count, then id. A reachable-in-principle failure
+remains: a seed name with a single distinctive token, plus a decoy attraction whose Ticketmaster
+name matches it with zero extras, while the *correct* attraction carries an extra token the seed
+name omits — the Utah bug inverted. An audit of all 261 teams found **zero live instances** of
+this today. The 90% drop-guard in `build-team-index.mjs` bounds a mass failure (e.g. Ticketmaster
+changing its response shape wholesale) but does **not** bound a single wrong swap of this kind —
+that would sail through the guard undetected, the same way the Washington State/Houston and
+Charlotte/Pelicans swaps above did. Mitigation: wiring `npm run smoke:teams` into the nightly run
+would catch it. That has not been done.
+
+## The smoke check's classification test produces real false positives
+
+`liberty-university-flames-football` and `coastal-carolina-chanticleers-football` both report
+`WRONG CLASS` in `smoke:teams` while their resolved ids are correct — Ticketmaster tags some
+genuine home games `Sports/Miscellaneous` rather than the expected football subclassification.
+Now that the smoke check's sampling is a proper Fisher-Yates shuffle rather than a fixed prefix,
+more of these will surface run to run as different teams get sampled. State plainly:
+**`WRONG TEAM` is the load-bearing signal and `WRONG CLASS` is advisory.** The classification
+rule was deliberately not loosened to accommodate these cases, because doing so would weaken the
+check's ability to catch a real misclassification. The risk to name is that people learn to skim
+past `WRONG CLASS` lines out of habit and miss the run where one of them is actually a `WRONG
+TEAM`.
+
+## The nightly automation is dead, and has been since 2026-08-26
+
+Two independent reasons, either one sufficient on its own:
+
+- `launchctl list` reports `com.ticketscan.daily` at exit status 126 ("cannot execute"), most
+  likely because the repo lives on an external volume that is not mounted at the 06:00 fire time.
+- Even if mounted, `run-daily.sh:63` exits FATAL when `ADMIN_KEY` is unset, and
+  `~/.config/ticketscan/marketing.env` currently holds only `OPENAI_API_KEY` — no `ADMIN_KEY` and
+  no `TICKETMASTER_API_KEY`.
+
+Consequence: `build:combos`, `build:tn-index`, and the new `build:teams` have **none** of them
+refreshed in over a week. This is the user's launchd config and secrets file, already surfaced to
+them directly — do not attempt to fix it from here.
 
 ## Next expansions
 
@@ -182,3 +266,8 @@ have a second local dev process competing for the same key.
   gap.
 - Extend the attraction-id-keyed resolution approach that fixed team pages to city and
   city×category combo pages, so they stop under-reporting the NFL the way team pages used to.
+- Wire `npm run smoke:teams` into the nightly run so a single wrong-swap ranking residual (see
+  above) gets caught automatically instead of relying on a manual audit.
+- Fix the two independent breaks in the nightly automation (external-volume mount timing,
+  missing `ADMIN_KEY`/`TICKETMASTER_API_KEY` in `marketing.env`) — the user's own config, not
+  fixed here.
