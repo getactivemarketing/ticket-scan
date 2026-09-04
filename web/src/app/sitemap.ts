@@ -5,6 +5,7 @@ import { categories } from '@/data/categories';
 import { getAllBlogPosts } from '@/data/blog';
 import { worldCupVenues } from '@/data/worldcup';
 import { getComboList, comboIndexGeneratedAt } from '@/data/combos';
+import teamIndex from '@/data/teams.generated.json';
 
 const BASE_URL = 'https://www.ticketscan.io';
 
@@ -30,6 +31,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
     {
       url: `${BASE_URL}/venues`,
+      lastModified,
+      changeFrequency: 'weekly',
+      priority: 0.8,
+    },
+    {
+      url: `${BASE_URL}/teams`,
       lastModified,
       changeFrequency: 'weekly',
       priority: 0.8,
@@ -132,6 +139,19 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.6,
   }));
 
+  // Team pages. Only teams present in the generated index. An unresolved team
+  // has no page, and advertising a URL that 404s is worse than omitting it.
+  // Dated from the index's own build stamp, the way comboPages uses
+  // comboIndexGeneratedAt, rather than the static CONTENT_LAST_MODIFIED —
+  // this data really does change.
+  const teamLastModified = new Date(teamIndex.builtAt);
+  const teamPages: MetadataRoute.Sitemap = Object.keys(teamIndex.teams).map((slug) => ({
+    url: `${BASE_URL}/teams/${slug}`,
+    lastModified: teamLastModified,
+    changeFrequency: 'daily' as const,
+    priority: 0.6,
+  }));
+
   // World Cup 2026 pages
   const worldCupMainPage: MetadataRoute.Sitemap = [
     {
@@ -159,6 +179,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...cityPages,
     ...categoryPages,
     ...comboPages,
+    ...teamPages,
     ...worldCupMainPage,
     ...worldCupVenuePages,
   ];
