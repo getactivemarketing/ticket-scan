@@ -8,6 +8,7 @@
 // WRONG CITY or ORPHAN finding — an API hiccup and a real defect must never
 // look the same in the output.
 import { readFileSync } from 'node:fs';
+import { citiesMatch } from '../src/lib/venue-resolve.mjs';
 
 const KEY = process.env.TICKETMASTER_API_KEY;
 if (!KEY) { console.error('TICKETMASTER_API_KEY is required.'); process.exit(1); }
@@ -61,9 +62,15 @@ for (const slug of slugs) {
       console.log(`  no events   ${slug} — offseason or stale id`);
       continue;
     }
+    // Naive string equality flagged campus stadiums as WRONG CITY whenever
+    // Ticketmaster's own city label for the venue differs harmlessly from
+    // ours (Starkville vs Mississippi State, Notre Dame vs South Bend —
+    // sometimes even within the same venue id depending on the event).
+    // Reuse the resolver's citiesMatch so this check trusts the same
+    // evidenced alias list the builder does, instead of re-litigating it.
     const wrong = events.filter((e) => {
       const v = ((e._embedded && e._embedded.venues) || [])[0] || {};
-      return !v.city || v.city.name.toLowerCase() !== want.city.toLowerCase();
+      return !v.city || !citiesMatch(want.city, v.city.name);
     });
     if (wrong.length) {
       wrongCity += 1;

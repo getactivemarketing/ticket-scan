@@ -66,6 +66,28 @@ const CITY_ALIASES = {
   // file it. Same pattern as Oxford/University above, confirmed against
   // the Mississippi State Bulldogs Football attraction's own event feed.
   starkville: 'mississippi state',
+  // Notre Dame Stadium's mailing address is South Bend, IN (our stored
+  // city), but the stadium sits on the university's own campus place,
+  // Notre Dame, IN — an unincorporated census-designated place — same
+  // pattern as Oxford/University and Starkville/Mississippi State above.
+  // Ticketmaster's own data is inconsistent about it: football event
+  // records for this venue id say "Notre Dame IN" while a concert at the
+  // same venue id says "South Bend IN" — confirmed against the venue's
+  // live event feed on 2026-09-04.
+  'south bend': 'notre dame',
+  // Falcon Stadium's mailing address is Colorado Springs, CO (our stored
+  // city and also what the venue's own Ticketmaster record says), but
+  // some event records for this same venue id instead carry "USAF
+  // Academy CO" — the academy's own campus place name. Confirmed against
+  // the venue endpoint directly (address "2169 United States Afa",
+  // city "Colorado Springs") on 2026-09-04.
+  'colorado springs': 'usaf academy',
+  // Jordan-Hare Stadium's mailing address is Auburn, AL — matching both
+  // our stored city and the venue's own Ticketmaster record exactly —
+  // but some event records for this same venue id instead carry "Auburn
+  // University AL". Confirmed against the venue endpoint directly
+  // (address "251 South Donahue Drive", city "Auburn") on 2026-09-04.
+  auburn: 'auburn university',
 };
 
 /** Strips punctuation and a trailing "Township" so city strings compare fairly. */
@@ -85,7 +107,7 @@ function normalizeCityName(city) {
  * for. This is deliberately narrow — it is not a fuzzy match, and it never
  * substitutes for the state check.
  */
-function citiesMatch(wantCityRaw, candidateCityRaw) {
+export function citiesMatch(wantCityRaw, candidateCityRaw) {
   const want = normalizeCityName(wantCityRaw);
   const got = normalizeCityName(candidateCityRaw);
   if (!want || !got) return false;

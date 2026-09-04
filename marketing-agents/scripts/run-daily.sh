@@ -182,6 +182,11 @@ else
     ( cd "$PROJECT_DIR/web" && npm run build:teams ) 2>&1 | tee -a "$LOG_FILE"
     if [ "${PIPESTATUS[0]}" -ne 0 ]; then echo "WARNING: team index refresh failed; previous index left intact" | tee -a "$LOG_FILE"; fi
 
+    # Venue ids drift when a building is renamed or Ticketmaster re-keys it.
+    # Non-fatal: a stale map still points at mostly the right events.
+    ( cd "$PROJECT_DIR/web" && npm run build:venue-ids ) 2>&1 | tee -a "$LOG_FILE"
+    if [ "${PIPESTATUS[0]}" -ne 0 ]; then echo "WARNING: venue id refresh failed; previous map left intact" | tee -a "$LOG_FILE"; fi
+
     # Deploy to Vercel so image URLs are live BEFORE Blotato consumes them.
     #
     # `vercel --prod` uploads a DIRECTORY, not a git ref. Running it from the
@@ -236,7 +241,7 @@ cd "$PROJECT_DIR"
 # production whether or not it is committed. Leaving it untracked let prod
 # drift from git silently for days. Recording it here means `git log` is an
 # accurate account of what is live, and a bad edit can be found and reverted.
-COMMIT_PATHS=(marketing-agents/output web/src web/src/data/combos.generated.json web/src/data/ticketnetwork.generated.json web/src/data/teams.generated.json)
+COMMIT_PATHS=(marketing-agents/output web/src web/src/data/combos.generated.json web/src/data/ticketnetwork.generated.json web/src/data/teams.generated.json data/venue-ids.json)
 if [ "$DRY_RUN" = "1" ]; then
     echo "[DRY_RUN] Skipping output commit and push" | tee -a "$LOG_FILE"
 elif [ -n "$(git status --porcelain -- "${COMMIT_PATHS[@]}")" ]; then
