@@ -2082,9 +2082,12 @@ app.get('/api/public/events', async (req, res) => {
     // Keyed on who is playing rather than where. NFL stadiums sit in suburbs —
     // Arlington, East Rutherford, Foxborough — so a city filter returns zero
     // for the biggest markets while the attraction returns the whole schedule.
+    // Note: attractionId and city are ANDed by Ticketmaster, so combining them
+    // returns zero results. This is pre-existing behaviour shared with venue+city.
     if (attractionId) {
-      if (/^[A-Za-z0-9]{1,40}$/.test(attractionId)) tmParams.attractionId = attractionId;
-      else invalid.push({ param: 'attractionId', value: attractionId, valid: ['alphanumeric Ticketmaster attraction id'] });
+      // Ticketmaster attraction ids contain underscores and hyphens (e.g. K8vZ9171_37, K8vZ9171-C0)
+      if (/^[A-Za-z0-9_-]{1,40}$/.test(attractionId)) tmParams.attractionId = attractionId;
+      else invalid.push({ param: 'attractionId', value: attractionId, valid: ['alphanumeric Ticketmaster attraction id (includes _ and -)'] });
     }
 
     if (invalid.length > 0) {
