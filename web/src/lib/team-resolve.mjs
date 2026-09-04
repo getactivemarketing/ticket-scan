@@ -28,15 +28,52 @@ function matchesClass(attraction, want) {
   });
 }
 
+// Tokens too generic to help tell one program from another. Deliberately
+// small: this is a floor, not an attempt to strip every stopword.
+const GENERIC_NAME_TOKENS = new Set(['football', 'university', 'univ', 'of', 'the', 'and']);
+
+function nameTokens(str) {
+  return String(str ?? '')
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, ' ')
+    .trim()
+    .split(/\s+/)
+    .filter(Boolean);
+}
+
+/**
+ * True when `candidateName` contains every distinctive token of
+ * `expectedName` — expectedName's tokens minus GENERIC_NAME_TOKENS. Case-
+ * insensitive, punctuation-stripped (so "Texas A&M" and "Texas A M" agree).
+ * A name with zero distinctive tokens (all generic, or empty) can't
+ * discriminate, so it agrees with anything.
+ */
+export function nameAgrees(expectedName, candidateName) {
+  const distinctive = nameTokens(expectedName).filter((t) => !GENERIC_NAME_TOKENS.has(t));
+  if (!distinctive.length) return true;
+  const candidateTokenSet = new Set(nameTokens(candidateName));
+  return distinctive.every((t) => candidateTokenSet.has(t));
+}
+
 /**
  * Returns the best attraction for `league`, or null when none qualifies.
  * Never falls back to "the first result" — that is how a band becomes a team.
+ *
+ * `expectedName` is optional. When omitted (or empty), candidates are ranked
+ * by classification and event count alone — the original behaviour. When
+ * supplied, a candidate must also agree by name (see nameAgrees) to qualify:
+ * classification and event count alone let Houston's busier program outrank
+ * Washington State, and let the Pelicans outrank the Hornets, in the same
+ * genre/subGenre bucket.
  */
-export function pickAttraction(candidates, league) {
+export function pickAttraction(candidates, league, expectedName) {
   const want = LEAGUE_CLASSIFICATION[league];
   if (!want || !Array.isArray(candidates)) return null;
 
-  const qualified = candidates.filter((c) => matchesClass(c, want));
+  let qualified = candidates.filter((c) => matchesClass(c, want));
+  if (expectedName) {
+    qualified = qualified.filter((c) => nameAgrees(expectedName, c && c.name));
+  }
   if (!qualified.length) return null;
 
   // Ties broken by id so a rebuild picks the same one every time.

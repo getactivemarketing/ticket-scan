@@ -51,7 +51,7 @@ async function main() {
     if (!LEAGUE_CLASSIFICATION[team.league]) {
       throw new Error(`team ${team.slug} has unknown league "${team.league}"`);
     }
-    const picked = pickAttraction(await fetchCandidates(team.name), team.league);
+    const picked = pickAttraction(await fetchCandidates(team.name), team.league, team.name);
     if (!picked) {
       // Omitted, never guessed. An unresolved team simply has no page.
       unresolved.push(team.slug);
