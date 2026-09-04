@@ -1,29 +1,14 @@
 // Major US Venue Data
 // Sections organized by tier (lower bowl, upper bowl, floor, etc.)
 
-export interface VenueSection {
-  name: string;
-  tier: 'floor' | 'lower' | 'club' | 'upper' | 'suite';
-  rows?: string;
-}
+import type { Venue, VenueSection } from './venue-types';
+import { stadiums } from './stadiums/index.ts';
 
-export interface Venue {
-  id: string;
-  name: string;
-  city: string;
-  state: string;
-  // Override for city slug when it doesn't match `city.toLowerCase().replace(/\s+/g, '-')` (e.g. Washington → washington-dc).
-  citySlug?: string;
-  capacity: number;
-  type: 'arena' | 'stadium' | 'theater';
-  sections: VenueSection[];
-  homeTeams?: string[];
-  description?: string;
-  keywords?: string[];
-  faqs?: { question: string; answer: string }[];
-}
+// Re-exported so every existing `import { Venue } from '@/data/venues'` keeps
+// working. Do not remove: the type is imported from here across the app.
+export type { Venue, VenueSection };
 
-export const venues: Record<string, Venue> = {
+const arenaVenues: Record<string, Venue> = {
   // Orlando
   'kia-center': {
     id: 'kia-center',
@@ -750,6 +735,8 @@ export const venues: Record<string, Venue> = {
     ]
   }
 };
+
+export const venues: Record<string, Venue> = { ...arenaVenues, ...stadiums };
 
 // Get venue by name (fuzzy match)
 export function findVenue(venueName: string): Venue | null {
