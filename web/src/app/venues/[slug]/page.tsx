@@ -80,7 +80,10 @@ async function getVenueEvents(slug: string): Promise<Event[]> {
     // the paced stream and push it over Ticketmaster's 5 req/s spike arrest.
     const response = await paced(() =>
       fetch(`${apiUrl}/api/public/events?venue=${slug}&limit=10`, {
-        next: { revalidate: 3600 }, // Revalidate every hour
+        // Six hours, matching the combo and team pages. Roughly 190 venues will
+        // cost ~4,560 Ticketmaster calls/day at hourly revalidation against a
+        // 5,000/day quota. At six hours, that drops to ~760 calls/day.
+        next: { revalidate: 21600 },
       }),
     );
 

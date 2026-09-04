@@ -57,7 +57,7 @@ export default function VenuePriceDisplay({ venue, basePrice, source }: VenuePri
         <div className="flex flex-col items-center gap-2">
           {/* Court/Stage */}
           <div className="w-24 h-12 bg-gray-800 rounded flex items-center justify-center text-white text-xs font-medium">
-            {venue.type === 'arena' ? 'Court' : 'Stage'}
+            {venue.type === 'arena' ? 'Court' : venue.type === 'stadium' ? 'Field' : 'Stage'}
           </div>
 
           {/* Floor seats */}
