@@ -1,11 +1,17 @@
 // The 30 NFL stadiums (32 teams: Giants/Jets share MetLife, Rams/Chargers share SoFi).
 //
-// Capacity, city, state and current stadium name follow Wikipedia's "List of
-// current National Football League stadiums", cross-checked per venue; the
-// documented exceptions are Allegiant Stadium (65,000, per its own Wikipedia
-// article), Bank of America Stadium (74,867 post-renovation) and EverBank
-// Stadium (42,465, the reduced 2026 configuration published in the venue's
-// official A-Z guide during the Stadium of the Future construction).
+// Capacity comes from each stadium's own Wikipedia article or its official
+// venue/team site, NOT from the aggregate "List of current NFL stadiums"
+// table, which lags the dedicated articles. Where the two disagree the
+// dedicated source wins; where a venue's own site disagrees with its article,
+// the venue's site wins (Lucas Oil Stadium publishes 67,000 for football,
+// against the 63,000 house-reduction base in its infobox).
+//
+// Two figures are deliberately configuration-specific: EverBank Stadium is
+// 42,465, the reduced 2026 capacity published in the venue's official A-Z
+// guide while the Stadium of the Future rebuild is under way, and Bank of
+// America Stadium is 75,037, the current figure — its fan-facing seating
+// work does not begin until 2027, so this is not a post-renovation number.
 //
 // Section names come from each venue's published seating chart. Where a
 // sideline/corner/end-zone split could not be sourced to a specific set of
@@ -20,10 +26,10 @@ export const nflStadiums: Record<string, Venue> = {
     name: 'Acrisure Stadium',
     city: 'Pittsburgh',
     state: 'PA',
-    capacity: 68984,
+    capacity: 68400,
     type: 'stadium',
     homeTeams: ['Pittsburgh Steelers'],
-    description: 'Acrisure Stadium seats 68,984 for Pittsburgh Steelers home games on the North Shore, an open-air natural-grass bowl that opened in 2001 and also hosts Pitt football. The 100 level wraps the field, and its sideline sections carry the highest prices in the building. The club ring is split into two named halves, the UPMC East Club in sections 205-216 and the West Club in 229-240, and a club ticket admits you to either lounge. The 500 level upper deck is where the value sits. TicketScan tracks when tickets for Acrisure Stadium events go on sale, including presale windows that open before the public onsale.',
+    description: 'Acrisure Stadium seats 68,400 for Pittsburgh Steelers home games on the North Shore, an open-air natural-grass bowl that opened in 2001 and also hosts Pitt football. The 100 level wraps the field, and its sideline sections carry the highest prices in the building. The club ring is split into two named halves, the UPMC East Club in sections 205-216 and the West Club in 229-240, and a club ticket admits you to either lounge. The 500 level upper deck is where the value sits. TicketScan tracks when tickets for Acrisure Stadium events go on sale, including presale windows that open before the public onsale.',
     keywords: ['Acrisure Stadium tickets', 'Pittsburgh Steelers tickets', 'Acrisure Stadium seating chart', 'Acrisure Stadium events 2026', 'Pittsburgh football tickets'],
     faqs: [
       { question: 'Which side of Acrisure Stadium is shadier?', answer: 'The west side, sections 229-240 on the club level and the 100 level sections below them, is the home side and gets shade earlier in an afternoon game. The east side takes the sun.' },
@@ -127,10 +133,10 @@ export const nflStadiums: Record<string, Venue> = {
     name: 'Bank of America Stadium',
     city: 'Charlotte',
     state: 'NC',
-    capacity: 74867,
+    capacity: 75037,
     type: 'stadium',
     homeTeams: ['Carolina Panthers'],
-    description: 'Bank of America Stadium seats 74,867 for Carolina Panthers games in uptown Charlotte and also hosts Charlotte FC. Its numbering is unusual: the 200 sections are not a second deck but extra rows behind the 100 level in both end zones, so the building runs 100 level, a middle club ring in the 300s, and a 500 level upper deck. The Silver Club occupies the 300s sidelines and corners. The Panthers bench sits in front of sections 131-133, the visitors in front of 111-113. TicketScan tracks Bank of America Stadium onsales and presale windows.',
+    description: 'Bank of America Stadium seats 75,037 for Carolina Panthers games in uptown Charlotte and also hosts Charlotte FC. Its numbering is unusual: the 200 sections are not a second deck but extra rows behind the 100 level in both end zones, so the building runs 100 level, a middle club ring in the 300s, and a 500 level upper deck. The Silver Club occupies the 300s sidelines and corners. The Panthers bench sits in front of sections 131-133, the visitors in front of 111-113. TicketScan tracks Bank of America Stadium onsales and presale windows.',
     keywords: ['Bank of America Stadium tickets', 'Carolina Panthers tickets', 'Bank of America Stadium seating chart', 'Charlotte FC tickets', 'Bank of America Stadium events 2026', 'Charlotte football tickets'],
     faqs: [
       { question: 'Are the 200 level sections at Bank of America Stadium an upper deck?', answer: 'No. Unlike most NFL stadiums, the 200 numbered sections here sit on the lower level, directly behind the 100 sections in both end zones. The real upper deck is the 500 level.' },
@@ -260,10 +266,10 @@ export const nflStadiums: Record<string, Venue> = {
     name: 'Gillette Stadium',
     city: 'Foxborough',
     state: 'MA',
-    capacity: 66829,
+    capacity: 64628,
     type: 'stadium',
     homeTeams: ['New England Patriots'],
-    description: 'Gillette Stadium seats 66,829 for New England Patriots games in Foxborough, an open-air FieldTurf bowl that opened in 2002 and also hosts the New England Revolution. The 100 level sidelines are sections 101-114 and 130-143; The Fort, the standing supporters end, occupies the north end zone. The Putnam Club forms the premium 200 level ring, and the 300 level upper deck is the cheapest tier. The lighthouse and bridge at the north end were rebuilt in the 2023 renovation. TicketScan tracks when tickets for Gillette Stadium events go on sale, including presale windows that open before the public onsale.',
+    description: 'Gillette Stadium seats 64,628 for New England Patriots games in Foxborough, an open-air FieldTurf bowl that opened in 2002 and also hosts the New England Revolution. The 100 level sidelines are sections 101-114 and 130-143; The Fort, the standing supporters end, occupies the north end zone. The Putnam Club forms the premium 200 level ring, and the 300 level upper deck is the cheapest tier. The lighthouse and bridge at the north end were rebuilt in the 2023 renovation. TicketScan tracks when tickets for Gillette Stadium events go on sale, including presale windows that open before the public onsale.',
     keywords: ['Gillette Stadium tickets', 'New England Patriots tickets', 'Gillette Stadium seating chart', 'New England Revolution tickets', 'Gillette Stadium events 2026', 'Foxborough football tickets'],
     faqs: [
       { question: 'What is The Fort at Gillette Stadium?', answer: 'The Fort is the north end zone supporters area behind sections 119-125, best known for Revolution matches but part of the same lower-bowl end at Patriots games.' },
@@ -286,10 +292,10 @@ export const nflStadiums: Record<string, Venue> = {
     name: 'Hard Rock Stadium',
     city: 'Miami Gardens',
     state: 'FL',
-    capacity: 65326,
+    capacity: 64767,
     type: 'stadium',
     homeTeams: ['Miami Dolphins'],
-    description: 'Hard Rock Stadium seats 65,326 for Miami Dolphins games in Miami Gardens, an open-air Bermuda-grass field that opened in 1987 and gained a canopy roof over the seating bowl in the 2016 renovation. The canopy covers the stands but leaves the field open, so shade rather than rain is what the seat map buys you. The 100 level sidelines are sections 105-115 and 142-152, the Hyundai Club rings the 200 level, and the 400 level is the upper deck. TicketScan tracks Hard Rock Stadium onsales and presale windows.',
+    description: 'Hard Rock Stadium seats 64,767 for Miami Dolphins games in Miami Gardens, an open-air Bermuda-grass field that opened in 1987 and gained a canopy roof over the seating bowl in the 2016 renovation. The canopy covers the stands but leaves the field open, so shade rather than rain is what the seat map buys you. The 100 level sidelines are sections 105-115 and 142-152, the Hyundai Club rings the 200 level, and the 400 level is the upper deck. TicketScan tracks Hard Rock Stadium onsales and presale windows.',
     keywords: ['Hard Rock Stadium tickets', 'Miami Dolphins tickets', 'Hard Rock Stadium seating chart', 'Hard Rock Stadium events 2026', 'Miami football tickets'],
     faqs: [
       { question: 'Does the Hard Rock Stadium canopy cover every seat?', answer: 'The canopy covers the seating bowl but not the field. Most seats are shaded, though low rows near the open field edge can still catch sun and blowing rain.' },
@@ -339,10 +345,10 @@ export const nflStadiums: Record<string, Venue> = {
     name: 'Huntington Bank Field',
     city: 'Cleveland',
     state: 'OH',
-    capacity: 67895,
+    capacity: 67431,
     type: 'stadium',
     homeTeams: ['Cleveland Browns'],
-    description: 'Huntington Bank Field seats 67,895 for Cleveland Browns games on the lakefront downtown, an open-air Kentucky bluegrass field that opened in 1999 and was renamed in 2024. The Dawg Pound, the bleacher end behind the east end zone, is the building’s signature section. Suites occupy the entire 200 and 400 levels, so the seating decks are the 100 level, the 300 level club ring between the two suite rings, and the 500 level upper deck. TicketScan tracks when tickets for Huntington Bank Field events go on sale, including presale windows that open before the public onsale.',
+    description: 'Huntington Bank Field seats 67,431 for Cleveland Browns games on the lakefront downtown, an open-air Kentucky bluegrass field that opened in 1999 and was renamed in 2024. The Dawg Pound, the bleacher end behind the east end zone, is the building’s signature section. Suites occupy the entire 200 and 400 levels, so the seating decks are the 100 level, the 300 level club ring between the two suite rings, and the 500 level upper deck. TicketScan tracks when tickets for Huntington Bank Field events go on sale, including presale windows that open before the public onsale.',
     keywords: ['Huntington Bank Field tickets', 'Cleveland Browns tickets', 'Huntington Bank Field seating chart', 'Dawg Pound tickets', 'Huntington Bank Field events 2026', 'Cleveland football tickets'],
     faqs: [
       { question: 'Where is the Dawg Pound at Huntington Bank Field?', answer: 'The Dawg Pound is the bleacher seating behind the east end zone on the lower level. It has no seat backs and is the loudest part of the stadium.' },
@@ -418,10 +424,10 @@ export const nflStadiums: Record<string, Venue> = {
     name: 'Lincoln Financial Field',
     city: 'Philadelphia',
     state: 'PA',
-    capacity: 69596,
+    capacity: 67594,
     type: 'stadium',
     homeTeams: ['Philadelphia Eagles'],
-    description: 'Lincoln Financial Field seats 69,596 for Philadelphia Eagles games in the South Philadelphia sports complex, an open-air GrassMaster field that opened in 2003. The 100 level sidelines are sections 101-114 and 130-143, with the end zones at 119-125 and 148-150. The Touchdown Club and Hyundai Club form the 200 level premium ring, and the 300 level upper deck holds the least expensive seats. The stadium runs on rooftop solar and wind and shares its parking with the neighboring arena and ballpark. TicketScan tracks Lincoln Financial Field onsales and presale windows.',
+    description: 'Lincoln Financial Field seats 67,594 for Philadelphia Eagles games in the South Philadelphia sports complex, an open-air GrassMaster field that opened in 2003. The 100 level sidelines are sections 101-114 and 130-143, with the end zones at 119-125 and 148-150. The Touchdown Club and Hyundai Club form the 200 level premium ring, and the 300 level upper deck holds the least expensive seats. The stadium runs on rooftop solar and wind and shares its parking with the neighboring arena and ballpark. TicketScan tracks Lincoln Financial Field onsales and presale windows.',
     keywords: ['Lincoln Financial Field tickets', 'Philadelphia Eagles tickets', 'Lincoln Financial Field seating chart', 'Lincoln Financial Field events 2026', 'Philadelphia football tickets'],
     faqs: [
       { question: 'What are the club options at Lincoln Financial Field?', answer: 'The Touchdown Club and the Hyundai Club sit on the 200 level ring above the lower bowl, both with indoor lounge access. Everything else on that level is standard mezzanine seating.' },
@@ -473,10 +479,10 @@ export const nflStadiums: Record<string, Venue> = {
     name: 'Lumen Field',
     city: 'Seattle',
     state: 'WA',
-    capacity: 69000,
+    capacity: 68740,
     type: 'stadium',
     homeTeams: ['Seattle Seahawks'],
-    description: 'Lumen Field seats 69,000 for Seattle Seahawks games in SoDo and also hosts the Seattle Sounders. Partial roofs cover about 70 percent of the seats while leaving the field open, and the design deliberately traps and reflects crowd noise back onto the field. The Hawks Nest occupies the steep north end bleachers behind sections 120-131. The 100 level sidelines are 101-117 on the west and 134-148 on the east, with two named club levels above and the 300 level upper deck at the top. TicketScan tracks Lumen Field onsales and presale windows.',
+    description: 'Lumen Field seats 68,740 for Seattle Seahawks games in SoDo and also hosts the Seattle Sounders. Partial roofs cover about 70 percent of the seats while leaving the field open, and the design deliberately traps and reflects crowd noise back onto the field. The Hawks Nest occupies the steep north end bleachers behind sections 120-131. The 100 level sidelines are 101-117 on the west and 134-148 on the east, with two named club levels above and the 300 level upper deck at the top. TicketScan tracks Lumen Field onsales and presale windows.',
     keywords: ['Lumen Field tickets', 'Seattle Seahawks tickets', 'Lumen Field seating chart', 'Seattle Sounders tickets', 'Lumen Field events 2026', 'Seattle football tickets'],
     faqs: [
       { question: 'What is the Hawks Nest at Lumen Field?', answer: 'The Hawks Nest is the steep bleacher seating at the north end of the lower bowl, behind sections 120-131. It is close to the field, loud, and among the cheaper lower-level options.' },
@@ -500,10 +506,10 @@ export const nflStadiums: Record<string, Venue> = {
     name: 'M&T Bank Stadium',
     city: 'Baltimore',
     state: 'MD',
-    capacity: 71008,
+    capacity: 70745,
     type: 'stadium',
     homeTeams: ['Baltimore Ravens'],
-    description: 'M&T Bank Stadium seats 71,008 for Baltimore Ravens games, an open-air field just south of downtown that opened in 1998 next door to Camden Yards. The bowl runs five rings: the 100 level, the renovated club level in the 200s, two suite levels in the 300s and 400s, and a continuous 500 level upper deck that circles the field. Lower-bowl sections run 35 to 42 rows and are split by a concourse tunnel around row 20. Two large end-zone video boards face each other. TicketScan tracks M&T Bank Stadium onsales and presale windows.',
+    description: 'M&T Bank Stadium seats 70,745 for Baltimore Ravens games, an open-air field just south of downtown that opened in 1998 next door to Camden Yards. The bowl runs five rings: the 100 level, the renovated club level in the 200s, two suite levels in the 300s and 400s, and a continuous 500 level upper deck that circles the field. Lower-bowl sections run 35 to 42 rows and are split by a concourse tunnel around row 20. Two large end-zone video boards face each other. TicketScan tracks M&T Bank Stadium onsales and presale windows.',
     keywords: ['M&T Bank Stadium tickets', 'Baltimore Ravens tickets', 'M&T Bank Stadium seating chart', 'M&T Bank Stadium events 2026', 'Baltimore football tickets'],
     faqs: [
       { question: 'How many levels does M&T Bank Stadium have?', answer: 'Five: the 100 level lower bowl, the 200 level club ring, two suite levels in the 300s and 400s, and the 500 level upper deck, which runs continuously all the way around the field.' },
@@ -680,10 +686,10 @@ export const nflStadiums: Record<string, Venue> = {
     name: 'Raymond James Stadium',
     city: 'Tampa',
     state: 'FL',
-    capacity: 65890,
+    capacity: 69218,
     type: 'stadium',
     homeTeams: ['Tampa Bay Buccaneers'],
-    description: 'Raymond James Stadium seats 65,890 for Tampa Bay Buccaneers games and is built around a full-size pirate ship in Buccaneer Cove above the north end zone, which fires its cannons after Tampa Bay scores. The lower bowl is the only level with end-zone seating; the upper deck runs sidelines and corners only, in sections 302-319 and 327-344. Club seating occupies the 200 level sidelines, and the Krewe’s Nest sections 1-8 sit above the south end zone in shade from the video board. TicketScan tracks Raymond James Stadium onsales and presale windows.',
+    description: 'Raymond James Stadium seats 69,218 for Tampa Bay Buccaneers games and is built around a full-size pirate ship in Buccaneer Cove above the north end zone, which fires its cannons after Tampa Bay scores. The upper deck runs sidelines and corners only, in sections 302-319 and 327-344, with no seating behind either end zone. Club seating occupies the 200 level sidelines, and the Krewe’s Nest sections 1-8 sit above the south end zone in shade from the video board. TicketScan tracks Raymond James Stadium onsales and presale windows.',
     keywords: ['Raymond James Stadium tickets', 'Tampa Bay Buccaneers tickets', 'Raymond James Stadium seating chart', 'Raymond James Stadium events 2026', 'Tampa football tickets'],
     faqs: [
       { question: 'Which seats at Raymond James Stadium are near the pirate ship?', answer: 'Buccaneer Cove sits above lower-level sections 145-151 in the north end zone. Seats in 146-150 put you directly below it, and the 200 level corner section 245 is close to it as well.' },
@@ -737,7 +743,7 @@ export const nflStadiums: Record<string, Venue> = {
     capacity: 62500,
     type: 'stadium',
     homeTeams: ['Chicago Bears'],
-    description: 'Soldier Field seats 62,500 for Chicago Bears games, the smallest capacity in the NFL, on the lakefront just south of the Loop. The 1924 colonnades survive around a seating bowl rebuilt inside them in 2003, which is why the 400 level grandstand fills only the open north end in sections 427-447. The United Club spans the east side across sections 202-216 and 301-317. The Bears bench sits in front of sections 134-140. TicketScan tracks when tickets for Soldier Field events go on sale, including presale windows that open before the public onsale.',
+    description: 'Soldier Field seats 62,500 for Chicago Bears games, one of the smallest capacities in the NFL, on the lakefront just south of the Loop. The 1924 colonnades survive around a seating bowl rebuilt inside them in 2003, which is why the 400 level grandstand fills only the open north end in sections 427-447. The United Club spans the east side across sections 202-216 and 301-317. The Bears bench sits in front of sections 134-140. TicketScan tracks when tickets for Soldier Field events go on sale, including presale windows that open before the public onsale.',
     keywords: ['Soldier Field tickets', 'Chicago Bears tickets', 'Soldier Field seating chart', 'Soldier Field events 2026', 'Chicago football tickets'],
     faqs: [
       { question: 'Why does Soldier Field only have a 400 level at one end?', answer: 'The 2003 rebuild dropped a modern bowl inside the 1924 colonnades. The steep 400 level grandstand, sections 427-447, was built into the open north end where the historic structure allowed the extra height.' },
@@ -787,10 +793,10 @@ export const nflStadiums: Record<string, Venue> = {
     name: 'U.S. Bank Stadium',
     city: 'Minneapolis',
     state: 'MN',
-    capacity: 66655,
+    capacity: 66202,
     type: 'stadium',
     homeTeams: ['Minnesota Vikings'],
-    description: 'U.S. Bank Stadium seats 66,655 for Minnesota Vikings games in downtown Minneapolis, a fixed-roof building that opened in 2016 with a ridged asymmetric roof and a wall of glass pivoting doors facing the skyline. Much of the lower bowl is private club seating: the Delta Sky360 Club in the F sections, the Polaris Club in V1-V5 and the Medtronic Club in V6-V10. The Vikings bench sits in front of F2 to F4. The 300 level upper deck sections run up to 42 rows. TicketScan tracks U.S. Bank Stadium onsales and presale windows.',
+    description: 'U.S. Bank Stadium seats 66,202 for Minnesota Vikings games in downtown Minneapolis, a fixed-roof building that opened in 2016 with a ridged asymmetric roof and a wall of glass pivoting doors facing the skyline. Much of the lower bowl is private club seating: the Delta Sky360 Club in the F sections, the Polaris Club in V1-V5 and the Medtronic Club in V6-V10. The Vikings bench sits in front of F2 to F4. The 300 level upper deck sections run up to 42 rows. TicketScan tracks U.S. Bank Stadium onsales and presale windows.',
     keywords: ['U.S. Bank Stadium tickets', 'Minnesota Vikings tickets', 'U.S. Bank Stadium seating chart', 'U.S. Bank Stadium events 2026', 'Minneapolis football tickets'],
     faqs: [
       { question: 'Are the lettered sections at U.S. Bank Stadium club seats?', answer: 'Yes. The F, V and C sections are private clubs rather than general seating: Delta Sky360 in F1-F5, Polaris in V1-V5, Medtronic in V6-V10, and the 200 level C1-C10 clubs at midfield.' },
