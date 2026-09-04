@@ -1,0 +1,184 @@
+# Team pages — follow-ups
+
+Written 2026-09-04 at merge (Task 8). Everything here was found during execution, judged
+non-blocking, and deliberately not fixed. The plan and spec live alongside this file.
+
+## Resolution counts
+
+- **261 teams seeded** in `web/src/data/teams.ts` (32 NFL, 30 NBA, 32 NHL, 30 MLB, 137
+  college-football/FBS). `web/src/data/teams.generated.json` (built 2026-09-04T16:15:49Z)
+  resolves **all 261** — `counts: { resolved: 261, unresolved: 0 }`. Nothing is currently
+  unresolved; if that changes on a future nightly run, the unresolved slugs will appear in the
+  index under `teams.generated.json` and in the script's own log line
+  (`Unresolved: <slug>, <slug>, ...`) — check there first, not here.
+- Only football prerenders: **169 pages** (32 NFL + 137 FBS), confirmed by the actual build (see
+  below), not the plan's stale "roughly 90." NBA/NHL/MLB team pages (92 of the 261) still exist
+  and are resolvable, but render on demand under the same 6-hour ISR window rather than being
+  built at deploy time.
+
+## `tnSlug` (TicketNetwork affiliate) coverage
+
+- **186 of 261 resolved teams (71%) carry a `tnSlug`; 75 do not.** A team without one loses only
+  its team-level resale link and disclosure — every individual game row on that page still
+  resolves its own TicketNetwork link independently through `resolveTicketNetwork`
+  (`TicketNetworkLink`), which is not keyed on `tnSlug`. So a missing team-level `tnSlug` is a
+  minor omission, not a broken page.
+
+## Texas A&M: an ampersand bug, currently affecting one team
+
+`Texas A&M Aggies Football` resolved a Ticketmaster `attractionId` fine but did **not** get a
+`tnSlug`, because `normalizeName` (`web/src/lib/tn-slug.mjs`) expands `&` to the word "and" when
+folding the *display name* (`"Texas A&M Aggies Football"` → `"texas a and m aggies football"`),
+but the TicketNetwork index key comes from the *slug* (`texas-am-aggies-football-tickets`),
+which has no `&` to expand and folds to `"texas am aggies football"`. `"a and m"` vs. `"am"`
+never match, so the lookup misses and the team gets no `tnSlug` even though TicketNetwork
+carries `texas-am-aggies-football-tickets` under a plainly related name.
+
+Checked: **Texas A&M is the only team name in the current 261-team roster containing an
+ampersand** (`grep -oE 'name: "[^"]*&[^"]*"' src/data/teams.ts` returns one match), so this is a
+live bug affecting exactly one team today — but it will silently recur for any future ampersand
+name (e.g. a hypothetical "Texas A&M–Commerce" or any pro franchise using "&"). Worth fixing in
+`normalizeName` or in the lookup, but out of scope for this task per the brief.
+
+## Akron: a real program the seed never saw
+
+Akron is a real 2026 FBS program but never appeared in Ticketmaster's attractions seed
+(`web/scripts/seed-teams.mjs`, which walks Ticketmaster's own `attractions` endpoint by
+classification), so it has no entry in `teams.ts` and consequently no page. Confirmed: `akron`
+appears nowhere in `teams.ts` or `teams.generated.json`. The seed is hand-owned source (see
+below), so adding Akron is a one-line hand edit to `teams.ts`, not a script fix — Ticketmaster
+simply didn't surface it as an attraction when the seed was walked.
+
+## Two attraction ids resolved to the wrong entity, invisibly, before a fix
+
+Before `web/src/lib/team-resolve.mjs` required name agreement (commit `73a0bce`, "Require the
+attraction's name to match the team"), two attraction ids resolved wrong:
+
+- `washington-state-cougars-football` → **"University of Houston Cougars Football"**
+- `charlotte-hornets` → **"New Orleans Pelicans"**
+
+Cause: `pickAttraction` filtered candidates by Ticketmaster classification (genre/subGenre) and
+then ranked by upcoming-event count alone, with no comparison of the candidate's name against
+the team's expected name. Houston's football program and the Pelicans both had more upcoming
+events than the correct team in the same classification bucket, so they won on volume.
+
+**The failure was invisible.** Both wrong pages would have rendered perfectly — real opponent
+names, real venues, a populated schedule, no errors, no empty states, nothing that automated
+verification or a casual visual check would catch. Only a reader who knew Washington State's
+actual schedule (or Charlotte's) would have noticed the games belonged to a different team
+entirely. The fix (`nameAgrees` — requires every distinctive token of the expected name to
+appear in the candidate name) is enforced in `pickAttraction` and covered by
+`web/src/lib/team-resolve.test.mjs` (both regressions are named test cases). Any future change
+to `pickAttraction` that loosens or bypasses `nameAgrees` reopens this exact failure mode.
+
+## The seed is hand-owned; the index is not
+
+`web/src/data/teams.ts` is generated once by `seed-teams.mjs`, reviewed, committed, and then
+owned by hand from that point on — its own file header says so explicitly. It is **not**
+regenerated by the nightly `run-daily.sh` refresh; only `teams.generated.json` (the
+attraction-id / `tnSlug` resolution) refreshes nightly via `npm run build:teams`, wired in this
+task.
+
+Practical consequence: a franchise **rename or relocation** (e.g. a team changing its official
+name, or a program dropping/adding "football" from its Ticketmaster listing) needs a **hand
+edit** to `teams.ts` — the nightly job will not pick it up on its own. And because
+`pickAttraction`'s `nameAgrees` check requires the seed name to match Ticketmaster's *current*
+name token-for-token, a Ticketmaster-side rename doesn't cause a *mis*-resolution (the old wrong
+kind of failure above) — it causes that team to silently drop to **unresolved** (no page,
+omitted from `teams.generated.json`) until someone updates `teams.ts` to match. That is the
+intended failure direction (fail closed, not sideways), but it means a renamed team quietly loses
+its page rather than erroring loudly, so it is worth someone periodically checking
+`teams.generated.json`'s `unresolved` count rather than assuming 0 forever.
+
+## No football venue guides exist yet
+
+`web/src/data/venues.ts` currently has **zero** NFL or college-football entries (confirmed:
+`grep "homeVenueSlug:" src/data/teams.ts` returns nothing — no team in the 261-team roster has
+`homeVenueSlug` set). Every football team page therefore renders today without a venue panel,
+capacity figure, seating-guide link, or city link — the schedule renders alone. A parallel
+sub-project, `docs/superpowers/plans/2026-09-04-stadium-venues.md`, adds roughly 165 NFL and FBS
+stadiums to `venues.ts` and wires `homeVenueSlug` on each team; until that lands, this is the
+expected, accepted state of every football team page, not a bug in this task.
+
+## City pages still under-report the NFL
+
+This design (attraction-id-keyed team pages) supersedes the older city-aliasing approach for
+*team* pages, but city pages (`/tickets/[slug]`) and the city×category combo pages were not
+touched by this plan and still use the older logic. City pages therefore continue to
+under-report NFL inventory the same way they did before team pages existed. Fixing that is a
+separate, not-yet-scoped piece of work.
+
+## Ticketmaster daily call budget — recomputed with real numbers
+
+The plan's own math (`docs/superpowers/plans/2026-09-03-team-pages.md`, line 21) assumed
+**~250** team pages adding **~1,000** calls/day for a **~2,900** total, against a 5,000/day
+Ticketmaster limit. The actual roster is **261** teams (not 250), and the revalidate window
+(`export const revalidate = 21600` — 6 hours, `web/src/app/teams/[slug]/page.tsx`) applies to
+**every resolved team**, not just the 169 prerendered football ones, since the other 92
+(NBA/NHL/MLB) share the same route and the same `revalidate` constant once requested.
+
+Recomputed:
+- Non-team baseline (unchanged from the plan): ~1,920/day (24 city pages hourly, 180 combos
+  6-hourly, 25 venue pages hourly, onsales hourly).
+- Team pages: 261 teams × 4 revalidations/day (24h ÷ 6h) = **1,044/day** worst case (i.e. every
+  team page gets at least one visitor in every 6-hour window).
+- **Real worst-case total: ~2,964/day**, against the 5,000/day limit — **~59% utilization**,
+  comfortably under budget and close to the plan's original ~2,900 estimate despite the roster
+  being larger than assumed. Do not shorten the 6-hour window; there is no pressure to.
+- Headroom for the 92 non-prerendered leagues to also prerender exists in principle (would add
+  no *new* calls at this revalidate window, since they already count toward the 1,044 above
+  once visited) — the real cost of prerendering them would be at **build time**: a cold build
+  already burns through a real Ticketmaster rate-limit budget fetching 169 team pages plus 160
+  combo pages in one run (see below), and doubling the prerendered set would roughly double that
+  burst, not the steady-state daily total.
+
+## `TICKETMASTER_API_KEY` is not available to `run-daily.sh` — the nightly team refresh will fail
+
+`marketing-agents/scripts/run-daily.sh` sources exactly one secrets file,
+`$HOME/.config/ticketscan/marketing.env` (line 32-36), and **never sources the repo-root
+`.env`**. That secrets file currently defines only `OPENAI_API_KEY` — it does not define
+`TICKETMASTER_API_KEY` (or, notably, `ADMIN_KEY`, which the script's own guard at line 63-67
+requires and would currently abort on before ever reaching the marketing agents). `TICKETMASTER_API_KEY`
+lives only in the repo-root `.env`, which this script never reads.
+
+`web/scripts/build-team-index.mjs` (the new `npm run build:teams`, wired into the daily script
+in this task) hard-requires `TICKETMASTER_API_KEY` and exits 1 immediately if it's absent
+(`console.error('TICKETMASTER_API_KEY is required.'); process.exit(1);`). Concretely: every
+night, `npm run build:teams` will fail with that message, `${PIPESTATUS[0]}` will be non-zero,
+and the script will print `WARNING: team index refresh failed; previous index left intact` and
+continue — non-fatal by design, exactly as the plan wanted for a single bad night. But because
+the key is *never* present, this isn't a single bad night — it will fail identically **every**
+night until someone adds `TICKETMASTER_API_KEY` to `~/.config/ticketscan/marketing.env`. The
+existing `build:tn-index` step does not hit this because `build-tn-index.mjs` does not need
+`TICKETMASTER_API_KEY`; `build:teams` is the first daily-refresh script in this file to need it,
+which is why the gap wasn't visible before this task.
+
+**Action needed (outside this task's scope): add `TICKETMASTER_API_KEY` to
+`~/.config/ticketscan/marketing.env`** before relying on the nightly team-index refresh.
+
+## What the build is sensitive to
+
+A cold local build prerenders 169 team pages and 160 combo pages in the same run, both sharing
+the single module-level `paced()` gate (`web/src/lib/paced.ts`, 220ms spacing, ~4.5 req/s) meant
+to stay under Ticketmaster's ~5 req/s spike arrest. Verified at merge, running the build locally
+against a freshly booted API with **no response caching** (see Task 8 report for the exact
+setup): the first three attempts each failed partway through with `HTTP 429`, on both team pages
+and combo pages, most likely from a second, already-running local instance of the API
+(`node index.js`, observed via `ps aux`, started independently of this task) sharing the same
+`TICKETMASTER_API_KEY` and therefore the same real Ticketmaster rate-limit budget. The fourth
+attempt completed cleanly with zero 429s. The pacer and retry/backoff logic are working as
+designed; they just cannot protect against a *second, independent* process consuming the same
+key's budget concurrently. Do not shorten the revalidate window or loosen the pacer to
+compensate for that — it is not this feature's bug, and a production deploy build should not
+have a second local dev process competing for the same key.
+
+## Next expansions
+
+- Wire `homeVenueSlug` once `docs/superpowers/plans/2026-09-04-stadium-venues.md` lands, giving
+  every football team page a venue panel, capacity, seating-guide link, and city link.
+- Fix the `normalizeName` ampersand mismatch so `tnSlug` resolution agrees between display names
+  and TicketNetwork slugs for any future ampersand team, not just today's single Texas A&M case.
+- Add Akron by hand to `teams.ts` if/when it shows up as a Ticketmaster attraction, or accept the
+  gap.
+- Extend the attraction-id-keyed resolution approach that fixed team pages to city and
+  city×category combo pages, so they stop under-reporting the NFL the way team pages used to.
