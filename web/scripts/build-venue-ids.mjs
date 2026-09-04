@@ -7,7 +7,7 @@
 import { mkdirSync, writeFileSync } from 'node:fs';
 import { dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { pickVenueDetailed } from '../src/lib/venue-resolve.mjs';
+import { pickVenueDetailed, nameAfterAt } from '../src/lib/venue-resolve.mjs';
 
 const KEY = process.env.TICKETMASTER_API_KEY;
 if (!KEY) {
@@ -64,11 +64,24 @@ for (const [slug, v] of Object.entries(venues)) {
     out.counts.resolved += 1;
     continue;
   }
-  const { picked, ambiguousWith } = pickVenueDetailed(await fetchCandidates(v.name, v.state), {
-    name: v.name,
-    city: v.city,
-    state: v.state,
-  });
+  let want = { name: v.name, city: v.city, state: v.state };
+  let { picked, ambiguousWith } = pickVenueDetailed(await fetchCandidates(want.name, want.state), want);
+
+  // Many FBS stadiums are stored under a full donor-naming convention
+  // ("Bobby Bowden Field at Doak S. Campbell Stadium") that Ticketmaster's
+  // search indexes as zero results — it lists the plain traditional name
+  // only. When the full name comes up empty, retry once with the portion
+  // after the last " at ", both as the search keyword and as the name
+  // pickVenueDetailed matches against.
+  if (!picked) {
+    const fallbackName = nameAfterAt(v.name);
+    if (fallbackName) {
+      await sleep(250);
+      want = { name: fallbackName, city: v.city, state: v.state };
+      ({ picked, ambiguousWith } = pickVenueDetailed(await fetchCandidates(want.name, want.state), want));
+    }
+  }
+
   if (picked) {
     out.ids[slug] = picked.id;
     out.counts.resolved += 1;
