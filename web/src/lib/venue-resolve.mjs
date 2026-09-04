@@ -60,6 +60,12 @@ const CITY_ALIASES = {
   // stadium sits on the Ole Miss campus, which Ticketmaster's venue record
   // files under "University, MS".
   oxford: 'university',
+  // Davis Wade Stadium's mailing address is Starkville, MS, but the
+  // stadium sits on the Mississippi State campus — its own recognized
+  // place name — which is where Ticketmaster's venue and event records
+  // file it. Same pattern as Oxford/University above, confirmed against
+  // the Mississippi State Bulldogs Football attraction's own event feed.
+  starkville: 'mississippi state',
 };
 
 /** Strips punctuation and a trailing "Township" so city strings compare fairly. */
@@ -143,4 +149,50 @@ export function pickVenueDetailed(candidates, want) {
     }
   }
   return { picked, ambiguousWith };
+}
+
+/**
+ * Fallback path for the ~19 venues name search cannot reach (Ticketmaster
+ * still indexes the building under a former name, or the search endpoint
+ * simply has no listing for it). Instead of searching by name, this resolves
+ * through a home team's already-verified attractionId: fetch the team's
+ * upcoming events and read the venue off each one.
+ *
+ * A team's schedule is mostly away games, so the venue of the first event —
+ * or even the most-listed venue overall — is not necessarily the team's own
+ * stadium. This filters every event's venue down to ones whose city/state
+ * match `want` (the same normalization and alias rules pickVenue uses, so
+ * "Paradise" still matches "Las Vegas"), then picks whichever surviving
+ * venue id appears most often. A team that never plays a home game in the
+ * fetched window (a short or fully-away schedule slice) legitimately yields
+ * no match — null, never a guess. Ties break on id for determinism.
+ *
+ * `want` only carries city/state, not a name: the whole point of this path
+ * is that the venue's own name is not a reliable search key here, so this
+ * never re-checks it — only where the game was played, not what our data
+ * calls the building.
+ */
+export function pickVenueFromEvents(events, want) {
+  if (!Array.isArray(events) || !want) return { picked: null, count: 0, evidence: [] };
+  const wantCityRaw = want.city;
+  const wantState = String(want.state ?? '').toUpperCase();
+  if (!normalizeCityName(wantCityRaw)) return { picked: null, count: 0, evidence: [] };
+
+  const counts = new Map();
+  for (const event of events) {
+    const venues = event && event._embedded && Array.isArray(event._embedded.venues) ? event._embedded.venues : null;
+    const venue = venues && venues.length ? venues[0] : null;
+    if (!venue || typeof venue.id !== 'string' || !venue.id) continue;
+    if (!citiesMatch(wantCityRaw, cityOf(venue))) continue;
+    if (wantState && stateOf(venue) && stateOf(venue) !== wantState) continue;
+    const entry = counts.get(venue.id) || { venue, count: 0 };
+    entry.count += 1;
+    counts.set(venue.id, entry);
+  }
+  if (!counts.size) return { picked: null, count: 0, evidence: [] };
+
+  const ranked = [...counts.values()].sort(
+    (a, b) => b.count - a.count || String(a.venue.id).localeCompare(String(b.venue.id)),
+  );
+  return { picked: ranked[0].venue, count: ranked[0].count, evidence: ranked };
 }

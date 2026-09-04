@@ -1,6 +1,6 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { pickVenue, pickVenueDetailed, normalizeVenueName, nameAfterAt } from './venue-resolve.mjs';
+import { pickVenue, pickVenueDetailed, normalizeVenueName, nameAfterAt, pickVenueFromEvents } from './venue-resolve.mjs';
 
 const v = (name, city, state, upcoming, id) => ({
   id,
@@ -155,6 +155,12 @@ test('city matching tolerates Ticketmaster\'s known metro-area aliases', () => {
 
   const vaught = [v('Vaught-Hemingway Stadium', 'University', 'MS', 5, 'VHS')];
   assert.equal(pickVenue(vaught, { name: 'Vaught-Hemingway Stadium', city: 'Oxford', state: 'MS' }).id, 'VHS');
+
+  const davisWade = [v('Davis Wade Stadium at Scott Field', 'Mississippi State', 'MS', 7, 'DWS')];
+  assert.equal(
+    pickVenue(davisWade, { name: 'Davis Wade Stadium at Scott Field', city: 'Starkville', state: 'MS' }).id,
+    'DWS',
+  );
 });
 
 test('city matching tolerates punctuation and a trailing "Township" suffix', () => {
@@ -186,4 +192,62 @@ test('safety: a metro alias does not spill over to an unrelated same-named venue
   // a general "accept any city" loophole for other Nevada venues.
   const candidates = [v('Some Arena', 'Reno', 'NV', 10, 'WRONG')];
   assert.equal(pickVenue(candidates, { name: 'Some Arena', city: 'Paradise', state: 'NV' }), null);
+});
+
+// --- Attraction-schedule fallback: pickVenueFromEvents ----------------------
+
+// A Ticketmaster event for a team's schedule: `_embedded.venues[0]` carries
+// the same shape pickVenue already matches against (id, name, city, state).
+const ev = (venue) => ({ _embedded: { venues: [venue] } });
+
+test('pickVenueFromEvents picks the home venue over an away game, even when the away game comes first', () => {
+  // A team's attraction schedule is mostly away games; only a minority of
+  // events are actually played at the team's own stadium. The naive "take
+  // the first event's venue" approach would pick the away building here.
+  const away = v('Rival Stadium', 'Columbus', 'OH', 0, 'AWAY');
+  const home = v('Lane Stadium', 'Blacksburg', 'VA', 0, 'HOME');
+  const events = [ev(away), ev(home), ev(away), ev(home), ev(home)];
+  const { picked, count } = pickVenueFromEvents(events, { city: 'Blacksburg', state: 'VA' });
+  assert.equal(picked.id, 'HOME');
+  assert.equal(count, 3);
+});
+
+test('pickVenueFromEvents returns null when no event venue matches the expected city', () => {
+  const events = [
+    ev(v('Rival Stadium', 'Columbus', 'OH', 0, 'AWAY1')),
+    ev(v('Other Stadium', 'Ann Arbor', 'MI', 0, 'AWAY2')),
+  ];
+  const { picked } = pickVenueFromEvents(events, { city: 'Blacksburg', state: 'VA' });
+  assert.equal(picked, null);
+});
+
+test('pickVenueFromEvents tolerates malformed event payloads without throwing', () => {
+  const good = v('Lane Stadium', 'Blacksburg', 'VA', 0, 'HOME');
+  const events = [
+    null,
+    undefined,
+    {},
+    { _embedded: {} },
+    { _embedded: { venues: [] } },
+    { _embedded: { venues: [null] } },
+    { _embedded: { venues: [{}] } },
+    { _embedded: { venues: [{ id: 123, city: { name: 'Blacksburg' }, state: { stateCode: 'VA' } }] } },
+    ev(good),
+  ];
+  const { picked, count } = pickVenueFromEvents(events, { city: 'Blacksburg', state: 'VA' });
+  assert.equal(picked.id, 'HOME');
+  assert.equal(count, 1);
+});
+
+test('pickVenueFromEvents returns null rather than guessing on empty or non-array input', () => {
+  assert.equal(pickVenueFromEvents([], { city: 'Blacksburg', state: 'VA' }).picked, null);
+  assert.equal(pickVenueFromEvents(null, { city: 'Blacksburg', state: 'VA' }).picked, null);
+  assert.equal(pickVenueFromEvents(undefined, { city: 'Blacksburg', state: 'VA' }).picked, null);
+});
+
+test('pickVenueFromEvents applies the same city aliasing rules as pickVenue', () => {
+  const home = v('Allegiant Stadium', 'Las Vegas', 'NV', 0, 'ALL');
+  const events = [ev(home), ev(home)];
+  const { picked } = pickVenueFromEvents(events, { city: 'Paradise', state: 'NV' });
+  assert.equal(picked.id, 'ALL');
 });

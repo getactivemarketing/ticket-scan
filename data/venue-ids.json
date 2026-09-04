@@ -1,9 +1,10 @@
 {
-  "builtAt": "2026-09-04T19:24:08.732Z",
+  "builtAt": "2026-09-04T19:34:25.352Z",
   "counts": {
-    "resolved": 166,
-    "unresolved": 19,
-    "ambiguous": 50
+    "resolved": 184,
+    "unresolved": 1,
+    "ambiguous": 50,
+    "viaAttraction": 18
   },
   "ids": {
     "kia-center": "KovZpZAEvEEA",
@@ -61,9 +62,11 @@
     "soldier-field": "KovZpZAF6tIA",
     "state-farm-stadium": "KovZpZAFaeIA",
     "us-bank-stadium": "KovZpZAF6ttA",
+    "falcon-stadium": "ZFr9jZde11",
     "bryant-denny-stadium": "KovZpZA1FEnA",
     "kidd-brewer-stadium": "KovZ917AxaG",
     "mountain-america-stadium": "KovZpZA1nkEA",
+    "casino-del-sol-stadium": "ZFr9jZe1eF",
     "razorback-stadium": "KovZpZA77IeA",
     "centennial-bank-stadium": "KovZpZAEetAA",
     "michie-stadium": "KovZpZA1kltA",
@@ -71,6 +74,7 @@
     "scheumann-stadium": "KovZpa4n1e",
     "mclane-stadium": "KovZpZAJIvlA",
     "alumni-stadium-boston-college": "KovZpZA17dlA",
+    "doyt-perry-stadium": "ZFr9jZA7ka",
     "lavell-edwards-stadium": "KovZpaprne",
     "california-memorial-stadium": "KovZpZA1EFtA",
     "kelly-shorts-stadium": "KovZpZA7vtAA",
@@ -85,19 +89,24 @@
     "flagler-credit-union-stadium": "KovZpZAFk7lA",
     "ben-hill-griffin-stadium": "KovZpZAdJl7A",
     "pitbull-stadium": "KovZpZAJtF1A",
+    "doak-campbell-stadium": "Z6r9jZAFAe",
     "valley-childrens-stadium": "KovZ917AYPS",
     "allen-e-paulson-stadium": "ZFr9jZ6vd6",
     "center-parc-stadium": "KovZ917A8b7",
+    "bobby-dodd-stadium": "Z6r9jZdvFe",
     "clarence-tc-ching-athletics-complex": "Z7r9jZa7qr",
     "memorial-stadium-indiana": "Za5ju3rKuqZDe46zQL9qAG6IdOC7Eh14xW",
     "kinnick-stadium": "KovZpabAHe",
     "jack-trice-stadium": "KovZpZAF6aEA",
     "amfirst-stadium": "ZFr9jZ1F77",
     "bridgeforth-stadium": "KovZpZA1dt6A",
+    "david-booth-kansas-memorial-stadium": "ZFr9jZevkk",
+    "bill-snyder-family-stadium": "ZFr9jZ7v77",
     "fifth-third-stadium-kennesaw": "KovZpZA116IA",
     "dix-stadium": "KovZpZAFdtvA",
     "kroger-field": "KovZpZAEk7JA",
     "williams-stadium-liberty": "ZFr9jZFv66",
+    "fmol-health-st-francis-stadium": "ZFr9jZk11F",
     "cajun-field": "KovZpa3Efe",
     "tiger-stadium-lsu": "KovZpaKBJe",
     "joe-aillet-stadium": "KovZpa4SUe",
@@ -105,6 +114,8 @@
     "joan-c-edwards-stadium": "KovZpZA7vlJA",
     "yager-stadium": "KovZpZAJvAkA",
     "spartan-stadium-michigan-state": "KovZpZAdlAlA",
+    "johnny-red-floyd-stadium": "KovZpZAdJteA",
+    "davis-wade-stadium": "ZFr9jZekek",
     "robert-w-plaster-stadium": "Z7r9jZaeJI",
     "faurot-field": "KovZpZAJ6e7A",
     "navy-marine-corps-memorial-stadium": "KovZpZA1JAlA",
@@ -129,14 +140,18 @@
     "rice-stadium": "KovZpZAJ1edA",
     "shi-stadium": "Za5ju3rKuqZDdrO-YDryq69yawCt1QHBVn",
     "hornet-stadium-sacramento-state": "ZFr9jZF1a1",
+    "bowers-stadium": "ZFr9jZkdeF",
     "cefcu-stadium": "KovZpa3nBe",
     "snapdragon-stadium": "KovZ917AIoi",
     "gerald-j-ford-stadium": "KovZpZAaEnkA",
+    "renasant-stadium": "ZFr9jZdF76",
     "stanford-stadium": "KovZpZA7elEA",
     "jma-wireless-dome": "KovZpakwYe",
+    "amon-g-carter-stadium": "Zkr9jZ6veL",
     "neyland-stadium": "KovZpZA1JJdA",
     "kyle-field": "KovZpZAJJ1AA",
     "ufcu-stadium": "Z6r9jZdvae",
+    "galaxy-stadium": "Z6r9jZa7ee",
     "glass-bowl": "KovZpZAaJt7A",
     "veterans-memorial-stadium-troy": "ZFr9jZa11d",
     "yulman-stadium": "KovZpZAJk7FA",
@@ -145,10 +160,12 @@
     "acrisure-bounce-house": "KovZpZAFFFJA",
     "rose-bowl": "KovZpZAEA66A",
     "pratt-whitney-stadium-rentschler-field": "ZFr9jZ7vek",
+    "mcguirk-alumni-stadium": "ZFr9jZ67k1",
     "williams-brice-stadium": "KovZpZAdnvIA",
     "folsom-field": "KovZpZA1EvaA",
     "delaware-stadium": "KovZ917AO_I",
     "sanford-stadium": "KovZpa3jbe",
+    "space-city-financial-stadium": "ZFr9jZddvv",
     "gies-memorial-stadium": "Z7r9jZak3y",
     "secu-stadium": "KovZpa9oje",
     "michigan-stadium": "KovZpZAEvn7A",
@@ -166,11 +183,159 @@
     "sun-bowl-stadium": "KovZpZA1l1dA",
     "alamodome": "KovZpZAEkIEA",
     "firstbank-stadium": "KovZpa9-be",
+    "lane-stadium": "Z6r9jZ1vee",
     "allegacy-federal-credit-union-stadium": "KovZ917AGEV",
     "gesa-field-at-martin-stadium": "KovZpZA1JA7A",
+    "mountaineer-field-at-milan-puskar-stadium": "ZFr9jZdk7a",
     "houchens-industries-lt-smith-stadium": "KovZpZAEF7lA",
     "stafford-smith-field-at-waldo-stadium": "KovZpZA1l7lA",
     "camp-randall-stadium": "KovZpZA17lEA",
     "jonah-field-at-war-memorial-stadium": "KovZpZAJvFvA"
+  },
+  "viaAttraction": {
+    "falcon-stadium": {
+      "teamName": "Air Force Academy Falcons Football",
+      "teamSlug": "air-force-academy-falcons-football",
+      "attractionId": "K8vZ91758IV",
+      "matchedCity": "Colorado Springs",
+      "count": 7,
+      "totalEvents": 12
+    },
+    "casino-del-sol-stadium": {
+      "teamName": "Arizona Wildcats Football",
+      "teamSlug": "arizona-wildcats-football",
+      "attractionId": "K8vZ9171_37",
+      "matchedCity": "Tucson",
+      "count": 7,
+      "totalEvents": 12
+    },
+    "doyt-perry-stadium": {
+      "teamName": "Bowling Green Falcons Football",
+      "teamSlug": "bowling-green-falcons-football",
+      "attractionId": "K8vZ9175Bv7",
+      "matchedCity": "Bowling Green",
+      "count": 6,
+      "totalEvents": 11
+    },
+    "doak-campbell-stadium": {
+      "teamName": "Florida State Seminoles Football",
+      "teamSlug": "florida-state-seminoles-football",
+      "attractionId": "K8vZ9171qu0",
+      "matchedCity": "Tallahassee",
+      "count": 6,
+      "totalEvents": 11
+    },
+    "bobby-dodd-stadium": {
+      "teamName": "Georgia Tech Yellow Jackets Football",
+      "teamSlug": "georgia-tech-yellow-jackets-football",
+      "attractionId": "K8vZ9171zR0",
+      "matchedCity": "Atlanta",
+      "count": 6,
+      "totalEvents": 11
+    },
+    "david-booth-kansas-memorial-stadium": {
+      "teamName": "Kansas Jayhawks Football",
+      "teamSlug": "kansas-jayhawks-football",
+      "attractionId": "K8vZ9171N0f",
+      "matchedCity": "Lawrence",
+      "count": 7,
+      "totalEvents": 13
+    },
+    "bill-snyder-family-stadium": {
+      "teamName": "Kansas State Football",
+      "teamSlug": "kansas-state-football",
+      "attractionId": "K8vZ9171STV",
+      "matchedCity": "Manhattan",
+      "count": 7,
+      "totalEvents": 12
+    },
+    "fmol-health-st-francis-stadium": {
+      "teamName": "Louisiana Monroe Warhawks Football",
+      "teamSlug": "louisiana-monroe-warhawks-football",
+      "attractionId": "K8vZ917GUL7",
+      "matchedCity": "Monroe",
+      "count": 6,
+      "totalEvents": 13
+    },
+    "johnny-red-floyd-stadium": {
+      "teamName": "Middle Tennessee Blue Raiders Football",
+      "teamSlug": "middle-tennessee-blue-raiders-football",
+      "attractionId": "K8vZ917Gpgf",
+      "matchedCity": "Murfreesboro",
+      "count": 6,
+      "totalEvents": 12
+    },
+    "davis-wade-stadium": {
+      "teamName": "Mississippi State Bulldogs Football",
+      "teamSlug": "mississippi-state-bulldogs-football",
+      "attractionId": "K8vZ917G2C7",
+      "matchedCity": "Mississippi State",
+      "count": 7,
+      "totalEvents": 12
+    },
+    "bowers-stadium": {
+      "teamName": "Sam Houston State Football",
+      "teamSlug": "sam-houston-state-football",
+      "attractionId": "K8vZ91756Pf",
+      "matchedCity": "Huntsville",
+      "count": 6,
+      "totalEvents": 12
+    },
+    "renasant-stadium": {
+      "teamName": "Southern Mississippi Football",
+      "teamSlug": "southern-mississippi-football",
+      "attractionId": "K8vZ9171nC7",
+      "matchedCity": "Hattiesburg",
+      "count": 6,
+      "totalEvents": 9
+    },
+    "amon-g-carter-stadium": {
+      "teamName": "TCU Horned Frogs Football",
+      "teamSlug": "tcu-horned-frogs-football",
+      "attractionId": "K8vZ9171Jk7",
+      "matchedCity": "Fort Worth",
+      "count": 7,
+      "totalEvents": 11
+    },
+    "galaxy-stadium": {
+      "teamName": "Texas Tech Red Raiders Football",
+      "teamSlug": "texas-tech-red-raiders-football",
+      "attractionId": "K8vZ9175V6f",
+      "matchedCity": "Lubbock",
+      "count": 7,
+      "totalEvents": 12
+    },
+    "mcguirk-alumni-stadium": {
+      "teamName": "UMass Football",
+      "teamSlug": "umass-football",
+      "attractionId": "K8vZ9171E1V",
+      "matchedCity": "Amherst",
+      "count": 6,
+      "totalEvents": 10
+    },
+    "space-city-financial-stadium": {
+      "teamName": "University of Houston Cougars Football",
+      "teamSlug": "university-of-houston-cougars-football",
+      "attractionId": "K8vZ9171MWf",
+      "matchedCity": "Houston",
+      "count": 6,
+      "totalEvents": 12
+    },
+    "lane-stadium": {
+      "teamName": "Virginia Tech Hokies College Football",
+      "teamSlug": "virginia-tech-hokies-college-football",
+      "attractionId": "K8vZ9171Jn7",
+      "matchedCity": "Blacksburg",
+      "count": 6,
+      "totalEvents": 12
+    },
+    "mountaineer-field-at-milan-puskar-stadium": {
+      "teamName": "West Virginia Mountaineers",
+      "teamSlug": "west-virginia-mountaineers",
+      "attractionId": "K8vZ9171MHf",
+      "matchedCity": "Morgantown",
+      "count": 7,
+      "totalEvents": 12
+    }
   }
 }
