@@ -108,7 +108,7 @@ const arenaVenues: Record<string, Venue> = {
     state: 'CA',
     capacity: 20000,
     type: 'arena',
-    homeTeams: ['Los Angeles Lakers', 'LA Kings', 'Los Angeles Sparks'],
+    homeTeams: ['Los Angeles Lakers', 'Los Angeles Kings', 'Los Angeles Sparks'],
     description: 'Crypto.com Arena opened in downtown Los Angeles in October 1999 as Staples Center, the name many Angelenos still use, and was renamed in 2021. Designed by NBBJ, it anchors the L.A. Live complex next to the Los Angeles Convention Center on Figueroa Street. The Lakers, Kings and Sparks all play here; the Clippers shared the building from 1999 until moving to their own arena in 2024, so older seating guides and listings may still describe it as a three-team arena. About two-thirds of the seating is in the lower level, which makes the bowl feel closer to the floor than its capacity suggests. Seating is arranged as a lower level, premium and suite levels, and an upper level. A multi-phase renovation begun in 2022 replaced the video and ribbon displays and reworked the concourses. Downtown parking fills early on event nights, and Metro rail stops within a short walk of the arena. TicketScan tracks when tickets for Crypto.com Arena events go on sale, including presale windows that open before the public onsale.',
     keywords: ['Crypto.com Arena tickets', 'Lakers tickets', 'LA Kings tickets', 'LA Sparks tickets', 'Staples Center tickets', 'Crypto.com Arena seating chart', 'LA concert tickets'],
     sections: [

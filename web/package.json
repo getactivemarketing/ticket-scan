@@ -14,7 +14,8 @@
     "build:teams": "node scripts/build-team-index.mjs",
     "build:venue-ids": "node scripts/build-venue-ids.mjs",
     "smoke:tn": "node scripts/smoke-tn-links.mjs",
-    "smoke:teams": "node scripts/smoke-teams.mjs"
+    "smoke:teams": "node scripts/smoke-teams.mjs",
+    "smoke:venues": "node scripts/smoke-venues.mjs"
   },
   "dependencies": {
     "@next/third-parties": "^16.1.6",

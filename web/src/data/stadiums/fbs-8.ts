@@ -213,29 +213,6 @@ export const fbsStadiums8: Record<string, Venue> = {
     ]
   },
 
-  'broadview-stadium': {
-    id: 'broadview-stadium',
-    name: 'Broadview Stadium',
-    city: 'Amherst',
-    state: 'NY',
-    capacity: 30270,
-    type: 'stadium',
-    homeTeams: ['University at Buffalo Bulls Football'],
-    description: "Broadview Stadium seats 30,270 for University at Buffalo Bulls football on UB's North Campus in Amherst, New York, and opened September 4, 1993 as UB Stadium before a 15-year naming-rights deal with Broadview Federal Credit Union renamed it in March 2026. Two double-decked sideline grandstands hold roughly 7,500 seats apiece, and a south bleacher section adds about 10,000 more. An eight-lane track surrounds the field, since the venue also hosts UB track and field. The student section is nicknamed The Bullpen. TicketScan tracks Broadview Stadium onsales and presale windows, including any change tied to the 2026 rename.",
-    keywords: ['Broadview Stadium tickets', 'UB Bulls tickets', 'Broadview Stadium seating chart', 'Buffalo Bulls football tickets', 'Amherst NY football tickets'],
-    faqs: [
-      { question: 'Is Broadview Stadium the same building as UB Stadium?', answer: 'Yes. The venue opened in 1993 as UB Stadium and kept that name for 33 years until Broadview Federal Credit Union bought naming rights in March 2026, in the largest such deal in the MAC.' },
-    ],
-    sections: [
-      { name: 'North Sideline Grandstand (Lower)', tier: 'lower' },
-      { name: 'South Sideline Grandstand (Lower)', tier: 'lower' },
-      { name: 'North Sideline Grandstand (Upper)', tier: 'upper' },
-      { name: 'South Sideline Grandstand (Upper)', tier: 'upper' },
-      { name: 'South Bleachers / The Bullpen (Student Section)', tier: 'lower' },
-      { name: 'General Admission End Zone', tier: 'lower' },
-    ]
-  },
-
   'folsom-field': {
     id: 'folsom-field',
     name: 'Folsom Field',

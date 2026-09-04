@@ -71,3 +71,16 @@ test('football stadiums do not use the floor tier', () => {
     }
   }
 });
+
+test('every venue has a backend id, and every backend id has a venue', async () => {
+  const { readFileSync } = await import('node:fs');
+  const { ids } = JSON.parse(
+    readFileSync(new URL('../../../data/venue-ids.json', import.meta.url), 'utf8'),
+  );
+  for (const slug of Object.keys(venues)) {
+    assert.ok(ids[slug], `venue "${slug}" has no Ticketmaster id — its page would list no events`);
+  }
+  for (const slug of Object.keys(ids)) {
+    assert.ok(venues[slug], `id map has "${slug}" with no matching venue`);
+  }
+});
