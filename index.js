@@ -1892,7 +1892,7 @@ app.get('/api/events/compare', async (req, res) => {
 // Public endpoint to get events for SEO pages
 app.get('/api/public/events', async (req, res) => {
   try {
-    const { venue, city, category, onsaleDate, country, sort, limit = 10 } = req.query;
+    const { venue, city, category, attractionId, onsaleDate, country, sort, limit = 10 } = req.query;
 
     if (!TICKETMASTER_API_KEY) {
       return res.status(500).json({
@@ -2079,6 +2079,14 @@ app.get('/api/public/events', async (req, res) => {
       }
     }
 
+    // Keyed on who is playing rather than where. NFL stadiums sit in suburbs —
+    // Arlington, East Rutherford, Foxborough — so a city filter returns zero
+    // for the biggest markets while the attraction returns the whole schedule.
+    if (attractionId) {
+      if (/^[A-Za-z0-9]{1,40}$/.test(attractionId)) tmParams.attractionId = attractionId;
+      else invalid.push({ param: 'attractionId', value: attractionId, valid: ['alphanumeric Ticketmaster attraction id'] });
+    }
+
     if (invalid.length > 0) {
       return res.status(400).json({
         success: false,
@@ -2148,7 +2156,7 @@ app.get('/api/public/events', async (req, res) => {
 
     res.json({
       success: true,
-      query: { venue, city, category, onsaleDate, country, sort },
+      query: { venue, city, category, attractionId, onsaleDate, country, sort },
       count: events.length,
       events
     });
