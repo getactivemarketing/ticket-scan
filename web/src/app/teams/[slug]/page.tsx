@@ -4,6 +4,7 @@ import { notFound } from 'next/navigation';
 import { getTeamBySlug } from '@/data/teams';
 import { venues } from '@/data/venues';
 import { FeedEvent, cleanEvents } from '@/lib/events';
+import { paced } from '@/lib/paced';
 import teamIndex from '@/data/teams.generated.json';
 import OnsaleRow from '@/components/OnsaleRow';
 import TicketNetworkLink from '@/components/TicketNetworkLink';
@@ -18,7 +19,10 @@ interface PageProps {
   params: Promise<{ slug: string }>;
 }
 
-const RESOLVED: Record<string, { attractionId: string; tnSlug?: string }> = teamIndex.teams;
+// tnSlug also lives in teams.generated.json but is not read here — the
+// resale link resolves independently by name/venue through
+// resolveTicketNetwork (see TicketNetworkLink). Not load-bearing on this page.
+const RESOLVED: Record<string, { attractionId: string }> = teamIndex.teams;
 
 // Football only. A cold build already prerenders 304 pages against a feed with
 // a 5 req/s spike arrest; prerendering every league would roughly double that
@@ -35,22 +39,34 @@ export async function generateStaticParams() {
 
 const API_URL = process.env.NEXT_PUBLIC_API_URL || 'https://tickethawk-api-production.up.railway.app';
 
-let gate: Promise<void> = Promise.resolve();
-function paced<T>(fn: () => Promise<T>): Promise<T> {
-  const run = gate.then(fn);
-  const cool = () => new Promise<void>((r) => setTimeout(r, 220));
-  gate = run.then(cool, cool);
-  return run;
-}
-
+// `paced` (src/lib/paced.ts) is a SHARED module-level gate — the combo pages
+// prerender 160 pages in the same build and use the exact same import, not a
+// copy, so this route's fetches stay serialised against theirs too.
 async function getEvents(attractionId: string): Promise<FeedEvent[]> {
   const url = `${API_URL}/api/public/events?attractionId=${attractionId}&limit=40&sort=date`;
-  // Rethrows deliberately. Swallowing it would let ISR cache a wrong "no games
-  // scheduled" page for six hours; a sustained outage should fail loudly.
-  const res = await paced(() => fetch(url, { next: { revalidate } }));
-  if (!res.ok) throw new Error(`HTTP ${res.status} for attraction ${attractionId}`);
-  const data = await res.json();
-  return cleanEvents(data.events || []);
+  let lastError: unknown;
+  for (let attempt = 0; attempt < 4; attempt++) {
+    if (attempt > 0) {
+      // 500ms, 1s, 2s, plus jitter so retries across the 169 team-page
+      // prerenders (and the 160 combo pages sharing the same gate) don't
+      // resynchronize and hit the spike arrest together. Matches the combo
+      // page's retry shape exactly.
+      const wait = 500 * 2 ** (attempt - 1) + Math.random() * 250;
+      await new Promise((r) => setTimeout(r, wait));
+    }
+    try {
+      const res = await paced(() => fetch(url, { next: { revalidate } }));
+      if (!res.ok) throw new Error(`HTTP ${res.status} for attraction ${attractionId}`);
+      const data = await res.json();
+      return cleanEvents(data.events || []);
+    } catch (err) {
+      lastError = err;
+    }
+  }
+  // Rethrows after exhausting retries, deliberately. Swallowing it would let
+  // ISR cache a wrong "no games scheduled" page for six hours; a sustained
+  // outage should fail loudly.
+  throw lastError;
 }
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
@@ -58,7 +74,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const team = getTeamBySlug(slug);
   if (!team || !RESOLVED[slug]) return {};
   return {
-    title: `${team.name} Tickets — Schedule and Onsale Dates | Ticket Scan`,
+    title: `${team.name} Tickets — Schedule and Onsale Dates`,
     description: `Every upcoming ${team.name} game, home and away, with onsale and presale dates and where to buy.`,
     alternates: { canonical: `https://www.ticketscan.io/teams/${slug}` },
   };

@@ -6,6 +6,7 @@ import { getCategoryBySlug } from '@/data/categories';
 import { findVenue, Venue } from '@/data/venues';
 import { getComboList, isCombo, combosForCity, combosForCategory } from '@/data/combos';
 import { FeedEvent, formatEtDate, cleanEvents } from '@/lib/events';
+import { paced } from '@/lib/paced';
 import OnsaleRow from '@/components/OnsaleRow';
 import TicketNetworkLink from '@/components/TicketNetworkLink';
 import AffiliateDisclosure from '@/components/AffiliateDisclosure';
@@ -25,17 +26,12 @@ export async function generateStaticParams() {
 
 const API_URL = process.env.NEXT_PUBLIC_API_URL || 'https://tickethawk-api-production.up.railway.app';
 
-// Prerendering 160 pages hammers a feed with a 5 req/s spike arrest. Serialise
-// the fetches and space them, the same way UpcomingEvents does, so a deploy
-// cannot rate-limit itself into a failed build.
-let gate: Promise<void> = Promise.resolve();
-function paced<T>(fn: () => Promise<T>): Promise<T> {
-  const run = gate.then(fn);
-  const cool = () => new Promise<void>((r) => setTimeout(r, 220));
-  gate = run.then(cool, cool);
-  return run;
-}
-
+// Prerendering 160 pages hammers a feed with a 5 req/s spike arrest. `paced`
+// (src/lib/paced.ts) serialises the fetches and spaces them, the same way
+// UpcomingEvents does, so a deploy cannot rate-limit itself into a failed
+// build. It is a SHARED module-level gate — the team pages prerender in the
+// same build and share this exact gate, not a copy, so the two routes'
+// fetches stay serialised against each other too.
 async function getEvents(city: string, category: string): Promise<FeedEvent[]> {
   const url = `${API_URL}/api/public/events?city=${city}&category=${category}&limit=24`;
   let lastError: unknown;
