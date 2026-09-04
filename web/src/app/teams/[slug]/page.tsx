@@ -11,8 +11,8 @@ import TicketNetworkLink from '@/components/TicketNetworkLink';
 import AffiliateDisclosure from '@/components/AffiliateDisclosure';
 
 // Six hours, matching the combo pages. Ticketmaster allows 5,000 calls/day;
-// the site's current worst case is ~1,920 and ~250 team pages on this window
-// add ~1,000. A shorter window would not fit.
+// the site's current worst case is ~1,920 and the 261 team pages on this
+// window add ~1,044. A shorter window would not fit.
 export const revalidate = 21600;
 
 interface PageProps {
@@ -24,10 +24,11 @@ interface PageProps {
 // resolveTicketNetwork (see TicketNetworkLink). Not load-bearing on this page.
 const RESOLVED: Record<string, { attractionId: string }> = teamIndex.teams;
 
-// Football only. A cold build already prerenders 304 pages against a feed with
-// a 5 req/s spike arrest; prerendering every league would roughly double that
-// against a limit that has already broken one deploy. The rest render on
-// demand and are cached for the revalidate window.
+// Football only: 169 of the 261 teams. A cold build already prerenders those
+// 169 alongside 160 combo pages against a feed with a 5 req/s spike arrest;
+// prerendering every league would add another 92 against a limit that has
+// already broken one deploy. The other 92 render on demand and are cached for
+// the revalidate window.
 export async function generateStaticParams() {
   return Object.keys(RESOLVED)
     .filter((slug) => {
