@@ -5,7 +5,7 @@
 // TicketNetwork indexes, for the same reason. On any failure the previous
 // index is left exactly as it was: a stale index points at pages that mostly
 // still exist, a truncated one silently deletes every page it dropped.
-import { readFileSync, writeFileSync } from 'node:fs';
+import { existsSync, readFileSync, writeFileSync } from 'node:fs';
 import { pickAttraction, LEAGUE_CLASSIFICATION } from '../src/lib/team-resolve.mjs';
 import { normalizeName } from '../src/lib/tn-slug.mjs';
 
@@ -67,6 +67,28 @@ async function main() {
   }
 
   if (index.counts.resolved === 0) throw new Error('resolved zero teams; refusing to write an empty index');
+
+  // Drop guard. "At least one team resolved" is not a floor: a degraded
+  // Ticketmaster night could drop 200 of 261 teams to unresolved and this
+  // script would happily write it, with run-daily.sh committing and pushing
+  // the result and 200 indexed URLs quietly turning into 404s.
+  //
+  // Refuse below 90% of the previous resolved count, and fail the way every
+  // other failure here fails — loudly, previous index left intact. This also
+  // surfaces the known slow leak (a Ticketmaster rename drops one team to
+  // unresolved) once it accumulates, instead of letting it stay quiet.
+  if (existsSync(OUT)) {
+    const previous = JSON.parse(readFileSync(OUT, 'utf8'));
+    const before = (previous.counts && previous.counts.resolved) || 0;
+    const floor = Math.floor(before * 0.9);
+    if (before > 0 && index.counts.resolved < floor) {
+      throw new Error(
+        `resolved ${index.counts.resolved}, down from ${before} (floor ${floor}, 90%); ` +
+          'refusing to write a truncated index. Re-run when Ticketmaster is healthy, or ' +
+          'lower the floor deliberately if the roster really shrank.',
+      );
+    }
+  }
 
   writeFileSync(OUT, `${JSON.stringify(index, null, 2)}\n`);
   console.log(`Resolved ${index.counts.resolved}, unresolved ${index.counts.unresolved}`);
