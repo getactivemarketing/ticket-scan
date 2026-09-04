@@ -94,6 +94,9 @@ export default function Navbar() {
                 <Link href="/venues" className={linkClass('/venues')}>
                   Venues
                 </Link>
+                <Link href="/teams" className={linkClass('/teams')}>
+                  Teams
+                </Link>
                 <Link href="/watchlist" className={linkClass('/watchlist')}>
                   Watchlist
                 </Link>
@@ -124,6 +127,9 @@ export default function Navbar() {
                 </Link>
                 <Link href="/venues" className={linkClass('/venues')}>
                   Venues
+                </Link>
+                <Link href="/teams" className={linkClass('/teams')}>
+                  Teams
                 </Link>
                 <Link href="/blog" className={linkClass('/blog')}>
                   Blog
@@ -188,6 +194,9 @@ export default function Navbar() {
                 <Link href="/venues" className={mobileLinkClass('/venues')} onClick={closeMenu}>
                   Venues
                 </Link>
+                <Link href="/teams" className={mobileLinkClass('/teams')} onClick={closeMenu}>
+                  Teams
+                </Link>
                 <Link href="/watchlist" className={mobileLinkClass('/watchlist')} onClick={closeMenu}>
                   My Watchlist
                 </Link>
@@ -217,6 +226,9 @@ export default function Navbar() {
                 </Link>
                 <Link href="/venues" className={mobileLinkClass('/venues')} onClick={closeMenu}>
                   Venues
+                </Link>
+                <Link href="/teams" className={mobileLinkClass('/teams')} onClick={closeMenu}>
+                  Teams
                 </Link>
                 <Link href="/blog" className={mobileLinkClass('/blog')} onClick={closeMenu}>
                   Blog & Tips

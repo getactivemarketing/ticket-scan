@@ -104,6 +104,11 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
+                <Link href="/teams" className={LINK}>
+                  Teams
+                </Link>
+              </li>
+              <li>
                 <Link href="/tickets" className={LINK}>
                   Ticket Guides
                 </Link>

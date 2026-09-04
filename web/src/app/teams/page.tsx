@@ -17,11 +17,13 @@ const LEAGUE_NAMES: Record<string, string> = {
   mlb: 'MLB',
 };
 
+const allTeams = getAllTeams();
+
 export default function TeamsIndex() {
   const resolved = new Set(Object.keys(teamIndex.teams));
   const byLeague = Object.keys(LEAGUE_NAMES).map((league) => ({
     league,
-    teams: getAllTeams()
+    teams: allTeams
       .filter((t) => t.league === league && resolved.has(t.slug))
       .sort((a, b) => a.name.localeCompare(b.name)),
   }));
