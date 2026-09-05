@@ -5,6 +5,7 @@ import { venues, getVenueBySlug, tierPricing } from '@/data/venues';
 import TicketNetworkLink from '@/components/TicketNetworkLink';
 import AffiliateDisclosure from '@/components/AffiliateDisclosure';
 import { paced } from '@/lib/paced';
+import { formatEtDate } from '@/lib/events';
 
 // Venue guides had no links to each other, so each one was an SEO island. Relate
 // them same-state first, then same-type, so the 25 guides form a crawlable
@@ -98,12 +99,10 @@ async function getVenueEvents(slug: string): Promise<Event[]> {
 }
 
 function formatDate(dateStr: string) {
-  return new Date(dateStr).toLocaleDateString('en-US', {
-    weekday: 'short',
-    month: 'short',
-    day: 'numeric',
-    year: 'numeric',
-  });
+  // `event.date` is a plain YYYY-MM-DD calendar date. Handing that straight to
+  // `new Date` reads it as UTC midnight and renders the previous day west of
+  // Greenwich, so build it from its parts. formatEtDate applies the same rule.
+  return formatEtDate(dateStr, { year: true }) || dateStr;
 }
 
 function formatPrice(price: number | null) {

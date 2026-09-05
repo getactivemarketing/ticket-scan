@@ -101,6 +101,33 @@ export type SaleStatus =
 
 const ET = 'America/New_York';
 
+const MONTHS = ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC'];
+const CALENDAR_DATE = /^(\d{4})-(\d{2})-(\d{2})$/;
+
+/**
+ * The feed mixes two shapes in its date fields: onsale times are real UTC
+ * instants, but an event's `date` is a plain YYYY-MM-DD calendar date with no
+ * time at all. `new Date('2026-09-05')` reads the second shape as UTC midnight,
+ * which is 8pm the previous evening in Eastern — so every date-only event
+ * rendered a day early. Alabama's home opener is Saturday Sep 5 and the venue
+ * and team pages both said Fri Sep 4.
+ *
+ * A calendar date has no timezone to convert, so return its parts as written.
+ * Returns null for anything that is not this shape, including impossible dates.
+ */
+function calendarDate(iso: string): { year: number; month: number; day: number } | null {
+  const m = CALENDAR_DATE.exec(iso);
+  if (!m) return null;
+  const year = Number(m[1]);
+  const month = Number(m[2]);
+  const day = Number(m[3]);
+  const probe = new Date(year, month - 1, day);
+  if (probe.getFullYear() !== year || probe.getMonth() !== month - 1 || probe.getDate() !== day) {
+    return null;
+  }
+  return { year, month, day };
+}
+
 /** Onsale times come back as UTC. Label them explicitly — a bare "10:00" would
  *  read as the viewer's own timezone and be wrong for most of the country. */
 export function formatEtTime(iso: string): string {
@@ -116,10 +143,20 @@ export function formatEtTime(iso: string): string {
     .toLowerCase() + ' ET';
 }
 
-export function formatEtDate(iso: string): string {
+export function formatEtDate(iso: string, opts: { year?: boolean } = {}): string {
+  const shape: Intl.DateTimeFormatOptions = {
+    weekday: 'short',
+    month: 'short',
+    day: 'numeric',
+    ...(opts.year ? { year: 'numeric' as const } : {}),
+  };
+  const cal = calendarDate(iso);
+  if (cal) {
+    return new Date(cal.year, cal.month - 1, cal.day).toLocaleDateString('en-US', shape);
+  }
   const d = new Date(iso);
   if (Number.isNaN(d.getTime())) return '';
-  return d.toLocaleDateString('en-US', { timeZone: ET, weekday: 'short', month: 'short', day: 'numeric' });
+  return d.toLocaleDateString('en-US', { timeZone: ET, ...shape });
 }
 
 /**
@@ -182,6 +219,8 @@ export function capPerVenue<T extends FeedEvent>(events: T[], max = 2): T[] {
  */
 export function formatEventDayParts(iso?: string | null): { day: string; month: string } | null {
   if (!iso) return null;
+  const cal = calendarDate(iso);
+  if (cal) return { day: String(cal.day), month: MONTHS[cal.month - 1] };
   const d = new Date(iso);
   if (Number.isNaN(d.getTime())) return null;
   const day = d.toLocaleDateString('en-US', { timeZone: ET, day: 'numeric' });

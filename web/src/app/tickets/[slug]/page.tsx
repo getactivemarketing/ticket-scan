@@ -6,6 +6,7 @@ import { getCategoryBySlug, getAllCategories, Category } from '@/data/categories
 import { venues } from '@/data/venues';
 import { combosForCity, combosForCategory } from '@/data/combos';
 import { paced } from '@/lib/paced';
+import { formatEtDate } from '@/lib/events';
 import TicketNetworkLink from '@/components/TicketNetworkLink';
 import AffiliateDisclosure from '@/components/AffiliateDisclosure';
 
@@ -120,11 +121,10 @@ async function getEvents(slug: string, type: 'city' | 'category'): Promise<Event
 }
 
 function formatDate(dateStr: string) {
-  return new Date(dateStr).toLocaleDateString('en-US', {
-    weekday: 'short',
-    month: 'short',
-    day: 'numeric',
-  });
+  // `event.date` is a plain YYYY-MM-DD calendar date, which `new Date` would
+  // read as UTC midnight and render a day early. formatEtDate handles both
+  // that shape and real onsale timestamps.
+  return formatEtDate(dateStr) || dateStr;
 }
 
 function formatPrice(price: number | null) {

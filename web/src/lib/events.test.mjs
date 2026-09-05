@@ -2,7 +2,7 @@ import { test } from 'node:test';
 import assert from 'node:assert/strict';
 
 // Node 24 strips types on import, so these run against the real module.
-const { cleanEvents, cleanTeamEvents } = await import('./events.ts');
+const { cleanEvents, cleanTeamEvents, formatEventDayParts } = await import('./events.ts');
 
 const ev = (id, name) => ({ id, name });
 
@@ -40,4 +40,29 @@ test('cleanTeamEvents still drops non-events and true duplicate rows', () => {
 test('cleanTeamEvents keeps a row that has no id rather than dropping it', () => {
   const out = cleanTeamEvents([{ name: 'Cardinals vs Cubs' }, ev('a', 'Cardinals vs Cubs')]);
   assert.equal(out.length, 2);
+});
+
+// --- Calendar dates must not be timezone-shifted -------------------------
+
+test('formatEventDayParts renders a plain calendar date as itself', () => {
+  // The feed's `date` is always a plain YYYY-MM-DD local calendar date, never
+  // a timestamp. `new Date('2026-09-05')` reads that as UTC midnight, which is
+  // Sep 4 8pm Eastern, so every date-only event rendered one day early:
+  // Alabama's home opener is Saturday Sep 5 and the page said Fri Sep 4.
+  assert.deepEqual(formatEventDayParts('2026-09-05'), { day: '5', month: 'SEP' });
+  assert.deepEqual(formatEventDayParts('2026-01-01'), { day: '1', month: 'JAN' });
+  assert.deepEqual(formatEventDayParts('2026-12-31'), { day: '31', month: 'DEC' });
+});
+
+test('formatEventDayParts still pins a real timestamp to Eastern', () => {
+  // Onsale timestamps are genuine UTC instants and must keep converting, or a
+  // 1am ET onsale would be labelled with the wrong day for the whole country.
+  assert.deepEqual(formatEventDayParts('2026-09-05T02:30:00Z'), { day: '4', month: 'SEP' });
+});
+
+test('formatEventDayParts rejects junk instead of inventing a date', () => {
+  assert.equal(formatEventDayParts(''), null);
+  assert.equal(formatEventDayParts(null), null);
+  assert.equal(formatEventDayParts('not-a-date'), null);
+  assert.equal(formatEventDayParts('2026-13-45'), null);
 });
