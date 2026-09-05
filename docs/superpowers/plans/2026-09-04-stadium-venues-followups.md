@@ -190,3 +190,29 @@ pacing.
   machine with no other `node index.js` process sharing the same API key.
 - Fix the nightly automation's two independent breaks (external-volume mount timing, missing
   `ADMIN_KEY`/`TICKETMASTER_API_KEY` in `marketing.env`) — the user's own config, not fixed here.
+
+## Date-only parsing on the logged-in pages
+
+`ea1c060` fixed the public pages: an event's `date` is a plain YYYY-MM-DD
+calendar date, and `new Date('2026-09-05')` reads that as UTC midnight, which
+renders as the previous day anywhere west of Greenwich.
+
+The same class of bug is still on the client-rendered pages — `watchlist`,
+`favorites`, `compare`, `EventCard`, `admin`. They are not indexed, so nothing
+wrong is being published, but a signed-in user sees dates a day early.
+
+Two reasons this was left rather than folded in:
+
+1. **The watchlist case has a different root cause.** Its `event_date` comes
+   from Postgres serialized as a UTC-midnight *timestamp*, not a bare calendar
+   date, so `calendarDate` will not match it and the ET path still shifts it
+   back a day. It needs its own fix at the DB boundary — most likely returning
+   the column as a date string rather than a timestamp — not a formatter patch.
+2. Sweeping five client pages into a build-verification commit would have
+   buried the public-page fix.
+
+The durable lesson is the one the bug itself teaches: `UpcomingEvents.tsx`
+already had the correct implementation *and* a comment naming this exact trap,
+and it still recurred three times, because each page wrote its own `formatDate`
+instead of importing the shared one. Any fix here should delete the duplicate,
+not correct it in place.
