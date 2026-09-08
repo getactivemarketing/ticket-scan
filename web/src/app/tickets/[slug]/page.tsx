@@ -106,7 +106,13 @@ async function getEvents(slug: string, type: 'city' | 'category'): Promise<Event
     // the paced stream and push it over Ticketmaster's 5 req/s spike arrest.
     const response = await paced(() =>
       fetch(`${apiUrl}/api/public/events?${queryParam}&limit=12`, {
-        next: { revalidate: 3600 }, // Revalidate every hour
+        // Six hours, matching the combo, team and venue pages. These 38
+        // routes (24 cities + 14 categories) were the last surface left on an
+        // hourly window and had quietly become the single largest line in the
+        // Ticketmaster budget: 38 x 24 = 912 calls/day, more than the 184
+        // venue guides cost. Nothing about a city index needs to be an hour
+        // fresh when every combo page beneath it is six.
+        next: { revalidate: 21600 },
       }),
     );
 

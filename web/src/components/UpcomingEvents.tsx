@@ -64,7 +64,10 @@ async function getVenueEvents(slug: string): Promise<UpcomingEvent[]> {
     // Ticketmaster's 5 req/s spike arrest.
     const res = await paced(() =>
       fetch(`${API_URL}/api/public/events?venue=${slug}&limit=6`, {
-        next: { revalidate: 3600 },
+        // Six hours, matching every other feed surface. Ten featured venues
+        // on an hourly window cost 240 calls/day for a homepage module that
+        // shows six events per venue.
+        next: { revalidate: 21600 },
       }),
     );
     if (!res.ok) return [];

@@ -10,9 +10,27 @@ import OnsaleRow from '@/components/OnsaleRow';
 import TicketNetworkLink from '@/components/TicketNetworkLink';
 import AffiliateDisclosure from '@/components/AffiliateDisclosure';
 
-// Six hours, matching the combo pages. Ticketmaster allows 5,000 calls/day;
-// the site's current worst case is ~1,920 and the 261 team pages on this
-// window add ~1,044. A shorter window would not fit.
+// Six hours, matching every other feed surface. Ticketmaster allows 5,000
+// calls/day. Recomputed 2026-09-08 from the windows actually in the tree,
+// because the earlier ~1,920 figure omitted four real consumers:
+//
+//   ISR, worst case (every page refetched once per window)
+//     teams        261 x 4  = 1,044
+//     venues       184 x 4  =   736
+//     combos       180 x 4  =   720
+//     city/category 38 x 4  =   152
+//     onsales        7 x 24 =   168   (hourly, deliberately)
+//     homepage      10 x 4  =    40
+//                            -------
+//                              2,860
+//   Nightly: build:teams 261 + build:venue-ids ~266 + one cold prerender 588
+//                            = ~1,115
+//   Total ~3,975, about 20% headroom.
+//
+// A cold prerender is counted because a fresh deployment starts with an empty
+// data cache, so every prerendered page refetches. Retries are not counted and
+// can multiply a single page render by up to 16 (4 here x 4 in the API's own
+// spike-arrest retry), which is the real reason to keep headroom.
 export const revalidate = 21600;
 
 interface PageProps {
