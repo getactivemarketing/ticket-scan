@@ -276,6 +276,30 @@ export const fbsStadiums5: Record<string, Venue> = {
       { name: 'South End Zone Suites', tier: 'suite' },
     ]
   },
+  'ryan-field': {
+    id: 'ryan-field',
+    name: 'Ryan Field',
+    city: 'Evanston',
+    state: 'IL',
+    capacity: 35000,
+    type: 'stadium',
+    homeTeams: ['Northwestern Wildcats Football'],
+    description: "Ryan Field's first game is October 2, 2026, when Northwestern hosts Penn State — one hundred years to the day after the original stadium on this site opened. The $862 million rebuild seats 35,000, about 12,000 fewer than the stadium it replaced, in a building 320,000 square feet larger: the added space went to concourses, four club spaces and a canopy covering every seat while leaving the field open to the sky. The nearest premium seats sit 90 feet from the field and the farthest seat is 135 feet away. Northwestern plays its first two 2026 home games at Martin Stadium before moving here.",
+    keywords: ['Ryan Field tickets', 'Northwestern Wildcats tickets', 'new Ryan Field seating chart', 'Evanston football tickets', 'Northwestern football 2026'],
+    faqs: [
+      { question: 'Which 2026 Northwestern home games are at Ryan Field?', answer: 'Five of seven: Penn State on October 2, Ball State on October 10 for Homecoming, Rutgers on October 24, Iowa on November 7 and Illinois on November 28. The South Dakota State and Colorado games in September were played at Martin Stadium.' },
+      { question: 'Why does the new Ryan Field hold fewer fans than the old one?', answer: 'It seats 35,000 against roughly 47,000 before, making it the smallest stadium in the Big Ten. The larger building went into wider concourses, four club spaces and premium seating rather than additional rows.' },
+    ],
+    sections: [
+      { name: 'Lower Sideline', tier: 'lower' },
+      { name: 'Lower Corner', tier: 'lower' },
+      { name: 'Lower End Zone', tier: 'lower' },
+      { name: '50-Yard-Line Club', tier: 'club' },
+      { name: 'East Club', tier: 'club' },
+      { name: 'Mid-Level Premium', tier: 'club' },
+      { name: 'Suites', tier: 'suite' },
+    ],
+  },
 
   'notre-dame-stadium': {
     id: 'notre-dame-stadium',
