@@ -31,9 +31,24 @@
 // minute. 650ms leaves ~92 req/min, enough margin for the retries the team
 // route makes on top of the steady stream. That puts a cold build at roughly
 // four minutes — wall clock is not the binding constraint, the rate limit is.
+// The gate applies at BUILD time only. Everything above is an argument about
+// one machine making hundreds of requests from one IP in a few minutes, which
+// is the build and nothing else.
+//
+// At runtime the same gate is wrong twice over. 92 team pages are not
+// prerendered and render on demand; on a warm instance handling concurrent
+// requests they would queue behind one 650ms gate, so a crawler working
+// through a batch of /teams/* URLs sees latency stack linearly for no reason —
+// those requests leave from Vercel's IPs, spread over time, against a limit
+// that real traffic never approaches. And on a warm rebuild the cooldown fires
+// on the `paced()` wrapper rather than on an actual request, so a fetch served
+// from the Next data cache still burns its full slot.
+const IS_BUILD = process.env.NEXT_PHASE === 'phase-production-build';
+
 let gate: Promise<void> = Promise.resolve();
 
 export function paced<T>(fn: () => Promise<T>): Promise<T> {
+  if (!IS_BUILD) return fn();
   const run = gate.then(fn);
   const cool = () => new Promise<void>((r) => setTimeout(r, 650));
   gate = run.then(cool, cool);
