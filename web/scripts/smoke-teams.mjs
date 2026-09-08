@@ -152,3 +152,9 @@ if (wrongTeam) console.log('Any WRONG TEAM line is a real defect: the attraction
 if (wrongClass) console.log('Any WRONG CLASS line is a real defect: that page lists another entity’s events.');
 if (apiErrors) console.log('API ERROR lines mean those teams could not be checked this run — not that they passed.');
 if (missingFromTeamsTs) console.log('MISSING FROM teams.ts lines mean teams.generated.json and teams.ts have drifted apart.');
+
+// Exit non-zero on a CONFIRMED defect only. API errors stay at exit 0 — a slow
+// Ticketmaster is not a reason to fail a deploy — but a wrong id is. This
+// script went to real trouble to separate those two outcomes in its output;
+// always exiting 0 collapsed them again for any caller reading the status code.
+if (wrongTeam || wrongClass || missingFromTeamsTs) process.exit(1);

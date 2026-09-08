@@ -4,7 +4,7 @@
 // any failure the previous map is left exactly as it was: a stale id points at
 // a building that mostly still hosts the same events, a missing one empties a
 // page with no error at all.
-import { mkdirSync, writeFileSync } from 'node:fs';
+import { existsSync, mkdirSync, readFileSync, renameSync, writeFileSync } from 'node:fs';
 import { dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { pickVenueDetailed, nameAfterAt, pickVenueFromEvents } from '../src/lib/venue-resolve.mjs';
@@ -168,9 +168,42 @@ for (const [slug, v] of Object.entries(venues)) {
   await sleep(250);
 }
 
-if (out.counts.resolved === 0) throw new Error('resolved zero venues; refusing to write an empty map');
+// Drop guard, ported from build-team-index.mjs. The previous check here was
+// `resolved === 0`, which could NEVER fire: the three PINNED slugs increment
+// `resolved` before any network call and all three exist in venues.ts, so the
+// floor was structurally unreachable — a safety net that read as one.
+//
+// The realistic degradation is not an exception. A Ticketmaster keyword search
+// that comes back 200 with no results yields [], indistinguishable from "no
+// match", so a degraded night writes a mostly-empty map and exits 0. Because
+// run-daily.sh commits and pushes data/venue-ids.json, that map reaches
+// production, every unlisted slug 400s, and the venue pages go quiet.
+const pinnedCount = Object.keys(PINNED).length;
+if (existsSync(OUT)) {
+  const previous = JSON.parse(readFileSync(OUT, 'utf8'));
+  const before = (previous.counts && previous.counts.resolved) || 0;
+  const floor = Math.floor(before * 0.9);
+  if (before > 0 && out.counts.resolved < floor) {
+    throw new Error(
+      `resolved ${out.counts.resolved}, down from ${before} (floor ${floor}, 90%); ` +
+        'refusing to write a truncated map. Re-run when Ticketmaster is healthy, or ' +
+        'lower the floor deliberately if venues really were removed.',
+    );
+  }
+}
+if (out.counts.resolved <= pinnedCount) {
+  throw new Error(
+    `every network resolution failed; only the ${pinnedCount} pinned ids remain. ` +
+      'Previous map left intact.',
+  );
+}
 
-writeFileSync(OUT, `${JSON.stringify(out, null, 2)}\n`);
+// Write to a temp file and rename. writeFileSync truncates before it writes, so
+// a SIGTERM or a full disk mid-write would otherwise leave a partial JSON file
+// that run-daily.sh would commit and the API would fail to parse.
+const TMP = new URL('../../data/.venue-ids.json.tmp', import.meta.url);
+writeFileSync(TMP, `${JSON.stringify(out, null, 2)}\n`);
+renameSync(fileURLToPath(TMP), fileURLToPath(OUT));
 console.log(
   `Resolved ${out.counts.resolved} (${out.counts.viaAttraction} via attraction), ` +
     `unresolved ${out.counts.unresolved}, ambiguous ${out.counts.ambiguous}`,

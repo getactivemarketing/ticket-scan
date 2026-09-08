@@ -187,6 +187,22 @@ else
     ( cd "$PROJECT_DIR/web" && npm run build:venue-ids ) 2>&1 | tee -a "$LOG_FILE"
     if [ "${PIPESTATUS[0]}" -ne 0 ]; then echo "WARNING: venue id refresh failed; previous map left intact" | tee -a "$LOG_FILE"; fi
 
+    # Gate the commit on the test suite. The generated files above are committed
+    # and pushed to main a few lines down, which redeploys the API and the site.
+    # Until this ran, the checks that would catch a truncated index — the venue
+    # id map and venues.ts being the same set in both directions, no duplicate
+    # slug across stadium batches — existed but were never executed on the path
+    # that produces one. The suite is offline and takes under a second.
+    #
+    # On failure, revert ONLY the generated data, leaving the rest of the day's
+    # output to commit normally. A bad index is worth discarding; a day of
+    # marketing output is not.
+    ( cd "$PROJECT_DIR/web" && npm test ) 2>&1 | tee -a "$LOG_FILE"
+    if [ "${PIPESTATUS[0]}" -ne 0 ]; then
+        echo "ERROR: tests failed after the index refresh; reverting generated data" | tee -a "$LOG_FILE"
+        git -C "$PROJECT_DIR" checkout -- data/venue-ids.json web/src/data/teams.generated.json 2>&1 | tee -a "$LOG_FILE"
+    fi
+
     # Deploy to Vercel so image URLs are live BEFORE Blotato consumes them.
     #
     # `vercel --prod` uploads a DIRECTORY, not a git ref. Running it from the

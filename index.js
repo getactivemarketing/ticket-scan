@@ -2075,7 +2075,17 @@ app.get('/api/public/events', async (req, res) => {
     // returns zero results. This is pre-existing behaviour shared with venue+city.
     if (attractionId) {
       // Ticketmaster attraction ids contain underscores and hyphens (e.g. K8vZ9171_37, K8vZ9171-C0)
-      if (/^[A-Za-z0-9_-]{1,40}$/.test(attractionId)) tmParams.attractionId = attractionId;
+      //
+      // Coerce to a string BEFORE both the test and the assignment. Express's
+      // qs parser turns ?attractionId[0]=X into an Array, and testing a
+      // one-element array coerces it to its element and PASSES — but assigning
+      // the raw array made axios serialize `attractionId[]=X`, which
+      // Ticketmaster ignores, returning an unfiltered national feed as a 200.
+      // Every other param on this route launders input through a lookup table;
+      // this is the only one that passes user input through, which is why it
+      // is the only one that had this hole.
+      const id = String(attractionId);
+      if (/^[A-Za-z0-9_-]{1,40}$/.test(id)) tmParams.attractionId = id;
       else invalid.push({ param: 'attractionId', value: attractionId, valid: ['alphanumeric Ticketmaster attraction id (includes _ and -)'] });
     }
 
@@ -2148,7 +2158,12 @@ app.get('/api/public/events', async (req, res) => {
 
     res.json({
       success: true,
-      query: { venue, city, category, attractionId, onsaleDate, country, sort },
+      // Echo the SANITIZED attractionId (tmParams), not the raw query value.
+      // Clients use this echo to prove the server understood the filter — an
+      // older build without this parameter drops it silently and returns an
+      // unfiltered feed as a 200 — so the echo has to report what was actually
+      // sent upstream, not what arrived.
+      query: { venue, city, category, attractionId: tmParams.attractionId, onsaleDate, country, sort },
       count: events.length,
       events
     });
