@@ -144,10 +144,10 @@ export const fbsStadiums5: Record<string, Venue> = {
     name: 'Mackay Stadium',
     city: 'Reno',
     state: 'NV',
-    capacity: 27000,
+    capacity: 30000,
     type: 'stadium',
     homeTeams: ['Nevada Wolf Pack Football'],
-    description: "Mackay Stadium has hosted Nevada Wolf Pack football since October 1966 on Chris Ault Field, named for the coach and athletic director who spent parts of five decades at Nevada. A 2016-season renovation, funded by an $11.5 million bond, swapped bleacher seats for a stadium club, loge boxes and chairback sections, trimming the bowl from an earlier 30,000-seat configuration down to its current 27,000 for a better fan experience. FieldTurf, installed in 2000, was most recently replaced in 2022 through a sponsorship with ITS Logistics. The stadium sits on the northern edge of the Reno campus, with the Sierra Nevada foothills visible beyond the north end zone on clear days.",
+    description: "Mackay Stadium has hosted Nevada Wolf Pack football since October 1966 on Chris Ault Field, named for the coach and athletic director who spent parts of five decades at Nevada. A 2016-season renovation, funded by an $11.5 million bond, swapped bleacher seats for a stadium club, loge boxes and chairback sections, trimming the bowl to 27,000 for a better fan experience; capacity has since been listed back at 30,000 from the 2024 season. FieldTurf, installed in 2000, was most recently replaced in 2022 through a sponsorship with ITS Logistics. The stadium sits on the northern edge of the Reno campus, with the Sierra Nevada foothills visible beyond the north end zone on clear days.",
     keywords: ['Mackay Stadium tickets', 'Nevada Wolf Pack tickets', 'Mackay Stadium seating chart', 'Reno football tickets', 'Nevada Wolf Pack football 2026'],
     faqs: [
       { question: 'Who is Chris Ault Field at Mackay Stadium named for?', answer: 'The playing surface honors Chris Ault, the longtime Nevada head coach and athletic director whose career at the school spanned parts of five decades.' },

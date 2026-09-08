@@ -212,13 +212,13 @@ export const nflStadiums: Record<string, Venue> = {
     name: 'EverBank Stadium',
     city: 'Jacksonville',
     state: 'FL',
-    capacity: 42465,
+    capacity: 42507,
     type: 'stadium',
     homeTeams: ['Jacksonville Jaguars'],
-    description: 'EverBank Stadium is the Jacksonville Jaguars home, and for the 2026 season its capacity is cut to 42,465 while the Stadium of the Future rebuild proceeds. Most of the 27,308 seats taken offline are in the 400 level upper bowl, with further closures in the 200 level corners over the tunnels, parts of the north end zone and the lower south end zone. The Gallagher East and West Clubs straddle the 50-yard lines, and the Bud Light Party Zone sits on the main concourse in the south end. TicketScan tracks EverBank Stadium onsales and presale windows.',
+    description: 'EverBank Stadium is the Jacksonville Jaguars home, and for the 2026 season its capacity is cut to 42,507 while the Stadium of the Future rebuild proceeds. Most of the 27,308 seats taken offline are in the 400 level upper bowl, with further closures in the 200 level corners over the tunnels, parts of the north end zone and the lower south end zone. The Gallagher East and West Clubs straddle the 50-yard lines, and the Bud Light Party Zone sits on the main concourse in the south end. TicketScan tracks EverBank Stadium onsales and presale windows.',
     keywords: ['EverBank Stadium tickets', 'Jacksonville Jaguars tickets', 'EverBank Stadium seating chart', 'EverBank Stadium events 2026', 'Jacksonville football tickets'],
     faqs: [
-      { question: 'Why is EverBank Stadium capacity so low in 2026?', answer: 'The Stadium of the Future construction takes 27,308 seats out of service for the season, most of them in the 400 level upper bowl, leaving a listed capacity of 42,465.' },
+      { question: 'Why is EverBank Stadium capacity so low in 2026?', answer: 'The Stadium of the Future construction takes 27,308 seats out of service for the season, most of them in the 400 level upper bowl, leaving a listed capacity of 42,507, a figure the club says includes 1,260 standing-room tickets.' },
     ],
     sections: [
       { name: '100 Level Sideline', tier: 'lower' },

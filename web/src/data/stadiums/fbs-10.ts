@@ -69,13 +69,13 @@ export const fbsStadiums10: Record<string, Venue> = {
     name: 'Alamodome',
     city: 'San Antonio',
     state: 'TX',
-    capacity: 36582,
+    capacity: 34984,
     type: 'stadium',
     homeTeams: ['UTSA Roadrunners Football'],
-    description: 'The Alamodome seats 36,582 for UTSA Roadrunners football, a downtown five-level dome that can expand past 64,000 for other events but is configured with its upper level curtained off for Roadrunner games, so tickets are sold only in the lower bowl. UTSA has played every home game here since the program launched in 2011. The building also holds 4 video screens and ribbon boards wrapping its fifth level from a 2016 modernization, and club-level seating rings the field at midlevel. TicketScan tracks Alamodome onsales and presale windows for UTSA football.',
+    description: 'The Alamodome seats 34,984 for UTSA Roadrunners football, a downtown five-level dome that can expand past 64,000 for other events but is configured with its upper level curtained off for Roadrunner games, so tickets are sold only in the lower bowl. UTSA has played every home game here since the program launched in 2011. The building also holds 4 video screens and ribbon boards wrapping its fifth level from a 2016 modernization, and club-level seating rings the field at midlevel. TicketScan tracks Alamodome onsales and presale windows for UTSA football.',
     keywords: ['Alamodome tickets', 'UTSA Roadrunners tickets', 'Alamodome seating chart', 'San Antonio football tickets', 'UTSA football tickets 2026'],
     faqs: [
-      { question: 'Why is the Alamodome capacity for UTSA games so much lower than the building total?', answer: 'The Alamodome can hold roughly 64,000 for football, but for Roadrunner games the upper level is curtained off and not sold, leaving a working capacity of 36,582 in the lower bowl and club level.' },
+      { question: 'Why is the Alamodome capacity for UTSA games so much lower than the building total?', answer: 'The Alamodome can hold roughly 64,000 for football, but for Roadrunner games the upper level is curtained off and not sold, leaving a working capacity of 34,984 in the lower bowl and club level.' },
     ],
     sections: [
       { name: 'Lower Bowl Sideline', tier: 'lower' },
