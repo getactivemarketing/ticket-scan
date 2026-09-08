@@ -216,3 +216,19 @@ already had the correct implementation *and* a comment naming this exact trap,
 and it still recurred three times, because each page wrote its own `formatDate`
 instead of importing the shared one. Any fix here should delete the duplicate,
 not correct it in place.
+
+## Flip Northwestern's home venue on 2026-10-02
+
+`northwestern-wildcats-football` still points at `martin-stadium-northwestern`,
+which is correct until October 2, 2026. From that date the Wildcats' remaining
+five home games are at the new `ryan-field` (added in this branch, id
+KovZpZAFdEdA, 35,000 seats).
+
+On or after 2026-10-02, change `homeVenueSlug` in `web/src/data/teams.ts` to
+`ryan-field`. Both venues can keep Northwestern in `homeTeams` — the team
+genuinely played at both during the 2026 season, and both pages explain the
+split.
+
+Not automated deliberately: a date-conditional home venue would be the only
+time-varying field in `teams.ts`, and one flipped string once is cheaper than a
+mechanism that has to be correct forever.
