@@ -59,6 +59,19 @@ async function getEvents(attractionId: string): Promise<FeedEvent[]> {
       const res = await paced(() => fetch(url, { next: { revalidate } }));
       if (!res.ok) throw new Error(`HTTP ${res.status} for attraction ${attractionId}`);
       const data = await res.json();
+      // Deploy-skew guard. An API build without the attractionId parameter
+      // silently DROPS it — Express ignores unknown query params — and returns
+      // an unfiltered national feed as a 200. Nothing above catches that: the
+      // response is fine, it is just somebody else's events, and ISR would
+      // cache "Alabama Crimson Tide Tickets" listing Las Vegas comedy shows for
+      // six hours. The API echoes its parsed query back, so make it prove it
+      // understood the filter. Also guards an API rollback in the other
+      // direction.
+      if (data.query?.attractionId !== attractionId) {
+        throw new Error(
+          `API ignored attractionId ${attractionId} (deploy skew) — refusing to cache an unfiltered feed`,
+        );
+      }
       // cleanTeamEvents, NOT cleanEvents: this is one team's schedule, where
       // repeated matchups are the data. See src/lib/events.ts for why the two
       // helpers differ.

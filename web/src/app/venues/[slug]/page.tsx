@@ -74,28 +74,40 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 
 // Fetch events from public API
 async function getVenueEvents(slug: string): Promise<Event[]> {
-  try {
-    const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'https://tickethawk-api-production.up.railway.app';
-    // Through the SHARED pacer (src/lib/paced.ts). These 25 pages prerender in
-    // the same build as the combo and team pages; unpaced, they land on top of
-    // the paced stream and push it over Ticketmaster's 5 req/s spike arrest.
-    const response = await paced(() =>
-      fetch(`${apiUrl}/api/public/events?venue=${slug}&limit=10`, {
-        // Six hours, matching the combo and team pages. Roughly 190 venues will
-        // cost ~4,560 Ticketmaster calls/day at hourly revalidation against a
-        // 5,000/day quota. At six hours, that drops to ~760 calls/day.
-        next: { revalidate: 21600 },
-      }),
-    );
-
-    if (!response.ok) return [];
-
-    const data = await response.json();
-    return data.events || [];
-  } catch (error) {
-    console.error('Error fetching venue events:', error);
-    return [];
+  const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'https://tickethawk-api-production.up.railway.app';
+  const url = `${apiUrl}/api/public/events?venue=${slug}&limit=10`;
+  let lastError: unknown;
+  for (let attempt = 0; attempt < 4; attempt++) {
+    if (attempt > 0) {
+      const wait = 500 * 2 ** (attempt - 1) + Math.random() * 250;
+      await new Promise((r) => setTimeout(r, wait));
+    }
+    try {
+      // Through the SHARED pacer (src/lib/paced.ts). These 184 pages prerender
+      // in the same build as the combo and team pages; unpaced, they land on
+      // top of the paced stream and push it over the rate limit.
+      const response = await paced(() =>
+        fetch(url, {
+          // Six hours, matching the combo and team pages. 184 venues at hourly
+          // revalidation would cost ~4,416 Ticketmaster calls/day against a
+          // 5,000/day quota. At six hours that drops to ~736.
+          next: { revalidate: 21600 },
+        }),
+      );
+      if (!response.ok) throw new Error(`HTTP ${response.status} for venue ${slug}`);
+      const data = await response.json();
+      return data.events || [];
+    } catch (error) {
+      lastError = error;
+    }
   }
+  // Rethrows after exhausting retries, matching the team route. Returning []
+  // here is what the stadium spec calls the invisible failure: a transient 429
+  // during revalidation would replace a real schedule with "No upcoming events
+  // found." and ISR-cache that for six hours, taking the ItemList JSON-LD with
+  // it. "The API said zero" and "we never got an answer" must not render the
+  // same way.
+  throw lastError;
 }
 
 function formatDate(dateStr: string) {
@@ -214,13 +226,36 @@ export default async function VenuePage({ params }: PageProps) {
     ],
   };
 
-  // Seating tier info
-  const tiers = [
-    { key: 'floor', ...tierPricing.floor, color: 'bg-brand', light: 'bg-brand/10', text: 'text-brand-dark' },
-    { key: 'club', ...tierPricing.club, color: 'bg-amber-500', light: 'bg-amber-100', text: 'text-amber-700' },
-    { key: 'lower', ...tierPricing.lower, color: 'bg-blue-500', light: 'bg-blue-100', text: 'text-blue-700' },
-    { key: 'upper', ...tierPricing.upper, color: 'bg-green-500', light: 'bg-green-100', text: 'text-green-700' },
-  ];
+  // Seating tiers, derived from the tiers this venue actually has. The old
+  // hardcoded list published "Floor/Courtside" on all 159 football stadiums,
+  // which have no floor — the exact label venues.test.mjs forbids in the data.
+  // The test guarded the data while the page ignored it, so it passed while the
+  // failure it names shipped on every page. Deriving from venue.sections is
+  // what makes that test load-bearing, and it surfaces `suite`, which stadiums
+  // use and the hardcoded list omitted.
+  const TIER_STYLE = {
+    floor: { color: 'bg-brand', light: 'bg-brand/10', text: 'text-brand-dark' },
+    suite: { color: 'bg-purple-500', light: 'bg-purple-100', text: 'text-purple-700' },
+    club: { color: 'bg-amber-500', light: 'bg-amber-100', text: 'text-amber-700' },
+    lower: { color: 'bg-blue-500', light: 'bg-blue-100', text: 'text-blue-700' },
+    upper: { color: 'bg-green-500', light: 'bg-green-100', text: 'text-green-700' },
+  } as const;
+  const TIER_ORDER = ['floor', 'suite', 'club', 'lower', 'upper'] as const;
+  const tiers = TIER_ORDER.filter((t) => venue.sections.some((s) => s.tier === t)).map((t) => ({
+    key: t,
+    ...tierPricing[t],
+    ...TIER_STYLE[t],
+  }));
+
+  // The section map is the most venue-specific data on the page — real named
+  // ranges like "Lower Sideline 110-118", authored per stadium. It was never
+  // rendered anywhere, so the spec's "every page carries facts specific to it"
+  // rule was being carried by the description alone.
+  const sectionsByTier = TIER_ORDER.map((t) => ({
+    tier: t,
+    label: tierPricing[t].label,
+    sections: venue.sections.filter((s) => s.tier === t),
+  })).filter((g) => g.sections.length > 0);
 
   return (
     <>
@@ -348,7 +383,7 @@ export default async function VenuePage({ params }: PageProps) {
               {venue.faqs && venue.faqs.length > 0 && (
                 <div className="mt-8 bg-white rounded-xl shadow-md p-8">
                   <h2 className="text-xl font-bold font-heading text-gray-900 mb-4">
-                    United Center Ticket FAQs
+                    {venue.name} Ticket FAQs
                   </h2>
                   <div className="space-y-5">
                     {venue.faqs.map((faq) => (
@@ -385,6 +420,27 @@ export default async function VenuePage({ params }: PageProps) {
                     </div>
                   ))}
                 </div>
+                {sectionsByTier.length > 0 && (
+                  <div className="mt-6 pt-6 border-t border-gray-100 space-y-4">
+                    {sectionsByTier.map((group) => (
+                      <div key={group.tier}>
+                        <h4 className="text-xs font-semibold uppercase tracking-wide text-gray-500 mb-2">
+                          {group.label}
+                        </h4>
+                        <ul className="space-y-1">
+                          {group.sections.map((section) => (
+                            <li key={section.name} className="text-sm text-gray-700">
+                              {section.name}
+                              {section.rows && (
+                                <span className="text-gray-500"> · rows {section.rows}</span>
+                              )}
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    ))}
+                  </div>
+                )}
                 <p className="text-xs text-gray-400 mt-4">
                   * Prices vary by event and availability
                 </p>
