@@ -1,9 +1,10 @@
+import { cache } from 'react';
 import { Metadata } from 'next';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { getTeamBySlug } from '@/data/teams';
 import { venues } from '@/data/venues';
-import { FeedEvent, cleanTeamEvents } from '@/lib/events';
+import { FeedEvent, cleanTeamEvents, isThinTeamPage } from '@/lib/events';
 import { paced } from '@/lib/paced';
 import teamIndex from '@/data/teams.generated.json';
 import OnsaleRow from '@/components/OnsaleRow';
@@ -61,7 +62,11 @@ const API_URL = process.env.NEXT_PUBLIC_API_URL || 'https://tickethawk-api-produ
 // `paced` (src/lib/paced.ts) is a SHARED module-level gate — the combo pages
 // prerender 160 pages in the same build and use the exact same import, not a
 // copy, so this route's fetches stay serialised against theirs too.
-async function getEvents(attractionId: string): Promise<FeedEvent[]> {
+// React-cached so generateMetadata and the page body share ONE result. Both
+// need the schedule — metadata to decide whether the page is thin enough to
+// noindex — and without this they would each make their own request, doubling
+// this route's share of the Ticketmaster budget.
+const getEvents = cache(async (attractionId: string): Promise<FeedEvent[]> => {
   const url = `${API_URL}/api/public/events?attractionId=${attractionId}&limit=40&sort=date`;
   let lastError: unknown;
   for (let attempt = 0; attempt < 4; attempt++) {
@@ -102,16 +107,33 @@ async function getEvents(attractionId: string): Promise<FeedEvent[]> {
   // ISR cache a wrong "no games scheduled" page for six hours; a sustained
   // outage should fail loudly.
   throw lastError;
-}
+});
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const { slug } = await params;
   const team = getTeamBySlug(slug);
   if (!team || !RESOLVED[slug]) return {};
+
+  // A team with no home venue AND no upcoming games has nothing on its page but
+  // its own name — no venue panel, no capacity, no seating guide, no city link,
+  // no schedule. 60 of 261 teams have no homeVenueSlug (29 MLB, 19 NHL, 9 NBA,
+  // 3 college), so this goes live for 29 pages at once when MLB's offseason
+  // arrives in November.
+  //
+  // The spec's offseason design assumes a venue panel is there to carry the
+  // page, and the stadium spec explicitly made arena backfill a non-goal, so
+  // the data gap is deliberate and stays. What must not happen is asking Google
+  // to index a page with nothing on it — that is the scaled-content shape both
+  // specs are written against. noindex,follow keeps the URL working and its
+  // links crawlable, and lifts itself automatically once a schedule appears.
+  const events = await getEvents(RESOLVED[slug].attractionId);
+  const isThin = isThinTeamPage(team.homeVenueSlug, events.length);
+
   return {
     title: `${team.name} Tickets — Schedule and Onsale Dates`,
     description: `Every upcoming ${team.name} game, home and away, with onsale and presale dates and where to buy.`,
     alternates: { canonical: `https://www.ticketscan.io/teams/${slug}` },
+    ...(isThin ? { robots: { index: false, follow: true } } : {}),
   };
 }
 

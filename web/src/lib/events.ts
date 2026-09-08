@@ -227,3 +227,21 @@ export function formatEventDayParts(iso?: string | null): { day: string; month: 
   const month = d.toLocaleDateString('en-US', { timeZone: ET, month: 'short' }).toUpperCase();
   return { day, month };
 }
+
+/**
+ * A team page is "thin" when it has no home venue AND no upcoming games: no
+ * venue panel, no capacity, no seating-guide link, no city link, no schedule —
+ * nothing on the page but the team's own name.
+ *
+ * 60 of 261 teams have no homeVenueSlug (29 MLB, 19 NHL, 9 NBA, 3 college),
+ * and every one of them has games today, so this returns false for the whole
+ * roster right now. It goes live for 29 pages at once when MLB's season ends
+ * in November, which is exactly why it is a tested function and not an inline
+ * condition nobody can exercise until then.
+ */
+export function isThinTeamPage(
+  homeVenueSlug: string | undefined,
+  eventCount: number,
+): boolean {
+  return !homeVenueSlug && eventCount === 0;
+}

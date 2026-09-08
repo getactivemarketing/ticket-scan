@@ -2,7 +2,7 @@ import { test } from 'node:test';
 import assert from 'node:assert/strict';
 
 // Node 24 strips types on import, so these run against the real module.
-const { cleanEvents, cleanTeamEvents, formatEventDayParts } = await import('./events.ts');
+const { cleanEvents, cleanTeamEvents, formatEventDayParts, isThinTeamPage } = await import('./events.ts');
 
 const ev = (id, name) => ({ id, name });
 
@@ -65,4 +65,20 @@ test('formatEventDayParts rejects junk instead of inventing a date', () => {
   assert.equal(formatEventDayParts(null), null);
   assert.equal(formatEventDayParts('not-a-date'), null);
   assert.equal(formatEventDayParts('2026-13-45'), null);
+});
+
+// --- Thin team pages -----------------------------------------------------
+
+test('isThinTeamPage is true only with no venue AND no games', () => {
+  // The offseason case this exists for: MLB in November.
+  assert.equal(isThinTeamPage(undefined, 0), true);
+
+  // A schedule carries the page even with no venue guide.
+  assert.equal(isThinTeamPage(undefined, 12), false);
+  // A venue panel carries the page even out of season — this is the shape the
+  // spec's offseason clause describes, and it must stay indexable.
+  assert.equal(isThinTeamPage('att-stadium', 0), false);
+  assert.equal(isThinTeamPage('att-stadium', 12), false);
+  // An empty-string slug is absent, not a venue.
+  assert.equal(isThinTeamPage('', 0), true);
 });
