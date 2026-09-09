@@ -35,11 +35,14 @@ const API_URL = process.env.NEXT_PUBLIC_API_URL || 'https://tickethawk-api-produ
 async function getEvents(city: string, category: string): Promise<FeedEvent[]> {
   const url = `${API_URL}/api/public/events?city=${city}&category=${category}&limit=24`;
   let lastError: unknown;
-  for (let attempt = 0; attempt < 4; attempt++) {
+  for (let attempt = 0; attempt < 5; attempt++) {
     if (attempt > 0) {
-      // 500ms, 1s, 2s, plus jitter so retries across the 160 prerenders don't
-      // resynchronize and hit the spike arrest together.
-      const wait = 500 * 2 ** (attempt - 1) + Math.random() * 250;
+      // 1s, 3s, 9s, 27s — a ~40s window, plus jitter so retries across the 180
+      // prerenders don't resynchronize. Widened from ~3.5s on 2026-09-09: the
+      // site and the API deploy from the SAME push, so a prerender routinely
+      // overlaps a Railway restart. This exact route died on chicago/soccer
+      // with HTTP 500 after exhausting four retries against a restarting API.
+      const wait = 1000 * 3 ** (attempt - 1) + Math.random() * 500;
       await new Promise((r) => setTimeout(r, wait));
     }
     try {

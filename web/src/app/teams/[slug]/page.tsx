@@ -69,13 +69,16 @@ const API_URL = process.env.NEXT_PUBLIC_API_URL || 'https://tickethawk-api-produ
 const getEvents = cache(async (attractionId: string): Promise<FeedEvent[]> => {
   const url = `${API_URL}/api/public/events?attractionId=${attractionId}&limit=40&sort=date`;
   let lastError: unknown;
-  for (let attempt = 0; attempt < 4; attempt++) {
+  for (let attempt = 0; attempt < 5; attempt++) {
     if (attempt > 0) {
-      // 500ms, 1s, 2s, plus jitter so retries across the 169 team-page
-      // prerenders (and the 160 combo pages sharing the same gate) don't
-      // resynchronize and hit the spike arrest together. Matches the combo
-      // page's retry shape exactly.
-      const wait = 500 * 2 ** (attempt - 1) + Math.random() * 250;
+      // 1s, 3s, 9s, 27s — a ~40s window, plus jitter so retries across the
+      // 169 team-page prerenders (and the combo pages sharing the same gate)
+      // don't resynchronize. Widened from ~3.5s on 2026-09-09: the site and
+      // the API deploy from the SAME push, so a Vercel prerender routinely
+      // overlaps a Railway container restart, and 3.5s could not survive one.
+      // A build died on /tickets/chicago/soccer with HTTP 500 after exhausting
+      // four retries against an API that was simply restarting.
+      const wait = 1000 * 3 ** (attempt - 1) + Math.random() * 500;
       await new Promise((r) => setTimeout(r, wait));
     }
     try {

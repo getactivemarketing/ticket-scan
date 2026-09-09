@@ -77,9 +77,12 @@ async function getVenueEvents(slug: string): Promise<Event[]> {
   const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'https://tickethawk-api-production.up.railway.app';
   const url = `${apiUrl}/api/public/events?venue=${slug}&limit=10`;
   let lastError: unknown;
-  for (let attempt = 0; attempt < 4; attempt++) {
+  for (let attempt = 0; attempt < 5; attempt++) {
     if (attempt > 0) {
-      const wait = 500 * 2 ** (attempt - 1) + Math.random() * 250;
+      // 1s, 3s, 9s, 27s — a ~40s window, matching the team and combo routes.
+      // Sized to outlast a Railway container restart, because the site and the
+      // API deploy from the same push and a prerender overlaps that restart.
+      const wait = 1000 * 3 ** (attempt - 1) + Math.random() * 500;
       await new Promise((r) => setTimeout(r, wait));
     }
     try {

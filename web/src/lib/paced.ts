@@ -45,12 +45,34 @@
 // from the Next data cache still burns its full slot.
 const IS_BUILD = process.env.NEXT_PHASE === 'phase-production-build';
 
+// The interval is between request STARTS, not a cooldown after each one
+// finishes. Those are the same thing against a fast local API and very
+// different against the deployed one.
+//
+// Measured on Vercel (2026-09-09): a call to the Railway API takes ~2.0s, so
+// the build was already running at ~27 req/min — under a third of the 100/min
+// limit — and the old post-completion cooldown added 650ms to every one of
+// them for nothing. 366 pages took 13m25s (2.2s/page), putting a full 634-page
+// build near 23 minutes.
+//
+// Waiting only the REMAINDER of the interval keeps the guarantee exactly (a
+// burst of instant responses still cannot exceed ~92 req/min) while charging
+// nothing when the request already outran it.
+const MIN_INTERVAL_MS = 650;
+
 let gate: Promise<void> = Promise.resolve();
 
 export function paced<T>(fn: () => Promise<T>): Promise<T> {
   if (!IS_BUILD) return fn();
-  const run = gate.then(fn);
-  const cool = () => new Promise<void>((r) => setTimeout(r, 650));
+  const startedAt = { t: 0 };
+  const run = gate.then(() => {
+    startedAt.t = Date.now();
+    return fn();
+  });
+  const cool = () => {
+    const remaining = MIN_INTERVAL_MS - (Date.now() - startedAt.t);
+    return remaining > 0 ? new Promise<void>((r) => setTimeout(r, remaining)) : Promise.resolve();
+  };
   gate = run.then(cool, cool);
   return run;
 }
