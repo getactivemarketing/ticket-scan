@@ -109,7 +109,7 @@ export const teams: Record<string, Team> = {
   'north-carolina-state-university-wolfpack-football': { slug: 'north-carolina-state-university-wolfpack-football', name: "North Carolina State University Wolfpack Football", league: 'college-football', homeVenueSlug: 'carter-finley-stadium' },
   'north-dakota-state-bison': { slug: 'north-dakota-state-bison', name: "North Dakota State Bison", league: 'college-football', homeVenueSlug: 'fargodome' },
   'northern-illinois-huskies-football': { slug: 'northern-illinois-huskies-football', name: "Northern Illinois Huskies Football", league: 'college-football', homeVenueSlug: 'huskie-stadium' },
-  'northwestern-wildcats-football': { slug: 'northwestern-wildcats-football', name: "Northwestern Wildcats Football", league: 'college-football', homeVenueSlug: 'martin-stadium-northwestern' },
+  'northwestern-wildcats-football': { slug: 'northwestern-wildcats-football', name: "Northwestern Wildcats Football", league: 'college-football', homeVenueSlug: 'ryan-field' },
   'notre-dame-fighting-irish-football': { slug: 'notre-dame-fighting-irish-football', name: "Notre Dame Fighting Irish Football", league: 'college-football', homeVenueSlug: 'notre-dame-stadium' },
   'ohio-state-buckeyes-football': { slug: 'ohio-state-buckeyes-football', name: "Ohio State Buckeyes Football", league: 'college-football', homeVenueSlug: 'ohio-stadium' },
   'ohio-university-bobcats-football': { slug: 'ohio-university-bobcats-football', name: "Ohio University Bobcats Football", league: 'college-football', homeVenueSlug: 'peden-stadium' },

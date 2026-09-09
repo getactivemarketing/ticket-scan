@@ -217,18 +217,19 @@ and it still recurred three times, because each page wrote its own `formatDate`
 instead of importing the shared one. Any fix here should delete the duplicate,
 not correct it in place.
 
-## Flip Northwestern's home venue on 2026-10-02
+## Northwestern's home venue — DONE 2026-09-09
 
-`northwestern-wildcats-football` still points at `martin-stadium-northwestern`,
-which is correct until October 2, 2026. From that date the Wildcats' remaining
-five home games are at the new `ryan-field` (added in this branch, id
-KovZpZAFdEdA, 35,000 seats).
+`northwestern-wildcats-football` now points at `ryan-field`.
 
-On or after 2026-10-02, change `homeVenueSlug` in `web/src/data/teams.ts` to
-`ryan-field`. Both venues can keep Northwestern in `homeTeams` — the team
-genuinely played at both during the 2026 season, and both pages explain the
-split.
+This was originally deferred to 2026-10-02, on the reasoning that Martin Stadium
+hosts the next home game. That was the wrong trade: Northwestern has ONE game
+left at Martin Stadium (Colorado, Sep 19) and then five at the new Ryan Field
+and every season after it. "Home: Northwestern Medicine Field at Martin Stadium
+- Capacity 12,023" described a temporary 12,023-seat venue as the home of a Big
+Ten program, which was misleading the day it shipped, not on October 2.
 
-Not automated deliberately: a date-conditional home venue would be the only
-time-varying field in `teams.ts`, and one flipped string once is cheaper than a
-mechanism that has to be correct forever.
+The Sep 19 game still renders with its own venue label from the feed, so the
+schedule stays accurate either way — only the "Home:" panel changes.
+
+Martin Stadium keeps Northwestern in its `homeTeams` and keeps its description
+of the temporary arrangement, both of which are true for the 2026 season.
