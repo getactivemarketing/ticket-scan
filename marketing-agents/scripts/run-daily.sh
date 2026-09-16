@@ -142,11 +142,11 @@ run_agent "Agent 3: Social Media Manager"      "$PROMPTS_DIR/03-social-media-dai
 
 # Deploy generated social images to Vercel and schedule posts
 echo "" | tee -a "$LOG_FILE"
-echo ">>> Deploying social images + scheduling posts — $(date +%H:%M:%S)" | tee -a "$LOG_FILE"
+echo ">>> Committing social images + refreshing indexes — $(date +%H:%M:%S)" | tee -a "$LOG_FILE"
 echo "-------------------------------------------" | tee -a "$LOG_FILE"
 
 if [ "$DRY_RUN" = "1" ]; then
-    echo "[DRY_RUN] Skipping image commit, Vercel deploy, and Blotato scheduling" | tee -a "$LOG_FILE"
+    echo "[DRY_RUN] Skipping image commit and index refresh" | tee -a "$LOG_FILE"
 else
     # Commit generated images if any exist
     if [ -n "$(git status --porcelain web/public/social/generated/)" ]; then
@@ -156,15 +156,12 @@ else
 
     # Refresh the city x category combo index. Committed as a generated artifact
     # so the Next.js build never has to call the events API to decide which
-    # pages exist. Deliberately placed before the deploy block and independent
-    # of it: that block is stale (it deploys the `web` Vercel project, which no
-    # longer owns the live domain) and will be reworked or removed.
+    # pages exist.
     #
     # Deliberately NOT committed here. A standalone commit at this point makes
-    # `git status --porcelain` clean again before the push gate further down
+    # `git status --porcelain` clean again before the commit gate further down
     # ever sees it, so the refreshed index only reached production as a side
-    # effect of some other agent's output changing that day — and a day late,
-    # because deploy_production (above) runs before that push. Leave the file
+    # effect of some other agent's output changing that day. Leave the file
     # uncommitted so it flows through the COMMIT_PATHS block below instead,
     # inheriting that block's guard and push.
     ( cd "$PROJECT_DIR/web" && npm run build:combos ) 2>&1 | tee -a "$LOG_FILE"
@@ -203,44 +200,11 @@ else
         git -C "$PROJECT_DIR" checkout -- data/venue-ids.json web/src/data/teams.generated.json 2>&1 | tee -a "$LOG_FILE"
     fi
 
-    # Deploy to Vercel so image URLs are live BEFORE Blotato consumes them.
-    #
-    # `vercel --prod` uploads a DIRECTORY, not a git ref. Running it from the
-    # shared working tree shipped whichever branch happened to be checked out:
-    # on 2026-08-26 that silently reverted the live site by five commits and
-    # 404'd /onsales, because the tree was sitting on a feature branch. Build
-    # from an explicit ref instead so production is always a known commit.
-    #
-    # Generated social images are overlaid from the working tree because
-    # Blotato consumes them by URL and they may not be committed to the deploy
-    # ref yet. The whole accumulated directory is copied, not just today's, so
-    # posts scheduled on earlier runs keep resolving.
-    deploy_production() {
-        local ref="${DEPLOY_REF:-origin/main}"
-        local dir rc
-        git fetch origin main --quiet || return 1
-        git rev-parse --verify --quiet "$ref" >/dev/null || return 1
-        dir=$(mktemp -d) || return 1
-        git archive "$ref" | tar -x -C "$dir" || { rm -rf "$dir"; return 1; }
-        # .vercel/ is gitignored, so the project link is never in the archive.
-        cp -R "$PROJECT_DIR/web/.vercel" "$dir/web/.vercel" || { rm -rf "$dir"; return 1; }
-        mkdir -p "$dir/web/public/social/generated"
-        if [ -d "$PROJECT_DIR/web/public/social/generated" ]; then
-            cp -R "$PROJECT_DIR/web/public/social/generated/." \
-                  "$dir/web/public/social/generated/" || true
-        fi
-        echo "Deploying $ref ($(git rev-parse --short "$ref")) to production" | tee -a "$LOG_FILE"
-        ( cd "$dir/web" && npx vercel --prod --yes ) 2>&1 | tee -a "$LOG_FILE"
-        rc=${PIPESTATUS[0]}
-        rm -rf "$dir"
-        return "$rc"
-    }
-    deploy_production || echo "Vercel deploy failed" | tee -a "$LOG_FILE"
-
-    # Schedule posts via Blotato
-    cd "$PROJECT_DIR/marketing-agents"
-    node scripts/schedule-blotato-posts.js 2>&1 | tee -a "$LOG_FILE" || echo "Blotato scheduling failed" | tee -a "$LOG_FILE"
-    cd "$PROJECT_DIR"
+    # Posts are scheduled AFTER the push further down, not here. Images only go
+    # live on www.ticketscan.io once that push deploys the `tickethawk` project;
+    # the `vercel --prod` block that used to sit here deployed the `web`
+    # project, which has owned no domain since 2026-09-03, so it published
+    # nothing — while running a full prerender against Ticketmaster every day.
 fi
 
 run_agent "Agent 4: Paid Ads Manager"          "$PROMPTS_DIR/04-paid-ads-daily.md"
@@ -252,23 +216,32 @@ run_agent "Agent 8: Growth & Retention"        "$PROMPTS_DIR/08-growth-retention
 echo "" | tee -a "$LOG_FILE"
 echo ">>> Committing outputs — $(date +%H:%M:%S)" | tee -a "$LOG_FILE"
 cd "$PROJECT_DIR"
-# Commit agent deliverables AND any source the agents edited. `vercel --prod`
-# uploads the working directory, not a git ref, so a web/src edit ships to
-# production whether or not it is committed. Leaving it untracked let prod
-# drift from git silently for days. Recording it here means `git log` is an
-# accurate account of what is live, and a bad edit can be found and reverted.
+# Commit agent deliverables AND any source the agents edited, so `git log` is an
+# accurate account of what is live and a bad edit can be found and reverted.
+# Production deploys from origin/main (Vercel `tickethawk` + Railway), so nothing
+# here is live until the push below.
 COMMIT_PATHS=(marketing-agents/output web/src web/src/data/combos.generated.json web/src/data/ticketnetwork.generated.json web/src/data/teams.generated.json data/venue-ids.json)
 if [ "$DRY_RUN" = "1" ]; then
     echo "[DRY_RUN] Skipping output commit and push" | tee -a "$LOG_FILE"
-elif [ -n "$(git status --porcelain -- "${COMMIT_PATHS[@]}")" ]; then
-    echo "Agent-edited source (review these):" | tee -a "$LOG_FILE"
-    git status --porcelain -- web/src | tee -a "$LOG_FILE"
-    git add -- "${COMMIT_PATHS[@]}"
-    git commit -m "Daily marketing agent output — $DATE
+else
+    if [ -n "$(git status --porcelain -- "${COMMIT_PATHS[@]}")" ]; then
+        echo "Agent-edited source (review these):" | tee -a "$LOG_FILE"
+        git status --porcelain -- web/src | tee -a "$LOG_FILE"
+        git add -- "${COMMIT_PATHS[@]}"
+        git commit -m "Daily marketing agent output — $DATE
 
 Automated daily run of all 8 marketing agents.
 See marketing-agents/output/ for agent deliverables.
-Any web/src changes were made by the agents and are already live." | tee -a "$LOG_FILE"
+Any web/src changes were made by the agents; they go live with this push." | tee -a "$LOG_FILE"
+    else
+        echo "No output changes to commit" | tee -a "$LOG_FILE"
+    fi
+
+    # Push whenever local main is ahead, not only when the block above committed.
+    # The social-image commit happens earlier and its paths are not in
+    # COMMIT_PATHS, so on a day with no other output it was never pushed and the
+    # images never went live.
+    #
     # Push ONLY from main. `git push origin main` pushes the LOCAL main ref, so
     # when the tree is on a feature branch it tries to push a stale main, is
     # rejected non-fast-forward, and the `||` swallows it — output then sits
@@ -276,14 +249,38 @@ Any web/src changes were made by the agents and are already live." | tee -a "$LO
     # main implicitly: production deploys from origin/main.
     BRANCH=$(git rev-parse --abbrev-ref HEAD)
     if [ "$BRANCH" = "main" ]; then
-        git push origin main 2>&1 | tee -a "$LOG_FILE" || echo "Push failed" | tee -a "$LOG_FILE"
+        git fetch origin main --quiet 2>&1 | tee -a "$LOG_FILE"
+        AHEAD=$(git rev-list --count origin/main..main 2>/dev/null || echo 0)
+        if [ "$AHEAD" -gt 0 ]; then
+            git push origin main 2>&1 | tee -a "$LOG_FILE"
+            if [ "${PIPESTATUS[0]}" -ne 0 ]; then echo "Push failed" | tee -a "$LOG_FILE"; fi
+        else
+            echo "Nothing to push" | tee -a "$LOG_FILE"
+        fi
     else
         echo "WARNING: on branch '$BRANCH', not main. Output committed locally, NOT pushed." | tee -a "$LOG_FILE"
         echo "WARNING: production deploys from origin/main, so these changes are NOT live." | tee -a "$LOG_FILE"
     fi
-else
-    echo "No output changes to commit" | tee -a "$LOG_FILE"
 fi
+
+# Schedule posts via Blotato — after the push, because mediaUrls point at
+# www.ticketscan.io and today's images exist there only once that push has
+# deployed. The scheduler waits (MEDIA_WAIT_SECONDS, default 30 min) for every
+# image to answer 200 and skips any post whose image never does. It also skips
+# posts already in scheduled-log.json and posts whose time has passed; see the
+# header of schedule-blotato-posts.js. Under DRY_RUN it reports what it would
+# send and sends nothing.
+echo "" | tee -a "$LOG_FILE"
+echo ">>> Scheduling posts via Blotato — $(date +%H:%M:%S)" | tee -a "$LOG_FILE"
+echo "-------------------------------------------" | tee -a "$LOG_FILE"
+cd "$PROJECT_DIR/marketing-agents"
+if [ "$DRY_RUN" = "1" ]; then
+    node scripts/schedule-blotato-posts.js --dry-run 2>&1 | tee -a "$LOG_FILE"
+else
+    node scripts/schedule-blotato-posts.js 2>&1 | tee -a "$LOG_FILE"
+fi
+if [ "${PIPESTATUS[0]}" -ne 0 ]; then echo "Blotato scheduling failed" | tee -a "$LOG_FILE"; fi
+cd "$PROJECT_DIR"
 
 # Greppable failure signal. A dead key now surfaces on day one instead of day thirty.
 echo "" | tee -a "$LOG_FILE"
