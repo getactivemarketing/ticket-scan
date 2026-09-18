@@ -8,7 +8,9 @@ import { existsSync, mkdirSync, readFileSync, renameSync, writeFileSync } from '
 import { dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { pickVenueDetailed, nameAfterAt, pickVenueFromEvents } from '../src/lib/venue-resolve.mjs';
+import { loadEnv } from './load-env.mjs';
 
+loadEnv(); // run-daily.sh does not export the key; see load-env.mjs
 const KEY = process.env.TICKETMASTER_API_KEY;
 if (!KEY) {
   console.error('TICKETMASTER_API_KEY is required.');

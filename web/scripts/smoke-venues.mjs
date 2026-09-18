@@ -9,7 +9,9 @@
 // look the same in the output.
 import { readFileSync } from 'node:fs';
 import { citiesMatch, normalizeVenueName } from '../src/lib/venue-resolve.mjs';
+import { loadEnv } from './load-env.mjs';
 
+loadEnv(); // run-daily.sh does not export the key; see load-env.mjs
 const KEY = process.env.TICKETMASTER_API_KEY;
 if (!KEY) { console.error('TICKETMASTER_API_KEY is required.'); process.exit(1); }
 

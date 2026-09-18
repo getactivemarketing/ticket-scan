@@ -39,7 +39,9 @@
 // deploy.
 import { readFileSync } from 'node:fs';
 import { LEAGUE_CLASSIFICATION } from '../src/lib/team-resolve.mjs';
+import { loadEnv } from './load-env.mjs';
 
+loadEnv(); // run-daily.sh does not export the key; see load-env.mjs
 const KEY = process.env.TICKETMASTER_API_KEY;
 if (!KEY) { console.error('TICKETMASTER_API_KEY is required.'); process.exit(1); }
 

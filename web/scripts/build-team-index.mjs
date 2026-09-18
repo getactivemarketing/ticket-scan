@@ -8,7 +8,9 @@
 import { existsSync, readFileSync, writeFileSync } from 'node:fs';
 import { pickAttraction, LEAGUE_CLASSIFICATION } from '../src/lib/team-resolve.mjs';
 import { normalizeName } from '../src/lib/tn-slug.mjs';
+import { loadEnv } from './load-env.mjs';
 
+loadEnv(); // run-daily.sh does not export the key; see load-env.mjs
 const KEY = process.env.TICKETMASTER_API_KEY;
 if (!KEY) {
   console.error('TICKETMASTER_API_KEY is required.');
