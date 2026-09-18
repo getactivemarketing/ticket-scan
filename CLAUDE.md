@@ -340,6 +340,13 @@ tickethawk-api service, mirrored to `~/.config/ticketscan/marketing.env` as
 - Activity: User action logs
 - Email Drip: Campaign stats + manual trigger
 
+## Current state / handoff
+
+`docs/HANDOFF.md` carries the live operational state: what is broken right now,
+what the scheduled jobs will do, and the ordered pick-up list. Read it before
+touching the marketing automation. Note the repo moved to `~/Sites/ticketscan`
+on 2026-09-16 — macOS refuses background launchd jobs access to external drives.
+
 ## Build and rate limits
 
 The build is the fragile part of this project. Two independent limits apply:
