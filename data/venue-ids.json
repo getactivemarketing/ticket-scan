@@ -1,5 +1,5 @@
 {
-  "builtAt": "2026-09-26T10:13:33.436Z",
+  "builtAt": "2026-09-27T10:13:23.196Z",
   "counts": {
     "resolved": 185,
     "unresolved": 0,
@@ -200,23 +200,23 @@
       "attractionId": "K8vZ9171_37",
       "matchedCity": "Tucson",
       "count": 5,
-      "totalEvents": 9
+      "totalEvents": 8
     },
     "doyt-perry-stadium": {
       "teamName": "Bowling Green Falcons Football",
       "teamSlug": "bowling-green-falcons-football",
       "attractionId": "K8vZ9175Bv7",
       "matchedCity": "Bowling Green",
-      "count": 5,
-      "totalEvents": 8
+      "count": 4,
+      "totalEvents": 7
     },
     "doak-campbell-stadium": {
       "teamName": "Florida State Seminoles Football",
       "teamSlug": "florida-state-seminoles-football",
       "attractionId": "K8vZ9171qu0",
       "matchedCity": "Tallahassee",
-      "count": 5,
-      "totalEvents": 9
+      "count": 4,
+      "totalEvents": 8
     },
     "bobby-dodd-stadium": {
       "teamName": "Georgia Tech Yellow Jackets Football",
@@ -224,7 +224,7 @@
       "attractionId": "K8vZ9171zR0",
       "matchedCity": "Atlanta",
       "count": 4,
-      "totalEvents": 9
+      "totalEvents": 8
     },
     "david-booth-kansas-memorial-stadium": {
       "teamName": "Kansas Jayhawks Football",
@@ -240,15 +240,15 @@
       "attractionId": "K8vZ9171STV",
       "matchedCity": "Manhattan",
       "count": 4,
-      "totalEvents": 9
+      "totalEvents": 8
     },
     "fmol-health-st-francis-stadium": {
       "teamName": "Louisiana Monroe Warhawks Football",
       "teamSlug": "louisiana-monroe-warhawks-football",
       "attractionId": "K8vZ917GUL7",
       "matchedCity": "Monroe",
-      "count": 5,
-      "totalEvents": 9
+      "count": 4,
+      "totalEvents": 8
     },
     "johnny-red-floyd-stadium": {
       "teamName": "Middle Tennessee Blue Raiders Football",
@@ -256,15 +256,15 @@
       "attractionId": "K8vZ917Gpgf",
       "matchedCity": "Murfreesboro",
       "count": 4,
-      "totalEvents": 9
+      "totalEvents": 8
     },
     "davis-wade-stadium": {
       "teamName": "Mississippi State Bulldogs Football",
       "teamSlug": "mississippi-state-bulldogs-football",
       "attractionId": "K8vZ917G2C7",
       "matchedCity": "Mississippi State",
-      "count": 6,
-      "totalEvents": 9
+      "count": 5,
+      "totalEvents": 8
     },
     "bowers-stadium": {
       "teamName": "Sam Houston State Football",
@@ -272,7 +272,7 @@
       "attractionId": "K8vZ91756Pf",
       "matchedCity": "Huntsville",
       "count": 4,
-      "totalEvents": 9
+      "totalEvents": 8
     },
     "renasant-stadium": {
       "teamName": "Southern Mississippi Football",
@@ -280,7 +280,7 @@
       "attractionId": "K8vZ9171nC7",
       "matchedCity": "Hattiesburg",
       "count": 4,
-      "totalEvents": 7
+      "totalEvents": 6
     },
     "amon-g-carter-stadium": {
       "teamName": "TCU Horned Frogs Football",
@@ -288,15 +288,15 @@
       "attractionId": "K8vZ9171Jk7",
       "matchedCity": "Fort Worth",
       "count": 5,
-      "totalEvents": 9
+      "totalEvents": 8
     },
     "galaxy-stadium": {
       "teamName": "Texas Tech Red Raiders Football",
       "teamSlug": "texas-tech-red-raiders-football",
       "attractionId": "K8vZ9175V6f",
       "matchedCity": "Lubbock",
-      "count": 5,
-      "totalEvents": 9
+      "count": 4,
+      "totalEvents": 8
     },
     "mcguirk-alumni-stadium": {
       "teamName": "UMass Football",
@@ -304,7 +304,7 @@
       "attractionId": "K8vZ9171E1V",
       "matchedCity": "Amherst",
       "count": 4,
-      "totalEvents": 8
+      "totalEvents": 7
     },
     "space-city-financial-stadium": {
       "teamName": "University of Houston Cougars Football",
@@ -312,7 +312,7 @@
       "attractionId": "K8vZ9171MWf",
       "matchedCity": "Houston",
       "count": 4,
-      "totalEvents": 9
+      "totalEvents": 8
     },
     "lane-stadium": {
       "teamName": "Virginia Tech Hokies College Football",
@@ -320,15 +320,15 @@
       "attractionId": "K8vZ9171Jn7",
       "matchedCity": "Blacksburg",
       "count": 4,
-      "totalEvents": 9
+      "totalEvents": 8
     },
     "mountaineer-field-at-milan-puskar-stadium": {
       "teamName": "West Virginia Mountaineers",
       "teamSlug": "west-virginia-mountaineers",
       "attractionId": "K8vZ9171MHf",
       "matchedCity": "Morgantown",
-      "count": 5,
-      "totalEvents": 9
+      "count": 4,
+      "totalEvents": 8
     }
   }
 }
