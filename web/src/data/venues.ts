@@ -3,12 +3,14 @@
 
 import type { Venue, VenueSection } from './venue-types';
 import { stadiums } from './stadiums/index.ts';
+import { teamVenues } from './team-venues/index.ts';
 
 // Re-exported so every existing `import { Venue } from '@/data/venues'` keeps
 // working. Do not remove: the type is imported from here across the app.
 export type { Venue, VenueSection };
 
-const arenaVenues: Record<string, Venue> = {
+// Exported only so a test can check new batches against it for slug collisions.
+export const arenaVenues: Record<string, Venue> = {
   // Orlando
   'kia-center': {
     id: 'kia-center',
@@ -737,7 +739,7 @@ const arenaVenues: Record<string, Venue> = {
   }
 };
 
-export const venues: Record<string, Venue> = { ...arenaVenues, ...stadiums };
+export const venues: Record<string, Venue> = { ...arenaVenues, ...stadiums, ...teamVenues };
 
 // Get venue by name (fuzzy match)
 export function findVenue(venueName: string): Venue | null {

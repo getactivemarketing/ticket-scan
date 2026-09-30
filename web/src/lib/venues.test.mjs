@@ -6,6 +6,8 @@ import assert from 'node:assert/strict';
 // the test runner does not resolve.
 const { venues } = await import('../data/venues.ts');
 const { stadiums, batches } = await import('../data/stadiums/index.ts');
+const { teamVenueBatches } = await import('../data/team-venues/index.ts');
+const { teams } = await import('../data/teams.ts');
 
 const TIERS = new Set(['floor', 'lower', 'club', 'upper', 'suite']);
 
@@ -48,9 +50,13 @@ test('stadiums compose into venues without collisions', () => {
 // a collision can be seen is by comparing the batches pairwise, before
 // they're composed. Do not "simplify" this back into a check on the
 // composed record.
-test('no two batches define the same slug', () => {
+test('no two batches define the same slug', async () => {
   const seen = new Map();
-  for (const [batchName, record] of Object.entries(batches)) {
+  // The original arena record is a batch too: a new team venue reusing one of
+  // its slugs would silently replace an existing guide.
+  const { arenaVenues } = await import('../data/venues.ts');
+  const all = { ...batches, ...teamVenueBatches, arenas: arenaVenues };
+  for (const [batchName, record] of Object.entries(all)) {
     for (const slug of Object.keys(record)) {
       const prior = seen.get(slug);
       assert.ok(
@@ -85,5 +91,17 @@ test('every venue has a backend id, and every backend id has a venue', async () 
   }
   for (const slug of Object.keys(ids)) {
     assert.ok(venues[slug], `id map has "${slug}" with no matching venue`);
+  }
+});
+
+test('every homeVenueSlug points at a venue that lists the team', () => {
+  // The team page links to /venues/<homeVenueSlug>, and build-venue-ids falls
+  // back to a home team's attraction by exact name. A typo in either silently
+  // breaks the link or the fallback.
+  for (const t of Object.values(teams)) {
+    if (!t.homeVenueSlug) continue;
+    const v = venues[t.homeVenueSlug];
+    assert.ok(v, `${t.slug}: homeVenueSlug "${t.homeVenueSlug}" has no venue`);
+    assert.ok((v.homeTeams || []).includes(t.name), `${t.slug}: ${t.homeVenueSlug} does not list "${t.name}" in homeTeams`);
   }
 });

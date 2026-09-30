@@ -233,11 +233,12 @@ export function formatEventDayParts(iso?: string | null): { day: string; month: 
  * venue panel, no capacity, no seating-guide link, no city link, no schedule —
  * nothing on the page but the team's own name.
  *
- * 60 of 261 teams have no homeVenueSlug (29 MLB, 19 NHL, 9 NBA, 3 college),
- * and every one of them has games today, so this returns false for the whole
- * roster right now. It goes live for 29 pages at once when MLB's season ends
- * in November, which is exactly why it is a tested function and not an inline
- * condition nobody can exercise until then.
+ * Since 2026-09-30 only 2 of 261 teams have no homeVenueSlug: the Toronto
+ * Blue Jays and the Buffalo Bulls, whose venues Ticketmaster lists no home
+ * events for (see src/data/team-venues/unlisted.ts). Before that it was 60,
+ * and this would have gone live for 29 MLB pages at once in November. It is
+ * a tested function, not an inline condition, because it only fires in an
+ * offseason nobody can exercise on demand.
  */
 export function isThinTeamPage(
   homeVenueSlug: string | undefined,

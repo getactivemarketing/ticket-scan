@@ -119,14 +119,10 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 
   // A team with no home venue AND no upcoming games has nothing on its page but
   // its own name — no venue panel, no capacity, no seating guide, no city link,
-  // no schedule. 60 of 261 teams have no homeVenueSlug (29 MLB, 19 NHL, 9 NBA,
-  // 3 college), so this goes live for 29 pages at once when MLB's offseason
-  // arrives in November.
-  //
-  // The spec's offseason design assumes a venue panel is there to carry the
-  // page, and the stadium spec explicitly made arena backfill a non-goal, so
-  // the data gap is deliberate and stays. What must not happen is asking Google
-  // to index a page with nothing on it — that is the scaled-content shape both
+  // no schedule. Only 2 of 261 teams have no homeVenueSlug now (Blue Jays,
+  // Buffalo Bulls; see src/data/team-venues/unlisted.ts), after the
+  // 2026-09-30 backfill of MLB, NBA and NHL venues. What must not happen is
+  // asking Google to index a page with nothing on it — the scaled-content shape both
   // specs are written against. noindex,follow keeps the URL working and its
   // links crawlable, and lifts itself automatically once a schedule appears.
   const events = await getEvents(RESOLVED[slug].attractionId);

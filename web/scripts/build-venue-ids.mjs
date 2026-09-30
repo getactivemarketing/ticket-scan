@@ -46,6 +46,21 @@ const PINNED = {
   'footprint-center': 'KovZpZAE617A',
   'wells-fargo-center': 'KovZ917AiMF',
   'scotiabank-arena': 'KovZpZAFFE1A',
+  // Ticketmaster files these under a neighbourhood or suburb (Queens, Bronx,
+  // Saint Louis, Saint Paul, Belmont Park) or, for Canadian Tire Centre, a
+  // Canadian venue the US-only search cannot reach, so the name search never
+  // matches the city on the guide. Each id was checked 2026-09-30 against its
+  // own events: the home team's games are there.
+  'citi-field': 'KovZpZAalvtA',
+  'yankee-stadium': 'KovZpZA6t77A',
+  'busch-stadium': 'KovZpapBwe',
+  'enterprise-center': 'KovZpa2DJe',
+  'grand-casino-arena': 'KovZpZA6AJdA',
+  'ubs-arena': 'KovZ917APye',
+  'canadian-tire-centre': 'KovZpZA7dnJA',
+  // The name search picks a bare "SAP Center" record with no events; the
+  // Sharks' games are all under "SAP Center at San Jose". Checked 2026-09-30.
+  'sap-center': 'KovZpZAJelvA',
 };
 
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));

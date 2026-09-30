@@ -1,10 +1,10 @@
 {
-  "builtAt": "2026-09-30T10:20:33.522Z",
+  "builtAt": "2026-09-30T18:22:01.769Z",
   "counts": {
-    "resolved": 185,
+    "resolved": 242,
     "unresolved": 0,
-    "ambiguous": 50,
-    "viaAttraction": 17
+    "ambiguous": 72,
+    "viaAttraction": 22
   },
   "ids": {
     "kia-center": "KovZpZAEvEEA",
@@ -191,7 +191,64 @@
     "houchens-industries-lt-smith-stadium": "KovZpZAEF7lA",
     "stafford-smith-field-at-waldo-stadium": "KovZpZA1l7lA",
     "camp-randall-stadium": "KovZpZA17lEA",
-    "jonah-field-at-war-memorial-stadium": "KovZpZAJvFvA"
+    "jonah-field-at-war-memorial-stadium": "KovZpZAJvFvA",
+    "chase-field": "KovZpZA6tdtA",
+    "sutter-health-park": "KovZpZA7kl6A",
+    "truist-park": "KovZpZAtv11A",
+    "oriole-park-at-camden-yards": "KovZpZAa1elA",
+    "fenway-park": "KovZpZAaaI7A",
+    "rate-field": "KovZpaFPJe",
+    "great-american-ball-park": "KovZpZA6tdIA",
+    "progressive-field": "KovZpZA6A1JA",
+    "coors-field": "KovZpZA6t7kA",
+    "comerica-park": "KovZpZAdEatA",
+    "daikin-park": "KovZpZAJJAtA",
+    "kauffman-stadium": "KovZpa9Ybe",
+    "angel-stadium": "KovZpZA7dkIA",
+    "dodger-stadium": "KovZpa2W1e",
+    "loandepot-park": "KovZpZAId1JA",
+    "american-family-field": "KovZpZA1FlkA",
+    "target-field": "KovZpZAEdatA",
+    "citi-field": "KovZpZAalvtA",
+    "yankee-stadium": "KovZpZA6t77A",
+    "citizens-bank-park": "KovZpZAa1neA",
+    "pnc-park": "KovZpZA1nE6A",
+    "petco-park": "KovZpa4cFe",
+    "oracle-park": "KovZpZAJF7EA",
+    "t-mobile-park": "KovZpZAEevAA",
+    "busch-stadium": "KovZpapBwe",
+    "tropicana-field": "KovZpa4Rfe",
+    "globe-life-field": "KovZ917A-X0",
+    "nationals-park": "KovZpZA1J67A",
+    "spectrum-center": "KovZpZA6AEIA",
+    "rocket-arena": "KovZpZAF7dtA",
+    "gainbridge-fieldhouse": "KovZpZA6keIA",
+    "intuit-dome": "KovZ917Acq0",
+    "fedexforum": "KovZpZAE6vlA",
+    "paycom-center": "KovZpa2Wre",
+    "moda-center": "KovZpa6MXe",
+    "frost-bank-center": "KovZpZAJJEdA",
+    "delta-center": "KovZpZAdEtkA",
+    "honda-center": "KovZpakTme",
+    "keybank-center": "KovZpZAaFEaA",
+    "scotiabank-saddledome": "KovZpZAFFl7A",
+    "lenovo-center": "KovZpZAdakJA",
+    "nationwide-arena": "KovZpZA6kelA",
+    "rogers-place": "KovZpZAIdaaA",
+    "amerant-bank-arena": "KovZpZAEeavA",
+    "grand-casino-arena": "KovZpZA6AJdA",
+    "bell-centre": "KovZpauRJe",
+    "bridgestone-arena": "KovZpZA6taAA",
+    "ubs-arena": "KovZ917APye",
+    "canadian-tire-centre": "KovZpZA7dnJA",
+    "ppg-paints-arena": "KovZpZA6taeA",
+    "sap-center": "KovZpZAJelvA",
+    "enterprise-center": "KovZpa2DJe",
+    "benchmark-international-arena": "KovZpZA6k7IA",
+    "rogers-arena": "KovZpZAFFInA",
+    "canada-life-centre": "KovZpaK5me",
+    "albertsons-stadium": "KovZpZAEeAIA",
+    "simmons-bank-liberty-stadium": "KovZpZA1eJnA"
   },
   "viaAttraction": {
     "casino-del-sol-stadium": {
@@ -329,6 +386,46 @@
       "matchedCity": "Morgantown",
       "count": 4,
       "totalEvents": 8
+    },
+    "scotiabank-saddledome": {
+      "teamName": "Calgary Flames",
+      "teamSlug": "calgary-flames",
+      "attractionId": "K8vZ9171oB7",
+      "matchedCity": "Calgary",
+      "count": 9,
+      "totalEvents": 20
+    },
+    "rogers-place": {
+      "teamName": "Edmonton Oilers",
+      "teamSlug": "edmonton-oilers",
+      "attractionId": "K8vZ9171oy7",
+      "matchedCity": "Edmonton",
+      "count": 9,
+      "totalEvents": 20
+    },
+    "bell-centre": {
+      "teamName": "Montreal Canadiens",
+      "teamSlug": "montreal-canadiens",
+      "attractionId": "K8vZ9171oyf",
+      "matchedCity": "Montreal",
+      "count": 7,
+      "totalEvents": 20
+    },
+    "rogers-arena": {
+      "teamName": "Vancouver Canucks",
+      "teamSlug": "vancouver-canucks",
+      "attractionId": "K8vZ9171oH7",
+      "matchedCity": "Vancouver",
+      "count": 9,
+      "totalEvents": 20
+    },
+    "canada-life-centre": {
+      "teamName": "Winnipeg Jets",
+      "teamSlug": "winnipeg-jets",
+      "attractionId": "K8vZ917Cly7",
+      "matchedCity": "Winnipeg",
+      "count": 9,
+      "totalEvents": 20
     }
   }
 }
