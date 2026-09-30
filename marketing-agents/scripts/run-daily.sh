@@ -220,7 +220,16 @@ cd "$PROJECT_DIR"
 # accurate account of what is live and a bad edit can be found and reverted.
 # Production deploys from origin/main (Vercel `tickethawk` + Railway), so nothing
 # here is live until the push below.
-COMMIT_PATHS=(marketing-agents/output web/src web/src/data/combos.generated.json web/src/data/ticketnetwork.generated.json web/src/data/teams.generated.json data/venue-ids.json)
+# The calendar is committed with the day's output. It is tracked, so leaving it
+# uncommitted meant any checkout wiped the day's entries (2026-08-27). Trim it
+# first so the file does not grow forever; see trim-content-calendar.js.
+if [ "$DRY_RUN" = "1" ]; then
+    node marketing-agents/scripts/trim-content-calendar.js --dry-run 2>&1 | tee -a "$LOG_FILE"
+else
+    node marketing-agents/scripts/trim-content-calendar.js 2>&1 | tee -a "$LOG_FILE"
+fi
+if [ "${PIPESTATUS[0]}" -ne 0 ]; then echo "WARNING: calendar trim failed" | tee -a "$LOG_FILE"; fi
+COMMIT_PATHS=(marketing-agents/output marketing-agents/content-calendar.json web/src web/src/data/combos.generated.json web/src/data/ticketnetwork.generated.json web/src/data/teams.generated.json data/venue-ids.json)
 if [ "$DRY_RUN" = "1" ]; then
     echo "[DRY_RUN] Skipping output commit and push" | tee -a "$LOG_FILE"
 else
