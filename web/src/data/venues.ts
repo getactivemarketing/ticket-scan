@@ -677,8 +677,9 @@ const arenaVenues: Record<string, Venue> = {
     description: 'Built in 1914 at the corner of Clark and Addison in the Lakeview neighborhood, Wrigley is known for its ivy-covered outfield walls (planted 1937), the hand-turned center field scoreboard (also 1937), and a daytime-baseball heritage that lasted until lights were finally installed for the first night game on August 8, 1988. The 2014 to 2019 1060 Project renovation modernized concourses, suites, and player facilities while preserving the brick-and-ivy character. Field Box and Bullpen Box seats run the infield, the bleachers wrap the outfield as their own general-admission ecosystem, and the rooftop clubs across Sheffield and Waddell sell separately ticketed seats with Wrigley views. TicketScan tracks when tickets for Wrigley Field events go on sale, including presale windows that open before the public onsale.',
     keywords: ['Wrigley Field tickets', 'Cubs tickets', 'Chicago Cubs tickets', 'Wrigley Field seating chart', 'Cubs vs Cardinals tickets', 'Cubs vs Reds tickets', 'Wrigley Field bleachers tickets', 'Wrigley rooftop seats', 'Cubs day game tickets', 'best seats Wrigley Field', 'Wrigley Field standing room', 'Cubs schedule tickets', 'Cubs ticket prices'],
     sections: [
-      // Premium / Floor-equivalent (behind home plate)
-      { name: 'Marquee Box', tier: 'floor' },
+      // Premium (behind home plate). A ballpark has no floor, and the floor tier
+      // renders as "Floor/Courtside" on the page.
+      { name: 'Marquee Box', tier: 'club' },
       // Lower Bowl - Infield
       { name: 'Field Box Infield', tier: 'lower' },
       { name: 'Field Box Outfield', tier: 'lower' },

@@ -62,10 +62,13 @@ test('no two batches define the same slug', () => {
   }
 });
 
-test('football stadiums do not use the floor tier', () => {
+test('stadiums do not use the floor tier', () => {
   // tierPricing labels `floor` "Floor/Courtside". There is no floor at a
-  // football game, and the label would render as a price tier on the page.
-  for (const [key, v] of Object.entries(stadiums)) {
+  // football or baseball game, and the label would render as a price tier on
+  // the page. This checks every stadium, not just the football batch: Wrigley
+  // sat outside that batch and shipped the label anyway.
+  const all = { ...stadiums, ...Object.fromEntries(Object.entries(venues).filter(([, v]) => v.type === 'stadium')) };
+  for (const [key, v] of Object.entries(all)) {
     for (const s of v.sections) {
       assert.notEqual(s.tier, 'floor', `${key}: section "${s.name}" uses the floor tier`);
     }
