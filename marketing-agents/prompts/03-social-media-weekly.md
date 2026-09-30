@@ -59,7 +59,7 @@ Create 1 high-effort content piece for the week:
 - **Twitter/X thread:** "We tracked ticket prices for [Event] over 30 days. Here's what happened." (5-8 tweets with data)
 - **Instagram carousel:** "5 ways to never overpay for tickets again" (design spec + copy for 5-8 slides)
 - **LinkedIn article:** Industry insight piece on ticket pricing trends, World Cup economics, or event industry analysis
-- **Video script:** Short-form explainer for TikTok/Reels: "How to compare ticket prices in 30 seconds"
+- **Video script:** Short-form explainer for Instagram Reels: "How to compare ticket prices in 30 seconds"
 
 **Output:** Complete content piece ready for publishing.
 
