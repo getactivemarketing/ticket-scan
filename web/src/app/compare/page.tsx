@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { useAuth } from '@/context/AuthContext';
 import { useRouter } from 'next/navigation';
 import api from '@/lib/api';
+import { formatEtDate } from '@/lib/events';
 
 interface CompareEvent {
   id: string;
@@ -219,15 +220,15 @@ export default function ComparePage() {
     }
   };
 
-  const today = new Date().toISOString().split('T')[0];
+  // The viewer's own date. toISOString() is UTC, which is already tomorrow on
+  // a US evening and would block picking today.
+  const today = new Date().toLocaleDateString('en-CA');
 
   const formatDate = (dateStr: string) => {
     if (!dateStr) return 'TBA';
-    return new Date(dateStr).toLocaleDateString('en-US', {
-      weekday: 'short',
-      month: 'short',
-      day: 'numeric',
-    });
+    // Event dates are YYYY-MM-DD. new Date() reads that as UTC midnight, the
+    // evening before in the US; formatEtDate prints the calendar date as is.
+    return formatEtDate(dateStr) || 'TBA';
   };
 
   const formatPrice = (price: number | null | undefined) => {

@@ -5,6 +5,7 @@ import { useAuth } from '@/context/AuthContext';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import api from '@/lib/api';
+import { formatEtDate } from '@/lib/events';
 
 interface Favorite {
   id: number;
@@ -134,11 +135,9 @@ export default function FavoritesPage() {
 
   const formatDate = (dateStr: string) => {
     if (!dateStr) return 'TBA';
-    return new Date(dateStr).toLocaleDateString('en-US', {
-      weekday: 'short',
-      month: 'short',
-      day: 'numeric',
-    });
+    // Event dates are YYYY-MM-DD. new Date() reads that as UTC midnight, the
+    // evening before in the US; formatEtDate prints the calendar date as is.
+    return formatEtDate(dateStr) || 'TBA';
   };
 
   const groupedFavorites = FAVORITE_TYPES.map((type) => ({

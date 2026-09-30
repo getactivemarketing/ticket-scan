@@ -75,7 +75,9 @@ export default function DashboardPage() {
   };
 
   // Get today's date in YYYY-MM-DD format for min date
-  const today = new Date().toISOString().split('T')[0];
+  // The viewer's own date. toISOString() is UTC, which is already tomorrow on
+  // a US evening and would block picking today.
+  const today = new Date().toLocaleDateString('en-CA');
 
   const inputClass =
     'w-full px-4 py-3 bg-deep-void border border-navy-hairline rounded-[6px] text-bone outline-none ' +

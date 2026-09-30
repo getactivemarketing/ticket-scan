@@ -965,6 +965,13 @@ const pool = new Pool({
   ssl: process.env.NODE_ENV === 'production' ? { rejectUnauthorized: false } : false
 });
 
+// watchlist.event_date is a TIMESTAMP holding an event's calendar date at
+// midnight. node-pg turns it into a Date, which serializes as UTC midnight
+// ("2026-09-05T00:00:00.000Z") — the evening before in every US timezone, so
+// the watchlist and admin pages showed each event a day early. Send the
+// calendar date as written; the frontend formats YYYY-MM-DD without shifting.
+const EVENT_DATE_SQL = "to_char(event_date, 'YYYY-MM-DD') AS event_date";
+
 // Test database connection
 pool.query('SELECT NOW()', (err, res) => {
   if (err) {
@@ -1378,7 +1385,7 @@ app.post('/api/watchlist', authenticateToken, async (req, res) => {
     const result = await pool.query(
       `INSERT INTO watchlist (user_id, event_id, event_name, event_date, venue, city, target_price)
        VALUES ($1, $2, $3, $4, $5, $6, $7)
-       RETURNING id, event_id, event_name, event_date, venue, city, target_price, created_at`,
+       RETURNING id, event_id, event_name, ${EVENT_DATE_SQL}, venue, city, target_price, created_at`,
       [userId, eventId, eventName, eventDate || null, venue || null, city || null, targetPrice || null]
     );
 
@@ -1402,7 +1409,7 @@ app.get('/api/watchlist', authenticateToken, async (req, res) => {
     const userId = req.user.userId;
 
     const result = await pool.query(
-      `SELECT id, event_id, event_name, event_date, venue, city, target_price, created_at
+      `SELECT id, event_id, event_name, ${EVENT_DATE_SQL}, venue, city, target_price, created_at
        FROM watchlist
        WHERE user_id = $1
        ORDER BY created_at DESC`,
@@ -2386,7 +2393,7 @@ app.get('/api/admin/watchlist', authenticateAdmin, async (req, res) => {
         w.id,
         w.event_id,
         w.event_name,
-        w.event_date,
+        ${EVENT_DATE_SQL},
         w.venue,
         w.city,
         w.target_price,
@@ -2546,6 +2553,7 @@ app.get('/api/admin/popular-events', authenticateAdmin, async (req, res) => {
         event_id,
         venue,
         city,
+        to_char(MIN(event_date), 'YYYY-MM-DD') as event_date,
         COUNT(*) as watch_count,
         MIN(target_price) as min_target,
         MAX(target_price) as max_target,
@@ -3821,7 +3829,7 @@ app.get('/api/watchlist/with-prices', authenticateToken, async (req, res) => {
         w.id,
         w.event_id,
         w.event_name,
-        w.event_date,
+        ${EVENT_DATE_SQL},
         w.venue,
         w.city,
         w.target_price,

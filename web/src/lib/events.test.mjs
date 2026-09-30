@@ -2,7 +2,7 @@ import { test } from 'node:test';
 import assert from 'node:assert/strict';
 
 // Node 24 strips types on import, so these run against the real module.
-const { cleanEvents, cleanTeamEvents, formatEventDayParts, isThinTeamPage } = await import('./events.ts');
+const { cleanEvents, cleanTeamEvents, formatEtDate, formatEventDayParts, isThinTeamPage } = await import('./events.ts');
 
 const ev = (id, name) => ({ id, name });
 
@@ -68,6 +68,14 @@ test('formatEventDayParts rejects junk instead of inventing a date', () => {
 });
 
 // --- Thin team pages -----------------------------------------------------
+
+test('formatEtDate renders a plain calendar date as itself', () => {
+  // The watchlist, favorites, compare and admin pages all print event dates
+  // through this. new Date('2026-09-05') is UTC midnight, the evening before
+  // anywhere in the US, which is how those pages showed events a day early.
+  assert.equal(formatEtDate('2026-09-05'), 'Sat, Sep 5');
+  assert.equal(formatEtDate('2026-09-05', { year: true }), 'Sat, Sep 5, 2026');
+});
 
 test('isThinTeamPage is true only with no venue AND no games', () => {
   // The offseason case this exists for: MLB in November.

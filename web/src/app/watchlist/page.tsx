@@ -6,7 +6,7 @@ import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import api from '@/lib/api';
 import PriceTrendIndicator from '@/components/PriceTrendIndicator';
-import { formatEventDayParts } from '@/lib/events';
+import { formatEtDate, formatEventDayParts } from '@/lib/events';
 import { FOCUS_RING_ON_DEEP_VOID } from '@/lib/a11y';
 
 interface WatchlistItem {
@@ -123,17 +123,9 @@ export default function WatchlistPage() {
 
   const formatDate = (dateStr: string) => {
     if (!dateStr) return 'TBA';
-    // event_date arrives as UTC midnight. Rendered in the viewer's own zone
-    // this can print a different calendar day than the mono date block
-    // above (formatEventDayParts, which is fixed to Eastern) — pin this to
-    // the same zone so the two never disagree.
-    return new Date(dateStr).toLocaleDateString('en-US', {
-      timeZone: 'America/New_York',
-      weekday: 'short',
-      month: 'short',
-      day: 'numeric',
-      year: 'numeric',
-    });
+    // event_date is a YYYY-MM-DD calendar date. formatEtDate prints it as
+    // written, the same way formatEventDayParts does for the date block above.
+    return formatEtDate(dateStr, { year: true }) || 'TBA';
   };
 
   const formatTimeAgo = (dateStr: string | null) => {

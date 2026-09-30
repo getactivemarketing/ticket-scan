@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import { formatEtDate } from '@/lib/events';
 
 interface Stats {
   totalUsers: number;
@@ -47,8 +48,8 @@ interface Activity {
 interface PopularEvent {
   event_id: string;
   event_name: string;
-  venue_name: string;
-  event_date: string;
+  venue: string | null;
+  event_date: string | null;
   watch_count: number;
 }
 
@@ -283,11 +284,11 @@ export default function AdminDashboard() {
                     <div key={idx} className="flex justify-between items-center p-4 bg-gray-700/50 rounded-lg">
                       <div>
                         <p className="text-white font-medium">{event.event_name}</p>
-                        <p className="text-gray-400 text-sm">{event.venue_name}</p>
+                        <p className="text-gray-400 text-sm">{event.venue}</p>
                       </div>
                       <div className="text-right">
                         <p className="text-brand-light font-bold">{event.watch_count} watching</p>
-                        <p className="text-gray-500 text-sm">{formatDate(event.event_date)}</p>
+                        <p className="text-gray-500 text-sm">{event.event_date ? formatEtDate(event.event_date, { year: true }) : 'TBA'}</p>
                       </div>
                     </div>
                   ))}
