@@ -134,7 +134,6 @@ tickethawk/
 ├── package.json          # Backend dependencies
 ├── test-apis.js          # API testing script
 ├── .env.example          # Environment template
-├── DOCUMENTATION.md      # Legacy docs
 └── web/
     └── web/              # Next.js frontend
         ├── src/
