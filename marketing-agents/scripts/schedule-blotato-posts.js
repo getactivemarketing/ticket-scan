@@ -270,9 +270,14 @@ async function schedulePost(entry) {
     }
 
     const result = await res.json();
-    appendToLog({ id: entry.id, postId: result.id ?? null, scheduledAt: new Date().toISOString(), seeded: false });
-    console.log(`  OK   ${entry.id} → ${entry.platform} (${account.username}) — scheduled`);
-    return { id: entry.id, status: 'scheduled', postId: result.id };
+    // Every row before 2026-10-01 logged postId: null — Blotato does not send
+    // its id as `id`. Without it a scheduled post cannot be found to cancel.
+    // Take the first id-shaped field and keep the raw response, so the real
+    // field name is on record after the next run.
+    const postId = result.id ?? result.postSubmissionId ?? result.postId ?? result.submissionId ?? null;
+    appendToLog({ id: entry.id, postId, response: result, scheduledAt: new Date().toISOString(), seeded: false });
+    console.log(`  OK   ${entry.id} → ${entry.platform} (${account.username}) — scheduled${postId ? ` (${postId})` : ''}`);
+    return { id: entry.id, status: 'scheduled', postId };
   } catch (err) {
     console.error(`  FAIL ${entry.id}: ${err.message}`);
     return { id: entry.id, status: 'error', error: err.message };
