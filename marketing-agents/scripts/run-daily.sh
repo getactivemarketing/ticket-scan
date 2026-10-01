@@ -85,6 +85,8 @@ Today's date: $DATE
 Output files should be written to: $OUTPUT_DIR
 Brand voice: Helpful, data-driven, slightly irreverent consumer advocate.
 
+$(cat "$PROJECT_DIR/marketing-agents/PRODUCT-STATUS.md")
+
 Admin API endpoints (use these for posting):
 - POST https://tickethawk-api-production.up.railway.app/api/admin/typefully/post
 - POST https://tickethawk-api-production.up.railway.app/api/admin/typefully/daily-tip

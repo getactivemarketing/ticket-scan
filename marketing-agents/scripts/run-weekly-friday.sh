@@ -54,6 +54,8 @@ echo "===========================================" | tee -a "$LOG_FILE"
 SHARED_CONTEXT="Working directory: $PROJECT_DIR
 Today's date: $DATE
 Output files should be written to: $PROJECT_DIR/marketing-agents/output/
+
+$(cat "$PROJECT_DIR/marketing-agents/PRODUCT-STATUS.md")
 "
 
 FAILED_AGENTS=0

@@ -74,8 +74,8 @@ After writing all posts, re-read each one and ask: "Does this sound like a perso
 - **No TikTok.** TicketScan has no TikTok account, so the scheduler would skip every TikTok post. Do not write any.
 
 ## Content Pillars
-1. **Deal Alerts** — Price drops, best current deals, specific savings examples
-2. **Price Intelligence** — Buy/wait/hold recommendations, data insights, platform comparisons
+1. **Deal Alerts** — Paused while price tracking is down (see PRODUCT-STATUS.md). Use onsale and presale news instead.
+2. **Price Intelligence** — Paused while price tracking is down. General buying advice (fees, all-in prices, speculative listings) is fine; TicketScan price data, buy/wait/hold calls and buy-now signals are not.
 3. **Tips & Education** — Best time to buy, how to compare, money-saving strategies
 4. **World Cup 2026** — Stadium guides, ticket availability, countdown content
 5. **Savings Wins** — Real examples of savings, before/after prices

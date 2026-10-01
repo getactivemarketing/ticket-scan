@@ -85,7 +85,7 @@ Write at least 800 words. Include:
 - Data points or specific examples
 - A comparison angle (TicketScan vs single-source, or cross-platform comparison)
 - Actionable takeaways
-- A CTA at the end: "Compare prices on TicketScan" or "Set a free price alert"
+- A CTA at the end: "Find tickets on TicketScan" or "Check onsale dates on TicketScan" (no price-alert CTAs while price tracking is down; see PRODUCT-STATUS.md)
 
 ### Categories available
 - `guides` — evergreen how-to content
@@ -105,14 +105,22 @@ Write at least 800 words. Include:
 On Friday or Saturday, **do NOT write a new blog draft.** Instead:
 
 1. Pick 1 underperforming venue, city, or blog page
-2. Read the current content in `web/src/data/venues.ts`, `cities.ts`, or `blog.ts`
-3. Update it with:
-   - Fresh event listings or current events for that venue/city
-   - Updated pricing data or trends
+2. Read its current content. Venue guides live in `web/src/data/venues.ts`,
+   `web/src/data/stadiums/*.ts` and `web/src/data/team-venues/*.ts`; cities in
+   `cities.ts`; posts in `blog.ts`
+3. Write a refresh PROPOSAL to
+   `marketing-agents/output/content/refresh-proposals/YYYY-MM-DD-<page-slug>.md`:
+   the file and entry to change, the exact current text, the exact replacement
+   text, and a source URL for every new fact. It can cover:
    - New internal links to related pages
    - Fresh FAQ questions with schema-ready answers
-4. Commit the changes directly to the repo
-5. Write a short note to `marketing-agents/output/content/refresh-log.md` describing what you updated
+   - Corrections to facts that have changed (renames, renovations), with sources
+4. **Do NOT edit anything under `web/src/`.** Anything changed there goes live
+   at the next push with nobody reviewing it. A person applies the proposal.
+5. Never add prices, price ranges, or price trends: TicketScan has no live
+   price data (see PRODUCT-STATUS.md). Never change a venue capacity; those
+   are verified against official sources by hand.
+6. Write a short note to `marketing-agents/output/content/refresh-log.md` naming the proposal
 
 ### 2c. Copy Review + Calendar Audit (Sun only)
 
@@ -127,12 +135,12 @@ On Sunday:
 | Day | Files produced |
 |-----|----------------|
 | Mon/Tue/Wed/Thu | `content-hook.md` + `YYYY-MM-DD-slug.md` (new blog draft with frontmatter) |
-| Fri/Sat | `content-hook.md` + `refresh-log.md` + updated `venues.ts`/`cities.ts`/`blog.ts` |
+| Fri/Sat | `content-hook.md` + `refresh-log.md` + `refresh-proposals/YYYY-MM-DD-<page-slug>.md` |
 | Sun | `content-hook.md` + `next-week-plan.md` + copy edits in place |
 
 ## Handoff Instructions
 
 - Blog drafts stay in `marketing-agents/output/content/` until manually published via `./marketing-agents/scripts/publish-draft.sh <filename>`
-- Page refreshes go live immediately (committed directly, Vercel auto-deploys)
+- Page refreshes are proposals in `marketing-agents/output/content/refresh-proposals/`; nothing goes live until a person applies one
 - Flag any lead magnet opportunities for Email Agent (Agent 5)
 - Note any new keyword opportunities for SEO Agent (Agent 2) in `marketing-agents/output/seo-requests/`
