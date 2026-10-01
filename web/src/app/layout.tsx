@@ -99,7 +99,6 @@ const organizationJsonLd = {
         "https://x.com/ticketscan_io",
         "https://instagram.com/ticketscanapp",
         "https://threads.net/@ticketscanapp",
-        "https://tiktok.com/@ticketscan_io",
       ],
     },
     {

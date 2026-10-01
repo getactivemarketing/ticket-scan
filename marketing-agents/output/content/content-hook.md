@@ -1,8 +1,10 @@
-## Today's Content Hook — 2026-09-30
-**Topic:** California Gov. Gavin Newsom signed AB 1349, a new consumer-protection law targeting speculative “ghost” ticket sales and misleading ticket listings.
-**Angle:** Explain what the law changes for ticket buyers, what it does not magically fix, and why comparing the actual inventory and final prices across Ticketmaster, SeatGeek, and StubHub still matters.
-**Target keyword:** California ghost ticket law 2026
-**Content type:** Blog post / social snippet
+## Today's Content Hook — 2026-10-01
+**Topic:** The Yankees swept Boston and now face the Rays in the 2026 ALDS, with Game 1 set for Saturday, October 3, at Tropicana Field.
+**Angle:** Playoff urgency makes fans reach for the first listing they see. TicketScan can own the useful question: is the cheapest-looking Yankees–Rays ticket actually the cheapest after comparing Ticketmaster, SeatGeek, and StubHub?
+**Target keyword:** Yankees Rays ALDS tickets
+**Content type:** Blog post / social snippet / email hook
 **Priority:** High
 
-**Source notes:** The California Legislative Information page lists AB 1349 as approved September 27, 2026 and chaptered as Chapter 474. CalMatters reports that the law bans sellers from offering tickets they do not own and also covers software used to evade ticket limits. The final bill has disputed carve-outs, so copy should describe the law carefully rather than promise that every resale problem is solved.
+**Verified context:** MLB lists Game 1 for October 3, and USA TODAY's September 30 ticket snapshot listed potential Yankees–Rays ALDS games from about $116 to $149 before fees and inventory changes. Those are time-sensitive snapshots, not promises.
+
+**Email Agent opportunity:** A short "playoff ticket price-check" email with a three-column platform checklist and a free price-alert CTA.
