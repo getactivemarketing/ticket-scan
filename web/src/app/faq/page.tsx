@@ -3,21 +3,21 @@ import Link from 'next/link';
 
 export const metadata: Metadata = {
   title: 'Ticket Buying FAQ - Common Questions Answered',
-  description: 'Answers to common questions about comparing ticket prices, tracking events, and getting price drop alerts on Ticket Scan.',
-  keywords: 'ticket buying FAQ, ticket price comparison help, price alert questions, how to compare tickets',
+  description: 'Answers to common questions about finding events, comparing listings, venue guides, and ticket onsale dates on Ticket Scan.',
+  keywords: 'ticket buying FAQ, event search help, venue guide questions, onsale dates',
   alternates: {
     canonical: 'https://www.ticketscan.io/faq',
   },
   openGraph: {
     title: 'Ticket Buying FAQ - Common Questions Answered | Ticket Scan',
-    description: 'Answers to common questions about comparing ticket prices, tracking events, and getting price drop alerts.',
+    description: 'Answers to common questions about finding events, comparing listings, venue guides, and onsale dates.',
     type: 'website',
     url: 'https://www.ticketscan.io/faq',
   },
   twitter: {
     card: 'summary_large_image',
     title: 'Ticket Buying FAQ - Common Questions Answered | Ticket Scan',
-    description: 'Answers to common questions about comparing ticket prices, tracking events, and getting price drop alerts.',
+    description: 'Answers to common questions about finding events, comparing listings, venue guides, and onsale dates.',
   },
 };
 
@@ -27,11 +27,11 @@ const faqs = [
     questions: [
       {
         q: 'What is Ticket Scan?',
-        a: 'Ticket Scan is a free ticket price comparison tool that helps you find the best deals on concert, sports, and theater tickets. We compare prices from Ticketmaster, SeatGeek, StubHub, and other major ticket platforms so you can see all your options in one place.',
+        a: 'Ticket Scan is a free event search and ticket research tool for concerts, sports, and theater. We help you find events, compare available listings, browse venue guides, and check onsale and presale dates.',
       },
       {
         q: 'Is Ticket Scan free to use?',
-        a: 'Yes, Ticket Scan is completely free. Create an account to access all features including price tracking, watchlist, and email alerts when prices drop.',
+        a: 'Yes, Ticket Scan is completely free. Create an account to search events and save them to a personal watchlist.',
       },
       {
         q: 'Do I buy tickets through Ticket Scan?',
@@ -40,19 +40,19 @@ const faqs = [
     ],
   },
   {
-    category: 'Price Tracking & Alerts',
+    category: 'Listings & Availability',
     questions: [
       {
-        q: 'How do price alerts work?',
-        a: 'When you add an event to your watchlist, you can set a target price. We\'ll monitor ticket prices across all platforms and send you an email notification when prices drop to or below your target.',
+        q: 'What can I save to my watchlist?',
+        a: 'Save events you want to revisit so they are easier to find from your account. TicketScan currently focuses on event discovery, venue information, and onsale dates.',
       },
       {
-        q: 'How often are prices updated?',
-        a: 'We check prices multiple times throughout the day to ensure you have access to the most current pricing information available.',
+        q: 'How current are listing details?',
+        a: 'Ticket availability and listing details can change on the third-party seller site. Check the linked seller page for the current inventory and final checkout total.',
       },
       {
         q: 'Can I track multiple events?',
-        a: 'Yes! You can add as many events as you want to your watchlist. Set different target prices for each event and track them all from your dashboard.',
+        a: 'Yes. Add events to your watchlist and revisit them from your dashboard.',
       },
     ],
   },
@@ -107,7 +107,7 @@ const faqs = [
       },
       {
         q: 'What if an event is sold out?',
-        a: 'Don\'t worry! Sold out events often have tickets available on resale platforms. Set a price alert on Ticket Scan and we\'ll notify you when tickets become available at your target price.',
+        a: 'Sold-out events may have inventory on resale platforms. Use the seller links from the event page, compare the same date and section, and verify the all-in total before buying.',
       },
     ],
   },

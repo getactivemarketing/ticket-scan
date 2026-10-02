@@ -40,10 +40,10 @@ export const viewport: Viewport = {
 
 export const metadata: Metadata = {
   title: {
-    default: "Ticket Scan - Compare Ticket Prices",
+    default: "Ticket Scan - Find Events and Onsale Dates",
     template: "%s | Ticket Scan",
   },
-  description: "Compare ticket prices from Ticketmaster, SeatGeek, and more. Track prices, get alerts, and find the best deals on concerts, sports, and theater events.",
+  description: "Search events across Ticketmaster, SeatGeek, and more. Browse venue guides, compare available listings, and see onsale and presale dates.",
   keywords: ["tickets", "concert tickets", "sports tickets", "ticket prices", "compare tickets", "cheap tickets"],
   authors: [{ name: "Ticket Scan" }],
   creator: "Ticket Scan",
@@ -59,15 +59,15 @@ export const metadata: Metadata = {
     locale: "en_US",
     url: "https://www.ticketscan.io",
     siteName: "Ticket Scan",
-    title: "Ticket Scan - Compare Ticket Prices",
+    title: "Ticket Scan - Find Events and Onsale Dates",
     description: "Never overpay for tickets again. Compare prices across multiple platforms and find the best deals.",
   },
   twitter: {
     card: "summary_large_image",
     site: "@ticketscan_io",
     creator: "@ticketscan_io",
-    title: "Ticket Scan - Compare Ticket Prices",
-    description: "Compare ticket prices from Ticketmaster, SeatGeek, and more.",
+    title: "Ticket Scan - Find Events and Onsale Dates",
+    description: "Search events across Ticketmaster, SeatGeek, and more, and find onsale and presale dates.",
   },
   robots: {
     index: true,
@@ -90,7 +90,7 @@ const organizationJsonLd = {
       name: "Ticket Scan",
       url: "https://www.ticketscan.io",
       logo: "https://www.ticketscan.io/logo.png",
-      description: "Compare ticket prices across multiple platforms. Find the best deals on concerts, sports, and theater events.",
+      description: "Search events and browse venue guides for concerts, sports, and theater events.",
       // Handles verified against marketing-agents/blotato-accounts.json, which
       // records the accounts the posting automation is connected to. sameAs is
       // how search engines tie these profiles to the brand entity, so a wrong
@@ -106,7 +106,7 @@ const organizationJsonLd = {
       "@id": "https://www.ticketscan.io/#website",
       url: "https://www.ticketscan.io",
       name: "Ticket Scan",
-      description: "Compare ticket prices across Ticketmaster, SeatGeek, and more. Track price history and get alerts when tickets drop.",
+      description: "Search events across Ticketmaster, SeatGeek, and more, and find onsale and presale dates.",
       publisher: { "@id": "https://www.ticketscan.io/#organization" },
       inLanguage: "en-US",
     },

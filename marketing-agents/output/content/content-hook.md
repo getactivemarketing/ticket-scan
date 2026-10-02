@@ -1,10 +1,13 @@
-## Today's Content Hook — 2026-10-01
-**Topic:** The Yankees swept Boston and now face the Rays in the 2026 ALDS, with Game 1 set for Saturday, October 3, at Tropicana Field.
-**Angle:** Playoff urgency makes fans reach for the first listing they see. TicketScan can own the useful question: is the cheapest-looking Yankees–Rays ticket actually the cheapest after comparing Ticketmaster, SeatGeek, and StubHub?
+## Today's Content Hook — 2026-10-02
+**Topic:** The Yankees–Rays ALDS is now the weekend's ticket story. New York swept Boston in the Wild Card Series, Tampa Bay is the opponent, and Game 2 is scheduled for Friday night in Tampa.
+**Angle:** Fans searching for Yankees–Rays tickets need a fast, practical checklist: confirm the exact game and venue, check the onsale details, follow TicketScan's event page to find seller links, and compare the all-in total before checkout. Keep the copy focused on discovery and buyer protection; do not promise price tracking or alerts.
 **Target keyword:** Yankees Rays ALDS tickets
-**Content type:** Blog post / social snippet / email hook
+**Content type:** Social snippet / email hook / venue-page update
 **Priority:** High
 
-**Verified context:** MLB lists Game 1 for October 3, and USA TODAY's September 30 ticket snapshot listed potential Yankees–Rays ALDS games from about $116 to $149 before fees and inventory changes. Those are time-sensitive snapshots, not promises.
+**Verified context:**
+- AP reported the Yankees completed a two-game Wild Card sweep of Boston on October 1: https://apnews.com/article/e39b4c53a201a1b417d2fecdf9585d86
+- NBC Philadelphia lists Yankees at Rays, ALDS Game 2, for 8 p.m.: https://www.nbcphiladelphia.com/mlb/alds-nlds-bracket-schedule-format-playoffs-2026/4472586/
+- MLB's postseason hub: https://www.mlb.com/postseason
 
-**Email Agent opportunity:** A short "playoff ticket price-check" email with a three-column platform checklist and a free price-alert CTA.
+**Email Agent opportunity:** A short “Yankees–Rays ticket checklist” covering game/venue verification, onsale timing, mobile-ticket delivery, seller-link comparison, and all-in fees. No price-alert CTA.

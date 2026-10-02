@@ -2,22 +2,22 @@ import { Metadata } from 'next';
 import Link from 'next/link';
 
 export const metadata: Metadata = {
-  title: 'How It Works - Compare Ticket Prices in 3 Easy Steps',
-  description: 'Learn how Ticket Scan helps you find the best ticket deals. Search events, compare prices, and get alerts when prices drop.',
-  keywords: 'how ticket scan works, compare ticket prices, ticket price alerts',
+  title: 'How It Works - Find Events and Onsale Dates',
+  description: 'Learn how Ticket Scan helps you find events, compare available listings, browse venue guides, and check onsale dates.',
+  keywords: 'how ticket scan works, event search, venue guides, ticket onsale dates',
   alternates: {
     canonical: 'https://www.ticketscan.io/how-it-works',
   },
   openGraph: {
-    title: 'How It Works - Compare Ticket Prices in 3 Easy Steps',
-    description: 'Search events, compare prices across Ticketmaster, SeatGeek, and more, then get alerts when prices drop.',
+    title: 'How It Works - Find Events and Onsale Dates',
+    description: 'Search events, compare available listings, browse venue guides, and check onsale and presale dates.',
     type: 'website',
     url: 'https://www.ticketscan.io/how-it-works',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'How It Works - Compare Ticket Prices in 3 Easy Steps',
-    description: 'Search events, compare prices across Ticketmaster, SeatGeek, and more, then get alerts when prices drop.',
+    title: 'How It Works - Find Events and Onsale Dates',
+    description: 'Search events, compare available listings, browse venue guides, and check onsale and presale dates.',
   },
 };
 
@@ -46,13 +46,13 @@ const steps = [
   },
   {
     number: '3',
-    title: 'Track & Get Alerts',
-    description: 'Add events to your watchlist and set your target price. We\'ll email you the moment prices drop to your budget.',
+    title: 'Save & Check Onsales',
+    description: 'Save events to your watchlist and check their onsale or presale details when you are ready to buy.',
     icon: '🔔',
     details: [
-      'Set custom price alerts',
-      'Get email notifications',
-      'Never miss a price drop',
+      'Save events to your watchlist',
+      'Review onsale and presale dates',
+      'Open the seller page to buy',
     ],
   },
 ];
@@ -61,7 +61,7 @@ const features = [
   {
     icon: '💰',
     title: 'Save Money',
-    description: 'Our users save an average of $127 per ticket by comparing prices and timing their purchase right.',
+    description: 'Compare the same event, date, section, quantity, and all-in fees before you buy.',
   },
   {
     icon: '⏱️',
@@ -70,13 +70,13 @@ const features = [
   },
   {
     icon: '📈',
-    title: 'Price Trends',
-    description: 'Understand when prices typically drop so you know the best time to buy.',
+    title: 'Venue Guides',
+    description: 'Use section maps, capacity details, and access tips to choose a venue and seat area.',
   },
   {
     icon: '🎯',
-    title: 'Smart Alerts',
-    description: 'Set your target price once and let us do the monitoring for you.',
+    title: 'Onsale Dates',
+    description: 'Find public onsales and presales so you know when an event becomes available.',
   },
 ];
 
@@ -98,7 +98,6 @@ const howToJsonLd = {
       })),
       tool: [
         { '@type': 'HowToTool', name: 'Ticket Scan website' },
-        { '@type': 'HowToTool', name: 'Email address (for alerts)' },
       ],
     },
     {

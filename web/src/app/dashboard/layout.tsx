@@ -1,27 +1,27 @@
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Search Events & Track Ticket Prices — Dashboard',
+  title: 'Search Events — Dashboard',
   description:
-    'Search concerts, sports, and theater events across Ticketmaster and SeatGeek. Filter by city, date, or keyword; track prices with one click; get alerts when tickets drop.',
+    'Search concerts, sports, and theater events across Ticketmaster and SeatGeek. Filter by city, date, or keyword and open listings from supported sellers.',
   keywords:
-    'search events, find tickets, track ticket prices, event search, concert search, sports tickets search, ticket alerts',
+    'search events, find tickets, event search, concert search, sports tickets search, onsale dates',
   alternates: {
     canonical: 'https://www.ticketscan.io/dashboard',
   },
   openGraph: {
-    title: 'Search Events & Track Ticket Prices — Ticket Scan',
+    title: 'Search Events — Ticket Scan',
     description:
-      'Find concerts, sports, and theater events across Ticketmaster and SeatGeek. Track prices and get alerts when tickets drop.',
+      'Find concerts, sports, and theater events across Ticketmaster and SeatGeek, then open available listings.',
     type: 'website',
     url: 'https://www.ticketscan.io/dashboard',
     siteName: 'Ticket Scan',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Search Events & Track Ticket Prices — Ticket Scan',
+    title: 'Search Events — Ticket Scan',
     description:
-      'Search live events from Ticketmaster and SeatGeek. Track prices and get drop alerts.',
+      'Search live events from Ticketmaster and SeatGeek and check onsale details.',
   },
 };
 
@@ -46,9 +46,9 @@ const dashboardJsonLd = {
       featureList: [
         'Multi-source event search across Ticketmaster and SeatGeek',
         'Filter by city, keyword, and date range',
-        'One-click add to watchlist with target price',
-        'Price-drop email alerts when tickets hit your target',
-        'Buy / wait / hold recommendations powered by price history',
+        'One-click add to a personal watchlist',
+        'Onsale and presale date details where available',
+        'Links to supported ticket sellers',
       ],
       provider: {
         '@type': 'Organization',

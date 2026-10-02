@@ -3,6 +3,12 @@ Total output lines: 1161
 
 # Content Refresh Log
 
+## 2026-10-02 — Yankee Stadium — postseason transportation and event-discovery refresh proposal
+
+**Proposal:** `refresh-proposals/2026-10-02-yankee-stadium.md`
+
+The proposal targets the Yankee Stadium venue guide during the Yankees–Rays ALDS search spike. It replaces the generic “lowest prices” sentence with official postseason arrival guidance, adds a source-backed public-transit FAQ, and keeps the existing verified capacity and seating-section data unchanged. No TicketScan price-tracking, alert, trend, or recommendation claim is introduced.
+
 ## 2026-08-15 — Kaseya Center (venues.ts) — generic venue stub → current Miami event and value guide
 
 **Page refreshed:** `kaseya-center` in `web/src/data/venues.ts` → renders at `/venues/kaseya-center`
