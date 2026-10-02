@@ -342,7 +342,9 @@ tickethawk-api service, mirrored to `~/.config/ticketscan/marketing.env` as
 ## Current state / handoff
 
 `docs/HANDOFF.md` carries the live operational state: what is broken right now,
-what the scheduled jobs will do, and the ordered pick-up list. Read it before
+what the scheduled jobs will do, and the ordered pick-up list. Affiliate
+strategy (CJ diagnosis, programs to add) is in `docs/affiliate-programs-2026-10.md`.
+`marketing-agents/PRODUCT-STATUS.md` lists the product claims agents must not make. Read it before
 touching the marketing automation. Note the repo moved to `~/Sites/ticketscan`
 on 2026-09-16 — macOS refuses background launchd jobs access to external drives.
 
@@ -388,6 +390,29 @@ times over ~40s specifically to outlast that; a shorter window failed a deploy.
 
 ## Recent Fixes
 
+- **Price tracking is DOWN since 2026-07-24 (found 2026-10-01).** The cron runs,
+  but Ticketmaster no longer returns `priceRanges` for most events, SeatGeek
+  returns no stats, and StubHub's token request fails. Alerts, price history and
+  comparison are therefore not working. Agents are told not to claim them via
+  `marketing-agents/PRODUCT-STATUS.md`. See `docs/HANDOFF.md`.
+- **Agent guardrails (2026-10-01).** Every agent's context includes
+  `PRODUCT-STATUS.md`, which overrides its task prompt. The Content agent's
+  Fri/Sat page refresh writes proposals to
+  `output/content/refresh-proposals/` instead of editing `web/src` live.
+- **57 more venue guides (2026-09-30)** in `web/src/data/team-venues/`: MLB,
+  NBA and NHL home venues plus 2 college stadiums. 259 of 261 teams now have a
+  home venue. Rogers Centre and Broadview Stadium are researched but
+  unpublished (`unlisted.ts`): Ticketmaster lists none of their home events.
+  Venue ids that Ticketmaster files under a neighbourhood are pinned in
+  `build-venue-ids.mjs`.
+- **Logged-in pages showed dates a day early (2026-09-30).**
+  `watchlist.event_date` is a TIMESTAMP holding a calendar date, and node-pg
+  serialized it as UTC midnight. The API now returns `YYYY-MM-DD`
+  (`EVENT_DATE_SQL`), and the pages format through `formatEtDate`.
+- **Wrigley Field rendered "Floor/Courtside" (2026-09-30).** The floor-tier test
+  now covers every `type: 'stadium'` venue.
+- **`content-calendar.json` (2026-09-30)** is committed by the daily run and
+  trimmed to 30 days. TikTok is removed from the Social prompts (no account).
 - **Team pages and stadium venues shipped (2026-09-08/09).** 261 teams, 160 new
   stadiums, the `attractionId` API parameter, and 185 venue guides.
 - **Every event date rendered a day early.** The feed mixes real UTC onsale
@@ -400,7 +425,7 @@ times over ~40s specifically to outlast that; a shorter window failed a deploy.
 - **`build-venue-ids.mjs` had an unreachable drop guard** (`resolved === 0`,
   which pinned entries made impossible) on a cron path that auto-commits and
   pushes to main. Now a 90% floor, and `run-daily.sh` gates the commit on tests.
-- Price tracking cron properly initialized
+- Price tracking cron properly initialized (superseded: tracking is down, see the first entry)
 - StubHub OAuth token caching with refresh
 - Event deduplication for duplicate listings
 - World Cup 2026 landing pages added
@@ -410,7 +435,7 @@ times over ~40s specifically to outlast that; a shorter window failed a deploy.
 - [ ] Split index.js into modular routes
 - [ ] Add TypeScript to backend
 - [ ] Implement push notifications
-- [ ] Add more ticket sources (Vivid Seats, Gametime)
+- [ ] Add more ticket sources. Ranked programs and rates are in `docs/affiliate-programs-2026-10.md`
 - [ ] Build mobile app
 - [ ] Add seat map visualization
 - [ ] Implement dynamic pricing predictions with ML

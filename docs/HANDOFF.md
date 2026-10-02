@@ -1,19 +1,68 @@
-# TicketScan — handoff, updated 2026-09-30
+# TicketScan — handoff, updated 2026-10-01
 
-The 2026-09-17 handoff list is finished. This file now records what was done
-on 2026-09-30 and what is left.
+Read this first. It's the current state, what changed recently, and what's next.
+Affiliate strategy lives in `docs/affiliate-programs-2026-10.md`.
 
 ---
 
-## State on 2026-09-30
+## The biggest problem: price tracking is down
 
-- **OpenAI credits are back.** The 09-30 daily run had 0 agent failures and
-  scheduled 5 posts (Twitter, Instagram, Threads). Sep 17–29 ran with all 8
-  agents failing on credits and posted nothing.
-- **Team and venue index refreshes work** from the scheduled job; no refresh
-  warning since 09-17.
-- **The old repo copy on `/Volumes/Samir_Ext` is deleted.** `~/Sites/ticketscan`
-  is the only copy. Start sessions there.
+**No price has been recorded since 2026-07-24.** The tracker in `index.js`
+(`trackWatchlistPrices`, every 4 hours) still runs. It finds about 26 watchlist
+events and saves nothing, because every source fails:
+
+- **Ticketmaster** Discovery no longer returns `priceRanges` for most events. In
+  a 100-event sample on 2026-10-01, 13 had prices, all small local shows.
+  Major events (e.g. Sharks game `G5vYZ_CrQn_ih`) return no price field.
+- **SeatGeek** finds the events but returns `lowest=$undefined`.
+- **StubHub** `Failed to get StubHub access token`, HTTP 400.
+
+So price-drop alerts, price history, the buy-now signal and the price
+comparison don't work. `marketing-agents/PRODUCT-STATUS.md` tells every agent
+not to claim them (see below).
+
+**Fix options, in order:** the TicketNetwork CJ data feed (needs Samir to
+subscribe in CJ), the SeatGeek stats call (debug it), StubHub credentials
+(renew). See `docs/affiliate-programs-2026-10.md`.
+
+---
+
+## State on 2026-10-01
+
+- **Agents work.** OpenAI credits returned 2026-09-30. Both the 09-30 and
+  10-01 runs had 0 agent failures.
+- **Social posts with false price claims went out on 09-30 and 10-01.** The
+  10-01 ones were kept up, Samir's call. Agents get the new rules from the
+  10-02 run.
+- **`~/Sites/ticketscan` is the only copy.** The external-drive copy was
+  deleted 2026-09-30. Start sessions there.
+- **The 06:00 run commits everything uncommitted under `web/src`** and pushes
+  `main` whenever it is ahead. Don't leave half-done work there overnight.
+
+---
+
+## Done 2026-10-01
+
+- **`marketing-agents/PRODUCT-STATUS.md`:** the product claims that are false
+  right now. It's included in every agent's shared context (daily and both
+  weekly runs) and overrides the task prompts. Remove its price section when
+  tracking works again.
+- **The Social pillars and the Content call to action** that asked for price
+  claims are rewritten.
+- **The Content agent's Fri/Sat page refresh** used to edit
+  `venues.ts`/`cities.ts`/`blog.ts` and commit straight to live, and its brief
+  asked for "updated pricing data". It now writes a sourced proposal to
+  `marketing-agents/output/content/refresh-proposals/` and must not touch
+  `web/src`.
+- **The Blotato scheduler** now saves Blotato's post id and raw response.
+  Every earlier row has `postId: null`, so those posts can only be cancelled in
+  the Blotato dashboard.
+- **Agent output reviewed.** It's mostly good. The California AB 1349 blog
+  draft (`output/content/2026-09-30-california-ghost-ticket-law.md`) checks
+  out and is ready to publish with `publish-draft.sh`.
+- **Not a failure:** 10-01's log shows "AGENT FAILED: Agent 7". That's old
+  September log text another agent printed. Trust the `AGENT FAILURES:` summary
+  line at the end of each log.
 
 ## Done 2026-09-30
 
@@ -52,6 +101,19 @@ on 2026-09-30 and what is left.
   as many errors as it fixed.
 
 ---
+
+## Next, in order
+
+1. **Samir:** in CJ, pull clicks by `sid`, valid/invalid clicks and the
+   commission tier, then subscribe to the TicketNetwork product feed. Checklist
+   in `docs/affiliate-programs-2026-10.md`.
+2. **Debug the SeatGeek price call.** It may be a free price source.
+3. **Samir:** apply to Stay22 (hotel map) and Viator (stadium tours).
+4. **Fix `/api/admin/alerts`.** It returns HTTP 500.
+5. **Conversion tracking:** GTM loads but the site pushes no events (signup,
+   watchlist add, outbound click).
+6. **Drip emails promote price alerts** ("How Price Alerts Can Save You
+   Hundreds"). Check whether they send at all; drip stats come back empty.
 
 ## Still open
 
