@@ -354,7 +354,7 @@ export default async function VenuePage({ params }: PageProps) {
                             href="/register"
                             className="bg-brand hover:bg-brand-dark text-white px-4 py-2 rounded-lg font-medium transition-colors"
                           >
-                            Track Price
+                            Save Event
                           </Link>
                         </div>
                       </div>
@@ -452,10 +452,10 @@ export default async function VenuePage({ params }: PageProps) {
               {/* CTA Box */}
               <div className="bg-gradient-to-br from-brand to-navy rounded-xl shadow-md p-6 text-white">
                 <h3 className="text-lg font-bold font-heading mb-2">
-                  Track Ticket Prices
+                  Save This Venue
                 </h3>
                 <p className="text-blue-100 text-sm mb-4">
-                  Get alerts when prices drop and find the best time to buy.
+                  Keep this venue guide handy for seating details, onsales, and upcoming events.
                 </p>
                 <Link
                   href="/register"

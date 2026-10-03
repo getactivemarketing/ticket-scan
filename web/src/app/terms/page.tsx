@@ -34,12 +34,12 @@ export default function TermsPage() {
             <section className="mb-8">
               <h2 className="font-heading text-xl font-bold text-gray-900 mb-4">2. Description of Service</h2>
               <p className="text-gray-600 mb-4">
-                Ticket Scan is a ticket price comparison platform that helps users:
+                Ticket Scan is an event discovery and ticket research platform that helps users:
               </p>
               <ul className="list-disc pl-6 text-gray-600 space-y-2">
-                <li>Search and compare ticket prices across multiple platforms</li>
-                <li>Track price changes for specific events</li>
-                <li>Receive alerts when ticket prices drop</li>
+                <li>Search for events across multiple ticket platforms</li>
+                <li>Browse venue guides and onsale information</li>
+                <li>Save events and favorites for later</li>
               </ul>
               <p className="text-gray-600 mt-4">
                 <strong>Important:</strong> Ticket Scan does not sell tickets directly. We aggregate information from third-party ticket sellers. All ticket purchases are made through those third-party platforms.
@@ -132,7 +132,7 @@ export default function TermsPage() {
                 Some links on Ticket Scan are affiliate links, including links to TicketNetwork, a
                 resale marketplace. If you buy tickets after following one of these links we may
                 earn a commission. This costs you nothing extra, and it does not affect which
-                events we list, how we rank them, or the prices and price history we show.
+                events we list, how we rank them, or the availability and seller information we show.
                 Affiliate links are labelled &quot;Resale tickets&quot; and marked as sponsored in
                 the page markup.
               </p>

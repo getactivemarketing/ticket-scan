@@ -65,16 +65,16 @@ const breadcrumbJsonLd = {
 
 const faqs = [
   {
-    q: 'How do I set a price alert?',
-    a: 'Search for your event on the dashboard, add it to your watchlist, and set a target price. We email you the moment any platform drops to your target.',
+    q: 'How do I save an event?',
+    a: 'Search for your event on the dashboard and add it to your watchlist. You can revisit its details and seller links from your account.',
   },
   {
     q: 'Does TicketScan sell tickets?',
-    a: 'No. TicketScan is a price-comparison tool. We show you live prices from Ticketmaster, SeatGeek, StubHub, and more so you can buy from the source with the best deal.',
+    a: 'No. TicketScan is an event discovery and ticket research tool. We link you to third-party sellers so you can review current availability and buy from the source.',
   },
   {
     q: 'Is TicketScan free?',
-    a: 'Yes. Comparing prices, tracking events, and price-drop alerts are completely free.',
+    a: 'Yes. Event search, venue guides, onsale information, and watchlists are free to use.',
   },
 ];
 
@@ -97,7 +97,7 @@ export default function ContactPage() {
               Contact TicketScan
             </h1>
             <p className="text-xl text-blue-100 max-w-2xl mx-auto">
-              Questions about comparing prices, price alerts, or World Cup 2026 tickets?
+              Questions about event search, venue guides, or World Cup 2026 tickets?
               We&apos;re here to help.
             </p>
           </div>

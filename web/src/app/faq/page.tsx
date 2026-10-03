@@ -35,7 +35,7 @@ const faqs = [
       },
       {
         q: 'Do I buy tickets through Ticket Scan?',
-        a: 'No, we don\'t sell tickets directly. When you find the best price, we redirect you to the ticket platform (like Ticketmaster or SeatGeek) where you can complete your purchase with their buyer protection.',
+        a: 'No, we don\'t sell tickets directly. We help you find an event and link you to the ticket platform (such as Ticketmaster or TicketNetwork) where you can review current availability and complete your purchase.',
       },
     ],
   },
@@ -51,29 +51,29 @@ const faqs = [
         a: 'Ticket availability and listing details can change on the third-party seller site. Check the linked seller page for the current inventory and final checkout total.',
       },
       {
-        q: 'Can I track multiple events?',
-        a: 'Yes. Add events to your watchlist and revisit them from your dashboard.',
+        q: 'Can I save multiple events?',
+        a: 'Yes. Add events to your watchlist and revisit them from your dashboard whenever you are ready to check availability.',
       },
     ],
   },
   {
-    category: 'Comparing Prices',
+    category: 'Listings & Ticket Platforms',
     questions: [
       {
-        q: 'Which ticket sites do you compare?',
-        a: 'We compare prices from major ticket platforms including Ticketmaster, SeatGeek, StubHub, Vivid Seats, and more. Our goal is to show you every available option so you can make the best choice.',
+        q: 'Which ticket platforms can I use?',
+        a: 'Event pages link to available ticket platforms, including Ticketmaster and TicketNetwork when listings are available. Follow the seller link to review the current inventory and checkout total.',
       },
       {
-        q: 'Do prices include fees?',
-        a: 'Yes — we show the estimated all-in price including each platform\'s service fees. Estimates: Ticketmaster ~27%, StubHub ~24%, SeatGeek ~20%. Base prices are shown as a smaller line beneath. Actual fees vary at checkout based on event, seat, and delivery method, but our estimates are based on each platform\'s published fee structure.',
+        q: 'Where can I confirm the final ticket total?',
+        a: 'The linked seller is the source of truth for inventory, fees, delivery options, and the final checkout total. Ticket availability can change, so confirm the details there before buying.',
       },
       {
-        q: 'How do you estimate prices by section?',
-        a: 'Public ticket APIs don\'t expose per-section pricing, so we estimate it from each venue\'s typical pricing pattern (upper/lower/club/floor). Estimates are most accurate at the 24 major venues we have detailed data for (MSG, Crypto.com Arena, Chase Center, etc.). For other venues, we show the aggregate price range without section estimates. Live concerts with general admission floors may price differently than the standard pattern — always verify section pricing on the platform before purchase.',
+        q: 'How do I choose a section?',
+        a: 'Use the venue guide to understand named seating sections, access, and sightline tradeoffs. Always confirm the exact section, row, and view on the seller\'s listing before purchase.',
       },
       {
-        q: 'Why are prices different on each platform?',
-        a: 'Each ticket platform sets its own prices based on seller inventory, demand, and their fee structures. This is exactly why comparing prices is so important - the same seat can vary by 20% or more between platforms.',
+        q: 'Why can availability differ between platforms?',
+        a: 'Each platform has its own inventory, seller relationships, fees, and checkout rules. Compare the event date, section, delivery method, and all-in total on the seller site before choosing.',
       },
     ],
   },
@@ -82,15 +82,15 @@ const faqs = [
     questions: [
       {
         q: 'How do I create an account?',
-        a: 'Click "Sign Up" in the top right corner. Enter your email address and create a password. That\'s it - you\'re ready to start tracking prices!',
+        a: 'Click "Sign Up" in the top right corner. Enter your email address and create a password. Then you can save events and favorites to your account.',
       },
       {
         q: 'Can I save my favorite teams or artists?',
         a: 'Yes! Use the Favorites feature to save your favorite teams, artists, and venues. We\'ll highlight relevant events and make it easier to find what you\'re looking for.',
       },
       {
-        q: 'How do I unsubscribe from email alerts?',
-        a: 'You can manage your email preferences from your account settings, or click the unsubscribe link at the bottom of any alert email.',
+        q: 'How do I manage email preferences?',
+        a: 'Use the unsubscribe link at the bottom of a TicketScan marketing email. TicketScan does not currently send ticket price-drop alerts.',
       },
     ],
   },
@@ -98,8 +98,8 @@ const faqs = [
     category: 'Ticket Buying Tips',
     questions: [
       {
-        q: 'When is the best time to buy tickets?',
-        a: 'Generally, ticket prices are highest at the moment they go on sale, then drop over time. The sweet spot is often 2-3 weeks before the event when resellers start lowering prices. However, this varies by event - check out our blog for detailed guides.',
+        q: 'When should I buy tickets?',
+        a: 'There is no universal best time. Check the onsale or presale date, compare the all-in total, and consider how important the event and seat are to you. For high-demand events, waiting can mean fewer choices.',
       },
       {
         q: 'Are resale tickets safe to buy?',

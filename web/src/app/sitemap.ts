@@ -16,6 +16,7 @@ const BASE_URL = 'https://www.ticketscan.io';
 // venue/city/category/World Cup data sets are meaningfully revised.
 // (Blog posts use their own real publishedAt/updatedAt dates below.)
 const CONTENT_LAST_MODIFIED = new Date('2026-08-24');
+const LEGAL_AND_HELP_LAST_MODIFIED = new Date('2026-10-03');
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const lastModified = CONTENT_LAST_MODIFIED;
@@ -61,13 +62,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
     {
       url: `${BASE_URL}/terms`,
-      lastModified,
+      lastModified: LEGAL_AND_HELP_LAST_MODIFIED,
       changeFrequency: 'monthly',
       priority: 0.3,
     },
     {
       url: `${BASE_URL}/faq`,
-      lastModified,
+      lastModified: LEGAL_AND_HELP_LAST_MODIFIED,
       changeFrequency: 'monthly',
       priority: 0.6,
     },
@@ -79,7 +80,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
     {
       url: `${BASE_URL}/contact`,
-      lastModified,
+      lastModified: LEGAL_AND_HELP_LAST_MODIFIED,
       changeFrequency: 'monthly',
       priority: 0.4,
     },

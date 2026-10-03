@@ -343,7 +343,7 @@ export default async function TicketsPage({ params }: PageProps) {
                             href="/register"
                             className="bg-brand hover:bg-brand-dark text-white px-4 py-2 rounded-lg font-medium transition-colors"
                           >
-                            Track Price
+                            Save Event
                           </Link>
                         </div>
                       </div>
@@ -368,7 +368,7 @@ export default async function TicketsPage({ params }: PageProps) {
                   href="/register"
                   className="inline-block bg-brand hover:bg-brand-dark text-white px-8 py-3 rounded-lg font-bold transition-colors"
                 >
-                  View All Events & Track Prices
+                  View All Events
                 </Link>
               </div>
             </div>
@@ -401,10 +401,10 @@ export default async function TicketsPage({ params }: PageProps) {
               {/* CTA Box */}
               <div className="bg-gradient-to-br from-brand to-navy rounded-xl shadow-md p-6 text-white mb-6">
                 <h3 className="text-lg font-bold font-heading mb-2">
-                  Never Miss a Deal
+                  Keep Your Search Organized
                 </h3>
                 <p className="text-blue-100 text-sm mb-4">
-                  Track prices across multiple ticket sites and get alerts when prices drop.
+                  Save events, review onsale dates, and follow seller links when you are ready to buy.
                 </p>
                 <Link
                   href="/register"

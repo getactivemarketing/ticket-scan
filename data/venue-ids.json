@@ -1,5 +1,5 @@
 {
-  "builtAt": "2026-10-02T10:18:55.466Z",
+  "builtAt": "2026-10-03T10:21:54.568Z",
   "counts": {
     "resolved": 242,
     "unresolved": 0,
@@ -376,8 +376,8 @@
       "teamSlug": "virginia-tech-hokies-college-football",
       "attractionId": "K8vZ9171Jn7",
       "matchedCity": "Blacksburg",
-      "count": 4,
-      "totalEvents": 8
+      "count": 3,
+      "totalEvents": 7
     },
     "mountaineer-field-at-milan-puskar-stadium": {
       "teamName": "West Virginia Mountaineers",

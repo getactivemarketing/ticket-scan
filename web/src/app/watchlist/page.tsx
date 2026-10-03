@@ -156,7 +156,7 @@ export default function WatchlistPage() {
         <div className="flex justify-between items-center mb-8">
           <div>
             <h1 className="text-[26px] font-bold leading-[1.2] tracking-[-0.025em] font-heading text-bone">My Watchlist</h1>
-            <p className="text-muted mt-1">Track prices and get recommendations</p>
+            <p className="text-muted mt-1">Save events and revisit ticket details</p>
           </div>
           <Link href="/dashboard" className={PRIMARY_BUTTON}>
             + Add Events
@@ -182,7 +182,7 @@ export default function WatchlistPage() {
               Your watchlist is empty
             </h3>
             <p className="text-muted mb-8 max-w-md mx-auto">
-              Track any event&rsquo;s price and we&rsquo;ll tell you the moment it drops.
+              Save any event so you can find its details and seller links again.
             </p>
 
             <div className="grid sm:grid-cols-3 gap-6 max-w-2xl mx-auto mb-8 text-left">
@@ -297,7 +297,7 @@ export default function WatchlistPage() {
                         </div>
                       ) : (
                         <span className="text-muted text-[13px]">
-                          Tracking started - prices coming soon
+                          Saved — current availability is on the seller site
                         </span>
                       )}
 
@@ -351,10 +351,10 @@ export default function WatchlistPage() {
             <div className="flex items-start gap-3">
               <span className="text-xl" aria-hidden="true">💡</span>
               <div>
-                <h4 className="font-semibold text-beacon">Price Tracking Active</h4>
+                <h4 className="font-semibold text-beacon">Your saved events</h4>
                 <p className="text-[13px] text-muted mt-1">
-                  We check prices every 4 hours and will show you trends and recommendations.
-                  Click &quot;View Details&quot; on any event to see the full price history and buy recommendation.
+                  Revisit an event here to check its latest availability and seller links.
+                  Final inventory and checkout totals are shown on the linked ticket platform.
                 </p>
               </div>
             </div>

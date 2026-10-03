@@ -330,7 +330,7 @@ export default function FavoritesPage() {
               <h4 className="font-semibold text-blue-900">How Favorites Work</h4>
               <p className="text-sm text-blue-700">
                 When you add a favorite, we&apos;ll search for upcoming events matching that team, artist, or venue.
-                You&apos;ll also receive email alerts when tickets for your favorites go on sale or drop in price.
+                You&apos;ll see matching events and can revisit their onsale dates and seller links from your account.
               </p>
             </div>
           </div>

@@ -92,7 +92,7 @@ export default function DashboardPage() {
           <div className="bg-navy-raised rounded-[6px] p-4 mb-6 text-bone">
             <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
               <div>
-                <p className="font-medium">Track prices and get alerts when they drop!</p>
+                <p className="font-medium">Save events and keep your ticket search organized.</p>
                 <p className="text-beacon text-sm">Create a free account to save events to your watchlist.</p>
               </div>
               <Link
@@ -239,7 +239,7 @@ export default function DashboardPage() {
               <div className="grid md:grid-cols-3 gap-4">
                 <Link href="/blog/best-time-to-buy-concert-tickets" className={`bg-navy-raised rounded-[6px] p-4 hover:bg-navy-raised-hover transition-colors ${FOCUS_RING_ON_DEEP_VOID}`}>
                   <h4 className="font-semibold text-bone mb-1">Best Time to Buy</h4>
-                  <p className="text-muted text-sm">Learn when ticket prices drop</p>
+                  <p className="text-muted text-sm">Learn how to compare listings and fees</p>
                 </Link>
                 <Link href="/blog/how-to-find-cheap-nba-tickets" className={`bg-navy-raised rounded-[6px] p-4 hover:bg-navy-raised-hover transition-colors ${FOCUS_RING_ON_DEEP_VOID}`}>
                   <h4 className="font-semibold text-bone mb-1">Cheap NBA Tickets</h4>

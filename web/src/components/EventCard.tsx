@@ -103,7 +103,7 @@ export default function EventCard({ event, isLoggedIn = true, onAddedToWatchlist
             <span className="text-3xl block mb-2" aria-hidden="true">🔔</span>
             <h4 id={signUpPromptTitleId} className="font-bold text-bone mb-2">Track This Event</h4>
             <p className="text-muted text-sm mb-4">
-              Create a free account to track prices and get alerts when they drop.
+              Create a free account to save this event and find it again later.
             </p>
             <div className="space-y-2">
               <Link
@@ -183,8 +183,8 @@ export default function EventCard({ event, isLoggedIn = true, onAddedToWatchlist
           <button
             onClick={handleAddToWatchlist}
             disabled={adding || added}
-            title={isLoggedIn ? (added ? 'Added to watchlist' : 'Track this event') : 'Sign up to track prices'}
-            aria-label={isLoggedIn ? (added ? 'Added to watchlist' : adding ? 'Adding to watchlist' : 'Add to watchlist') : 'Sign up to track prices'}
+            title={isLoggedIn ? (added ? 'Added to watchlist' : 'Save this event') : 'Sign up to save events'}
+            aria-label={isLoggedIn ? (added ? 'Added to watchlist' : adding ? 'Adding to watchlist' : 'Add to watchlist') : 'Sign up to save events'}
             className={`px-4 py-2 rounded-[6px] font-medium transition-colors motion-reduce:transition-none ${FOCUS_RING_ON_DEEP_VOID} ${
               added
                 ? 'bg-blue-wash text-beacon'
