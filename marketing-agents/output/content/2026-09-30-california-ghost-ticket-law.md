@@ -68,9 +68,9 @@ The headline price is often not the checkout price. Compare the total for the sa
 
 Keep the confirmation email, listing details, seat information, and payment record. If a listing is materially different from what was promised, those details matter. A screenshot of the marketing language can be more useful than your memory after the confetti falls.
 
-### Use an alert instead of panic-buying
+### Save the event and avoid panic-buying
 
-If the event is not tonight, set a target price and watch it. Prices can move when inventory changes, when an event gets closer, or when sellers decide that owning an unsold ticket is worse than taking a smaller margin. A price alert gives you a chance to react to a real drop instead of an artificial countdown clock.
+If the event is not tonight, save the event details and give yourself time to verify the listing. Inventory can change when an event gets closer, but no countdown clock deserves to make your financial decisions for you. Recheck the seller, seat details, delivery terms, and all-in total before committing.
 
 ## The bottom line
 
@@ -78,4 +78,4 @@ AB 1349 is good news for fans because it draws a brighter line around tickets th
 
 The practical rule remains gloriously unexciting: verify the seller, compare the inventory, inspect the all-in total, and do not let a blinking timer make your financial decisions for you.
 
-Read the [official California bill text](https://leginfo.legislature.ca.gov/faces/billTextClient.xhtml?bill_id=202520260AB1349) for the legal details, then [compare current ticket prices on TicketScan](https://www.ticketscan.io/compare) before you buy. If you are willing to wait, [set a free price alert](https://www.ticketscan.io/dashboard) and make the market come to you for once.
+Read the [official California bill text](https://leginfo.legislature.ca.gov/faces/billTextClient.xhtml?bill_id=202520260AB1349) for the legal details, then [find the event on TicketScan](https://www.ticketscan.io/) and verify the seller terms before you buy.

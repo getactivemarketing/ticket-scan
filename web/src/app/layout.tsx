@@ -60,7 +60,7 @@ export const metadata: Metadata = {
     url: "https://www.ticketscan.io",
     siteName: "Ticket Scan",
     title: "Ticket Scan - Find Events and Onsale Dates",
-    description: "Never overpay for tickets again. Compare prices across multiple platforms and find the best deals.",
+    description: "Search events across major ticket platforms, browse venue guides, and find onsale and presale dates.",
   },
   twitter: {
     card: "summary_large_image",

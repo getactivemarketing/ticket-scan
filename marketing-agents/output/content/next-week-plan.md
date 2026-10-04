@@ -1,45 +1,64 @@
-# TicketScan Content Plan — Week of August 24, 2026
+# TicketScan Content Plan — Week of October 5, 2026
 
-## Sunday audit — August 23
+## Sunday audit — October 4
 
-This week produced four substantial queued drafts:
+### What shipped or queued this week
 
-- **Aug 17:** All-in Ticket Prices Explained — evergreen comparison guide.
-- **Aug 18:** Cheap NFL Preseason Tickets — tactical preseason guide.
-- **Aug 19:** 2027 WNBA All-Star Game Tickets — timely news draft tied to Chase Center.
-- **Aug 20:** How to Compare Concert Ticket Prices — comparison guide with a concert example.
+- **Sept. 30:** California’s AB 1349 / “ghost ticket” explainer. Strong consumer-protection angle, official bill source, and useful speculative-listing guidance. It required a copy pass to remove the stale price-alert CTA before publication.
+- **Oct. 1:** Yankees–Rays ALDS comparison draft. Timely playoff intent and a clear exact-game/seat/fee comparison framework. Its external ticket snapshots and tracked-low/buy-signal language were removed because TicketScan’s live price systems are currently unavailable.
+- **Oct. 2:** Yankee Stadium refresh proposal. Good venue-specific postseason arrival and transit guidance, with official Yankees sources. Awaiting manual application.
+- **Oct. 3:** Madison Square Garden refresh proposal. Good event-entry, mobile-ticket, and bag guidance, with official MSG sources. Awaiting manual application.
+- **Oct. 4:** Colts–Commanders London hook. Timely same-day event discovery and ticket-verification angle; no TicketScan price claim attached.
 
-All four clear the requested 800-word minimum and use unique, URL-friendly slugs with valid frontmatter. The main editorial risk is overlap: the Aug 17 and Aug 20 pieces both explain headline price versus checkout total. Keep both only if the all-in piece owns fee methodology and the concert piece owns event/seat/quantity comparison. Add distinct internal links before publishing.
+### What worked
 
-No page-level traffic, Search Console ranking, named conversion-event, or fresh price-history export was available for this audit. Treat topic priority and any expected lift below as hypotheses, not measured wins. The current price-history feed has been flagged as stale in recent agent output, so avoid fresh “cheapest marketplace” claims.
+- Timely sports and consumer-law topics created clear search intent without needing unsupported product claims.
+- The strongest drafts use one concrete event or law, then turn it into a reusable buying checklist.
+- Official venue, league, and government sources make the page-refresh proposals reviewable and safe to apply.
+
+### What did not work / risks
+
+- The Sept. 28–29 content agent runs failed with the shared runtime/model-cache error, so there was no normal Monday/Tuesday editorial output those days.
+- The existing content calendar still contains stale posts claiming price history, price alerts, and buy-now signals. Those entries should be retired or rewritten before they are reused.
+- No Search Console, page analytics, or conversion-event report was available in the reviewed outputs. Topic priority below is therefore a reasoned editorial hypothesis, not a measured traffic forecast.
+- Recent sports drafts can become repetitive if every post is framed as a live price comparison. Keep the differentiator on exact event identity, seating, fees, seller terms, venue logistics, and onsale timing.
 
 ## Recommended production slate
 
 | Day | Working title | Format | Primary keyword | Conversion goal |
 |---|---|---|---|---|
-| Mon Aug 24 | **US Open Qualifying Tickets 2026: Sessions, Access, and What You Actually Buy** | New timely guide | US Open qualifying tickets 2026 | Compare a session; add to watchlist |
-| Tue Aug 25 | **Day vs. Night US Open Sessions: Which Ticket Is Better Value?** | New tactical guide | US Open day session vs night session | Set a target price |
-| Wed Aug 26 | **NFL Regular-Season Tickets 2026: When to Start Tracking Prices** | New seasonal guide | when to buy NFL tickets 2026 | Watchlist a game; set a ceiling |
-| Thu Aug 27 | **Labor Day Weekend Concert Tickets: How to Find the Better Date and Total** | New comparison/listicle | Labor Day weekend concert tickets | Compare dates; click through to buy |
+| Mon Oct 5 | **How Ticket Presales Work: Artist, Venue, Cardholder, and Fan-Club Access** | Evergreen guide | how ticket presales work | Find an event and check onsale details |
+| Tue Oct 6 | **How to Read a Stadium Seating Chart Before Buying Tickets** | Tactical guide | how to read a stadium seating chart | Open a venue guide and compare seat sections |
+| Wed Oct 7 | **Accessible Ticket Buying: ADA Seats, Companion Tickets, and What to Verify** | Consumer guide | accessible ticket buying | Check venue guidance and seller terms |
+| Thu Oct 8 | **Ticketmaster vs. TicketNetwork: How to Compare the Listing, Seat, and Checkout Total** | Comparison | Ticketmaster vs TicketNetwork | Find the same event and click through to verify checkout |
 
-## Editorial requirements
+## Editorial briefs and guardrails
 
-1. Anchor the US Open pieces to the official schedule. Distinguish Fan Week, qualifying, main-draw day sessions, night sessions, and championship weekend. Do not treat Fan Week access as interchangeable with a reserved main-draw ticket.
-2. Use the all-in methodology from the Aug 17 draft, but do not repeat its structure. Every worked price example must be labeled as an estimate or timestamped snapshot, and every platform comparison must use comparable session, quantity, seat area, and delivery terms.
-3. The NFL guide should explain preseason-to-regular-season demand, opponent quality, weekday/weekend effects, and target-price tracking. Do not guarantee late drops or cite a current lowest price without a fresh source.
-4. The Labor Day guide should compare date flexibility, travel demand, venue configuration, and checkout totals. Avoid inventing a concert lineup; use event examples only after official inventory is verified.
-5. Link each post to `/compare` and the watchlist flow. Use `/tickets/new-york` for US Open intent and relevant venue pages only when the event is genuinely hosted there.
+### Monday — presales
 
-## Copy review actions
+Explain artist, venue, cardholder, fan-club, and newsletter presales; distinguish a presale code from guaranteed inventory; and tell readers to verify the official event page, onsale time, ticket limits, and transfer rules. Use official artist, venue, or Ticketmaster examples only after checking them. Do not promise that joining a list guarantees access.
 
-- Keep the Aug 18 NFL title and excerpt focused on preseason; do not let it cannibalize next week’s regular-season timing guide.
-- In the Aug 20 concert draft, retain the Garth Brooks example only with its event date/source context; do not present a dated show as current after publication.
-- In the Aug 19 WNBA draft, keep on-sale timing, inventory, and pricing explicitly marked as unknown until official details are published.
-- Before publishing either fee-focused draft, add a short canonical-link decision and cross-link one as the supporting concert example from the all-in methodology page.
+### Tuesday — stadium seating charts
+
+Teach readers to identify the field, lower bowl, club level, upper deck, accessible platforms, standing-room areas, obstructed-view notes, and event-specific map changes. Link to verified TicketScan venue pages. Do not add or revise venue capacities, and do not invent sightline claims for sections without a source.
+
+### Wednesday — accessible ticket buying
+
+Cover ADA inventory, companion seating, wheelchair spaces, transferability, purchase windows, and how to contact the venue when the online map is unclear. Cite the ADA and the venue’s own accessibility page. Avoid legal guarantees about a specific seller or venue; frame the piece as general information, not legal advice.
+
+### Thursday — Ticketmaster vs. TicketNetwork
+
+Compare how to identify primary versus resale inventory, seller identity, seat quantity, delivery method, buyer protection, fees, and the final checkout total. Keep the comparison factual and event-specific. Do not claim either platform is always cheaper, and do not describe TicketScan as supplying live price history, alerts, trends, or buy/wait calls.
 
 ## Handoffs
 
-- **SEO:** prioritize `US Open qualifying tickets 2026`, `US Open Fan Week tickets`, and `US Open day session vs night session`; consolidate fee terms around the Aug 17 guide rather than creating another near-duplicate page.
-- **Email:** turn the US Open session chooser into a one-page lead magnet collecting session preference, seat area, quantity, and target price.
-- **Social:** publish the Fan Week hook today and distinguish free Fan Access Pass entry from paid main-draw inventory.
-- **Analytics/CRO:** verify `compare_view`, `watchlist_add`, `target_price_set`, and `outbound_ticket_click` before ranking the four queued drafts.
+- **Email:** The presale explainer can become a checklist lead magnet: event, onsale time, presale type, code source, ticket limit, and transfer policy.
+- **SEO:** Prioritize `how ticket presales work`, `how to read a stadium seating chart`, and `accessible ticket buying`; use verified venue pages for internal links.
+- **Social:** Turn the London hook into a short “confirm the exact game, venue, seller, and final total” post. Avoid live price or discount claims.
+- **Analytics/CRO:** Before judging these topics, verify outbound-ticket-click and event-search instrumentation; the current handoff notes that conversion events are not being pushed.
+
+## Copy review completed today
+
+- Updated `2026-09-30-california-ghost-ticket-law.md` to remove price-alert and live-price CTAs.
+- Updated `2026-10-01-yankees-rays-alds-ticket-comparison.md` to remove ticket-price snapshots, tracked-low language, and buy-signal/price-alert CTAs.
+- No files under `web/src/` were changed.

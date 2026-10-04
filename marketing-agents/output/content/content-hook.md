@@ -1,8 +1,10 @@
-## Today's Content Hook — 2026-10-03
-**Topic:** Harry Styles: Together, Together is listed at Madison Square Garden tonight, Saturday, October 3, at 8:00 PM ET.
-**Angle:** A same-day MSG ticket guide can help fans verify the event time, find the official entrance guidance, and compare seller links without promising live price tracking. Mention that MSG advises guests to arrive early and check the ticket for the suggested entrance based on seat location.
-**Target keyword:** Harry Styles MSG tickets October 3 2026
-**Content type:** Venue page update / social snippet
+## Today's Content Hook — 2026-10-04
+**Topic:** The Indianapolis Colts and Washington Commanders play the 2026 NFL London opener today at Tottenham Hotspur Stadium.
+**Angle:** Own the same-day ticket-shopping question: help fans confirm the exact event, venue, kickoff details, and seller terms, then compare equivalent listings and the final checkout total before buying. Use the London game as a timely example of why the first search result is not the whole market.
+**Target keyword:** Colts Commanders tickets London October 4 2026
+**Content type:** Social snippet / event guide update
 **Priority:** High
 
-**Source:** [Madison Square Garden official event calendar](https://www.msg.com/madison-square-garden)
+**Sources:** [American Football International preview](https://www.americanfootballinternational.com/colts-commanders-clash-in-london-amid-ticket-price-cuts-preview-how-to-watch-worldwide/) and [Tottenham Hotspur Stadium official site](https://www.tottenhamhotspur.com/the-stadium/)
+
+**Editorial note:** Do not repeat third-party ticket-price or discount claims as TicketScan data. Verify any live event listing and final total on the seller page.

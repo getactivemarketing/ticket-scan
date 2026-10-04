@@ -27,8 +27,7 @@ export default function Footer() {
               <span className="text-bone font-heading font-bold text-xl">TicketScan</span>
             </Link>
             <p className="text-muted text-sm max-w-md">
-              Compare ticket prices across Ticketmaster, SeatGeek, StubHub, and more.
-              Never overpay for concerts, sports, or events again.
+              Search events across major ticket platforms, browse venue guides, and check onsale dates.
             </p>
             {/* Social Links. Handles come from marketing-agents/blotato-accounts.json,
                 which records the accounts the posting automation is actually connected
@@ -153,7 +152,7 @@ export default function Footer() {
         <div className="mt-12 pt-4 text-sm text-muted text-center">
           <p>&copy; {new Date().getFullYear()} TicketScan. All rights reserved.</p>
           <p className="mt-2 text-xs">
-            TicketScan is not a ticket seller. We compare prices from third-party sites.
+            TicketScan is not a ticket seller. We link you to third-party platforms so you can review current availability and checkout totals.
           </p>
         </div>
       </div>
