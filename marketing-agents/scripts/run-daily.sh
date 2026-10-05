@@ -306,3 +306,19 @@ echo "" | tee -a "$LOG_FILE"
 echo "===========================================" | tee -a "$LOG_FILE"
 echo "Finished: $(date)" | tee -a "$LOG_FILE"
 echo "===========================================" | tee -a "$LOG_FILE"
+
+# Tell the command center how this run went. Deliberately last: the reporter reads the newest
+# daily-*.log and takes its final `AGENT FAILURES:` / `Finished:` pair, so it must not run until
+# both lines above exist, or it would report the previous run as if it were this one.
+#
+# Never allowed to fail this job. The reporter is an observer; a broken observer must not turn a
+# successful marketing run into a failed one. If it dies, the status file simply goes unwritten,
+# the center sees no fresh report, and it says so on its own - which is the whole point of that
+# design. So: errors are logged and swallowed.
+REPORTER="$PROJECT_DIR/marketing-agents/scripts/report-status.sh"
+if [ -x "$REPORTER" ]; then
+    "$REPORTER" 2>&1 | tee -a "$LOG_FILE"
+    if [ "${PIPESTATUS[0]}" -ne 0 ]; then echo "Status reporter failed (run unaffected)" | tee -a "$LOG_FILE"; fi
+else
+    echo "Status reporter not found at $REPORTER, skipping" | tee -a "$LOG_FILE"
+fi
