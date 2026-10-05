@@ -127,7 +127,7 @@ export default function WorldCup2026Page() {
                 href="/dashboard?keyword=world+cup+2026"
                 className="bg-white text-green-700 px-8 py-4 rounded-lg font-bold text-lg hover:bg-green-50 transition-colors"
               >
-                Explore WC 2026 Prices
+                Find WC 2026 Events
               </Link>
               <Link
                 href="#schedule"
