@@ -196,7 +196,7 @@ export default function WatchlistPage() {
                 <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-beacon mb-1">
                   Step 2
                 </p>
-                <p className="text-[13px] text-muted">Add it here and set a target price</p>
+                <p className="text-[13px] text-muted">Add events here so they are easy to revisit</p>
               </div>
               <div>
                 <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-beacon mb-1">

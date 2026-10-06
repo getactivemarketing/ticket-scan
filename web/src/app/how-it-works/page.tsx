@@ -35,13 +35,13 @@ const steps = [
   },
   {
     number: '2',
-    title: 'Compare Prices',
-    description: 'See prices from Ticketmaster, SeatGeek, StubHub, and more side-by-side. Find the best deal without opening multiple tabs.',
+    title: 'Compare Listings',
+    description: 'Find the same event across Ticketmaster, SeatGeek, and other available sources without opening multiple tabs.',
     icon: '📊',
     details: [
-      'Compare 5+ ticket platforms at once',
-      'See price ranges by section',
-      'Identify the best value instantly',
+      'Compare event availability across sources',
+      'Review date, venue, and listing details',
+      'Open the seller page for current inventory',
     ],
   },
   {
@@ -60,8 +60,8 @@ const steps = [
 const features = [
   {
     icon: '💰',
-    title: 'Save Money',
-    description: 'Compare the same event, date, section, quantity, and all-in fees before you buy.',
+    title: 'Buy with context',
+    description: 'Compare the same event, date, section, and seller details before you buy.',
   },
   {
     icon: '⏱️',
@@ -86,8 +86,8 @@ const howToJsonLd = {
     {
       '@type': 'HowTo',
       '@id': 'https://www.ticketscan.io/how-it-works#howto',
-      name: 'How to Compare Ticket Prices with Ticket Scan',
-      description: 'Find the best ticket deals in 3 simple steps. Compare prices across Ticketmaster, SeatGeek, StubHub, and more.',
+      name: 'How to Compare Event Listings with Ticket Scan',
+      description: 'Find event availability in 3 simple steps. Compare listings across Ticketmaster, SeatGeek, and other sources.',
       image: 'https://www.ticketscan.io/logo.png',
       step: steps.map((step, idx) => ({
         '@type': 'HowToStep',
@@ -185,23 +185,23 @@ export default function HowItWorksPage() {
                   )}
                   {step.number === '2' && (
                     <div className="space-y-4">
-                      <div className="text-sm text-gray-500 mb-2">Price Comparison</div>
+                      <div className="text-sm text-gray-500 mb-2">Event Listing Comparison</div>
                       <div className="space-y-3">
                         <div className="flex justify-between items-center p-3 bg-green-50 rounded-lg border border-green-200">
                           <span className="font-medium">SeatGeek</span>
-                          <span className="text-green-600 font-bold">$89</span>
+                          <span className="text-green-600 font-bold">Available</span>
                         </div>
                         <div className="flex justify-between items-center p-3 bg-gray-50 rounded-lg">
                           <span className="font-medium">Ticketmaster</span>
-                          <span className="text-gray-700 font-bold">$105</span>
+                          <span className="text-gray-700 font-bold">Available</span>
                         </div>
                         <div className="flex justify-between items-center p-3 bg-gray-50 rounded-lg">
                           <span className="font-medium">StubHub</span>
-                          <span className="text-gray-700 font-bold">$112</span>
+                          <span className="text-gray-700 font-bold">Available</span>
                         </div>
                       </div>
                       <div className="text-center text-green-600 font-medium">
-                        Save $23 with SeatGeek!
+                        Open the seller page for current details.
                       </div>
                     </div>
                   )}
@@ -209,18 +209,18 @@ export default function HowItWorksPage() {
                     <div className="space-y-4">
                       <div className="flex items-center gap-2 text-sm text-gray-500">
                         <span className="text-green-500">●</span>
-                        Tracking enabled
+                        Saved to your watchlist
                       </div>
                       <div className="bg-blue-50 p-4 rounded-lg">
                         <div className="font-medium text-gray-900">Lakers vs Celtics</div>
                         <div className="text-sm text-gray-500">Jan 15, 2026</div>
                       </div>
                       <div className="flex items-center justify-between">
-                        <span className="text-gray-600">Target Price:</span>
-                        <span className="font-bold text-brand">$150</span>
+                        <span className="text-gray-600">Onsale details:</span>
+                        <span className="font-bold text-brand">View event page</span>
                       </div>
                       <div className="bg-green-100 text-green-700 p-3 rounded-lg text-center font-medium">
-                        📧 Alert set! We&apos;ll email you.
+                        Revisit the event when you&apos;re ready to buy.
                       </div>
                     </div>
                   )}
@@ -272,7 +272,7 @@ export default function HowItWorksPage() {
       <div className="bg-gradient-to-br from-brand to-navy py-20">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-white">
           <h2 className="font-heading text-3xl font-bold mb-4">
-            Ready to Find Your Best Deal?
+            Ready to Find Your Event?
           </h2>
           <p className="text-blue-100 mb-8 text-lg">
             Join thousands of fans who never overpay for tickets.

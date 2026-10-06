@@ -25,9 +25,9 @@ export const metadata: Metadata = {
 };
 
 const homepageFaqs = [
-  { q: 'What does TicketScan actually do?', a: 'TicketScan searches events across the major ticket platforms from one place, publishes venue guides covering seating and access, and tracks when tickets for an event go on sale. Add an event to your watchlist and we tell you when its onsale or presale window opens.' },
-  { q: 'Is TicketScan free to use?', a: 'Yes, TicketScan is completely free. Create an account to search events, build a watchlist, and get notified when tickets go on sale.' },
-  { q: 'What events can I track with TicketScan?', a: 'Any event listed on the major ticket platforms — concerts, NFL and college football, NBA, NHL, MLB, theater shows and more.' },
+  { q: 'What does TicketScan actually do?', a: 'TicketScan searches events across the major ticket platforms from one place, publishes venue guides covering seating and access, and shows when tickets for an event go on sale. Add an event to your watchlist so it is easy to revisit.' },
+  { q: 'Is TicketScan free to use?', a: 'Yes, TicketScan is completely free. Create an account to search events, build a watchlist, and revisit onsale information.' },
+  { q: 'What events can I find with TicketScan?', a: 'Any event listed on the major ticket platforms — concerts, NFL and college football, NBA, NHL, MLB, theater shows and more.' },
 ];
 
 export default async function Home() {
@@ -72,7 +72,7 @@ export default async function Home() {
               <div className="flex-1 text-center lg:text-left">
                 <p className="text-teal text-xs font-semibold uppercase tracking-[0.2em] mb-4">Events, venues and onsale dates</p>
                 <h1 className="text-5xl lg:text-6xl font-heading font-bold tracking-tight leading-[1.1] mb-5">
-                  Find it.<br /><span className="text-teal">Track it.</span><br />Don't miss it.
+                  Find it.<br /><span className="text-teal">Track it.</span><br />Don&apos;t miss it.
                 </h1>
                 <p className="text-white/50 text-lg mb-8 max-w-md mx-auto lg:mx-0">Search events across the major ticket platforms, save what you care about, and get told when tickets go on sale — including presales.</p>
                 <div className="flex flex-col sm:flex-row gap-3 justify-center lg:justify-start">

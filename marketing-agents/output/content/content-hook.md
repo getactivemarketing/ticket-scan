@@ -1,14 +1,13 @@
-## Today's Content Hook — 2026-10-05
-**Topic:** MLB has two postseason Game 2s tonight: White Sox at Guardians at 5 p.m. ET and Yankees at Rays at 8 p.m. ET.
-**Angle:** Own the playoff-ticket verification problem. “Yankees–Rays” is not one event: the date, game number, venue, and whether a later game is conditional all change what a buyer is actually shopping for. A short checklist can help fans confirm the exact game, seat location, delivery terms, and final checkout total before buying.
-**Target keyword:** MLB playoff tickets October 5 2026
-**Content type:** Social snippet / playoff ticket checklist
+## Today's Content Hook — 2026-10-06
+**Topic:** The 62nd Academy of Country Music Awards announced its ticket onsale for Sunday, May 17, 2027, at MGM Grand Garden Arena in Las Vegas. Kentucky men's basketball single-game tickets also begin public onsale activity today.
+**Angle:** Use the ACM announcement as a timely reminder that fans should verify the exact onsale window, venue, ticket limits, seat details, and final checkout terms before clicking into a high-demand sale. TicketScan can help fans find the event and the places to shop; the seller's page remains the source of truth for live inventory and purchase terms.
+**Target keyword:** ACM Awards 2027 tickets onsale
+**Content type:** Social snippet / blog post hook
 **Priority:** High
 
-**Sources:** [MLB’s official 2026 postseason schedule](https://www.mlb.com/postseason) and [FOX Sports’ 2026 playoff schedule](https://www.foxsports.com/stories/mlb/2026-mlb-playoff-schedule-dates-rounds-how-watch)
+**Sources:**
+- https://www.acmcountry.com/news/ticket-on-sale-announced-for-62nd-academy-of-country-music-awards
+- https://ukathletics.com/news/2026/10/05/2026-27-kentucky-mens-basketball-single-game-tickets-on-sale-beginning-oct-6/
+- https://www.9news.com/article/entertainment/music/colorado-music/new-concerts-added-to-red-rocks-calendar-next-summer/73-63880d3d-a075-412c-aa83-b97e841f273a
 
 **Editorial note:** Do not publish live ticket-price claims or imply TicketScan has current price history, alerts, or buy/wait signals. Verify the exact event and final total on the seller page.
-
-**Email lead-magnet opportunity:** Turn the checklist into a one-page “Playoff ticket sanity check” covering game/date, venue, seat comparability, delivery, buyer protection, and all-in total.
-
-**SEO handoff:** Consider `MLB playoff tickets October 5 2026`, `how to compare postseason tickets`, and `conditional playoff game tickets` as supporting queries.

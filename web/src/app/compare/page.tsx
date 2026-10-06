@@ -254,8 +254,8 @@ export default function ComparePage() {
           <div className="flex items-center gap-3 mb-2">
             <span className="text-3xl">⚖️</span>
             <div>
-              <h1 className="text-2xl font-bold font-heading text-gray-900">Compare Ticket Prices</h1>
-              <p className="text-gray-600">Find the best deals across multiple ticket sites</p>
+              <h1 className="text-2xl font-bold font-heading text-gray-900">Compare Event Listings</h1>
+              <p className="text-gray-600">Find the same event across multiple ticket sites, then review the seller details.</p>
             </div>
           </div>
 
@@ -320,7 +320,7 @@ export default function ComparePage() {
                 disabled={loading}
                 className="bg-brand hover:bg-brand-dark text-white py-3 px-8 rounded-lg font-medium transition-colors disabled:opacity-50"
               >
-                {loading ? 'Searching...' : 'Compare Prices'}
+                {loading ? 'Searching...' : 'Compare Listings'}
               </button>
             </div>
           </form>
@@ -344,7 +344,7 @@ export default function ComparePage() {
               </div>
               <div className="bg-white rounded-xl p-4 shadow-sm text-center">
                 <p className="text-3xl font-bold text-green-600">{matchedEvents.length}</p>
-                <p className="text-sm text-gray-600">Price Comparisons</p>
+                <p className="text-sm text-gray-600">Matched Listings</p>
               </div>
               <div className="bg-white rounded-xl p-4 shadow-sm text-center">
                 <p className="text-3xl font-bold text-blue-600">{unmatchedTM.length}</p>
@@ -411,7 +411,7 @@ export default function ComparePage() {
                           </div>
                         </div>
 
-                        {/* Price Comparison */}
+                        {/* Seller Listing Comparison */}
                         <div className="grid md:grid-cols-2 divide-y md:divide-y-0 md:divide-x">
                           {/* Ticketmaster */}
                           <div className={`p-4 ${event.bestSource === 'ticketmaster' ? 'bg-green-50' : ''}`}>
@@ -650,12 +650,9 @@ export default function ComparePage() {
           <div className="flex items-start gap-3">
             <span className="text-xl">💡</span>
             <div>
-              <h4 className="font-semibold text-amber-900">Pro Tip</h4>
+              <h4 className="font-semibold text-amber-900">Before you buy</h4>
               <p className="text-sm text-amber-700">
-                Prices include estimated platform fees: Ticketmaster ~27%, StubHub ~24%, SeatGeek ~20%.
-                Section estimates (upper/lower/club/floor) are inferred from each venue's typical pricing
-                pattern — not live per-section data. Final fees vary slightly at checkout based on event,
-                seat, and delivery.
+                Confirm the event date, section, delivery method, fees, and final checkout total on the seller site.
               </p>
             </div>
           </div>

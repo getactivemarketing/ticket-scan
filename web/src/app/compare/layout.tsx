@@ -1,27 +1,27 @@
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Compare Ticket Prices — Ticketmaster vs SeatGeek Side-by-Side',
+  title: 'Compare Event Listings — Ticketmaster vs SeatGeek Side-by-Side',
   description:
-    'Compare ticket prices side-by-side from Ticketmaster and SeatGeek (which aggregates StubHub, Vivid Seats, and 60+ resale sites). All-in fee pricing, estimated section breakdowns, and savings highlighted.',
+    'Compare event availability side-by-side from Ticketmaster and SeatGeek, then open the seller page to review current inventory and checkout details.',
   keywords:
-    'compare ticket prices, ticket price comparison, Ticketmaster vs SeatGeek, cheapest tickets, ticket comparison tool',
+    'compare event listings, Ticketmaster vs SeatGeek, event search, ticket comparison tool',
   alternates: {
     canonical: 'https://www.ticketscan.io/compare',
   },
   openGraph: {
-    title: 'Compare Ticket Prices — Ticketmaster vs SeatGeek',
+    title: 'Compare Event Listings — Ticketmaster vs SeatGeek',
     description:
-      'See side-by-side ticket prices from Ticketmaster and SeatGeek with all-in fee pricing and estimated section breakdowns.',
+      'See Ticketmaster and SeatGeek event listings side-by-side and review current details on the seller site.',
     type: 'website',
     url: 'https://www.ticketscan.io/compare',
     siteName: 'Ticket Scan',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Compare Ticket Prices — Ticketmaster vs SeatGeek',
+    title: 'Compare Event Listings — Ticketmaster vs SeatGeek',
     description:
-      'Side-by-side ticket price comparison with all-in fees and section-level estimates.',
+      'Side-by-side event listing comparison with links to current seller details.',
   },
 };
 
@@ -31,10 +31,10 @@ const compareJsonLd = {
     {
       '@type': 'WebApplication',
       '@id': 'https://www.ticketscan.io/compare#webapp',
-      name: 'Ticket Scan Price Comparison Tool',
+      name: 'Ticket Scan Event Listing Comparison Tool',
       url: 'https://www.ticketscan.io/compare',
       description:
-        'Interactive tool that fetches and matches live ticket listings from Ticketmaster and SeatGeek for the same event, surfacing the lower all-in price.',
+        'Interactive tool that fetches and matches live event listings from Ticketmaster and SeatGeek for the same event.',
       applicationCategory: 'BusinessApplication',
       operatingSystem: 'Web',
       browserRequirements: 'Requires JavaScript. Requires HTML5.',
@@ -44,10 +44,8 @@ const compareJsonLd = {
         priceCurrency: 'USD',
       },
       featureList: [
-        'Side-by-side price comparison across Ticketmaster and SeatGeek',
-        'All-in fee-inclusive pricing (Ticketmaster ~27%, SeatGeek ~20%)',
-        'Estimated section breakdowns (upper/lower/club/floor) at 24 major venues',
-        'Savings callouts showing dollar difference between platforms',
+        'Side-by-side event listing comparison across Ticketmaster and SeatGeek',
+        'Current availability links for each seller',
         'Filter by city, artist, team, and date range',
       ],
       provider: {
@@ -73,7 +71,7 @@ const compareJsonLd = {
         {
           '@type': 'ListItem',
           position: 2,
-          name: 'Compare Prices',
+          name: 'Compare Event Listings',
           item: 'https://www.ticketscan.io/compare',
         },
       ],

@@ -42,7 +42,7 @@ export default function PrivacyPage() {
               <p className="text-gray-600 mb-4">We use the information we collect to:</p>
               <ul className="list-disc pl-6 text-gray-600 space-y-2">
                 <li>Provide and improve our ticket comparison services</li>
-                <li>Send you price drop alerts for events you&apos;re tracking</li>
+                <li>Help you revisit events and onsale information you have saved</li>
                 <li>Send newsletter updates (if subscribed)</li>
                 <li>Analyze usage patterns to improve our service</li>
                 <li>Prevent fraud and ensure security</li>
