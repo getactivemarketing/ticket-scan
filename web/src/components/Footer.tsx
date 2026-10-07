@@ -94,7 +94,7 @@ export default function Footer() {
               </li>
               <li>
                 <Link href="/compare" className={LINK}>
-                  Compare Prices
+                  Compare Listings
                 </Link>
               </li>
               <li>

@@ -6,22 +6,22 @@ import TicketNetworkLink from '@/components/TicketNetworkLink';
 import AffiliateDisclosure from '@/components/AffiliateDisclosure';
 
 export const metadata: Metadata = {
-  title: 'Ticket Guides by City & Category - Compare Prices | TicketScan',
-  description: 'Browse TicketScan ticket guides by city and by event type. Compare prices for NBA, NHL, concerts, and theater, or find events in New York, Los Angeles, Chicago, and more.',
-  keywords: 'cheap tickets, compare ticket prices, NBA tickets, concert tickets, city event guides',
+  title: 'Ticket Guides by City & Category | TicketScan',
+  description: 'Browse TicketScan event guides by city and event type. Find NBA, NHL, concert, theater, and other events in New York, Los Angeles, Chicago, and more.',
+  keywords: 'ticket guides, NBA tickets, concert tickets, city event guides, event search',
   alternates: {
     canonical: 'https://www.ticketscan.io/tickets',
   },
   openGraph: {
-    title: 'Ticket Guides by City & Category - Compare Prices | TicketScan',
-    description: 'Browse ticket guides by city and event type. Compare prices across all major platforms.',
+    title: 'Ticket Guides by City & Category | TicketScan',
+    description: 'Browse event guides by city and event type, with links to current seller availability.',
     type: 'website',
     url: 'https://www.ticketscan.io/tickets',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Ticket Guides by City & Category - Compare Prices | TicketScan',
-    description: 'Browse ticket guides by city and event type. Compare prices across all major platforms.',
+    title: 'Ticket Guides by City & Category | TicketScan',
+    description: 'Browse event guides by city and event type, with links to current seller availability.',
   },
 };
 
@@ -69,7 +69,7 @@ export default function TicketsIndexPage() {
               Ticket Guides
             </h1>
             <p className="text-xl text-blue-100 max-w-2xl mx-auto mt-4">
-              Compare ticket prices across every major platform. Browse by event type or by city.
+              Find events by type or city, then review current availability on the linked seller site.
             </p>
           </div>
         </div>

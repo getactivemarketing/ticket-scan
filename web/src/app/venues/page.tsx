@@ -6,21 +6,21 @@ import AffiliateDisclosure from '@/components/AffiliateDisclosure';
 
 export const metadata: Metadata = {
   title: 'Venue Ticket Guides - Seating, Access and Onsale Dates',
-  description: 'Browse TicketScan venue guides for major US arenas and stadiums. Compare ticket prices, see seating tiers, and track upcoming events at MSG, Crypto.com Arena, Chase Center, and more.',
-  keywords: 'venue ticket guides, arena tickets, stadium tickets, compare venue prices, seating charts',
+  description: 'Browse TicketScan venue guides for major US arenas and stadiums. See seating tiers, venue capacity, and upcoming events at MSG, Crypto.com Arena, Chase Center, and more.',
+  keywords: 'venue ticket guides, arena tickets, stadium tickets, seating charts, venue capacity',
   alternates: {
     canonical: 'https://www.ticketscan.io/venues',
   },
   openGraph: {
     title: 'Venue Ticket Guides - Seating, Access and Onsale Dates',
-    description: 'Browse venue guides for major US arenas and stadiums. Compare ticket prices and track upcoming events.',
+    description: 'Browse venue guides for major US arenas and stadiums. See seating details, venue capacity, and upcoming events.',
     type: 'website',
     url: 'https://www.ticketscan.io/venues',
   },
   twitter: {
     card: 'summary_large_image',
     title: 'Venue Ticket Guides - Seating, Access and Onsale Dates',
-    description: 'Browse venue guides for major US arenas and stadiums. Compare ticket prices and track upcoming events.',
+    description: 'Browse venue guides for major US arenas and stadiums. See seating details, venue capacity, and upcoming events.',
   },
 };
 
@@ -75,7 +75,7 @@ export default function VenuesIndexPage() {
               Venue Ticket Guides
             </h1>
             <p className="text-xl text-blue-100 max-w-2xl mx-auto mt-4">
-              Compare ticket prices, explore seating tiers, and track upcoming events at
+              Explore seating tiers, venue details, and upcoming events at
               {' '}{venueList.length} major US arenas and stadiums.
             </p>
           </div>

@@ -101,5 +101,50 @@
     "mediaUrls": [
       "https://www.ticketscan.io/social/generated/2026-10-01-twitter-fees.png"
     ]
+  },
+  {
+    "id": "2026-10-07-twitter-greta-presale",
+    "platform": "twitter",
+    "scheduledTime": "2026-10-07T13:00:00.000Z",
+    "text": "Greta Van Fleet's 2027 tour has a presale calendar with homework. Europe: fan presales start Oct. 7, general onsale Oct. 9. North America: fan presale Oct. 13, general onsale Oct. 15. Check the exact event page before the queue opens. ticketscan.io",
+    "mediaUrls": [
+      "https://www.ticketscan.io/social/generated/2026-10-07-twitter-greta-presale.png"
+    ]
+  },
+  {
+    "id": "2026-10-07-twitter-time-zone",
+    "platform": "twitter",
+    "scheduledTime": "2026-10-07T17:00:00.000Z",
+    "text": "Presale time is local to the venue, not your kitchen table. Greta Van Fleet's Munich page says 10 a.m. CEST today. Convert it before you join the queue. ticketscan.io",
+    "mediaUrls": [
+      "https://www.ticketscan.io/social/generated/2026-10-07-twitter-time-zone.png"
+    ]
+  },
+  {
+    "id": "2026-10-07-twitter-checkout-total",
+    "platform": "twitter",
+    "scheduledTime": "2026-10-07T21:00:00.000Z",
+    "text": "A presale code gets you into the window. It doesn't check the section, delivery rules, seller, or final checkout total for you. Read those before you pay. ticketscan.io",
+    "mediaUrls": [
+      "https://www.ticketscan.io/social/generated/2026-10-07-twitter-checkout-total.png"
+    ]
+  },
+  {
+    "id": "2026-10-07-instagram-greta-checklist",
+    "platform": "instagram",
+    "scheduledTime": "2026-10-07T15:00:00.000Z",
+    "text": "Greta Van Fleet's 2027 presales are staggered by region, which is a polite way of saying the calendar wants you to do admin work before breakfast. 🎟️\n\nBefore the queue opens, confirm the exact city and venue, convert the onsale time to your time zone, check the presale requirement and ticket limit, then read the delivery and all-in checkout terms. A code is access, not a guaranteed seat.\n\nFind the event and its onsale details at ticketscan.io\n\n#TicketScan #GretaVanFleet #PresaleTips #ConcertTickets #TicketBuying",
+    "mediaUrls": [
+      "https://www.ticketscan.io/social/generated/2026-10-07-instagram-greta-checklist.png"
+    ]
+  },
+  {
+    "id": "2026-10-07-threads-presale-window",
+    "platform": "threads",
+    "scheduledTime": "2026-10-07T13:30:00.000Z",
+    "text": "A presale code is step one. You still need the right city, venue, local time, ticket limit, delivery method, and final checkout total. Ticket queues are stressful enough without discovering the rules halfway through. ticketscan.io",
+    "mediaUrls": [
+      "https://www.ticketscan.io/social/generated/2026-10-07-threads-presale-window.png"
+    ]
   }
 ]

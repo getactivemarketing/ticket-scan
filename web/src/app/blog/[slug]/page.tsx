@@ -216,7 +216,7 @@ export default async function BlogPostPage({ params }: PageProps) {
                 <h3 className="font-bold font-heading text-navy text-sm mb-4">Quick Links</h3>
                 <ul className="space-y-2">
                   <li><Link href="/dashboard" className="text-brand text-sm hover:text-brand-dark">Search Events</Link></li>
-                  <li><Link href="/compare" className="text-brand text-sm hover:text-brand-dark">Compare Prices</Link></li>
+                  <li><Link href="/compare" className="text-brand text-sm hover:text-brand-dark">Compare Listings</Link></li>
                   <li><Link href="/register" className="text-brand text-sm hover:text-brand-dark">Create Account</Link></li>
                 </ul>
               </div>

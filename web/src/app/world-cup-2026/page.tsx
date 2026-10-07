@@ -127,7 +127,7 @@ export default function WorldCup2026Page() {
                 href="/dashboard?keyword=world+cup+2026"
                 className="bg-white text-green-700 px-8 py-4 rounded-lg font-bold text-lg hover:bg-green-50 transition-colors"
               >
-                Find WC 2026 Events
+                Browse WC 2026 Events
               </Link>
               <Link
                 href="#schedule"
@@ -414,8 +414,8 @@ export default function WorldCup2026Page() {
             <div className="flex gap-4">
               <div className="bg-green-100 text-green-600 w-10 h-10 rounded-full flex items-center justify-center font-bold flex-shrink-0">2</div>
               <div>
-                <h3 className="font-heading font-bold text-gray-900 mb-1">Compare Resale Prices</h3>
-                <p className="text-gray-600">Once tickets hit the resale market, prices vary wildly. Use Ticket Scan to compare StubHub, SeatGeek, and Ticketmaster prices.</p>
+                <h3 className="font-heading font-bold text-gray-900 mb-1">Review Resale Availability</h3>
+                <p className="text-gray-600">Ticket availability varies by seller. Use Ticket Scan to find the relevant event and review the current seller page before buying.</p>
               </div>
             </div>
             <div className="flex gap-4">

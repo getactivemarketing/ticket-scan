@@ -126,7 +126,7 @@ export default function HowItWorksPage() {
             How Ticket Scan Works
           </h1>
           <p className="text-xl text-blue-100 max-w-2xl mx-auto">
-            Find the best ticket deals in 3 simple steps. Compare prices, track events, and never overpay again.
+            Find events, review seller availability, and keep your ticket research organized in 3 simple steps.
           </p>
         </div>
       </div>

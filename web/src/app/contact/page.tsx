@@ -3,21 +3,21 @@ import Link from 'next/link';
 
 export const metadata: Metadata = {
   title: 'Contact TicketScan - Support & Questions',
-  description: 'Get in touch with the TicketScan team. Questions about comparing ticket prices, price alerts, World Cup 2026 tickets, or your account? Here is how to reach us.',
-  keywords: 'contact ticketscan, ticketscan support, ticket price comparison help',
+  description: 'Get in touch with the TicketScan team about event listings, venue guides, World Cup 2026 information, or your account.',
+  keywords: 'contact ticketscan, ticketscan support, event listing help',
   alternates: {
     canonical: 'https://www.ticketscan.io/contact',
   },
   openGraph: {
     title: 'Contact TicketScan - Support & Questions',
-    description: 'Reach the TicketScan team with questions about price comparison, alerts, or World Cup 2026 tickets.',
+    description: 'Reach the TicketScan team with questions about event listings, venue guides, or World Cup 2026 information.',
     type: 'website',
     url: 'https://www.ticketscan.io/contact',
   },
   twitter: {
     card: 'summary_large_image',
     title: 'Contact TicketScan - Support & Questions',
-    description: 'Reach the TicketScan team with questions about price comparison, alerts, or World Cup 2026 tickets.',
+    description: 'Reach the TicketScan team with questions about event listings, venue guides, or World Cup 2026 information.',
   },
 };
 
