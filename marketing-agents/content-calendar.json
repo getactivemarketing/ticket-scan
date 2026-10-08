@@ -146,5 +146,50 @@
     "mediaUrls": [
       "https://www.ticketscan.io/social/generated/2026-10-07-threads-presale-window.png"
     ]
+  },
+  {
+    "id": "2026-10-08-twitter-presale-checklist",
+    "platform": "twitter",
+    "scheduledTime": "2026-10-08T13:00:00.000Z",
+    "text": "A presale code gets you into a window. It doesn't guarantee a good seat. Check the city, venue, ticket limit, delivery method, and final total before you pay. ticketscan.io",
+    "mediaUrls": [
+      "https://www.ticketscan.io/social/generated/2026-10-08-twitter-presale-checklist.png"
+    ]
+  },
+  {
+    "id": "2026-10-08-twitter-venue-map",
+    "platform": "twitter",
+    "scheduledTime": "2026-10-08T17:00:00.000Z",
+    "text": "The venue map is part of the ticket. Read the section notes before you grab the cheapest-looking seat. 'Limited view' can mean a column, railing, or a very real chunk of the stage. ticketscan.io",
+    "mediaUrls": [
+      "https://www.ticketscan.io/social/generated/2026-10-08-twitter-venue-map.png"
+    ]
+  },
+  {
+    "id": "2026-10-08-twitter-delivery-terms",
+    "platform": "twitter",
+    "scheduledTime": "2026-10-08T21:00:00.000Z",
+    "text": "If a listing says 'mobile transfer' or 'instant delivery,' read the seller terms anyway. Ticket language is tiny until it becomes your problem. Find the event first at ticketscan.io",
+    "mediaUrls": [
+      "https://www.ticketscan.io/social/generated/2026-10-08-twitter-delivery-terms.png"
+    ]
+  },
+  {
+    "id": "2026-10-08-instagram-ticket-checklist",
+    "platform": "instagram",
+    "scheduledTime": "2026-10-08T15:00:00.000Z",
+    "text": "The number on the first ticket card isn't the number that leaves your bank account. 🎟️\n\nBefore you pay, check the same section across listings, read the seat notes, confirm the delivery method, and expand the checkout total. Fees love arriving late to the conversation.\n\nFind the event and where to buy at ticketscan.io\n\n#TicketScan #TicketBuying #ConcertTickets #SportsTickets #SaveMoney",
+    "mediaUrls": [
+      "https://www.ticketscan.io/social/generated/2026-10-08-instagram-ticket-checklist.png"
+    ]
+  },
+  {
+    "id": "2026-10-08-threads-presale-reminder",
+    "platform": "threads",
+    "scheduledTime": "2026-10-08T13:30:00.000Z",
+    "text": "A presale code is access, not a seat. You still need the right city, venue, section, ticket limit, delivery method, and final checkout total. The queue is stressful enough without discovering the rules halfway through. ticketscan.io",
+    "mediaUrls": [
+      "https://www.ticketscan.io/social/generated/2026-10-08-threads-presale-reminder.png"
+    ]
   }
 ]

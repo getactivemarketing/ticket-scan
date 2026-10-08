@@ -1,5 +1,5 @@
 {
-  "builtAt": "2026-10-07T10:18:43.021Z",
+  "builtAt": "2026-10-08T10:20:49.118Z",
   "counts": {
     "resolved": 242,
     "unresolved": 0,
@@ -400,7 +400,7 @@
       "teamSlug": "edmonton-oilers",
       "attractionId": "K8vZ9171oy7",
       "matchedCity": "Edmonton",
-      "count": 9,
+      "count": 10,
       "totalEvents": 20
     },
     "bell-centre": {
