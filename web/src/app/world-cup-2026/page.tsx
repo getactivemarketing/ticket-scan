@@ -391,7 +391,7 @@ export default function WorldCup2026Page() {
               href="/blog/world-cup-2026-knockout-tickets"
               className="inline-block bg-green-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-green-700 transition-colors"
             >
-              Knockout Stage Ticket Guide: Prices &amp; Strategy →
+              Knockout Stage Ticket Guide: Seating &amp; Logistics →
             </Link>
           </p>
         </div>
@@ -407,8 +407,8 @@ export default function WorldCup2026Page() {
             <div className="flex gap-4">
               <div className="bg-green-100 text-green-600 w-10 h-10 rounded-full flex items-center justify-center font-bold flex-shrink-0">1</div>
               <div>
-                <h3 className="font-heading font-bold text-gray-900 mb-1">The Tournament Wrapped — Prices Still Tell a Story</h3>
-                <p className="text-gray-600">The 2026 World Cup ended July 19. Use our match and stadium guides to see what tickets cost across platforms and spot the pricing patterns worth remembering for the next big event.</p>
+                <h3 className="font-heading font-bold text-gray-900 mb-1">The Tournament Wrapped — What to Remember</h3>
+                <p className="text-gray-600">The 2026 World Cup ended July 19. Use our match and stadium guides to review the host venues, seating sections, and event details worth remembering for the next big tournament.</p>
               </div>
             </div>
             <div className="flex gap-4">

@@ -1,6 +1,6 @@
-## 2026-10-03
+## 2026-10-09
 
-- Proposed refresh: `refresh-proposals/2026-10-03-msg.md`
-- Page: `/venues/msg` — Madison Square Garden
-- Focus: remove the invalid price-tracking/onsale claim, add official event-entry and bag guidance, and propose one schema-ready FAQ.
-- Source check: Madison Square Garden official venue and event pages.
+- Proposed refresh: `refresh-proposals/2026-10-09-best-time-to-buy-concert-tickets.md`
+- Page: `/blog/best-time-to-buy-concert-tickets`
+- Focus: remove stale TicketScan price-data and price-alert claims; replace them with onsale, seat-comparison, seller, and all-in-fee guidance.
+- Source check: Federal Trade Commission live-event fee FAQ.
