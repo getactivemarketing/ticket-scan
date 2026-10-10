@@ -1,5 +1,5 @@
 {
-  "builtAt": "2026-10-09T10:17:06.917Z",
+  "builtAt": "2026-10-10T10:26:03.007Z",
   "counts": {
     "resolved": 242,
     "unresolved": 0,
@@ -273,7 +273,7 @@
       "attractionId": "K8vZ9171qu0",
       "matchedCity": "Tallahassee",
       "count": 3,
-      "totalEvents": 7
+      "totalEvents": 6
     },
     "bobby-dodd-stadium": {
       "teamName": "Georgia Tech Yellow Jackets Football",

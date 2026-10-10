@@ -1,6 +1,6 @@
-## 2026-10-09
+## 2026-10-10
 
-- Proposed refresh: `refresh-proposals/2026-10-09-best-time-to-buy-concert-tickets.md`
-- Page: `/blog/best-time-to-buy-concert-tickets`
-- Focus: remove stale TicketScan price-data and price-alert claims; replace them with onsale, seat-comparison, seller, and all-in-fee guidance.
-- Source check: Federal Trade Commission live-event fee FAQ.
+- Proposed refresh: `refresh-proposals/2026-10-10-concert-presale-codes-guide.md`
+- Page: `/blog/concert-presale-codes-guide`
+- Focus: replace the fixed presale timeline, face-value framing, resale-price claim, and price-alert CTA with event-specific onsale, delivery, seller, and all-in-total guidance.
+- Source check: Ticketmaster presale and delivery help pages; Federal Trade Commission live-event fee FAQ.
