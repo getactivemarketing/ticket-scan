@@ -492,14 +492,14 @@ export default async function TicketsPage({ params }: PageProps) {
           <div className="mt-12 bg-white rounded-xl shadow-md p-8">
             <h2 className="text-xl font-bold font-heading text-gray-900 mb-4">
               {isCity
-                ? `Find the Best Ticket Prices in ${pageData.data.name}`
-                : `Compare ${pageTitle} Ticket Prices`}
+                ? `Find ${pageData.data.name} Events and Tickets`
+                : `${pageTitle} Events and Tickets`}
             </h2>
             <p className="text-gray-600 leading-relaxed mb-4">
               {pageData.data.description}
             </p>
             <p className="text-gray-600 leading-relaxed">
-              Ticket Scan searches Ticketmaster, SeatGeek and other major ticket sites from one place, publishes venue guides covering seating and access, and tells you when tickets go on sale - including presale windows that open before the public onsale.
+              Ticket Scan finds events and links you to available ticket sellers from one place, publishes venue guides covering seating and access, and tells you when tickets go on sale - including presale windows that open before the public onsale.
             </p>
           </div>
         </div>
