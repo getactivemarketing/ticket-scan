@@ -1,13 +1,13 @@
-## Today's Content Hook — 2026-10-11
+## Today's Content Hook — 2026-10-12
 
-**Topic:** The 2026 NLCS opens tonight with the Los Angeles Dodgers at the Milwaukee Brewers at American Family Field, scheduled for 8:00 p.m. ET.
+**Topic:** The 2026 MLB League Championship Series moves into Monday with Dodgers–Brewers NLCS Game 2 at American Family Field and the ALCS opening later tonight. The postseason calendar also includes potential “if necessary” games whose exact status depends on the series result.
 
-**Angle:** A timely playoff-ticket checklist built around the actual game: confirm the matchup and date, use the American Family Field seating guide to translate level and section labels, then verify ticket quantity, delivery terms, seller protections, and the final all-in total before checkout. TicketScan can help fans find the event and where to shop; it should not make a live-price or buy/wait claim.
+**Angle:** Use playoff-ticket uncertainty as the consumer problem: fans need to confirm the exact series, game number, venue, opponent, date, delivery terms, and cancellation/refund rules before treating a conditional listing as a real plan. TicketScan can help fans find the event and where to shop; the seller’s page remains the source of truth for the listing.
 
-**Target keyword:** Dodgers Brewers NLCS tickets 2026
+**Target keyword:** conditional playoff tickets
 
-**Content type:** Blog post / venue-guide social snippet
+**Content type:** Blog post / social checklist
 
 **Priority:** High
 
-**Sources:** [MLB 2026 postseason schedule](https://www.mlb.com/postseason); [TicketScan American Family Field guide](https://www.ticketscan.io/venues/american-family-field)
+**Sources:** [MLB’s 2026 postseason schedule](https://www.mlb.com/postseason), [MLB’s NLCS matchup guide](https://www.mlb.com/dodgers/news/mlb-2026-league-championship-series-matchups)
