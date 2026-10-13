@@ -34,7 +34,7 @@ const dashboardJsonLd = {
       name: 'Ticket Scan Event Search',
       url: 'https://www.ticketscan.io/dashboard',
       description:
-        'Search live events across Ticketmaster and SeatGeek by city, keyword, or date range, with one-click price tracking and drop alerts.',
+        'Search live events across Ticketmaster and SeatGeek by city, keyword, or date range, save events to a personal watchlist, and review onsale details.',
       applicationCategory: 'BusinessApplication',
       operatingSystem: 'Web',
       browserRequirements: 'Requires JavaScript. Requires HTML5.',

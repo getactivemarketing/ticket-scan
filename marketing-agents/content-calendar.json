@@ -191,5 +191,50 @@
     "mediaUrls": [
       "https://www.ticketscan.io/social/generated/2026-10-08-threads-presale-reminder.png"
     ]
+  },
+  {
+    "id": "2026-10-13-twitter-venue-map",
+    "platform": "twitter",
+    "scheduledTime": "2026-10-13T13:00:00.000Z",
+    "text": "The venue map is part of the ticket. Read the section notes before you grab the cheapest-looking seat. 'Limited view' can mean a railing, a column, or a very real chunk of the stage. ticketscan.io",
+    "mediaUrls": [
+      "https://www.ticketscan.io/social/ig-template.png"
+    ]
+  },
+  {
+    "id": "2026-10-13-twitter-checkout-fees",
+    "platform": "twitter",
+    "scheduledTime": "2026-10-13T17:00:00.000Z",
+    "text": "The first number on a ticket card is an opening bid, not the final bill. Expand the checkout total before you get attached to the seat. Fees love arriving late to the conversation. ticketscan.io",
+    "mediaUrls": [
+      "https://www.ticketscan.io/social/ig-template.png"
+    ]
+  },
+  {
+    "id": "2026-10-13-twitter-local-time",
+    "platform": "twitter",
+    "scheduledTime": "2026-10-13T21:00:00.000Z",
+    "text": "Presale time is local to the venue, not your kitchen table. Check the event city, convert the time, and set an alarm before the queue opens. ticketscan.io",
+    "mediaUrls": [
+      "https://www.ticketscan.io/social/ig-template.png"
+    ]
+  },
+  {
+    "id": "2026-10-13-instagram-ticket-check",
+    "platform": "instagram",
+    "scheduledTime": "2026-10-13T15:00:00.000Z",
+    "text": "The cheapest-looking ticket can get expensive fast. 🎟️\n\nBefore you buy, check the section notes, confirm the view, read the delivery method, and expand the final checkout total. 'Limited view' is doing a lot of work in some listings.\n\nFind the event and where to buy at ticketscan.io\n\n#TicketScan #TicketBuying #ConcertTickets #SportsTickets #SaveMoney",
+    "mediaUrls": [
+      "https://www.ticketscan.io/social/ig-template.png"
+    ]
+  },
+  {
+    "id": "2026-10-13-threads-delivery-terms",
+    "platform": "threads",
+    "scheduledTime": "2026-10-13T13:30:00.000Z",
+    "text": "'Mobile transfer' and 'instant delivery' sound reassuring. Read the seller terms anyway. Check when the ticket arrives, what happens if delivery is delayed, and whether the final total changed at checkout. ticketscan.io",
+    "mediaUrls": [
+      "https://www.ticketscan.io/social/ig-template.png"
+    ]
   }
 ]

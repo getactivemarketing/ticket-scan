@@ -1,13 +1,8 @@
-## Today's Content Hook — 2026-10-12
-
-**Topic:** The 2026 MLB League Championship Series moves into Monday with Dodgers–Brewers NLCS Game 2 at American Family Field and the ALCS opening later tonight. The postseason calendar also includes potential “if necessary” games whose exact status depends on the series result.
-
-**Angle:** Use playoff-ticket uncertainty as the consumer problem: fans need to confirm the exact series, game number, venue, opponent, date, delivery terms, and cancellation/refund rules before treating a conditional listing as a real plan. TicketScan can help fans find the event and where to shop; the seller’s page remains the source of truth for the listing.
-
-**Target keyword:** conditional playoff tickets
-
-**Content type:** Blog post / social checklist
-
+## Today's Content Hook — 2026-10-13
+**Topic:** Greta Van Fleet's 2027 *Into The Beginning* North American fan presale begins today at 9 a.m. local time, with additional presales ahead of the October 15 general onsale.
+**Angle:** Presales are not automatically the best or safest path. Give fans a practical checklist for confirming the exact date and venue, understanding which presale they qualify for, checking ticket limits, and comparing the final all-in total before buying.
+**Target keyword:** Greta Van Fleet presale 2027
+**Content type:** Blog post / social snippet
 **Priority:** High
 
-**Sources:** [MLB’s 2026 postseason schedule](https://www.mlb.com/postseason), [MLB’s NLCS matchup guide](https://www.mlb.com/dodgers/news/mlb-2026-league-championship-series-matchups)
+**Sources:** [Live Nation announcement](https://news.livenationentertainment.com/news/greta-van-fleet-announce-into-the-beginning-2027-north-american-and-european-tour) and [Ticketmaster presale details](https://help.ticketmaster.com/hc/en-us/articles/51509315313041-Greta-Van-Fleet-Into-The-Beginning).
