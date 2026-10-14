@@ -1,5 +1,5 @@
 {
-  "builtAt": "2026-10-13T10:16:47.527Z",
+  "builtAt": "2026-10-14T12:52:09.284Z",
   "counts": {
     "resolved": 242,
     "unresolved": 0,
@@ -312,8 +312,8 @@
       "teamSlug": "middle-tennessee-blue-raiders-football",
       "attractionId": "K8vZ917Gpgf",
       "matchedCity": "Murfreesboro",
-      "count": 4,
-      "totalEvents": 7
+      "count": 3,
+      "totalEvents": 6
     },
     "davis-wade-stadium": {
       "teamName": "Mississippi State Bulldogs Football",
@@ -392,7 +392,7 @@
       "teamSlug": "calgary-flames",
       "attractionId": "K8vZ9171oB7",
       "matchedCity": "Calgary",
-      "count": 9,
+      "count": 10,
       "totalEvents": 20
     },
     "rogers-place": {
@@ -416,7 +416,7 @@
       "teamSlug": "vancouver-canucks",
       "attractionId": "K8vZ9171oH7",
       "matchedCity": "Vancouver",
-      "count": 10,
+      "count": 11,
       "totalEvents": 20
     },
     "canada-life-centre": {

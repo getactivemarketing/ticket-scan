@@ -1,8 +1,8 @@
-## Today's Content Hook — 2026-10-13
-**Topic:** Greta Van Fleet's 2027 *Into The Beginning* North American fan presale begins today at 9 a.m. local time, with additional presales ahead of the October 15 general onsale.
-**Angle:** Presales are not automatically the best or safest path. Give fans a practical checklist for confirming the exact date and venue, understanding which presale they qualify for, checking ticket limits, and comparing the final all-in total before buying.
-**Target keyword:** Greta Van Fleet presale 2027
-**Content type:** Blog post / social snippet
+## Today's Content Hook — October 14, 2026
+**Topic:** A$AP Rocky has announced five Australia and New Zealand arena shows for December 2026.
+**Angle:** New tour announcements create a rush of presale pages, resale listings, and confusing venue information. Give fans a quick checklist for verifying the real event, finding the onsale date, and checking the all-in price before buying.
+**Target keyword:** A$AP Rocky Australia New Zealand tour tickets
+**Content type:** Blog post / social snippet / email hook
 **Priority:** High
 
-**Sources:** [Live Nation announcement](https://news.livenationentertainment.com/news/greta-van-fleet-announce-into-the-beginning-2027-north-american-and-european-tour) and [Ticketmaster presale details](https://help.ticketmaster.com/hc/en-us/articles/51509315313041-Greta-Van-Fleet-Into-The-Beginning).
+**Source:** [Effingham Radio report](https://www.effinghamradio.com/2026/10/14/aap-rocky-announces-australia-and-new-zealand-tour-dates-for-december-2026/), published October 14, 2026.

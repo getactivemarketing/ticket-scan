@@ -1,0 +1,17 @@
+HTTP/2 200 
+accept-ranges: bytes
+access-control-allow-origin: *
+age: 93307
+cache-control: public, max-age=0, must-revalidate
+content-disposition: inline
+content-type: application/xml
+date: Wed, 14 Oct 2026 12:36:02 GMT
+etag: "86a8305589324325cb009c0565c52267"
+server: Vercel
+strict-transport-security: max-age=63072000
+vary: rsc, next-router-state-tree, next-router-prefetch, next-router-segment-prefetch
+x-matched-path: /sitemap.xml
+x-vercel-cache: HIT
+x-vercel-id: iad1::z4gll-1791981362734-ff659ce059a8
+content-length: 131839
+

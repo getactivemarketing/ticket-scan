@@ -236,5 +236,50 @@
     "mediaUrls": [
       "https://www.ticketscan.io/social/ig-template.png"
     ]
+  },
+  {
+    "id": "2026-10-14-twitter-presale-time",
+    "platform": "twitter",
+    "scheduledTime": "2026-10-14T13:00:00.000Z",
+    "text": "Presale time is local to the venue, not your kitchen table. Check the event city, convert the time, and save the official link before the queue opens. ticketscan.io",
+    "mediaUrls": [
+      "https://www.ticketscan.io/social/ig-template.png"
+    ]
+  },
+  {
+    "id": "2026-10-14-twitter-checkout-total",
+    "platform": "twitter",
+    "scheduledTime": "2026-10-14T17:00:00.000Z",
+    "text": "The first number on a ticket card is an opening bid, not the final bill. Expand the checkout total before you get attached to the seat. Fees love arriving late to the conversation. ticketscan.io",
+    "mediaUrls": [
+      "https://www.ticketscan.io/social/ig-template.png"
+    ]
+  },
+  {
+    "id": "2026-10-14-twitter-listing-type",
+    "platform": "twitter",
+    "scheduledTime": "2026-10-14T21:00:00.000Z",
+    "text": "A listing can say the artist's name and still be parking, a VIP package, or a waitlist. Read the item type before you pay for something that won't get you through the gate. ticketscan.io",
+    "mediaUrls": [
+      "https://www.ticketscan.io/social/ig-template.png"
+    ]
+  },
+  {
+    "id": "2026-10-14-instagram-new-tour-checklist",
+    "platform": "instagram",
+    "scheduledTime": "2026-10-14T15:00:00.000Z",
+    "text": "A new tour announcement is exciting. It is also when vague listings and fake presale pages multiply. 🎟️\n\nBefore you buy, confirm the city, venue, date, and local start time. Separate the artist presale from the general onsale. Check whether the listing is a standard ticket, VIP package, parking pass, or resale ticket. Then expand the final checkout total and read the delivery terms.\n\nSeven minutes of checking beats discovering you bought parking after the queue closes. Find the event and onsale details at ticketscan.io\n\n#TicketScan #TicketBuying #ConcertTickets #Presales #SaveMoney",
+    "mediaUrls": [
+      "https://www.ticketscan.io/social/ig-template.png"
+    ]
+  },
+  {
+    "id": "2026-10-14-threads-venue-guide",
+    "platform": "threads",
+    "scheduledTime": "2026-10-14T17:30:00.000Z",
+    "text": "The venue guide is worth reading before the ticket page turns into a pressure cooker. Section names, sightline notes, capacity, entrances, and event timing tell you a lot more than a tiny seat label. Check the building first, then decide whether the listing makes sense. ticketscan.io",
+    "mediaUrls": [
+      "https://www.ticketscan.io/social/ig-template.png"
+    ]
   }
 ]

@@ -1,0 +1,17 @@
+HTTP/2 200 
+age: 23918
+cache-control: public, max-age=0, must-revalidate
+content-type: text/html; charset=utf-8
+date: Tue, 13 Oct 2026 23:42:03 GMT
+etag: "80t3ebsvmk24fq"
+server: Vercel
+strict-transport-security: max-age=63072000
+vary: rsc, next-router-state-tree, next-router-prefetch, next-router-segment-prefetch
+x-matched-path: /venues/metlife-stadium
+x-nextjs-prerender: 1
+x-nextjs-stale-time: 300
+x-powered-by: Next.js
+x-vercel-cache: STALE
+x-vercel-id: iad1::iad1::79xl5-1791981375300-75bb68b1fca2
+content-length: 99092
+
