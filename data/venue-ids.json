@@ -1,5 +1,5 @@
 {
-  "builtAt": "2026-10-14T12:52:09.284Z",
+  "builtAt": "2026-10-15T10:17:25.492Z",
   "counts": {
     "resolved": 242,
     "unresolved": 0,
@@ -328,8 +328,8 @@
       "teamSlug": "sam-houston-state-football",
       "attractionId": "K8vZ91756Pf",
       "matchedCity": "Huntsville",
-      "count": 4,
-      "totalEvents": 7
+      "count": 3,
+      "totalEvents": 6
     },
     "renasant-stadium": {
       "teamName": "Southern Mississippi Football",
@@ -408,7 +408,7 @@
       "teamSlug": "montreal-canadiens",
       "attractionId": "K8vZ9171oyf",
       "matchedCity": "Montreal",
-      "count": 8,
+      "count": 9,
       "totalEvents": 20
     },
     "rogers-arena": {

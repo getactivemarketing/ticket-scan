@@ -1,8 +1,8 @@
-## Today's Content Hook — October 14, 2026
-**Topic:** A$AP Rocky has announced five Australia and New Zealand arena shows for December 2026.
-**Angle:** New tour announcements create a rush of presale pages, resale listings, and confusing venue information. Give fans a quick checklist for verifying the real event, finding the onsale date, and checking the all-in price before buying.
-**Target keyword:** A$AP Rocky Australia New Zealand tour tickets
+## Today's Content Hook — October 15, 2026
+**Topic:** RAYE says 1.8 million people registered for a 5,000-seat Royal Albert Hall show, while AI bots allegedly overwhelmed the sign-up process.
+**Angle:** Explain what artist registration, a primary onsale, official resale, and secondary listings each mean—and why a presale signup is access, not a ticket guarantee.
+**Target keyword:** RAYE Royal Albert Hall tickets
 **Content type:** Blog post / social snippet / email hook
 **Priority:** High
 
-**Source:** [Effingham Radio report](https://www.effinghamradio.com/2026/10/14/aap-rocky-announces-australia-and-new-zealand-tour-dates-for-december-2026/), published October 14, 2026.
+**Sources:** [BBC News](https://www.bbc.com/news/articles/c8vgxpwlx9wko), published October 15, 2026; [Royal Albert Hall event page](https://www.royalalberthall.com/tickets/events/2026/raye).

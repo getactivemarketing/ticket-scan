@@ -281,5 +281,50 @@
     "mediaUrls": [
       "https://www.ticketscan.io/social/ig-template.png"
     ]
+  },
+  {
+    "id": "2026-10-15-twitter-presale-time",
+    "platform": "twitter",
+    "scheduledTime": "2026-10-15T13:00:00.000Z",
+    "text": "Presale time is local to the venue, not your kitchen table. Check the event city, convert the time, and save the official link before the queue opens. ticketscan.io",
+    "mediaUrls": [
+      "https://www.ticketscan.io/social/ig-template.png"
+    ]
+  },
+  {
+    "id": "2026-10-15-twitter-listing-type",
+    "platform": "twitter",
+    "scheduledTime": "2026-10-15T17:00:00.000Z",
+    "text": "A ticket page can hide a VIP package, parking pass, or resale listing behind the event name. Read the item type before you pay for something that won't get you through the gate. ticketscan.io",
+    "mediaUrls": [
+      "https://www.ticketscan.io/social/ig-template.png"
+    ]
+  },
+  {
+    "id": "2026-10-15-twitter-checkout-total",
+    "platform": "twitter",
+    "scheduledTime": "2026-10-15T21:00:00.000Z",
+    "text": "The number on the ticket card is not the number leaving your bank account. Expand the checkout total before you get attached to the seat. Fees love arriving late to the conversation. ticketscan.io",
+    "mediaUrls": [
+      "https://www.ticketscan.io/social/ig-template.png"
+    ]
+  },
+  {
+    "id": "2026-10-15-instagram-venue-first",
+    "platform": "instagram",
+    "scheduledTime": "2026-10-15T15:00:00.000Z",
+    "text": "The section label is only half the story. 🎟️\n\nBefore you buy, check the venue guide for section names, sightline notes, capacity, entrances, and event timing. A seat can look cheap or convenient until you realize the view is limited or the entrance is on the other side of the building.\n\nFind the event and venue details at ticketscan.io\n\n#TicketScan #TicketBuying #ConcertTickets #SportsTickets #VenueGuide",
+    "mediaUrls": [
+      "https://www.ticketscan.io/social/ig-template.png"
+    ]
+  },
+  {
+    "id": "2026-10-15-threads-seat-label",
+    "platform": "threads",
+    "scheduledTime": "2026-10-15T17:30:00.000Z",
+    "text": "A seat label is not a view. Check the venue guide for the section, sightline, entrance, and any limited-view note before the listing starts feeling urgent. Ticketscan.io has the event and venue details in one place.",
+    "mediaUrls": [
+      "https://www.ticketscan.io/social/ig-template.png"
+    ]
   }
 ]

@@ -41,7 +41,6 @@ const contactJsonLd = {
       'https://x.com/ticketscan_io',
       'https://instagram.com/ticketscanapp',
       'https://threads.net/@ticketscanapp',
-      'https://tiktok.com/@ticketscan_io',
     ],
     contactPoint: [
       {
@@ -130,7 +129,7 @@ export default function ContactPage() {
                 Social Media
               </h2>
               <p className="text-gray-600 mb-4">
-                Follow along for ticket deals and price-drop tips, or send us a DM.
+                Follow along for ticket-buying tips, or send us a DM.
               </p>
               <div className="flex flex-col gap-2 text-brand font-medium">
                 <a href="https://x.com/ticketscan_io" target="_blank" rel="noopener noreferrer" className="hover:text-brand-dark transition-colors">
@@ -138,9 +137,6 @@ export default function ContactPage() {
                 </a>
                 <a href="https://instagram.com/ticketscanapp" target="_blank" rel="noopener noreferrer" className="hover:text-brand-dark transition-colors">
                   Instagram → @ticketscan_io
-                </a>
-                <a href="https://tiktok.com/@ticketscan_io" target="_blank" rel="noopener noreferrer" className="hover:text-brand-dark transition-colors">
-                  TikTok → @ticketscan_io
                 </a>
               </div>
             </div>
