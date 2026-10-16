@@ -1,5 +1,5 @@
 {
-  "builtAt": "2026-10-15T10:17:25.492Z",
+  "builtAt": "2026-10-16T10:18:01.409Z",
   "counts": {
     "resolved": 242,
     "unresolved": 0,
@@ -424,7 +424,7 @@
       "teamSlug": "winnipeg-jets",
       "attractionId": "K8vZ917Cly7",
       "matchedCity": "Winnipeg",
-      "count": 10,
+      "count": 11,
       "totalEvents": 20
     }
   }

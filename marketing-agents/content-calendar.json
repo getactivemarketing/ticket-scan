@@ -326,5 +326,50 @@
     "mediaUrls": [
       "https://www.ticketscan.io/social/ig-template.png"
     ]
+  },
+  {
+    "id": "2026-10-16-twitter-presale-clock",
+    "platform": "twitter",
+    "scheduledTime": "2026-10-16T13:00:00.000Z",
+    "text": "Presale time is local to the venue, not your kitchen table. Check the event city, convert the time, and save the official link before the queue opens. ticketscan.io",
+    "mediaUrls": [
+      "https://www.ticketscan.io/social/ig-template.png"
+    ]
+  },
+  {
+    "id": "2026-10-16-threads-presale-window",
+    "platform": "threads",
+    "scheduledTime": "2026-10-16T13:30:00.000Z",
+    "text": "A presale code is access to a window, not a guarantee of a good seat. Check the local time, ticket limit, delivery terms, and final checkout total before the queue starts making decisions for you. ticketscan.io",
+    "mediaUrls": [
+      "https://www.ticketscan.io/social/ig-template.png"
+    ]
+  },
+  {
+    "id": "2026-10-16-instagram-checkout-total",
+    "platform": "instagram",
+    "scheduledTime": "2026-10-16T15:00:00.000Z",
+    "text": "The first number on a ticket card is not the final bill. 🎟️\n\nBefore you pay, confirm the event and seat, read the listing type, check the delivery method, and expand the all-in checkout total. Fees love arriving late to the conversation.\n\nFind the event and where to buy at ticketscan.io\n\n#TicketScan #TicketBuying #ConcertTickets #SportsTickets #SaveMoney",
+    "mediaUrls": [
+      "https://www.ticketscan.io/social/ig-template.png"
+    ]
+  },
+  {
+    "id": "2026-10-16-twitter-limited-view",
+    "platform": "twitter",
+    "scheduledTime": "2026-10-16T17:00:00.000Z",
+    "text": "The venue map is part of the ticket. Read the section notes before you grab the cheapest-looking seat. 'Limited view' can mean a railing, a column, or a very real chunk of the stage. ticketscan.io",
+    "mediaUrls": [
+      "https://www.ticketscan.io/social/ig-template.png"
+    ]
+  },
+  {
+    "id": "2026-10-16-twitter-world-cup-stadiums",
+    "platform": "twitter",
+    "scheduledTime": "2026-10-16T21:00:00.000Z",
+    "text": "World Cup 2026 is spread across 16 stadiums in the US, Canada, and Mexico. Different building, different section map, different arrival headache. Read the venue guide before you fall in love with a ticket. ticketscan.io",
+    "mediaUrls": [
+      "https://www.ticketscan.io/social/ig-template.png"
+    ]
   }
 ]
