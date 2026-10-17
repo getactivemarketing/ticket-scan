@@ -93,6 +93,23 @@ export function cleanTeamEvents(events: FeedEvent[]): FeedEvent[] {
   });
 }
 
+/** Remove stale rows before rendering feeds labelled as upcoming. */
+export function filterUpcomingEvents<T extends FeedEvent>(events: T[], now: Date = new Date()): T[] {
+  const parts = new Intl.DateTimeFormat('en-US', {
+    timeZone: ET,
+    year: 'numeric',
+    month: '2-digit',
+    day: '2-digit',
+  }).formatToParts(now);
+  const today = `${parts.find((p) => p.type === 'year')?.value}-${parts.find((p) => p.type === 'month')?.value}-${parts.find((p) => p.type === 'day')?.value}`;
+
+  return events.filter((event) => {
+    if (!event.date) return false;
+    const date = calendarDate(event.date.slice(0, 10));
+    return !!date && `${date.year}-${String(date.month).padStart(2, '0')}-${String(date.day).padStart(2, '0')}` >= today;
+  });
+}
+
 export type SaleStatus =
   | { kind: 'onsale'; label: string }
   | { kind: 'presale'; label: string }

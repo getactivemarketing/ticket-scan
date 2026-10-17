@@ -6,7 +6,7 @@ import { getCategoryBySlug, getAllCategories, Category } from '@/data/categories
 import { venues } from '@/data/venues';
 import { combosForCity, combosForCategory } from '@/data/combos';
 import { paced } from '@/lib/paced';
-import { formatEtDate } from '@/lib/events';
+import { filterUpcomingEvents, formatEtDate } from '@/lib/events';
 import TicketNetworkLink from '@/components/TicketNetworkLink';
 import AffiliateDisclosure from '@/components/AffiliateDisclosure';
 
@@ -153,7 +153,7 @@ export default async function TicketsPage({ params }: PageProps) {
   // Google's structured-data guidance requires distinct ListItem entries, and
   // the public events API can return multiple showtimes of the same event.
   const seenEventKeys = new Set<string>();
-  const events = rawEvents.filter((event) => {
+  const events = filterUpcomingEvents(rawEvents).filter((event) => {
     const key = `${event.name}|${event.venue}|${event.date}`;
     if (seenEventKeys.has(key)) return false;
     seenEventKeys.add(key);

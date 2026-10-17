@@ -2,7 +2,7 @@ import { test } from 'node:test';
 import assert from 'node:assert/strict';
 
 // Node 24 strips types on import, so these run against the real module.
-const { cleanEvents, cleanTeamEvents, formatEtDate, formatEventDayParts, isThinTeamPage } = await import('./events.ts');
+const { cleanEvents, cleanTeamEvents, filterUpcomingEvents, formatEtDate, formatEventDayParts, isThinTeamPage } = await import('./events.ts');
 
 const ev = (id, name) => ({ id, name });
 
@@ -40,6 +40,20 @@ test('cleanTeamEvents still drops non-events and true duplicate rows', () => {
 test('cleanTeamEvents keeps a row that has no id rather than dropping it', () => {
   const out = cleanTeamEvents([{ name: 'Cardinals vs Cubs' }, ev('a', 'Cardinals vs Cubs')]);
   assert.equal(out.length, 2);
+});
+
+test('filterUpcomingEvents removes stale events but keeps events happening today', () => {
+  const events = [
+    { id: 'past', name: 'Yesterday', date: '2026-10-16' },
+    { id: 'today', name: 'Today', date: '2026-10-17' },
+    { id: 'future', name: 'Tomorrow', date: '2026-10-18' },
+    { id: 'invalid', name: 'Bad date', date: 'not-a-date' },
+  ];
+
+  assert.deepEqual(
+    filterUpcomingEvents(events, new Date('2026-10-17T15:00:00-04:00')).map((e) => e.id),
+    ['today', 'future'],
+  );
 });
 
 // --- Calendar dates must not be timezone-shifted -------------------------
