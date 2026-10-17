@@ -1,8 +1,8 @@
-## Today's Content Hook — October 16, 2026
-**Topic:** Ed Sheeran's LOOP Tour is scheduled for Bank of America Stadium in Charlotte tomorrow, Saturday, October 17, 2026.
-**Angle:** A useful last-minute event guide: confirm the official event page, compare the exact seat and final all-in total, and verify mobile-transfer details before heading to the stadium. The artist's official tour page also identifies the authorized ticketing route, which is more useful than trusting a mystery listing that appeared five minutes ago.
-**Target keyword:** Ed Sheeran Charlotte tickets 2026
-**Content type:** Venue page update / social snippet / email hook
+## Today's Content Hook — 2026-10-17
+**Topic:** Iron Maiden announced a surprise 2027 North American tour, with presale and ticketing details drawing immediate fan attention.
+**Angle:** Build a practical “before the queue opens” guide: verify the official tour dates, add the right city to a shortlist, check the venue’s onsale and presale details, and compare the final all-in total across sellers before checkout. TicketScan can own the event-discovery and onsale-date layer without making live price or alert claims.
+**Target keyword:** Iron Maiden 2027 tour tickets
+**Content type:** Blog post / social snippet
 **Priority:** High
 
-**Sources:** [Ed Sheeran's official North America tour page](https://northamerica.edsheeran.com/); [Ticketmaster event page](https://www.ticketmaster.com/ed-sheeran-loop-tour-charlotte-north-carolina-10-17-2026/event/2D006331AAC349EB); [Carolina Panthers stadium booking information](https://www.panthers.com/stadium/booking).
+**Source:** [Men's Journal report on the tour announcement](https://www.mensjournal.com/news/iron-maiden-announce-surprise-2027-north-american-tour-dates-presale-and-how-to-get-tickets)

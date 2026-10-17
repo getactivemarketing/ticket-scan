@@ -371,5 +371,50 @@
     "mediaUrls": [
       "https://www.ticketscan.io/social/ig-template.png"
     ]
+  },
+  {
+    "id": "2026-10-17-twitter-checkout-total",
+    "platform": "twitter",
+    "scheduledTime": "2026-10-17T13:00:00.000Z",
+    "text": "The first number on a ticket card is not the final bill. Expand checkout, then compare the all-in total for the same section. Fees love arriving late to the conversation. ticketscan.io",
+    "mediaUrls": [
+      "https://www.ticketscan.io/social/ig-template.png"
+    ]
+  },
+  {
+    "id": "2026-10-17-twitter-seat-notes",
+    "platform": "twitter",
+    "scheduledTime": "2026-10-17T17:00:00.000Z",
+    "text": "A section label isn't a view. Check the venue map for limited-view notes, rails, columns, and entry details before you pay. The cheap seat can get weird fast. ticketscan.io",
+    "mediaUrls": [
+      "https://www.ticketscan.io/social/ig-template.png"
+    ]
+  },
+  {
+    "id": "2026-10-17-twitter-local-time",
+    "platform": "twitter",
+    "scheduledTime": "2026-10-17T21:00:00.000Z",
+    "text": "Presale time is local to the venue, not your kitchen table. TicketScan shows onsale details so you can check the city, convert the time, and save the official link before the queue opens. ticketscan.io",
+    "mediaUrls": [
+      "https://www.ticketscan.io/social/ig-template.png"
+    ]
+  },
+  {
+    "id": "2026-10-17-instagram-before-buy",
+    "platform": "instagram",
+    "scheduledTime": "2026-10-17T15:00:00.000Z",
+    "text": "The seat label is the beginning of the decision, not the end. 🎟️\n\nBefore you pay, open the venue map, read any limited-view note, confirm the delivery method, and expand the all-in checkout total. A cheap ticket gets less cheap when the view or fees surprise you.\n\nFind the event and where to buy at ticketscan.io\n\n#TicketScan #TicketBuying #VenueGuide #ConcertTickets #SaveMoney",
+    "mediaUrls": [
+      "https://www.ticketscan.io/social/ig-template.png"
+    ]
+  },
+  {
+    "id": "2026-10-17-threads-map-label",
+    "platform": "threads",
+    "scheduledTime": "2026-10-17T13:30:00.000Z",
+    "text": "A seat label is not a view. I’d check the venue map and any limited-view note before getting attached to the cheapest listing. Then I’d expand checkout and read the delivery terms. ticketscan.io",
+    "mediaUrls": [
+      "https://www.ticketscan.io/social/ig-template.png"
+    ]
   }
 ]
