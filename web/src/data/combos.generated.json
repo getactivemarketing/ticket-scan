@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-17T16:15:30.817Z",
+  "generatedAt": "2026-10-18T10:15:24.163Z",
   "threshold": 5,
   "combos": [
     {
@@ -44,6 +44,11 @@
     },
     {
       "city": "chicago",
+      "category": "concerts",
+      "eventCount": 50
+    },
+    {
+      "city": "chicago",
       "category": "mlb",
       "eventCount": 50
     },
@@ -179,6 +184,11 @@
     },
     {
       "city": "new-york",
+      "category": "concerts",
+      "eventCount": 50
+    },
+    {
+      "city": "new-york",
       "category": "family",
       "eventCount": 50
     },
@@ -210,6 +220,11 @@
     {
       "city": "philadelphia",
       "category": "comedy",
+      "eventCount": 50
+    },
+    {
+      "city": "philadelphia",
+      "category": "concerts",
       "eventCount": 50
     },
     {
@@ -303,13 +318,13 @@
       "eventCount": 49
     },
     {
-      "city": "chicago",
+      "city": "detroit",
       "category": "concerts",
       "eventCount": 49
     },
     {
-      "city": "denver",
-      "category": "comedy",
+      "city": "las-vegas",
+      "category": "concerts",
       "eventCount": 49
     },
     {
@@ -323,17 +338,7 @@
       "eventCount": 49
     },
     {
-      "city": "milwaukee",
-      "category": "concerts",
-      "eventCount": 49
-    },
-    {
       "city": "new-orleans",
-      "category": "concerts",
-      "eventCount": 49
-    },
-    {
-      "city": "new-york",
       "category": "concerts",
       "eventCount": 49
     },
@@ -344,11 +349,6 @@
     },
     {
       "city": "philadelphia",
-      "category": "concerts",
-      "eventCount": 49
-    },
-    {
-      "city": "philadelphia",
       "category": "theater",
       "eventCount": 49
     },
@@ -363,7 +363,12 @@
       "eventCount": 49
     },
     {
-      "city": "detroit",
+      "city": "denver",
+      "category": "comedy",
+      "eventCount": 48
+    },
+    {
+      "city": "milwaukee",
       "category": "concerts",
       "eventCount": 48
     },
@@ -373,7 +378,7 @@
       "eventCount": 48
     },
     {
-      "city": "new-york",
+      "city": "detroit",
       "category": "theater",
       "eventCount": 47
     },
@@ -381,16 +386,6 @@
       "city": "phoenix",
       "category": "concerts",
       "eventCount": 47
-    },
-    {
-      "city": "detroit",
-      "category": "theater",
-      "eventCount": 46
-    },
-    {
-      "city": "las-vegas",
-      "category": "concerts",
-      "eventCount": 46
     },
     {
       "city": "las-vegas",
@@ -406,6 +401,11 @@
       "city": "dallas",
       "category": "comedy",
       "eventCount": 45
+    },
+    {
+      "city": "new-york",
+      "category": "theater",
+      "eventCount": 42
     },
     {
       "city": "new-york",
@@ -473,11 +473,6 @@
       "eventCount": 40
     },
     {
-      "city": "los-angeles",
-      "category": "nhl",
-      "eventCount": 40
-    },
-    {
       "city": "miami",
       "category": "nba",
       "eventCount": 40
@@ -508,6 +503,11 @@
       "eventCount": 40
     },
     {
+      "city": "los-angeles",
+      "category": "nhl",
+      "eventCount": 39
+    },
+    {
       "city": "new-orleans",
       "category": "nba",
       "eventCount": 39
@@ -518,27 +518,7 @@
       "eventCount": 39
     },
     {
-      "city": "philadelphia",
-      "category": "nhl",
-      "eventCount": 38
-    },
-    {
-      "city": "washington-dc",
-      "category": "nhl",
-      "eventCount": 38
-    },
-    {
-      "city": "chicago",
-      "category": "nhl",
-      "eventCount": 37
-    },
-    {
       "city": "denver",
-      "category": "nhl",
-      "eventCount": 37
-    },
-    {
-      "city": "las-vegas",
       "category": "nhl",
       "eventCount": 37
     },
@@ -553,19 +533,39 @@
       "eventCount": 37
     },
     {
-      "city": "toronto",
+      "city": "philadelphia",
       "category": "nhl",
       "eventCount": 37
     },
     {
-      "city": "detroit",
+      "city": "washington-dc",
+      "category": "nhl",
+      "eventCount": 37
+    },
+    {
+      "city": "chicago",
       "category": "nhl",
       "eventCount": 36
     },
     {
+      "city": "las-vegas",
+      "category": "nhl",
+      "eventCount": 36
+    },
+    {
+      "city": "toronto",
+      "category": "nhl",
+      "eventCount": 36
+    },
+    {
+      "city": "detroit",
+      "category": "nhl",
+      "eventCount": 35
+    },
+    {
       "city": "new-orleans",
       "category": "comedy",
-      "eventCount": 36
+      "eventCount": 35
     },
     {
       "city": "washington-dc",
@@ -578,13 +578,13 @@
       "eventCount": 29
     },
     {
-      "city": "detroit",
-      "category": "comedy",
-      "eventCount": 28
-    },
-    {
       "city": "boston",
       "category": "nhl",
+      "eventCount": 27
+    },
+    {
+      "city": "detroit",
+      "category": "comedy",
       "eventCount": 27
     },
     {
@@ -595,16 +595,6 @@
     {
       "city": "miami",
       "category": "comedy",
-      "eventCount": 24
-    },
-    {
-      "city": "milwaukee",
-      "category": "comedy",
-      "eventCount": 24
-    },
-    {
-      "city": "brooklyn",
-      "category": "festivals",
       "eventCount": 23
     },
     {
@@ -623,14 +613,24 @@
       "eventCount": 22
     },
     {
-      "city": "chicago",
-      "category": "theater",
-      "eventCount": 20
+      "city": "brooklyn",
+      "category": "festivals",
+      "eventCount": 21
+    },
+    {
+      "city": "milwaukee",
+      "category": "comedy",
+      "eventCount": 21
     },
     {
       "city": "orlando",
       "category": "festivals",
       "eventCount": 20
+    },
+    {
+      "city": "chicago",
+      "category": "theater",
+      "eventCount": 15
     },
     {
       "city": "phoenix",
@@ -658,21 +658,6 @@
       "eventCount": 10
     },
     {
-      "city": "miami",
-      "category": "college-football",
-      "eventCount": 9
-    },
-    {
-      "city": "washington-dc",
-      "category": "festivals",
-      "eventCount": 9
-    },
-    {
-      "city": "boston",
-      "category": "college-football",
-      "eventCount": 8
-    },
-    {
       "city": "chicago",
       "category": "family",
       "eventCount": 8
@@ -680,6 +665,11 @@
     {
       "city": "denver",
       "category": "nfl",
+      "eventCount": 8
+    },
+    {
+      "city": "miami",
+      "category": "college-football",
       "eventCount": 8
     },
     {
@@ -698,12 +688,12 @@
       "eventCount": 8
     },
     {
-      "city": "dallas",
+      "city": "washington-dc",
       "category": "festivals",
-      "eventCount": 7
+      "eventCount": 8
     },
     {
-      "city": "philadelphia",
+      "city": "boston",
       "category": "college-football",
       "eventCount": 7
     },
@@ -728,13 +718,13 @@
       "eventCount": 6
     },
     {
-      "city": "detroit",
-      "category": "nfl",
+      "city": "dallas",
+      "category": "festivals",
       "eventCount": 6
     },
     {
-      "city": "miami",
-      "category": "festivals",
+      "city": "detroit",
+      "category": "nfl",
       "eventCount": 6
     },
     {
@@ -744,6 +734,11 @@
     },
     {
       "city": "new-orleans",
+      "category": "college-football",
+      "eventCount": 6
+    },
+    {
+      "city": "philadelphia",
       "category": "college-football",
       "eventCount": 6
     },

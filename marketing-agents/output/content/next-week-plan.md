@@ -1,73 +1,75 @@
-# TicketScan Content Plan — Week of October 12, 2026
+# TicketScan Content Plan — Week of October 19–25, 2026
 
-## Sunday audit — October 11
+## Sunday audit — October 18
 
 ### What shipped or queued this week
 
-- **Oct. 5:** “How Ticket Presales Work” guide. Strong evergreen utility: it distinguishes access from guaranteed inventory and points readers to official event instructions.
-- **Oct. 6:** Seat-label comparison guide. Useful cross-marketplace framework covering exact event identity, section mapping, quantity, delivery, buyer protection, and checkout total.
-- **Oct. 7:** Greta Van Fleet 2027 presale guide. Timely, source-backed, and clean on the current product boundary; it uses the official tour announcement and event pages for dates and eligibility.
-- **Oct. 8:** NBA opening-night guide. Good seasonal comparison between opening night, NBA Cup group play, and regular-season rivalry games without claiming TicketScan price data.
-- **Oct. 9:** Refresh proposal for “Best Time to Buy Concert Tickets.” Correctly replaces unsupported TicketScan price analysis and alerts with onsale timing, listing equivalence, and all-in checkout guidance.
-- **Oct. 10:** Refresh proposal for “Concert Presale Codes Guide.” Correctly removes fixed presale-timeline claims, resale-price claims, and the price-alert CTA.
+- **Oct. 12:** Conditional playoff-ticket guide. Strong tactical piece: it distinguishes a confirmed game from an “if necessary” listing and tells readers to verify the series, game number, venue, delivery, and refund terms.
+- **Oct. 13:** Greta Van Fleet 2027 presale guide. Useful event-specific explainer with official-tour and ticketing context; it correctly treats presale access as an opportunity, not a ticket guarantee.
+- **Oct. 14:** New-tour ticket-buying checklist. Good general framework for separating an announcement from a confirmed onsale and for identifying VIP, parking, resale, and speculative listings.
+- **Oct. 15:** Presale/primary/resale comparison after the RAYE registration story. Strong consumer-protection angle, with official venue context and no unsupported TicketScan pricing claims.
+- **Oct. 16:** Refresh proposal for the last-minute ticket guide. It removes stale product claims and replaces them with event identity, delivery, seller, and all-in-total checks.
+- **Oct. 17:** Refresh proposal for the Capital One Arena guide. It proposes sourced arrival and venue-policy additions without changing the verified capacity data.
 
 ### What worked
 
-- The most defensible content pattern is one concrete event or consumer problem followed by a reusable checklist.
-- Official league, artist, venue, ticketing-help, and government sources make timely pages auditable without relying on unavailable TicketScan price data.
-- “Compare like-for-like” is a durable consumer-advocate angle: same event, same quantity, similar location, same delivery terms, and the final checkout total.
+- The strongest format remains one concrete ticketing problem followed by a repeatable checklist.
+- Official event, league, artist, venue, ADA, and government sources support timely content without relying on unavailable TicketScan price data.
+- The clearest product boundary is also the most useful: TicketScan helps users find events, onsale/presale information, venue guides, and seller links; the seller's checkout page controls inventory, fees, delivery, and refund terms.
 
 ### What needs attention
 
-- The analytics dashboard reports no measurable traffic or conversion data, so topic performance cannot be ranked from evidence. Do not call any page a top or bottom performer this week.
-- The SEO audit still finds legacy blog copy promising price history, price alerts, or buy/wait advice. Those posts need a separate cleanup queue before they are promoted or linked from new content.
-- The Oct. 7 and Oct. 8 drafts passed a copy check: no prohibited price tracking, alert, trend, buy/wait, or TicketScan price-statistic claims were found.
-- Existing refresh proposals remain proposals only. No files under `web/src/` were changed during this audit.
+- No defensible page-traffic or conversion ranking exists. The dashboard does not expose pageviews, search queries, outbound-ticket clicks, watchlist saves by page, or newsletter conversion paths. Do not call any page a top or bottom performer.
+- Activity logging has no records after October 13, and the analytics report flags missing conversion instrumentation. Treat this week's performance as unmeasured, not as zero demand.
+- The SEO audit still finds legacy indexed copy promising price history, price-drop alerts, buy/wait advice, or TicketScan pricing statistics. Keep those pages out of new promotion until refreshed.
+- The queued Oct. 12–15 drafts passed a product-status scan. No edits are required in those four files.
+- Existing refresh proposals remain proposals. No files under `web/src/` were changed during this audit.
 
 ## Recommended production slate
 
 | Priority | Day | Working title | Format | Primary keyword | Target page / section | CTA |
 |---|---|---|---|---|---|---|
-| P0 | Mon Oct 12 | **How to Compare Conditional Playoff Tickets When the Opponent Is Not Final** | Tactical guide | conditional playoff tickets / playoff ticket schedule | New blog; link from MLB team and postseason pages | Find the event and verify the exact game on the seller page |
-| P0 | Tue Oct 13 | **How to Read an Arena Seating Chart Before NBA Opening Week** | How-to guide | how to read an arena seating chart | New blog; link to MSG and team venue guides | Open the venue guide and confirm the section and view |
-| P1 | Wed Oct 14 | **Accessible Ticket Buying: ADA Seats, Companion Tickets, and What to Verify** | Consumer guide | accessible ticket buying | New blog; link to venue accessibility FAQs | Check the venue’s accessibility guidance and seller terms |
-| P1 | Thu Oct 15 | **Ticketmaster vs. TicketNetwork: How to Compare the Listing, Seat, and Checkout Total** | Comparison | Ticketmaster vs TicketNetwork | New blog; link from ticket landing pages | Find the same event, then verify the final checkout total |
+| P0 | Mon Oct 19 | **ALCS Game 6 Tickets: How to Verify a Conditional Playoff Listing** | Timely guide | `ALCS Game 6 tickets 2026` | New blog; link from MLB team and postseason pages | Verify the exact game and venue before opening seller listings |
+| P0 | Tue Oct 20 | **Family Concert VIP Packages: What Is Actually Included?** | Tactical guide | `family concert VIP tickets` | New blog; link from concert and venue pages | Check the package contents, ticket type, delivery, and final checkout total |
+| P1 | Wed Oct 21 | **How to Read an Arena Seating Chart for Basketball and Concerts** | How-to guide | `how to read an arena seating chart` | New blog; link to verified arena guides | Open the venue guide and confirm the section, configuration, and view notes |
+| P1 | Thu Oct 22 | **Accessible Ticket Buying: ADA Seats, Companion Tickets, and What to Verify** | Consumer guide | `accessible ticket buying` | New blog; link to venue accessibility guidance | Check the venue's official accessibility page and seller terms |
 
 ## Editorial briefs and guardrails
 
-### Monday — conditional playoff tickets
+### Monday — conditional ALCS listings
 
-Explain the difference between a confirmed game and a conditional series slot. Teach readers to verify the series, game number, date, venue, opponent, ticket delivery timing, and refund or cancellation terms. Use MLB’s official postseason schedule as the calendar source. Avoid live ticket-price snapshots, “buy now” calls, or claims about the cheapest game.
+Use MLB's official postseason schedule to explain the difference between a scheduled Game 6 and an “if necessary” game. Cover series identity, home venue, local time, delivery timing, cancellation or postponement terms, and how to compare like-for-like listings. The piece must not predict ticket prices or tell readers to buy or wait.
 
-### Tuesday — arena seating charts
+### Tuesday — family concert VIP packages
 
-Teach readers to identify floor, lower bowl, club, upper level, behind-basket, accessible, and obstructed-view areas, while noting that concert and basketball configurations can change. Link only to venue data already verified in the project. Do not change capacities or invent sightline claims for sections without a source.
+Use the official Xfinity Mobile Arena announcement for the November 13 Disney *Worlds Collide* date as an example of how a family-tour listing can mix standard admission, VIP packages, presales, and Q&A benefits. Make clear that the announcement is not a guarantee of inventory. Compare package inclusions, age/access rules, seat location, delivery, and checkout total. Do not imply that TicketScan has price data or that a package is good value without evidence.
 
-### Wednesday — accessible ticket buying
+### Wednesday — arena seating charts
 
-Cover wheelchair spaces, companion seating, accessible routes, purchase windows, transferability, and how to contact a venue when the online map is unclear. Cite the ADA and the venue’s official accessibility page. Frame this as general information, not legal advice or a guarantee about a specific seller’s inventory.
+Teach readers to distinguish floor, lower bowl, club, upper level, behind-basket, accessible, and limited-view areas, while noting that basketball and concert configurations can differ. Use only venue sections already verified in project data. Do not change capacities or invent sightline claims.
 
-### Thursday — Ticketmaster vs. TicketNetwork
+### Thursday — accessible ticket buying
 
-Compare primary versus resale inventory, seller identity, seat quantity, delivery method, buyer protection, mandatory fees, and the final checkout total. Do not claim either platform is always cheaper. Describe TicketScan as an event-discovery and seller-link tool while the seller’s checkout page remains the source of truth.
+Cover wheelchair spaces, companion seating, accessible routes, purchase windows, transferability, and how to contact a venue when the map is unclear. Use ADA guidance plus one venue's official accessibility page. Frame this as general information, not legal advice or a guarantee about any seller's inventory.
 
 ## Handoffs
 
-- **Email:** Turn the accessible-ticket guide into a compact checklist: venue accessibility page, seating type, companion seats, entry route, delivery method, and support contact.
-- **SEO:** Create supporting requests for `conditional playoff tickets`, `arena seating chart`, `accessible ticket buying`, and `Ticketmaster vs TicketNetwork`.
-- **Social:** Use today’s Dodgers–Brewers hook for a short “confirm the exact game, venue, seller, and total” post. Keep the copy free of live-price or discount claims.
-- **Analytics/CRO:** Treat performance conclusions as unavailable until page views, outbound-ticket clicks, signup, watchlist-add, newsletter, and UTM events are queryable.
-
-## Copy-review status
-
-- Reviewed the Oct. 5–8 queued drafts for prohibited product claims; no edits required in those four files.
-- Logged the remaining legacy price-feature copy as an SEO/content cleanup item; do not promote those older posts until refreshed.
-- No files under `web/src/` were changed.
+- **Email:** Turn the accessible-ticket guide into a short checklist: venue accessibility page, seating type, companion seats, entry route, delivery method, and support contact.
+- **SEO:** Request support for `ALCS Game 6 tickets 2026`, `family concert VIP tickets`, `arena seating chart`, and `accessible ticket buying`.
+- **Social:** Lead with today's Warriors Open Practice hook: official event page, doors/show times, venue map, and seller link. Keep it free of TicketScan price or alert claims.
+- **Analytics/CRO:** Do not infer content performance until page-view, event-search, watchlist-save, newsletter-signup, lead-magnet-download, and outbound-ticket-click events are queryable.
 
 ## Source targets
 
-- [MLB 2026 postseason schedule](https://www.mlb.com/postseason)
-- [NBA 2026–27 schedule announcement](https://www.nba.com/news/2026-27-schedule-announced)
-- [Ticketmaster presale guidance](https://help.ticketmaster.com/hc/en-us/articles/9702132309905-How-do-presales-work)
-- [ADA ticketing guidance](https://www.ada.gov/topics/ticket-sales/)
+- [MLB 2026 postseason schedule](https://www.mlb.com/news/2026-mlb-playoff-and-world-series-schedule)
+- [Chase Center: Warriors Open Practice](https://www.chasecenter.com/events/warriors-open-practice-20261018/)
+- [Xfinity Mobile Arena: Disney Worlds Collide announcement](https://www.xfinitymobilearena.com/news/detail/disney-announces-the-next-worlds-collide-concert-tour-coming-to-xfinity-mobile-arena-on-november-13)
+- [ADA ticket sales guidance](https://www.ada.gov/topics/ticket-sales/)
 - [FTC live-event fee FAQ](https://www.ftc.gov/business-guidance/resources/rule-unfair-or-deceptive-fees-frequently-asked-questions)
+
+## Copy-review status
+
+- Reviewed the Oct. 12–15 content drafts for prohibited TicketScan pricing, price-history, alert, trend, and buy/wait claims; no edits required.
+- Reviewed the Oct. 13–17 social summaries and latest email summary; their reported copy follows the product-status boundary. The email report correctly flags that no price-based digest should be sent.
+- Logged the remaining legacy price-feature copy as an SEO/content cleanup item; do not promote those older posts until refreshed.
+- No files under `web/src/` were changed.

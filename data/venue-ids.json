@@ -1,5 +1,5 @@
 {
-  "builtAt": "2026-10-17T16:17:26.423Z",
+  "builtAt": "2026-10-18T10:17:10.772Z",
   "counts": {
     "resolved": 242,
     "unresolved": 0,
@@ -273,7 +273,7 @@
       "attractionId": "K8vZ9171qu0",
       "matchedCity": "Tallahassee",
       "count": 3,
-      "totalEvents": 6
+      "totalEvents": 5
     },
     "bobby-dodd-stadium": {
       "teamName": "Georgia Tech Yellow Jackets Football",
@@ -281,7 +281,7 @@
       "attractionId": "K8vZ9171zR0",
       "matchedCity": "Atlanta",
       "count": 3,
-      "totalEvents": 7
+      "totalEvents": 6
     },
     "david-booth-kansas-memorial-stadium": {
       "teamName": "Kansas Jayhawks Football",
@@ -304,8 +304,8 @@
       "teamSlug": "louisiana-monroe-warhawks-football",
       "attractionId": "K8vZ917GUL7",
       "matchedCity": "Monroe",
-      "count": 4,
-      "totalEvents": 7
+      "count": 3,
+      "totalEvents": 6
     },
     "johnny-red-floyd-stadium": {
       "teamName": "Middle Tennessee Blue Raiders Football",
@@ -336,8 +336,8 @@
       "teamSlug": "southern-mississippi-football",
       "attractionId": "K8vZ9171nC7",
       "matchedCity": "Hattiesburg",
-      "count": 4,
-      "totalEvents": 6
+      "count": 3,
+      "totalEvents": 5
     },
     "amon-g-carter-stadium": {
       "teamName": "TCU Horned Frogs Football",
@@ -345,15 +345,15 @@
       "attractionId": "K8vZ9171Jk7",
       "matchedCity": "Fort Worth",
       "count": 4,
-      "totalEvents": 7
+      "totalEvents": 6
     },
     "galaxy-stadium": {
       "teamName": "Texas Tech Red Raiders Football",
       "teamSlug": "texas-tech-red-raiders-football",
       "attractionId": "K8vZ9175V6f",
       "matchedCity": "Lubbock",
-      "count": 4,
-      "totalEvents": 7
+      "count": 3,
+      "totalEvents": 6
     },
     "mcguirk-alumni-stadium": {
       "teamName": "UMass Football",
@@ -368,16 +368,16 @@
       "teamSlug": "university-of-houston-cougars-football",
       "attractionId": "K8vZ9171MWf",
       "matchedCity": "Houston",
-      "count": 3,
-      "totalEvents": 6
+      "count": 2,
+      "totalEvents": 5
     },
     "lane-stadium": {
       "teamName": "Virginia Tech Hokies College Football",
       "teamSlug": "virginia-tech-hokies-college-football",
       "attractionId": "K8vZ9171Jn7",
       "matchedCity": "Blacksburg",
-      "count": 3,
-      "totalEvents": 6
+      "count": 2,
+      "totalEvents": 5
     },
     "mountaineer-field-at-milan-puskar-stadium": {
       "teamName": "West Virginia Mountaineers",

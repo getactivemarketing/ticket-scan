@@ -416,5 +416,50 @@
     "mediaUrls": [
       "https://www.ticketscan.io/social/ig-template.png"
     ]
+  },
+  {
+    "id": "2026-10-18-twitter-local-onsale",
+    "platform": "twitter",
+    "scheduledTime": "2026-10-18T13:00:00.000Z",
+    "text": "Buying from your couch doesn't make the onsale time Eastern. Check the venue's local time before the presale, then save the official event link. A 10 a.m. start in Los Angeles is not a 10 a.m. start in New York. ticketscan.io",
+    "mediaUrls": [
+      "https://www.ticketscan.io/social/ig-template.png"
+    ]
+  },
+  {
+    "id": "2026-10-18-twitter-venue-map",
+    "platform": "twitter",
+    "scheduledTime": "2026-10-18T17:00:00.000Z",
+    "text": "The section number is not enough. Open the venue guide and check sightlines, entry points, and the actual section map before a cheap listing starts looking clever. ticketscan.io",
+    "mediaUrls": [
+      "https://www.ticketscan.io/social/ig-template.png"
+    ]
+  },
+  {
+    "id": "2026-10-18-twitter-world-cup-stadiums",
+    "platform": "twitter",
+    "scheduledTime": "2026-10-18T21:00:00.000Z",
+    "text": "World Cup 2026 has 16 host stadiums, and the arrival plan changes with the building. Read the stadium guide before you choose a match by seat alone. MetLife is not SoFi, and your feet will notice. ticketscan.io",
+    "mediaUrls": [
+      "https://www.ticketscan.io/social/ig-template.png"
+    ]
+  },
+  {
+    "id": "2026-10-18-instagram-checkout-honest",
+    "platform": "instagram",
+    "scheduledTime": "2026-10-18T15:00:00.000Z",
+    "text": "Ticket checkout is where the ticket gets honest. 🎟️\n\nBefore paying, confirm the event and section, check whether the listing is resale or official inventory, read delivery terms, and expand the all-in total. The first number is often just the opening argument.\n\nFind the event and venue details at ticketscan.io\n\n#TicketScan #TicketBuying #ConcertTickets #SportsTickets #SaveMoney",
+    "mediaUrls": [
+      "https://www.ticketscan.io/social/ig-template.png"
+    ]
+  },
+  {
+    "id": "2026-10-18-threads-local-onsale",
+    "platform": "threads",
+    "scheduledTime": "2026-10-18T13:30:00.000Z",
+    "text": "Presale time is local to the venue. I’d check the city, convert the start time, and save the official event link before the queue opens. Being early is useful. Being early to the wrong time zone is just a very organized miss. ticketscan.io",
+    "mediaUrls": [
+      "https://www.ticketscan.io/social/ig-template.png"
+    ]
   }
 ]
