@@ -1,21 +1,13 @@
-## Today's Content Hook — October 18, 2026
-
-**Topic:** Golden State Warriors Open Practice at Chase Center today
-**Angle:** A same-day event-discovery and venue-planning post: verify the official event page, doors time, ticket link, transit guidance, and venue map before heading to the arena. The official Chase Center page lists the event for Sunday, October 18, with doors at 2:00 p.m. and the program at 2:30 p.m.; it links to Ticketmaster for tickets.
-**Target keyword:** Warriors Open Practice tickets October 18 2026
-**Content type:** Social snippet / venue page update
-**Priority:** High
-**Source:** https://www.chasecenter.com/events/warriors-open-practice-20261018/
-
-## Secondary Hook
-
-**Topic:** ALCS Game 5 is scheduled for Sunday, October 18, after the Rays tied the series 2–2
-**Angle:** Explain how to verify a playoff listing when the series is live and later games are conditional. Use the series, game number, venue, local start time, delivery terms, and cancellation/refund policy as the comparison checklist. Do not make a price or timing prediction.
-**Target keyword:** ALCS Game 5 tickets 2026
-**Content type:** Blog/social snippet
+## Today's Content Hook — 2026-10-19
+**Topic:** Fall concert season is packed, with major listings clustered around the week of October 19. SeatGeek's current concert calendar highlights shows including Harry Styles at Madison Square Garden and Gorillaz in Salt Lake City, while Live Nation is promoting upcoming festival and arena events.
+**Angle:** A consumer-first checklist for comparing event listings, venue details, fees, delivery terms, and official onsale information before buying. TicketScan can help fans find the event and the places to buy it; the advice stays focused on the all-in checkout price and listing quality.
+**Target keyword:** October 2026 concert tickets
+**Content type:** Blog post + social snippet
 **Priority:** Medium
-**Source:** https://www.mlb.com/news/2026-mlb-playoff-and-world-series-schedule
 
-## Editorial guardrail
+**Sources checked:**
+- https://seatgeek.com/concert-tickets
+- https://www.livenation.com/
+- https://newsroom.stubhub.com/2026/10/01/fall-concert-season-planning-your-music-event-calendar/
 
-No TicketScan price history, price alerts, price-trend claims, buy/wait calls, or TicketScan-derived statistics. TicketScan can help users find the event and where to buy; the seller's checkout page remains the source of truth for inventory, fees, delivery, and refund terms.
+**Email/lead-magnet opportunity:** A one-page “Before You Buy” ticket checklist covering fees, delivery, transfer restrictions, venue sections, and resale disclosures.

@@ -17,7 +17,7 @@ export const metadata: Metadata = {
     canonical: 'https://www.ticketscan.io',
   },
   openGraph: {
-    title: 'TicketScan - Find Events, Track Onsales',
+    title: 'TicketScan - Find Events, Get Onsale Dates',
     description: 'Search events across the major ticket platforms, save what you care about, and get told when tickets go on sale.',
     type: 'website',
     url: 'https://www.ticketscan.io',
@@ -72,7 +72,7 @@ export default async function Home() {
               <div className="flex-1 text-center lg:text-left">
                 <p className="text-teal text-xs font-semibold uppercase tracking-[0.2em] mb-4">Events, venues and onsale dates</p>
                 <h1 className="text-5xl lg:text-6xl font-heading font-bold tracking-tight leading-[1.1] mb-5">
-                  Find it.<br /><span className="text-teal">Track it.</span><br />Don&apos;t miss it.
+                  Find it.<br /><span className="text-teal">Save it.</span><br />Don&apos;t miss it.
                 </h1>
                 <p className="text-white/50 text-lg mb-8 max-w-md mx-auto lg:mx-0">Search events across the major ticket platforms, save what you care about, and get told when tickets go on sale — including presales.</p>
                 <div className="flex flex-col sm:flex-row gap-3 justify-center lg:justify-start">
@@ -88,12 +88,8 @@ export default async function Home() {
                       <span className="font-semibold text-sm text-navy">Chiefs vs Bills</span>
                       <span className="text-xs font-bold bg-success/10 text-success px-2 py-0.5 rounded">ON SALE</span>
                     </div>
-                    <svg viewBox="0 0 200 40" className="w-full h-8 mb-1">
-                      <polyline points="0,30 25,28 50,32 75,25 100,20 125,22 150,15 175,12 200,8" fill="none" stroke="#1E63FF" strokeWidth="2" />
-                      <circle cx="200" cy="8" r="3" fill="#16C784" />
-                    </svg>
                     <div className="flex justify-between text-xs text-gray-500">
-                      <span>Tickets available now</span>
+                      <span>Save to revisit</span>
                       <span className="text-success">MetLife</span>
                     </div>
                   </div>
@@ -127,8 +123,8 @@ export default async function Home() {
                 <div className="w-16 h-16 mx-auto mb-4 bg-teal/5 rounded-xl flex items-center justify-center">
                   <svg className="w-7 h-7 text-teal" fill="none" stroke="currentColor" strokeWidth={1.5} viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M3 13.125C3 12.504 3.504 12 4.125 12h2.25c.621 0 1.125.504 1.125 1.125v6.75C7.5 20.496 6.996 21 6.375 21h-2.25A1.125 1.125 0 0 1 3 19.875v-6.75ZM9.75 8.625c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125v11.25c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 0 1-1.125-1.125V8.625ZM16.5 4.125c0-.621.504-1.125 1.125-1.125h2.25C20.496 3 21 3.504 21 4.125v15.75c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 0 1-1.125-1.125V4.125Z" /></svg>
                 </div>
-                <h3 className="font-heading font-bold text-navy mb-2">Track</h3>
-                <p className="text-gray-500 text-sm">Add events to your watchlist and we watch them for you.</p>
+                <h3 className="font-heading font-bold text-navy mb-2">Save</h3>
+                <p className="text-gray-500 text-sm">Add events to your watchlist so they are easy to revisit.</p>
               </div>
               <div className="text-center">
                 <div className="w-16 h-16 mx-auto mb-4 bg-success/5 rounded-xl flex items-center justify-center">
@@ -206,8 +202,8 @@ export default async function Home() {
         {/* Final CTA */}
         <div className="bg-navy text-white py-16">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <h2 className="text-3xl font-heading font-bold mb-4 tracking-tight">Ready to save on your next event?</h2>
-            <p className="text-white/40 mb-8">Join thousands of fans who never miss a deal.</p>
+            <h2 className="text-3xl font-heading font-bold mb-4 tracking-tight">Ready to find your next event?</h2>
+            <p className="text-white/40 mb-8">Join fans who keep their event plans in one place.</p>
             <Link href="/register" className="inline-block bg-gradient-to-r from-brand to-teal text-white px-8 py-4 rounded-lg font-bold text-lg transition-opacity hover:opacity-90">Create Free Account</Link>
           </div>
         </div>
