@@ -506,5 +506,50 @@
     "mediaUrls": [
       "https://www.ticketscan.io/social/ig-template.png"
     ]
+  },
+  {
+    "id": "2026-10-20-twitter-presale-time",
+    "platform": "twitter",
+    "scheduledTime": "2026-10-20T13:00:00.000Z",
+    "text": "Presale time is local to the venue. A 10 a.m. start in Los Angeles is 1 p.m. in New York. Check the city before the queue opens. ticketscan.io",
+    "mediaUrls": [
+      "https://www.ticketscan.io/social/ig-template.png"
+    ]
+  },
+  {
+    "id": "2026-10-20-twitter-all-in-total",
+    "platform": "twitter",
+    "scheduledTime": "2026-10-20T17:00:00.000Z",
+    "text": "The ticket card is not the bill. Expand checkout and look at the all-in total, delivery fees, and listing type before you pay. The cheap-looking seat may be doing a little theater. ticketscan.io",
+    "mediaUrls": [
+      "https://www.ticketscan.io/social/ig-template.png"
+    ]
+  },
+  {
+    "id": "2026-10-20-twitter-world-cup-stadium",
+    "platform": "twitter",
+    "scheduledTime": "2026-10-20T21:00:00.000Z",
+    "text": "World Cup 2026 has 16 host stadiums. The stadium guide tells you the section layout, capacity, and arrival details for each building. Pick your match, then study the venue. ticketscan.io",
+    "mediaUrls": [
+      "https://www.ticketscan.io/social/ig-template.png"
+    ]
+  },
+  {
+    "id": "2026-10-20-instagram-venue-map",
+    "platform": "instagram",
+    "scheduledTime": "2026-10-20T15:00:00.000Z",
+    "text": "Seat numbers don't tell the whole story. 🎟️\n\nBefore buying, open the venue map and check the section, sightline notes, entry gates, and whether the listing is official or resale. A lower number can still be a worse seat if the view is awkward.\n\nFind venue guides and event links at ticketscan.io\n\n#TicketScan #TicketBuying #ConcertTickets #SportsTickets #WorldCup2026",
+    "mediaUrls": [
+      "https://www.ticketscan.io/social/ig-template.png"
+    ]
+  },
+  {
+    "id": "2026-10-20-threads-presale-queue",
+    "platform": "threads",
+    "scheduledTime": "2026-10-20T13:30:00.000Z",
+    "text": "Queue prep is boring until you miss a presale. I save the official event link, convert the venue's local start time, and make sure my account is ready before the sale opens. Five minutes of prep beats refreshing the wrong page. ticketscan.io",
+    "mediaUrls": [
+      "https://www.ticketscan.io/social/ig-template.png"
+    ]
   }
 ]

@@ -1,13 +1,11 @@
-## Today's Content Hook — 2026-10-19
-**Topic:** Fall concert season is packed, with major listings clustered around the week of October 19. SeatGeek's current concert calendar highlights shows including Harry Styles at Madison Square Garden and Gorillaz in Salt Lake City, while Live Nation is promoting upcoming festival and arena events.
-**Angle:** A consumer-first checklist for comparing event listings, venue details, fees, delivery terms, and official onsale information before buying. TicketScan can help fans find the event and the places to buy it; the advice stays focused on the all-in checkout price and listing quality.
-**Target keyword:** October 2026 concert tickets
-**Content type:** Blog post + social snippet
-**Priority:** Medium
+## Today's Content Hook — 2026-10-20
+**Topic:** B.C. Lions playoff tickets go on sale to the general public at 10:00 a.m. on October 20, with two possible home-date matchups and the opponent still dependent on the final week of the CFL season.
+**Angle:** Use the Lions release as a timely reminder that a playoff listing can be a placeholder, a conditional game, or a confirmed matchup. Fans should verify the game number, date, venue, opponent status, delivery terms, and refund policy before checkout.
+**Target keyword:** BC Lions playoff tickets October 20 2026
+**Content type:** Social snippet / tactical blog hook
+**Priority:** High
 
-**Sources checked:**
-- https://seatgeek.com/concert-tickets
-- https://www.livenation.com/
-- https://newsroom.stubhub.com/2026/10/01/fall-concert-season-planning-your-music-event-calendar/
+**Source:** [B.C. Lions: Playoff Tickets Go On Sale October 20th](https://bclions.prod.s.cfl.ca/article/bc-lions-playoff-tickets-go-on-sale-october-20th)
 
-**Email/lead-magnet opportunity:** A one-page “Before You Buy” ticket checklist covering fees, delivery, transfer restrictions, venue sections, and resale disclosures.
+**Suggested social snippet:**
+The B.C. Lions’ playoff tickets go public today at 10 a.m.—but the opponent is still a choose-your-own-adventure plot. Before you buy, confirm whether the listing is a specific game or a conditional placeholder, then check the venue, date, delivery terms, and refund rules. TicketScan can help you find the event and where to shop; the seller’s page is the final authority.
