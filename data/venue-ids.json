@@ -1,5 +1,5 @@
 {
-  "builtAt": "2026-10-20T10:16:37.312Z",
+  "builtAt": "2026-10-21T12:24:32.524Z",
   "counts": {
     "resolved": 242,
     "unresolved": 0,
@@ -313,7 +313,7 @@
       "attractionId": "K8vZ917Gpgf",
       "matchedCity": "Murfreesboro",
       "count": 3,
-      "totalEvents": 6
+      "totalEvents": 5
     },
     "davis-wade-stadium": {
       "teamName": "Mississippi State Bulldogs Football",

@@ -551,5 +551,50 @@
     "mediaUrls": [
       "https://www.ticketscan.io/social/ig-template.png"
     ]
+  },
+  {
+    "id": "2026-10-21-twitter-presale-local-time",
+    "platform": "twitter",
+    "scheduledTime": "2026-10-21T13:00:00.000Z",
+    "text": "Presale time is local to the venue. A 10 a.m. start in Los Angeles is 1 p.m. in New York. Check the city before the queue opens. ticketscan.io",
+    "mediaUrls": [
+      "https://www.ticketscan.io/social/ig-template.png"
+    ]
+  },
+  {
+    "id": "2026-10-21-twitter-all-in-total",
+    "platform": "twitter",
+    "scheduledTime": "2026-10-21T17:00:00.000Z",
+    "text": "The ticket card is not the bill. Expand checkout and look at the all-in total, delivery fees, and listing type before you pay. The cheap-looking seat may be doing a little theater. ticketscan.io",
+    "mediaUrls": [
+      "https://www.ticketscan.io/social/ig-template.png"
+    ]
+  },
+  {
+    "id": "2026-10-21-twitter-world-cup-venue-guide",
+    "platform": "twitter",
+    "scheduledTime": "2026-10-21T21:00:00.000Z",
+    "text": "World Cup 2026 has 16 host stadiums. The section map and arrival plan matter almost as much as the match. Study the building before you choose a seat. ticketscan.io",
+    "mediaUrls": [
+      "https://www.ticketscan.io/social/ig-template.png"
+    ]
+  },
+  {
+    "id": "2026-10-21-instagram-checkout-total",
+    "platform": "instagram",
+    "scheduledTime": "2026-10-21T15:00:00.000Z",
+    "text": "The first number on a ticket card is an opening argument. 🎟️\n\nBefore you pay, confirm the event and seat, read the listing type, check the delivery method, and expand the all-in checkout total. Fees have a habit of arriving late to the conversation.\n\nFind the event and venue details at ticketscan.io\n\n#TicketScan #TicketBuying #ConcertTickets #SportsTickets #SaveMoney",
+    "mediaUrls": [
+      "https://www.ticketscan.io/social/ig-template.png"
+    ]
+  },
+  {
+    "id": "2026-10-21-threads-venue-map",
+    "platform": "threads",
+    "scheduledTime": "2026-10-21T17:30:00.000Z",
+    "text": "The ticket card is only the opening argument. I check the venue map, section, entry gate, listing type, delivery terms, and the all-in checkout total before paying. The cheap-looking seat may be doing a little theater. ticketscan.io",
+    "mediaUrls": [
+      "https://www.ticketscan.io/social/ig-template.png"
+    ]
   }
 ]
