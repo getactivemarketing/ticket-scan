@@ -49,7 +49,9 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   }
 
   const title = `${venue.name} Tickets - Seating Guide and Onsale Dates`;
-  const description = venue.description || `Events at ${venue.name} in ${venue.city}, ${venue.state} - seating guide, getting there, and when tickets go on sale.`;
+  const description = (venue.description || `Events at ${venue.name} in ${venue.city}, ${venue.state} - seating guide, getting there, and when tickets go on sale.`)
+    .replace(/TicketScan tracks when tickets for (.+?) events go on sale/gi, 'TicketScan lists when tickets for $1 events go on sale')
+    .replace(/TicketScan tracks (.+?) onsales/gi, 'TicketScan lists $1 onsales');
 
   return {
     title,
@@ -133,6 +135,13 @@ export default async function VenuePage({ params }: PageProps) {
     notFound();
   }
 
+  // Some legacy venue descriptions still use the retired price-tracking
+  // wording. Keep visible copy and structured data aligned with the feature
+  // that exists: listing onsale and presale dates.
+  const safeDescription = (venue.description || `Events at ${venue.name} in ${venue.city}, ${venue.state} - seating guide, getting there, and when tickets go on sale.`)
+    .replace(/TicketScan tracks when tickets for (.+?) events go on sale/gi, 'TicketScan lists when tickets for $1 events go on sale')
+    .replace(/TicketScan tracks (.+?) onsales/gi, 'TicketScan lists $1 onsales');
+
   // Keep stale cached/API responses from publishing past events in the page
   // or its Event JSON-LD. The API requests future events, but this boundary
   // protects SEO output when an upstream/CDN response is older than its TTL.
@@ -183,7 +192,7 @@ export default async function VenuePage({ params }: PageProps) {
         '@type': venue.type === 'stadium' ? 'StadiumOrArena' : venue.type === 'arena' ? 'StadiumOrArena' : 'PerformingArtsTheater',
         '@id': `https://www.ticketscan.io/venues/${slug}#place`,
         name: venue.name,
-        description: venue.description,
+        description: safeDescription,
         url: `https://www.ticketscan.io/venues/${slug}`,
         address: {
           '@type': 'PostalAddress',
@@ -379,7 +388,7 @@ export default async function VenuePage({ params }: PageProps) {
                   About {venue.name}
                 </h2>
                 <p className="text-gray-600 leading-relaxed">
-                  {venue.description || `${venue.name} is a ${venue.type} in ${venue.city}, ${venue.state} with a capacity of ${venue.capacity.toLocaleString()}, hosting ${venue.homeTeams ? venue.homeTeams.join(', ') + ' games, ' : ''}concerts, and special events. TicketScan tracks when tickets for ${venue.name} events go on sale, including presale windows that open before the public onsale.`}
+                  {safeDescription}
                 </p>
               </div>
 

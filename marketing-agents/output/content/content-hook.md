@@ -1,8 +1,10 @@
-## Today's Content Hook — 2026-10-21
-**Topic:** Calvin Harris's 16-date North American tour goes to general sale Thursday, October 22, 2026 at 12:00 p.m. local venue time. Ticketmaster says the event organizer will release ticket-price details when sales begin.
-**Angle:** A timely presale-to-onsale checklist: decode local-time sales windows, verify the official event page, compare the all-in total across available sellers, and avoid speculative listings before the tour's 2027 dates.
-**Target keyword:** Calvin Harris tickets 2026 North America tour
+## Today's Content Hook — 2026-10-22
+**Topic:** Zach Bryan's 2027 Young Manhood and Other Donatable Organs Tour has local presales on Thursday, October 22, with the public onsale scheduled for Friday, October 23 at 10 a.m. local time.
+**Angle:** A useful presale-to-onsale checklist: register through the official tour page, translate the sale time to the venue's local time, verify the exact event and seller, compare the all-in total before checkout, and avoid speculative listings.
+**Target keyword:** Zach Bryan 2027 tour tickets
 **Content type:** Blog post / social snippet
 **Priority:** High
 
-**Source:** [Ticketmaster's Calvin Harris North America Tour help page](https://help.ticketmaster.com/hc/en-us/articles/51880218531985-Calvin-Harris-North-America-Tour)
+**Verified sources:**
+- [Lucas Oil Stadium event announcement](https://www.lucasoilstadium.com/event/zach-bryan-the-ym-odo-tour/)
+- [Official Zach Bryan presale registration](https://zachbryanpresale.com/)

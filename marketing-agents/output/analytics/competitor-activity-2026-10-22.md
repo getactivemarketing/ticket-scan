@@ -1,0 +1,5 @@
+## Competitor Activity — 2026-10-22
+
+- **StubHub:** On October 21, announced an expanded Capital Showcase partnership for the November 8 Virginia–Arkansas game at Capital One Arena. Its October 19 Paze promotion offers $20 off purchases of $150 or more through November 15, subject to terms. [Partnership](https://newsroom.stubhub.com/2026/10/21/following-record-setting-inaugural-event-stubhub-expands-partnership-with-capital-showcase/) · [Promotion](https://newsroom.stubhub.com/2026/10/19/paze-x-stubhub-falls-busiest-season-just-got-a-lot-more-rewarding/)
+- **SeatGeek:** Latest notable activity is TourIQ, a predictive intelligence product announced October 2, and a Nashville SC ticketing partnership announced October 7. [Press page](https://seatgeek.com/press) · [TourIQ](https://seatgeek.com/press/SeatGeek%20Launches%20TourIQ)
+- **Vivid Seats:** No comparable new October launch or promotion appeared in the current official press listing. [Press page](https://corporate.vividseats.com/press/)

@@ -1,5 +1,5 @@
 {
-  "builtAt": "2026-10-21T12:24:32.524Z",
+  "builtAt": "2026-10-22T10:16:40.135Z",
   "counts": {
     "resolved": 242,
     "unresolved": 0,
@@ -328,8 +328,8 @@
       "teamSlug": "sam-houston-state-football",
       "attractionId": "K8vZ91756Pf",
       "matchedCity": "Huntsville",
-      "count": 3,
-      "totalEvents": 6
+      "count": 2,
+      "totalEvents": 5
     },
     "renasant-stadium": {
       "teamName": "Southern Mississippi Football",

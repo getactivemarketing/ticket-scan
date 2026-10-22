@@ -596,5 +596,50 @@
     "mediaUrls": [
       "https://www.ticketscan.io/social/ig-template.png"
     ]
+  },
+  {
+    "id": "2026-10-22-twitter-presale-local-time",
+    "platform": "twitter",
+    "scheduledTime": "2026-10-22T13:00:00.000Z",
+    "text": "Zach Bryan presale today: 10 a.m. local time. Local means the venue's clock, not automatically Eastern. Put the city in your reminder before the queue opens. ticketscan.io",
+    "mediaUrls": [
+      "https://www.ticketscan.io/social/ig-template.png"
+    ]
+  },
+  {
+    "id": "2026-10-22-twitter-public-onsale",
+    "platform": "twitter",
+    "scheduledTime": "2026-10-22T17:00:00.000Z",
+    "text": "Zach Bryan's 2027 tour goes to public onsale Friday, October 23 at 10 a.m. local time. Save the official tour link now. A queue is stressful enough without hunting for the right event page. ticketscan.io",
+    "mediaUrls": [
+      "https://www.ticketscan.io/social/ig-template.png"
+    ]
+  },
+  {
+    "id": "2026-10-22-twitter-all-in-checkout",
+    "platform": "twitter",
+    "scheduledTime": "2026-10-22T21:00:00.000Z",
+    "text": "Before you buy a concert ticket, check the section, delivery terms, listing type, and all-in total. The first number is an opening argument. ticketscan.io",
+    "mediaUrls": [
+      "https://www.ticketscan.io/social/ig-template.png"
+    ]
+  },
+  {
+    "id": "2026-10-22-instagram-zach-bryan-onsale",
+    "platform": "instagram",
+    "scheduledTime": "2026-10-22T15:00:00.000Z",
+    "text": "Zach Bryan's 2027 tour hits public onsale Friday, October 23 at 10 a.m. local time. 🎟️\n\nBefore the queue opens, write down the city, venue, date, and local start time. Use the official tour route, then decide your acceptable sections and total budget before the seat map starts making every option look urgent.\n\nTicketScan can help you find the event and onsale details. Confirm the final listing and checkout terms with the seller before you pay. ticketscan.io\n\n#TicketScan #ZachBryan #ConcertTickets #TicketBuying #LiveMusic",
+    "mediaUrls": [
+      "https://www.ticketscan.io/social/ig-template.png"
+    ]
+  },
+  {
+    "id": "2026-10-22-threads-presale-prep",
+    "platform": "threads",
+    "scheduledTime": "2026-10-22T17:30:00.000Z",
+    "text": "Presale prep for Zach Bryan: save the official link, check the venue's local time, and decide your backup sections before the map opens. Otherwise every seat starts looking like the one you absolutely need. ticketscan.io",
+    "mediaUrls": [
+      "https://www.ticketscan.io/social/ig-template.png"
+    ]
   }
 ]
