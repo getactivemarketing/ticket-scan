@@ -641,5 +641,50 @@
     "mediaUrls": [
       "https://www.ticketscan.io/social/ig-template.png"
     ]
+  },
+  {
+    "id": "2026-10-23-twitter-presale-local-time",
+    "platform": "twitter",
+    "scheduledTime": "2026-10-23T13:00:00.000Z",
+    "text": "Presale starts at 10 a.m. local time? Local means the venue's clock, not automatically Eastern. Put the city in your calendar before the queue starts. ticketscan.io",
+    "mediaUrls": [
+      "https://www.ticketscan.io/social/ig-template.png"
+    ]
+  },
+  {
+    "id": "2026-10-23-twitter-world-cup-stadiums",
+    "platform": "twitter",
+    "scheduledTime": "2026-10-23T17:00:00.000Z",
+    "text": "World Cup 2026 has 16 host stadiums across the U.S., Canada, and Mexico. Check the venue guide before you pick a section. The building can change the whole day. ticketscan.io",
+    "mediaUrls": [
+      "https://www.ticketscan.io/social/ig-template.png"
+    ]
+  },
+  {
+    "id": "2026-10-23-twitter-all-in-total",
+    "platform": "twitter",
+    "scheduledTime": "2026-10-23T21:00:00.000Z",
+    "text": "A $120 ticket can become $154 after fees and delivery. The seat didn't get cheaper. The first number was incomplete. Expand checkout before you decide. ticketscan.io",
+    "mediaUrls": [
+      "https://www.ticketscan.io/social/ig-template.png"
+    ]
+  },
+  {
+    "id": "2026-10-23-instagram-checkout-total",
+    "platform": "instagram",
+    "scheduledTime": "2026-10-23T15:00:00.000Z",
+    "text": "The ticket card is the opening argument. 🎟️\n\nBefore you pay, confirm the event and seat, read the listing type, check the delivery method, and expand the all-in checkout total. A $120 ticket turning into $154 isn't a bargain. It's a bill that arrived late.\n\nFind the event and venue details at ticketscan.io\n\n#TicketScan #TicketBuying #ConcertTickets #SportsTickets #SaveMoney",
+    "mediaUrls": [
+      "https://www.ticketscan.io/social/ig-template.png"
+    ]
+  },
+  {
+    "id": "2026-10-23-threads-checkout-fees",
+    "platform": "threads",
+    "scheduledTime": "2026-10-23T21:30:00.000Z",
+    "text": "The ticket card is only the opening number. Check the section, listing type, delivery terms, and all-in checkout total before paying. Fees have a habit of arriving late to the conversation. ticketscan.io",
+    "mediaUrls": [
+      "https://www.ticketscan.io/social/ig-template.png"
+    ]
   }
 ]

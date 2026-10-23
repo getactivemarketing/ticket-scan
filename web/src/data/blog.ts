@@ -54,7 +54,7 @@ Here's the thing nobody at FIFA wants to say out loud: **once face value goes dy
 
 That sounds backwards. It isn't. When the primary seller is constantly repricing toward the ceiling, secondary marketplaces — where actual humans are trying to offload tickets they can't use — frequently undercut them. We've seen it on Ticketmaster Platinum. We've seen it on Verified Resale. And we're already seeing it for World Cup group-stage matches in cities like Kansas City, Philadelphia, and Seattle.
 
-The catch: you have to actually compare. In real time. Across every marketplace. Which is, conveniently, the entire reason TicketScan exists.
+The catch: you have to compare the seller's current listing, fees, and buyer protections before checkout.
 
 ## How to play this without getting fleeced
 
@@ -62,11 +62,11 @@ Three rules. That's it.
 
 ### 1. Compare every match, every day
 
-Don't assume FIFA is cheapest just because they're official. Don't assume StubHub is cheapest just because it's the biggest resale platform. Pull up the match on TicketScan and look at all three (Ticketmaster, SeatGeek, StubHub) side by side. The cheapest source flips constantly — sometimes intraday.
+Don't assume FIFA is cheapest just because they're official, and don't assume the biggest resale platform is cheapest either. Use TicketScan to find the event, then verify the seller's current listing, fees, and protections before checkout.
 
-### 2. Set a price alert and walk away
+### 2. Set a budget and walk away
 
-The single biggest mistake we see fans make is checking prices three times a day, getting emotionally attached, and panic-buying at the top. Set a target price on your watchlist, close the tab, and let us email you when somebody — primary or resale — actually hits it. Most matches outside the final and the opener will see at least one meaningful dip between now and June 11.
+The single biggest mistake fans make is getting emotionally attached and panic-buying. Set a firm budget, compare the all-in total, and do not let a countdown or low-inventory message make the decision for you.
 
 ### 3. Watch the host-city math
 
@@ -101,11 +101,11 @@ That's the entire job we built TicketScan to do.
     content: `
 ## When Should You Buy Concert Tickets?
 
-Buying concert tickets at the right time can save you hundreds of dollars. After analyzing thousands of ticket transactions, we've identified the patterns that can help you get the best deals.
+Buying concert tickets at the right time can save you money. Use the onsale details, compare the complete checkout total, and decide what fits your budget before you click buy.
 
 ### The Sweet Spot: 2-3 Weeks Before the Event
 
-Our data shows that ticket prices often reach their lowest point **2-3 weeks before the concert**. Here's why:
+Some buyers prefer the 2–3 weeks before a concert because the initial onsale rush has passed and more inventory may appear. There is no guaranteed cheapest day, so compare the final checkout total.
 
 - **Initial hype dies down** - The rush of presale and on-sale has passed
 - **Resellers get nervous** - They start lowering prices to avoid losses
@@ -131,8 +131,8 @@ Different types of concerts follow different pricing patterns:
 
 ### Pro Tips for Concert Tickets
 
-1. **Set price alerts** - Use Ticket Scan to track prices and get notified when they drop
-2. **Check multiple platforms** - Prices vary significantly between Ticketmaster, SeatGeek, and resale sites
+1. **Check multiple platforms** - Inventory, fees, and seat locations can vary between Ticketmaster and resale sites
+2. **Check the onsale details** - Presales and public onsales can have different access rules
 3. **Consider weekday shows** - Tuesday and Wednesday concerts are often 20-30% cheaper
 4. **Look at opener shows** - Artists often have cheaper tickets in smaller markets before major tours
 
@@ -149,7 +149,7 @@ Sometimes waiting isn't the best strategy:
 
 For most concerts, **patience pays off**. Set your target price, track the event, and wait for prices to drop into your range. The sweet spot is typically 2-3 weeks before the show.
 
-Start tracking your favorite artists on Ticket Scan to get alerts when prices drop to your budget.
+Use TicketScan to find events, review onsale details, and save shows you may want to revisit.
     `,
   },
   {
@@ -169,7 +169,7 @@ NBA tickets can be expensive, but there are proven strategies to find great deal
 
 ### 1. Buy Weekday Games
 
-Tuesday, Wednesday, and Thursday games are significantly cheaper than weekend matchups. Our data shows:
+Tuesday, Wednesday, and Thursday games can have different demand from weekend matchups. Compare the complete checkout total for the same section before deciding:
 
 - **Weekday games**: 25-40% cheaper on average
 - **Sunday afternoon**: Moderate pricing
@@ -233,9 +233,9 @@ Skip these unless money isn't a concern:
 - Rivalry games
 - Playoff races
 
-### 10. Set Price Alerts
+### 10. Set a Budget Before You Browse
 
-Don't constantly check prices manually. Set alerts on Ticket Scan for your target price and let us notify you when deals appear.
+Decide what you can spend before browsing, then compare the complete checkout total and seat location across reputable sellers.
 
 ### Sample Savings by Strategy
 
@@ -248,7 +248,7 @@ Don't constantly check prices manually. Set alerts on Ticket Scan for your targe
 
 ### Start Saving Today
 
-The best way to find cheap NBA tickets is to track prices over time and strike when they drop. Create a free Ticket Scan account to start tracking your favorite teams.
+The practical way to compare NBA tickets is to check the event, onsale details, seat location, and all-in total before you buy. Create a free TicketScan account to save favorite teams and revisit their events.
     `,
   },
   {
@@ -306,7 +306,7 @@ Neither platform is consistently cheaper. Prices vary by:
 **SeatGeek Pros:**
 - Clean, modern interface
 - Deal Score helps identify value
-- Price alerts built-in
+- Deal Score and seat-value tools vary by platform; check what each seller actually guarantees
 - Often lower fees
 
 **SeatGeek Cons:**
@@ -314,20 +314,13 @@ Neither platform is consistently cheaper. Prices vary by:
 - Not the official source
 - Fewer exclusive presales
 
-### Price Analysis: Real Examples
+### Compare the Checkout Details
 
-We compared 100 random events across both platforms:
-
-| Category | Ticketmaster Avg | SeatGeek Avg | Difference |
-|----------|-----------------|--------------|------------|
-| NBA | $127 | $119 | SeatGeek 6% cheaper |
-| NHL | $98 | $102 | Ticketmaster 4% cheaper |
-| Concerts | $156 | $149 | SeatGeek 4% cheaper |
-| Theater | $134 | $141 | Ticketmaster 5% cheaper |
+The platforms present inventory and fees differently, so treat any listing snapshot as temporary and verify the all-in total, seat location, delivery method, and buyer protection at checkout.
 
 ### The Smart Approach: Compare Both
 
-Instead of being loyal to one platform, **compare prices for every purchase**. That's exactly why we built Ticket Scan - to show you prices across all platforms instantly.
+Instead of being loyal to one platform, compare the all-in total and buyer protections for every purchase. TicketScan helps you find events and the seller links for the next step.
 
 ### Other Platforms to Consider
 
@@ -390,7 +383,7 @@ Several factors drive last-minute discounts:
 
 ### The Optimal Timing
 
-Our data shows these windows offer the best last-minute deals:
+Last-minute inventory can change quickly, but there is no guaranteed discount window:
 
 | Time Before Event | Typical Discount |
 |-------------------|------------------|
@@ -413,15 +406,15 @@ Last-minute buying requires extra caution:
 
 To catch last-minute deals:
 
-1. **Set price alerts** on Ticket Scan for your target events
-2. **Enable notifications** on your phone
+1. **Check the event details** on TicketScan and the seller before buying
+2. **Enable notifications** on your phone for official onsale announcements
 3. **Have payment info saved** for quick checkout
 4. **Know the venue location** so you can get there quickly
 5. **Check multiple platforms** simultaneously
 
 ### Real Success Stories
 
-Here are actual last-minute savings from our users:
+Last-minute purchases can work for flexible buyers, but they also carry real availability and travel risk:
 
 - Lakers game: $180 → $75 (bought 2 hours before)
 - Taylor Swift: $450 → $280 (bought day-of)
@@ -438,7 +431,7 @@ Skip the last-minute strategy for:
 
 ### Tools You Need
 
-- **Ticket Scan**: Compare prices across platforms
+- **TicketScan**: Find events, onsale details, and seller links
 - **Event apps**: Official team/venue apps sometimes have flash deals
 - **Social media**: Follow artists/teams for surprise drops
 - **Credit card with good protection**: In case of issues
@@ -447,7 +440,7 @@ Skip the last-minute strategy for:
 
 Last-minute ticket buying is a valid strategy that can save 25-50% on many events. The key is knowing which events are good candidates and being prepared to act fast.
 
-Track your favorite events on Ticket Scan and enable alerts to catch those last-minute price drops.
+Save favorite events on TicketScan so you can revisit the event details and seller links when you are ready.
     `,
   },
   {
@@ -545,7 +538,7 @@ Before every ticket purchase:
 
 ### Save Money on Every Purchase
 
-The easiest way to avoid overpaying is to track prices over time. Create a free Ticket Scan account to monitor events and buy at the right time.
+The easiest way to avoid overpaying is to compare the all-in total, seat location, seller guarantees, and refund policy. Create a free TicketScan account to save events and revisit them later.
     `,
   },
   {
@@ -668,7 +661,7 @@ If your team makes the playoffs:
 
 ### Track Your Team
 
-The best strategy is consistent price monitoring. Set up alerts on Ticket Scan for your team's home games and we'll notify you when prices drop to your target.
+The best strategy is to follow your team's onsale announcements and compare the event details across reputable sellers before buying.
     `,
   },
   {
@@ -771,9 +764,9 @@ NHL playoffs are electric but expensive:
 3. Consider road games in cheaper markets
 4. Game 3 often cheaper than Games 1-2
 
-### Track Price Trends
+### Follow the Onsale Details
 
-Use Ticket Scan to monitor prices for your favorite team's games. Set alerts and buy when prices drop to your target.
+Use TicketScan to find your favorite team's events and check the onsale details before you buy.
     `,
   },
   {
@@ -907,7 +900,7 @@ Broadway shows tour nationally at lower prices:
 **Find Tours:**
 - Check BroadwayAcrossAmerica
 - Local performing arts centers
-- Ticket Scan alerts
+- TicketScan event pages and official onsale information
 
 ### Insider Tips
 
@@ -924,7 +917,7 @@ Broadway shows tour nationally at lower prices:
 - **Premium VIP packages**: Rarely worth the markup
 - **Last-minute for hot shows**: Lottery is your only cheap option
 
-Track Broadway show prices on Ticket Scan and get alerts when tickets drop.
+Use TicketScan to find Broadway events, then verify the seller, seat, fees, and refund policy before buying.
     `,
   },
   {
@@ -1250,7 +1243,7 @@ Before every purchase:
 - [ ] Refund/guarantee policy exists
 - [ ] Screenshot all details
 
-Stay safe by using Ticket Scan to compare prices across legitimate platforms only.
+Stay safe by using TicketScan to find event information and then buying through a legitimate seller with clear buyer protection.
     `,
   },
   {
@@ -1539,7 +1532,7 @@ If you miss presale:
 - Check immediately after presale
 - Prices often near face initially
 - Compare across platforms
-- Set price alerts
+- Set a budget and verify the all-in total
 
 ### Presale vs General On-Sale
 
@@ -1725,7 +1718,7 @@ Concerts at MSG are bucket list events, but seating differs:
 3. **SeatGeek Deal Score** - Useful for MSG given price variation
 4. **Rangers weekday** - Great value if you're flexible
 
-Use Ticket Scan to compare MSG ticket prices across all platforms.
+Use TicketScan to find MSG events and review the onsale details before opening the seller listing.
     `,
   },
   {
@@ -2017,7 +2010,7 @@ Platforms worth comparing:
 - **Ticketmaster** - verified resale marketplace
 - **Vivid Seats** - 100% buyer guarantee
 
-**Use Ticket Scan to compare the all-in price -- FIFA Marketplace fees included -- across every platform at once, so you're not guessing which "deal" is actually the deal.**
+**Use TicketScan to find World Cup venue and event information, then verify the all-in price and buyer protections on the seller's checkout page.**
 
 ### Stadium-Specific Tips
 
@@ -2044,7 +2037,7 @@ Here's a realistic budget for attending a World Cup match:
 1. **Compare the all-in price, not the sticker** - factor FIFA's 30% fee spread against secondary-platform service fees before deciding
 2. **Consider group stage matches** - much cheaper than knockout rounds, and that's where the softest resale pricing has shown up
 3. **Be flexible on location** - smaller host cities consistently have better availability and lower get-in prices
-4. **Set price alerts** - use Ticket Scan to track resale prices and catch the dips instead of refreshing tabs
+4. **Compare the all-in total** - verify fees, seat location, delivery, and seller guarantees before buying
 5. **Book travel separately** - don't commit to flights and hotels until the ticket is in your account
 6. **Don't panic-buy** - inventory has stayed available deep into the tournament; the seat you want at your price often appears late
 
@@ -2055,9 +2048,9 @@ Here's a realistic budget for attending a World Cup match:
 - **Paying the first price you see** - prices have moved a lot; compare across platforms every time
 - **Knockout and Final tickets at panic prices** - expect extreme numbers, and weigh whether a group-stage match delivers more value
 
-### Track World Cup Ticket Prices
+### Find World Cup Ticket Information
 
-Start monitoring ticket prices now on Ticket Scan. Set alerts for specific venues or matches and we'll notify you when prices drop to your budget.
+Use TicketScan to find World Cup venue information, event details, and links to sellers. Verify availability, fees, and the all-in total on the seller's checkout page.
 
 [Search World Cup Tickets →](/world-cup-2026)
     `,
@@ -2193,7 +2186,7 @@ The 2026 FIFA World Cup will be played across 16 world-class stadiums in three c
 
 ### Compare Ticket Prices
 
-Use Ticket Scan to compare ticket prices across all World Cup venues and find the best deals for your budget.
+Use TicketScan to browse all World Cup venues, review seating and event information, and decide which match fits your budget.
 
 [View All World Cup Venues →](/world-cup-2026)
     `,
@@ -2265,15 +2258,15 @@ If you want to be at the World Cup but the Final is out of budget, here's how to
 
 **Semifinals** — The best soccer you can watch without holding a four-figure seat at the Final. If there's a European powerhouse or USMNT involved, prices will move fast.
 
-**The Final** — If this is your bucket list moment, buy now. Final ticket prices have historically gone in one direction in the two weeks before the match.
+**The Final** — If this is your bucket list moment, set a budget and verify the seat, seller protections, and all-in total before buying.
 
 ## How to Find the Best Price Right Now
 
 Three steps:
 
-1. **Search the match** on [TicketScan's dashboard](/dashboard?keyword=world+cup+2026) — we pull live prices from Ticketmaster, SeatGeek, and StubHub into one view
-2. **Set a price alert** on any match you're targeting — we'll email you if any platform drops to your target price
-3. **Compare all-in prices** (not the listing price) — the platform fee is where most of the variance hides
+1. **Search the match** on [TicketScan's dashboard](/dashboard?keyword=world+cup+2026) and review the available event details
+2. **Open the seller listing** and verify the seat, delivery method, availability, and refund terms
+3. **Compare all-in prices** (not the listing price) — platform fees are where much of the variance hides
 
 The resale market for knockout rounds moves fast. If you see a price that works, the window to act is measured in hours, not days.
 
@@ -2398,7 +2391,7 @@ On the question of waiting: don't. At 48 hours out, the typical price-drop windo
 
 The Final is set. Three days from now, the two best teams in the world meet at MetLife Stadium in East Rutherford, New Jersey. 82,500 seats. One match. No tomorrow.
 
-If you're still looking for tickets, here's the honest version of what you need to know: the prices you see today are very likely the floor. Here's what they look like by section, why the math doesn't favor waiting, and how to find the cheapest option still available.
+If you're still looking for tickets, here's the honest version of what you need to know: availability and fees can change, and there is no guaranteed best day to buy. Compare the seat, seller protections, and all-in total before deciding.
 
 ## What Final Tickets Actually Cost Right Now
 
@@ -2432,14 +2425,14 @@ The standard advice on TicketScan is to set a price alert and wait — prices fo
 
 **3. Platform inventory is thin.** When a specific section sells out on one platform, prices on others move immediately. Low inventory + rising demand = prices go up, not down.
 
-Our buy recommendation for the Final: if you see a price you can live with, compare across platforms for the best all-in total, then buy. Don't wait for a lower number that probably isn't coming.
+For the Final: if you see a listing you can live with, verify the seat, seller protections, and all-in total, then decide. Do not let urgency replace basic ticket checks.
 
 ## How to Compare Without Getting Played
 
 Three steps that take about 5 minutes:
 
 **Step 1: Search the Final on TicketScan.**
-Go to the [World Cup 2026 hub](/world-cup-2026) or search "World Cup Final" in the [dashboard](/dashboard?keyword=world+cup+final). We pull live prices from Ticketmaster, SeatGeek, and StubHub into one view so you can compare all-in totals side by side.
+Go to the [World Cup 2026 hub](/world-cup-2026) or search "World Cup Final" in the [dashboard](/dashboard?keyword=world+cup+final) to review venue information and seller links. Verify the all-in total on the seller's checkout page.
 
 **Step 2: Filter for your section tier.**
 Don't compare a $500 upper level seat on StubHub against a $500 mezzanine seat on SeatGeek — those aren't the same thing. Match apples to apples: same section tier, same row range.
@@ -2462,7 +2455,7 @@ Our full [MetLife Stadium guide](/world-cup-2026/metlife-stadium) covers section
 
 The World Cup Final happens once every four years, and it hasn't been in the United States since 1994. For most people reading this, that's the whole argument.
 
-If your budget works, compare platforms on TicketScan now, verify the all-in price, and buy. Waiting 72 hours for a price drop that probably won't come is not a strategy — it's just risk.
+If your budget works, verify the seller listing and all-in price, then decide. Waiting is not a guarantee of a lower number, and urgency is not a substitute for checking the details.
 
 ---
 

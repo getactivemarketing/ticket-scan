@@ -11,3 +11,7 @@
 ## October 17, 2026
 
 - Added [2026-10-17-capital-one-arena.md](refresh-proposals/2026-10-17-capital-one-arena.md), proposing official arrival, bag, cashless-payment, and door-timing guidance for `/venues/capital-one-arena`, plus a correction to the product-capability wording.
+
+## October 23, 2026
+
+- Added [2026-10-23-allegiant-stadium.md](refresh-proposals/2026-10-23-allegiant-stadium.md), proposing official seating-map, transportation, and rideshare guidance for `/venues/allegiant-stadium`, plus a correction to the product-capability wording.
