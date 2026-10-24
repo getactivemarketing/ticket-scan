@@ -1,5 +1,5 @@
 {
-  "builtAt": "2026-10-23T10:18:26.599Z",
+  "builtAt": "2026-10-24T10:18:17.084Z",
   "counts": {
     "resolved": 242,
     "unresolved": 0,
@@ -361,7 +361,7 @@
       "attractionId": "K8vZ9171E1V",
       "matchedCity": "Amherst",
       "count": 2,
-      "totalEvents": 5
+      "totalEvents": 4
     },
     "space-city-financial-stadium": {
       "teamName": "University of Houston Cougars Football",
@@ -408,7 +408,7 @@
       "teamSlug": "montreal-canadiens",
       "attractionId": "K8vZ9171oyf",
       "matchedCity": "Montreal",
-      "count": 9,
+      "count": 10,
       "totalEvents": 20
     },
     "rogers-arena": {

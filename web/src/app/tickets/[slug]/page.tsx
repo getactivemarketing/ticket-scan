@@ -70,7 +70,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     keywords = city.keywords;
   } else {
     const category = pageData.data;
-    title = `${category.name} Tickets - Best Prices`;
+    title = `${category.name} Tickets - Schedules and Onsale Dates`;
     description = category.description;
     keywords = category.keywords;
   }

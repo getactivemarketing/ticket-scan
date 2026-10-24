@@ -15,3 +15,7 @@
 ## October 23, 2026
 
 - Added [2026-10-23-allegiant-stadium.md](refresh-proposals/2026-10-23-allegiant-stadium.md), proposing official seating-map, transportation, and rideshare guidance for `/venues/allegiant-stadium`, plus a correction to the product-capability wording.
+
+## October 24, 2026
+
+- Added [2026-10-24-msg.md](refresh-proposals/2026-10-24-msg.md), proposing official event-specific seating-chart and visit-planning guidance for `/venues/msg`, plus a correction to the product-capability wording.
