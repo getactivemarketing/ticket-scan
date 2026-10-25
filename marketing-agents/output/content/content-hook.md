@@ -1,8 +1,19 @@
-## Today's Content Hook — 2026-10-24
-**Topic:** The U.S. Men's National Team plays Jamaica on Dec. 13 at Inter Miami CF Stadium in Fort Lauderdale, and public tickets went on sale Friday, Oct. 23 at 10 a.m. ET.
-**Angle:** A timely presale-to-public-sale explainer: fans should confirm whether they are looking at an Insider, Visa, Platinum, or public-sale route, verify the exact match and venue, and review the all-in total and seller terms before checkout. TicketScan can help fans find the event and its onsale details; do not promise price tracking or alerts.
-**Target keyword:** USMNT vs Jamaica tickets December 13 2026
-**Content type:** Social snippet / timely event page update
+## Today's Content Hook — 2026-10-25
+
+**Topic:** Doja Cat with special guest Latto plays Chase Center in San Francisco tonight, Sunday, October 25, at 7:30 p.m. The venue's official calendar also lists a 10 a.m. Football Sundays event at the building, making exact event identity especially important when searching.
+
+**Angle:** A same-day event-discovery and checkout-safety snippet: confirm the artist, venue, start time, and ticket type before opening seller links; use the Chase Center venue map and arrival guidance; then verify the final checkout total and delivery terms on the seller page. TicketScan can help users find the event and venue details, but it does not provide live price tracking or alerts.
+
+**Target keyword:** Doja Cat Latto Chase Center tickets October 25 2026
+
+**Content type:** Social snippet / same-day event guide
+
 **Priority:** High
 
-**Source:** [U.S. Soccer announcement for USMNT vs. Jamaica](https://www.ussoccer.com/stories/2026/10/usmnt/december-match-vs-jamaica-inter-miami-stadium-florida)
+**Source:** [Chase Center event page](https://www.chasecenter.com/events/doja-cat-20261025/) and [Chase Center event calendar](https://www.chasecenter.com/events/)
+
+---
+
+**Secondary hook:** The 2026 World Series has an official off-day today, with Brewers–Rays Game 3 scheduled for Monday, October 26 at 8 p.m. ET. The angle is a conditional-playoff listing explainer: confirm the game number, matchup, venue, local time, delivery method, and cancellation/postponement terms before buying. Do not make claims about current ticket prices or availability.
+
+**Source:** [MLB 2026 postseason schedule](https://www.mlb.com/news/2026-mlb-playoff-and-world-series-schedule)

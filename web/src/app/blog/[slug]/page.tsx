@@ -191,7 +191,7 @@ export default async function BlogPostPage({ params }: PageProps) {
               {/* CTA — dark navy */}
               <div className="mt-12 bg-navy rounded-xl p-8 text-center">
                 <h3 className="text-xl font-bold font-heading text-white mb-2 tracking-tight">Ready to Find Cheap Tickets?</h3>
-                <p className="text-white/50 text-sm mb-5">Start comparing prices across multiple platforms and track your favorite events.</p>
+                <p className="text-white/50 text-sm mb-5">Find the event, compare available listings, and save favorites to your watchlist.</p>
                 <Link href="/register" className="inline-block bg-gradient-to-r from-brand to-teal text-white px-6 py-3 rounded-lg font-bold hover:opacity-90 transition-opacity">Create Free Account</Link>
               </div>
             </article>

@@ -82,9 +82,9 @@ That's the entire job we built TicketScan to do.
 
 ---
 
-**Tracking a specific World Cup match?** [Add it to your watchlist](https://www.ticketscan.io/world-cup-2026) and we'll alert you the moment any of the three major marketplaces drops below your target price. No spam, no upsell — just the number you wanted to see.
+**Following a specific World Cup match?** [Add it to your watchlist](https://www.ticketscan.io/world-cup-2026) so it is easy to revisit alongside the onsale details and seller links.
 
-**Comparing right now?** [Run a side-by-side price check](https://www.ticketscan.io/compare) across Ticketmaster, SeatGeek, and StubHub before you hit "buy" anywhere.
+**Comparing right now?** [Review the event listings](https://www.ticketscan.io/dashboard) and verify the seller's current availability, fees, and buyer protections before you hit "buy" anywhere.
     `,
   },
 
@@ -147,7 +147,7 @@ Sometimes waiting isn't the best strategy:
 
 ### The Bottom Line
 
-For most concerts, **patience pays off**. Set your target price, track the event, and wait for prices to drop into your range. The sweet spot is typically 2-3 weeks before the show.
+For most concerts, **patience pays off**. Check the onsale details, compare the complete checkout total, and choose a seat and timing that fit your budget.
 
 Use TicketScan to find events, review onsale details, and save shows you may want to revisit.
     `,
@@ -522,7 +522,7 @@ Many platforms now use dynamic pricing that changes based on demand. Prices can 
 - TV appearances by artists
 - Playoff implications for sports
 
-**The Solution:** Don't buy during hype spikes. Set a price alert and wait for prices to normalize.
+**The Solution:** Don't buy during hype spikes. Recheck the seller's current listing, fees, and buyer protections before you commit.
 
 ### Quick Reference: Smart Buying Checklist
 
@@ -2244,9 +2244,9 @@ In the group stage, most matches had reasonable inventory and platforms stayed w
 In knockout rounds you'll see:
 - **Sellers listing at different moments** — someone who listed before a high-profile team advanced is sitting on stale pricing that platforms haven't updated
 - **Fee structures that vary by face value** — some platforms charge lower percentage fees on premium listings, flipping which is cheapest above a certain price point
-- **Inventory that disappears fast** — a cheap listing at $480 all-in gets bought in minutes; refreshing every day and finding "prices went up" is the default experience without a price alert
+- **Inventory that disappears fast** — a listing can be gone in minutes, so verify the seller's current availability and all-in total before you commit
 
-The right move: set a price alert at your target, stop checking manually, and let TicketScan notify you when a platform actually hits it.
+The right move: set a firm budget, compare the current all-in totals, and verify the seat, delivery method, and buyer protections on the seller's page.
 
 ## Which Round Should You Target?
 
@@ -2417,7 +2417,7 @@ At the $800 level, that fee difference is $40–$56 per ticket. At $2,000, it's 
 
 No. Here's why.
 
-The standard advice on TicketScan is to set a price alert and wait — prices for most events do dip in the days before as sellers offload inventory. That logic breaks for the World Cup Final for three reasons:
+The standard advice is to wait for a last-minute deal — prices for some events do dip in the days before as sellers offload inventory. That logic breaks for the World Cup Final for three reasons:
 
 **1. Three days is not enough time.** The resale dip window for major events is typically 7–14 days out. At 3 days out, you're past that window. Any sellers who were going to panic-sell at a discount have already done so.
 

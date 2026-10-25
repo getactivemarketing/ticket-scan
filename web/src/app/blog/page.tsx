@@ -5,14 +5,14 @@ import NewsletterSignup from '@/components/NewsletterSignup';
 
 export const metadata: Metadata = {
   title: 'Ticket Buying Tips & Guides',
-  description: 'Expert tips on finding cheap tickets, best times to buy, and strategies for concerts, sports, and events. Save money on every purchase.',
+  description: 'Practical guides for finding events, comparing available listings, and buying concert, sports, and theater tickets with fewer surprises.',
   keywords: 'ticket tips, cheap tickets, buying guide, concert tickets, sports tickets, save money',
   alternates: {
     canonical: 'https://www.ticketscan.io/blog',
   },
   openGraph: {
     title: 'Ticket Scan Blog - Expert Ticket Buying Tips',
-    description: 'Learn how to find the best ticket deals with our expert guides and tips.',
+    description: 'Learn how to find events, compare available listings, and navigate onsale dates with our practical guides.',
     type: 'website',
     url: 'https://www.ticketscan.io/blog',
   },
@@ -91,8 +91,8 @@ export default function BlogPage() {
               Ticket Buying Tips & Guides
             </h1>
             <p className="text-xl text-white/50 max-w-2xl">
-              Expert advice on finding the best ticket deals. Learn when to buy,
-              how to compare prices, and strategies to save money.
+              Practical advice on finding events, checking onsale dates,
+              comparing available listings, and avoiding ticket-buying traps.
             </p>
           </div>
         </div>

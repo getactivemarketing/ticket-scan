@@ -686,5 +686,50 @@
     "mediaUrls": [
       "https://www.ticketscan.io/social/ig-template.png"
     ]
+  },
+  {
+    "id": "2026-10-25-twitter-checkout-total",
+    "platform": "twitter",
+    "scheduledTime": "2026-10-25T13:00:00.000Z",
+    "text": "A $120 ticket can become $154 after fees and delivery. The seat didn't get cheaper. The first number was incomplete. Expand checkout before you decide. ticketscan.io",
+    "mediaUrls": [
+      "https://www.ticketscan.io/social/ig-template.png"
+    ]
+  },
+  {
+    "id": "2026-10-25-twitter-world-cup-venue",
+    "platform": "twitter",
+    "scheduledTime": "2026-10-25T17:00:00.000Z",
+    "text": "World Cup 2026 has 16 host stadiums across the U.S., Canada, and Mexico. Check the venue guide before you pick a section. The building can change the whole day. ticketscan.io",
+    "mediaUrls": [
+      "https://www.ticketscan.io/social/ig-template.png"
+    ]
+  },
+  {
+    "id": "2026-10-25-twitter-local-onsale",
+    "platform": "twitter",
+    "scheduledTime": "2026-10-25T21:00:00.000Z",
+    "text": "Presale starts at 10 a.m. local time? Local means the venue's clock, not automatically Eastern. Put the city in your calendar before the queue starts. ticketscan.io",
+    "mediaUrls": [
+      "https://www.ticketscan.io/social/ig-template.png"
+    ]
+  },
+  {
+    "id": "2026-10-25-instagram-seat-check",
+    "platform": "instagram",
+    "scheduledTime": "2026-10-25T22:00:00.000Z",
+    "text": "The ticket card is the opening argument. 🎟️\n\nBefore you pay, confirm the event and seat, read the listing type, check the delivery method, and expand the all-in checkout total. A cheap-looking seat can get less cheap very quickly.\n\nFind the event and venue details at ticketscan.io\n\n#TicketScan #TicketBuying #ConcertTickets #SportsTickets #SaveMoney",
+    "mediaUrls": [
+      "https://www.ticketscan.io/social/ig-template.png"
+    ]
+  },
+  {
+    "id": "2026-10-25-threads-checkout-fees",
+    "platform": "threads",
+    "scheduledTime": "2026-10-25T21:30:00.000Z",
+    "text": "I keep checking the section, listing type, delivery terms, and all-in checkout total before paying. Fees have a habit of arriving late to the conversation. The cheap-looking ticket may just be hiding the expensive part. ticketscan.io",
+    "mediaUrls": [
+      "https://www.ticketscan.io/social/ig-template.png"
+    ]
   }
 ]
