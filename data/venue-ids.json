@@ -1,5 +1,5 @@
 {
-  "builtAt": "2026-10-27T10:13:28.608Z",
+  "builtAt": "2026-10-28T10:13:19.315Z",
   "counts": {
     "resolved": 242,
     "unresolved": 0,
@@ -329,7 +329,7 @@
       "attractionId": "K8vZ91756Pf",
       "matchedCity": "Huntsville",
       "count": 2,
-      "totalEvents": 5
+      "totalEvents": 4
     },
     "renasant-stadium": {
       "teamName": "Southern Mississippi Football",
@@ -416,7 +416,7 @@
       "teamSlug": "vancouver-canucks",
       "attractionId": "K8vZ9171oH7",
       "matchedCity": "Vancouver",
-      "count": 10,
+      "count": 11,
       "totalEvents": 20
     },
     "canada-life-centre": {
