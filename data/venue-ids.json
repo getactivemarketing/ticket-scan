@@ -1,5 +1,5 @@
 {
-  "builtAt": "2026-10-28T10:13:19.315Z",
+  "builtAt": "2026-10-29T10:13:32.391Z",
   "counts": {
     "resolved": 242,
     "unresolved": 0,
@@ -312,8 +312,8 @@
       "teamSlug": "middle-tennessee-blue-raiders-football",
       "attractionId": "K8vZ917Gpgf",
       "matchedCity": "Murfreesboro",
-      "count": 3,
-      "totalEvents": 5
+      "count": 2,
+      "totalEvents": 4
     },
     "davis-wade-stadium": {
       "teamName": "Mississippi State Bulldogs Football",
