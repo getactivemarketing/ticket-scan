@@ -1,14 +1,5 @@
 [
   {
-    "id": "2026-09-30-twitter-compare-every-time",
-    "platform": "twitter",
-    "scheduledTime": "2026-09-30T13:00:00.000Z",
-    "text": "Ticket prices aren't one market. Our watchlist has 254 events, and the same pattern keeps showing up: one platform gets a listing, another gets a better number. Compare before you tap buy. ticketscan.io",
-    "mediaUrls": [
-      "https://www.ticketscan.io/social/generated/2026-09-30-twitter-compare-every-time.png"
-    ]
-  },
-  {
     "id": "2026-09-30-twitter-ask-seatgeek",
     "platform": "twitter",
     "scheduledTime": "2026-09-30T17:00:00.000Z",
@@ -33,15 +24,6 @@
     "text": "We’re watching 254 events right now. The useful part of a watchlist isn’t collecting event names. It’s seeing when a price gets close to your own floor. TicketScan’s buy-now signal kicks in within 5% of the lowest recorded price. That’s a much better rule than vibes and panic-refreshing. 🎟️\n\n#TicketScan #TicketDeals #PriceAlerts #LiveEvents #SaveMoney",
     "mediaUrls": [
       "https://www.ticketscan.io/social/generated/2026-09-30-instagram-watchlist.png"
-    ]
-  },
-  {
-    "id": "2026-09-30-threads-price-check",
-    "platform": "threads",
-    "scheduledTime": "2026-09-30T13:30:00.000Z",
-    "text": "Same seat, different price. That’s still the annoying truth about ticket shopping. A search tool can help you find the event, but you still need to compare the listing, fees, and platform before paying. ticketscan.io",
-    "mediaUrls": [
-      "https://www.ticketscan.io/social/generated/2026-09-30-threads-price-check.png"
     ]
   },
   {
