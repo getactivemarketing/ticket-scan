@@ -1,5 +1,5 @@
 {
-  "builtAt": "2026-10-29T10:13:32.391Z",
+  "builtAt": "2026-10-31T13:27:59.651Z",
   "counts": {
     "resolved": 242,
     "unresolved": 0,
@@ -408,7 +408,7 @@
       "teamSlug": "montreal-canadiens",
       "attractionId": "K8vZ9171oyf",
       "matchedCity": "Montreal",
-      "count": 10,
+      "count": 11,
       "totalEvents": 20
     },
     "rogers-arena": {
