@@ -1,5 +1,5 @@
 {
-  "builtAt": "2026-11-03T11:13:24.197Z",
+  "builtAt": "2026-11-04T11:10:57.799Z",
   "counts": {
     "resolved": 242,
     "unresolved": 0,
@@ -416,7 +416,7 @@
       "teamSlug": "vancouver-canucks",
       "attractionId": "K8vZ9171oH7",
       "matchedCity": "Vancouver",
-      "count": 10,
+      "count": 9,
       "totalEvents": 20
     },
     "canada-life-centre": {
