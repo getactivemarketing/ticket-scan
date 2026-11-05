@@ -1,9 +1,9 @@
 {
-  "builtAt": "2026-11-04T11:10:57.799Z",
+  "builtAt": "2026-11-05T11:10:46.316Z",
   "counts": {
     "resolved": 242,
     "unresolved": 0,
-    "ambiguous": 71,
+    "ambiguous": 70,
     "viaAttraction": 22
   },
   "ids": {
@@ -201,7 +201,7 @@
     "great-american-ball-park": "KovZpZA6tdIA",
     "progressive-field": "KovZpZA6A1JA",
     "coors-field": "KovZpZA6t7kA",
-    "comerica-park": "KovZpZAdEatA",
+    "comerica-park": "KovZpZAaanaA",
     "daikin-park": "KovZpZAJJAtA",
     "kauffman-stadium": "KovZpa9Ybe",
     "angel-stadium": "KovZpZA7dkIA",
@@ -360,8 +360,8 @@
       "teamSlug": "umass-football",
       "attractionId": "K8vZ9171E1V",
       "matchedCity": "Amherst",
-      "count": 2,
-      "totalEvents": 4
+      "count": 1,
+      "totalEvents": 3
     },
     "space-city-financial-stadium": {
       "teamName": "University of Houston Cougars Football",
