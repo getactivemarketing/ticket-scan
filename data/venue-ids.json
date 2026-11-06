@@ -1,5 +1,5 @@
 {
-  "builtAt": "2026-11-05T11:10:46.316Z",
+  "builtAt": "2026-11-06T11:10:46.496Z",
   "counts": {
     "resolved": 242,
     "unresolved": 0,
@@ -336,8 +336,8 @@
       "teamSlug": "southern-mississippi-football",
       "attractionId": "K8vZ9171nC7",
       "matchedCity": "Hattiesburg",
-      "count": 2,
-      "totalEvents": 3
+      "count": 1,
+      "totalEvents": 2
     },
     "amon-g-carter-stadium": {
       "teamName": "TCU Horned Frogs Football",
@@ -400,7 +400,7 @@
       "teamSlug": "edmonton-oilers",
       "attractionId": "K8vZ9171oy7",
       "matchedCity": "Edmonton",
-      "count": 10,
+      "count": 9,
       "totalEvents": 20
     },
     "bell-centre": {
