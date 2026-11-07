@@ -1,5 +1,5 @@
 {
-  "builtAt": "2026-11-06T11:10:46.496Z",
+  "builtAt": "2026-11-07T15:51:40.882Z",
   "counts": {
     "resolved": 242,
     "unresolved": 0,
@@ -256,8 +256,8 @@
       "teamSlug": "arizona-wildcats-football",
       "attractionId": "K8vZ9171_37",
       "matchedCity": "Tucson",
-      "count": 3,
-      "totalEvents": 4
+      "count": 2,
+      "totalEvents": 3
     },
     "doyt-perry-stadium": {
       "teamName": "Bowling Green Falcons Football",
@@ -345,7 +345,7 @@
       "attractionId": "K8vZ9171Jk7",
       "matchedCity": "Fort Worth",
       "count": 2,
-      "totalEvents": 4
+      "totalEvents": 3
     },
     "galaxy-stadium": {
       "teamName": "Texas Tech Red Raiders Football",
@@ -377,7 +377,7 @@
       "attractionId": "K8vZ9171Jn7",
       "matchedCity": "Blacksburg",
       "count": 2,
-      "totalEvents": 4
+      "totalEvents": 3
     },
     "mountaineer-field-at-milan-puskar-stadium": {
       "teamName": "West Virginia Mountaineers",
@@ -392,7 +392,7 @@
       "teamSlug": "calgary-flames",
       "attractionId": "K8vZ9171oB7",
       "matchedCity": "Calgary",
-      "count": 9,
+      "count": 8,
       "totalEvents": 20
     },
     "rogers-place": {
