@@ -1,5 +1,5 @@
 {
-  "builtAt": "2026-11-10T11:11:05.896Z",
+  "builtAt": "2026-11-11T11:11:22.524Z",
   "counts": {
     "resolved": 242,
     "unresolved": 0,
@@ -264,8 +264,8 @@
       "teamSlug": "bowling-green-falcons-football",
       "attractionId": "K8vZ9175Bv7",
       "matchedCity": "Bowling Green",
-      "count": 2,
-      "totalEvents": 3
+      "count": 1,
+      "totalEvents": 2
     },
     "doak-campbell-stadium": {
       "teamName": "Florida State Seminoles Football",
