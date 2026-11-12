@@ -1,5 +1,5 @@
 {
-  "builtAt": "2026-11-11T11:11:22.524Z",
+  "builtAt": "2026-11-12T11:10:57.437Z",
   "counts": {
     "resolved": 242,
     "unresolved": 0,
@@ -361,7 +361,7 @@
       "attractionId": "K8vZ9171E1V",
       "matchedCity": "Amherst",
       "count": 1,
-      "totalEvents": 3
+      "totalEvents": 2
     },
     "space-city-financial-stadium": {
       "teamName": "University of Houston Cougars Football",
@@ -392,7 +392,7 @@
       "teamSlug": "calgary-flames",
       "attractionId": "K8vZ9171oB7",
       "matchedCity": "Calgary",
-      "count": 8,
+      "count": 7,
       "totalEvents": 20
     },
     "rogers-place": {
