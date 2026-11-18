@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { Inter, Archivo, IBM_Plex_Mono } from "next/font/google";
 import "./globals.css";
+import { Analytics } from "@vercel/analytics/next";
 import { AuthProvider } from "@/context/AuthContext";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
@@ -168,6 +169,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
           <main className="min-h-screen">{children}</main>
           <Footer />
         </AuthProvider>
+        <Analytics />
       </body>
     </html>
   );
